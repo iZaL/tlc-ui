@@ -32,5 +32,6 @@
   "home" : "Home",
   "create_order": "Create Order",
   "skip" : "Skip",
-  "add_to_cart" : "Add to Cart"
+  "add_to_cart" : "Add to Cart",
+  "add_load" : "Add Load"
 }

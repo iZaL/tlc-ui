@@ -35,7 +35,7 @@ export default class Drawer extends Component {
         <Separator />
 
         <DrawerItem
-          title={I18n.t('create_order')}
+          title={I18n.t('add_load')}
           routeName="CreateOrderStack"
           onItemPress={this.onItemPress}
           icon="ios-paper-plane"

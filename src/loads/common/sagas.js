@@ -1,8 +1,8 @@
 import Qs from 'qs';
 import {all, call, fork, put, select, takeLatest} from 'redux-saga/effects';
-import {ACTION_TYPES} from './actions';
-import {API} from 'orders/common/api';
-import Schema from 'orders/common/schema';
+import {ACTION_TYPES} from 'loads/common/actions';
+import {API} from 'loads/common/api';
+import Schema from 'loads/common/schema';
 import {normalize} from 'normalizr';
 
 function* fetchProperties() {

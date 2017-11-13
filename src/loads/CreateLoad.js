@@ -5,11 +5,11 @@ import React, {PureComponent} from 'react';
 import {View} from 'react-native';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {ACTIONS} from 'orders/common/actions';
-import {SELECTORS} from 'orders/common/selectors';
-import CategoriesList from 'orders/components/CategoriesList';
-import PackagesList from 'orders/components/PackagesList';
-import ServicesList from 'orders/components/ServicesList';
+import {ACTIONS} from 'loads/common/actions';
+import {SELECTORS} from 'loads/common/selectors';
+import CategoriesList from 'loads/components/CategoriesList';
+import PackagesList from 'loads/components/PackagesList';
+import ServicesList from 'loads/components/ServicesList';
 import Button from 'components/Button';
 import I18n from 'common/locale';
 
@@ -19,7 +19,7 @@ type State = {
   activeServicesIDs: Array<string>,
 };
 
-class CreateOrder extends PureComponent {
+class CreateLoad extends PureComponent {
   state: State = {
     activeCategoryID: undefined,
     activePackageID: undefined,
@@ -137,4 +137,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateOrder);
+export default connect(mapStateToProps, mapDispatchToProps)(CreateLoad);

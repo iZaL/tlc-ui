@@ -1,4 +1,4 @@
-import {ACTION_TYPES} from './actions';
+import {ACTION_TYPES} from 'loads/common/actions';
 
 const initialState = {
   isFetching: false,

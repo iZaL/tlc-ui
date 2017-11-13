@@ -1,4 +1,4 @@
-import Schema from 'orders/common/schema';
+import Schema from 'loads/common/schema';
 import map from 'lodash/map';
 import {createSelector} from 'reselect';
 import {denormalize} from 'normalizr';

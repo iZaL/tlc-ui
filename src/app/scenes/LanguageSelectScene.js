@@ -19,6 +19,13 @@ const LanguageSelectScene = ({onLanguageSelect}) => {
         activeOpacity={0.6}>
         <Text style={styles.languageTitle}> العربي </Text>
       </TouchableHighlight>
+      <TouchableHighlight
+        onPress={() => onLanguageSelect('ar')}
+        style={styles.selectLanguageWrapper}
+        underlayColor="transparent"
+        activeOpacity={0.6}>
+        <Text style={styles.languageTitle}> हिन्दी </Text>
+      </TouchableHighlight>
     </View>
   );
 };
