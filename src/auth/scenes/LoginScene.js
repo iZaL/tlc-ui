@@ -7,6 +7,8 @@ import FormLabel from 'components/FormLabel';
 import FormTextInput from 'components/FormTextInput';
 import FormSubmit from 'components/FormSubmit';
 import Separator from 'components/Separator';
+import Touchable from 'react-native-platform-touchable';
+import Button from "components/Button";
 
 export default class LoginScene extends Component {
   static propTypes = {
@@ -33,7 +35,7 @@ export default class LoginScene extends Component {
 
     return (
       <View style={styles.container}>
-        <FormLabel title={I18n.t('email')} />
+        <FormLabel title={I18n.t('email').toUpperCase()} />
         <FormTextInput
           onChangeText={value => onFieldChange('email', value)}
           value={email}
@@ -42,7 +44,7 @@ export default class LoginScene extends Component {
           autoFocus={true}
         />
 
-        <FormLabel title={I18n.t('password')} />
+        <FormLabel title={I18n.t('password').toUpperCase()} />
         <FormTextInput
           onChangeText={value => onFieldChange('password', value)}
           value={password}
@@ -50,38 +52,38 @@ export default class LoginScene extends Component {
           secureTextEntry={true}
         />
 
-        <FormSubmit
+        <Button
           onPress={() => handleLogin()}
           disabled={busy}
-          title={busy ? I18n.t('logging_in') : I18n.t('login')}
+          title={busy ? I18n.t('logging_in') : I18n.t('login').toUpperCase()}
           style={{marginTop: 50}}
         />
 
         <Separator style={{marginVertical: 30}} />
 
-        <FormSubmit
+        <Button
           onPress={() => handleRegisterRoute()}
           style={styles.buttonSecondary}
           disabled={busy}
-          title={I18n.t('create_account')}
+          title={I18n.t('create_account').toUpperCase()}
         />
 
-        <TouchableHighlight
+        <Touchable
           onPress={() => handleForgotPasswordRoute()}
           style={{paddingTop: 100}}
           underlayColor="transparent"
           disabled={busy}>
-          <Text style={[styles.link]}>{I18n.t('forgot_password')}</Text>
-        </TouchableHighlight>
+          <Text style={[styles.link]}>{I18n.t('forgot_password').toUpperCase()}</Text>
+        </Touchable>
 
-        <TouchableHighlight
+        <Touchable
           onPress={() => onSkip()}
           underlayColor="transparent"
           disabled={busy}>
           <Text style={[styles.link, {marginVertical: 50}]}>
             {I18n.t('skip')}
           </Text>
-        </TouchableHighlight>
+        </Touchable>
       </View>
     );
   }
@@ -96,12 +98,12 @@ const styles = StyleSheet.create({
   },
   link: {
     marginTop: 20,
-    color: colors.blue,
-    fontSize: 14,
-    fontWeight: '500',
+    color: colors.secondary,
+    fontSize: 15,
+    fontWeight: '300',
     textAlign: 'center',
   },
   buttonSecondary: {
-    backgroundColor: colors.mediumGrey,
+    backgroundColor: colors.secondary,
   },
 });

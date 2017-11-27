@@ -124,6 +124,6 @@ export default (Navigator = StackNavigator(
   },
   {
     headerMode: 'none',
-    // initialRouteName: 'Auth',
+    initialRouteName: 'Auth',
   },
 ));

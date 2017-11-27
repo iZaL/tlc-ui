@@ -29,7 +29,7 @@ export default class Button extends Component {
     } = this.props;
 
     return (
-      <TouchableHighlight
+      <Touchable
         {...rest}
         disabled={disabled}
         style={[
@@ -39,7 +39,7 @@ export default class Button extends Component {
           background !== 'primary' && {backgroundColor: colors[background]},
         ]}>
         <Text style={[styles.buttonText, titleStyle]}>{title}</Text>
-      </TouchableHighlight>
+      </Touchable>
     );
   }
 }
@@ -47,16 +47,16 @@ export default class Button extends Component {
 const styles = StyleSheet.create({
   button: {
     backgroundColor: colors.primary,
-    borderRadius: 30,
-    padding: 10,
-    height: 40,
-    width: 200,
+    borderRadius: 5,
+    padding: 20,
+    // height: 40,
+    width: 350,
     alignSelf: 'center',
   },
   buttonText: {
     color: 'white',
     textAlign: 'center',
-    fontSize: 15,
-    fontWeight: '500',
+    fontSize: 18,
+    fontWeight: '300',
   },
 });
