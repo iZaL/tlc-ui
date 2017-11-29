@@ -7,7 +7,7 @@ import Navigator from 'common/navigator';
 import * as NavigationService from 'components/NavigationService';
 import LanguageSelectScene from 'app/scenes/LanguageSelectScene';
 import CodePush from 'react-native-code-push';
-import {CODEPUSH_ENABLED} from 'env';
+import {CODEPUSH_ENABLED} from 'common/env';
 import PushNotificationManager from './components/PushNotificationManager';
 import Notification from './components/Notification';
 import {ACTIONS} from './common/actions';

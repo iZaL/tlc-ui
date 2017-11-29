@@ -1,4 +1,4 @@
-import {API_URL} from 'env';
+import {API_URL} from 'common/env';
 import I18n from './locale';
 
 export function fetchAPI(url, method = 'GET', body = null, isBlob = false) {

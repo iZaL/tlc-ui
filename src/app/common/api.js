@@ -1,4 +1,4 @@
-import {API_URL} from 'env';
+import {API_URL} from 'common/env';
 import {fetchAPI} from 'common/api';
 
 function storePushToken(urlParams, body) {
