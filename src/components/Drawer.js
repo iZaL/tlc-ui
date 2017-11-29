@@ -36,10 +36,10 @@ export default class Drawer extends Component {
 
         <DrawerItem
           title={I18n.t('add_load')}
-          routeName="CreateOrderStack"
+          routeName="LoadsStack"
           onItemPress={this.onItemPress}
           icon="ios-paper-plane"
-          active={this.state.activeRoute === 'CreateOrderStack'}
+          active={this.state.activeRoute === 'LoadsStack'}
         />
 
         <Separator />

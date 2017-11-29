@@ -52,7 +52,7 @@ const HomeStack = StackNavigator(
   },
 );
 
-const DrawerStack = StackNavigator(
+const LoadsStack = StackNavigator(
   {
     CreateLoad: {
       screen: CreateLoad,
@@ -99,27 +99,27 @@ const SettingsStack = StackNavigator(
 );
 
 const DrawerRoutes = {
-  HomeDrawer: {
+  HomeStack: {
     screen: HomeStack,
   },
-  LoadsDrawer: {
-    screen: DrawerStack,
+  LoadsStack: {
+    screen: LoadsStack,
   },
-  SettingsDrawer: {
+  SettingsStack: {
     screen: SettingsStack,
   },
 };
 
-const DrawerRouter = DrawerNavigator(DrawerRoutes, {
+const DrawerStack = DrawerNavigator(DrawerRoutes, {
   gesturesEnabled: false,
   contentComponent: props => <Drawer {...props} />,
   drawerWidth: 275,
-  initialRouteName: 'LoadsDrawer',
+  initialRouteName: 'LoadsStack',
 });
 
 export default (Navigator = StackNavigator(
   {
-    Main: {screen: DrawerRouter},
+    Main: {screen: DrawerStack},
     Auth: {screen: AuthStack},
   },
   {

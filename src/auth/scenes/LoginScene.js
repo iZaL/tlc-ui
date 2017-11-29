@@ -56,7 +56,7 @@ export default class LoginScene extends Component {
           onPress={() => handleLogin()}
           disabled={busy}
           title={busy ? I18n.t('logging_in') : I18n.t('login').toUpperCase()}
-          style={{marginTop: 50}}
+          style={{marginTop: 25}}
         />
 
         <Separator style={{marginVertical: 30}} />
@@ -70,7 +70,7 @@ export default class LoginScene extends Component {
 
         <Touchable
           onPress={() => handleForgotPasswordRoute()}
-          style={{paddingTop: 100}}
+          style={{paddingTop: 50}}
           underlayColor="transparent"
           disabled={busy}>
           <Text style={[styles.link]}>{I18n.t('forgot_password').toUpperCase()}</Text>
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
   link: {
     marginTop: 20,
     color: colors.secondary,
-    fontSize: 15,
+    fontSize: 14,
     fontWeight: '300',
     textAlign: 'center',
   },

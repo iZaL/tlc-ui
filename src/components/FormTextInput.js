@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, TextInput} from 'react-native';
+import {StyleSheet, TextInput, Platform} from 'react-native';
 import colors from 'theme/colors';
 import {isRTL} from 'common/locale';
 
@@ -27,12 +27,12 @@ const styles = StyleSheet.create({
     height: 40,
     borderRightColor: 'transparent',
     borderTopColor: 'transparent',
-    borderBottomColor: colors.lightGrey,
-    borderBottomWidth: 0.5,
-    fontSize: 15,
+    borderBottomColor: Platform.OS === 'ios' ? colors.lightGrey : 'transparent',
+    borderBottomWidth: Platform.OS === 'ios' ? 0.5 : 0,
+    fontSize: 18,
     color: 'black',
-    fontWeight: '500',
+    fontWeight: '300',
     textAlign: isRTL ? 'right' : 'left',
-    marginBottom: 10,
+    marginBottom: 25,
   },
 });
