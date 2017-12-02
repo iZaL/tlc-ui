@@ -21,13 +21,16 @@ export function fetchAPI(url, method = 'GET', body = null, isBlob = false) {
   }
 
   if (method === 'POST') {
+
+    let headers = {
+      'Accept': 'application/json',
+      'Content-Type': isBlob ? 'multipart/form-data' : 'application/json',
+    };
+
     request = fetch(localeAwareUrl, {
       method,
       body: isBlob ? body : JSON.stringify(body),
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': isBlob ? 'multipart/form-data' : 'application/json',
-      },
+      headers: headers,
     });
   } else {
     request = fetch(localeAwareUrl, {

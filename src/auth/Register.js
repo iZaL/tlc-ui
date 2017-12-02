@@ -9,8 +9,7 @@ import {ACTIONS} from './common/actions';
 import RegisterScene from './scenes/RegisterScene';
 
 type State = {
-  name_en: string,
-  name_ar: string,
+  name: string,
   email: string,
   password: string,
   mobile: string,
@@ -23,8 +22,7 @@ class Register extends Component {
   };
 
   state: State = {
-    name_en: '',
-    name_ar: '',
+    name: '',
     email: '',
     mobile: '',
     password: '',

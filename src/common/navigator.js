@@ -9,6 +9,7 @@ import Settings from 'home/Settings';
 import CreateLoad from 'loads/CreateLoad';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Touchable from 'react-native-platform-touchable';
+import App from "../app/App";
 
 const AuthStack = StackNavigator(
   {
@@ -39,7 +40,7 @@ const HomeStack = StackNavigator(
           <Touchable
             onPress={() => navigation.navigate('DrawerToggle')}
             hitSlop={{top: 20, left: 20, right: 20, bottom: 20}}>
-            <FontAwesome name="bars" size={28} style={{paddingLeft: 10}} />
+            <FontAwesome name="bars" size={28} style={{paddingLeft: 10}}/>
           </Touchable>
         ),
       }),
@@ -62,7 +63,7 @@ const LoadsStack = StackNavigator(
           <Touchable
             onPress={() => navigation.navigate('DrawerToggle')}
             hitSlop={{top: 20, left: 20, right: 20, bottom: 20}}>
-            <FontAwesome name="bars" size={28} style={{paddingLeft: 10}} />
+            <FontAwesome name="bars" size={28} style={{paddingLeft: 10}}/>
           </Touchable>
         ),
       }),
@@ -85,7 +86,7 @@ const SettingsStack = StackNavigator(
           <Touchable
             onPress={() => navigation.navigate('DrawerToggle')}
             hitSlop={{top: 20, left: 20, right: 20, bottom: 20}}>
-            <FontAwesome name="bars" size={28} style={{paddingLeft: 10}} />
+            <FontAwesome name="bars" size={28} style={{paddingLeft: 10}}/>
           </Touchable>
         ),
       }),
@@ -117,10 +118,12 @@ const DrawerStack = DrawerNavigator(DrawerRoutes, {
   initialRouteName: 'LoadsStack',
 });
 
+
 export default (Navigator = StackNavigator(
   {
     Main: {screen: DrawerStack},
     Auth: {screen: AuthStack},
+    // App: {screen:App}
   },
   {
     headerMode: 'none',

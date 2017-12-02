@@ -33,5 +33,8 @@
   "create_order": "Create Order",
   "skip" : "Skip",
   "add_to_cart" : "Add to Cart",
-  "add_load" : "Add Load"
+  "add_load" : "Add Load",
+  "choose_account_type" : "Register As",
+  "driver" : "Driver",
+  "shipper" : "Shipper"
 }

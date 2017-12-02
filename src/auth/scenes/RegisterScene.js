@@ -13,8 +13,7 @@ export default class RegisterScene extends Component {
   static propTypes = {
     handleRegister: PropTypes.func.isRequired,
     onFieldChange: PropTypes.func.isRequired,
-    name_en: PropTypes.string.isRequired,
-    name_ar: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
     mobile: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired,
@@ -24,8 +23,7 @@ export default class RegisterScene extends Component {
 
   render() {
     const {
-      name_en,
-      name_ar,
+      name,
       email,
       mobile,
       password,
@@ -39,24 +37,13 @@ export default class RegisterScene extends Component {
     return (
       <View style={styles.container}>
         <FormLabel
-          title={isCompany ? I18n.t('company_name_en') : I18n.t('name_en')}
+          title={I18n.t('name')}
         />
         <FormTextInput
-          onChangeText={value => onFieldChange('name_en', value)}
-          value={name_en}
+          onChangeText={value => onFieldChange('name', value)}
+          value={name}
           maxLength={40}
-          placeholder={I18n.t('name_en')}
-          autoFocus={true}
-        />
-
-        <FormLabel
-          title={isCompany ? I18n.t('company_name_ar') : I18n.t('name_ar')}
-        />
-        <FormTextInput
-          onChangeText={value => onFieldChange('name_ar', value)}
-          value={name_ar}
-          maxLength={40}
-          placeholder={I18n.t('name_ar')}
+          placeholder={I18n.t('name')}
           autoFocus={true}
         />
 

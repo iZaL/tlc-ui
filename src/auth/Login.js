@@ -34,7 +34,7 @@ class Login extends Component {
   handleRegisterRoute = () => {
     return Alert.alert(I18n.t('choose_account_type'), '', [
       {
-        text: I18n.t('individual'),
+        text: I18n.t('driver'),
         onPress: () => {
           this.props.navigation.navigate('RegisterScreen', {
             isCompany: false,
@@ -42,7 +42,7 @@ class Login extends Component {
         },
       },
       {
-        text: I18n.t('company'),
+        text: I18n.t('shipper'),
         onPress: () => {
           this.props.navigation.navigate('RegisterScreen', {
             isCompany: true,
