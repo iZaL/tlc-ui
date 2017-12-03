@@ -46,13 +46,13 @@ import {combineReducers} from 'redux';
 //   }
 // };
 
-const navReducer = (state, action) => {
-  const newState = Navigator.router.getStateForAction(action, state);
-  return newState || state;
-};
+// const navReducer = (state, action) => {
+//   const newState = Navigator.router.getStateForAction(action, state);
+//   return newState || state;
+// };
 
 const rootReducer = combineReducers({
-  navigation: navReducer,
+  // navigation: navReducer,
   appReducer,
   authReducer,
   entities,

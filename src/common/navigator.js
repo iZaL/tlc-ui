@@ -12,7 +12,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Touchable from 'react-native-platform-touchable';
 import App from "../app/App";
 
-const AuthStack = StackNavigator(
+export const AuthStack = StackNavigator(
   {
     LoginScreen: {
       screen: Login,
@@ -122,8 +122,7 @@ const DrawerStack = DrawerNavigator(DrawerRoutes, {
   initialRouteName: 'LoadsStack',
 });
 
-
-export default (Navigator = StackNavigator(
+export default (Navigator =  StackNavigator(
   {
     Main: {screen: DrawerStack},
     Auth: {screen: AuthStack},
@@ -131,6 +130,7 @@ export default (Navigator = StackNavigator(
   },
   {
     headerMode: 'none',
-    initialRouteName: 'Auth',
+    // initialRouteName: initialRoute,
   },
 ));
+
