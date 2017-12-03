@@ -31,11 +31,17 @@ function* login(action) {
     yield put({type: ACTION_TYPES.LOGIN_SUCCESS, payload: response.data});
     yield call(setItem, AUTH_STORAGE_KEY, response.data.api_token);
 
+
     // yield put({
     //   type: AUTH_ACTION_TYPES.SYNC_USER_TO_SOCKET,
     // });
 
-    yield put(NavigationActions.back());
+    // yield put(NavigationActions.back());
+    yield put(NavigationActions.navigate({
+        routeName: 'Main'
+      })
+    );
+
   } catch (error) {
     yield put({type: ACTION_TYPES.LOGIN_FAILURE, error});
     yield put(APP_ACTIONS.setNotification(error, 'error'));
