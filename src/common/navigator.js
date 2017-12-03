@@ -2,6 +2,7 @@ import React from 'react';
 import Login from 'auth/Login';
 import Register from 'auth/Register';
 import Forgot from 'auth/Forgot';
+import OTP from 'auth/OTP';
 import {DrawerNavigator, StackNavigator} from 'react-navigation';
 import Drawer from 'components/Drawer';
 import Home from 'home/Home';
@@ -22,6 +23,9 @@ const AuthStack = StackNavigator(
     ForgotScreen: {
       screen: Forgot,
     },
+    OTPScreen: {
+      screen: OTP,
+    }
   },
   {
     navigationOptions: {

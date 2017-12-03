@@ -13,6 +13,8 @@ import {forgetItem, getItem, setItem} from 'common/storage';
 import I18n from 'common/locale';
 import {PUSH_TOKEN_KEY} from 'app/common/reducer';
 
+import {navigate} from "components/NavigationService";
+
 function* login(action) {
   try {
     const state = yield select();
@@ -48,7 +50,18 @@ function* register(action) {
     yield put(
       APP_ACTIONS.setNotification(I18n.t('registration_success'), 'success'),
     );
-    yield put(NavigationActions.back());
+
+    yield put(NavigationActions.navigate({
+        routeName: 'OTPScreen',
+        params: {
+          email: 'z4ls@live.com'
+        }
+      })
+    );
+
+    // yield put(NavigationActions.navigate('OTPScreen',{email:'z4ls@live.com'}))
+
+    // yield put(NavigationActions.back());
   } catch (error) {
     console.log('err',JSON.stringify(error));
     yield put({type: ACTION_TYPES.REGISTER_FAILURE, error});
@@ -59,7 +72,7 @@ function* register(action) {
         messageType: 'error',
       },
     });
-    yield put(APP_ACTIONS.setNotification(error, 'error'));
+    // yield put(APP_ACTIONS.setNotification(error, 'error'));
 
   }
 }

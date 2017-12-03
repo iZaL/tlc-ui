@@ -36,5 +36,6 @@
   "add_load" : "Add Load",
   "choose_account_type" : "Register As",
   "driver" : "Driver",
-  "shipper" : "Shipper"
+  "shipper" : "Shipper",
+  "registration_success" : "Registration Success"
 }
