@@ -37,5 +37,6 @@
   "choose_account_type" : "Register As",
   "driver" : "Driver",
   "shipper" : "Shipper",
-  "registration_success" : "Registration Success"
+  "registration_success" : "Registration Success",
+  "confirm_account" : "Confirm Account"
 }

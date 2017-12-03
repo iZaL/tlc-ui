@@ -24,7 +24,7 @@ class OTP extends Component {
 
   confirmOTP = () => {
     this.props.actions.confirmOTP({
-      email: this.props.navigation.state.params.email,
+      mobile: this.props.navigation.state.params.mobile,
       code:this.state.code
     });
   };

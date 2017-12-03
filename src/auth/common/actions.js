@@ -14,6 +14,9 @@ export const ACTION_TYPES = {
   PASSWORD_UPDATE_REQUEST: 'PASSWORD_UPDATE_REQUEST',
   PASSWORD_UPDATE_SUCCESS: 'PASSWORD_UPDATE_SUCCESS',
   PASSWORD_UPDATE_FAILURE: 'PASSWORD_UPDATE_FAILURE',
+  CONFIRM_OTP_REQUEST: 'CONFIRM_OTP_REQUEST',
+  CONFIRM_OTP_SUCCESS: 'CONFIRM_OTP_SUCCESS',
+  CONFIRM_OTP_FAILURE: 'CONFIRM_OTP_FAILURE',
   LOGOUT: 'LOGOUT',
 };
 
@@ -57,6 +60,14 @@ function register(params) {
   };
 }
 
+
+function confirmOTP(params) {
+  return {
+    type: ACTION_TYPES.CONFIRM_OTP_REQUEST,
+    params,
+  };
+}
+
 export const ACTIONS = {
   login,
   register,
@@ -64,4 +75,5 @@ export const ACTIONS = {
   recoverPassword,
   forgotPassword,
   updatePassword,
+  confirmOTP
 };

@@ -29,10 +29,16 @@ function updatePassword(params) {
   return fetchAPI(url, 'POST', params);
 }
 
+function confirmOTP(params) {
+  const url = `auth/otp/confirm`;
+  return fetchAPI(url, 'POST', params);
+}
+
 export const API = {
   login,
   register,
   recoverPassword,
   forgotPassword,
   updatePassword,
+  confirmOTP,
 };

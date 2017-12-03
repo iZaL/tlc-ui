@@ -4,7 +4,7 @@ import {SafeAreaView, View} from 'react-native';
 import {connect} from 'react-redux';
 import {addNavigationHelpers} from 'react-navigation';
 import Navigator from 'common/navigator';
-import * as NavigationService from 'components/NavigationService';
+import NavigatorService from 'common/navigator_service';
 import LanguageSelectScene from 'app/scenes/LanguageSelectScene';
 import CodePush from 'react-native-code-push';
 import {CODEPUSH_ENABLED} from 'common/env';
@@ -17,14 +17,12 @@ class App extends Component {
     app: PropTypes.object.isRequired,
   };
 
-  navigator;
-
   componentDidMount() {
     if (CODEPUSH_ENABLED) {
       CodePush.sync();
     }
     this.props.dispatch(ACTIONS.boot());
-    NavigationService.setNavigator(this.navigator);
+    // NavigationService.setContainer(this.navigator);
   }
 
   onLanguageSelect = name => {
@@ -45,14 +43,14 @@ class App extends Component {
   };
 
   render() {
-    const {app,isAuthenticated} = this.props;
+    const {app, isAuthenticated} = this.props;
 
-    console.log('app',isAuthenticated);
+    console.log('app', isAuthenticated);
 
     if (!app.booted) return null;
 
     if (!app.bootstrapped) {
-      return <LanguageSelectScene onItemPress={this.onLanguageSelect} />;
+      return <LanguageSelectScene onItemPress={this.onLanguageSelect}/>;
     }
 
     // const Nav = Navigator(isAuthenticated);
@@ -73,13 +71,13 @@ class App extends Component {
         />
 
         <Navigator
-           ref={nav => {
-             this.navigator = nav ? nav.props.navigation : nav;
-           }}
-           navigation={addNavigationHelpers({
-             dispatch: this.props.dispatch,
-             state: this.props.navigation,
-           })}
+          ref={navigatorRef => {
+            NavigatorService.setContainer(navigatorRef);
+          }}
+          navigation={addNavigationHelpers({
+            dispatch: this.props.dispatch,
+            state: this.props.navigation,
+          })}
         />
 
       </SafeAreaView>
@@ -90,7 +88,7 @@ class App extends Component {
 function mapStateToProps(state) {
   return {
     app: state.appReducer,
-    isAuthenticated:state.authReducer.isAuthenticated,
+    isAuthenticated: state.authReducer.isAuthenticated,
     navigation: state.navigation,
   };
 }

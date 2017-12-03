@@ -13,7 +13,7 @@ import {forgetItem, getItem, setItem} from 'common/storage';
 import I18n from 'common/locale';
 import {PUSH_TOKEN_KEY} from 'app/common/reducer';
 
-import {navigate} from "components/NavigationService";
+import NavigatorService from "common/navigator_service";
 
 function* login(action) {
   try {
@@ -47,15 +47,16 @@ function* register(action) {
     const response = yield call(API.register, action.params);
     yield put({type: ACTION_TYPES.REGISTER_SUCCESS, payload: response.data});
 
-    yield put(
-      APP_ACTIONS.setNotification(I18n.t('registration_success'), 'success'),
-    );
+    // yield put(
+    //   APP_ACTIONS.setNotification(I18n.t('registration_success'), 'success'),
+    // );
 
     yield put(NavigationActions.navigate({
         routeName: 'OTPScreen',
         params: {
-          email: 'z4ls@live.com'
-        }
+          mobile: response.data.mobile,
+          title: I18n.t('confirm_account')
+        },
       })
     );
 
@@ -63,7 +64,7 @@ function* register(action) {
 
     // yield put(NavigationActions.back());
   } catch (error) {
-    console.log('err',JSON.stringify(error));
+    console.log('err', JSON.stringify(error));
     yield put({type: ACTION_TYPES.REGISTER_FAILURE, error});
     yield put({
       type: APP_ACTION_TYPES.SET_NOTIFICATION,
@@ -132,6 +133,33 @@ function* updatePassword(action) {
   }
 }
 
+function* confirmOTP(action) {
+  try {
+    const response = yield call(API.confirmOTP, action.params);
+
+    yield put({type: ACTION_TYPES.CONFIRM_OTP_SUCCESS});
+
+    yield put(
+      APP_ACTIONS.setNotification(I18n.t('registration_success'), 'success'),
+    );
+
+    yield put(NavigationActions.reset({
+        index: 0,
+        actions: [
+          NavigationActions.navigate({
+            type: 'Navigation/NAVIGATE',
+            routeName: 'LoginScreen'
+          }),
+        ],
+      })
+    );
+  } catch (error) {
+    yield put(APP_ACTIONS.setNotification(error, 'error'));
+    yield put({type: ACTION_TYPES.CONFIRM_OTP_FAILURE, error});
+  }
+
+}
+
 function* logout() {
   yield call(forgetItem, AUTH_STORAGE_KEY);
 }
@@ -156,8 +184,13 @@ function* forgotPasswordMonitor() {
 function* recoverPasswordMonitor() {
   yield takeLatest(ACTION_TYPES.RECOVER_PASSWORD_REQUEST, recoverPassword);
 }
+
 function* passwordUpdateMonitor() {
   yield takeLatest(ACTION_TYPES.PASSWORD_UPDATE_REQUEST, updatePassword);
+}
+
+function* confirmOTPMonitor() {
+  yield takeLatest(ACTION_TYPES.CONFIRM_OTP_REQUEST, confirmOTP);
 }
 
 export const sagas = all([
@@ -167,4 +200,5 @@ export const sagas = all([
   fork(recoverPasswordMonitor),
   fork(forgotPasswordMonitor),
   fork(passwordUpdateMonitor),
+  fork(confirmOTPMonitor),
 ]);

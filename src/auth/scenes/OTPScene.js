@@ -30,7 +30,7 @@ export default class OTPScene extends Component {
         <FormLabel title={I18n.t('confirmation_code')} />
 
         <FormTextInput
-          onChangeText={value => onFieldChange('confirmationCode', value)}
+          onChangeText={value => onFieldChange('code', value)}
           value={code}
           maxLength={40}
           placeholder={I18n.t('confirmation_code')}
