@@ -17,6 +17,7 @@ import {getItem as getStorageItem, setItem} from 'common/storage';
 import {API as AUTH_API, AUTH_STORAGE_KEY} from 'auth/common/api';
 import {ACTION_TYPES as AUTH_ACTION_TYPES} from 'auth/common/actions';
 import {SELECTORS as AUTH_SELECTORS} from 'auth/common/selectors';
+import I18n from 'common/locale';
 
 function* bootstrapped(action) {
   if (action.value === true) {
@@ -41,6 +42,9 @@ function* boot() {
   if (isNull(currentLanguage)) {
     currentLanguage = state.appReducer.language;
   }
+
+  I18n.locale = currentLanguage;
+
   yield put({
     type: ACTION_TYPES.SET_LANGUAGE_SUCCESS,
     language: currentLanguage,
@@ -88,12 +92,12 @@ function* changeCountrySaga(action) {
 }
 
 function* setLanguage(action) {
-  if (action.language === 'en') {
-    I18nManager.allowRTL(false);
-    I18nManager.forceRTL(false);
-  } else {
+  if (action.language === 'ar') {
     I18nManager.allowRTL(true);
     I18nManager.forceRTL(true);
+  } else {
+    I18nManager.allowRTL(false);
+    I18nManager.forceRTL(false);
   }
 
   yield call(setItem, LANGUAGE_STORAGE_KEY, action.language);

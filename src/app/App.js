@@ -52,7 +52,7 @@ class App extends Component {
     if (!app.booted) return null;
 
     if (!app.bootstrapped) {
-      return <LanguageSelectScene onLanguageSelect={this.onLanguageSelect} />;
+      return <LanguageSelectScene onItemPress={this.onLanguageSelect} />;
     }
 
     // const Nav = Navigator(isAuthenticated);

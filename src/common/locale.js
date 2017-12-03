@@ -9,6 +9,7 @@ I18n.locale = I18nManager.isRTL ? 'ar' : 'en';
 I18n.translations = {
   en: require('../assets/translations/en.json'),
   ar: require('../assets/translations/ar.json'),
+  hi: require('../assets/translations/hi.json'),
 };
 
 export const isRTL = I18nManager.isRTL;
