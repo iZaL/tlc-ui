@@ -1,5 +1,5 @@
 import {API_URL} from 'common/env';
-import I18n from './locale';
+import I18n from 'common/locale';
 
 export function fetchAPI(url, method = 'GET', body = null, isBlob = false) {
   let delimiter = url.indexOf('?') === -1 ? '?' : '&';
@@ -21,16 +21,13 @@ export function fetchAPI(url, method = 'GET', body = null, isBlob = false) {
   }
 
   if (method === 'POST') {
-
-    let headers = {
-      'Accept': 'application/json',
-      'Content-Type': isBlob ? 'multipart/form-data' : 'application/json',
-    };
-
     request = fetch(localeAwareUrl, {
       method,
       body: isBlob ? body : JSON.stringify(body),
-      headers: headers,
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': isBlob ? 'multipart/form-data' : 'application/json',
+      },
     });
   } else {
     request = fetch(localeAwareUrl, {

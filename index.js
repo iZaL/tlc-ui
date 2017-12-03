@@ -1,4 +1,4 @@
 import { AppRegistry } from 'react-native';
-import Root from 'Root';
+import Root from './src/Root';
 
 AppRegistry.registerComponent('tlc', () => Root);

@@ -22,11 +22,11 @@ class Register extends Component {
   };
 
   state: State = {
-    name: '',
-    email: '',
-    mobile: '',
-    password: '',
-    password_confirmation: '',
+    name: 'Afzal',
+    email: 'z4ls@live.com',
+    mobile: '+96597978803',
+    password: 'password',
+    password_confirmation: 'password',
   };
 
   handleRegister = () => {

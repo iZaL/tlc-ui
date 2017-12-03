@@ -50,6 +50,7 @@ function* register(action) {
     );
     yield put(NavigationActions.back());
   } catch (error) {
+    console.log('err',JSON.stringify(error));
     yield put({type: ACTION_TYPES.REGISTER_FAILURE, error});
     yield put({
       type: APP_ACTION_TYPES.SET_NOTIFICATION,
@@ -58,6 +59,8 @@ function* register(action) {
         messageType: 'error',
       },
     });
+    yield put(APP_ACTIONS.setNotification(error, 'error'));
+
   }
 }
 
