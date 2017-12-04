@@ -7,12 +7,12 @@ import {DrawerNavigator, StackNavigator} from 'react-navigation';
 import {Drawer as AdminDrawer} from 'admin/components/Drawer';
 import {Drawer as DriverDrawer} from 'driver/components/Drawer';
 import {Drawer as ShipperDrawer} from 'shipper/components/Drawer';
+import {Drawer as DefaultDrawer} from 'components/Drawer';
 import Home from 'home/Home';
 import Settings from 'home/Settings';
 import CreateLoad from 'loads/CreateLoad';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Touchable from 'react-native-platform-touchable';
-import App from "../app/App";
 
 export const AuthStack = StackNavigator(
   {
@@ -117,28 +117,31 @@ const DrawerRoutes = {
   },
 };
 
+const DefaultStack = DrawerNavigator(DrawerRoutes, {
+  gesturesEnabled: false,
+  contentComponent: props => <DefaultDrawer {...props} />,
+  drawerWidth: 275,
+});
+
 const AdminStack = DrawerNavigator(DrawerRoutes, {
   gesturesEnabled: false,
   contentComponent: props => <AdminDrawer {...props} />,
   drawerWidth: 275,
-  // initialRouteName: 'LoadsStack',
 });
 
 const DriverStack = DrawerNavigator(DrawerRoutes, {
   gesturesEnabled: false,
   contentComponent: props => <DriverDrawer {...props} />,
   drawerWidth: 275,
-  // initialRouteName: 'LoadsStack',
 });
 
 const ShipperStack = DrawerNavigator(DrawerRoutes, {
   gesturesEnabled: false,
   contentComponent: props => <ShipperDrawer {...props} />,
   drawerWidth: 275,
-  // initialRouteName: 'LoadsStack',
 });
 
-export const createRootNavigator = (signedIn = false, userType = 'shipper') => {
+export const createRootNavigator = (signedIn = false, userType = 'default') => {
 
   let userScreen;
 
@@ -146,8 +149,10 @@ export const createRootNavigator = (signedIn = false, userType = 'shipper') => {
     userScreen = 'Driver'
   } else if (userType === 'shipper') {
     userScreen = 'Shipper'
-  } else {
+  } else if (userType === 'admin') {
     userScreen = 'Admin'
+  } else {
+    userScreen = 'Default'
   }
 
   return StackNavigator(
@@ -156,7 +161,7 @@ export const createRootNavigator = (signedIn = false, userType = 'shipper') => {
       Driver: {screen: DriverStack},
       Shipper: {screen: ShipperStack},
       Auth: {screen: AuthStack},
-      // App: {screen:App}
+      Default: {screen: DefaultStack},
     },
     {
       headerMode: 'none',

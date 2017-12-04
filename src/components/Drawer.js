@@ -9,7 +9,7 @@ import I18n from 'common/locale';
 import DrawerItem from 'components/DrawerItem';
 import Separator from 'components/Separator';
 
-export default class Drawer extends Component {
+export class Drawer extends Component {
   onItemPress = (routeName: string) => {
     this.setState({
       activeRoute: routeName,
@@ -30,26 +30,6 @@ export default class Drawer extends Component {
           onItemPress={this.onItemPress}
           icon="ios-paper-plane"
           active={this.state.activeRoute === 'HomeStack'}
-        />
-
-        <Separator />
-
-        <DrawerItem
-          title={I18n.t('add_load')}
-          routeName="LoadsStack"
-          onItemPress={this.onItemPress}
-          icon="ios-paper-plane"
-          active={this.state.activeRoute === 'LoadsStack'}
-        />
-
-        <Separator />
-
-        <DrawerItem
-          title={I18n.t('settings')}
-          routeName="SettingsStack"
-          onItemPress={this.onItemPress}
-          icon="ios-paper-plane"
-          active={this.state.activeRoute === 'SettingsStack'}
         />
       </View>
     );

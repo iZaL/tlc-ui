@@ -3,6 +3,7 @@ import {ACTION_TYPES} from './actions';
 const initialState = {
   isAuthenticated: false,
   userID: null,
+  userType: 'default',
   token: null,
   skipped: false,
   showPasswordUpdateScene: false,
@@ -32,7 +33,8 @@ export function userReducer(state = initialState, action = {}) {
         error: null,
         isAuthenticated: true,
         token: action.payload.api_token,
-        userID: action.payload._id,
+        userID: action.payload.id,
+        userType: action.payload.user_type,
         login: {...state.login, busy: false, error: null},
       };
     case ACTION_TYPES.LOGIN_FAILURE:

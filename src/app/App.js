@@ -42,7 +42,7 @@ class App extends Component {
   };
 
   render() {
-    const {app, isAuthenticated} = this.props;
+    const {app, isAuthenticated, userType} = this.props;
 
     if (!app.booted) return null;
 
@@ -50,7 +50,7 @@ class App extends Component {
       return <LanguageSelectScene onItemPress={this.onLanguageSelect}/>;
     }
 
-    const Navigator = createRootNavigator(isAuthenticated);
+    const Navigator = createRootNavigator(isAuthenticated,userType);
 
     return (
       <SafeAreaView style={{flex: 1}}>
@@ -86,6 +86,7 @@ function mapStateToProps(state) {
   return {
     app: state.appReducer,
     isAuthenticated: state.userReducer.isAuthenticated,
+    userType: state.userReducer.userType,
     navigation: state.navigation,
   };
 }
