@@ -1,10 +1,14 @@
 import {API_URL} from 'common/env';
 import I18n from 'common/locale';
+import Store from 'common/store';
 
 export function fetchAPI(url, method = 'GET', body = null, isBlob = false) {
   let delimiter = url.indexOf('?') === -1 ? '?' : '&';
 
   let localeAwareUrl = `${API_URL}/${url + delimiter}lang=${I18n.locale}`;
+
+  const store = Store && Store.getState();
+  const apiToken = store ? store.authReducer.token : null;
 
   let request;
 
@@ -20,18 +24,25 @@ export function fetchAPI(url, method = 'GET', body = null, isBlob = false) {
     }
   }
 
+  let headers = new Headers();
+  headers.append('Accept', 'application/json');
+  headers.append('Authorization', 'Bearer ' + apiToken);
+  headers.append('Content-Type',  isBlob ? 'multipart/form-data' : 'application/json');
+
+  console.log('ap',apiToken);
+
   if (method === 'POST') {
+
     request = fetch(localeAwareUrl, {
       method,
       body: isBlob ? body : JSON.stringify(body),
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': isBlob ? 'multipart/form-data' : 'application/json',
-      },
+      headers
     });
   } else {
     request = fetch(localeAwareUrl, {
       method,
+      body:null,
+      headers
     });
   }
 

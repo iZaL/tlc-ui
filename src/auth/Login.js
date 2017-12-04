@@ -37,7 +37,7 @@ class Login extends Component {
         text: I18n.t('driver'),
         onPress: () => {
           this.props.navigation.navigate('RegisterScreen', {
-            isCompany: false,
+            isShipper: false,
           });
         },
       },
@@ -45,7 +45,7 @@ class Login extends Component {
         text: I18n.t('shipper'),
         onPress: () => {
           this.props.navigation.navigate('RegisterScreen', {
-            isCompany: true,
+            isShipper: true,
           });
         },
       },

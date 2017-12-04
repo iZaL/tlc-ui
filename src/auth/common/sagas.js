@@ -18,7 +18,7 @@ import NavigatorService from "common/navigator_service";
 function* login(action) {
   try {
     const state = yield select();
-    const token = SELECTORS.getAuthToken(state);
+    // const token = SELECTORS.getAuthToken(state);
     const pushTokenStorageKey = yield call(getItem, PUSH_TOKEN_KEY);
 
     const params = {
@@ -26,7 +26,7 @@ function* login(action) {
       pushtoken: pushTokenStorageKey,
     };
 
-    const response = yield call(API.login, params, token);
+    const response = yield call(API.login, params);
 
     yield put({type: ACTION_TYPES.LOGIN_SUCCESS, payload: response.data});
     yield call(setItem, AUTH_STORAGE_KEY, response.data.api_token);

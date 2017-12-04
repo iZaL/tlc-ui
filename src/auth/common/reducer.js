@@ -79,6 +79,11 @@ export default function authReducer(state = initialState, action = {}) {
         showPasswordUpdateScene: false,
         showPasswordRecoverScene: false,
       };
+    case ACTION_TYPES.SET_AUTH_TOKEN:
+      return {
+        ...state,
+        token: action.token,
+      };
     default:
       return state;
   }

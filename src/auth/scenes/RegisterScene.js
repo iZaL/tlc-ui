@@ -18,7 +18,6 @@ export default class RegisterScene extends Component {
     mobile: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired,
     busy: PropTypes.bool.isRequired,
-    isCompany: PropTypes.bool.isRequired,
   };
 
   render() {
@@ -31,7 +30,6 @@ export default class RegisterScene extends Component {
       onFieldChange,
       handleRegister,
       busy,
-      isCompany,
     } = this.props;
 
     return (

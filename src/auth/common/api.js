@@ -3,9 +3,9 @@ import {fetchAPI} from 'common/api';
 
 export const AUTH_STORAGE_KEY = 'AUTH_TOKEN_KEY';
 
-function login(params, token) {
-  if (isNull(token) && isNull(params)) return;
-  const url = isNull(token) ? `auth/login` : `auth/login?api_token=${token}`;
+function login(params) {
+  // if (isNull(token) && isNull(params)) return;
+  const url = `auth/login`;
   return fetchAPI(url, 'POST', params);
 }
 

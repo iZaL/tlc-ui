@@ -55,11 +55,16 @@ function* boot() {
   const pushTokenStorageKey = yield call(getStorageItem, PUSH_TOKEN_KEY);
 
   if (!isNull(authStorageKey)) {
+    yield put({
+      type: AUTH_ACTION_TYPES.SET_AUTH_TOKEN,
+      token: authStorageKey,
+    });
+
     try {
       let response = yield call(
         AUTH_API.login,
-        {pushtoken: pushTokenStorageKey},
-        authStorageKey,
+        {push_token: pushTokenStorageKey},
+        // authStorageKey,
       );
       yield put({
         type: AUTH_ACTION_TYPES.LOGIN_SUCCESS,
@@ -142,7 +147,8 @@ function* navigate(action) {
         params: action.params,
       }),
     );
-  } catch (error) {}
+  } catch (error) {
+  }
 }
 
 function* bootMonitor() {
