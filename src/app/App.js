@@ -1,9 +1,8 @@
 import PropTypes from 'prop-types';
 import React, {Component} from 'react';
-import {SafeAreaView, View} from 'react-native';
+import {SafeAreaView} from 'react-native';
 import {connect} from 'react-redux';
 import {addNavigationHelpers} from 'react-navigation';
-import Navigator from 'common/navigator';
 import NavigatorService from 'common/navigator_service';
 import LanguageSelectScene from 'app/scenes/LanguageSelectScene';
 import CodePush from 'react-native-code-push';
@@ -11,7 +10,7 @@ import {CODEPUSH_ENABLED} from 'common/env';
 import PushNotificationManager from './components/PushNotificationManager';
 import Notification from './components/Notification';
 import {ACTIONS} from './common/actions';
-import {AuthStack} from "../common/navigator";
+import {createRootNavigator} from "../common/navigator";
 
 class App extends Component {
   static propTypes = {
@@ -23,7 +22,6 @@ class App extends Component {
       CodePush.sync();
     }
     this.props.dispatch(ACTIONS.boot());
-    // NavigationService.setContainer(this.navigator);
   }
 
   onLanguageSelect = name => {
@@ -46,15 +44,13 @@ class App extends Component {
   render() {
     const {app, isAuthenticated} = this.props;
 
-    console.log('app', isAuthenticated);
-
     if (!app.booted) return null;
 
     if (!app.bootstrapped) {
       return <LanguageSelectScene onItemPress={this.onLanguageSelect}/>;
     }
 
-    // const Nav = Navigator(isAuthenticated);
+    const Navigator = createRootNavigator(isAuthenticated);
 
     return (
       <SafeAreaView style={{flex: 1}}>
@@ -71,22 +67,15 @@ class App extends Component {
           navigateToScene={this.navigateToScene}
         />
 
-        {
-          isAuthenticated ?
-            <Navigator
-              ref={navigatorRef => {
-                NavigatorService.setContainer(navigatorRef);
-              }}
-              // navigation={addNavigationHelpers({
-              //   dispatch: this.props.dispatch,
-              //   state: this.props.navigation,
-              // })}
-            />
-            :
-            <AuthStack/>
-
-        }
-
+        <Navigator
+          ref={navigatorRef => {
+            NavigatorService.setContainer(navigatorRef);
+          }}
+          navigation={addNavigationHelpers({
+            dispatch: this.props.dispatch,
+            state: this.props.navigation,
+          })}
+        />
 
       </SafeAreaView>
     );

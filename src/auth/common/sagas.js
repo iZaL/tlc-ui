@@ -58,13 +58,29 @@ function* register(action) {
     // );
 
     yield put(NavigationActions.navigate({
-        routeName: 'OTPScreen',
+      type: 'Navigation/NAVIGATE',
+      routeName: 'OTPScreen',
         params: {
           mobile: response.data.mobile,
           title: I18n.t('confirm_account')
         },
       })
     );
+
+    // yield put(NavigationActions.reset({
+    //     index: 0,
+    //     actions: [
+    //       NavigationActions.navigate({
+    //         type: 'Navigation/NAVIGATE',
+    //         routeName: 'OTPScreen',
+    //         params: {
+    //           mobile: response.data.mobile,
+    //           title: I18n.t('confirm_account')
+    //         },
+    //       }),
+    //     ],
+    //   })
+    // );
 
     // yield put(NavigationActions.navigate('OTPScreen',{email:'z4ls@live.com'}))
 

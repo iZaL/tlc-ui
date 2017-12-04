@@ -122,15 +122,30 @@ const DrawerStack = DrawerNavigator(DrawerRoutes, {
   initialRouteName: 'LoadsStack',
 });
 
-export default (Navigator =  StackNavigator(
-  {
-    Main: {screen: DrawerStack},
-    Auth: {screen: AuthStack},
-    // App: {screen:App}
-  },
-  {
-    headerMode: 'none',
-    // initialRouteName: initialRoute,
-  },
-));
 
+export const createRootNavigator = (signedIn = false) => {
+  return StackNavigator(
+    {
+      Main: {screen: DrawerStack},
+      Auth: {screen: AuthStack},
+      // App: {screen:App}
+    },
+    {
+      headerMode: 'none',
+      initialRouteName: signedIn ? 'Main' : 'Auth',
+    },
+  );
+};
+
+// export default (Navigator =  StackNavigator(
+//   {
+//     Main: {screen: DrawerStack},
+//     Auth: {screen: AuthStack},
+//     // App: {screen:App}
+//   },
+//   {
+//     headerMode: 'none',
+//     // initialRouteName: initialRoute,
+//   },
+// ));
+//

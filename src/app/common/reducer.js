@@ -1,4 +1,5 @@
 import {ACTION_TYPES} from './actions';
+import {createRootNavigator} from "common/navigator";
 
 export const COUNTRY_KEY = 'COUNTRY_KEY';
 export const BOOTSTRAPPED_STORAGE_KEY = 'BOOTSTRAPPED';
@@ -15,7 +16,7 @@ const initialState = {
   language: 'ar',
 };
 
-export default function appReducer(state = initialState, action = {}) {
+export function appReducer(state = initialState, action = {}) {
   switch (action.type) {
     case ACTION_TYPES.BOOTSTRAPPED:
       return {...state, bootstrapped: action.value};
@@ -50,3 +51,10 @@ export default function appReducer(state = initialState, action = {}) {
       return state;
   }
 }
+
+const Navigator = createRootNavigator(false);
+
+export const navReducer = (state, action) => {
+  const newState = Navigator.router.getStateForAction(action, state);
+  return newState || state;
+};
