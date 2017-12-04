@@ -147,8 +147,7 @@ function* navigate(action) {
         params: action.params,
       }),
     );
-  } catch (error) {
-  }
+  } catch (error) {}
 }
 
 function* bootMonitor() {

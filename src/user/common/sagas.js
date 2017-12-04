@@ -13,7 +13,7 @@ import {forgetItem, getItem, setItem} from 'common/storage';
 import I18n from 'common/locale';
 import {PUSH_TOKEN_KEY} from 'app/common/reducer';
 
-import NavigatorService from "common/navigator_service";
+import NavigatorService from 'common/navigator_service';
 
 function* login(action) {
   try {
@@ -31,17 +31,16 @@ function* login(action) {
     yield put({type: ACTION_TYPES.LOGIN_SUCCESS, payload: response.data});
     yield call(setItem, AUTH_STORAGE_KEY, response.data.api_token);
 
-
     // yield put({
     //   type: AUTH_ACTION_TYPES.SYNC_USER_TO_SOCKET,
     // });
 
     // yield put(NavigationActions.back());
-    yield put(NavigationActions.navigate({
-        routeName: 'Main'
-      })
+    yield put(
+      NavigationActions.navigate({
+        routeName: 'Main',
+      }),
     );
-
   } catch (error) {
     yield put({type: ACTION_TYPES.LOGIN_FAILURE, error});
     yield put(APP_ACTIONS.setNotification(error, 'error'));
@@ -53,15 +52,13 @@ function* register(action) {
     const response = yield call(API.register, action.params);
     yield put({type: ACTION_TYPES.REGISTER_SUCCESS, payload: response.data});
 
-    yield NavigatorService.navigate('OTPScreen',{
-          mobile: response.data.mobile,
-          title: I18n.t('confirm_account')
-        },
-    );
+    yield NavigatorService.navigate('OTPScreen', {
+      mobile: response.data.mobile,
+      title: I18n.t('confirm_account'),
+    });
   } catch (error) {
     yield put({type: ACTION_TYPES.REGISTER_FAILURE, error});
     yield put(APP_ACTIONS.setNotification(error, 'error'));
-
   }
 }
 
@@ -145,7 +142,6 @@ function* confirmOTP(action) {
     yield put(APP_ACTIONS.setNotification(error, 'error'));
     yield put({type: ACTION_TYPES.CONFIRM_OTP_FAILURE, error});
   }
-
 }
 
 function* logout() {

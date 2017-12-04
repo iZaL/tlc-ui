@@ -8,7 +8,7 @@ import FormTextInput from 'components/FormTextInput';
 import FormSubmit from 'components/FormSubmit';
 import Separator from 'components/Separator';
 import Touchable from 'react-native-platform-touchable';
-import Button from "components/Button";
+import Button from 'components/Button';
 
 export default class LoginScene extends Component {
   static propTypes = {
@@ -73,7 +73,9 @@ export default class LoginScene extends Component {
           style={{paddingTop: 50}}
           underlayColor="transparent"
           disabled={busy}>
-          <Text style={[styles.link]}>{I18n.t('forgot_password').toUpperCase()}</Text>
+          <Text style={[styles.link]}>
+            {I18n.t('forgot_password').toUpperCase()}
+          </Text>
         </Touchable>
 
         <Touchable

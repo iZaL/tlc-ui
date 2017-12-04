@@ -1,5 +1,5 @@
 import {ACTION_TYPES} from './actions';
-import {createRootNavigator} from "common/navigator";
+import {createRootNavigator} from 'common/navigator';
 
 export const COUNTRY_KEY = 'COUNTRY_KEY';
 export const BOOTSTRAPPED_STORAGE_KEY = 'BOOTSTRAPPED';
@@ -93,9 +93,9 @@ export function appReducer(state = initialState, action = {}) {
 
 export const navReducer = (state, action) => {
   switch (action.type) {
-    case "LOGIN_SUCCESS": {
+    case 'LOGIN_SUCCESS': {
       let Navigator = createRootNavigator(isAuthenticated);
-      return  Navigator.router.getStateForAction(action, state);
+      return Navigator.router.getStateForAction(action, state);
       // return newState;
     }
     default:

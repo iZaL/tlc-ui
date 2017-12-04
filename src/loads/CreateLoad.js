@@ -90,10 +90,12 @@ class CreateLoad extends PureComponent {
 
     let activeCategory = activeCategoryID
       ? categories.find(item => item.id === activeCategoryID)
-      : categories.length ? categories[0] : {
-          id: undefined,
-          packages: [],
-        };
+      : categories.length
+        ? categories[0]
+        : {
+            id: undefined,
+            packages: [],
+          };
 
     return (
       <View style={{padding: 10}}>
@@ -111,7 +113,10 @@ class CreateLoad extends PureComponent {
 
         {activePackageID && (
           <ServicesList
-            items={activeCategory.packages.find(item => item.id === activePackageID).services}
+            items={
+              activeCategory.packages.find(item => item.id === activePackageID)
+                .services
+            }
             onItemPress={this.onServicesListItemPress}
             activeItemIDs={activeServicesIDs}
           />

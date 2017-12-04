@@ -10,7 +10,7 @@ import PasswordUpdateScene from './scenes/PasswordUpdateScene';
 import {ACTIONS} from './common/actions';
 import {TouchableHighlight} from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import OTPScene from "./scenes/OTPScene";
+import OTPScene from './scenes/OTPScene';
 
 class OTP extends Component {
   static propTypes = {
@@ -25,7 +25,7 @@ class OTP extends Component {
   confirmOTP = () => {
     this.props.actions.confirmOTP({
       mobile: this.props.navigation.state.params.mobile,
-      code:this.state.code
+      code: this.state.code,
     });
   };
 
@@ -38,7 +38,7 @@ class OTP extends Component {
   };
 
   render() {
-    const {code, } = this.state;
+    const {code} = this.state;
     return (
       <OTPScene
         onFieldChange={this.onFieldChange}
@@ -47,7 +47,6 @@ class OTP extends Component {
         resendCode={this.resendOTP}
       />
     );
-
   }
 }
 

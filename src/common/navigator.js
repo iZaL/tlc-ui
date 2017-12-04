@@ -27,7 +27,7 @@ export const AuthStack = StackNavigator(
     },
     OTPScreen: {
       screen: OTP,
-    }
+    },
   },
   {
     navigationOptions: {
@@ -46,7 +46,7 @@ const HomeStack = StackNavigator(
           <Touchable
             onPress={() => navigation.navigate('DrawerToggle')}
             hitSlop={{top: 20, left: 20, right: 20, bottom: 20}}>
-            <FontAwesome name="bars" size={28} style={{paddingLeft: 10}}/>
+            <FontAwesome name="bars" size={28} style={{paddingLeft: 10}} />
           </Touchable>
         ),
       }),
@@ -69,7 +69,7 @@ const LoadsStack = StackNavigator(
           <Touchable
             onPress={() => navigation.navigate('DrawerToggle')}
             hitSlop={{top: 20, left: 20, right: 20, bottom: 20}}>
-            <FontAwesome name="bars" size={28} style={{paddingLeft: 10}}/>
+            <FontAwesome name="bars" size={28} style={{paddingLeft: 10}} />
           </Touchable>
         ),
       }),
@@ -92,7 +92,7 @@ const SettingsStack = StackNavigator(
           <Touchable
             onPress={() => navigation.navigate('DrawerToggle')}
             hitSlop={{top: 20, left: 20, right: 20, bottom: 20}}>
-            <FontAwesome name="bars" size={28} style={{paddingLeft: 10}}/>
+            <FontAwesome name="bars" size={28} style={{paddingLeft: 10}} />
           </Touchable>
         ),
       }),
@@ -142,17 +142,16 @@ const ShipperStack = DrawerNavigator(DrawerRoutes, {
 });
 
 export const createRootNavigator = (signedIn = false, userType = 'default') => {
-
   let userScreen;
 
   if (userType === 'driver') {
-    userScreen = 'Driver'
+    userScreen = 'Driver';
   } else if (userType === 'shipper') {
-    userScreen = 'Shipper'
+    userScreen = 'Shipper';
   } else if (userType === 'admin') {
-    userScreen = 'Admin'
+    userScreen = 'Admin';
   } else {
-    userScreen = 'Default'
+    userScreen = 'Default';
   }
 
   return StackNavigator(

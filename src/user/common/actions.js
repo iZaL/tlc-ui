@@ -18,7 +18,7 @@ export const ACTION_TYPES = {
   CONFIRM_OTP_SUCCESS: 'CONFIRM_OTP_SUCCESS',
   CONFIRM_OTP_FAILURE: 'CONFIRM_OTP_FAILURE',
   LOGOUT: 'LOGOUT',
-  SET_AUTH_TOKEN:'SET_AUTH_TOKEN'
+  SET_AUTH_TOKEN: 'SET_AUTH_TOKEN',
 };
 
 function login(credentials) {
@@ -61,7 +61,6 @@ function register(params) {
   };
 }
 
-
 function confirmOTP(params) {
   return {
     type: ACTION_TYPES.CONFIRM_OTP_REQUEST,
@@ -76,5 +75,5 @@ export const ACTIONS = {
   recoverPassword,
   forgotPassword,
   updatePassword,
-  confirmOTP
+  confirmOTP,
 };

@@ -9,7 +9,7 @@ import {CODEPUSH_ENABLED} from 'common/env';
 import PushNotificationManager from './components/PushNotificationManager';
 import Notification from './components/Notification';
 import {ACTIONS} from './common/actions';
-import {createRootNavigator} from "../common/navigator";
+import {createRootNavigator} from '../common/navigator';
 
 class App extends Component {
   static propTypes = {
@@ -46,10 +46,10 @@ class App extends Component {
     if (!app.booted) return null;
 
     if (!app.bootstrapped) {
-      return <LanguageSelectScene onItemPress={this.onLanguageSelect}/>;
+      return <LanguageSelectScene onItemPress={this.onLanguageSelect} />;
     }
 
-    const Navigator = createRootNavigator(isAuthenticated,userType);
+    const Navigator = createRootNavigator(isAuthenticated, userType);
 
     return (
       <SafeAreaView style={{flex: 1}}>
@@ -71,7 +71,6 @@ class App extends Component {
             NavigatorService.setContainer(navigatorRef);
           }}
         />
-
       </SafeAreaView>
     );
   }

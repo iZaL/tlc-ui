@@ -18,12 +18,7 @@ export default class OTPScene extends Component {
   };
 
   render() {
-    const {
-      code,
-      onButtonPress,
-      onFieldChange,
-      resendCode
-    } = this.props;
+    const {code, onButtonPress, onFieldChange, resendCode} = this.props;
 
     return (
       <View style={styles.container}>

@@ -27,20 +27,22 @@ export function fetchAPI(url, method = 'GET', body = null, isBlob = false) {
   let headers = new Headers();
   headers.append('Accept', 'application/json');
   headers.append('Authorization', 'Bearer ' + apiToken);
-  headers.append('Content-Type',  isBlob ? 'multipart/form-data' : 'application/json');
+  headers.append(
+    'Content-Type',
+    isBlob ? 'multipart/form-data' : 'application/json',
+  );
 
   if (method === 'POST') {
-
     request = fetch(localeAwareUrl, {
       method,
       body: isBlob ? body : JSON.stringify(body),
-      headers
+      headers,
     });
   } else {
     request = fetch(localeAwareUrl, {
       method,
-      body:null,
-      headers
+      body: null,
+      headers,
     });
   }
 

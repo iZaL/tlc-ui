@@ -34,9 +34,7 @@ export default class RegisterScene extends Component {
 
     return (
       <View style={styles.container}>
-        <FormLabel
-          title={I18n.t('name')}
-        />
+        <FormLabel title={I18n.t('name')} />
         <FormTextInput
           onChangeText={value => onFieldChange('name', value)}
           value={name}
