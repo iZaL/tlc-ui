@@ -2,8 +2,8 @@ import React from 'react';
 
 import {StackNavigator} from 'react-navigation';
 import {Routes as AdminRoutes} from 'admin/common/routes';
-import {Routes as DriverRoutes} from 'admin/common/routes';
-import {Routes as ShipperRoutes} from 'admin/common/routes';
+import {Routes as DriverRoutes} from 'driver/common/routes';
+import {Routes as ShipperRoutes} from 'shipper/common/routes';
 import {Routes as DefaultRoutes} from 'common/routes';
 import {AuthRoutes} from 'user/common/routes';
 

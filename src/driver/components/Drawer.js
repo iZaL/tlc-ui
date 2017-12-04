@@ -25,7 +25,7 @@ export class Drawer extends Component {
     return (
       <View style={styles.container}>
         <DrawerItem
-          title={I18n.t('driver_home')}
+          title={I18n.t('home')}
           routeName="HomeStack"
           onItemPress={this.onItemPress}
           icon="ios-paper-plane"

@@ -1,6 +1,6 @@
 import React from 'react';
 import {DrawerNavigator, StackNavigator} from 'react-navigation';
-import {Drawer} from 'driver/components/Drawer';
+import {Drawer} from 'admin/components/Drawer';
 import Home from 'home/Home';
 import Settings from 'home/Settings';
 import CreateLoad from 'loads/CreateLoad';
