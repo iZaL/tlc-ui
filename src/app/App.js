@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import React, {Component} from 'react';
 import {SafeAreaView} from 'react-native';
 import {connect} from 'react-redux';
-import {addNavigationHelpers} from 'react-navigation';
 import NavigatorService from 'common/navigator_service';
 import LanguageSelectScene from 'app/scenes/LanguageSelectScene';
 import CodePush from 'react-native-code-push';
@@ -71,10 +70,6 @@ class App extends Component {
           ref={navigatorRef => {
             NavigatorService.setContainer(navigatorRef);
           }}
-          // navigation={addNavigationHelpers({
-          //   dispatch: this.props.dispatch,
-          //   state: this.props.navigation,
-          // })}
         />
 
       </SafeAreaView>
@@ -87,7 +82,6 @@ function mapStateToProps(state) {
     app: state.appReducer,
     isAuthenticated: state.userReducer.isAuthenticated,
     userType: state.userReducer.userType,
-    navigation: state.navigation,
   };
 }
 
