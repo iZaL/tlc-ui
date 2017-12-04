@@ -53,38 +53,12 @@ function* register(action) {
     const response = yield call(API.register, action.params);
     yield put({type: ACTION_TYPES.REGISTER_SUCCESS, payload: response.data});
 
-    // yield put(
-    //   APP_ACTIONS.setNotification(I18n.t('registration_success'), 'success'),
-    // );
-
-    yield put(NavigationActions.navigate({
-      type: 'Navigation/NAVIGATE',
-      routeName: 'OTPScreen',
-        params: {
+    yield NavigatorService.navigate('OTPScreen',{
           mobile: response.data.mobile,
           title: I18n.t('confirm_account')
         },
-      })
     );
 
-    // yield put(NavigationActions.reset({
-    //     index: 0,
-    //     actions: [
-    //       NavigationActions.navigate({
-    //         type: 'Navigation/NAVIGATE',
-    //         routeName: 'OTPScreen',
-    //         params: {
-    //           mobile: response.data.mobile,
-    //           title: I18n.t('confirm_account')
-    //         },
-    //       }),
-    //     ],
-    //   })
-    // );
-
-    // yield put(NavigationActions.navigate('OTPScreen',{email:'z4ls@live.com'}))
-
-    // yield put(NavigationActions.back());
   } catch (error) {
     console.log('err', JSON.stringify(error));
     yield put({type: ACTION_TYPES.REGISTER_FAILURE, error});
@@ -165,16 +139,17 @@ function* confirmOTP(action) {
       APP_ACTIONS.setNotification(I18n.t('registration_success'), 'success'),
     );
 
-    yield put(NavigationActions.reset({
-        index: 0,
-        actions: [
-          NavigationActions.navigate({
-            type: 'Navigation/NAVIGATE',
-            routeName: 'LoginScreen'
-          }),
-        ],
-      })
-    );
+    yield NavigatorService.reset('LoginScreen');
+    // yield put(NavigationActions.reset({
+    //     index: 0,
+    //     actions: [
+    //       NavigationActions.navigate({
+    //         type: 'Navigation/NAVIGATE',
+    //         routeName: 'LoginScreen'
+    //       }),
+    //     ],
+    //   })
+    // );
   } catch (error) {
     yield put(APP_ACTIONS.setNotification(error, 'error'));
     yield put({type: ACTION_TYPES.CONFIRM_OTP_FAILURE, error});

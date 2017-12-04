@@ -71,10 +71,10 @@ class App extends Component {
           ref={navigatorRef => {
             NavigatorService.setContainer(navigatorRef);
           }}
-          navigation={addNavigationHelpers({
-            dispatch: this.props.dispatch,
-            state: this.props.navigation,
-          })}
+          // navigation={addNavigationHelpers({
+          //   dispatch: this.props.dispatch,
+          //   state: this.props.navigation,
+          // })}
         />
 
       </SafeAreaView>
