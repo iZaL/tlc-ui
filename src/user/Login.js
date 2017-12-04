@@ -92,7 +92,7 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
   return {
-    auth: state.authReducer,
+    auth: state.userReducer,
   };
 }
 

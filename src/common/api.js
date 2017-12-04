@@ -8,7 +8,7 @@ export function fetchAPI(url, method = 'GET', body = null, isBlob = false) {
   let localeAwareUrl = `${API_URL}/${url + delimiter}lang=${I18n.locale}`;
 
   const store = Store && Store.getState();
-  const apiToken = store ? store.authReducer.token : null;
+  const apiToken = store ? store.userReducer.token : null;
 
   let request;
 
@@ -28,8 +28,6 @@ export function fetchAPI(url, method = 'GET', body = null, isBlob = false) {
   headers.append('Accept', 'application/json');
   headers.append('Authorization', 'Bearer ' + apiToken);
   headers.append('Content-Type',  isBlob ? 'multipart/form-data' : 'application/json');
-
-  console.log('ap',apiToken);
 
   if (method === 'POST') {
 

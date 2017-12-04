@@ -14,9 +14,9 @@ import {
 } from './reducer';
 
 import {getItem as getStorageItem, setItem} from 'common/storage';
-import {API as AUTH_API, AUTH_STORAGE_KEY} from 'auth/common/api';
-import {ACTION_TYPES as AUTH_ACTION_TYPES} from 'auth/common/actions';
-import {SELECTORS as AUTH_SELECTORS} from 'auth/common/selectors';
+import {API as AUTH_API, AUTH_STORAGE_KEY} from 'user/common/api';
+import {ACTION_TYPES as AUTH_ACTION_TYPES} from 'user/common/actions';
+import {SELECTORS as AUTH_SELECTORS} from 'user/common/selectors';
 import I18n from 'common/locale';
 
 function* bootstrapped(action) {

@@ -85,7 +85,7 @@ class App extends Component {
 function mapStateToProps(state) {
   return {
     app: state.appReducer,
-    isAuthenticated: state.authReducer.isAuthenticated,
+    isAuthenticated: state.userReducer.isAuthenticated,
     navigation: state.navigation,
   };
 }

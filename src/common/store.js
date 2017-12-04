@@ -36,7 +36,7 @@ sagaMiddleware.run(rootSaga);
 //       // 'propertyReducer',
 //       // 'ormReducer',
 //       // 'appReducer',
-//       // 'authReducer',
+//       // 'userReducer',
 //       // 'userReducer',
 //     ],
 //     storage: AsyncStorage,

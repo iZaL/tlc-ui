@@ -1,10 +1,12 @@
 import React from 'react';
-import Login from 'auth/Login';
-import Register from 'auth/Register';
-import Forgot from 'auth/Forgot';
-import OTP from 'auth/OTP';
+import Login from 'user/Login';
+import Register from 'user/Register';
+import Forgot from 'user/Forgot';
+import OTP from 'user/OTP';
 import {DrawerNavigator, StackNavigator} from 'react-navigation';
-import Drawer from 'components/Drawer';
+import {Drawer as AdminDrawer} from 'admin/components/Drawer';
+import {Drawer as DriverDrawer} from 'driver/components/Drawer';
+import {Drawer as ShipperDrawer} from 'shipper/components/Drawer';
 import Home from 'home/Home';
 import Settings from 'home/Settings';
 import CreateLoad from 'loads/CreateLoad';
@@ -115,24 +117,50 @@ const DrawerRoutes = {
   },
 };
 
-const DrawerStack = DrawerNavigator(DrawerRoutes, {
+const AdminStack = DrawerNavigator(DrawerRoutes, {
   gesturesEnabled: false,
-  contentComponent: props => <Drawer {...props} />,
+  contentComponent: props => <AdminDrawer {...props} />,
   drawerWidth: 275,
-  initialRouteName: 'LoadsStack',
+  // initialRouteName: 'LoadsStack',
 });
 
+const DriverStack = DrawerNavigator(DrawerRoutes, {
+  gesturesEnabled: false,
+  contentComponent: props => <DriverDrawer {...props} />,
+  drawerWidth: 275,
+  // initialRouteName: 'LoadsStack',
+});
 
-export const createRootNavigator = (signedIn = false) => {
+const ShipperStack = DrawerNavigator(DrawerRoutes, {
+  gesturesEnabled: false,
+  contentComponent: props => <ShipperDrawer {...props} />,
+  drawerWidth: 275,
+  // initialRouteName: 'LoadsStack',
+});
+
+export const createRootNavigator = (signedIn = false, userType = 'shipper') => {
+
+  let userScreen;
+
+  if (userType === 'driver') {
+    userScreen = 'Driver'
+  } else if (userType === 'shipper') {
+    userScreen = 'Shipper'
+  } else {
+    userScreen = 'Admin'
+  }
+
   return StackNavigator(
     {
-      Main: {screen: DrawerStack},
+      Admin: {screen: AdminStack},
+      Driver: {screen: DriverStack},
+      Shipper: {screen: ShipperStack},
       Auth: {screen: AuthStack},
       // App: {screen:App}
     },
     {
       headerMode: 'none',
-      initialRouteName: signedIn ? 'Main' : 'Auth',
+      initialRouteName: signedIn ? userScreen : 'Auth',
     },
   );
 };

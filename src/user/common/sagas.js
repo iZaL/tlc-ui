@@ -58,18 +58,9 @@ function* register(action) {
           title: I18n.t('confirm_account')
         },
     );
-
   } catch (error) {
-    console.log('err', JSON.stringify(error));
     yield put({type: ACTION_TYPES.REGISTER_FAILURE, error});
-    yield put({
-      type: APP_ACTION_TYPES.SET_NOTIFICATION,
-      payload: {
-        message: error,
-        messageType: 'error',
-      },
-    });
-    // yield put(APP_ACTIONS.setNotification(error, 'error'));
+    yield put(APP_ACTIONS.setNotification(error, 'error'));
 
   }
 }

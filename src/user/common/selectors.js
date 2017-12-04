@@ -1,8 +1,8 @@
 import {createSelector} from 'reselect';
 
-const authToken = state => state.authReducer.token;
-const isAuthenticated = state => state.authReducer.isAuthenticated;
-const authUserID = state => state.authReducer.userID;
+const authToken = state => state.userReducer.token;
+const isAuthenticated = state => state.userReducer.isAuthenticated;
+const authUserID = state => state.userReducer.userID;
 
 const getCurrentUserID = createSelector(authUserID, userID => userID);
 const getAuthToken = createSelector(authToken, token => token);

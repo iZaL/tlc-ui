@@ -81,7 +81,7 @@ class CreateLoad extends PureComponent {
   };
 
   onAddToCartPress = () => {
-    console.log('a');
+    console.log('onAddToCartPress');
   };
 
   render() {

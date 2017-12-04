@@ -8,7 +8,7 @@ export const PUSH_TOKEN_KEY = 'PUSH_TOKEN_KEY';
 
 import Store from 'common/store';
 const store = Store && Store.getState();
-const isAuthenticated = store ? store.authReducer.isAuthenticated : false;
+const isAuthenticated = store ? store.userReducer.isAuthenticated : false;
 
 const initialState = {
   bootstrapped: false,
