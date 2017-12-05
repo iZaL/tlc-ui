@@ -68,8 +68,11 @@ class App extends Component {
           navigateToScene={this.navigateToScene}
         />
 
-        <Navigator isAuthenticated={isAuthenticated} userType={userType} logout={this.logout} />
-
+        <Navigator
+          isAuthenticated={isAuthenticated}
+          userType={userType}
+          logout={this.logout}
+        />
       </SafeAreaView>
     );
   }

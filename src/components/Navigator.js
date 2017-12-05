@@ -1,14 +1,12 @@
-import React,{Component} from 'react';
+import React, {Component} from 'react';
 import {StackNavigator} from 'react-navigation';
 import {Routes as AdminRoutes} from 'admin/common/routes';
 import {Routes as DriverRoutes} from 'driver/common/routes';
 import {Routes as ShipperRoutes} from 'shipper/common/routes';
-import {Routes as DefaultRoutes} from 'common/routes';
-import {AuthRoutes} from 'user/common/routes';
+import {AuthRoutes, Routes as DefaultRoutes} from 'user/common/routes';
 import NavigatorService from 'components/NavigatorService';
 
 export default class Navigator extends Component {
-
   shouldComponentUpdate(nextProps) {
     return (
       this.props.isAuthenticated !== nextProps.isAuthenticated ||
@@ -51,5 +49,5 @@ export default class Navigator extends Component {
         screenProps={{isAuthenticated, logout}}
       />
     );
-  };
+  }
 }

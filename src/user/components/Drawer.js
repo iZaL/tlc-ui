@@ -26,7 +26,7 @@ export class Drawer extends Component {
     return (
       <View style={styles.container}>
         <DrawerItem
-          title={I18n.t('admin_home')}
+          title={I18n.t('home')}
           routeName="HomeStack"
           onItemPress={this.onItemPress}
           icon="ios-paper-plane"
@@ -42,6 +42,8 @@ export class Drawer extends Component {
           icon="ios-paper-plane"
           active={this.state.activeRoute === 'SettingsStack'}
         />
+
+        <Separator />
 
         <DrawerItem
           title={I18n.t('logout')}

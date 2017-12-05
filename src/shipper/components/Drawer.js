@@ -22,6 +22,8 @@ export class Drawer extends Component {
   };
 
   render() {
+    let {logout} = this.props.screenProps;
+
     return (
       <View style={styles.container}>
         <DrawerItem
@@ -35,21 +37,21 @@ export class Drawer extends Component {
         <Separator />
 
         <DrawerItem
-          title={I18n.t('add_load')}
-          routeName="LoadsStack"
-          onItemPress={this.onItemPress}
-          icon="ios-paper-plane"
-          active={this.state.activeRoute === 'LoadsStack'}
-        />
-
-        <Separator />
-
-        <DrawerItem
           title={I18n.t('settings')}
           routeName="SettingsStack"
           onItemPress={this.onItemPress}
           icon="ios-paper-plane"
           active={this.state.activeRoute === 'SettingsStack'}
+        />
+
+        <Separator />
+
+        <DrawerItem
+          title={I18n.t('logout')}
+          routeName="Logout"
+          onItemPress={logout}
+          icon="ios-paper-plane"
+          active={this.state.activeRoute === 'Logout'}
         />
       </View>
     );
