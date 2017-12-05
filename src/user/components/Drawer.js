@@ -36,16 +36,6 @@ export class Drawer extends Component {
         <Separator />
 
         <DrawerItem
-          title={I18n.t('settings')}
-          routeName="SettingsStack"
-          onItemPress={this.onItemPress}
-          icon="ios-paper-plane"
-          active={this.state.activeRoute === 'SettingsStack'}
-        />
-
-        <Separator />
-
-        <DrawerItem
           title={I18n.t('logout')}
           routeName="Logout"
           onItemPress={logout}

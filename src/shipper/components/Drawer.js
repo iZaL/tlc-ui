@@ -2,8 +2,7 @@
  * @flow
  */
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, Image, Touchable} from 'react-native';
-import {NavigationActions} from 'react-navigation';
+import {StyleSheet, View} from 'react-native';
 import colors from 'assets/theme/colors';
 import I18n from 'common/locale';
 import DrawerItem from 'components/DrawerItem';
@@ -27,7 +26,7 @@ export class Drawer extends Component {
     return (
       <View style={styles.container}>
         <DrawerItem
-          title={I18n.t('shipper_home')}
+          title={I18n.t('home')}
           routeName="HomeStack"
           onItemPress={this.onItemPress}
           icon="ios-paper-plane"
