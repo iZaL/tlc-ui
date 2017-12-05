@@ -3,8 +3,10 @@ import {DrawerNavigator, StackNavigator} from 'react-navigation';
 import {Drawer} from 'driver/components/Drawer';
 import Home from 'driver/Home';
 import Settings from 'driver/Settings';
+import Profile from 'driver/Profile';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Touchable from 'react-native-platform-touchable';
+import DrawerIcon from "components/DrawerIcon";
 
 const HomeStack = StackNavigator(
   {
@@ -13,18 +15,9 @@ const HomeStack = StackNavigator(
       navigationOptions: ({navigation}) => ({
         gesturesEnabled: false,
         headerLeft: (
-          <Touchable
-            onPress={() => navigation.navigate('DrawerToggle')}
-            hitSlop={{top: 20, left: 20, right: 20, bottom: 20}}>
-            <FontAwesome name="bars" size={28} style={{paddingLeft: 10}} />
-          </Touchable>
+          <DrawerIcon onPress={()=>navigation.navigate('DrawerToggle')} />
         ),
       }),
-    },
-  },
-  {
-    navigationOptions: {
-      gesturesEnabled: false,
     },
   },
 );
@@ -36,18 +29,23 @@ const SettingsStack = StackNavigator(
       navigationOptions: ({navigation}) => ({
         gesturesEnabled: false,
         headerLeft: (
-          <Touchable
-            onPress={() => navigation.navigate('DrawerToggle')}
-            hitSlop={{top: 20, left: 20, right: 20, bottom: 20}}>
-            <FontAwesome name="bars" size={28} style={{paddingLeft: 10}} />
-          </Touchable>
+          <DrawerIcon onPress={()=>navigation.navigate('DrawerToggle')} />
         ),
       }),
     },
   },
+);
+
+const ProfileStack = StackNavigator(
   {
-    navigationOptions: {
-      gesturesEnabled: false,
+    Settings: {
+      screen: Profile,
+      navigationOptions: ({navigation}) => ({
+        gesturesEnabled: false,
+        headerLeft: (
+          <DrawerIcon onPress={()=>navigation.navigate('DrawerToggle')} />
+        ),
+      }),
     },
   },
 );
@@ -55,6 +53,9 @@ const SettingsStack = StackNavigator(
 const DrawerRoutes = {
   HomeStack: {
     screen: HomeStack,
+  },
+  ProfileStack: {
+    screen: ProfileStack
   },
   SettingsStack: {
     screen: SettingsStack,

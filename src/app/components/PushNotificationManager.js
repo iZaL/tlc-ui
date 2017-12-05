@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {AppState} from 'react-native';
 import PushNotification from 'react-native-push-notification';
 
 export default class PushNotificationManager extends Component {
@@ -8,6 +7,10 @@ export default class PushNotificationManager extends Component {
     setPushToken: PropTypes.func.isRequired,
     navigateToScene: PropTypes.func.isRequired,
   };
+
+  shouldComponentUpdate() {
+    return false;
+  }
 
   constructor(props) {
     super(props);

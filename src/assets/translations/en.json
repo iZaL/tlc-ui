@@ -38,5 +38,6 @@
   "driver" : "Driver",
   "shipper" : "Shipper",
   "registration_success" : "Registration Success",
-  "confirm_account" : "Confirm Account"
+  "confirm_account" : "Confirm Account",
+  "profile" : "Profile"
 }
