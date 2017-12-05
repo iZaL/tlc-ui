@@ -2,14 +2,14 @@ import PropTypes from 'prop-types';
 import React, {Component} from 'react';
 import {SafeAreaView} from 'react-native';
 import {connect} from 'react-redux';
-import NavigatorService from 'common/navigator_service';
 import LanguageSelectScene from 'app/scenes/LanguageSelectScene';
 import CodePush from 'react-native-code-push';
 import {CODEPUSH_ENABLED} from 'common/env';
-import PushNotificationManager from './components/PushNotificationManager';
-import Notification from './components/Notification';
-import {ACTIONS} from './common/actions';
-import {createRootNavigator} from '../common/navigator';
+import PushNotificationManager from 'app/components/PushNotificationManager';
+import Notification from 'app/components/Notification';
+import {ACTIONS} from 'app/common/actions';
+import {ACTIONS as USER_ACTIONS} from 'user/common/actions';
+import Navigator from 'components/Navigator';
 
 class App extends Component {
   static propTypes = {
@@ -40,6 +40,10 @@ class App extends Component {
     this.props.dispatch(ACTIONS.navigateToScene(scene, params));
   };
 
+  logout = () => {
+    this.props.dispatch(USER_ACTIONS.logout());
+  };
+
   render() {
     const {app, isAuthenticated, userType} = this.props;
 
@@ -48,8 +52,6 @@ class App extends Component {
     if (!app.bootstrapped) {
       return <LanguageSelectScene onItemPress={this.onLanguageSelect} />;
     }
-
-    const Navigator = createRootNavigator(isAuthenticated, userType);
 
     return (
       <SafeAreaView style={{flex: 1}}>
@@ -66,11 +68,8 @@ class App extends Component {
           navigateToScene={this.navigateToScene}
         />
 
-        <Navigator
-          ref={navigatorRef => {
-            NavigatorService.setContainer(navigatorRef);
-          }}
-        />
+        <Navigator isAuthenticated={isAuthenticated} userType={userType} logout={this.logout} />
+
       </SafeAreaView>
     );
   }

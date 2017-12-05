@@ -13,7 +13,7 @@ import {forgetItem, getItem, setItem} from 'common/storage';
 import I18n from 'common/locale';
 import {PUSH_TOKEN_KEY} from 'app/common/reducer';
 
-import NavigatorService from 'common/navigator_service';
+import NavigatorService from 'components/NavigatorService';
 
 function* login(action) {
   try {

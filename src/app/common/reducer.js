@@ -1,14 +1,9 @@
 import {ACTION_TYPES} from './actions';
-import {createRootNavigator} from 'common/navigator';
 
 export const COUNTRY_KEY = 'COUNTRY_KEY';
 export const BOOTSTRAPPED_STORAGE_KEY = 'BOOTSTRAPPED';
 export const LANGUAGE_STORAGE_KEY = 'APP_LOCALE';
 export const PUSH_TOKEN_KEY = 'PUSH_TOKEN_KEY';
-
-import Store from 'common/store';
-const store = Store && Store.getState();
-const isAuthenticated = store ? store.userReducer.isAuthenticated : false;
 
 const initialState = {
   bootstrapped: false,
@@ -55,53 +50,3 @@ export function appReducer(state = initialState, action = {}) {
       return state;
   }
 }
-//
-// const ActionForLoggedOut = Navigator.router.getActionForPathAndParams("Auth");
-// const ActionForLoggedIn = Navigator.router.getActionForPathAndParams("Main");
-//
-// const stateForLoggedOut = Navigator.router.getStateForAction(ActionForLoggedOut);
-// const stateForLoggedIn = Navigator.router.getStateForAction(ActionForLoggedIn);
-
-// const initialStateForNav = { stateForLoggedOut, stateForLoggedIn };
-
-// export const navReducer = (state, action) => {
-//   switch (action.type) {
-//     // case "BOOT_REQUEST":
-//     //   return {
-//     //     ...state,
-//     //     stateForLoggedIn: Navigator.router.getStateForAction(ActionForLoggedIn, stateForLoggedOut)
-//     //   };
-//     //
-//     case "LOGIN_SUCCESS":
-//       return Navigator.router.getStateForAction(ActionForLoggedIn, stateForLoggedOut);
-//     //
-//     // case "LOGOUT":
-//     //   return {
-//     //     ...state,
-//     //     stateForLoggedOut: Navigator.router.getStateForAction(
-//     //       NavigationActions.reset({
-//     //         index: 0,
-//     //         actions: [NavigationActions.navigate({ routeName: "Auth" })]
-//     //       })
-//     //     )
-//     //   };
-//
-//     default:
-//       return  Navigator.router.getStateForAction(ActionForLoggedOut,stateForLoggedIn);
-//   }
-// };
-
-export const navReducer = (state, action) => {
-  switch (action.type) {
-    case 'LOGIN_SUCCESS': {
-      let Navigator = createRootNavigator(isAuthenticated);
-      return Navigator.router.getStateForAction(action, state);
-      // return newState;
-    }
-    default:
-      // console.log('isAuthenticated',isAuthenticated);
-      let Navigator = createRootNavigator(false);
-      let newState = Navigator.router.getStateForAction(action, state);
-      return newState || state;
-  }
-};

@@ -22,6 +22,9 @@ export class Drawer extends Component {
   };
 
   render() {
+
+    let {logout} = this.props.screenProps;
+
     return (
       <View style={styles.container}>
         <DrawerItem
@@ -50,6 +53,14 @@ export class Drawer extends Component {
           onItemPress={this.onItemPress}
           icon="ios-paper-plane"
           active={this.state.activeRoute === 'SettingsStack'}
+        />
+
+        <DrawerItem
+          title={I18n.t('logout')}
+          routeName="Logout"
+          onItemPress={logout}
+          icon="ios-paper-plane"
+          active={this.state.activeRoute === 'Logout'}
         />
       </View>
     );
