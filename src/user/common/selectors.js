@@ -1,24 +1,23 @@
 import {createSelector} from 'reselect';
 
-const authToken = state => state.userReducer.token;
+const getAuthToken = state => state.userReducer.token;
 const isAuthenticated = state => state.userReducer.isAuthenticated;
-const authUserID = state => state.userReducer.userID;
+const getAuthUserID = state => state.userReducer.userID;
+const getAuthUserType = state => state.userReducer.userType;
+const usersEntity = state => state.entities.users;
 
-const getCurrentUserID = createSelector(authUserID, userID => userID);
-const getAuthToken = createSelector(authToken, token => token);
-// const getCurrentUser = createSelector(
-//   ormReducer,
-//   isAuthenticated,
-//   authUserID,
-//   ormSelector(orm, ({User}, authenticated, userID) => {
-//     return authenticated ? User.withId(userID).ref : null;
-//   }),
-// );
-
-//@fixme: get current user
+const getAuthUser = createSelector(
+  usersEntity,
+  isAuthenticated,
+  getAuthUserID,
+  (users, authenticated, userID) => {
+    return authenticated ? users[userID] : undefined;
+  },
+);
 export const SELECTORS = {
   isAuthenticated,
-  // getCurrentUser,
-  getCurrentUserID,
+  getAuthUser,
+  getAuthUserID,
+  getAuthUserType,
   getAuthToken,
 };

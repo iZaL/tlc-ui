@@ -1,46 +1,38 @@
-import {call, fork, put, select, takeLatest, all} from 'redux-saga/effects';
+import {all, call, fork, put, takeLatest} from 'redux-saga/effects';
 import {NavigationActions} from 'react-navigation';
-
 import {ACTION_TYPES} from './actions';
 import {API, AUTH_STORAGE_KEY} from './api';
-import {SELECTORS} from './selectors';
-
-import {
-  ACTION_TYPES as APP_ACTION_TYPES,
-  ACTIONS as APP_ACTIONS,
-} from 'app/common/actions';
+import {ACTIONS as APP_ACTIONS,} from 'app/common/actions';
 import {forgetItem, getItem, setItem} from 'common/storage';
 import I18n from 'common/locale';
 import {PUSH_TOKEN_KEY} from 'app/common/reducer';
-
 import NavigatorService from 'components/NavigatorService';
+import Schema from "user/common/schema";
+import {normalize} from 'normalizr';
 
 function* login(action) {
   try {
-    const state = yield select();
-    // const token = SELECTORS.getAuthToken(state);
     const pushTokenStorageKey = yield call(getItem, PUSH_TOKEN_KEY);
-
     const params = {
       ...action.credentials,
-      pushtoken: pushTokenStorageKey,
+      push_token: pushTokenStorageKey,
     };
 
     const response = yield call(API.login, params);
+    const normalized = normalize(response.data, Schema.users);
 
-    yield put({type: ACTION_TYPES.LOGIN_SUCCESS, payload: response.data});
+    yield put({
+      type: ACTION_TYPES.LOGIN_SUCCESS,
+      entities: normalized.entities,
+      payload: response.data,
+    });
+
     yield call(setItem, AUTH_STORAGE_KEY, response.data.api_token);
 
     // yield put({
     //   type: AUTH_ACTION_TYPES.SYNC_USER_TO_SOCKET,
     // });
 
-    // yield put(NavigationActions.back());
-    yield put(
-      NavigationActions.navigate({
-        routeName: 'Main',
-      }),
-    );
   } catch (error) {
     yield put({type: ACTION_TYPES.LOGIN_FAILURE, error});
     yield put(APP_ACTIONS.setNotification(error, 'error'));

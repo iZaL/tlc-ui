@@ -1,9 +1,7 @@
 import merge from 'lodash/merge';
 
 const initialState = {
-  categories: {},
-  packages: {},
-  services: {},
+  users: {},
 };
 
 export function entities(state = initialState, action) {
