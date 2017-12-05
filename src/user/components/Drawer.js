@@ -8,7 +8,7 @@ import I18n from 'common/locale';
 import DrawerItem from 'components/DrawerItem';
 import Separator from 'components/Separator';
 
-export class Drawer extends Component {
+export default class Drawer extends Component {
   onItemPress = (routeName: string) => {
     this.setState({
       activeRoute: routeName,
