@@ -3,7 +3,7 @@ import {DrawerNavigator, StackNavigator} from 'react-navigation';
 import Drawer from 'shipper/components/Drawer';
 import Home from 'shipper/Home';
 import Settings from 'shipper/Settings';
-import DrawerIcon from "components/DrawerIcon";
+import DrawerIcon from 'components/DrawerIcon';
 
 const HomeStack = StackNavigator(
   {
@@ -11,7 +11,7 @@ const HomeStack = StackNavigator(
       screen: Home,
       navigationOptions: ({navigation}) => ({
         headerLeft: (
-          <DrawerIcon onPress={()=>navigation.navigate('DrawerToggle')} />
+          <DrawerIcon onPress={() => navigation.navigate('DrawerToggle')} />
         ),
       }),
     },
@@ -29,7 +29,7 @@ const SettingsStack = StackNavigator(
       screen: Settings,
       navigationOptions: ({navigation}) => ({
         headerLeft: (
-          <DrawerIcon onPress={()=>navigation.navigate('DrawerToggle')} />
+          <DrawerIcon onPress={() => navigation.navigate('DrawerToggle')} />
         ),
       }),
     },

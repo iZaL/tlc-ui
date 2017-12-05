@@ -14,19 +14,22 @@ export default class Navigator extends Component {
     );
   }
 
-  render() {
-    let {isAuthenticated, userType, logout} = this.props;
-    let userScreen;
-
-    if (userType === 'driver') {
-      userScreen = 'Driver';
-    } else if (userType === 'shipper') {
-      userScreen = 'Shipper';
-    } else if (userType === 'admin') {
-      userScreen = 'Admin';
-    } else {
-      userScreen = 'Default';
+  resolveScreenForUser = userType => {
+    switch (userType) {
+      case 'driver':
+        return 'Driver';
+      case 'shipper':
+        return 'Shipper';
+      case 'admin':
+        return 'Admin';
+      default:
+        return 'Default';
     }
+  };
+
+  render() {
+    const {isAuthenticated, userType, logout} = this.props;
+    const screen = this.resolveScreenForUser(userType);
 
     const AppNavigator = StackNavigator(
       {
@@ -38,7 +41,7 @@ export default class Navigator extends Component {
       },
       {
         headerMode: 'none',
-        initialRouteName: isAuthenticated ? userScreen : 'Auth',
+        initialRouteName: isAuthenticated ? screen : 'Auth',
       },
     );
     return (

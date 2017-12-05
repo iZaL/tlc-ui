@@ -4,7 +4,7 @@
 import React from 'react';
 import Touchable from 'react-native-platform-touchable';
 import PropTypes from 'prop-types';
-import FontAwesome from "react-native-vector-icons/FontAwesome";
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 const DrawerIcon = ({onPress}) => {
   return (

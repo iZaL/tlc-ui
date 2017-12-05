@@ -4,54 +4,48 @@ import Drawer from 'driver/components/Drawer';
 import Home from 'driver/Home';
 import Settings from 'driver/Settings';
 import Profile from 'driver/Profile';
-import DrawerIcon from "components/DrawerIcon";
+import DrawerIcon from 'components/DrawerIcon';
 
-const HomeStack = StackNavigator(
-  {
-    Home: {
-      screen: Home,
-      navigationOptions: ({navigation}) => ({
-        headerLeft: (
-          <DrawerIcon onPress={()=>navigation.navigate('DrawerToggle')} />
-        ),
-      }),
-    },
+const HomeStack = StackNavigator({
+  Home: {
+    screen: Home,
+    navigationOptions: ({navigation}) => ({
+      headerLeft: (
+        <DrawerIcon onPress={() => navigation.navigate('DrawerToggle')} />
+      ),
+    }),
   },
-);
+});
 
-const SettingsStack = StackNavigator(
-  {
-    Settings: {
-      screen: Settings,
-      navigationOptions: ({navigation}) => ({
-        headerLeft: (
-          <DrawerIcon onPress={()=>navigation.navigate('DrawerToggle')} />
-        ),
-      }),
-    },
+const SettingsStack = StackNavigator({
+  Settings: {
+    screen: Settings,
+    navigationOptions: ({navigation}) => ({
+      headerLeft: (
+        <DrawerIcon onPress={() => navigation.navigate('DrawerToggle')} />
+      ),
+    }),
   },
-);
+});
 
-const ProfileStack = StackNavigator(
-  {
-    Settings: {
-      screen: Profile,
-      navigationOptions: ({navigation}) => ({
-        gesturesEnabled: false,
-        headerLeft: (
-          <DrawerIcon onPress={()=>navigation.navigate('DrawerToggle')} />
-        ),
-      }),
-    },
+const ProfileStack = StackNavigator({
+  Settings: {
+    screen: Profile,
+    navigationOptions: ({navigation}) => ({
+      gesturesEnabled: false,
+      headerLeft: (
+        <DrawerIcon onPress={() => navigation.navigate('DrawerToggle')} />
+      ),
+    }),
   },
-);
+});
 
 const DrawerRoutes = {
   HomeStack: {
     screen: HomeStack,
   },
   ProfileStack: {
-    screen: ProfileStack
+    screen: ProfileStack,
   },
   SettingsStack: {
     screen: SettingsStack,
