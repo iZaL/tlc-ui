@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {StackNavigator} from 'react-navigation';
-import {Routes as AdminRoutes} from 'admin/common/routes';
-import {Routes as DriverRoutes} from 'driver/common/routes';
-import {Routes as ShipperRoutes} from 'shipper/common/routes';
-import {AuthRoutes, Routes as DefaultRoutes} from 'user/common/routes';
+import {Routes as AdminRoutes} from 'admin/components/Router';
+import {Routes as DriverRoutes} from 'driver/components/Router';
+import {Routes as ShipperRoutes} from 'shipper/components/Router';
+import {AuthRoutes, Routes as DefaultRoutes} from 'user/components/Router';
 import NavigatorService from 'components/NavigatorService';
 
 export default class Navigator extends Component {

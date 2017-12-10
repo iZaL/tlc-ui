@@ -1,46 +1,51 @@
 import PropTypes from 'prop-types';
 import React, {Component} from 'react';
 import {StyleSheet, Text, TouchableHighlight, View} from 'react-native';
-import colors from 'theme/colors';
-import NavBar from 'components/NavBar';
-import NavButton from 'components/NavButton';
+import colors from 'assets/theme/colors';
 import I18n, {isRTL} from 'common/locale';
 import FormLabel from 'components/FormLabel';
 import FormTextInput from 'components/FormTextInput';
 import FormSubmit from 'components/FormSubmit';
 
-export default class OTPScene extends Component {
+export default class ConfirmScene extends Component {
   static propTypes = {
-    onButtonPress: PropTypes.func.isRequired,
-    code: PropTypes.string.isRequired,
     onFieldChange: PropTypes.func.isRequired,
-    resendCode: PropTypes.func.isRequired,
+    onRecoverPassword: PropTypes.func.isRequired,
+    onForgotPassword: PropTypes.func.isRequired,
+    onRightButtonPress: PropTypes.func.isRequired,
+    confirmationCode: PropTypes.string.isRequired,
   };
 
   render() {
-    const {code, onButtonPress, onFieldChange, resendCode} = this.props;
+    const {
+      onFieldChange,
+      confirmationCode,
+      onRecoverPassword,
+      onForgotPassword,
+      onRightButtonPress,
+    } = this.props;
 
     return (
       <View style={styles.container}>
         <FormLabel title={I18n.t('confirmation_code')} />
 
         <FormTextInput
-          onChangeText={value => onFieldChange('code', value)}
-          value={code}
+          onChangeText={value => onFieldChange('confirmationCode', value)}
+          value={confirmationCode}
           maxLength={40}
           placeholder={I18n.t('confirmation_code')}
         />
 
         <FormSubmit
-          onPress={() => onButtonPress()}
+          onPress={() => onRecoverPassword()}
           underlayColor="transparent"
-          disabled={!code}
+          disabled={!confirmationCode}
           title={I18n.t('confirm')}
           style={{marginTop: 50}}
         />
 
         <TouchableHighlight
-          onPress={() => resendCode()}
+          onPress={() => onForgotPassword()}
           style={[{paddingTop: 100}]}
           underlayColor="transparent">
           <Text style={[styles.link]}>

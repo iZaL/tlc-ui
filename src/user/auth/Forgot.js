@@ -4,12 +4,10 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {NavigationActions} from 'react-navigation';
 import {ACTIONS as APP_ACTIONS} from 'app/common/actions';
-import ForgotScene from './scenes/ForgotScene';
-import ConfirmScene from './scenes/ConfirmScene';
-import PasswordUpdateScene from './scenes/PasswordUpdateScene';
-import {ACTIONS} from './common/actions';
-import {TouchableHighlight} from 'react-native';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import ForgotScene from 'user/auth/scenes/ForgotScene';
+import ConfirmScene from 'user/auth/scenes/ConfirmScene';
+import PasswordUpdateScene from 'user/auth/scenes/PasswordUpdateScene';
+import {ACTIONS} from 'user/common/actions';
 
 class Forgot extends Component {
   static propTypes = {

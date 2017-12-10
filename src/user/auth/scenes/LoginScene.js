@@ -1,11 +1,10 @@
 import PropTypes from 'prop-types';
 import React, {Component} from 'react';
-import {StyleSheet, Text, TouchableHighlight, View} from 'react-native';
-import colors from 'theme/colors';
-import I18n, {isRTL} from 'common/locale';
+import {StyleSheet, Text, View} from 'react-native';
+import colors from 'assets/theme/colors';
+import I18n from 'common/locale';
 import FormLabel from 'components/FormLabel';
 import FormTextInput from 'components/FormTextInput';
-import FormSubmit from 'components/FormSubmit';
 import Separator from 'components/Separator';
 import Touchable from 'react-native-platform-touchable';
 import Button from 'components/Button';

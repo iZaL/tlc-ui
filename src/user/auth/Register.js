@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {ACTIONS} from './common/actions';
-import RegisterScene from './scenes/RegisterScene';
+import {ACTIONS} from 'user/common/actions';
+import RegisterScene from 'user/auth/scenes/RegisterScene';
 
 type State = {
   name: string,
