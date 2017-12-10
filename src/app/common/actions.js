@@ -1,7 +1,7 @@
 export const ACTION_TYPES = {
   BOOT_REQUEST: '@app/BOOT_REQUEST',
   BOOT_SUCCESS: '@app/BOOT_SUCCESS',
-  BOOTSTRAPPED: '@app/BOOTSTRAPPED',
+  INSTALLED: '@app/INSTALLED',
   CHANGE_COUNTRY: '@app/CHANGE_COUNTRY',
   COUNTRY_CHANGED: '@app/COUNTRY_CHANGED',
   DISMISS_NOTIFICATION: '@app/DISMISS_NOTIFICATION',
@@ -25,9 +25,9 @@ function changeCountry(country) {
     country,
   };
 }
-function setBootstrapped(value) {
+function setInstalled(value) {
   return {
-    type: ACTION_TYPES.BOOTSTRAPPED,
+    type: ACTION_TYPES.INSTALLED,
     value,
   };
 }
@@ -74,7 +74,7 @@ export const ACTIONS = {
   changeCountry,
   dismissNotification,
   setNotification,
-  setBootstrapped,
+  setInstalled,
   setLanguage,
   setPushToken,
   navigateToScene,

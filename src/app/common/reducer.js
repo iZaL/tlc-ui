@@ -2,7 +2,7 @@ import {ACTION_TYPES} from 'app/common/actions';
 import merge from 'lodash/merge';
 
 const initialState = {
-  bootstrapped: false,
+  installed: false,
   booted: false,
   notifications: {
     message: null,
@@ -13,8 +13,8 @@ const initialState = {
 
 export function reducer(state = initialState, action = {}) {
   switch (action.type) {
-    case ACTION_TYPES.BOOTSTRAPPED:
-      return {...state, bootstrapped: action.value};
+    case ACTION_TYPES.INSTALLED:
+      return {...state, installed: action.value};
     case ACTION_TYPES.BOOT_REQUEST:
       return {...state, booted: false};
     case ACTION_TYPES.BOOT_SUCCESS:

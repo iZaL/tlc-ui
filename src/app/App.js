@@ -25,7 +25,7 @@ class App extends Component {
 
   onLanguageSelect = name => {
     this.props.dispatch(ACTIONS.setLanguage(name));
-    this.props.dispatch(ACTIONS.setBootstrapped(true));
+    this.props.dispatch(ACTIONS.setInstalled(true));
   };
 
   setPushToken = token => {
@@ -49,7 +49,7 @@ class App extends Component {
 
     if (!app.booted) return null;
 
-    if (!app.bootstrapped) {
+    if (!app.installed) {
       return <LanguageSelectScene onItemPress={this.onLanguageSelect} />;
     }
 

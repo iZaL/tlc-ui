@@ -6,7 +6,7 @@ import {NavigationActions} from 'react-navigation';
 import {API} from 'app/common/api';
 import {ACTION_TYPES} from 'app/common/actions';
 import {
-  BOOTSTRAPPED_KEY,
+  INSTALLED_KEY,
   COUNTRY_KEY,
   LANGUAGE_KEY,
   PUSH_TOKEN_KEY,
@@ -18,19 +18,19 @@ import {ACTION_TYPES as AUTH_ACTION_TYPES} from 'guest/common/actions';
 import {SELECTORS as AUTH_SELECTORS} from 'guest/common/selectors';
 import I18n from 'utils/locale';
 
-function* bootstrapped(action) {
+function* installed(action) {
   if (action.value === true) {
-    yield call(setStorageItem, BOOTSTRAPPED_KEY, 'bootstrapped');
+    yield call(setStorageItem, INSTALLED_KEY, 'installed');
   }
 }
 
 function* boot() {
   const state = yield select();
 
-  // 1- Set is the app has bootstrapped(run) before
-  let bootstrappedStorageKey = yield call(getStorageItem, BOOTSTRAPPED_KEY);
-  if (!isNull(bootstrappedStorageKey)) {
-    yield put({type: ACTION_TYPES.BOOTSTRAPPED, value: true});
+  // 1- Set is the app has installed(run) before
+  let installedStorageKey = yield call(getStorageItem, INSTALLED_KEY);
+  if (!isNull(installedStorageKey)) {
+    yield put({type: ACTION_TYPES.INSTALLED, value: true});
   }
 
   // 2- Set language from history
@@ -135,7 +135,7 @@ function* bootMonitor() {
 }
 
 function* bootstrapMonitor() {
-  yield takeLatest(ACTION_TYPES.BOOTSTRAPPED, bootstrapped);
+  yield takeLatest(ACTION_TYPES.INSTALLED, installed);
 }
 
 function* changeCountryMonitor() {

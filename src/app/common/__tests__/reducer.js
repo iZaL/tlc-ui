@@ -2,7 +2,7 @@ import app from '../reducer';
 import {ACTION_TYPES} from '../actions';
 
 const initialState = {
-  bootstrapped: false,
+  installed: false,
   booted: false,
 };
 
@@ -14,7 +14,7 @@ describe('App Component Store', () => {
   test('app bootstraps', () => {
     expect(app(initialState, {type: ACTION_TYPES.BOOT_SUCCESS})).toEqual({
       booted: true,
-      bootstrapped: false,
+      installed: false,
       selectedCountry: 'Kuwait',
     });
   });
