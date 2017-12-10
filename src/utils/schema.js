@@ -4,6 +4,6 @@ const usersSchema = new schema.Entity('users');
 
 usersSchema.define({});
 
-export default (Schema = {
+export const Schema = {
   users: usersSchema,
-});
+};

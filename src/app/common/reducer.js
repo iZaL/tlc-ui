@@ -1,5 +1,6 @@
 import {ACTION_TYPES} from 'app/common/actions';
 import merge from 'lodash/merge';
+import {DEFAULT_LANGUAGE} from "utils/env";
 
 const initialState = {
   installed: false,
@@ -8,7 +9,7 @@ const initialState = {
     message: null,
     messageType: null,
   },
-  language: 'en',
+  // language: DEFAULT_LANGUAGE,
 };
 
 export function reducer(state = initialState, action = {}) {
@@ -37,11 +38,11 @@ export function reducer(state = initialState, action = {}) {
           type: null,
         },
       };
-    case ACTION_TYPES.SET_LANGUAGE_SUCCESS:
-      return {
-        ...state,
-        language: action.language,
-      };
+    // case ACTION_TYPES.SET_LANGUAGE_SUCCESS:
+    //   return {
+    //     ...state,
+    //     language: action.language,
+    //   };
     default:
       return state;
   }

@@ -1,8 +1,8 @@
+import I18n from 'utils/locale';
 import isNull from 'lodash/isNull';
 import CodePush from 'react-native-code-push';
 import {all, call, fork, put, select, takeLatest} from 'redux-saga/effects';
 import {I18nManager} from 'react-native';
-import {NavigationActions} from 'react-navigation';
 import {API} from 'app/common/api';
 import {ACTION_TYPES} from 'app/common/actions';
 import {
@@ -11,21 +11,16 @@ import {
   LANGUAGE_KEY,
   PUSH_TOKEN_KEY,
   AUTH_KEY,
+  DEFAULT_LANGUAGE,
+  DEFAULT_COUNTRY
 } from 'utils/env';
-import {getStorageItem, setStorageItem} from 'utils/functions';
 import {API as AUTH_API} from 'guest/common/api';
 import {ACTION_TYPES as AUTH_ACTION_TYPES} from 'guest/common/actions';
-import {SELECTORS as AUTH_SELECTORS} from 'guest/common/selectors';
-import I18n from 'utils/locale';
-
-function* installed(action) {
-  if (action.value === true) {
-    yield call(setStorageItem, INSTALLED_KEY, 'installed');
-  }
-}
+import {normalize} from 'normalizr';
+import {getStorageItem, setStorageItem} from 'utils/functions';
+import {Schema} from "utils/schema";
 
 function* boot() {
-  const state = yield select();
 
   // 1- Set is the app has installed(run) before
   let installedStorageKey = yield call(getStorageItem, INSTALLED_KEY);
@@ -35,8 +30,9 @@ function* boot() {
 
   // 2- Set language from history
   let currentLanguage = yield call(getStorageItem, LANGUAGE_KEY);
+
   if (isNull(currentLanguage)) {
-    currentLanguage = state.app.language;
+    currentLanguage = DEFAULT_LANGUAGE;
   }
 
   I18n.locale = currentLanguage;
@@ -54,13 +50,19 @@ function* boot() {
     const pushTokenStorageKey = yield call(getStorageItem, PUSH_TOKEN_KEY);
 
     try {
+
       let response = yield call(AUTH_API.login, {
         push_token: pushTokenStorageKey,
       });
+
+      const normalized = normalize(response.data, Schema.users);
+
       yield put({
         type: AUTH_ACTION_TYPES.LOGIN_SUCCESS,
+        entities: normalized.entities,
         payload: response.data,
       });
+
     } catch (error) {
       yield put({type: AUTH_ACTION_TYPES.LOGIN_FAILURE, error});
     }
@@ -69,22 +71,23 @@ function* boot() {
   //4- Set User Country
   let currentCountry = yield call(getStorageItem, COUNTRY_KEY);
   if (isNull(currentCountry)) {
-    currentCountry = state.app.selectedCountry;
+    currentCountry = DEFAULT_COUNTRY;
   }
-  yield put({type: ACTION_TYPES.COUNTRY_CHANGED, country: currentCountry});
+  yield put({type: ACTION_TYPES.SET_COUNTRY_SUCCESS, country: currentCountry});
 
   // 5- boot the app
   yield put({type: ACTION_TYPES.BOOT_SUCCESS});
 }
 
-function* changeCountrySaga(action) {
-  let state = yield select();
-  let currentCountry = state.app.selectedCountry;
+function* setCountry(action) {
+
+  let currentCountry = yield getStorageItem(COUNTRY_KEY);
 
   if (currentCountry === action.country) return;
 
   yield call(setStorageItem, COUNTRY_KEY, action.country);
-  yield put({type: ACTION_TYPES.COUNTRY_CHANGED, country: action.country});
+
+  yield put({type: ACTION_TYPES.SET_COUNTRY_SUCCESS, country: action.country});
 }
 
 function* setLanguage(action) {
@@ -108,8 +111,7 @@ function* setLanguage(action) {
 
 function* setPushToken(action) {
   try {
-    const state = yield select();
-    const apiToken = AUTH_SELECTORS.getAuthToken(state);
+    const apiToken = yield call(getStorageItem,AUTH_KEY);
     const pushTokenStorageKey = yield call(getStorageItem, PUSH_TOKEN_KEY);
     const urlParams = `?api_token=${apiToken}`;
 
@@ -134,12 +136,8 @@ function* bootMonitor() {
   yield takeLatest(ACTION_TYPES.BOOT_REQUEST, boot);
 }
 
-function* bootstrapMonitor() {
-  yield takeLatest(ACTION_TYPES.INSTALLED, installed);
-}
-
-function* changeCountryMonitor() {
-  yield takeLatest(ACTION_TYPES.CHANGE_COUNTRY, changeCountrySaga);
+function* setCountryMonitor() {
+  yield takeLatest(ACTION_TYPES.SET_COUNTRY_REQUEST, setCountry);
 }
 
 export function* setLanguageMonitor() {
@@ -152,8 +150,7 @@ export function* setPushTokenMonitor() {
 
 export const sagas = all([
   fork(bootMonitor),
-  fork(bootstrapMonitor),
-  fork(changeCountryMonitor),
+  fork(setCountryMonitor),
   fork(setLanguageMonitor),
   fork(setPushTokenMonitor),
 ]);
