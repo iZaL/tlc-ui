@@ -3,7 +3,6 @@ import {reducer as user} from 'guest/common/reducer';
 import {combineReducers} from 'redux';
 
 const rootReducer = combineReducers({
-  // navigation: navReducer,
   app,
   user,
   entities,

@@ -1,10 +1,5 @@
-import {ACTION_TYPES} from './actions';
+import {ACTION_TYPES} from 'app/common/actions';
 import merge from 'lodash/merge';
-
-export const COUNTRY_KEY = 'COUNTRY_KEY';
-export const BOOTSTRAPPED_STORAGE_KEY = 'BOOTSTRAPPED';
-export const LANGUAGE_STORAGE_KEY = 'APP_LOCALE';
-export const PUSH_TOKEN_KEY = 'PUSH_TOKEN_KEY';
 
 const initialState = {
   bootstrapped: false,

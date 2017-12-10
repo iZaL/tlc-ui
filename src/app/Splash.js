@@ -1,8 +1,8 @@
 import React from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {ACTIONS} from './common/actions';
-import SplashScene from './components/SplashScene';
+import {ACTIONS} from 'app/common/actions';
+import SplashScene from 'app/components/SplashScene';
 
 function mapStateToProps(state) {
   return {

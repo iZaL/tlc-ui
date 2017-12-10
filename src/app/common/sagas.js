@@ -4,24 +4,25 @@ import {all, call, fork, put, select, takeLatest} from 'redux-saga/effects';
 import {I18nManager} from 'react-native';
 import {NavigationActions} from 'react-navigation';
 
-import {API} from './api';
-import {ACTION_TYPES} from './actions';
+import {API} from 'app/common/api';
+import {ACTION_TYPES} from 'app/common/actions';
 import {
-  BOOTSTRAPPED_STORAGE_KEY,
+  BOOTSTRAPPED_KEY,
   COUNTRY_KEY,
-  LANGUAGE_STORAGE_KEY,
+  LANGUAGE_KEY,
   PUSH_TOKEN_KEY,
-} from './reducer';
+  AUTH_KEY
+} from 'utils/env';
 
-import {getItem as getStorageItem, setItem} from 'utils/storage';
-import {API as AUTH_API, AUTH_STORAGE_KEY} from 'guest/common/api';
+import {getStorageItem, setStorageItem} from 'utils/functions';
+import {API as AUTH_API} from 'guest/common/api';
 import {ACTION_TYPES as AUTH_ACTION_TYPES} from 'guest/common/actions';
 import {SELECTORS as AUTH_SELECTORS} from 'guest/common/selectors';
 import I18n from 'utils/locale';
 
 function* bootstrapped(action) {
   if (action.value === true) {
-    yield call(setItem, BOOTSTRAPPED_STORAGE_KEY, 'bootstrapped');
+    yield call(setStorageItem, BOOTSTRAPPED_KEY, 'bootstrapped');
   }
 }
 
@@ -31,14 +32,14 @@ function* boot() {
   // 1- Set is the app has bootstrapped(run) before
   let bootstrappedStorageKey = yield call(
     getStorageItem,
-    BOOTSTRAPPED_STORAGE_KEY,
+    BOOTSTRAPPED_KEY,
   );
   if (!isNull(bootstrappedStorageKey)) {
     yield put({type: ACTION_TYPES.BOOTSTRAPPED, value: true});
   }
 
   // 2- Set language from history
-  let currentLanguage = yield call(getStorageItem, LANGUAGE_STORAGE_KEY);
+  let currentLanguage = yield call(getStorageItem, LANGUAGE_KEY);
   if (isNull(currentLanguage)) {
     currentLanguage = state.app.language;
   }
@@ -51,20 +52,15 @@ function* boot() {
   });
 
   //3- Login from history and sync push token to user if exists
-  const authStorageKey = yield call(getStorageItem, AUTH_STORAGE_KEY);
+  const authStorageKey = yield call(getStorageItem, AUTH_KEY);
   const pushTokenStorageKey = yield call(getStorageItem, PUSH_TOKEN_KEY);
 
   if (!isNull(authStorageKey)) {
-    yield put({
-      type: AUTH_ACTION_TYPES.SET_AUTH_TOKEN,
-      token: authStorageKey,
-    });
 
     try {
       let response = yield call(
         AUTH_API.login,
         {push_token: pushTokenStorageKey},
-        // authStorageKey,
       );
       yield put({
         type: AUTH_ACTION_TYPES.LOGIN_SUCCESS,
@@ -92,7 +88,7 @@ function* changeCountrySaga(action) {
 
   if (currentCountry === action.country) return;
 
-  yield call(setItem, COUNTRY_KEY, action.country);
+  yield call(setStorageItem, COUNTRY_KEY, action.country);
   yield put({type: ACTION_TYPES.COUNTRY_CHANGED, country: action.country});
 }
 
@@ -105,7 +101,7 @@ function* setLanguage(action) {
     I18nManager.forceRTL(false);
   }
 
-  yield call(setItem, LANGUAGE_STORAGE_KEY, action.language);
+  yield call(setStorageItem, LANGUAGE_KEY, action.language);
 
   yield put({
     type: ACTION_TYPES.SET_LANGUAGE_SUCCESS,
@@ -123,7 +119,7 @@ function* setPushToken(action) {
     const urlParams = `?api_token=${apiToken}`;
 
     if (!pushTokenStorageKey) {
-      yield call(setItem, PUSH_TOKEN_KEY, action.params.token);
+      yield call(setStorageItem, PUSH_TOKEN_KEY, action.params.token);
       yield call(API.storePushToken, urlParams, {
         token: action.params.token,
         os: action.params.os,

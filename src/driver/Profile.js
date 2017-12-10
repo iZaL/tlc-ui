@@ -5,8 +5,8 @@ import {SELECTORS as USER_SELECTORS} from 'guest/common/selectors';
 
 class Profile extends Component {
   render() {
-    let {authUser} = this.props;
-    console.log('authUser', authUser);
+    let {user} = this.props;
+    console.log('authUser', user);
     return (
       <View
         style={{flex: 1, justifyContent: 'center', backgroundColor: 'white'}}>
@@ -18,7 +18,7 @@ class Profile extends Component {
 
 function mapStateToProps(state) {
   return {
-    authUser: USER_SELECTORS.getAuthUser(state),
+    user: USER_SELECTORS.getAuthUser(state),
   };
 }
 

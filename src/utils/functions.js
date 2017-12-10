@@ -1,26 +1,5 @@
-export function getFileExtension(filename) {
-  return filename.substring(filename.lastIndexOf('.') + 1);
-}
+import {AsyncStorage} from 'react-native';
 
-export function getFileName(filename) {
-  return filename.substring(filename.lastIndexOf('/') + 1);
-}
-
-export function parseArabicChar(str) {
-  return Number(
-    str
-      .replace(/[٠١٢٣٤٥٦٧٨٩]/g, d => d.charCodeAt(0) - 1632)
-      .replace(/٫/g, '.'),
-  );
-}
-
-export function hasArabicChar(str) {
-  let arabic = /[\u0600-\u06FF]/;
-  return arabic.test(str);
-}
-
-export function numberWithCommas(number) {
-  const parts = number.toString().split('.');
-  parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-  return parts.join('.');
-}
+export const setStorageItem = (key, value) => AsyncStorage.setItem(key, value);
+export const getStorageItem = key => AsyncStorage.getItem(key);
+export const forgetStorageItem = key => AsyncStorage.removeItem(key);

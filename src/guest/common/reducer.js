@@ -1,13 +1,11 @@
-import {ACTION_TYPES} from './actions';
+import {ACTION_TYPES} from 'guest/common/actions';
 
 const initialState = {
+  id: null,
+  type: 'default',
   isAuthenticated: false,
-  userID: null,
-  userType: 'default',
-  token: null,
-  skipped: false,
-  showPasswordUpdateScene: false,
-  showPasswordRecoverScene: false,
+  // showPasswordUpdateScene: false,
+  // showPasswordRecoverScene: false,
   login: {
     busy: false,
     error: null,
@@ -32,16 +30,16 @@ export function reducer(state = initialState, action = {}) {
         ...state,
         error: null,
         isAuthenticated: true,
-        token: action.payload.api_token,
-        userID: action.payload.id,
-        userType: action.payload.user_type,
+        // token: action.payload.api_token,
+        id: action.payload.id,
+        type: action.payload.user_type,
         login: {...state.login, busy: false, error: null},
       };
     case ACTION_TYPES.LOGIN_FAILURE:
       return {
         ...state,
         isAuthenticated: false,
-        token: null,
+        // token: null,
         login: {...state.login, busy: false, error: action.error},
       };
     case ACTION_TYPES.REGISTER_REQUEST:
@@ -81,11 +79,11 @@ export function reducer(state = initialState, action = {}) {
         showPasswordUpdateScene: false,
         showPasswordRecoverScene: false,
       };
-    case ACTION_TYPES.SET_AUTH_TOKEN:
-      return {
-        ...state,
-        token: action.token,
-      };
+    // case ACTION_TYPES.SET_AUTH_TOKEN:
+    //   return {
+    //     ...state,
+    //     token: action.token,
+    //   };
     default:
       return state;
   }

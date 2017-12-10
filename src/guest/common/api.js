@@ -1,7 +1,4 @@
-import isNull from 'lodash/isNull';
 import {fetchAPI} from 'utils/api';
-
-export const AUTH_STORAGE_KEY = 'AUTH_TOKEN_KEY';
 
 function login(params) {
   // if (isNull(token) && isNull(params)) return;

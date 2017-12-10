@@ -4,12 +4,12 @@ import {SafeAreaView} from 'react-native';
 import {connect} from 'react-redux';
 import LanguageSelectScene from 'app/scenes/LanguageSelectScene';
 import CodePush from 'react-native-code-push';
-import {CODEPUSH_ENABLED} from 'utils/env';
 import PushNotificationManager from 'app/components/PushNotificationManager';
 import Notification from 'app/components/Notification';
 import {ACTIONS} from 'app/common/actions';
 import {ACTIONS as USER_ACTIONS} from 'guest/common/actions';
 import Navigator from 'components/Navigator';
+import {CODE_PUSH_ENABLED} from 'utils/env';
 
 class App extends Component {
   static propTypes = {
@@ -17,7 +17,7 @@ class App extends Component {
   };
 
   componentDidMount() {
-    if (CODEPUSH_ENABLED) {
+    if (CODE_PUSH_ENABLED) {
       CodePush.sync();
     }
     this.props.dispatch(ACTIONS.boot());
