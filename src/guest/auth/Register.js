@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {ACTIONS} from 'user/common/actions';
-import RegisterScene from 'user/auth/scenes/RegisterScene';
+import {ACTIONS} from 'guest/common/actions';
+import RegisterScene from 'guest/auth/scenes/RegisterScene';
 
 type State = {
   name: string,
@@ -62,7 +62,7 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
   return {
-    auth: state.userReducer,
+    auth: state.user,
   };
 }
 

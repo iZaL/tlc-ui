@@ -2,50 +2,43 @@ import PropTypes from 'prop-types';
 import React, {Component} from 'react';
 import {StyleSheet, Text, TouchableHighlight, View} from 'react-native';
 import colors from 'assets/theme/colors';
-import I18n, {isRTL} from 'common/locale';
+import I18n from 'utils/locale';
 import FormLabel from 'components/FormLabel';
 import FormTextInput from 'components/FormTextInput';
 import FormSubmit from 'components/FormSubmit';
 
-export default class ConfirmScene extends Component {
+export default class OTPScene extends Component {
   static propTypes = {
+    onButtonPress: PropTypes.func.isRequired,
+    code: PropTypes.string.isRequired,
     onFieldChange: PropTypes.func.isRequired,
-    onRecoverPassword: PropTypes.func.isRequired,
-    onForgotPassword: PropTypes.func.isRequired,
-    onRightButtonPress: PropTypes.func.isRequired,
-    confirmationCode: PropTypes.string.isRequired,
+    resendCode: PropTypes.func.isRequired,
   };
 
   render() {
-    const {
-      onFieldChange,
-      confirmationCode,
-      onRecoverPassword,
-      onForgotPassword,
-      onRightButtonPress,
-    } = this.props;
+    const {code, onButtonPress, onFieldChange, resendCode} = this.props;
 
     return (
       <View style={styles.container}>
         <FormLabel title={I18n.t('confirmation_code')} />
 
         <FormTextInput
-          onChangeText={value => onFieldChange('confirmationCode', value)}
-          value={confirmationCode}
+          onChangeText={value => onFieldChange('code', value)}
+          value={code}
           maxLength={40}
           placeholder={I18n.t('confirmation_code')}
         />
 
         <FormSubmit
-          onPress={() => onRecoverPassword()}
+          onPress={() => onButtonPress()}
           underlayColor="transparent"
-          disabled={!confirmationCode}
+          disabled={!code}
           title={I18n.t('confirm')}
           style={{marginTop: 50}}
         />
 
         <TouchableHighlight
-          onPress={() => onForgotPassword()}
+          onPress={() => resendCode()}
           style={[{paddingTop: 100}]}
           underlayColor="transparent">
           <Text style={[styles.link]}>

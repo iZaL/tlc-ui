@@ -2,12 +2,12 @@ import {all, call, fork, put, takeLatest} from 'redux-saga/effects';
 import {NavigationActions} from 'react-navigation';
 import {ACTION_TYPES} from './actions';
 import {API, AUTH_STORAGE_KEY} from './api';
-import {ACTIONS as APP_ACTIONS,} from 'app/common/actions';
-import {forgetItem, getItem, setItem} from 'common/storage';
-import I18n from 'common/locale';
+import {ACTIONS as APP_ACTIONS} from 'app/common/actions';
+import {forgetItem, getItem, setItem} from 'utils/storage';
+import I18n from 'utils/locale';
 import {PUSH_TOKEN_KEY} from 'app/common/reducer';
 import NavigatorService from 'components/NavigatorService';
-import Schema from "user/common/schema";
+import Schema from 'guest/common/schema';
 import {normalize} from 'normalizr';
 
 function* login(action) {
@@ -32,7 +32,6 @@ function* login(action) {
     // yield put({
     //   type: AUTH_ACTION_TYPES.SYNC_USER_TO_SOCKET,
     // });
-
   } catch (error) {
     yield put({type: ACTION_TYPES.LOGIN_FAILURE, error});
     yield put(APP_ACTIONS.setNotification(error, 'error'));

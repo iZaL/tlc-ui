@@ -1,6 +1,6 @@
-import {API_URL} from 'common/env';
-import I18n from 'common/locale';
-import Store from 'common/store';
+import {API_URL} from 'utils/env';
+import I18n from 'utils/locale';
+import Store from 'utils/store';
 
 export function fetchAPI(url, method = 'GET', body = null, isBlob = false) {
   let delimiter = url.indexOf('?') === -1 ? '?' : '&';
@@ -8,7 +8,7 @@ export function fetchAPI(url, method = 'GET', body = null, isBlob = false) {
   let localeAwareUrl = `${API_URL}/${url + delimiter}lang=${I18n.locale}`;
 
   const store = Store && Store.getState();
-  const apiToken = store ? store.userReducer.token : null;
+  const apiToken = store ? store.user.token : null;
 
   let request;
 

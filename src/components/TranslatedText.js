@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {StyleSheet, Text} from 'react-native';
-import I18n from 'common/locale';
+import I18n from 'utils/locale';
 
 export default class TranslatedText extends Component {
   setNativeProps = nativeProps => {

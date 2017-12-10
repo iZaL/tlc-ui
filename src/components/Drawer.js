@@ -5,7 +5,7 @@ import React, {Component} from 'react';
 import {StyleSheet, Text, View, Image, Touchable} from 'react-native';
 import {NavigationActions} from 'react-navigation';
 import colors from 'assets/theme/colors';
-import I18n from 'common/locale';
+import I18n from 'utils/locale';
 import DrawerItem from 'components/DrawerItem';
 import Separator from 'components/Separator';
 

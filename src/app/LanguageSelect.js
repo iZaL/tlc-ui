@@ -20,7 +20,7 @@ class LanguageSelect extends Component {
 
 function mapStateToProps(state) {
   return {
-    app: state.appReducer,
+    app: state.app,
   };
 }
 

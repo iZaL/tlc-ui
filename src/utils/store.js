@@ -35,9 +35,9 @@ sagaMiddleware.run(rootSaga);
 //     whitelist: [
 //       // 'propertyReducer',
 //       // 'ormReducer',
-//       // 'appReducer',
-//       // 'userReducer',
-//       // 'userReducer',
+//       // 'app',
+//       // 'user',
+//       // 'user',
 //     ],
 //     storage: AsyncStorage,
 //   },

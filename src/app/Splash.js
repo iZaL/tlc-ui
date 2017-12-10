@@ -6,8 +6,8 @@ import SplashScene from './components/SplashScene';
 
 function mapStateToProps(state) {
   return {
-    message: state.appReducer.notifications.message,
-    messageType: state.appReducer.notifications.messageType,
+    message: state.app.notifications.message,
+    messageType: state.app.notifications.messageType,
   };
 }
 

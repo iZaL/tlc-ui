@@ -1,5 +1,5 @@
 import isNull from 'lodash/isNull';
-import {fetchAPI} from 'common/api';
+import {fetchAPI} from 'utils/api';
 
 export const AUTH_STORAGE_KEY = 'AUTH_TOKEN_KEY';
 

@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import {Text, View} from 'react-native';
-import {connect} from "react-redux";
-import {SELECTORS as USER_SELECTORS} from "../user/common/selectors";
+import {connect} from 'react-redux';
+import {SELECTORS as USER_SELECTORS} from 'guest/common/selectors';
 
 class Profile extends Component {
   render() {
     let {authUser} = this.props;
-    console.log('authUser',authUser);
+    console.log('authUser', authUser);
     return (
       <View
         style={{flex: 1, justifyContent: 'center', backgroundColor: 'white'}}>

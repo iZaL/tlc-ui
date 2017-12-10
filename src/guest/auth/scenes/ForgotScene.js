@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, {Component} from 'react';
 import {StyleSheet, View} from 'react-native';
-import I18n from 'common/locale';
+import I18n from 'utils/locale';
 import FormLabel from 'components/FormLabel';
 import FormTextInput from 'components/FormTextInput';
 import FormSubmit from 'components/FormSubmit';

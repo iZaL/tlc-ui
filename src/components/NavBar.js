@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
-import {isRTL} from 'common/locale';
+import {isRTL} from 'utils/locale';
 
 const NavBar = ({style, left, right, middle}) => (
   <View style={[styles.navBar, style]}>

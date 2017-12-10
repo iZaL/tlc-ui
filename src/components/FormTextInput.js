@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {StyleSheet, TextInput, Platform} from 'react-native';
 import colors from 'theme/colors';
-import {isRTL} from 'common/locale';
+import {isRTL} from 'utils/locale';
 
 export default class FormTextInput extends Component {
   static propTypes = {

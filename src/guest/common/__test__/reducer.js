@@ -1,4 +1,4 @@
-import userReducer from '../reducer';
+import user from '../reducer';
 import {ACTION_TYPES} from '../actions';
 
 describe('App Component Store', () => {
@@ -18,15 +18,11 @@ describe('App Component Store', () => {
   };
 
   test('should return the initial state', () => {
-    expect(userReducer(initialState, {type: 'UNDEFINED'})).toEqual(
-      initialState,
-    );
+    expect(user(initialState, {type: 'UNDEFINED'})).toEqual(initialState);
   });
 
   test('login request', () => {
-    expect(
-      userReducer(initialState, {type: ACTION_TYPES.LOGIN_REQUEST}),
-    ).toEqual({
+    expect(user(initialState, {type: ACTION_TYPES.LOGIN_REQUEST})).toEqual({
       ...initialState,
       isAuthenticated: false,
       userID: null,
@@ -36,7 +32,7 @@ describe('App Component Store', () => {
 
   test('login success', () => {
     expect(
-      userReducer(initialState, {
+      user(initialState, {
         type: ACTION_TYPES.LOGIN_SUCCESS,
         payload: {
           api_token: 'token',
@@ -55,7 +51,7 @@ describe('App Component Store', () => {
 
   test('login failure', () => {
     expect(
-      userReducer(initialState, {
+      user(initialState, {
         type: ACTION_TYPES.LOGIN_FAILURE,
         error: 'login failed',
       }),
@@ -68,18 +64,14 @@ describe('App Component Store', () => {
   });
 
   test('register request', () => {
-    expect(
-      userReducer(initialState, {type: ACTION_TYPES.REGISTER_REQUEST}),
-    ).toEqual({
+    expect(user(initialState, {type: ACTION_TYPES.REGISTER_REQUEST})).toEqual({
       ...initialState,
       register: {...initialState.register, busy: true},
     });
   });
 
   test('register success', () => {
-    expect(
-      userReducer(initialState, {type: ACTION_TYPES.REGISTER_SUCCESS}),
-    ).toEqual({
+    expect(user(initialState, {type: ACTION_TYPES.REGISTER_SUCCESS})).toEqual({
       ...initialState,
       register: {...initialState.register, busy: false},
     });
@@ -87,7 +79,7 @@ describe('App Component Store', () => {
 
   test('register failure', () => {
     expect(
-      userReducer(initialState, {
+      user(initialState, {
         type: ACTION_TYPES.REGISTER_FAILURE,
         error: 'registration failed',
       }),
@@ -102,7 +94,7 @@ describe('App Component Store', () => {
   });
 
   test('logout', () => {
-    expect(userReducer(initialState, {type: ACTION_TYPES.LOGOUT})).toEqual({
+    expect(user(initialState, {type: ACTION_TYPES.LOGOUT})).toEqual({
       ...initialState,
     });
   });

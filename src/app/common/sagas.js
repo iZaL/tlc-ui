@@ -13,11 +13,11 @@ import {
   PUSH_TOKEN_KEY,
 } from './reducer';
 
-import {getItem as getStorageItem, setItem} from 'common/storage';
-import {API as AUTH_API, AUTH_STORAGE_KEY} from 'user/common/api';
-import {ACTION_TYPES as AUTH_ACTION_TYPES} from 'user/common/actions';
-import {SELECTORS as AUTH_SELECTORS} from 'user/common/selectors';
-import I18n from 'common/locale';
+import {getItem as getStorageItem, setItem} from 'utils/storage';
+import {API as AUTH_API, AUTH_STORAGE_KEY} from 'guest/common/api';
+import {ACTION_TYPES as AUTH_ACTION_TYPES} from 'guest/common/actions';
+import {SELECTORS as AUTH_SELECTORS} from 'guest/common/selectors';
+import I18n from 'utils/locale';
 
 function* bootstrapped(action) {
   if (action.value === true) {
@@ -40,7 +40,7 @@ function* boot() {
   // 2- Set language from history
   let currentLanguage = yield call(getStorageItem, LANGUAGE_STORAGE_KEY);
   if (isNull(currentLanguage)) {
-    currentLanguage = state.appReducer.language;
+    currentLanguage = state.app.language;
   }
 
   I18n.locale = currentLanguage;
@@ -78,7 +78,7 @@ function* boot() {
   //4- Set User Country
   let currentCountry = yield call(getStorageItem, COUNTRY_KEY);
   if (isNull(currentCountry)) {
-    currentCountry = state.appReducer.selectedCountry;
+    currentCountry = state.app.selectedCountry;
   }
   yield put({type: ACTION_TYPES.COUNTRY_CHANGED, country: currentCountry});
 
@@ -88,7 +88,7 @@ function* boot() {
 
 function* changeCountrySaga(action) {
   let state = yield select();
-  let currentCountry = state.appReducer.selectedCountry;
+  let currentCountry = state.app.selectedCountry;
 
   if (currentCountry === action.country) return;
 

@@ -4,11 +4,11 @@ import {SafeAreaView} from 'react-native';
 import {connect} from 'react-redux';
 import LanguageSelectScene from 'app/scenes/LanguageSelectScene';
 import CodePush from 'react-native-code-push';
-import {CODEPUSH_ENABLED} from 'common/env';
+import {CODEPUSH_ENABLED} from 'utils/env';
 import PushNotificationManager from 'app/components/PushNotificationManager';
 import Notification from 'app/components/Notification';
 import {ACTIONS} from 'app/common/actions';
-import {ACTIONS as USER_ACTIONS} from 'user/common/actions';
+import {ACTIONS as USER_ACTIONS} from 'guest/common/actions';
 import Navigator from 'components/Navigator';
 
 class App extends Component {
@@ -80,9 +80,9 @@ class App extends Component {
 
 function mapStateToProps(state) {
   return {
-    app: state.appReducer,
-    isAuthenticated: state.userReducer.isAuthenticated,
-    userType: state.userReducer.userType,
+    app: state.app,
+    isAuthenticated: state.user.isAuthenticated,
+    userType: state.user.userType,
   };
 }
 

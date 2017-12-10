@@ -1,5 +1,5 @@
-import {API_URL} from 'common/env';
-import {fetchAPI} from 'common/api';
+import {API_URL} from 'utils/env';
+import {fetchAPI} from 'utils/api';
 
 function storePushToken(urlParams, body) {
   const url = `${API_URL}/push_token/register${urlParams}`;

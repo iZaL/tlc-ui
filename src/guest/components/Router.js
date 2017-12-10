@@ -1,11 +1,11 @@
 import React from 'react';
-import Login from 'user/auth/Login';
-import Register from 'user/auth/Register';
-import Forgot from 'user/auth/Forgot';
-import OTP from 'user/auth/OTP';
-import Home from 'user/Home';
+import Login from 'guest/auth/Login';
+import Register from 'guest/auth/Register';
+import Forgot from 'guest/auth/Forgot';
+import OTP from 'guest/auth/OTP';
+import Home from 'guest/Home';
 import DrawerIcon from 'components/DrawerIcon';
-import Drawer from 'user/components/Drawer';
+import Drawer from 'guest/components/Drawer';
 import {DrawerNavigator, StackNavigator} from 'react-navigation';
 
 export const AuthRoutes = StackNavigator(

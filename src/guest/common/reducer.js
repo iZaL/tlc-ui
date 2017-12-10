@@ -18,7 +18,7 @@ const initialState = {
   },
 };
 
-export function userReducer(state = initialState, action = {}) {
+export function reducer(state = initialState, action = {}) {
   switch (action.type) {
     case ACTION_TYPES.LOGIN_REQUEST:
       return {

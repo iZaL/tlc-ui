@@ -1,4 +1,5 @@
 import {ACTION_TYPES} from './actions';
+import merge from 'lodash/merge';
 
 export const COUNTRY_KEY = 'COUNTRY_KEY';
 export const BOOTSTRAPPED_STORAGE_KEY = 'BOOTSTRAPPED';
@@ -15,7 +16,7 @@ const initialState = {
   language: 'en',
 };
 
-export function appReducer(state = initialState, action = {}) {
+export function reducer(state = initialState, action = {}) {
   switch (action.type) {
     case ACTION_TYPES.BOOTSTRAPPED:
       return {...state, bootstrapped: action.value};
@@ -49,4 +50,22 @@ export function appReducer(state = initialState, action = {}) {
     default:
       return state;
   }
+}
+
+export function entities(
+  state = {
+    users: {},
+    categories: {},
+    packages: {},
+    services: {},
+    timings: {},
+    addresses: {},
+  },
+  action = {},
+) {
+  if (action.entities) {
+    return merge({}, state, action.entities);
+  }
+
+  return state;
 }

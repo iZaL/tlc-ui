@@ -2,11 +2,11 @@ import PropTypes from 'prop-types';
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {ACTIONS} from 'user/common/actions';
-import LoginScene from 'user/auth/scenes/LoginScene';
+import {ACTIONS} from 'guest/common/actions';
+import LoginScene from 'guest/auth/scenes/LoginScene';
 import {NavigationActions} from 'react-navigation';
 import {Alert} from 'react-native';
-import I18n from 'common/locale';
+import I18n from 'utils/locale';
 
 class Login extends Component {
   static propTypes = {
@@ -92,7 +92,7 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
   return {
-    auth: state.userReducer,
+    auth: state.user,
   };
 }
 

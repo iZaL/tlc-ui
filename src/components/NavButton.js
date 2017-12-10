@@ -3,7 +3,7 @@ import React from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {StyleSheet, Text, TouchableHighlight} from 'react-native';
 import colors from 'theme/colors';
-import {isRTL} from 'common/locale';
+import {isRTL} from 'utils/locale';
 
 export default class NavButton extends React.Component {
   static propTypes = {

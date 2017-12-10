@@ -3,8 +3,8 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {ACTIONS as APP_ACTIONS} from 'app/common/actions';
-import {ACTIONS} from 'user/common/actions';
-import OTPScene from 'user/auth/scenes/OTPScene';
+import {ACTIONS} from 'guest/common/actions';
+import OTPScene from 'guest/auth/scenes/OTPScene';
 
 class OTP extends Component {
   static propTypes = {
@@ -50,7 +50,7 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
   return {
-    auth: state.userReducer,
+    auth: state.user,
   };
 }
 

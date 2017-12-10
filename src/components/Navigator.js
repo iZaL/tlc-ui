@@ -3,7 +3,7 @@ import {StackNavigator} from 'react-navigation';
 import {Routes as AdminRoutes} from 'admin/components/Router';
 import {Routes as DriverRoutes} from 'driver/components/Router';
 import {Routes as ShipperRoutes} from 'shipper/components/Router';
-import {AuthRoutes, Routes as DefaultRoutes} from 'user/components/Router';
+import {AuthRoutes, Routes as DefaultRoutes} from 'guest/components/Router';
 import NavigatorService from 'components/NavigatorService';
 
 export default class Navigator extends Component {

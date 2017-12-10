@@ -4,10 +4,10 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {NavigationActions} from 'react-navigation';
 import {ACTIONS as APP_ACTIONS} from 'app/common/actions';
-import ForgotScene from 'user/auth/scenes/ForgotScene';
-import ConfirmScene from 'user/auth/scenes/ConfirmScene';
-import PasswordUpdateScene from 'user/auth/scenes/PasswordUpdateScene';
-import {ACTIONS} from 'user/common/actions';
+import ForgotScene from 'guest/auth/scenes/ForgotScene';
+import ConfirmScene from 'guest/auth/scenes/ConfirmScene';
+import PasswordUpdateScene from 'guest/auth/scenes/PasswordUpdateScene';
+import {ACTIONS} from 'guest/common/actions';
 
 class Forgot extends Component {
   static propTypes = {
@@ -100,7 +100,7 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
   return {
-    auth: state.userReducer,
+    auth: state.user,
   };
 }
 
