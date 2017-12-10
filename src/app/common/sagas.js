@@ -3,7 +3,6 @@ import CodePush from 'react-native-code-push';
 import {all, call, fork, put, select, takeLatest} from 'redux-saga/effects';
 import {I18nManager} from 'react-native';
 import {NavigationActions} from 'react-navigation';
-
 import {API} from 'app/common/api';
 import {ACTION_TYPES} from 'app/common/actions';
 import {
@@ -11,9 +10,8 @@ import {
   COUNTRY_KEY,
   LANGUAGE_KEY,
   PUSH_TOKEN_KEY,
-  AUTH_KEY
+  AUTH_KEY,
 } from 'utils/env';
-
 import {getStorageItem, setStorageItem} from 'utils/functions';
 import {API as AUTH_API} from 'guest/common/api';
 import {ACTION_TYPES as AUTH_ACTION_TYPES} from 'guest/common/actions';
@@ -30,10 +28,7 @@ function* boot() {
   const state = yield select();
 
   // 1- Set is the app has bootstrapped(run) before
-  let bootstrappedStorageKey = yield call(
-    getStorageItem,
-    BOOTSTRAPPED_KEY,
-  );
+  let bootstrappedStorageKey = yield call(getStorageItem, BOOTSTRAPPED_KEY);
   if (!isNull(bootstrappedStorageKey)) {
     yield put({type: ACTION_TYPES.BOOTSTRAPPED, value: true});
   }
@@ -53,15 +48,15 @@ function* boot() {
 
   //3- Login from history and sync push token to user if exists
   const authStorageKey = yield call(getStorageItem, AUTH_KEY);
-  const pushTokenStorageKey = yield call(getStorageItem, PUSH_TOKEN_KEY);
 
   if (!isNull(authStorageKey)) {
 
+    const pushTokenStorageKey = yield call(getStorageItem, PUSH_TOKEN_KEY);
+
     try {
-      let response = yield call(
-        AUTH_API.login,
-        {push_token: pushTokenStorageKey},
-      );
+      let response = yield call(AUTH_API.login, {
+        push_token: pushTokenStorageKey,
+      });
       yield put({
         type: AUTH_ACTION_TYPES.LOGIN_SUCCESS,
         payload: response.data,
@@ -135,17 +130,6 @@ function* setPushToken(action) {
   }
 }
 
-function* navigate(action) {
-  try {
-    return yield put(
-      NavigationActions.navigate({
-        routeName: action.scene,
-        params: action.params,
-      }),
-    );
-  } catch (error) {}
-}
-
 function* bootMonitor() {
   yield takeLatest(ACTION_TYPES.BOOT_REQUEST, boot);
 }
@@ -166,15 +150,10 @@ export function* setPushTokenMonitor() {
   yield takeLatest(ACTION_TYPES.SET_PUSH_TOKEN_REQUEST, setPushToken);
 }
 
-export function* navigationMonitor() {
-  yield takeLatest(ACTION_TYPES.NAVIGATE, navigate);
-}
-
 export const sagas = all([
   fork(bootMonitor),
   fork(bootstrapMonitor),
   fork(changeCountryMonitor),
   fork(setLanguageMonitor),
   fork(setPushTokenMonitor),
-  fork(navigationMonitor),
 ]);

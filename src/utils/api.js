@@ -1,15 +1,14 @@
 import {API_URL} from 'utils/env';
 import I18n from 'utils/locale';
-import {getStorageItem} from "utils/functions";
-import {AUTH_STORAGE_KEY} from "utils/env";
+import {getStorageItem} from 'utils/functions';
+import {AUTH_KEY} from 'utils/env';
 
-export function fetchAPI(url, method = 'GET', body = null, isBlob = false) {
+export async function fetchAPI(url, method = 'GET', body = null, isBlob = false) {
   let delimiter = url.indexOf('?') === -1 ? '?' : '&';
 
   let localeAwareUrl = `${API_URL}/${url + delimiter}lang=${I18n.locale}`;
 
-  // const store = Store && Store.getState();
-  const apiToken = getStorageItem(AUTH_STORAGE_KEY);
+  const apiToken = await getStorageItem(AUTH_KEY);
 
   let request;
 

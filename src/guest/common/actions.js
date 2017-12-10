@@ -26,7 +26,6 @@ export const ACTION_TYPES = {
   SET_AUTH_TOKEN: '@user/SET_AUTH_TOKEN',
 };
 
-
 function login(credentials) {
   return {
     type: ACTION_TYPES.LOGIN_REQUEST,

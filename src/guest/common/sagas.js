@@ -2,9 +2,13 @@ import {all, call, fork, put, takeLatest} from 'redux-saga/effects';
 import {NavigationActions} from 'react-navigation';
 import {API} from './api';
 import {ACTIONS as APP_ACTIONS} from 'app/common/actions';
-import {forgetStorageItem, getStorageItem, setStorageItem} from 'utils/functions';
+import {
+  forgetStorageItem,
+  getStorageItem,
+  setStorageItem,
+} from 'utils/functions';
 import I18n from 'utils/locale';
-import {PUSH_TOKEN_KEY,AUTH_KEY} from 'utils/env';
+import {PUSH_TOKEN_KEY, AUTH_KEY} from 'utils/env';
 import NavigatorService from 'components/NavigatorService';
 import Schema from 'guest/common/schema';
 import {ACTION_TYPES} from 'guest/common/actions';
