@@ -6,7 +6,6 @@ import {SELECTORS as USER_SELECTORS} from 'guest/common/selectors';
 class Profile extends Component {
   render() {
     let {user} = this.props;
-    console.log('authUser', user);
     return (
       <View
         style={{flex: 1, justifyContent: 'center', backgroundColor: 'white'}}>

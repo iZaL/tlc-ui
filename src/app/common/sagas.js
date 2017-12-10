@@ -1,7 +1,7 @@
 import I18n from 'utils/locale';
 import isNull from 'lodash/isNull';
 import CodePush from 'react-native-code-push';
-import {all, call, fork, put, select, takeLatest} from 'redux-saga/effects';
+import {all, call, fork, put, takeLatest} from 'redux-saga/effects';
 import {I18nManager} from 'react-native';
 import {API} from 'app/common/api';
 import {ACTION_TYPES} from 'app/common/actions';
