@@ -4,8 +4,8 @@ const initialState = {
   id: null,
   type: 'default',
   isAuthenticated: false,
-  // showPasswordUpdateScene: false,
-  // showPasswordRecoverScene: false,
+  showPasswordUpdateScene: false,
+  showPasswordRecoverScene: false,
   login: {
     busy: false,
     error: null,
@@ -39,7 +39,6 @@ export function reducer(state = initialState, action = {}) {
       return {
         ...state,
         isAuthenticated: false,
-        // token: null,
         login: {...state.login, busy: false, error: action.error},
       };
     case ACTION_TYPES.REGISTER_REQUEST:
@@ -79,11 +78,6 @@ export function reducer(state = initialState, action = {}) {
         showPasswordUpdateScene: false,
         showPasswordRecoverScene: false,
       };
-    // case ACTION_TYPES.SET_AUTH_TOKEN:
-    //   return {
-    //     ...state,
-    //     token: action.token,
-    //   };
     default:
       return state;
   }

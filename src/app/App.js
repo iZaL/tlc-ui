@@ -1,14 +1,15 @@
 import PropTypes from 'prop-types';
 import React, {Component} from 'react';
-import {SafeAreaView} from 'react-native';
-import {connect} from 'react-redux';
+import Navigator from 'components/Navigator';
 import LanguageSelectScene from 'app/scenes/LanguageSelectScene';
 import CodePush from 'react-native-code-push';
 import PushNotificationManager from 'app/components/PushNotificationManager';
 import Notification from 'app/components/Notification';
+import {SafeAreaView} from 'react-native';
+import {connect} from 'react-redux';
 import {ACTIONS} from 'app/common/actions';
 import {ACTIONS as USER_ACTIONS} from 'guest/common/actions';
-import Navigator from 'components/Navigator';
+import {SELECTORS as USER_SELECTOR} from "guest/common/selectors";
 import {CODE_PUSH_ENABLED} from 'utils/env';
 
 class App extends Component {
@@ -81,8 +82,8 @@ class App extends Component {
 function mapStateToProps(state) {
   return {
     app: state.app,
-    isAuthenticated: state.user.isAuthenticated,
-    userType: state.user.userType,
+    isAuthenticated: USER_SELECTOR.isAuthenticated(state),
+    userType: USER_SELECTOR.getAuthUserType(state),
   };
 }
 
