@@ -3,7 +3,7 @@ import {DrawerNavigator, StackNavigator} from 'react-navigation';
 import Drawer from 'driver/components/Drawer';
 import Home from 'driver/Home';
 import Settings from 'driver/Settings';
-import Profile from 'driver/Profile';
+import Profile from 'driver/profile/index';
 import DrawerIcon from 'components/DrawerIcon';
 
 const HomeStack = StackNavigator({

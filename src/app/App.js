@@ -38,7 +38,7 @@ class App extends Component {
   };
 
   navigateToScene = (scene, params) => {
-    this.props.dispatch(ACTIONS.navigateToScene(scene, params));
+    // this.props.dispatch(ACTIONS.navigateToScene(scene, params));
   };
 
   logout = () => {

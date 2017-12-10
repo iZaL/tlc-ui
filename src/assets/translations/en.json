@@ -39,5 +39,9 @@
   "shipper" : "Shipper",
   "registration_success" : "Registration Success",
   "confirm_account" : "Confirm Account",
-  "profile" : "Profile"
+  "profile" : "Profile",
+  "residence_country": "Residence Country",
+  "nationality": "Nationality",
+  "update_profile": "Update Profile",
+
 }

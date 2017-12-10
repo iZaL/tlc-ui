@@ -1,22 +1,36 @@
 export const ACTION_TYPES = {
+  INSTALLED: '@app/INSTALLED',
+
   BOOT_REQUEST: '@app/BOOT_REQUEST',
   BOOT_SUCCESS: '@app/BOOT_SUCCESS',
-  INSTALLED: '@app/INSTALLED',
-  COUNTRY_CHANGED: '@app/COUNTRY_CHANGED',
+
   DISMISS_NOTIFICATION: '@app/DISMISS_NOTIFICATION',
   SET_NOTIFICATION: '@app/SET_NOTIFICATION',
+
   SET_LANGUAGE_REQUEST: '@app/SET_LANGUAGE_REQUEST',
   SET_LANGUAGE_SUCCESS: '@app/SET_LANGUAGE_SUCCESS',
+
   SET_COUNTRY_REQUEST: '@app/SET_COUNTRY_REQUEST',
   SET_COUNTRY_SUCCESS: '@app/SET_COUNTRY_SUCCESS',
+
   SET_PUSH_TOKEN_REQUEST: '@app/SET_PUSH_TOKEN_REQUEST',
   SET_PUSH_TOKEN_SUCCESS: '@app/SET_PUSH_TOKEN_SUCCESS',
   SET_PUSH_TOKEN_FAILURE: '@app/SET_PUSH_TOKEN_FAILURE',
+
+  FETCH_COUNTRIES_REQUEST: '@app/FETCH_COUNTRIES_REQUEST',
+  FETCH_COUNTRIES_SUCCESS: '@app/FETCH_COUNTRIES_SUCCESS',
+  FETCH_COUNTRIES_FAILURE: '@app/FETCH_COUNTRIES_FAILURE',
 };
 
 function boot() {
   return {
     type: ACTION_TYPES.BOOT_REQUEST,
+  };
+}
+
+function fetchCountries() {
+  return {
+    type: ACTION_TYPES.FETCH_COUNTRIES_REQUEST,
   };
 }
 
@@ -62,14 +76,6 @@ function setPushToken(token) {
   };
 }
 
-function navigateToScene(scene, params) {
-  return {
-    type: ACTION_TYPES.NAVIGATE,
-    scene,
-    params,
-  };
-}
-
 export const ACTIONS = {
   boot,
   setCountry,
@@ -78,5 +84,5 @@ export const ACTIONS = {
   setInstalled,
   setLanguage,
   setPushToken,
-  navigateToScene,
+  fetchCountries
 };
