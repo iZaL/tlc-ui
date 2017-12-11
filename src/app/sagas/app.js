@@ -81,17 +81,6 @@ function* boot() {
   // yield take({type:'REBOOT'})
 }
 
-function* setCountry(action) {
-
-  let currentCountry = yield getStorageItem(COUNTRY_KEY);
-
-  if (currentCountry === action.country) return;
-
-  yield call(setStorageItem, COUNTRY_KEY, action.country);
-
-  yield put({type: ACTION_TYPES.SET_COUNTRY_SUCCESS, country: action.country});
-}
-
 function* setLanguage(action) {
   if (action.language === 'ar') {
     I18nManager.allowRTL(true);
@@ -134,12 +123,12 @@ function* setPushToken(action) {
   }
 }
 
-function* bootMonitor() {
-  yield takeLatest(ACTION_TYPES.BOOT_REQUEST, boot);
+function *makeNetworkRequest(params) {
+
 }
 
-function* setCountryMonitor() {
-  yield takeLatest(ACTION_TYPES.SET_COUNTRY_REQUEST, setCountry);
+function* bootMonitor() {
+  yield takeLatest(ACTION_TYPES.BOOT_REQUEST, boot);
 }
 
 export function* setLanguageMonitor() {
@@ -150,9 +139,13 @@ export function* setPushTokenMonitor() {
   yield takeLatest(ACTION_TYPES.SET_PUSH_TOKEN_REQUEST, setPushToken);
 }
 
+export function* networkRequestMonitor() {
+  yield takeLatest(ACTION_TYPES.MAKE_NETWORK_REQUEST, makeNetworkRequest);
+}
+
 export const sagas = all([
   fork(bootMonitor),
-  fork(setCountryMonitor),
   fork(setLanguageMonitor),
   fork(setPushTokenMonitor),
+  fork(networkRequestMonitor)
 ]);

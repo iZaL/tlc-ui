@@ -43,5 +43,6 @@
   "residence_country": "Residence Country",
   "nationality": "Nationality",
   "update_profile": "Update Profile",
-
+  "close" : "Close",
+  "select" : "Select"
 }

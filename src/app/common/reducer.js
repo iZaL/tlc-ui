@@ -51,11 +51,7 @@ export function reducer(state = initialState, action = {}) {
 export function entities(
   state = {
     users: {},
-    categories: {},
-    packages: {},
-    services: {},
-    timings: {},
-    addresses: {},
+    countries:{}
   },
   action = {},
 ) {

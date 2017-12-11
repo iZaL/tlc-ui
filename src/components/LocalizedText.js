@@ -9,18 +9,23 @@ export default class LocalizedText extends Component {
   };
 
   static propTypes = {
-    en: PropTypes.string,
+    en: PropTypes.string.required,
     ar: PropTypes.string,
+    hi:PropTypes.string
   };
 
   render() {
-    const {en, ar} = this.props;
+    const {en, ar, hi} = this.props;
 
     let content;
-    if (I18n.locale === 'en') {
-      content = en ? en : ar;
-    } else {
+    let locale = I18n.locale;
+
+    if (locale === 'hi') {
+      content = hi ? hi : en;
+    } else if(locale === 'ar') {
       content = ar ? ar : en;
+    } else {
+      content = en;
     }
 
     return (
