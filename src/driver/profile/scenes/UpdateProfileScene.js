@@ -1,24 +1,16 @@
 //@flow
 import PropTypes from 'prop-types';
 import React, {Component} from 'react';
-import {Picker, StyleSheet, Text, View, Platform} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import I18n from 'utils/locale';
 import FormLabel from 'components/FormLabel';
 import FormTextInput from 'components/FormTextInput';
 import FormSubmit from 'components/FormSubmit';
-import colors from 'assets/theme/colors';
 import Dropdown from "components/Dropdown";
-import LocalizedText from "components/LocalizedText";
-import {isRTL} from "utils/locale";
 
 type SceneType = 'nationality|residence';
 
 export default class UpdateProfileScene extends Component {
-
-  static defaultProps = {
-    // nationality:0,
-    // residence_country_id: 0,
-  };
 
   static propTypes = {
     onButtonPress: PropTypes.func.isRequired,
@@ -59,9 +51,6 @@ export default class UpdateProfileScene extends Component {
 
     selectedNationality = nationality ? countries.find(country => country.id === nationality) : '';
     selectedResidenceCountry = residence_country_id ? countries.find(country => country.id === residence_country_id) : '';
-
-    console.log('selectedNationality',selectedNationality);
-
 
     return (
       <View style={styles.container}>
@@ -120,7 +109,7 @@ export default class UpdateProfileScene extends Component {
         }
 
         <FormSubmit
-          onPress={() => onButtonPress()}
+          onPress={onButtonPress}
           disabled={busy}
           title={busy ? I18n.t('saving') : I18n.t('update_profile')}
           style={{marginTop: 50}}
@@ -136,9 +125,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     padding: 10,
     paddingTop: 20,
-  },
-  buttonSecondary: {
-    backgroundColor: colors.mediumGrey,
   },
   textInput: {
     height: 40,

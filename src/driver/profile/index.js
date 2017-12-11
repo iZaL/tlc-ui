@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import {SELECTORS as COUNTRY_SELECTORS} from 'app/selectors/country';
 import {SELECTORS as USER_SELECTORS} from 'guest/common/selectors';
 import {ACTIONS as APP_ACTIONS} from 'app/common/actions';
+import {ACTIONS as PROFILE_ACTIONS} from "driver/common/actions";
 
 type State = {
   mobile:string,
@@ -29,25 +30,20 @@ class Profile extends Component {
   }
 
   onFieldChange = (field, value) => {
-    console.log('field',field);
-    console.log('value',value);
     this.setState({[field]: value});
   };
 
   saveProfile = () => {
-
+    this.props.dispatch(PROFILE_ACTIONS.saveProfile(this.state));
   };
 
   render() {
     let {user,countries} = this.props;
-    console.log('countries',countries);
-
-    console.log('state',this.state);
 
     return (
       <UpdateProfileScene
         {...this.state}
-        user={user}
+        driver={user}
         onFieldChange={this.onFieldChange}
         onButtonPress={this.saveProfile}
         busy={false}
