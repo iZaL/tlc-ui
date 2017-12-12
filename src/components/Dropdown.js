@@ -25,6 +25,9 @@ export default class Dropdown extends PureComponent {
         <Picker
           selectedValue={selectedValue}
           onValueChange={(itemValue) => onItemPress(field, itemValue)}>
+
+          <Picker.Item label={I18n.t('select')} value='' />
+
           {
             items.map(item => {
                 return (

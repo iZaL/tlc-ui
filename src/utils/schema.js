@@ -7,7 +7,7 @@ const countriesSchema = new schema.Entity('countries');
 usersSchema.define({
   profile: {
     nationality: countriesSchema,
-    residence_country_id: countriesSchema
+    residence: countriesSchema
   }
 });
 

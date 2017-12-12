@@ -7,15 +7,11 @@ import {normalize} from 'normalizr';
 function* saveProfile(action) {
   try {
     const response = yield call(API.saveProfile, action.params);
-
-
     const normalized = normalize(response.data, Schema.users);
-
     yield put({
       type: ACTION_TYPES.PROFILE_UPDATE_SUCCESS,
       entities: normalized.entities,
     });
-
     // yield put({type: ACTION_TYPES.PROFILE_UPDATE_SUCCESS, payload: response.data});
 
   } catch (error) {
@@ -27,7 +23,7 @@ function* saveProfile(action) {
 function* fetchProfile() {
   try {
     const response = yield call(API.fetchProfile);
-    const normalized = normalize(response.data, [Schema.countries]);
+    const normalized = normalize(response.data, Schema.users);
     yield put({
       type: ACTION_TYPES.FETCH_PROFILE_SUCCESS,
       entities: normalized.entities,

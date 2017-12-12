@@ -8,46 +8,66 @@ import {ACTIONS as PROFILE_ACTIONS} from "driver/common/actions";
 import {SELECTORS as USER_SELECTORS} from 'guest/common/selectors';
 
 type State = {
-  mobile:string,
-  nationality:string,
-  residence_country_id:string
+  mobile: string,
+  nationality: string,
+  residence_country_id: string
 };
 
 class Profile extends Component {
 
   static propTypes = {
-    countries:PropTypes.array.isRequired
+    countries: PropTypes.array.isRequired
   };
 
-  constructor(props) {
-    super(props);
-    this.state  = {
-      mobile:props.user.profile.mobile || props.user.mobile,
-      nationality:props.user.profile.nationality.id,
-      residence_country_id:props.user.profile.residence_country_id.id
-    };
-  }
+  state: State = {
+    mobile: '',
+    nationality: {},
+    residence: {}
+  };
 
   componentDidMount() {
     this.props.dispatch(APP_ACTIONS.fetchCountries());
     this.props.dispatch(PROFILE_ACTIONS.fetchProfile());
+  }
 
+  componentWillReceiveProps(props) {
+    console.log('props',props);
+    let {profile} = props.user;
+    this.setState({
+      mobile: profile.mobile || props.user.mobile,
+      nationality: profile && profile.nationality || {},
+      residence: profile && profile.residence || {}
+    });
   }
 
   onFieldChange = (field, value) => {
-    this.setState({[field]: value});
+    if (value) {
+      let country = this.props.countries.find(country => country.id === value);
+      this.setState({[field]: country});
+    }
   };
 
   saveProfile = () => {
-    this.props.dispatch(PROFILE_ACTIONS.saveProfile(this.state));
+    const {mobile, nationality, residence} = this.state;
+
+    this.setState({
+      mobile,
+      nationality,
+      residence
+    });
+
+    let params = {
+      mobile,
+      nationality_country_id: nationality.id,
+      residence_country_id: residence.id
+    };
+    this.props.dispatch(PROFILE_ACTIONS.saveProfile(params));
   };
 
   render() {
-    let {user,countries} = this.props;
-    console.log('user',user);
-    let {nationality,residence_country_id,mobile} = this.state;
+    let {user, countries} = this.props;
     let {profile} = user;
-
+    console.log('user', user);
     return (
       <UpdateProfileScene
         // nationality={nationality || profile.nationality}
@@ -66,7 +86,7 @@ class Profile extends Component {
 function mapStateToProps(state) {
   return {
     user: USER_SELECTORS.getAuthUser(state),
-    countries:COUNTRY_SELECTORS.getCountries(state)
+    countries: COUNTRY_SELECTORS.getCountries(state)
   };
 }
 

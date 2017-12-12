@@ -16,11 +16,10 @@ export default class UpdateProfileScene extends Component {
     onButtonPress: PropTypes.func.isRequired,
     onFieldChange: PropTypes.func.isRequired,
     mobile: PropTypes.string.isRequired,
-    // nationality: PropTypes.number.isRequired,
-    // residence_country_id: PropTypes.number.isRequired,
+    nationality: PropTypes.object.isRequired,
+    residence: PropTypes.object.isRequired,
     busy: PropTypes.bool.isRequired,
     countries: PropTypes.array.isRequired,
-    profile:PropTypes.object.isRequired
   };
 
   state = {
@@ -37,25 +36,16 @@ export default class UpdateProfileScene extends Component {
 
   render() {
     const {
-      residence_country_id,
+      residence,
       nationality,
       mobile,
       onFieldChange,
       onButtonPress,
       busy,
       countries,
-      profile
     } = this.props;
 
-    console.log('props',this.props);
-
     const {showDropDown, dropDownScene} = this.state;
-    // const {nationality,residence_country}
-
-    // let selectedNationality, selectedResidenceCountry;
-    //
-    // selectedNationality = nationality ? countries.find(country => country.id === nationality) : '';
-    // selectedResidenceCountry = residence_country_id ? countries.find(country => country.id === residence_country_id) : '';
 
     return (
       <View style={styles.container}>
@@ -82,7 +72,7 @@ export default class UpdateProfileScene extends Component {
               field="nationality"
             />
             :
-            nationality ?
+            nationality.id ?
               <Text
                 style={styles.textInput}
                 onPress={() => this.setDropDownScene(true, 'nationality')}
@@ -98,16 +88,16 @@ export default class UpdateProfileScene extends Component {
             <Dropdown
               onClose={() => this.setDropDownScene(false, 'residence')}
               items={countries}
-              selectedValue={selectedResidenceCountry.id}
+              selectedValue={residence.id}
               onItemPress={onFieldChange}
-              field="residence_country_id"
+              field="residence"
             />
             :
-            residence_country_id ?
+            residence.id ?
               <Text
                 style={styles.textInput}
                 onPress={() => this.setDropDownScene(true, 'residence')}
-              >{selectedResidenceCountry.name_en}</Text>
+              >{residence.name_en}</Text>
               :
               <Text style={styles.textInput}
                     onPress={() => this.setDropDownScene(true, 'residence')}>{I18n.t('select')}</Text>
