@@ -20,6 +20,7 @@ export default class UpdateProfileScene extends Component {
     // residence_country_id: PropTypes.number.isRequired,
     busy: PropTypes.bool.isRequired,
     countries: PropTypes.array.isRequired,
+    profile:PropTypes.object.isRequired
   };
 
   state = {
@@ -43,14 +44,18 @@ export default class UpdateProfileScene extends Component {
       onButtonPress,
       busy,
       countries,
+      profile
     } = this.props;
 
+    console.log('props',this.props);
+
     const {showDropDown, dropDownScene} = this.state;
+    // const {nationality,residence_country}
 
-    let selectedNationality, selectedResidenceCountry;
-
-    selectedNationality = nationality ? countries.find(country => country.id === nationality) : '';
-    selectedResidenceCountry = residence_country_id ? countries.find(country => country.id === residence_country_id) : '';
+    // let selectedNationality, selectedResidenceCountry;
+    //
+    // selectedNationality = nationality ? countries.find(country => country.id === nationality) : '';
+    // selectedResidenceCountry = residence_country_id ? countries.find(country => country.id === residence_country_id) : '';
 
     return (
       <View style={styles.container}>
@@ -72,7 +77,7 @@ export default class UpdateProfileScene extends Component {
             <Dropdown
               onClose={() => this.setDropDownScene(false, 'nationality')}
               items={countries}
-              selectedValue={selectedNationality.id}
+              selectedValue={nationality.id}
               onItemPress={onFieldChange}
               field="nationality"
             />
@@ -81,7 +86,7 @@ export default class UpdateProfileScene extends Component {
               <Text
                 style={styles.textInput}
                 onPress={() => this.setDropDownScene(true, 'nationality')}
-              >{selectedNationality.name_en}</Text>
+              >{nationality.name_en}</Text>
               :
               <Text style={styles.textInput}
                     onPress={() => this.setDropDownScene(true, 'nationality')}>{I18n.t('select')}</Text>

@@ -5,6 +5,12 @@ function saveProfile(body) {
   return fetchAPI(url, 'POST', body);
 }
 
+function fetchProfile() {
+  const url = `driver/profile`;
+  return fetchAPI(url);
+}
+
 export const API = {
-  saveProfile
+  saveProfile,
+  fetchProfile
 };

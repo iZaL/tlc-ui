@@ -32,7 +32,7 @@ export function reducer(state = initialState, action = {}) {
         isAuthenticated: true,
         // token: action.payload.api_token,
         id: action.payload.id,
-        type: action.payload.user_type,
+        type: action.payload.type,
         login: {...state.login, busy: false, error: null},
       };
     case ACTION_TYPES.LOGIN_FAILURE:

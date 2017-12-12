@@ -6,7 +6,7 @@ import {combineReducers} from 'redux';
 const rootReducer = combineReducers({
   app,
   user,
-  driver,
+  // driver,
   entities,
 });
 

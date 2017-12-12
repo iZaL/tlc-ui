@@ -19,7 +19,7 @@ class Login extends Component {
   };
 
   state = {
-    email: 'admin@test.com',
+    email: 'driver@test.com',
     password: 'password',
   };
 

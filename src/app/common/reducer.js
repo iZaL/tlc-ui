@@ -51,7 +51,8 @@ export function reducer(state = initialState, action = {}) {
 export function entities(
   state = {
     users: {},
-    countries:{}
+    countries:{},
+    // profiles:{}
   },
   action = {},
 ) {
