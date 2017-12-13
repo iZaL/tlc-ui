@@ -6,12 +6,11 @@ import I18n from 'utils/locale';
 import FormLabel from 'components/FormLabel';
 import FormTextInput from 'components/FormTextInput';
 import FormSubmit from 'components/FormSubmit';
-import Dropdown from "components/Dropdown";
+import Dropdown from 'components/Dropdown';
 
 type SceneType = 'nationality|residence';
 
 export default class UpdateProfileScene extends Component {
-
   static propTypes = {
     onButtonPress: PropTypes.func.isRequired,
     onFieldChange: PropTypes.func.isRequired,
@@ -24,14 +23,14 @@ export default class UpdateProfileScene extends Component {
 
   state = {
     showDropDown: false,
-    dropDownScene: null
+    dropDownField: null,
   };
 
-  setDropDownScene = (showDropDown: boolean, dropDownScene: SceneType) => {
+  showDropDown = (showDropDown: boolean, dropDownField: SceneType) => {
     this.setState({
       showDropDown,
-      dropDownScene
-    })
+      dropDownField,
+    });
   };
 
   render() {
@@ -45,12 +44,11 @@ export default class UpdateProfileScene extends Component {
       countries,
     } = this.props;
 
-    const {showDropDown, dropDownScene} = this.state;
+    const {showDropDown, dropDownField} = this.state;
 
     return (
       <View style={styles.container}>
-
-        <FormLabel title={I18n.t('mobile')}/>
+        <FormLabel title={I18n.t('mobile')} />
 
         <FormTextInput
           onChangeText={value => onFieldChange('mobile', value)}
@@ -60,48 +58,40 @@ export default class UpdateProfileScene extends Component {
           keyboardType="phone-pad"
         />
 
-        <FormLabel title={I18n.t('nationality')}/>
+        <FormLabel title={I18n.t('nationality')} />
 
-        {
-          showDropDown && dropDownScene === 'nationality' ?
-            <Dropdown
-              onClose={() => this.setDropDownScene(false, 'nationality')}
-              items={countries}
-              selectedValue={nationality.id}
-              onItemPress={onFieldChange}
-              field="nationality"
-            />
-            :
-            nationality.id ?
-              <Text
-                style={styles.textInput}
-                onPress={() => this.setDropDownScene(true, 'nationality')}
-              >{nationality.name_en}</Text>
-              :
-              <Text style={styles.textInput}
-                    onPress={() => this.setDropDownScene(true, 'nationality')}>{I18n.t('select')}</Text>
-        }
+        {showDropDown && dropDownField === 'nationality' ? (
+          <Dropdown
+            onClose={this.showDropDown}
+            items={countries}
+            selectedValue={nationality.id}
+            onItemPress={onFieldChange}
+            field="nationality"
+          />
+        ) : (
+          <Text
+            style={styles.textInput}
+            onPress={() => this.showDropDown(true, 'nationality')}>
+            {nationality.id ? nationality.name_en : I18n.t('select')}
+          </Text>
+        )}
 
-        <FormLabel title={I18n.t('residence_country')}/>
-        {
-          showDropDown && dropDownScene === 'residence' ?
-            <Dropdown
-              onClose={() => this.setDropDownScene(false, 'residence')}
-              items={countries}
-              selectedValue={residence.id}
-              onItemPress={onFieldChange}
-              field="residence"
-            />
-            :
-            residence.id ?
-              <Text
-                style={styles.textInput}
-                onPress={() => this.setDropDownScene(true, 'residence')}
-              >{residence.name_en}</Text>
-              :
-              <Text style={styles.textInput}
-                    onPress={() => this.setDropDownScene(true, 'residence')}>{I18n.t('select')}</Text>
-        }
+        <FormLabel title={I18n.t('residence_country')} />
+        {showDropDown && dropDownField === 'residence' ? (
+          <Dropdown
+            onClose={this.showDropDown}
+            items={countries}
+            selectedValue={residence.id}
+            onItemPress={onFieldChange}
+            field="residence"
+          />
+        ) : (
+          <Text
+            style={styles.textInput}
+            onPress={() => this.showDropDown(true, 'residence')}>
+            {residence.id ? residence.name_en : I18n.t('select')}
+          </Text>
+        )}
 
         <FormSubmit
           onPress={onButtonPress}
@@ -128,5 +118,5 @@ const styles = StyleSheet.create({
     fontWeight: '300',
     textAlign: 'left',
     marginBottom: 25,
-  }
+  },
 });

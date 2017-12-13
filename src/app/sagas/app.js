@@ -1,7 +1,7 @@
 import I18n from 'utils/locale';
 import isNull from 'lodash/isNull';
 import CodePush from 'react-native-code-push';
-import {all, call, fork, put, takeLatest,take} from 'redux-saga/effects';
+import {all, call, fork, put, takeLatest, take} from 'redux-saga/effects';
 import {I18nManager} from 'react-native';
 import {API} from 'app/common/api';
 import {ACTION_TYPES} from 'app/common/actions';
@@ -12,16 +12,15 @@ import {
   PUSH_TOKEN_KEY,
   AUTH_KEY,
   DEFAULT_LANGUAGE,
-  DEFAULT_COUNTRY
+  DEFAULT_COUNTRY,
 } from 'utils/env';
 import {API as AUTH_API} from 'guest/common/api';
 import {ACTION_TYPES as AUTH_ACTION_TYPES} from 'guest/common/actions';
 import {normalize} from 'normalizr';
 import {getStorageItem, setStorageItem} from 'utils/functions';
-import {Schema} from "utils/schema";
+import {Schema} from 'utils/schema';
 
 function* boot() {
-
   // 1- Set is the app has installed(run) before
   let installedStorageKey = yield call(getStorageItem, INSTALLED_KEY);
   if (!isNull(installedStorageKey)) {
@@ -46,11 +45,9 @@ function* boot() {
   const authStorageKey = yield call(getStorageItem, AUTH_KEY);
 
   if (!isNull(authStorageKey)) {
-
     const pushTokenStorageKey = yield call(getStorageItem, PUSH_TOKEN_KEY);
 
     try {
-
       let response = yield call(AUTH_API.login, {
         push_token: pushTokenStorageKey,
       });
@@ -62,7 +59,6 @@ function* boot() {
         entities: normalized.entities,
         payload: response.data,
       });
-
     } catch (error) {
       yield put({type: AUTH_ACTION_TYPES.LOGIN_FAILURE, error});
     }
@@ -102,7 +98,7 @@ function* setLanguage(action) {
 
 function* setPushToken(action) {
   try {
-    const apiToken = yield call(getStorageItem,AUTH_KEY);
+    const apiToken = yield call(getStorageItem, AUTH_KEY);
     const pushTokenStorageKey = yield call(getStorageItem, PUSH_TOKEN_KEY);
     const urlParams = `?api_token=${apiToken}`;
 
@@ -123,9 +119,7 @@ function* setPushToken(action) {
   }
 }
 
-function *makeNetworkRequest(params) {
-
-}
+function* makeNetworkRequest(params) {}
 
 function* bootMonitor() {
   yield takeLatest(ACTION_TYPES.BOOT_REQUEST, boot);
@@ -147,5 +141,5 @@ export const sagas = all([
   fork(bootMonitor),
   fork(setLanguageMonitor),
   fork(setPushTokenMonitor),
-  fork(networkRequestMonitor)
+  fork(networkRequestMonitor),
 ]);

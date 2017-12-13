@@ -10,7 +10,6 @@ export const ACTION_TYPES = {
   FETCH_PROFILE_REQUEST: '@driver/FETCH_PROFILE_REQUEST',
   FETCH_PROFILE_SUCCESS: '@driver/FETCH_PROFILE_SUCCESS',
   FETCH_PROFILE_FAILURE: '@driver/FETCH_PROFILE_FAILURE',
-
 };
 
 function fetchProfile(params) {
@@ -29,5 +28,5 @@ function saveProfile(params) {
 
 export const ACTIONS = {
   saveProfile,
-  fetchProfile
+  fetchProfile,
 };

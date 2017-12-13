@@ -3,7 +3,12 @@ import I18n from 'utils/locale';
 import {getStorageItem} from 'utils/functions';
 import {AUTH_KEY} from 'utils/env';
 
-export async function fetchAPI(url, method = 'GET', body = null, isBlob = false) {
+export async function fetchAPI(
+  url,
+  method = 'GET',
+  body = null,
+  isBlob = false,
+) {
   let delimiter = url.indexOf('?') === -1 ? '?' : '&';
 
   let localeAwareUrl = `${API_URL}/${url + delimiter}lang=${I18n.locale}`;

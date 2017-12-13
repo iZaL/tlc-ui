@@ -9,13 +9,13 @@ const countriesEntity = state => state.entities.users;
 const getAuthUser = createSelector(
   USER_SELECTORS.getAuthUser,
   countriesEntity,
-  (user,countries) => {
+  (user, countries) => {
     return {
       ...user,
-      profile:{
+      profile: {
         ...user.profile,
-        nationality
-      }
+        nationality,
+      },
     };
   },
 );

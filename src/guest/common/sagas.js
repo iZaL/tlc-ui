@@ -3,7 +3,11 @@ import {all, call, fork, put, takeLatest} from 'redux-saga/effects';
 import {NavigationActions} from 'react-navigation';
 import {API} from './api';
 import {ACTIONS as APP_ACTIONS} from 'app/common/actions';
-import {forgetStorageItem, getStorageItem, setStorageItem,} from 'utils/functions';
+import {
+  forgetStorageItem,
+  getStorageItem,
+  setStorageItem,
+} from 'utils/functions';
 import I18n from 'utils/locale';
 import {AUTH_KEY, PUSH_TOKEN_KEY} from 'utils/env';
 import {Schema} from 'utils/schema';

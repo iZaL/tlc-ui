@@ -1,12 +1,10 @@
 import {ACTION_TYPES} from 'driver/common/actions';
 
-const initialState = {
-};
+const initialState = {};
 
-export function reducer(state = initialState,action ={}) {
+export function reducer(state = initialState, action = {}) {
   switch (action.type) {
     default:
       return state;
   }
 }
-

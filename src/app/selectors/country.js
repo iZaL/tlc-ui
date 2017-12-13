@@ -9,9 +9,11 @@ const countriesModel = state => state.entities.countries;
 // const addressesEntity = state => state.entities.addresses;
 
 const getCountries = createSelector(
-  [entities,countriesModel],
-  (schema,collection) => {
-    return Object.keys(collection).map(id => denormalize(id, Schema.countries, schema));
+  [entities, countriesModel],
+  (schema, collection) => {
+    return Object.keys(collection).map(id =>
+      denormalize(id, Schema.countries, schema),
+    );
   },
 );
 

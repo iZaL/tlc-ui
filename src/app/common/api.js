@@ -12,5 +12,5 @@ function fetchCountries(params = '') {
 
 export const API = {
   storePushToken,
-  fetchCountries
+  fetchCountries,
 };

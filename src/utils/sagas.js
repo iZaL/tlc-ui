@@ -4,5 +4,5 @@ import {sagas as DRIVER_SAGAS} from 'driver/sagas';
 import {all} from 'redux-saga/effects';
 
 export default function* rootSaga() {
-  yield all([APP_SAGA, AUTH_SAGA,DRIVER_SAGAS]);
+  yield all([APP_SAGA, AUTH_SAGA, DRIVER_SAGAS]);
 }

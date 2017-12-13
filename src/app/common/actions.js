@@ -21,8 +21,7 @@ export const ACTION_TYPES = {
   FETCH_COUNTRIES_SUCCESS: '@app/FETCH_COUNTRIES_SUCCESS',
   FETCH_COUNTRIES_FAILURE: '@app/FETCH_COUNTRIES_FAILURE',
 
-  MAKE_NETWORK_REQUEST : '@app/MAKE_NETWORK_REQUEST'
-
+  MAKE_NETWORK_REQUEST: '@app/MAKE_NETWORK_REQUEST',
 };
 
 function boot() {
@@ -87,5 +86,5 @@ export const ACTIONS = {
   setInstalled,
   setLanguage,
   setPushToken,
-  fetchCountries
+  fetchCountries,
 };

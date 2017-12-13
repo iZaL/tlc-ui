@@ -12,5 +12,5 @@ function fetchProfile() {
 
 export const API = {
   saveProfile,
-  fetchProfile
+  fetchProfile,
 };

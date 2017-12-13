@@ -4,10 +4,9 @@ import {ACTION_TYPES} from 'app/common/actions';
 import {COUNTRY_KEY} from 'utils/env';
 import {normalize} from 'normalizr';
 import {getStorageItem, setStorageItem} from 'utils/functions';
-import {Schema} from "utils/schema";
+import {Schema} from 'utils/schema';
 
 function* setCountry(action) {
-
   let currentCountry = yield getStorageItem(COUNTRY_KEY);
 
   if (currentCountry === action.country) return;

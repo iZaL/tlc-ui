@@ -9,7 +9,7 @@ import {SafeAreaView} from 'react-native';
 import {connect} from 'react-redux';
 import {ACTIONS} from 'app/common/actions';
 import {ACTIONS as USER_ACTIONS} from 'guest/common/actions';
-import {SELECTORS as USER_SELECTOR} from "guest/common/selectors";
+import {SELECTORS as USER_SELECTOR} from 'guest/common/selectors';
 import {CODE_PUSH_ENABLED} from 'utils/env';
 
 class App extends Component {

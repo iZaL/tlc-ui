@@ -11,7 +11,7 @@ export default class LocalizedText extends Component {
   static propTypes = {
     en: PropTypes.string.required,
     ar: PropTypes.string,
-    hi:PropTypes.string
+    hi: PropTypes.string,
   };
 
   render() {
@@ -22,7 +22,7 @@ export default class LocalizedText extends Component {
 
     if (locale === 'hi') {
       content = hi ? hi : en;
-    } else if(locale === 'ar') {
+    } else if (locale === 'ar') {
       content = ar ? ar : en;
     } else {
       content = en;

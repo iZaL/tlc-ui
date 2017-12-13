@@ -1,6 +1,6 @@
 import {ACTION_TYPES} from 'app/common/actions';
 import merge from 'lodash/merge';
-import {DEFAULT_LANGUAGE} from "utils/env";
+import {DEFAULT_LANGUAGE} from 'utils/env';
 
 const initialState = {
   installed: false,
@@ -51,7 +51,7 @@ export function reducer(state = initialState, action = {}) {
 export function entities(
   state = {
     users: {},
-    countries:{},
+    countries: {},
     // profiles:{}
   },
   action = {},
