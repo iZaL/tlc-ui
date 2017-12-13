@@ -1,10 +1,11 @@
 import React from 'react';
 import {DrawerNavigator, StackNavigator} from 'react-navigation';
 import Drawer from 'driver/components/Drawer';
+import DrawerIcon from 'components/DrawerIcon';
 import Home from 'driver/Home';
 import Settings from 'driver/Settings';
-import Profile from 'driver/profile/index';
-import DrawerIcon from 'components/DrawerIcon';
+import ProfileHome from 'driver/profile/ProfileHome';
+import UpdateProfile from "driver/profile/UpdateProfile";
 
 const HomeStack = StackNavigator({
   Home: {
@@ -30,7 +31,7 @@ const SettingsStack = StackNavigator({
 
 const ProfileStack = StackNavigator({
   Settings: {
-    screen: Profile,
+    screen: ProfileHome,
     navigationOptions: ({navigation}) => ({
       gesturesEnabled: false,
       headerLeft: (
@@ -38,6 +39,9 @@ const ProfileStack = StackNavigator({
       ),
     }),
   },
+  UpdateProfile:{
+    screen: UpdateProfile
+  }
 });
 
 const DrawerRoutes = {

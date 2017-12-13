@@ -44,5 +44,11 @@
   "nationality": "Nationality",
   "update_profile": "Update Profile",
   "close" : "Close",
-  "select" : "Select"
+  "select" : "Select",
+  "update_truck" : "Update Truck",
+  "add_truck" : "Add Truck",
+  "add_routes" : "Add Routes",
+  "update_routes" : "Update Routes",
+  "add_trailer" : "Add Trailer",
+  "update_trailer" : "Update Trailer"
 }

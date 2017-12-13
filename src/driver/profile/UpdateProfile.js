@@ -13,7 +13,7 @@ type State = {
   residence_country_id: string,
 };
 
-class Profile extends Component {
+class UpdateProfile extends Component {
   static propTypes = {
     countries: PropTypes.array.isRequired,
   };
@@ -83,4 +83,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(Profile);
+export default connect(mapStateToProps)(UpdateProfile);
