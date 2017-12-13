@@ -1,12 +1,15 @@
 //@flow
 import PropTypes from 'prop-types';
 import React, {Component} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, ScrollView, Platform} from 'react-native';
 import I18n from 'utils/locale';
 import FormLabel from 'components/FormLabel';
 import FormTextInput from 'components/FormTextInput';
 import FormSubmit from 'components/FormSubmit';
 import Dropdown from 'components/Dropdown';
+import Separator from "components/Separator";
+import colors from "assets/theme/colors";
+import {isRTL} from "utils/locale";
 
 type SceneType = 'nationality|residence';
 
@@ -47,7 +50,7 @@ export default class UpdateProfileScene extends Component {
     const {showDropDown, dropDownField} = this.state;
 
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         <FormLabel title={I18n.t('mobile')} />
 
         <FormTextInput
@@ -76,6 +79,8 @@ export default class UpdateProfileScene extends Component {
           </Text>
         )}
 
+        <Separator style={{marginVertical:10}}/>
+
         <FormLabel title={I18n.t('residence_country')} />
         {showDropDown && dropDownField === 'residence' ? (
           <Dropdown
@@ -93,13 +98,15 @@ export default class UpdateProfileScene extends Component {
           </Text>
         )}
 
+        <Separator style={{marginVertical:10}}/>
+
         <FormSubmit
           onPress={onButtonPress}
           disabled={busy}
           title={busy ? I18n.t('saving') : I18n.t('update_profile')}
           style={{marginTop: 50}}
         />
-      </View>
+      </ScrollView>
     );
   }
 }
@@ -112,11 +119,11 @@ const styles = StyleSheet.create({
     paddingTop: 20,
   },
   textInput: {
-    height: 40,
     fontSize: 18,
     color: 'black',
     fontWeight: '300',
     textAlign: 'left',
-    marginBottom: 25,
+    paddingTop:5,
+    // marginBottom: 10,
   },
 });

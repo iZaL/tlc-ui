@@ -33,6 +33,6 @@ const styles = StyleSheet.create({
     color: 'black',
     fontWeight: '300',
     textAlign: isRTL ? 'right' : 'left',
-    marginBottom: 25,
+    marginBottom: 10,
   },
 });

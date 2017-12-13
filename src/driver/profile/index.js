@@ -30,7 +30,6 @@ class Profile extends Component {
   }
 
   componentWillReceiveProps(props) {
-    console.log('props', props);
     let {profile} = props.user;
     this.setState({
       mobile: profile.mobile || props.user.mobile,
@@ -64,8 +63,7 @@ class Profile extends Component {
   };
 
   render() {
-    let {user, countries} = this.props;
-    let {profile} = user;
+    let {countries} = this.props;
     return (
       <UpdateProfileScene
         {...this.state}
@@ -73,7 +71,6 @@ class Profile extends Component {
         onButtonPress={this.saveProfile}
         busy={false}
         countries={countries}
-        profile={profile}
       />
     );
   }
