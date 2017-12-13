@@ -14,11 +14,7 @@ const DrawerItem = ({title, onItemPress, active, icon, routeName}) => {
       onPress={() => onItemPress(routeName)}
       background={Touchable.Ripple(colors.primary, false)}>
       <View style={styles.container}>
-        <Ionicons
-          name={icon}
-          color={active ? colors.primary : colors.fadedBlack}
-          size={20}
-        />
+        {icon}
         <Text style={[styles.itemTitle, active && styles.activeTitle]}>
           {title}
         </Text>
@@ -46,6 +42,7 @@ const styles = StyleSheet.create({
     color: colors.fadedBlack,
     paddingHorizontal: 10,
     textAlign: 'left',
+    fontWeight:'500'
   },
   activeTitle: {
     color: colors.primary,

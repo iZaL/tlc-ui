@@ -19,7 +19,7 @@ const components = {
 
 const IconFactory = ({type,...rest}) => {
   const Icon = components[type];
-  return <Icon color={colors.darkGrey} {...rest} />;
+  return <Icon color={colors.fadedGrey} {...rest} />;
 };
 
 IconFactory.propTypes = {

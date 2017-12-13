@@ -9,7 +9,8 @@ export default {
   secondary: '#061d23',
   blue: '#1B82F9',
   fadedWhite: '#f7f7f7',
-  fadedBlack: '#352d34',
+  fadedBlack: '#393939',
+  fadedGrey: '#737373',
   black: '#000000',
   white: '#ffffff',
 };

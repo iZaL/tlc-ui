@@ -63,7 +63,8 @@ const styles = StyleSheet.create({
   },
   name:{
     fontSize:19,
-    color:colors.darkGrey,
-    fontWeight:'500'
+    color:colors.fadedBlack,
+    fontWeight:'500',
+    textAlign: 'left',
   }
 });
