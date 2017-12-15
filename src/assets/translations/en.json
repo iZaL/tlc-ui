@@ -50,5 +50,8 @@
   "add_routes" : "Add Routes",
   "update_routes" : "Update Routes",
   "add_trailer" : "Add Trailer",
-  "update_trailer" : "Update Trailer"
+  "update_trailer" : "Update Trailer",
+  "make" : "Make",
+  "model" : "Model",
+  "plate_number" : "Registration Plate Number"
 }

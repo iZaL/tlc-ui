@@ -68,13 +68,13 @@ export async function fetchAPI(
         }
       }
 
-      if (status !== 200 || !json.success) {
-        const unknownError = json.errors
-          ? json.errors
-          : `Unknown Error. ${statusType}`;
-        const errorMsg = json.message ? json.message : unknownError;
+      if (!json.success) {
+        const errorMsg = json.message
+          ? json.message
+          : `Unknown error occurred. STATUS : ${status}, STATUS TYPE : ${statusType}`;
         return Promise.reject(errorMsg);
       }
+
       return json;
     })
     .catch(e => {

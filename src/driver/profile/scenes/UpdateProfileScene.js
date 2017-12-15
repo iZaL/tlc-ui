@@ -7,9 +7,9 @@ import FormLabel from 'components/FormLabel';
 import FormTextInput from 'components/FormTextInput';
 import FormSubmit from 'components/FormSubmit';
 import Dropdown from 'components/Dropdown';
-import Separator from "components/Separator";
-import colors from "assets/theme/colors";
-import {isRTL} from "utils/locale";
+import Separator from 'components/Separator';
+import colors from 'assets/theme/colors';
+import {isRTL} from 'utils/locale';
 
 type SceneType = 'nationality|residence';
 
@@ -79,7 +79,7 @@ export default class UpdateProfileScene extends Component {
           </Text>
         )}
 
-        <Separator style={{marginVertical:10}}/>
+        <Separator style={{marginVertical: 10}} />
 
         <FormLabel title={I18n.t('residence_country')} />
         {showDropDown && dropDownField === 'residence' ? (
@@ -98,7 +98,7 @@ export default class UpdateProfileScene extends Component {
           </Text>
         )}
 
-        <Separator style={{marginVertical:10}}/>
+        <Separator style={{marginVertical: 10}} />
 
         <FormSubmit
           onPress={onButtonPress}
@@ -123,7 +123,6 @@ const styles = StyleSheet.create({
     color: 'black',
     fontWeight: '300',
     textAlign: 'left',
-    paddingTop:5,
-    // marginBottom: 10,
+    paddingTop: 5,
   },
 });

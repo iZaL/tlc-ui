@@ -1,7 +1,14 @@
 import React, {Component} from 'react';
 import {Text, View} from 'react-native';
+import {ACTIONS as PROFILE_ACTIONS} from "driver/common/actions";
+import {connect} from "react-redux";
 
-export default class Home extends Component {
+class Home extends Component {
+
+  componentDidMount() {
+    this.props.dispatch(PROFILE_ACTIONS.fetchProfile());
+  }
+
   render() {
     return (
       <View
@@ -15,3 +22,11 @@ export default class Home extends Component {
     );
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    state
+  };
+}
+
+export default connect(mapStateToProps)(Home);

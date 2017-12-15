@@ -27,7 +27,7 @@ DrawerItem.propTypes = {
   title: PropTypes.string.isRequired,
   onItemPress: PropTypes.func.isRequired,
   active: PropTypes.bool,
-  icon: PropTypes.string.isRequired,
+  icon: PropTypes.element.isRequired,
   routeName: PropTypes.string.isRequired,
 };
 
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     color: colors.fadedBlack,
     paddingHorizontal: 10,
     textAlign: 'left',
-    fontWeight:'500'
+    fontWeight: '500',
   },
   activeTitle: {
     color: colors.primary,

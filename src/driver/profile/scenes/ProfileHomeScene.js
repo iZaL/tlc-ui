@@ -3,17 +3,10 @@ import React, {Component} from 'react';
 import {ScrollView, StyleSheet} from 'react-native';
 
 export default class ProfileHomeScene extends Component {
-  static propTypes = {
-
-  };
+  static propTypes = {};
 
   render() {
-
-    return (
-      <ScrollView style={styles.container}>
-
-      </ScrollView>
-    );
+    return <ScrollView style={styles.container} />;
   }
 }
 
@@ -24,5 +17,4 @@ const styles = StyleSheet.create({
     padding: 10,
     paddingTop: 20,
   },
-
 });
