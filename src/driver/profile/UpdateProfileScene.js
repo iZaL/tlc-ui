@@ -82,7 +82,6 @@ class UpdateProfileScene extends Component {
   };
 
   render() {
-
     const {busy, countries} = this.props;
 
     const {residence, nationality, mobile} = this.state;

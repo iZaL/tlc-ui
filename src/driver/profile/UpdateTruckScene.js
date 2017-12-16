@@ -32,11 +32,11 @@ class UpdateTruckScene extends Component {
   state: State = {
     make: '',
     model: '',
-    plate_number:'',
-    registration_number:'',
-    registration_expiry:'',
-    max_weight:'',
-    year:'',
+    plate_number: '',
+    registration_number: '',
+    registration_expiry: '',
+    max_weight: '',
+    year: '',
     showDropDown: false,
     dropDownField: null,
   };
@@ -72,9 +72,7 @@ class UpdateTruckScene extends Component {
     }
   };
 
-  save = () => {
-
-  };
+  save = () => {};
 
   showDropDown = (showDropDown: boolean, dropDownField: SceneType) => {
     this.setState({
@@ -85,7 +83,14 @@ class UpdateTruckScene extends Component {
 
   render() {
     const {make, model, showDropDown, dropDownField} = this.state;
-    const {makes, models, plate, registration_expiry, max_weight, year} = this.props;
+    const {
+      makes,
+      models,
+      plate,
+      registration_expiry,
+      max_weight,
+      year,
+    } = this.props;
 
     return (
       <ScrollView
@@ -95,8 +100,7 @@ class UpdateTruckScene extends Component {
           padding: 10,
           paddingTop: 20,
         }}>
-
-        <FormLabel title={I18n.t('make')}/>
+        <FormLabel title={I18n.t('make')} />
 
         {showDropDown && dropDownField === 'make' ? (
           <Dropdown
@@ -120,9 +124,9 @@ class UpdateTruckScene extends Component {
           </Text>
         )}
 
-        <Separator style={{marginVertical: 10}}/>
+        <Separator style={{marginVertical: 10}} />
 
-        <FormLabel title={I18n.t('model')}/>
+        <FormLabel title={I18n.t('model')} />
 
         {showDropDown && dropDownField === 'model' ? (
           <Dropdown
@@ -146,7 +150,7 @@ class UpdateTruckScene extends Component {
           </Text>
         )}
 
-        <Separator style={{marginVertical: 10}}/>
+        <Separator style={{marginVertical: 10}} />
 
         <FormLabel title={I18n.t('plate_number')} />
 
@@ -160,7 +164,8 @@ class UpdateTruckScene extends Component {
         <FormLabel title={I18n.t('registration_expiry')} />
 
         <FormTextInput
-          onChangeText={value => this.onFieldChange('registration_expiry', value)}
+          onChangeText={value =>
+            this.onFieldChange('registration_expiry', value)}
           value={registration_expiry}
           maxLength={40}
           placeholder={I18n.t('registration_expiry')}
@@ -187,10 +192,9 @@ class UpdateTruckScene extends Component {
         <FormSubmit
           onPress={this.saveProfile}
           disabled={false}
-          title={ I18n.t('save')}
+          title={I18n.t('save')}
           style={{marginTop: 50}}
         />
-
       </ScrollView>
     );
   }

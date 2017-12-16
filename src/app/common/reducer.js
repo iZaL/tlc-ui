@@ -52,10 +52,10 @@ export function entities(
   state = {
     users: {},
     countries: {},
-    truck_makes:{},
-    truck_models:{},
-    trucks:{},
-    shippers:{}
+    truck_makes: {},
+    truck_models: {},
+    trucks: {},
+    shippers: {},
   },
   action = {},
 ) {

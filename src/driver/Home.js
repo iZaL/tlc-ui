@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
 import {Text, View} from 'react-native';
-import {ACTIONS as PROFILE_ACTIONS} from "driver/common/actions";
-import {connect} from "react-redux";
+import {ACTIONS as PROFILE_ACTIONS} from 'driver/common/actions';
+import {connect} from 'react-redux';
 
 class Home extends Component {
-
   componentDidMount() {
     this.props.dispatch(PROFILE_ACTIONS.fetchProfile());
   }
@@ -25,7 +24,7 @@ class Home extends Component {
 
 function mapStateToProps(state) {
   return {
-    state
+    state,
   };
 }
 

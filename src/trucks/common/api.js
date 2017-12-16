@@ -12,5 +12,5 @@ function fetchMyTruck() {
 
 export const API = {
   fetchTruckMakesModels,
-  fetchMyTruck
+  fetchMyTruck,
 };

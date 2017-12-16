@@ -14,11 +14,11 @@ function* fetchTruckMakesModels() {
     // console.log('normalizedMakes',normalizedMakes);
     // console.log('normalizedModels',normalizedModels);
     yield put({
-      type:'FETCH_TRUCK_MAKES',
+      type: 'FETCH_TRUCK_MAKES',
       entities: normalizedMakes.entities,
     });
     yield put({
-      type:'FETCH_TRUCK_MODELS',
+      type: 'FETCH_TRUCK_MODELS',
       entities: normalizedModels.entities,
     });
     yield put({
@@ -43,7 +43,10 @@ function* fetchMyTruck() {
 }
 
 function* fetchTruckMakesModelsMonitor() {
-  yield takeLatest(ACTION_TYPES.FETCH_TRUCK_MAKES_MODELS_REQUEST, fetchTruckMakesModels);
+  yield takeLatest(
+    ACTION_TYPES.FETCH_TRUCK_MAKES_MODELS_REQUEST,
+    fetchTruckMakesModels,
+  );
 }
 
 function* fetchMyTruckMonitor() {

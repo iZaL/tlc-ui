@@ -22,5 +22,5 @@ function fetchMyTruck() {
 
 export const ACTIONS = {
   fetchTruckMakesModels,
-  fetchMyTruck
+  fetchMyTruck,
 };
