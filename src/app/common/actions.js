@@ -1,5 +1,9 @@
 export const ACTION_TYPES = {
-  INSTALLED: '@app/INSTALLED',
+
+  INSTALL_REQUEST: '@app/INSTALL_REQUEST',
+  INSTALL_SUCCESS: '@app/INSTALL_SUCCESS',
+
+  // INSTALLED: '@app/INSTALLED',
 
   BOOT_REQUEST: '@app/BOOT_REQUEST',
   BOOT_SUCCESS: '@app/BOOT_SUCCESS',
@@ -44,7 +48,7 @@ function setCountry(country) {
 }
 function setInstalled(value) {
   return {
-    type: ACTION_TYPES.INSTALLED,
+    type: ACTION_TYPES.INSTALL_REQUEST,
     value,
   };
 }

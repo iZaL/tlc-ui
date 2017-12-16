@@ -14,7 +14,7 @@ const initialState = {
 
 export function reducer(state = initialState, action = {}) {
   switch (action.type) {
-    case ACTION_TYPES.INSTALLED:
+    case ACTION_TYPES.INSTALL_SUCCESS:
       return {...state, installed: action.value};
     case ACTION_TYPES.BOOT_REQUEST:
       return {...state, booted: false};

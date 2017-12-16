@@ -20,11 +20,16 @@ import {normalize} from 'normalizr';
 import {getStorageItem, setStorageItem} from 'utils/functions';
 import {Schema} from 'utils/schema';
 
+function* setInstalled() {
+  yield call(setStorageItem, INSTALLED_KEY, 'INSTALLED');
+  yield put({type: ACTION_TYPES.INSTALL_SUCCESS});
+}
+
 function* boot() {
   // 1- Set is the app has installed(run) before
   let installedStorageKey = yield call(getStorageItem, INSTALLED_KEY);
   if (!isNull(installedStorageKey)) {
-    yield put({type: ACTION_TYPES.INSTALLED, value: true});
+    yield put({type: ACTION_TYPES.INSTALL_SUCCESS, value: true});
   }
 
   // 2- Set language from history
@@ -137,9 +142,14 @@ export function* networkRequestMonitor() {
   yield takeLatest(ACTION_TYPES.MAKE_NETWORK_REQUEST, makeNetworkRequest);
 }
 
+export function* setInstalledMonitor() {
+  yield takeLatest(ACTION_TYPES.INSTALL_REQUEST, setInstalled);
+}
+
 export const sagas = all([
   fork(bootMonitor),
   fork(setLanguageMonitor),
   fork(setPushTokenMonitor),
   fork(networkRequestMonitor),
+  fork(setInstalledMonitor),
 ]);
