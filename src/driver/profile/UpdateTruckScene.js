@@ -85,7 +85,7 @@ class UpdateTruckScene extends Component {
 
   render() {
     const {make, model, showDropDown, dropDownField} = this.state;
-    const {makes, models, plate} = this.props;
+    const {makes, models, plate, registration_expiry, max_weight, year} = this.props;
 
     return (
       <ScrollView
@@ -155,6 +155,40 @@ class UpdateTruckScene extends Component {
           value={plate}
           maxLength={40}
           placeholder={I18n.t('plate_number')}
+        />
+
+        <FormLabel title={I18n.t('registration_expiry')} />
+
+        <FormTextInput
+          onChangeText={value => this.onFieldChange('registration_expiry', value)}
+          value={registration_expiry}
+          maxLength={40}
+          placeholder={I18n.t('registration_expiry')}
+        />
+
+        <FormLabel title={I18n.t('max_weight')} />
+
+        <FormTextInput
+          onChangeText={value => this.onFieldChange('max_weight', value)}
+          value={max_weight}
+          maxLength={40}
+          placeholder={I18n.t('max_weight')}
+        />
+
+        <FormLabel title={I18n.t('year')} />
+
+        <FormTextInput
+          onChangeText={value => this.onFieldChange('year', value)}
+          value={year}
+          maxLength={40}
+          placeholder={I18n.t('year')}
+        />
+
+        <FormSubmit
+          onPress={this.saveProfile}
+          disabled={false}
+          title={ I18n.t('save')}
+          style={{marginTop: 50}}
         />
 
       </ScrollView>

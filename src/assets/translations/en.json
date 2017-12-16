@@ -53,5 +53,8 @@
   "update_trailer" : "Update Trailer",
   "make" : "Make",
   "model" : "Model",
-  "plate_number" : "Registration Plate Number"
+  "plate_number" : "Registration Plate Number",
+  "registration_expiry" : "Registration Expiry Date",
+  "max_weight" : "Max Weight",
+  "year":"Year",
 }
