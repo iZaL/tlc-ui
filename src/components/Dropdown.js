@@ -10,7 +10,7 @@ export default class Dropdown extends PureComponent {
   static propTypes = {
     onClose: PropTypes.func.isRequired,
     onItemPress: PropTypes.func.isRequired,
-    selectedValue: PropTypes.number,
+    selectedValue: PropTypes.oneOfType([PropTypes.number,PropTypes.string]),
     items: PropTypes.array.isRequired,
     field: PropTypes.string.isRequired,
   };
@@ -27,9 +27,7 @@ export default class Dropdown extends PureComponent {
           <Picker.Item label={I18n.t('select')} value="" />
 
           {items.map(item => {
-            return (
-              <Picker.Item label={item.name_en} value={item.id} key={item.id} />
-            );
+            return typeof item === 'object' ? <Picker.Item label={item.name_en} value={item.id} key={item.id} /> : <Picker.Item label={item} value={item} key={item} />
           })}
         </Picker>
       </View>

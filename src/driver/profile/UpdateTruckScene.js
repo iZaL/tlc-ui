@@ -55,15 +55,22 @@ class UpdateTruckScene extends Component {
   // }
 
   onFieldChange = (field, value) => {
+    console.log('field',field);
+    console.log('value',value);
+
     if (value) {
-      const {makes, models} = this.props;
       let model;
+      const {makes, models} = this.props;
       switch (field) {
         case 'make':
           model = makes.find(record => record.id === value);
           break;
         case 'model':
           model = models.find(record => record.id === value);
+          break;
+        case 'year':
+          // model = models.find(record => record.id === value);
+          model = value;
           break;
         default:
           break;
@@ -82,14 +89,13 @@ class UpdateTruckScene extends Component {
   };
 
   render() {
-    const {make, model, showDropDown, dropDownField} = this.state;
+    const {make, model, showDropDown, dropDownField, year} = this.state;
     const {
       makes,
       models,
       plate,
       registration_expiry,
       max_weight,
-      year,
     } = this.props;
 
     return (
@@ -182,12 +188,27 @@ class UpdateTruckScene extends Component {
 
         <FormLabel title={I18n.t('year')} />
 
-        <FormTextInput
-          onChangeText={value => this.onFieldChange('year', value)}
-          value={year}
-          maxLength={40}
-          placeholder={I18n.t('year')}
-        />
+        {showDropDown && dropDownField === 'year' ? (
+          <Dropdown
+            onClose={this.showDropDown}
+            items={['2001','2002','2003','2004']}
+            selectedValue={year}
+            onItemPress={this.onFieldChange}
+            field="year"
+          />
+        ) : (
+          <Text
+            style={{
+              fontSize: 18,
+              color: 'black',
+              fontWeight: '300',
+              textAlign: 'left',
+              paddingTop: 5,
+            }}
+            onPress={() => this.showDropDown(true, 'year')}>
+            {year ? year : I18n.t('select')}
+          </Text>
+        )}
 
         <FormSubmit
           onPress={this.saveProfile}
