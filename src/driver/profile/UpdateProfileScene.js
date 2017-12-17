@@ -60,11 +60,11 @@ class UpdateProfileScene extends Component {
   saveProfile = () => {
     const {mobile, nationality, residence} = this.state;
 
-    this.setState({
-      mobile,
-      nationality,
-      residence,
-    });
+    // this.setState({
+    //   mobile,
+    //   nationality,
+    //   residence,
+    // });
 
     let params = {
       mobile,

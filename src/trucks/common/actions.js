@@ -6,6 +6,11 @@ export const ACTION_TYPES = {
   FETCH_MY_TRUCK_REQUEST: '@truck/FETCH_MY_TRUCK_REQUEST',
   FETCH_MY_TRUCK_SUCCESS: '@truck/FETCH_MY_TRUCK_SUCCESS',
   FETCH_MY_TRUCK_FAILURE: '@truck/FETCH_MY_TRUCK_FAILURE',
+
+  SAVE_TRUCK_REQUEST: '@truck/SAVE_TRUCK_REQUEST',
+  SAVE_TRUCK_SUCCESS: '@truck/SAVE_TRUCK_SUCCESS',
+  SAVE_TRUCK_FAILURE: '@truck/SAVE_TRUCK_FAILURE',
+
 };
 
 function fetchTruckMakesModels() {
@@ -20,7 +25,15 @@ function fetchMyTruck() {
   };
 }
 
+function saveTruck(params) {
+  return {
+    type: ACTION_TYPES.SAVE_TRUCK_REQUEST,
+    params
+  };
+}
+
 export const ACTIONS = {
   fetchTruckMakesModels,
   fetchMyTruck,
+  saveTruck
 };

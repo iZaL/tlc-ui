@@ -3,6 +3,7 @@ import {API} from 'driver/common/api';
 import {ACTION_TYPES} from 'driver/common/actions';
 import {Schema} from 'utils/schema';
 import {normalize} from 'normalizr';
+import {ACTIONS as APP_ACTIONS} from "app/common/actions";
 
 function* saveProfile(action) {
   try {
@@ -14,7 +15,7 @@ function* saveProfile(action) {
     });
     // yield put({type: ACTION_TYPES.PROFILE_UPDATE_SUCCESS, payload: response.data});
   } catch (error) {
-    // yield put(APP_ACTIONS.setNotification(error, 'error'));
+    yield put(APP_ACTIONS.setNotification(error, 'error'));
     yield put({type: ACTION_TYPES.PROFILE_UPDATE_FAILURE, error});
   }
 }

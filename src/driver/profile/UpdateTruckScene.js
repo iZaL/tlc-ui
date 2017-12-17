@@ -12,6 +12,7 @@ import Dropdown from 'components/Dropdown';
 import Separator from 'components/Separator';
 import FormSubmit from 'components/FormSubmit';
 import I18n from 'utils/locale';
+import DatePicker from "components/DatePicker";
 
 type State = {
   mobile: string,
@@ -30,8 +31,8 @@ class UpdateTruckScene extends Component {
   };
 
   state: State = {
-    make: '',
-    model: '',
+    make: {},
+    model: {},
     plate_number: '',
     registration_number: '',
     registration_expiry: '',
@@ -55,31 +56,39 @@ class UpdateTruckScene extends Component {
   // }
 
   onFieldChange = (field, value) => {
-    console.log('field',field);
-    console.log('value',value);
-
     if (value) {
-      let model;
+      let record;
       const {makes, models} = this.props;
       switch (field) {
         case 'make':
-          model = makes.find(record => record.id === value);
+          record = makes.find(record => record.id === value);
           break;
         case 'model':
-          model = models.find(record => record.id === value);
-          break;
-        case 'year':
-          // model = models.find(record => record.id === value);
-          model = value;
+          record = models.find(record => record.id === value);
           break;
         default:
+          record = value;
           break;
       }
-      this.setState({[field]: model});
+      this.setState({[field]: record});
     }
   };
 
-  save = () => {};
+  save = () => {
+    const {make, model, year, registration_expiry,registration_number,plate_number,max_weight} = this.state;
+
+    let params = {
+      make_id:make.id,
+      model_id:model.id,
+      year,
+      registration_expiry,
+      registration_number,
+      plate_number,
+      max_weight
+    };
+
+    this.props.dispatch(TRUCK_ACTIONS.saveTruck(params));
+  };
 
   showDropDown = (showDropDown: boolean, dropDownField: SceneType) => {
     this.setState({
@@ -89,13 +98,10 @@ class UpdateTruckScene extends Component {
   };
 
   render() {
-    const {make, model, showDropDown, dropDownField, year} = this.state;
+    const {make, model, showDropDown, dropDownField, year, registration_number,registration_expiry,plate_number,max_weight} = this.state;
     const {
       makes,
       models,
-      plate,
-      registration_expiry,
-      max_weight,
     } = this.props;
 
     return (
@@ -162,19 +168,32 @@ class UpdateTruckScene extends Component {
 
         <FormTextInput
           onChangeText={value => this.onFieldChange('plate_number', value)}
-          value={plate}
+          value={plate_number}
           maxLength={40}
           placeholder={I18n.t('plate_number')}
         />
 
-        <FormLabel title={I18n.t('registration_expiry')} />
+        <FormLabel title={I18n.t('registration_number')} />
 
         <FormTextInput
-          onChangeText={value =>
-            this.onFieldChange('registration_expiry', value)}
-          value={registration_expiry}
+          onChangeText={value => this.onFieldChange('registration_number', value)}
+          value={registration_number}
           maxLength={40}
-          placeholder={I18n.t('registration_expiry')}
+          placeholder={I18n.t('registration_number')}
+        />
+
+        <FormLabel title={I18n.t('registration_expiry')} />
+
+        <DatePicker
+          date={registration_expiry}
+          mode="date"
+          placeholder={I18n.t('select')}
+          format="YYYY-MM-DD"
+          minDate="2015-01-01"
+          maxDate="2040-01-01"
+          confirmBtnText={I18n.t('confirm')}
+          cancelBtnText={I18n.t('cancel')}
+          onDateChange={(date) => this.onFieldChange('registration_expiry', date)}
         />
 
         <FormLabel title={I18n.t('max_weight')} />
@@ -211,11 +230,13 @@ class UpdateTruckScene extends Component {
         )}
 
         <FormSubmit
-          onPress={this.saveProfile}
+          onPress={this.save}
           disabled={false}
           title={I18n.t('save')}
           style={{marginTop: 50}}
         />
+
+
       </ScrollView>
     );
   }

@@ -10,7 +10,13 @@ function fetchMyTruck() {
   return fetchAPI(url);
 }
 
+function saveTruck(body) {
+  const url = `trucks`;
+  return fetchAPI(url, 'POST', body);
+}
+
 export const API = {
   fetchTruckMakesModels,
   fetchMyTruck,
+  saveTruck,
 };

@@ -5,6 +5,7 @@ import {COUNTRY_KEY} from 'utils/env';
 import {normalize} from 'normalizr';
 import {getStorageItem, setStorageItem} from 'utils/functions';
 import {Schema} from 'utils/schema';
+import {ACTIONS as APP_ACTIONS} from "app/common/actions";
 
 function* fetchTruckMakesModels() {
   try {
@@ -29,16 +30,30 @@ function* fetchTruckMakesModels() {
   }
 }
 
-function* fetchMyTruck() {
+// function* fetchMyTruck() {
+//   try {
+//     const response = yield call(API.fetchMyTruck);
+//     const normalized = normalize(response.data, Schema.trucks);
+//     yield put({
+//       type: ACTION_TYPES.FETCH_MY_TRUCK_SUCCESS,
+//       entities: normalized.entities,
+//     });
+//   } catch (error) {
+//     yield put({type: ACTION_TYPES.FETCH_MY_TRUCK_FAILURE, error});
+//   }
+// }
+
+function* saveTruck(action) {
   try {
-    const response = yield call(API.fetchMyTruck);
-    const normalized = normalize(response.data, Schema.trucks);
-    yield put({
-      type: ACTION_TYPES.FETCH_MY_TRUCK_SUCCESS,
-      entities: normalized.entities,
-    });
+    const response = yield call(API.saveTruck, action.params);
+    // const normalized = normalize(response.data, Schema.users);
+    // yield put({
+    //   type: ACTION_TYPES.SAVE_TRUCK_SUCCESS,
+    //   entities: normalized.entities,
+    // });
   } catch (error) {
-    yield put({type: ACTION_TYPES.FETCH_MY_TRUCK_FAILURE, error});
+    yield put(APP_ACTIONS.setNotification(error, 'error'));
+    yield put({type: ACTION_TYPES.SAVE_TRUCK_FAILURE, error});
   }
 }
 
@@ -49,11 +64,16 @@ function* fetchTruckMakesModelsMonitor() {
   );
 }
 
-function* fetchMyTruckMonitor() {
-  yield takeLatest(ACTION_TYPES.FETCH_MY_TRUCK_REQUEST, fetchMyTruck);
+// function* fetchMyTruckMonitor() {
+//   yield takeLatest(ACTION_TYPES.FETCH_MY_TRUCK_REQUEST, fetchMyTruck);
+// }
+
+function* saveTruckMonitor() {
+  yield takeLatest(ACTION_TYPES.SAVE_TRUCK_REQUEST, saveTruck);
 }
 
 export const sagas = all([
   fork(fetchTruckMakesModelsMonitor),
-  fork(fetchMyTruckMonitor),
+  // fork(fetchMyTruckMonitor),
+  fork(saveTruckMonitor),
 ]);
