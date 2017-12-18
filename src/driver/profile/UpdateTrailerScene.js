@@ -6,14 +6,6 @@ import {SELECTORS as TRUCK_SELECTORS} from 'trucks/common/selectors';
 import {SELECTORS as USER_SELECTORS} from 'guest/common/selectors';
 import TrailersList from "trucks/components/TrailersList";
 
-type State = {
-  trailer:Object,
-  showDropDown: boolean,
-  dropDownField: 'residence|nationality',
-};
-
-type SceneType = 'nationality|residence';
-
 class UpdateTrailerScene extends Component {
 
   static propTypes = {

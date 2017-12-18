@@ -10,19 +10,22 @@ class ProfileHome extends Component {
   static propTypes = {};
 
   onListItemPress = route => {
-    let component;
+    let scene;
     switch (route) {
       case 'update_profile':
-        component = 'UpdateProfile';
+        scene = 'UpdateProfile';
         break;
       case 'update_truck':
-        component = 'UpdateTruck';
+        scene = 'UpdateTruck';
         break;
       case 'update_trailer':
-        component = 'UpdateTrailer';
+        scene = 'UpdateTrailer';
+        break;
+      case 'update_routes':
+        scene = 'UpdateRoutes';
         break;
     }
-    return this.props.navigation.navigate(component);
+    return this.props.navigation.navigate(scene);
   };
 
   render() {
