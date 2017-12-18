@@ -46,11 +46,11 @@ function* fetchTruckMakesModels() {
 function* saveTruck(action) {
   try {
     const response = yield call(API.saveTruck, action.params);
-    // const normalized = normalize(response.data, Schema.users);
-    // yield put({
-    //   type: ACTION_TYPES.SAVE_TRUCK_SUCCESS,
-    //   entities: normalized.entities,
-    // });
+    const normalized = normalize(response.data, Schema.users);
+    yield put({
+      type: ACTION_TYPES.SAVE_TRUCK_SUCCESS,
+      entities: normalized.entities,
+    });
   } catch (error) {
     yield put(APP_ACTIONS.setNotification(error, 'error'));
     yield put({type: ACTION_TYPES.SAVE_TRUCK_FAILURE, error});

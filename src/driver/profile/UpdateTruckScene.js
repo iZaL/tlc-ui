@@ -30,6 +30,10 @@ class UpdateTruckScene extends Component {
     models: PropTypes.array.isRequired,
   };
 
+  shouldComponentUpdate(nextProps,nextState) {
+    return nextState !== this.state;
+  }
+
   state: State = {
     make: {},
     model: {},
@@ -46,14 +50,12 @@ class UpdateTruckScene extends Component {
     this.props.dispatch(TRUCK_ACTIONS.fetchTruckMakesModels());
   }
 
-  // componentWillReceiveProps(props) {
-  //   let {profile} = props.user;
-  //   this.setState({
-  //     mobile: profile.mobile || props.user.mobile,
-  //     nationality: (profile && profile.nationality) || {},
-  //     residence: (profile && profile.residence) || {},
-  //   });
-  // }
+  componentWillReceiveProps(props) {
+    let {profile : {truck}} = props.user;
+    this.setState({
+      ...truck,
+    });
+  }
 
   onFieldChange = (field, value) => {
     if (value) {

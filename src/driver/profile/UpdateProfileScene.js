@@ -28,6 +28,10 @@ class UpdateProfileScene extends Component {
     countries: PropTypes.array.isRequired,
   };
 
+  shouldComponentUpdate(nextProps,nextState) {
+    return this.state !== nextState;
+  }
+
   state: State = {
     mobile: '',
     nationality: {},
@@ -38,11 +42,11 @@ class UpdateProfileScene extends Component {
 
   componentDidMount() {
     this.props.dispatch(APP_ACTIONS.fetchCountries());
-    // this.props.dispatch(PROFILE_ACTIONS.fetchProfile());
   }
 
   componentWillReceiveProps(props) {
     let {profile} = props.user;
+
     this.setState({
       mobile: profile.mobile || props.user.mobile,
       nationality: (profile && profile.nationality) || {},
@@ -59,12 +63,6 @@ class UpdateProfileScene extends Component {
 
   saveProfile = () => {
     const {mobile, nationality, residence} = this.state;
-
-    // this.setState({
-    //   mobile,
-    //   nationality,
-    //   residence,
-    // });
 
     let params = {
       mobile,
@@ -88,6 +86,7 @@ class UpdateProfileScene extends Component {
 
     const {showDropDown, dropDownField} = this.state;
 
+    console.log('updated',this.state);
     return (
       <ScrollView
         style={{
