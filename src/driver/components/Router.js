@@ -7,6 +7,7 @@ import Settings from 'driver/Settings';
 import ProfileHome from 'driver/profile/ProfileHome';
 import UpdateProfileScene from 'driver/profile/UpdateProfileScene';
 import UpdateTruckScene from 'driver/profile/UpdateTruckScene';
+import UpdateTrailerScene from "driver/profile/UpdateTrailerScene";
 
 const HomeStack = StackNavigator({
   Home: {
@@ -46,6 +47,9 @@ const ProfileStack = StackNavigator({
   UpdateTruck: {
     screen: UpdateTruckScene,
   },
+  UpdateTrailer:{
+    screen:UpdateTrailerScene
+  }
 });
 
 const DrawerRoutes = {

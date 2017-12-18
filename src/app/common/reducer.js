@@ -56,6 +56,8 @@ export function entities(
     truck_models: {},
     trucks: {},
     shippers: {},
+    trailer_makes:{},
+    trailers:{}
   },
   action = {},
 ) {

@@ -5,8 +5,13 @@ function fetchTruckMakesModels() {
   return fetchAPI(url);
 }
 
-function fetchMyTruck() {
-  const url = `trucks/get/self`;
+function fetchTrailerMakes() {
+  const url = `trailers/makes`;
+  return fetchAPI(url);
+}
+
+function fetchTrailers() {
+  const url = `trailers`;
   return fetchAPI(url);
 }
 
@@ -17,6 +22,7 @@ function saveTruck(body) {
 
 export const API = {
   fetchTruckMakesModels,
-  fetchMyTruck,
+  fetchTrailerMakes,
+  fetchTrailers,
   saveTruck,
 };

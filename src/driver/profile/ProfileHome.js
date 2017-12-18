@@ -17,6 +17,9 @@ class ProfileHome extends Component {
       case 'update_truck':
         component = 'UpdateTruck';
         break;
+      case 'update_trailer':
+        component = 'UpdateTrailer';
+        break;
     }
     return this.props.navigation.navigate(component);
   };
