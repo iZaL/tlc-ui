@@ -8,10 +8,10 @@ import {StyleSheet, Text, View} from 'react-native';
 import colors from 'assets/theme/colors';
 import I18n from 'utils/locale';
 
-const ListItem = ({onItemPress, name, icon}) => {
+const ListItem = ({onItemPress, name, icon, disabled = false}) => {
   return (
-    <Touchable onPress={() => onItemPress(name)}>
-      <View style={styles.container}>
+    <Touchable onPress={() => onItemPress(name)} disabled={disabled}>
+      <View style={[styles.container,disabled && {opacity:.5}]}>
         <View style={styles.iconContainer}>{icon}</View>
 
         <View style={styles.contentContainer}>

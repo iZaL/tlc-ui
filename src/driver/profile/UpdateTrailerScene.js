@@ -20,11 +20,6 @@ class UpdateTrailerScene extends Component {
     trailers: PropTypes.array.isRequired,
   };
 
-  state: State = {
-    showDropDown: false,
-    dropDownField: null,
-  };
-
   componentDidMount() {
     this.props.dispatch(TRUCK_ACTIONS.fetchTrailers());
   }
@@ -40,11 +35,11 @@ class UpdateTrailerScene extends Component {
   render() {
     const {
       trailers,
-      user : {profile : {truck : {trailer}}}
+      user : {profile : {truck }}
     } = this.props;
 
     return (
-      <TrailersList items={trailers} onItemPress={this.onTrailerListItemPress} activeItemID={trailer.id} />
+      <TrailersList items={trailers} onItemPress={this.onTrailerListItemPress} activeItemID={truck && truck.trailer ? truck.trailer.id : 0} />
     );
   }
 }

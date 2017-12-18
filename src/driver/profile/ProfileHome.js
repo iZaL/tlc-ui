@@ -4,6 +4,7 @@ import {ScrollView} from 'react-native';
 import ListItem from 'components/ListItem';
 import I18n from 'utils/locale';
 import IconFactory from '../../components/IconFactory';
+import {SELECTORS as USER_SELECTORS} from "guest/common/selectors";
 
 class ProfileHome extends Component {
   static propTypes = {};
@@ -25,6 +26,8 @@ class ProfileHome extends Component {
   };
 
   render() {
+    let {user} = this.props;
+    console.log('props',this.props);
     return (
       <ScrollView style={{flex: 1}}>
         <ListItem
@@ -49,6 +52,7 @@ class ProfileHome extends Component {
             />
           }
           name="update_trailer"
+          disabled={!user.profile.truck}
         />
         <ListItem
           onItemPress={this.onListItemPress}
@@ -60,6 +64,8 @@ class ProfileHome extends Component {
             />
           }
           name="update_routes"
+          disabled={!user.profile.truck}
+
         />
       </ScrollView>
     );
@@ -67,7 +73,9 @@ class ProfileHome extends Component {
 }
 
 function mapStateToProps(state) {
-  return {};
+  return {
+    user: USER_SELECTORS.getAuthUser(state),
+  };
 }
 
 export default connect(mapStateToProps)(ProfileHome);
