@@ -87,6 +87,31 @@ class UpdateProfileScene extends Component {
     const {showDropDown, dropDownField} = this.state;
 
     console.log('updated',this.state);
+
+
+    // {showDropDown && dropDownField === 'nationality' ? (
+    //   <Dropdown
+    //     onClose={this.showDropDown}
+    //     items={countries}
+    //     selectedValue={nationality.id}
+    //     onItemPress={this.onFieldChange}
+    //     field="nationality"
+    //   />
+    // ) : (
+    //   <Text
+    //     style={{
+    //       fontSize: 18,
+    //       color: 'black',
+    //       fontWeight: '300',
+    //       textAlign: 'left',
+    //       paddingTop: 5,
+    //     }}
+    //     onPress={() => this.showDropDown(true, 'nationality')}>
+    //     {nationality.id ? nationality.name_en : I18n.t('select')}
+    //   </Text>
+    // )}
+
+
     return (
       <ScrollView
         style={{
@@ -107,27 +132,27 @@ class UpdateProfileScene extends Component {
 
         <FormLabel title={I18n.t('nationality')} />
 
-        {/*{showDropDown && dropDownField === 'nationality' ? (*/}
-          <Dropdown
-            onClose={this.showDropDown}
-            items={countries}
-            selectedValue={nationality.id}
-            onItemPress={this.onFieldChange}
-            field="nationality"
-          />
-        // ) : (
-        //   <Text
-        //     style={{
-        //       fontSize: 18,
-        //       color: 'black',
-        //       fontWeight: '300',
-        //       textAlign: 'left',
-        //       paddingTop: 5,
-        //     }}
-        //     onPress={() => this.showDropDown(true, 'nationality')}>
-        //     {nationality.id ? nationality.name_en : I18n.t('select')}
-        //   </Text>
-        // )}
+         {showDropDown && dropDownField === 'nationality' ? (
+           <Dropdown
+             onClose={this.showDropDown}
+             items={countries}
+             selectedValue={nationality.id}
+             onItemPress={this.onFieldChange}
+             field="nationality"
+           />
+         ) : (
+           <Text
+             style={{
+               fontSize: 18,
+               color: 'black',
+               fontWeight: '300',
+               textAlign: 'left',
+               paddingTop: 5,
+             }}
+             onPress={() => this.showDropDown(true, 'nationality')}>
+             {nationality.id ? nationality.name_en : I18n.t('select')}
+           </Text>
+         )}
 
         <Separator style={{marginVertical: 10}} />
 

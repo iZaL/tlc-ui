@@ -3,7 +3,7 @@
  */
 import React, {PureComponent, Component} from 'react';
 import PropTypes from 'prop-types';
-import {Picker, StyleSheet, Text, View} from 'react-native';
+import {Platform,Picker, StyleSheet, Text, View} from 'react-native';
 import I18n from 'utils/locale';
 
 export default class Dropdown extends PureComponent {
@@ -20,7 +20,13 @@ export default class Dropdown extends PureComponent {
 
     return (
       <View style={styles.container}>
-        <Text onPress={() => onClose(false, field)}>{I18n.t('close')}</Text>
+
+        {
+          Platform.OS === 'ios' &&
+          <Text onPress={() => onClose(false, field)}>{I18n.t('close')}</Text>
+
+        }
+
         <Picker
           selectedValue={selectedValue}
           onValueChange={itemValue => onItemPress(field, itemValue)}>
