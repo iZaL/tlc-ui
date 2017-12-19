@@ -134,7 +134,7 @@ class UpdateTruckScene extends Component {
               paddingTop: 5,
             }}
             onPress={() => this.showDropDown(true, 'make')}>
-            {make.id ? make.name_en : I18n.t('select')}
+            {make.id ? make.name : I18n.t('select')}
           </Text>
         )}
 
@@ -160,7 +160,7 @@ class UpdateTruckScene extends Component {
               paddingTop: 5,
             }}
             onPress={() => this.showDropDown(true, 'model')}>
-            {model.id ? model.name_en : I18n.t('select')}
+            {model.id ? model.name : I18n.t('select')}
           </Text>
         )}
 

@@ -26,7 +26,7 @@ export default class RoutesList extends Component {
             backgroundColor: colors.primary,
           },
         ]}>
-          <Text>{item.name_en}</Text>
+          <Text>{item.name}</Text>
         </View>
       </Touchable>
     );

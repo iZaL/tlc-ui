@@ -133,7 +133,7 @@ class UpdateProfileScene extends Component {
               paddingTop: 5,
             }}
             onPress={() => this.showDropDown(true, 'nationality')}>
-            {nationality.id ? nationality.name_en : I18n.t('select')}
+            {nationality.id ? nationality.name : I18n.t('select')}
           </Text>
         )}
 
@@ -158,7 +158,7 @@ class UpdateProfileScene extends Component {
               paddingTop: 5,
             }}
             onPress={() => this.showDropDown(true, 'residence')}>
-            {residence.id ? residence.name_en : I18n.t('select')}
+            {residence.id ? residence.name : I18n.t('select')}
           </Text>
         )}
 

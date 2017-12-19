@@ -33,7 +33,7 @@ export default class Dropdown extends PureComponent {
           <Picker.Item label={I18n.t('select')} value="" />
 
           {items.map(item => {
-            return typeof item === 'object' ? <Picker.Item label={item.name_en} value={item.id} key={item.id} /> : <Picker.Item label={item} value={item} key={item} />
+            return typeof item === 'object' ? <Picker.Item label={item.name} value={item.id} key={item.id} /> : <Picker.Item label={item} value={item} key={item} />
           })}
         </Picker>
       </View>

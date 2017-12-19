@@ -8,6 +8,7 @@ const trailerMakesSchema = new schema.Entity('trailer_makes');
 const trailersSchema = new schema.Entity('trailers');
 const truckModelsSchema = new schema.Entity('truck_models');
 const shippersSchema = new schema.Entity('shippers');
+const routesSchema = new schema.Entity('routes');
 
 usersSchema.define({
   profile: {
@@ -18,12 +19,14 @@ usersSchema.define({
     licenses: [countriesSchema],
     blocked_list: [],
     shipper: shippersSchema,
+    routes:[routesSchema],
   },
 });
 
 trucksSchema.define({
   make: truckMakesSchema,
   model: truckModelsSchema,
+  trailer:trailersSchema
 });
 
 export const Schema = {
