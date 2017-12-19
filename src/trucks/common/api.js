@@ -19,5 +19,4 @@ export const API = {
   fetchTruckMakesModels,
   fetchTrailerMakes,
   fetchTrailers,
-  saveTruck,
 };

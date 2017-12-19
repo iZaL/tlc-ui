@@ -28,7 +28,7 @@ class UpdateProfileScene extends Component {
     countries: PropTypes.array.isRequired,
   };
 
-  shouldComponentUpdate(nextProps,nextState) {
+  shouldComponentUpdate(nextProps, nextState) {
     return this.state !== nextState;
   }
 
@@ -55,9 +55,18 @@ class UpdateProfileScene extends Component {
   }
 
   onFieldChange = (field, value) => {
+
     if (value) {
-      let country = this.props.countries.find(country => country.id === value);
-      this.setState({[field]: country});
+      switch (field) {
+        case 'nationality':
+        case 'residence':
+          let country = this.props.countries.find(country => country.id === value);
+          this.setState({[field]: country});
+          break;
+        default :
+          this.setState({[field]: value});
+          break;
+      }
     }
   };
 
@@ -94,7 +103,7 @@ class UpdateProfileScene extends Component {
           padding: 10,
           paddingTop: 20,
         }}>
-        <FormLabel title={I18n.t('mobile')} />
+        <FormLabel title={I18n.t('mobile')}/>
 
         <FormTextInput
           onChangeText={value => this.onFieldChange('mobile', value)}
@@ -104,33 +113,33 @@ class UpdateProfileScene extends Component {
           keyboardType="phone-pad"
         />
 
-        <FormLabel title={I18n.t('nationality')} />
+        <FormLabel title={I18n.t('nationality')}/>
 
-         {showDropDown && dropDownField === 'nationality' ? (
-           <Dropdown
-             onClose={this.showDropDown}
-             items={countries}
-             selectedValue={nationality.id}
-             onItemPress={this.onFieldChange}
-             field="nationality"
-           />
-         ) : (
-           <Text
-             style={{
-               fontSize: 18,
-               color: 'black',
-               fontWeight: '300',
-               textAlign: 'left',
-               paddingTop: 5,
-             }}
-             onPress={() => this.showDropDown(true, 'nationality')}>
-             {nationality.id ? nationality.name_en : I18n.t('select')}
-           </Text>
-         )}
+        {showDropDown && dropDownField === 'nationality' ? (
+          <Dropdown
+            onClose={this.showDropDown}
+            items={countries}
+            selectedValue={nationality.id}
+            onItemPress={this.onFieldChange}
+            field="nationality"
+          />
+        ) : (
+          <Text
+            style={{
+              fontSize: 18,
+              color: 'black',
+              fontWeight: '300',
+              textAlign: 'left',
+              paddingTop: 5,
+            }}
+            onPress={() => this.showDropDown(true, 'nationality')}>
+            {nationality.id ? nationality.name_en : I18n.t('select')}
+          </Text>
+        )}
 
-        <Separator style={{marginVertical: 10}} />
+        <Separator style={{marginVertical: 10}}/>
 
-        <FormLabel title={I18n.t('residence_country')} />
+        <FormLabel title={I18n.t('residence_country')}/>
         {showDropDown && dropDownField === 'residence' ? (
           <Dropdown
             onClose={this.showDropDown}
@@ -153,7 +162,7 @@ class UpdateProfileScene extends Component {
           </Text>
         )}
 
-        <Separator style={{marginVertical: 10}} />
+        <Separator style={{marginVertical: 10}}/>
 
         <FormSubmit
           onPress={this.saveProfile}
