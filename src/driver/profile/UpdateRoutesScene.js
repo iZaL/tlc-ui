@@ -1,18 +1,9 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {SELECTORS as COUNTRY_SELECTORS} from 'app/selectors/country';
-import {ACTIONS as TRUCK_ACTIONS} from 'trucks/common/actions';
-import {SELECTORS as TRUCK_SELECTORS} from 'trucks/common/selectors';
 import {SELECTORS as USER_SELECTORS} from 'guest/common/selectors';
-import {ScrollView, Text} from 'react-native';
-import FormLabel from 'components/FormLabel';
-import FormTextInput from 'components/FormTextInput';
-import Dropdown from 'components/Dropdown';
-import Separator from 'components/Separator';
-import FormSubmit from 'components/FormSubmit';
-import I18n from 'utils/locale';
-import DatePicker from "components/DatePicker";
+import {View} from 'react-native';
+import RoutesList from "routes/components/RoutesList";
+import {ACTIONS as TRUCK_ACTIONS} from "driver/common/actions";
 
 class UpdateRoutesScene extends Component {
 
@@ -20,20 +11,14 @@ class UpdateRoutesScene extends Component {
   };
 
   componentDidMount() {
-    // this.props.dispatch(TRUCK_ACTIONS.fetchTrailers());
+    this.props.dispatch(TRUCK_ACTIONS.fetchRoutes());
   }
+
   render() {
     return (
-      <ScrollView
-        style={{
-          flex: 1,
-          backgroundColor: 'white',
-          padding: 10,
-          paddingTop: 20,
-        }}>
+      <View style={{flex:1}}>
+      </View>
 
-
-      </ScrollView>
     );
   }
 }

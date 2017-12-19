@@ -101,14 +101,14 @@ function* updatePassword(action) {
     }
 
     yield put({
-      type: ACTION_TYPES.PASSWORD_UPDATE_SUCCESS,
+      type: ACTION_TYPES.UPDATE_PASSWORD_SUCCESS,
       payload: response.data,
     });
 
     yield put(NavigationActions.back(null));
   } catch (error) {
     yield put(APP_ACTIONS.setNotification(error, 'error'));
-    yield put({type: ACTION_TYPES.PASSWORD_UPDATE_FAILURE, error});
+    yield put({type: ACTION_TYPES.UPDATE_PASSWORD_FAILURE, error});
   }
 }
 
@@ -165,7 +165,7 @@ function* recoverPasswordMonitor() {
 }
 
 function* passwordUpdateMonitor() {
-  yield takeLatest(ACTION_TYPES.PASSWORD_UPDATE_REQUEST, updatePassword);
+  yield takeLatest(ACTION_TYPES.UPDATE_PASSWORD_REQUEST, updatePassword);
 }
 
 function* confirmOTPMonitor() {

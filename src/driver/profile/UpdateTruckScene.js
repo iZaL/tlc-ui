@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {SELECTORS as COUNTRY_SELECTORS} from 'app/selectors/country';
 import {ACTIONS as TRUCK_ACTIONS} from 'trucks/common/actions';
+import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
 import {SELECTORS as TRUCK_SELECTORS} from 'trucks/common/selectors';
 import {SELECTORS as USER_SELECTORS} from 'guest/common/selectors';
 import {ScrollView, Text} from 'react-native';
@@ -89,7 +89,7 @@ class UpdateTruckScene extends Component {
       max_weight
     };
 
-    this.props.dispatch(TRUCK_ACTIONS.saveTruck(params));
+    this.props.dispatch(DRIVER_ACTIONS.saveTruck(params));
   };
 
   showDropDown = (showDropDown: boolean, dropDownField: SceneType) => {

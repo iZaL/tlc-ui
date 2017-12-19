@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import {Text, View} from 'react-native';
-import {ACTIONS as PROFILE_ACTIONS} from 'driver/common/actions';
+import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
 import {connect} from 'react-redux';
 
 class Home extends Component {
   componentDidMount() {
-    this.props.dispatch(PROFILE_ACTIONS.fetchProfile());
+    this.props.dispatch(DRIVER_ACTIONS.fetchProfile());
   }
 
   render() {

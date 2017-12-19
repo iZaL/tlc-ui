@@ -72,7 +72,7 @@ export function reducer(state = initialState, action = {}) {
         showPasswordRecoverScene: false,
         showPasswordUpdateScene: true,
       };
-    case ACTION_TYPES.PASSWORD_UPDATE_SUCCESS:
+    case ACTION_TYPES.UPDATE_PASSWORD_SUCCESS:
       return {
         ...initialState,
         showPasswordUpdateScene: false,

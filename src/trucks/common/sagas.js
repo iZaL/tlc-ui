@@ -3,7 +3,6 @@ import {API} from 'trucks/common/api';
 import {ACTION_TYPES} from 'trucks/common/actions';
 import {normalize} from 'normalizr';
 import {Schema} from 'utils/schema';
-import {ACTIONS as APP_ACTIONS} from "app/common/actions";
 
 function* fetchTruckMakesModels() {
   try {
@@ -49,20 +48,6 @@ function* fetchTrailers() {
   }
 }
 
-function* saveTruck(action) {
-  try {
-    const response = yield call(API.saveTruck, action.params);
-    const normalized = normalize(response.data, Schema.users);
-    yield put({
-      type: ACTION_TYPES.SAVE_TRUCK_SUCCESS,
-      entities: normalized.entities,
-    });
-  } catch (error) {
-    yield put(APP_ACTIONS.setNotification(error, 'error'));
-    yield put({type: ACTION_TYPES.SAVE_TRUCK_FAILURE, error});
-  }
-}
-
 function* fetchTruckMakesModelsMonitor() {
   yield takeLatest(
     ACTION_TYPES.FETCH_TRUCK_MAKES_MODELS_REQUEST,
@@ -84,13 +69,8 @@ function* fetchTrailersMonitor() {
   );
 }
 
-function* saveTruckMonitor() {
-  yield takeLatest(ACTION_TYPES.SAVE_TRUCK_REQUEST, saveTruck);
-}
-
 export const sagas = all([
   fork(fetchTruckMakesModelsMonitor),
   fork(fetchTrailerMakesMonitor),
   fork(fetchTrailersMonitor),
-  fork(saveTruckMonitor),
 ]);
