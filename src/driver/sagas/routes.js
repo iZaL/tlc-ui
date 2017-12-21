@@ -20,6 +20,21 @@ function* saveRoute(action) {
   }
 }
 
+// function* syncRoute(action) {
+//   try {
+//     const response = yield call(API.saveRoute, action.params);
+//     const normalized = normalize(response.data, Schema.users);
+//     yield put({
+//       type: ACTION_TYPES.SAVE_ROUTE_SUCCESS,
+//       entities: normalized.entities,
+//     });
+//     // yield put({type: ACTION_TYPES.UPDATE_PROFILE_SUCCESS, payload: response.data});
+//   } catch (error) {
+//     yield put(APP_ACTIONS.setNotification(error, 'error'));
+//     yield put({type: ACTION_TYPES.SAVE_ROUTE_FAILURE, error});
+//   }
+// }
+
 function* fetchRoutes() {
   try {
     const response = yield call(API.fetchRoutes);
@@ -40,5 +55,9 @@ function* saveRouteMonitor() {
 function* fetchRoutesMonitor() {
   yield takeLatest(ACTION_TYPES.FETCH_ROUTES_REQUEST, fetchRoutes);
 }
+
+// function* syncRouteMonitor() {
+//   yield takeLatest(ACTION_TYPES.SYNC_ROUTE_REQUEST, syncRoute);
+// }
 
 export const sagas = all([fork(fetchRoutesMonitor), fork(saveRouteMonitor)]);

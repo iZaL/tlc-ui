@@ -26,7 +26,11 @@ export default class TrailersList extends Component {
             backgroundColor: colors.primary,
           },
         ]}>
-          <Text>{item.name}</Text>
+          <Text style={[
+            activeItemID === item.id && {
+              color: colors.white,
+            },
+          ]}>{item.name}</Text>
         </View>
       </Touchable>
     );

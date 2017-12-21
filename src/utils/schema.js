@@ -20,6 +20,7 @@ usersSchema.define({
     blocked_list: [],
     shipper: shippersSchema,
     routes:[routesSchema],
+    available_routes:[routesSchema]
   },
 });
 
@@ -27,6 +28,11 @@ trucksSchema.define({
   make: truckMakesSchema,
   model: truckModelsSchema,
   trailer:trailersSchema
+});
+
+routesSchema.define({
+  origin:countriesSchema,
+  destination:countriesSchema
 });
 
 export const Schema = {

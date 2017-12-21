@@ -24,6 +24,10 @@ export const ACTION_TYPES = {
   SAVE_TRUCK_SUCCESS: '@truck/SAVE_TRUCK_SUCCESS',
   SAVE_TRUCK_FAILURE: '@truck/SAVE_TRUCK_FAILURE',
 
+  SYNC_ROUTE_REQUEST: '@truck/SYNC_ROUTE_REQUEST',
+  SYNC_ROUTE_SUCCESS: '@truck/SYNC_ROUTE_SUCCESS',
+  SYNC_ROUTE_FAILURE: '@truck/SYNC_ROUTE_FAILURE',
+
 };
 
 function fetchProfile(params) {
@@ -54,9 +58,17 @@ function saveTruck(params) {
   };
 }
 
+function saveRoute(params) {
+  return {
+    type: ACTION_TYPES.SAVE_ROUTE_REQUEST,
+    params
+  };
+}
+
 export const ACTIONS = {
   saveProfile,
   fetchProfile,
   fetchRoutes,
   saveTruck,
+  saveRoute
 };

@@ -35,7 +35,6 @@ class ProfileHome extends Component {
 
   render() {
     let {user} = this.props;
-    console.log('props',this.props);
     return (
       <ScrollView style={{flex: 1}}>
         <ListItem
