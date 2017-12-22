@@ -6,6 +6,7 @@ import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
 import {SELECTORS as TRUCK_SELECTORS} from 'trucks/common/selectors';
 import {SELECTORS as USER_SELECTORS} from 'guest/common/selectors';
 import TrailersList from 'trucks/components/TrailersList';
+import {SELECTORS as DRIVER_SELECTORS} from "driver/common/selectors";
 
 class UpdateTrailerScene extends Component {
   static propTypes = {
@@ -25,13 +26,13 @@ class UpdateTrailerScene extends Component {
   };
 
   render() {
-    const {trailers, user: {profile: {truck}}} = this.props;
+    const {trailers, trailer} = this.props;
 
     return (
       <TrailersList
         items={trailers}
         onItemPress={this.onTrailerListItemPress}
-        activeItemID={truck && truck.trailer ? truck.trailer.id : 0}
+        activeItemID={trailer.id}
       />
     );
   }
@@ -39,7 +40,7 @@ class UpdateTrailerScene extends Component {
 
 function mapStateToProps(state) {
   return {
-    user: USER_SELECTORS.getAuthUser(state),
+    trailer: DRIVER_SELECTORS.getTrailer(state),
     trailers: TRUCK_SELECTORS.getTrailers(state),
   };
 }
