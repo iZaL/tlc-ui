@@ -24,8 +24,10 @@ type State = {
 type SceneType = 'nationality|residence';
 
 class UpdateProfileScene extends Component {
+
   static propTypes = {
     countries: PropTypes.array.isRequired,
+    profile:PropTypes.object.isRequired
   };
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -45,7 +47,7 @@ class UpdateProfileScene extends Component {
   }
 
   componentWillReceiveProps(props) {
-    let {profile} = props.user;
+    let {profile} = this.props;
 
     this.setState({
       mobile: profile.mobile || props.user.mobile,
@@ -90,7 +92,7 @@ class UpdateProfileScene extends Component {
   };
 
   render() {
-    const {busy, countries} = this.props;
+    const {countries} = this.props;
 
     const {residence, nationality, mobile} = this.state;
 
@@ -167,8 +169,7 @@ class UpdateProfileScene extends Component {
 
         <FormSubmit
           onPress={this.saveProfile}
-          disabled={busy}
-          title={busy ? I18n.t('saving') : I18n.t('update_profile')}
+          title={I18n.t('update_profile')}
           style={{marginTop: 50}}
         />
       </ScrollView>
@@ -178,9 +179,8 @@ class UpdateProfileScene extends Component {
 
 function mapStateToProps(state) {
   return {
-    user: USER_SELECTORS.getAuthUser(state),
+    profile: USER_SELECTORS.getAuthUserProfile(state),
     countries: COUNTRY_SELECTORS.getCountries(state),
-    busy: false,
   };
 }
 

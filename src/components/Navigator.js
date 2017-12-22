@@ -16,11 +16,11 @@ export default class Navigator extends Component {
 
   resolveScreenForUser = userType => {
     switch (userType) {
-      case 'driver':
+      case 10:
         return 'Driver';
-      case 'shipper':
+      case 20:
         return 'Shipper';
-      case 'admin':
+      case 100:
         return 'Admin';
       default:
         return 'Default';

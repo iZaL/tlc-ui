@@ -13,7 +13,19 @@ const getAuthUser = createSelector(
   usersEntity,
   getAuthUserID,
   (entities, users, userID) => {
-    return userID ? denormalize(userID, Schema.users, entities) : undefined;
+    return userID ? users[userID] : {};
+  },
+);
+
+/**
+ * for driver, shipper
+ */
+const getAuthUserProfile = createSelector(
+  schemas,
+  getAuthUser,
+  (entities,user) => {
+    let {id,schema} = user.profile[0];
+    return denormalize(id,Schema[schema],entities)
   },
 );
 
@@ -24,6 +36,7 @@ const getUsers = createSelector(schemas, usersEntity, (entities, users) => {
 export const SELECTORS = {
   isAuthenticated,
   getAuthUser,
+  getAuthUserProfile,
   getAuthUserType,
   getUsers,
 };

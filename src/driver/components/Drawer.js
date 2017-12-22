@@ -8,7 +8,6 @@ import I18n from 'utils/locale';
 import DrawerItem from 'components/DrawerItem';
 import Separator from 'components/Separator';
 import IconFactory from 'components/IconFactory';
-import ListItem from 'components/ListItem';
 
 export default class Drawer extends Component {
   onItemPress = (routeName: string) => {

@@ -1,8 +1,7 @@
 /**
  * @flow
  */
-import React from 'react';
-import Touchable from 'react-native-platform-touchable';
+import React,{Component} from 'react';
 import PropTypes from 'prop-types';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -17,13 +16,23 @@ const components = {
   FontAwesome,
 };
 
-const IconFactory = ({type, ...rest}) => {
-  const Icon = components[type];
-  return <Icon color={colors.fadedGrey} {...rest} />;
-};
+class IconFactory extends Component {
 
-IconFactory.propTypes = {
-  type: PropTypes.string.isRequired,
-};
+  static propTypes = {
+    type: PropTypes.string.isRequired,
+  };
+
+  shouldComponentUpdate(){
+    return false;
+  }
+
+  render() {
+    let {type, ...rest} = this.props;
+    const Icon = components[type];
+    return (
+      <Icon color={colors.fadedGrey} {...rest} />
+    );
+  }
+}
 
 export default IconFactory;

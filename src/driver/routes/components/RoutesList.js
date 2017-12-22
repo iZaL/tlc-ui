@@ -14,23 +14,20 @@ export default class RoutesList extends Component {
   }
 
   static propTypes = {
-    activeItemIDs: PropTypes.array.isRequired,
-    onItemAddPress: PropTypes.func.isRequired,
-    onItemRemovePress: PropTypes.func.isRequired,
+    onIconPress: PropTypes.func.isRequired,
+    onIconPress: PropTypes.func.isRequired,
     items: PropTypes.array.isRequired,
   };
 
   renderRow = ({item}) => {
     const {
-      onItemAddPress,
-      onItemRemovePress,
-      onPress,
-      activeItemIDs,
+      onIconPress,
+      onItemPress,
     } = this.props;
     return (
       <View style={styles.itemContainer}>
         <Touchable
-          onPress={() => onPress(item)}
+          onPress={() => onItemPress(item)}
           underlayColor="transparent"
           style={{flex: 1}}>
           <View style={styles.titleContainer}>
@@ -46,14 +43,11 @@ export default class RoutesList extends Component {
           </View>
         </Touchable>
         <Touchable
-          onPress={() =>
-            activeItemIDs.includes(item.id)
-              ? onItemRemovePress(item)
-              : onItemAddPress(item)}
+          onPress={() => onItemPress(item)}
           underlayColor="transparent"
           hitSlop={{top: 10, left: 10, right: 10, bottom: 10}}>
           <View style={styles.checkbox}>
-            {activeItemIDs && activeItemIDs.includes(item.id) ? (
+            {item.owned ? (
               <MaterialCommunityIcons
                 key={item.id}
                 name="checkbox-marked-circle"
@@ -75,7 +69,7 @@ export default class RoutesList extends Component {
   };
 
   render() {
-    const {items, activeItemIDs} = this.props;
+    const {items} = this.props;
 
     return (
       <FlatList
@@ -88,7 +82,6 @@ export default class RoutesList extends Component {
         contentInset={{bottom: 100}}
         ItemSeparatorComponent={() => <Separator />}
         keyExtractor={(item, index) => index}
-        extraData={activeItemIDs}
       />
     );
   }

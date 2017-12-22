@@ -2,12 +2,12 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {ScrollView} from 'react-native';
 import ListItem from 'components/ListItem';
-import I18n from 'utils/locale';
-import IconFactory from '../../components/IconFactory';
+import IconFactory from 'components/IconFactory';
 import {SELECTORS as USER_SELECTORS} from 'guest/common/selectors';
 import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
 
 class ProfileHome extends Component {
+
   static propTypes = {};
 
   componentDidMount() {
@@ -34,7 +34,9 @@ class ProfileHome extends Component {
   };
 
   render() {
-    let {user} = this.props;
+
+    const {profile} = this.props;
+
     return (
       <ScrollView style={{flex: 1}}>
         <ListItem
@@ -59,7 +61,7 @@ class ProfileHome extends Component {
             />
           }
           name="update_trailer"
-          disabled={!user.profile.truck}
+          disabled={!profile.truck}
         />
         <ListItem
           onItemPress={this.onListItemPress}
@@ -71,7 +73,7 @@ class ProfileHome extends Component {
             />
           }
           name="update_routes"
-          disabled={!user.profile.truck}
+          disabled={!profile.truck}
         />
       </ScrollView>
     );
@@ -80,7 +82,7 @@ class ProfileHome extends Component {
 
 function mapStateToProps(state) {
   return {
-    user: USER_SELECTORS.getAuthUser(state),
+    profile: USER_SELECTORS.getAuthUserProfile(state),
   };
 }
 

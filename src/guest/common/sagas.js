@@ -31,7 +31,7 @@ function* login(action) {
       payload: response.data,
     });
 
-    yield call(setStorageItem, AUTH_KEY, response.data.api_token);
+    yield call(setStorageItem, AUTH_KEY, response.meta.api_token || '');
 
     // yield put({
     //   type: AUTH_ACTION_TYPES.SYNC_USER_TO_SOCKET,
