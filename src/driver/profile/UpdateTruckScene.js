@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {ACTIONS as TRUCK_ACTIONS} from 'trucks/common/actions';
 import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
 import {SELECTORS as TRUCK_SELECTORS} from 'trucks/common/selectors';
-import {SELECTORS as USER_SELECTORS} from 'guest/common/selectors';
+import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
 import {ScrollView, Text} from 'react-native';
 import FormLabel from 'components/FormLabel';
 import FormTextInput from 'components/FormTextInput';
@@ -51,7 +51,7 @@ class UpdateTruckScene extends Component {
   }
 
   componentWillReceiveProps(props) {
-    let {profile: {truck}} = props.user;
+    let {truck} = props;
     this.setState({
       ...truck,
     });
@@ -119,7 +119,10 @@ class UpdateTruckScene extends Component {
       plate_number,
       max_weight,
     } = this.state;
+
     const {makes, models} = this.props;
+
+    console.log('props',this.props);
 
     return (
       <ScrollView
@@ -260,7 +263,7 @@ class UpdateTruckScene extends Component {
 
 function mapStateToProps(state) {
   return {
-    user: USER_SELECTORS.getAuthUser(state),
+    truck: DRIVER_SELECTORS.getTruck(state),
     makes: TRUCK_SELECTORS.getTruckMakes(state),
     models: TRUCK_SELECTORS.getTruckModels(state),
   };
