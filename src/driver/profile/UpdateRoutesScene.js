@@ -2,18 +2,16 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {SELECTORS as USER_SELECTORS} from 'guest/common/selectors';
 import {Modal, View} from 'react-native';
-import RoutesList from "driver/routes/components/RoutesList";
-import {ACTIONS as DRIVER_ACTIONS} from "driver/common/actions";
-import AddRoute from "driver/routes/components/AddRoute";
+import RoutesList from 'driver/routes/components/RoutesList';
+import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
+import AddRoute from 'driver/routes/components/AddRoute';
 
 class UpdateRoutesScene extends Component {
-
-  static propTypes = {
-  };
+  static propTypes = {};
 
   state = {
-    showModal:false,
-    activeItemIDs:[],
+    showModal: false,
+    activeItemIDs: [],
   };
 
   componentDidMount() {
@@ -21,66 +19,61 @@ class UpdateRoutesScene extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log('n',nextProps);
-    const {user:{profile:{routes}}} = nextProps
-    routes && this.setState({
-      activeItemIDs:routes.map(route => route.id)
-    });
+    const {user: {profile: {routes}}} = nextProps;
+    routes &&
+      this.setState({
+        activeItemIDs: routes.map(route => route.id),
+      });
   }
 
   hideModal = () => {
     this.setState({
-      showModal:false
-    })
+      showModal: false,
+    });
   };
 
-  toggleItem = (item:object) => {
-    console.log('item',item);
+  toggleItem = (item: object) => {
+    console.log('item', item);
 
-    this.props.dispatch(DRIVER_ACTIONS.saveRoute({
-      route_id:item.id
-    }));
+    this.props.dispatch(
+      DRIVER_ACTIONS.saveRoute({
+        route_id: item.id,
+      }),
+    );
   };
 
-  onItemAddPress = (item) => {
+  onItemAddPress = item => {
     console.log('add item');
 
-    if(this.state.activeItemIDs.includes(item.id)) {
+    if (this.state.activeItemIDs.includes(item.id)) {
       console.log('has item');
 
       this.setState({
-        activeItemIDs:this.state.activeItemIDs.filter(id => id !== item.id)
+        activeItemIDs: this.state.activeItemIDs.filter(id => id !== item.id),
       });
     }
     this.toggleItem(item);
   };
-  //
-  // onItemRemovePress = (item) => {
-  //   console.log('remove');
-  //   this.setState({
-  //     activeItemIDs:this.state.activeItemIDs.filter(id => id !== item.id)
-  //   });
-  //   this.toggleItem(item);
-  // };
+
+  onRoutesListItemPress = item => {
+    this.props.navigation.navigate('RoutesDetail', {
+      routeID: item.id,
+    });
+  };
 
   render() {
-    const {user:{profile:{routes,available_routes}}} = this.props;
+    const {user: {profile: {available_routes}}} = this.props;
 
     const {activeItemIDs} = this.state;
-    console.log('ac',activeItemIDs);
     return (
-      <View style={{flex:1}}>
-
-        <RoutesList items={available_routes || []} onItemAddPress={this.onItemAddPress} onItemRemovePress={this.onItemAddPress} activeItemIDs={activeItemIDs}/>
-
-        {/*<Modal*/}
-          {/*animationType="none"*/}
-          {/*visible={showModal}*/}
-          {/*onRequestClose={this.hideModal}*/}
-        {/*>*/}
-          {/*<AddRoute items={activeRoutes} onClose={()=>{}} onItemPress={()=>{}}/>*/}
-        {/*</Modal>*/}
-
+      <View style={{flex: 1}}>
+        <RoutesList
+          items={available_routes || []}
+          onPress={this.onRoutesListItemPress}
+          onItemAddPress={this.onItemAddPress}
+          onItemRemovePress={this.onItemAddPress}
+          activeItemIDs={activeItemIDs}
+        />
       </View>
     );
   }

@@ -3,20 +3,12 @@
  */
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {
-  FlatList,
-  StyleSheet,
-  Text,
-  TouchableHighlight,
-  View,
-} from 'react-native';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import colors from 'assets/theme/colors';
+import {FlatList, StyleSheet, Text, View} from 'react-native';
 import Separator from 'components/Separator';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Touchable from 'react-native-platform-touchable';
 
 export default class RoutesList extends Component {
-
-
   shouldComponentUpdate(nextProps) {
     return nextProps.items !== this.props.items;
   }
@@ -29,33 +21,61 @@ export default class RoutesList extends Component {
   };
 
   renderRow = ({item}) => {
-    const {onItemAddPress, onItemRemovePress, activeItemIDs} = this.props;
+    const {
+      onItemAddPress,
+      onItemRemovePress,
+      onPress,
+      activeItemIDs,
+    } = this.props;
     return (
-      <TouchableHighlight
-        onPress={() => activeItemIDs.includes(item.id) ? onItemRemovePress(item) : onItemAddPress(item) }
-        underlayColor="transparent"
-      >
-        <View style={styles.itemContainer}>
-          <Text style={styles.title}>{item.origin.name}</Text>
-          <Text style={styles.title}>{item.destination.name}</Text>
+      <View style={styles.itemContainer}>
+        <Touchable
+          onPress={() => onPress(item)}
+          underlayColor="transparent"
+          style={{flex: 1}}>
+          <View style={styles.titleContainer}>
+            <Text style={styles.title}>{item.origin.name}</Text>
+            <MaterialCommunityIcons
+              key={item.id}
+              name="ray-start-arrow"
+              size={30}
+              color="green"
+              style={styles.arrow}
+            />
+            <Text style={styles.title}>{item.destination.name}</Text>
+          </View>
+        </Touchable>
+        <Touchable
+          onPress={() =>
+            activeItemIDs.includes(item.id)
+              ? onItemRemovePress(item)
+              : onItemAddPress(item)}
+          underlayColor="transparent"
+          hitSlop={{top: 10, left: 10, right: 10, bottom: 10}}>
           <View style={styles.checkbox}>
-            {activeItemIDs &&
-            activeItemIDs.includes(item.id) && (
-              <FontAwesome
+            {activeItemIDs && activeItemIDs.includes(item.id) ? (
+              <MaterialCommunityIcons
                 key={item.id}
-                name="check"
-                size={16}
+                name="checkbox-marked-circle"
+                size={30}
+                color="green"
+              />
+            ) : (
+              <MaterialCommunityIcons
+                key={item.id}
+                name="checkbox-blank-circle-outline"
+                size={30}
                 color="green"
               />
             )}
           </View>
-        </View>
-      </TouchableHighlight>
+        </Touchable>
+      </View>
     );
   };
 
   render() {
-    const {items,activeItemIDs} = this.props;
+    const {items, activeItemIDs} = this.props;
 
     return (
       <FlatList
@@ -66,9 +86,7 @@ export default class RoutesList extends Component {
         automaticallyAdjustContentInsets={false}
         showsVerticalScrollIndicator={false}
         contentInset={{bottom: 100}}
-        ItemSeparatorComponent={() => (
-          <Separator/>
-        )}
+        ItemSeparatorComponent={() => <Separator />}
         keyExtractor={(item, index) => index}
         extraData={activeItemIDs}
       />
@@ -76,9 +94,7 @@ export default class RoutesList extends Component {
   }
 }
 
-
 const styles = StyleSheet.create({
-
   listContainer: {
     flex: 1,
   },
@@ -86,21 +102,23 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor:'white',
+    backgroundColor: 'white',
     padding: 10,
   },
-  title: {
+  titleContainer: {
     flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  title: {
     textAlign: 'left',
+    fontSize: 18,
   },
   checkbox: {
-    width: 24,
-    height: 24,
-    borderRadius: 12,
-    borderColor: colors.darkGrey,
-    borderWidth: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginHorizontal: 10,
+    paddingLeft: 10,
+  },
+  arrow: {
+    paddingHorizontal: 10,
+    paddingTop: 5,
   },
 });

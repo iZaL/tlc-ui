@@ -13,7 +13,7 @@ function* fetchTruckMakesModels() {
       type: ACTION_TYPES.FETCH_TRUCK_MAKES_MODELS_SUCCESS,
       entities: {
         ...normalizedMakes.entities,
-        ...normalizedModels.entities
+        ...normalizedModels.entities,
       },
     });
   } catch (error) {
@@ -28,7 +28,7 @@ function* fetchTrailerMakes() {
     // const normalizedTrucks = normalize(response.trucks, Schema.trucks);
     yield put({
       type: ACTION_TYPES.FETCH_TRAILER_MAKES_SUCCESS,
-      entities: normalized.entities
+      entities: normalized.entities,
     });
   } catch (error) {
     yield put({type: ACTION_TYPES.FETCH_TRAILER_MAKES_FAILURE, error});
@@ -41,7 +41,7 @@ function* fetchTrailers() {
     const normalized = normalize(response.data, [Schema.trailers]);
     yield put({
       type: ACTION_TYPES.FETCH_TRAILERS_SUCCESS,
-      entities: normalized.entities
+      entities: normalized.entities,
     });
   } catch (error) {
     yield put({type: ACTION_TYPES.FETCH_TRAILERS_FAILURE, error});
@@ -56,17 +56,11 @@ function* fetchTruckMakesModelsMonitor() {
 }
 
 function* fetchTrailerMakesMonitor() {
-  yield takeLatest(
-    ACTION_TYPES.FETCH_TRAILER_MAKES_REQUEST,
-    fetchTrailerMakes,
-  );
+  yield takeLatest(ACTION_TYPES.FETCH_TRAILER_MAKES_REQUEST, fetchTrailerMakes);
 }
 
 function* fetchTrailersMonitor() {
-  yield takeLatest(
-    ACTION_TYPES.FETCH_TRAILERS_REQUEST,
-    fetchTrailers,
-  );
+  yield takeLatest(ACTION_TYPES.FETCH_TRAILERS_REQUEST, fetchTrailers);
 }
 
 export const sagas = all([

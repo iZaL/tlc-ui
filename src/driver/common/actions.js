@@ -3,7 +3,6 @@
  */
 
 export const ACTION_TYPES = {
-
   UPDATE_PROFILE_REQUEST: '@driver/UPDATE_PROFILE_REQUEST',
   UPDATE_PROFILE_SUCCESS: '@driver/UPDATE_PROFILE_SUCCESS',
   UPDATE_PROFILE_FAILURE: '@driver/UPDATE_PROFILE_FAILURE',
@@ -27,7 +26,6 @@ export const ACTION_TYPES = {
   SYNC_ROUTE_REQUEST: '@truck/SYNC_ROUTE_REQUEST',
   SYNC_ROUTE_SUCCESS: '@truck/SYNC_ROUTE_SUCCESS',
   SYNC_ROUTE_FAILURE: '@truck/SYNC_ROUTE_FAILURE',
-
 };
 
 function fetchProfile(params) {
@@ -54,14 +52,14 @@ function saveProfile(params) {
 function saveTruck(params) {
   return {
     type: ACTION_TYPES.SAVE_TRUCK_REQUEST,
-    params
+    params,
   };
 }
 
 function saveRoute(params) {
   return {
     type: ACTION_TYPES.SAVE_ROUTE_REQUEST,
-    params
+    params,
   };
 }
 
@@ -70,5 +68,5 @@ export const ACTIONS = {
   fetchProfile,
   fetchRoutes,
   saveTruck,
-  saveRoute
+  saveRoute,
 };

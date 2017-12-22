@@ -11,7 +11,7 @@ import I18n from 'utils/locale';
 const ListItem = ({onItemPress, name, icon, disabled = false}) => {
   return (
     <Touchable onPress={() => onItemPress(name)} disabled={disabled}>
-      <View style={[styles.container,disabled && {opacity:.5}]}>
+      <View style={[styles.container, disabled && {opacity: 0.5}]}>
         <View style={styles.iconContainer}>{icon}</View>
 
         <View style={styles.contentContainer}>

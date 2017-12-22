@@ -4,8 +4,8 @@ import {ScrollView} from 'react-native';
 import ListItem from 'components/ListItem';
 import I18n from 'utils/locale';
 import IconFactory from '../../components/IconFactory';
-import {SELECTORS as USER_SELECTORS} from "guest/common/selectors";
-import {ACTIONS as DRIVER_ACTIONS} from "driver/common/actions";
+import {SELECTORS as USER_SELECTORS} from 'guest/common/selectors';
+import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
 
 class ProfileHome extends Component {
   static propTypes = {};
@@ -72,7 +72,6 @@ class ProfileHome extends Component {
           }
           name="update_routes"
           disabled={!user.profile.truck}
-
         />
       </ScrollView>
     );

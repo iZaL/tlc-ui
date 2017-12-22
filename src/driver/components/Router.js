@@ -7,8 +7,9 @@ import Settings from 'driver/Settings';
 import ProfileHome from 'driver/profile/ProfileHome';
 import UpdateProfileScene from 'driver/profile/UpdateProfileScene';
 import UpdateTruckScene from 'driver/profile/UpdateTruckScene';
-import UpdateTrailerScene from "driver/profile/UpdateTrailerScene";
-import UpdateRoutesScene from "driver/profile/UpdateRoutesScene";
+import UpdateTrailerScene from 'driver/profile/UpdateTrailerScene';
+import UpdateRoutesScene from 'driver/profile/UpdateRoutesScene';
+import RoutesDetailScene from 'driver/routes/RoutesDetailScene';
 
 const HomeStack = StackNavigator({
   Home: {
@@ -48,12 +49,16 @@ const ProfileStack = StackNavigator({
   UpdateTruck: {
     screen: UpdateTruckScene,
   },
-  UpdateTrailer:{
-    screen:UpdateTrailerScene
+  UpdateTrailer: {
+    screen: UpdateTrailerScene,
   },
-  UpdateRoutes:{
-    screen:UpdateRoutesScene
-  },});
+  UpdateRoutes: {
+    screen: UpdateRoutesScene,
+  },
+  RoutesDetail: {
+    screen: RoutesDetailScene,
+  },
+});
 
 const DrawerRoutes = {
   HomeStack: {
@@ -71,5 +76,5 @@ export const Routes = DrawerNavigator(DrawerRoutes, {
   gesturesEnabled: false,
   contentComponent: props => <Drawer {...props} />,
   drawerWidth: 275,
-  initialRouteName:'ProfileStack'
+  initialRouteName: 'ProfileStack',
 });

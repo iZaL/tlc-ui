@@ -12,7 +12,7 @@ import Dropdown from 'components/Dropdown';
 import Separator from 'components/Separator';
 import FormSubmit from 'components/FormSubmit';
 import I18n from 'utils/locale';
-import DatePicker from "components/DatePicker";
+import DatePicker from 'components/DatePicker';
 
 type State = {
   mobile: string,
@@ -30,7 +30,7 @@ class UpdateTruckScene extends Component {
     models: PropTypes.array.isRequired,
   };
 
-  shouldComponentUpdate(nextProps,nextState) {
+  shouldComponentUpdate(nextProps, nextState) {
     return nextState !== this.state;
   }
 
@@ -51,7 +51,7 @@ class UpdateTruckScene extends Component {
   }
 
   componentWillReceiveProps(props) {
-    let {profile : {truck}} = props.user;
+    let {profile: {truck}} = props.user;
     this.setState({
       ...truck,
     });
@@ -77,16 +77,24 @@ class UpdateTruckScene extends Component {
   };
 
   save = () => {
-    const {make, model, year, registration_expiry,registration_number,plate_number,max_weight} = this.state;
-
-    let params = {
-      make_id:make.id,
-      model_id:model.id,
+    const {
+      make,
+      model,
       year,
       registration_expiry,
       registration_number,
       plate_number,
-      max_weight
+      max_weight,
+    } = this.state;
+
+    let params = {
+      make_id: make.id,
+      model_id: model.id,
+      year,
+      registration_expiry,
+      registration_number,
+      plate_number,
+      max_weight,
     };
 
     this.props.dispatch(DRIVER_ACTIONS.saveTruck(params));
@@ -100,11 +108,18 @@ class UpdateTruckScene extends Component {
   };
 
   render() {
-    const {make, model, showDropDown, dropDownField, year, registration_number,registration_expiry,plate_number,max_weight} = this.state;
     const {
-      makes,
-      models,
-    } = this.props;
+      make,
+      model,
+      showDropDown,
+      dropDownField,
+      year,
+      registration_number,
+      registration_expiry,
+      plate_number,
+      max_weight,
+    } = this.state;
+    const {makes, models} = this.props;
 
     return (
       <ScrollView
@@ -178,7 +193,8 @@ class UpdateTruckScene extends Component {
         <FormLabel title={I18n.t('registration_number')} />
 
         <FormTextInput
-          onChangeText={value => this.onFieldChange('registration_number', value)}
+          onChangeText={value =>
+            this.onFieldChange('registration_number', value)}
           value={registration_number}
           maxLength={40}
           placeholder={I18n.t('registration_number')}
@@ -195,7 +211,7 @@ class UpdateTruckScene extends Component {
           maxDate="2040-01-01"
           confirmBtnText={I18n.t('confirm')}
           cancelBtnText={I18n.t('cancel')}
-          onDateChange={(date) => this.onFieldChange('registration_expiry', date)}
+          onDateChange={date => this.onFieldChange('registration_expiry', date)}
         />
 
         <FormLabel title={I18n.t('max_weight')} />
@@ -212,7 +228,7 @@ class UpdateTruckScene extends Component {
         {showDropDown && dropDownField === 'year' ? (
           <Dropdown
             onClose={this.showDropDown}
-            items={['2001','2002','2003','2004']}
+            items={['2001', '2002', '2003', '2004']}
             selectedValue={year}
             onItemPress={this.onFieldChange}
             field="year"
@@ -237,8 +253,6 @@ class UpdateTruckScene extends Component {
           title={I18n.t('save')}
           style={{marginTop: 50}}
         />
-
-
       </ScrollView>
     );
   }

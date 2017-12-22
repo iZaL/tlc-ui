@@ -55,15 +55,16 @@ class UpdateProfileScene extends Component {
   }
 
   onFieldChange = (field, value) => {
-
     if (value) {
       switch (field) {
         case 'nationality':
         case 'residence':
-          let country = this.props.countries.find(country => country.id === value);
+          let country = this.props.countries.find(
+            country => country.id === value,
+          );
           this.setState({[field]: country});
           break;
-        default :
+        default:
           this.setState({[field]: value});
           break;
       }
@@ -103,7 +104,7 @@ class UpdateProfileScene extends Component {
           padding: 10,
           paddingTop: 20,
         }}>
-        <FormLabel title={I18n.t('mobile')}/>
+        <FormLabel title={I18n.t('mobile')} />
 
         <FormTextInput
           onChangeText={value => this.onFieldChange('mobile', value)}
@@ -113,7 +114,7 @@ class UpdateProfileScene extends Component {
           keyboardType="phone-pad"
         />
 
-        <FormLabel title={I18n.t('nationality')}/>
+        <FormLabel title={I18n.t('nationality')} />
 
         {showDropDown && dropDownField === 'nationality' ? (
           <Dropdown
@@ -137,9 +138,9 @@ class UpdateProfileScene extends Component {
           </Text>
         )}
 
-        <Separator style={{marginVertical: 10}}/>
+        <Separator style={{marginVertical: 10}} />
 
-        <FormLabel title={I18n.t('residence_country')}/>
+        <FormLabel title={I18n.t('residence_country')} />
         {showDropDown && dropDownField === 'residence' ? (
           <Dropdown
             onClose={this.showDropDown}
@@ -162,7 +163,7 @@ class UpdateProfileScene extends Component {
           </Text>
         )}
 
-        <Separator style={{marginVertical: 10}}/>
+        <Separator style={{marginVertical: 10}} />
 
         <FormSubmit
           onPress={this.saveProfile}

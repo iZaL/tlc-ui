@@ -6,7 +6,6 @@ import colors from 'assets/theme/colors';
 import Separator from 'components/Separator';
 
 export default class TrailersList extends Component {
-
   static propTypes = {
     items: PropTypes.array.isRequired,
     onItemPress: PropTypes.func.isRequired,
@@ -18,19 +17,24 @@ export default class TrailersList extends Component {
   }
 
   renderItem = ({item}) => {
-    const {onItemPress,activeItemID} = this.props;
+    const {onItemPress, activeItemID} = this.props;
     return (
       <Touchable onPress={() => onItemPress(item)} key={item.id}>
-        <View style={[styles.itemContainer,
-          activeItemID === item.id && {
-            backgroundColor: colors.primary,
-          },
-        ]}>
-          <Text style={[
+        <View
+          style={[
+            styles.itemContainer,
             activeItemID === item.id && {
-              color: colors.white,
+              backgroundColor: colors.primary,
             },
-          ]}>{item.name}</Text>
+          ]}>
+          <Text
+            style={[
+              activeItemID === item.id && {
+                color: colors.white,
+              },
+            ]}>
+            {item.name}
+          </Text>
         </View>
       </Touchable>
     );
@@ -49,7 +53,6 @@ export default class TrailersList extends Component {
     );
   }
 }
-
 
 const styles = StyleSheet.create({
   listContainer: {},

@@ -3,14 +3,14 @@
  */
 import React, {PureComponent, Component} from 'react';
 import PropTypes from 'prop-types';
-import {Platform,Picker, StyleSheet, Text, View} from 'react-native';
+import {Platform, Picker, StyleSheet, Text, View} from 'react-native';
 import I18n from 'utils/locale';
 
 export default class Dropdown extends PureComponent {
   static propTypes = {
     onClose: PropTypes.func.isRequired,
     onItemPress: PropTypes.func.isRequired,
-    selectedValue: PropTypes.oneOfType([PropTypes.number,PropTypes.string]),
+    selectedValue: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     items: PropTypes.array.isRequired,
     field: PropTypes.string.isRequired,
   };
@@ -20,12 +20,9 @@ export default class Dropdown extends PureComponent {
 
     return (
       <View style={styles.container}>
-
-        {
-          Platform.OS === 'ios' &&
+        {Platform.OS === 'ios' && (
           <Text onPress={() => onClose(false, field)}>{I18n.t('close')}</Text>
-
-        }
+        )}
 
         <Picker
           selectedValue={selectedValue}
@@ -33,7 +30,11 @@ export default class Dropdown extends PureComponent {
           <Picker.Item label={I18n.t('select')} value="" />
 
           {items.map(item => {
-            return typeof item === 'object' ? <Picker.Item label={item.name} value={item.id} key={item.id} /> : <Picker.Item label={item} value={item} key={item} />
+            return typeof item === 'object' ? (
+              <Picker.Item label={item.name} value={item.id} key={item.id} />
+            ) : (
+              <Picker.Item label={item} value={item} key={item} />
+            );
           })}
         </Picker>
       </View>

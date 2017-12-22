@@ -3,7 +3,7 @@ import {API} from 'driver/common/api';
 import {ACTION_TYPES} from 'driver/common/actions';
 import {Schema} from 'utils/schema';
 import {normalize} from 'normalizr';
-import {ACTIONS as APP_ACTIONS} from "app/common/actions";
+import {ACTIONS as APP_ACTIONS} from 'app/common/actions';
 
 function* saveRoute(action) {
   try {

@@ -3,7 +3,7 @@ import {API} from 'driver/common/api';
 import {ACTION_TYPES} from 'driver/common/actions';
 import {Schema} from 'utils/schema';
 import {normalize} from 'normalizr';
-import {ACTIONS as APP_ACTIONS} from "app/common/actions";
+import {ACTIONS as APP_ACTIONS} from 'app/common/actions';
 
 function* saveProfile(action) {
   try {
@@ -33,7 +33,6 @@ function* fetchProfile() {
   }
 }
 
-
 function* saveTruckMonitor() {
   yield takeLatest(ACTION_TYPES.SAVE_TRUCK_REQUEST, saveTruck);
 }
@@ -60,5 +59,8 @@ function* fetchProfileMonitor() {
   yield takeLatest(ACTION_TYPES.FETCH_PROFILE_REQUEST, fetchProfile);
 }
 
-export const sagas = all([fork(fetchProfileMonitor), fork(saveProfileMonitor),   fork(saveTruckMonitor),
+export const sagas = all([
+  fork(fetchProfileMonitor),
+  fork(saveProfileMonitor),
+  fork(saveTruckMonitor),
 ]);

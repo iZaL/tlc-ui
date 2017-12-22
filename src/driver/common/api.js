@@ -30,5 +30,5 @@ export const API = {
   fetchProfile,
   fetchRoutes,
   saveRoute,
-  saveTruck
+  saveTruck,
 };

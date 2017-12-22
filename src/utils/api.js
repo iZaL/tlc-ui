@@ -60,8 +60,6 @@ export async function fetchAPI(
       })),
     )
     .then(({status, statusType, json}) => {
-
-
       if (__DEV__) {
         if (console.group) {
           console.groupCollapsed('action', 'NETWORK_RESPONSE');
@@ -80,7 +78,7 @@ export async function fetchAPI(
       return json;
     })
     .catch(e => {
-      console.log('e',e);
+      console.log('e', e);
       return Promise.reject(`${e}`);
     });
 }

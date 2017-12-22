@@ -19,20 +19,20 @@ usersSchema.define({
     licenses: [countriesSchema],
     blocked_list: [],
     shipper: shippersSchema,
-    routes:[routesSchema],
-    available_routes:[routesSchema]
+    routes: [routesSchema],
+    available_routes: [routesSchema],
   },
 });
 
 trucksSchema.define({
   make: truckMakesSchema,
   model: truckModelsSchema,
-  trailer:trailersSchema
+  trailer: trailersSchema,
 });
 
 routesSchema.define({
-  origin:countriesSchema,
-  destination:countriesSchema
+  origin: countriesSchema,
+  destination: countriesSchema,
 });
 
 export const Schema = {
@@ -42,6 +42,6 @@ export const Schema = {
   truck_makes: truckMakesSchema,
   truck_models: truckModelsSchema,
   shippers: shippersSchema,
-  trailer_makes:trailerMakesSchema,
-  trailers:trailersSchema
+  trailer_makes: trailerMakesSchema,
+  trailers: trailersSchema,
 };

@@ -1,5 +1,4 @@
 export const ACTION_TYPES = {
-
   LOGIN_REQUEST: '@guest/LOGIN_REQUEST',
   LOGIN_SUCCESS: '@guest/LOGIN_SUCCESS',
   LOGIN_FAILURE: '@guest/LOGIN_FAILURE',
@@ -26,7 +25,6 @@ export const ACTION_TYPES = {
 
   LOGOUT: '@user/LOGOUT',
   SET_AUTH_TOKEN: '@user/SET_AUTH_TOKEN',
-
 };
 
 function login(credentials) {

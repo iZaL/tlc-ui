@@ -51,5 +51,5 @@ export const SELECTORS = {
   getTruckMakes,
   getTruckModels,
   getTrailerMakes,
-  getTrailers
+  getTrailers,
 };
