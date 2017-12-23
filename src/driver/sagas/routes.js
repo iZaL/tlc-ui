@@ -48,6 +48,19 @@ function* fetchRoutes() {
   }
 }
 
+function* fetchRouteTransits(action) {
+  try {
+    const response = yield call(API.fetchRouteTransits,action.params);
+    const normalized = normalize(response.data, Schema.routes);
+    yield put({
+      type: ACTION_TYPES.FETCH_ROUTE_TRANSITS_SUCCESS,
+      entities: normalized.entities,
+    });
+  } catch (error) {
+    yield put({type: ACTION_TYPES.FETCH_ROUTE_TRANSITS_FAILURE, error});
+  }
+}
+
 function* saveRouteMonitor() {
   yield takeLatest(ACTION_TYPES.SAVE_ROUTE_REQUEST, saveRoute);
 }
@@ -56,8 +69,12 @@ function* fetchRoutesMonitor() {
   yield takeLatest(ACTION_TYPES.FETCH_ROUTES_REQUEST, fetchRoutes);
 }
 
+function* fetchRouteTransitsMonitor() {
+  yield takeLatest(ACTION_TYPES.FETCH_ROUTE_TRANSITS_REQUEST, fetchRouteTransits);
+}
+
 // function* syncRouteMonitor() {
 //   yield takeLatest(ACTION_TYPES.SYNC_ROUTE_REQUEST, syncRoute);
 // }
 
-export const sagas = all([fork(fetchRoutesMonitor), fork(saveRouteMonitor)]);
+export const sagas = all([fork(fetchRoutesMonitor), fork(saveRouteMonitor),fork(fetchRouteTransitsMonitor)]);

@@ -36,7 +36,6 @@ class UpdateRoutesScene extends Component {
 
   render() {
     const {available_routes} = this.props;
-    console.log('props',this.props);
     return (
       <View style={{flex: 1}}>
         <RoutesList
@@ -51,7 +50,6 @@ class UpdateRoutesScene extends Component {
 
 function mapStateToProps(state) {
   return {
-    // routes: DRIVER_SELECTORS.getRoutes(state),
     available_routes:DRIVER_SELECTORS.getAvailableRoutes(state),
   };
 }

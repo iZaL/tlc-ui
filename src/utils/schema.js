@@ -40,6 +40,7 @@ trucksSchema.define({
 routesSchema.define({
   origin: countriesSchema,
   destination: countriesSchema,
+  transits:[countriesSchema]
 });
 
 countriesSchema.define({
@@ -55,5 +56,6 @@ export const Schema = {
   trailer_makes: trailerMakesSchema,
   trailers: trailersSchema,
   drivers:driversSchema,
-  shippers:shippersSchema
+  shippers:shippersSchema,
+  routes:routesSchema
 };

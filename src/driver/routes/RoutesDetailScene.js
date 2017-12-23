@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {SELECTORS as USER_SELECTORS} from 'guest/common/selectors';
 import {View} from 'react-native';
 import RoutesList from 'driver/routes/components/RoutesList';
 import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
+import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
 
 class RoutesDetailScene extends Component {
   static propTypes = {
@@ -18,10 +18,15 @@ class RoutesDetailScene extends Component {
   };
 
   componentDidMount() {
-    this.props.dispatch(DRIVER_ACTIONS.fetchRoutes());
+    const {routeID} = this.props.navigation.state.params;
+    this.props.dispatch(DRIVER_ACTIONS.fetchRouteTransits({
+      route_id: routeID
+    }));
   }
 
   render() {
+    const {route} = this.props;
+    console.log('route',route);
     return (
       <View style={{flex: 1}}>
 
@@ -30,10 +35,15 @@ class RoutesDetailScene extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    user: USER_SELECTORS.getAuthUser(state),
+const makeMapStateToProps = () => {
+  const getRouteByID = DRIVER_SELECTORS.getRouteByID();
+  const mapStateToProps = (state, props) => {
+    return {
+      route: getRouteByID(state, props.navigation.state.params.routeID),
+    };
   };
-}
+  return mapStateToProps;
+};
 
-export default connect(mapStateToProps)(RoutesDetailScene);
+
+export default connect(makeMapStateToProps)(RoutesDetailScene);

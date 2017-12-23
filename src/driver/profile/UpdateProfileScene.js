@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {SELECTORS as COUNTRY_SELECTORS} from 'app/selectors/country';
 import {ACTIONS as APP_ACTIONS} from 'app/common/actions';
 import {ACTIONS as PROFILE_ACTIONS} from 'driver/common/actions';
-import {SELECTORS as USER_SELECTORS} from 'guest/common/selectors';
+import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
 import {ScrollView, Text} from 'react-native';
 import FormLabel from 'components/FormLabel';
 import FormTextInput from 'components/FormTextInput';
@@ -27,7 +27,19 @@ class UpdateProfileScene extends Component {
 
   static propTypes = {
     countries: PropTypes.array.isRequired,
-    profile:PropTypes.object.isRequired
+    profile:PropTypes.shape({
+      mobile:PropTypes.string.isRequired,
+      nationality:PropTypes.object.isRequired,
+      residence:PropTypes.object.isRequired
+    })
+  };
+
+  static defaultProps = {
+    profile:{
+      mobile:'',
+      nationality:{},
+      residence:{}
+    }
   };
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -50,10 +62,11 @@ class UpdateProfileScene extends Component {
     let {profile} = this.props;
 
     this.setState({
-      mobile: profile.mobile || props.user.mobile,
-      nationality: (profile && profile.nationality) || {},
-      residence: (profile && profile.residence) || {},
+      mobile: profile.mobile,
+      nationality: profile.nationality,
+      residence: profile.residence,
     });
+
   }
 
   onFieldChange = (field, value) => {
@@ -179,7 +192,7 @@ class UpdateProfileScene extends Component {
 
 function mapStateToProps(state) {
   return {
-    profile: USER_SELECTORS.getAuthUserProfile(state),
+    profile: DRIVER_SELECTORS.getProfile(state),
     countries: COUNTRY_SELECTORS.getCountries(state),
   };
 }

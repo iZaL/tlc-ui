@@ -4,6 +4,7 @@ import {ScrollView} from 'react-native';
 import ListItem from 'components/ListItem';
 import IconFactory from 'components/IconFactory';
 import {SELECTORS as USER_SELECTORS} from 'guest/common/selectors';
+import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
 import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
 import Separator from "../../components/Separator";
 
@@ -36,7 +37,7 @@ class ProfileHome extends Component {
 
   render() {
 
-    const {profile} = this.props;
+    const {truck} = this.props;
 
     return (
       <ScrollView style={{flex: 1,backgroundColor:'white'}}>
@@ -64,7 +65,7 @@ class ProfileHome extends Component {
             />
           }
           name="update_trailer"
-          disabled={!profile.truck}
+          disabled={!truck}
         />
         <Separator/>
         <ListItem
@@ -77,7 +78,7 @@ class ProfileHome extends Component {
             />
           }
           name="update_routes"
-          disabled={!profile.truck}
+          disabled={!truck}
         />
       </ScrollView>
     );
@@ -86,8 +87,7 @@ class ProfileHome extends Component {
 
 function mapStateToProps(state) {
   return {
-    profile: USER_SELECTORS.getAuthUserProfile(state),
-    // profile: {},
+    truck: DRIVER_SELECTORS.getTruck(state),
   };
 }
 

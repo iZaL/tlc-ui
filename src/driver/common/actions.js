@@ -15,6 +15,10 @@ export const ACTION_TYPES = {
   FETCH_ROUTES_SUCCESS: '@driver/FETCH_ROUTES_SUCCESS',
   FETCH_ROUTES_FAILURE: '@driver/FETCH_ROUTES_FAILURE',
 
+  FETCH_ROUTE_TRANSITS_REQUEST: '@driver/FETCH_ROUTE_TRANSITS_REQUEST',
+  FETCH_ROUTE_TRANSITS_SUCCESS: '@driver/FETCH_ROUTE_TRANSITS_SUCCESS',
+  FETCH_ROUTE_TRANSITS_FAILURE: '@driver/FETCH_ROUTE_TRANSITS_FAILURE',
+
   SAVE_ROUTE_REQUEST: '@driver/SAVE_ROUTE_REQUEST',
   SAVE_ROUTE_SUCCESS: '@driver/SAVE_ROUTE_SUCCESS',
   SAVE_ROUTE_FAILURE: '@driver/SAVE_ROUTE_FAILURE',
@@ -26,6 +30,8 @@ export const ACTION_TYPES = {
   SYNC_ROUTE_REQUEST: '@truck/SYNC_ROUTE_REQUEST',
   SYNC_ROUTE_SUCCESS: '@truck/SYNC_ROUTE_SUCCESS',
   SYNC_ROUTE_FAILURE: '@truck/SYNC_ROUTE_FAILURE',
+
+
 };
 
 function fetchProfile(params) {
@@ -38,6 +44,13 @@ function fetchProfile(params) {
 function fetchRoutes(params) {
   return {
     type: ACTION_TYPES.FETCH_ROUTES_REQUEST,
+    params,
+  };
+}
+
+function fetchRouteTransits(params) {
+  return {
+    type: ACTION_TYPES.FETCH_ROUTE_TRANSITS_REQUEST,
     params,
   };
 }
@@ -69,4 +82,6 @@ export const ACTIONS = {
   fetchRoutes,
   saveTruck,
   saveRoute,
+  fetchRouteTransits
+
 };
