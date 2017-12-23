@@ -30,8 +30,6 @@ export const ACTION_TYPES = {
   SYNC_ROUTE_REQUEST: '@truck/SYNC_ROUTE_REQUEST',
   SYNC_ROUTE_SUCCESS: '@truck/SYNC_ROUTE_SUCCESS',
   SYNC_ROUTE_FAILURE: '@truck/SYNC_ROUTE_FAILURE',
-
-
 };
 
 function fetchProfile(params) {
@@ -82,6 +80,5 @@ export const ACTIONS = {
   fetchRoutes,
   saveTruck,
   saveRoute,
-  fetchRouteTransits
-
+  fetchRouteTransits,
 };

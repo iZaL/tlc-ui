@@ -5,7 +5,6 @@ import colors from 'theme/colors';
 import Touchable from 'react-native-platform-touchable';
 
 export default class Button extends Component {
-
   shouldComponentUpdate(nextProps) {
     return nextProps.disabled !== this.props.disabled;
   }

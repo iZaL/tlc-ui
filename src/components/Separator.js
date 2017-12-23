@@ -4,16 +4,13 @@ import {StyleSheet, View} from 'react-native';
 import colors from 'theme/colors';
 
 class Separator extends Component {
-
-  shouldComponentUpdate(){
+  shouldComponentUpdate() {
     return false;
   }
 
   render() {
     let {style} = this.props;
-    return (
-      <View style={[styles.container, style]}/>
-    );
+    return <View style={[styles.container, style]} />;
   }
 }
 

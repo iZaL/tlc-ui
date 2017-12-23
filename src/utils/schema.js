@@ -10,11 +10,13 @@ const truckModelsSchema = new schema.Entity('truck_models');
 const shippersSchema = new schema.Entity('shippers');
 const routesSchema = new schema.Entity('routes');
 const driversSchema = new schema.Entity('drivers');
-const profileSchema = new schema.Union({
-  drivers: driversSchema,
-  shippers: shippersSchema,
-}, (input) =>  input.schema);
-
+const profileSchema = new schema.Union(
+  {
+    drivers: driversSchema,
+    shippers: shippersSchema,
+  },
+  input => input.schema,
+);
 
 driversSchema.define({
   nationality: countriesSchema,
@@ -28,7 +30,7 @@ driversSchema.define({
 });
 
 usersSchema.define({
-  profile:profileSchema,
+  profile: profileSchema,
 });
 
 trucksSchema.define({
@@ -40,11 +42,11 @@ trucksSchema.define({
 routesSchema.define({
   origin: countriesSchema,
   destination: countriesSchema,
-  transits:[countriesSchema]
+  transits: [countriesSchema],
 });
 
 countriesSchema.define({
-  loading_routes:[routesSchema]
+  loading_routes: [routesSchema],
 });
 
 export const Schema = {
@@ -55,7 +57,7 @@ export const Schema = {
   truck_models: truckModelsSchema,
   trailer_makes: trailerMakesSchema,
   trailers: trailersSchema,
-  drivers:driversSchema,
-  shippers:shippersSchema,
-  routes:routesSchema
+  drivers: driversSchema,
+  shippers: shippersSchema,
+  routes: routesSchema,
 };

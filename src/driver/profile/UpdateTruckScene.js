@@ -28,19 +28,19 @@ class UpdateTruckScene extends Component {
   static propTypes = {
     makes: PropTypes.array.isRequired,
     models: PropTypes.array.isRequired,
-    truck:PropTypes.shape({
-      make:PropTypes.object.isRequired,
-      model:PropTypes.object.isRequired
-    })
+    truck: PropTypes.shape({
+      make: PropTypes.object.isRequired,
+      model: PropTypes.object.isRequired,
+    }),
   };
 
   static defaultProps = {
     makes: [],
     models: [],
-    truck:{
-      make:{},
-      model:{}
-    }
+    truck: {
+      make: {},
+      model: {},
+    },
   };
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -135,7 +135,7 @@ class UpdateTruckScene extends Component {
 
     const {makes, models} = this.props;
 
-    console.log('props',this.props);
+    console.log('props', this.props);
 
     return (
       <ScrollView

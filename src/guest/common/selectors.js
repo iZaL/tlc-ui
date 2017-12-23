@@ -23,8 +23,8 @@ const getAuthUser = createSelector(
 const getAuthUserProfile = createSelector(
   schemas,
   getAuthUser,
-  (entities,user) => {
-    let {id,schema} = user.profile;
+  (entities, user) => {
+    let {id, schema} = user.profile;
     return entities[schema][id];
   },
 );

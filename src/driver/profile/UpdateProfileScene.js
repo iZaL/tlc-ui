@@ -24,22 +24,21 @@ type State = {
 type SceneType = 'nationality|residence';
 
 class UpdateProfileScene extends Component {
-
   static propTypes = {
     countries: PropTypes.array.isRequired,
-    profile:PropTypes.shape({
-      mobile:PropTypes.string.isRequired,
-      nationality:PropTypes.object.isRequired,
-      residence:PropTypes.object.isRequired
-    })
+    profile: PropTypes.shape({
+      mobile: PropTypes.string.isRequired,
+      nationality: PropTypes.object.isRequired,
+      residence: PropTypes.object.isRequired,
+    }),
   };
 
   static defaultProps = {
-    profile:{
-      mobile:'',
-      nationality:{},
-      residence:{}
-    }
+    profile: {
+      mobile: '',
+      nationality: {},
+      residence: {},
+    },
   };
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -66,7 +65,6 @@ class UpdateProfileScene extends Component {
       nationality: profile.nationality,
       residence: profile.residence,
     });
-
   }
 
   onFieldChange = (field, value) => {

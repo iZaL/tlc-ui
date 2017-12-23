@@ -21,6 +21,7 @@
     "react-native-platform-touchable": "^1.1.1",
     "react-native-push-notification": "^3.0.2",
     "react-native-swiper": "^1.5.13",
+    "react-native-tab-view": "^0.0.73",
     "react-native-vector-icons": "^4.4.2",
     "react-navigation": "^1.0.0-beta.21",
     "react-redux": "^5.0.6",

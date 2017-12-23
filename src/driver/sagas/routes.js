@@ -50,7 +50,7 @@ function* fetchRoutes() {
 
 function* fetchRouteTransits(action) {
   try {
-    const response = yield call(API.fetchRouteTransits,action.params);
+    const response = yield call(API.fetchRouteTransits, action.params);
     const normalized = normalize(response.data, Schema.routes);
     yield put({
       type: ACTION_TYPES.FETCH_ROUTE_TRANSITS_SUCCESS,
@@ -70,11 +70,18 @@ function* fetchRoutesMonitor() {
 }
 
 function* fetchRouteTransitsMonitor() {
-  yield takeLatest(ACTION_TYPES.FETCH_ROUTE_TRANSITS_REQUEST, fetchRouteTransits);
+  yield takeLatest(
+    ACTION_TYPES.FETCH_ROUTE_TRANSITS_REQUEST,
+    fetchRouteTransits,
+  );
 }
 
 // function* syncRouteMonitor() {
 //   yield takeLatest(ACTION_TYPES.SYNC_ROUTE_REQUEST, syncRoute);
 // }
 
-export const sagas = all([fork(fetchRoutesMonitor), fork(saveRouteMonitor),fork(fetchRouteTransitsMonitor)]);
+export const sagas = all([
+  fork(fetchRoutesMonitor),
+  fork(saveRouteMonitor),
+  fork(fetchRouteTransitsMonitor),
+]);

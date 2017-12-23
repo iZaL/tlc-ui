@@ -7,12 +7,13 @@ import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
 import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
 
 class UpdateRoutesScene extends Component {
-
   static propTypes = {
-    routes:PropTypes.arrayOf(PropTypes.shape({
-      origin:PropTypes.object.isRequired,
-      destination:PropTypes.object.isRequired,
-    })).isRequired
+    routes: PropTypes.arrayOf(
+      PropTypes.shape({
+        origin: PropTypes.object.isRequired,
+        destination: PropTypes.object.isRequired,
+      }),
+    ).isRequired,
   };
 
   componentDidMount() {
@@ -53,7 +54,7 @@ class UpdateRoutesScene extends Component {
 
 function mapStateToProps(state) {
   return {
-    routes:DRIVER_SELECTORS.getAvailableRoutes(state),
+    routes: DRIVER_SELECTORS.getAvailableRoutes(state),
   };
 }
 

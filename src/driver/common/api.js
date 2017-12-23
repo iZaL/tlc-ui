@@ -36,5 +36,5 @@ export const API = {
   fetchRoutes,
   saveRoute,
   saveTruck,
-  fetchRouteTransits
+  fetchRouteTransits,
 };

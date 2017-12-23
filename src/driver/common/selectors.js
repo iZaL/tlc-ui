@@ -17,53 +17,70 @@ const getProfile = createSelector(
       ...driver,
       nationality: countries[driver.nationality],
       residence: countries[driver.residence],
-    }
-  }
+    };
+  },
 );
 
 const getTruck = createSelector(
-  [USER_SELECTORS.getAuthUserProfile, trucksSchema, truckMakesSchema, truckModelsSchema,trailersSchema,driversSchema],
-  (driver, trucks, truckMakes, truckModels,trailers,drivers) => {
+  [
+    USER_SELECTORS.getAuthUserProfile,
+    trucksSchema,
+    truckMakesSchema,
+    truckModelsSchema,
+    trailersSchema,
+    driversSchema,
+  ],
+  (driver, trucks, truckMakes, truckModels, trailers, drivers) => {
     let truck = trucks[driver.truck];
-    return truck && {
-      ...truck,
-      make: truckMakes[truck.make],
-      model: truckModels[truck.model],
-      trailer: trailers[truck.trailer],
-      driver:drivers[truck.driver]
-    } || {}
-  });
+    return (
+      (truck && {
+        ...truck,
+        make: truckMakes[truck.make],
+        model: truckModels[truck.model],
+        trailer: trailers[truck.trailer],
+        driver: drivers[truck.driver],
+      }) ||
+      {}
+    );
+  },
+);
 
 const getRoutes = createSelector(
   [USER_SELECTORS.getAuthUserProfile],
-  (driver) => driver.routes || {});
+  driver => driver.routes || {},
+);
 
-const getTrailer = createSelector(
-  [getTruck],
-  (truck) => truck.trailer || {});
+const getTrailer = createSelector([getTruck], truck => truck.trailer || {});
 
 const getRouteByID = () => {
-  return createSelector([routesSchema, countriesSchema, getIdProp], (routes, countries, routeID) => {
+  return createSelector(
+    [routesSchema, countriesSchema, getIdProp],
+    (routes, countries, routeID) => {
       let route = routes[routeID];
       return {
         ...route,
         origin: countries[route.origin],
         destination: countries[route.destination],
-        transits: route.transits ? route.transits.map(countryID => countries[countryID]) : []
-      }
-    }
+        transits: route.transits
+          ? route.transits.map(countryID => countries[countryID])
+          : [],
+      };
+    },
   );
 };
 
 const getAvailableRoutes = createSelector(
-  [getProfile,routesSchema,countriesSchema,],
-  (driver,routes,countries) => {
+  [getProfile, routesSchema, countriesSchema],
+  (driver, routes, countries) => {
     let loadingRoutes = driver.residence.loading_routes || [];
     const getRoutes = getRouteByID();
-    return loadingRoutes.map(routeID => {
-      return getRoutes({entities:{routes,countries}},routeID);
-    }) || []
-  });
+    return (
+      loadingRoutes.map(routeID => {
+        return getRoutes({entities: {routes, countries}}, routeID);
+      }) || []
+    );
+  },
+);
 
 export const SELECTORS = {
   getProfile,

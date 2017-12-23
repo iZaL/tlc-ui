@@ -6,7 +6,7 @@ import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
 import {SELECTORS as TRUCK_SELECTORS} from 'trucks/common/selectors';
 import {SELECTORS as USER_SELECTORS} from 'guest/common/selectors';
 import TrailersList from 'trucks/components/TrailersList';
-import {SELECTORS as DRIVER_SELECTORS} from "driver/common/selectors";
+import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
 
 class UpdateTrailerScene extends Component {
   static propTypes = {

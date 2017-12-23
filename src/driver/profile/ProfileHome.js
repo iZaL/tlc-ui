@@ -6,10 +6,9 @@ import IconFactory from 'components/IconFactory';
 import {SELECTORS as USER_SELECTORS} from 'guest/common/selectors';
 import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
 import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
-import Separator from "../../components/Separator";
+import Separator from '../../components/Separator';
 
 class ProfileHome extends Component {
-
   static propTypes = {};
 
   componentDidMount() {
@@ -36,17 +35,16 @@ class ProfileHome extends Component {
   };
 
   render() {
-
     const {truck} = this.props;
 
     return (
-      <ScrollView style={{flex: 1,backgroundColor:'white'}}>
+      <ScrollView style={{flex: 1, backgroundColor: 'white'}}>
         <ListItem
           onItemPress={this.onListItemPress}
           icon={<IconFactory type="Ionicons" size={30} name="md-person" />}
           name="update_profile"
         />
-        <Separator/>
+        <Separator />
         <ListItem
           onItemPress={this.onListItemPress}
           icon={
@@ -54,7 +52,7 @@ class ProfileHome extends Component {
           }
           name="update_truck"
         />
-        <Separator/>
+        <Separator />
         <ListItem
           onItemPress={this.onListItemPress}
           icon={
@@ -67,7 +65,7 @@ class ProfileHome extends Component {
           name="update_trailer"
           disabled={!truck}
         />
-        <Separator/>
+        <Separator />
         <ListItem
           onItemPress={this.onListItemPress}
           icon={

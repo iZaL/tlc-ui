@@ -4,7 +4,6 @@ import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
 import {connect} from 'react-redux';
 
 class Home extends Component {
-
   componentDidMount() {
     this.props.dispatch(DRIVER_ACTIONS.fetchProfile());
   }

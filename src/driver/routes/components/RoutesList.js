@@ -20,10 +20,7 @@ export default class RoutesList extends Component {
   };
 
   renderRow = ({item}) => {
-    const {
-      onIconPress,
-      onItemPress,
-    } = this.props;
+    const {onIconPress, onItemPress} = this.props;
     return (
       <View style={styles.itemContainer}>
         <Touchable
