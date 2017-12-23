@@ -15,7 +15,7 @@ export default class RoutesList extends Component {
 
   static propTypes = {
     onIconPress: PropTypes.func.isRequired,
-    onIconPress: PropTypes.func.isRequired,
+    onItemPress: PropTypes.func.isRequired,
     items: PropTypes.array.isRequired,
   };
 
@@ -43,7 +43,7 @@ export default class RoutesList extends Component {
           </View>
         </Touchable>
         <Touchable
-          onPress={() => onItemPress(item)}
+          onPress={() => onIconPress(item)}
           underlayColor="transparent"
           hitSlop={{top: 10, left: 10, right: 10, bottom: 10}}>
           <View style={styles.checkbox}>

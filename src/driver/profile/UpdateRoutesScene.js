@@ -1,15 +1,15 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
 import {View} from 'react-native';
 import RoutesList from 'driver/routes/components/RoutesList';
 import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
+import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
 
 class UpdateRoutesScene extends Component {
 
   static propTypes = {
-    routes:PropTypes.array.isRequired
+    // routes:PropTypes.array.isRequired
   };
 
   componentDidMount() {
@@ -35,11 +35,12 @@ class UpdateRoutesScene extends Component {
   };
 
   render() {
-    const {routes} = this.props;
+    const {available_routes} = this.props;
+    console.log('props',this.props);
     return (
       <View style={{flex: 1}}>
         <RoutesList
-          items={routes}
+          items={available_routes}
           onItemPress={this.onRoutesListItemPress}
           onIconPress={this.onItemIconPress}
         />
@@ -50,7 +51,8 @@ class UpdateRoutesScene extends Component {
 
 function mapStateToProps(state) {
   return {
-    routes: DRIVER_SELECTORS.getAvailableRoutes(state),
+    // routes: DRIVER_SELECTORS.getRoutes(state),
+    available_routes:DRIVER_SELECTORS.getAvailableRoutes(state),
   };
 }
 

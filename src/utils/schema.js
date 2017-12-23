@@ -25,7 +25,6 @@ driversSchema.define({
   blocked_list: [],
   shipper: shippersSchema,
   routes: [routesSchema],
-  // available_routes: [routesSchema],
 });
 
 usersSchema.define({
@@ -41,7 +40,6 @@ trucksSchema.define({
 routesSchema.define({
   origin: countriesSchema,
   destination: countriesSchema,
-  loading_routes:[routesSchema]
 });
 
 countriesSchema.define({
