@@ -7,6 +7,7 @@ import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
 import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
 
 class RoutesDetailScene extends Component {
+
   static propTypes = {
     navigation: PropTypes.shape({
       state: PropTypes.shape({
@@ -15,6 +16,20 @@ class RoutesDetailScene extends Component {
         }),
       }),
     }),
+    route: PropTypes.shape({
+      origin: PropTypes.object.isRequired,
+      destination: PropTypes.object.isRequired,
+      transits:PropTypes.array.isRequired
+    }).isRequired
+  };
+
+  static defaultProps = {
+    navigation:{state:{params:{routeID:0}}},
+    route:{
+      origin:{},
+      destination:{},
+      transits:[]
+    }
   };
 
   componentDidMount() {
@@ -26,7 +41,7 @@ class RoutesDetailScene extends Component {
 
   render() {
     const {route} = this.props;
-    console.log('route',route);
+    console.log('route', route);
     return (
       <View style={{flex: 1}}>
 

@@ -1,8 +1,5 @@
 import {createSelector} from 'reselect';
 import {SELECTORS as USER_SELECTORS} from 'guest/common/selectors';
-import {Schema} from 'utils/schema';
-import {denormalize} from 'normalizr';
-import {entities} from "../../app/common/reducer";
 
 const truckMakesSchema = state => state.entities.truck_makes;
 const truckModelsSchema = state => state.entities.truck_models;
@@ -11,7 +8,6 @@ const trailersSchema = state => state.entities.trailers;
 const routesSchema = state => state.entities.routes;
 const trucksSchema = state => state.entities.trucks;
 const countriesSchema = state => state.entities.countries;
-
 const getIdProp = ({}, itemID) => itemID;
 
 const getProfile = createSelector(
@@ -24,7 +20,6 @@ const getProfile = createSelector(
     }
   }
 );
-
 
 const getTruck = createSelector(
   [USER_SELECTORS.getAuthUserProfile, trucksSchema, truckMakesSchema, truckModelsSchema,trailersSchema,driversSchema],
@@ -47,14 +42,9 @@ const getTrailer = createSelector(
   [getTruck],
   (truck) => truck.trailer || {});
 
-const getDriver = createSelector(
-  [getTruck],
-  (truck) => truck.driver || {});
-
-const getRouteByID = (routeID = null) => {
-  return createSelector([routesSchema, countriesSchema, getIdProp], (routes, countries, routeProp) => {
-      let route = routes[routeID || routeProp];
-      console.log('route',route);
+const getRouteByID = () => {
+  return createSelector([routesSchema, countriesSchema, getIdProp], (routes, countries, routeID) => {
+      let route = routes[routeID];
       return {
         ...route,
         origin: countries[route.origin],
@@ -76,10 +66,10 @@ const getAvailableRoutes = createSelector(
   });
 
 export const SELECTORS = {
-  getAvailableRoutes,
+  getProfile,
   getRoutes,
   getTruck,
   getTrailer,
   getRouteByID,
-  getProfile,
+  getAvailableRoutes,
 };
