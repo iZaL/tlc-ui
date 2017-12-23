@@ -83,6 +83,7 @@ class ProfileHome extends Component {
 function mapStateToProps(state) {
   return {
     profile: USER_SELECTORS.getAuthUserProfile(state),
+    // profile: {},
   };
 }
 

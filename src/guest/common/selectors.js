@@ -24,7 +24,7 @@ const getAuthUserProfile = createSelector(
   schemas,
   getAuthUser,
   (entities,user) => {
-    let {id,schema} = user.profile[0];
+    let {id,schema} = user.profile;
     return denormalize(id,Schema[schema],entities)
   },
 );

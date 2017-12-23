@@ -10,11 +10,11 @@ const truckModelsSchema = new schema.Entity('truck_models');
 const shippersSchema = new schema.Entity('shippers');
 const routesSchema = new schema.Entity('routes');
 const driversSchema = new schema.Entity('drivers');
-
-const profileSchema = new schema.Values({
+const profileSchema = new schema.Union({
   drivers: driversSchema,
-  shippers: shippersSchema
-}, (input) => input.schema);
+  shippers: shippersSchema,
+}, (input) =>  input.schema);
+
 
 driversSchema.define({
   nationality: countriesSchema,
