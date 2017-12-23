@@ -8,7 +8,7 @@ import {ACTIONS as APP_ACTIONS} from 'app/common/actions';
 function* saveRoute(action) {
   try {
     const response = yield call(API.saveRoute, action.params);
-    const normalized = normalize(response.data, Schema.users);
+    const normalized = normalize(response.data, Schema.drivers);
     yield put({
       type: ACTION_TYPES.SAVE_ROUTE_SUCCESS,
       entities: normalized.entities,
@@ -38,7 +38,7 @@ function* saveRoute(action) {
 function* fetchRoutes() {
   try {
     const response = yield call(API.fetchRoutes);
-    const normalized = normalize(response.data, Schema.users);
+    const normalized = normalize(response.data, Schema.drivers);
     yield put({
       type: ACTION_TYPES.FETCH_ROUTES_SUCCESS,
       entities: normalized.entities,

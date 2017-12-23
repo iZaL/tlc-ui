@@ -47,7 +47,7 @@ export default class RoutesList extends Component {
           underlayColor="transparent"
           hitSlop={{top: 10, left: 10, right: 10, bottom: 10}}>
           <View style={styles.checkbox}>
-            {item.owned ? (
+            {item.has_added ? (
               <MaterialCommunityIcons
                 key={item.id}
                 name="checkbox-marked-circle"
