@@ -26,7 +26,7 @@ class RoutesDetailScene extends Component {
     }).isRequired,
   };
 
-  state = {
+  state : State = {
     activeCountryID: 0,
   };
 
