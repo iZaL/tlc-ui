@@ -2,6 +2,7 @@ import {createSelector} from 'reselect';
 import {SELECTORS as USER_SELECTORS} from 'guest/common/selectors';
 import {Schema} from 'utils/schema';
 import {denormalize} from 'normalizr';
+import {entities} from "../../app/common/reducer";
 
 const truckMakesSchema = state => state.entities.truck_makes;
 const truckModelsSchema = state => state.entities.truck_models;
@@ -13,10 +14,6 @@ const countriesSchema = state => state.entities.countries;
 
 const getIdProp = ({}, itemID) => itemID;
 
-const getAvailableRoutes = createSelector(
-  [USER_SELECTORS.getAuthUserProfile],
-  (driver) => driver.residence.loading_routes || []);
-
 const getProfile = createSelector(
   [USER_SELECTORS.getAuthUserProfile, countriesSchema],
   (driver, countries) => {
@@ -27,6 +24,7 @@ const getProfile = createSelector(
     }
   }
 );
+
 
 const getTruck = createSelector(
   [USER_SELECTORS.getAuthUserProfile, trucksSchema, truckMakesSchema, truckModelsSchema,trailersSchema,driversSchema],
@@ -53,9 +51,10 @@ const getDriver = createSelector(
   [getTruck],
   (truck) => truck.driver || {});
 
-const getRouteByID = () => {
-  return createSelector([routesSchema, countriesSchema, getIdProp], (routes, countries, routeID) => {
-      let route = routes[routeID];
+const getRouteByID = (routeID = null) => {
+  return createSelector([routesSchema, countriesSchema, getIdProp], (routes, countries, routeProp) => {
+      let route = routes[routeID || routeProp];
+      console.log('route',route);
       return {
         ...route,
         origin: countries[route.origin],
@@ -65,6 +64,16 @@ const getRouteByID = () => {
     }
   );
 };
+
+const getAvailableRoutes = createSelector(
+  [getProfile,routesSchema,countriesSchema,],
+  (driver,routes,countries) => {
+    let loadingRoutes = driver.residence.loading_routes || [];
+    const getRoutes = getRouteByID();
+    return loadingRoutes.map(routeID => {
+      return getRoutes({entities:{routes,countries}},routeID);
+    }) || []
+  });
 
 export const SELECTORS = {
   getAvailableRoutes,
