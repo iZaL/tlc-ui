@@ -27,7 +27,6 @@ class UpdateTrailerScene extends Component {
 
   render() {
     const {trailers, trailer} = this.props;
-
     return (
       <TrailersList
         items={trailers}
