@@ -1,9 +1,21 @@
-import React from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {StyleSheet, View} from 'react-native';
 import colors from 'theme/colors';
 
-const Separator = ({style}) => <View style={[styles.container, style]} />;
+class Separator extends Component {
+
+  shouldComponentUpdate(){
+    return false;
+  }
+
+  render() {
+    let {style} = this.props;
+    return (
+      <View style={[styles.container, style]}/>
+    );
+  }
+}
 
 Separator.propTyes = {
   style: PropTypes.style,

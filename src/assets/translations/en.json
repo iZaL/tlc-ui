@@ -58,5 +58,6 @@
   "registration_number" : "Registration Number",
   "max_weight" : "Max Weight",
   "year":"Year",
-  "trailer" : "Trailer"
+  "trailer" : "Trailer",
+  "search_loads" : "Search Loads"
 }

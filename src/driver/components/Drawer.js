@@ -39,6 +39,18 @@ export default class Drawer extends Component {
         <Separator />
 
         <DrawerItem
+          title={I18n.t('search_loads')}
+          routeName="ProfileStack"
+          onItemPress={this.onItemPress}
+          icon={
+            <IconFactory type="MaterialCommunityIcons" size={30} name="home" />
+          }
+          active={this.state.activeRoute === 'ProfileStack'}
+        />
+
+        <Separator />
+
+        <DrawerItem
           title={I18n.t('profile')}
           routeName="ProfileStack"
           onItemPress={this.onItemPress}
@@ -47,6 +59,8 @@ export default class Drawer extends Component {
           }
           active={this.state.activeRoute === 'ProfileStack'}
         />
+
+        <Separator />
 
         <DrawerItem
           title={I18n.t('logout')}
