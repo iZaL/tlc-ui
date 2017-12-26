@@ -1,13 +1,14 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {ScrollView, View} from 'react-native';
+import {ScrollView} from 'react-native';
 import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
 import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
-import TransitTab from 'driver/routes/components/TransitTab';
+import RouteTransitsList from 'driver/routes/components/RouteTransitsList';
+import VisaLicenseForm from 'driver/routes/components/VisaLicenseForm';
 
 type State = {
-  activeCountryID: number,
+  activeCountry: undefined,
 };
 
 class RoutesDetailScene extends Component {
@@ -27,7 +28,7 @@ class RoutesDetailScene extends Component {
   };
 
   state : State = {
-    activeCountryID: 0,
+    activeCountry: undefined,
   };
 
   static defaultProps = {
@@ -48,35 +49,72 @@ class RoutesDetailScene extends Component {
     );
   }
 
-  setActiveCountry = countryID => {
+  componentWillReceiveProps(props) {
+    if(!this.state.activeCountry && props.route.origin.id) {
+      this.setState({
+        activeCountry:props.route.origin
+      })
+    }
+  }
+
+  setActiveCountry = country => {
     this.setState({
-      activeCountryID: countryID,
+      activeCountry: country,
     });
   };
 
   onTransitTabItemPress = item => {
-    this.setActiveCountry(item.id);
+    this.setActiveCountry(item);
+  };
+
+  saveProfile = () => {
+
   };
 
   render() {
-    const {origin,destination,transits} = this.props.route;
-    const {activeCountryID} = this.state;
+    const {route,visas,licenses} = this.props;
+    const {origin,destination,transits} = route;
+    const {activeCountry} = this.state;
+
+    let countries = [origin,...transits,destination];
+
+    let license = {};
+    let visa = {};
+    if(activeCountry && activeCountry.id) {
+      license = licenses.find(license => license.country === activeCountry.id );
+      visa = visas.find(visa => visa.country === activeCountry.id );
+    }
+
     return (
-      <ScrollView style={{flex: 1,backgroundColor:'white'}}>
-        <TransitTab
-          items={[origin,destination,...transits]}
-          activeCountryID={activeCountryID}
+      <ScrollView style={{flex:1,}}>
+
+        <RouteTransitsList
+          items={countries}
+          activeCountryID={activeCountry ? activeCountry.id : 0}
           onItemPress={this.onTransitTabItemPress}
         />
+
+        <VisaLicenseForm
+          onButtonPress={this.saveProfile}
+          country={activeCountry}
+          license={license}
+          visa={visa}
+        />
+
       </ScrollView>
     );
   }
 }
 
+/**
+ * @todo:// make use of current country as a real prop by using it as a selector
+ */
 const makeMapStateToProps = () => {
   const getRouteByID = DRIVER_SELECTORS.getRouteByID();
   const mapStateToProps = (state, props) => {
     return {
+      licenses:DRIVER_SELECTORS.getLicenses(state),
+      visas:DRIVER_SELECTORS.getVisas(state),
       route: getRouteByID(state, props.navigation.state.params.routeID),
     };
   };

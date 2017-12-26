@@ -59,5 +59,11 @@
   "max_weight" : "Max Weight",
   "year":"Year",
   "trailer" : "Trailer",
-  "search_loads" : "Search Loads"
+  "search_loads" : "Search Loads",
+  "license_expiry_date" : "License Expiry Date",
+  "license_image" : "License Image",
+  "visa_expiry_date" : "Visa Expiry Date",
+  "visa_image" : "Visa Image",
+  "expiry_date" : "Expiry Date",
+  "image" : "Image"
 }

@@ -45,11 +45,6 @@ const getTruck = createSelector(
   },
 );
 
-const getRoutes = createSelector(
-  [USER_SELECTORS.getAuthUserProfile],
-  driver => driver.routes || {},
-);
-
 const getTrailer = createSelector([getTruck], truck => truck.trailer || {});
 
 const getRouteByID = () => {
@@ -82,11 +77,26 @@ const getAvailableRoutes = createSelector(
   },
 );
 
+const getLicenses= createSelector(
+  [
+    USER_SELECTORS.getAuthUserProfile,
+  ],
+  (driver) => driver.licenses || []
+);
+
+const getVisas = createSelector(
+  [
+    USER_SELECTORS.getAuthUserProfile,
+  ],
+  (driver) =>  driver.visas || []
+);
+
 export const SELECTORS = {
   getProfile,
-  getRoutes,
   getTruck,
   getTrailer,
   getRouteByID,
   getAvailableRoutes,
+  getLicenses,
+  getVisas,
 };
