@@ -1,5 +1,6 @@
 import {createSelector} from 'reselect';
 import {SELECTORS as USER_SELECTORS} from 'guest/common/selectors';
+import flatten from 'lodash/flatten';
 
 const truckMakesSchema = state => state.entities.truck_makes;
 const truckModelsSchema = state => state.entities.truck_models;
@@ -77,6 +78,19 @@ const getAvailableRoutes = createSelector(
   },
 );
 
+const getRoutes = createSelector(
+  [getProfile, routesSchema, countriesSchema],
+  (driver, routes, countries) => {
+    let loadingRoutes = driver.routes || [];
+    const getRoutes = getRouteByID();
+    return (
+      loadingRoutes.map(routeID => {
+        return getRoutes({entities: {routes, countries}}, routeID);
+      }) || []
+    );
+  },
+);
+
 const getLicenses= createSelector(
   [
     USER_SELECTORS.getAuthUserProfile,
@@ -91,12 +105,30 @@ const getVisas = createSelector(
   (driver) =>  driver.visas || []
 );
 
+/**
+ * Get all countries related to the driver,
+ * Residence,
+ * Nationality,
+ * Routes Countries (Origin,Destination),
+ * Route Transit (Origin,Destination)
+ * @return [Countries]
+ */
+const getProfileCountries = createSelector(
+  [getProfile,getRoutes],
+  ({nationality,residence},profileRoutes) => {
+    let routes = flatten(profileRoutes.map(profile => [profile.origin,profile.destination,...profile.transits]));
+    return [ ...new Set([nationality,residence,...routes]) ]
+  }
+);
+
 export const SELECTORS = {
   getProfile,
   getTruck,
   getTrailer,
   getRouteByID,
   getAvailableRoutes,
+  getRoutes,
   getLicenses,
   getVisas,
+  getProfileCountries
 };

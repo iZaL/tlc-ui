@@ -9,6 +9,7 @@ import UpdateProfileScene from 'driver/profile/UpdateProfileScene';
 import UpdateTruckScene from 'driver/profile/UpdateTruckScene';
 import UpdateTrailerScene from 'driver/profile/UpdateTrailerScene';
 import UpdateRoutesScene from 'driver/profile/UpdateRoutesScene';
+import UploadDocuments from 'driver/profile/UploadDocuments';
 import RoutesDetailScene from 'driver/routes/RoutesDetailScene';
 
 const HomeStack = StackNavigator({
@@ -57,6 +58,9 @@ const ProfileStack = StackNavigator({
   },
   RoutesDetail: {
     screen: RoutesDetailScene,
+  },
+  UploadDocuments: {
+    screen: UploadDocuments,
   },
 });
 

@@ -65,5 +65,10 @@
   "visa_expiry_date" : "Visa Expiry Date",
   "visa_image" : "Visa Image",
   "expiry_date" : "Expiry Date",
-  "image" : "Image"
+  "image" : "Image",
+  "upload_licenses" : "Upload Licenses",
+  "upload_visas" : "Upload Visas",
+  "upload_documents": "Upload Documents",
+  "driving_license" : "Driving License",
+  "visa" : "Visa"
 }

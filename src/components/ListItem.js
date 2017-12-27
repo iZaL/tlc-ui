@@ -42,10 +42,13 @@ const styles = StyleSheet.create({
   },
   iconContainer: {
     flex: 1,
+    alignItems:'center',
+    justifyContent:'center',
+    marginRight:10,
     // backgroundColor:'green',
   },
   contentContainer: {
-    flex: 5,
+    flex: 7,
     // backgroundColor:'blue',
   },
   arrowContainer: {},

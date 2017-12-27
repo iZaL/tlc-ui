@@ -4,8 +4,6 @@ import {connect} from 'react-redux';
 import {ScrollView} from 'react-native';
 import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
 import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
-import RouteTransitsList from 'driver/routes/components/RouteTransitsList';
-import VisaLicenseForm from 'driver/routes/components/VisaLicenseForm';
 
 type State = {
   activeCountry: undefined,
@@ -94,13 +92,13 @@ class RoutesDetailScene extends Component {
           {/*onItemPress={this.onTransitTabItemPress}*/}
         {/*/>*/}
 
-        <VisaLicenseForm
-          items={countries}
-          onButtonPress={this.saveProfile}
-          country={activeCountry}
-          license={license}
-          visa={visa}
-        />
+        {/*<VisaLicenseForm*/}
+          {/*items={countries}*/}
+          {/*onButtonPress={this.saveProfile}*/}
+          {/*country={activeCountry}*/}
+          {/*license={license}*/}
+          {/*visa={visa}*/}
+        {/*/>*/}
 
       </ScrollView>
     );

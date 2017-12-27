@@ -7,6 +7,7 @@ import {SELECTORS as USER_SELECTORS} from 'guest/common/selectors';
 import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
 import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
 import Separator from '../../components/Separator';
+import I18n from 'utils/locale';
 
 class ProfileHome extends Component {
   static propTypes = {};
@@ -17,9 +18,13 @@ class ProfileHome extends Component {
 
   onListItemPress = route => {
     let scene;
+    let sceneConfig = {};
     switch (route) {
       case 'update_profile':
         scene = 'UpdateProfile';
+        sceneConfig={
+          title:I18n.t('update_profile')
+        };
         break;
       case 'update_truck':
         scene = 'UpdateTruck';
@@ -30,8 +35,11 @@ class ProfileHome extends Component {
       case 'update_routes':
         scene = 'UpdateRoutes';
         break;
+      case 'upload_documents':
+        scene = 'UploadDocuments';
+        break;
     }
-    return this.props.navigation.navigate(scene);
+    return this.props.navigation.navigate(scene,sceneConfig);
   };
 
   render() {
@@ -76,6 +84,19 @@ class ProfileHome extends Component {
             />
           }
           name="update_routes"
+          disabled={!truck}
+        />
+        <Separator />
+        <ListItem
+          onItemPress={this.onListItemPress}
+          icon={
+            <IconFactory
+              type="MaterialCommunityIcons"
+              size={35}
+              name="passport"
+            />
+          }
+          name="upload_documents"
           disabled={!truck}
         />
       </ScrollView>

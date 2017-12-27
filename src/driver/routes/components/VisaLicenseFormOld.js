@@ -222,14 +222,13 @@ export default class VisaLicenseForm extends PureComponent {
     return (
 
       <View style={styles.container}>
-        {this.renderContent()}
-        {/*<Accordion*/}
-        {/*sections={this.renderSectionHeader(items)}*/}
-        {/*renderHeader={this.renderHeader}*/}
-        {/*renderContent={this.renderContent}*/}
-        {/*underlayColor="transparent"*/}
-        {/*expanded={true}*/}
-        {/*/>*/}
+        <Accordion
+        sections={this.renderSectionHeader(items)}
+        renderHeader={this.renderHeader}
+        renderContent={this.renderContent}
+        underlayColor="transparent"
+        expanded={true}
+        />
       </View>
     );
 
