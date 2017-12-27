@@ -15,17 +15,6 @@ import Accordion from 'react-native-collapsible/Accordion';
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import Feather from "react-native-vector-icons/Feather";
 
-const SECTIONS = [
-  {
-    title: 'Visa',
-    content: 'Wa'
-  },
-  {
-    title: 'License',
-    content: 'Wa'
-  }
-];
-
 export default class VisaLicenseForm extends PureComponent {
 
   static propTypes = {
@@ -50,10 +39,12 @@ export default class VisaLicenseForm extends PureComponent {
 
   componentWillReceiveProps(props) {
     let {country, visa, license} = props;
-    if (props.country.id) {
+    if (country.id) {
       this.setState({
         visa_expiry_date: visa.expiry_date,
+        visa_image: visa.image,
         license_expiry_date: visa.expiry_date,
+        license_image: license.image,
       })
     }
   }
@@ -63,7 +54,7 @@ export default class VisaLicenseForm extends PureComponent {
   };
 
   renderSectionHeader = items => {
-    return [];
+    return items.map(item => item);
   };
 
   _renderHeader(item, index, isActive) {
@@ -71,7 +62,7 @@ export default class VisaLicenseForm extends PureComponent {
       <View style={[styles.headerContainer,
         !isActive && { borderBottomRightRadius:3, borderBottomLeftRadius:3,}
       ]}>
-        <Text style={styles.headerTitle}>{item.title}</Text>
+        <Text style={styles.headerTitle}>{item.name}</Text>
 
         <Feather
           name={isActive ? "chevron-up" : "chevron-down"}
@@ -83,8 +74,8 @@ export default class VisaLicenseForm extends PureComponent {
     );
   }
 
-  _renderContent = (section,index,isActive) => {
-    // let {onButtonPress, country} = this.props;
+  _renderContent = (item,index,isActive) => {
+    let {onButtonPress, country} = this.props;
 
     let {visa_expiry_date, visa_image, license_expiry_date, license_image} = this.state;
 
@@ -92,76 +83,54 @@ export default class VisaLicenseForm extends PureComponent {
       <View style={[styles.contentContainer,
       ]}>
 
-        <FormLabel title={I18n.t('expiry_date')}/>
-        <FormTextInput
-          onChangeText={value => this.onFieldChange('license_expiry_date', value)}
-          value={license_expiry_date}
-          maxLength={40}
-          placeholder={I18n.t('expiry_date')}
-        />
+          <FormLabel title={I18n.t('license_expiry_date')}/>
+          <FormTextInput
+            onChangeText={value => this.onFieldChange('license_expiry_date', value)}
+            value={license_expiry_date}
+            maxLength={40}
+            placeholder={I18n.t('license_expiry_date')}
+          />
 
-        <FormLabel title={I18n.t('image')}/>
+          <FormLabel title={I18n.t('license_image')}/>
+
+
+          <FormLabel title={I18n.t('visa_expiry_date')}/>
+
+          <FormTextInput
+            onChangeText={value => this.onFieldChange('visa_expiry_date', value)}
+            value={visa_expiry_date}
+            maxLength={40}
+            placeholder={I18n.t('visa_expiry_date')}
+          />
+
+          <FormLabel title={I18n.t('visa_image')}/>
+
+          <FormSubmit
+            onPress={()=>{}}
+            underlayColor="transparent"
+            title={I18n.t('save')}
+            style={{marginTop: 50}}
+          />
 
       </View>
     );
   }
 
   render() {
-    let {onButtonPress, country} = this.props;
-    console.log('props', this.props);
-
-    let {visa_expiry_date, visa_image, license_expiry_date, license_image} = this.state;
-
+    let {items} = this.props;
     return (
 
       <View style={styles.container}>
         <Accordion
-          sections={SECTIONS}
+          sections={this.renderSectionHeader(items)}
           renderHeader={this._renderHeader}
           renderContent={this._renderContent}
           underlayColor="transparent"
           expanded={true}
         />
-        <FormSubmit
-          onPress={onButtonPress}
-          underlayColor="transparent"
-          title={I18n.t('save')}
-          style={{marginTop: 50}}
-        />
       </View>
     );
-    // return (
-    //   <View style={styles.container} >
-    //     <FormLabel title={I18n.t('license_expiry_date')}/>
-    //     <FormTextInput
-    //       onChangeText={value => this.onFieldChange('license_expiry_date', value)}
-    //       value={license_expiry_date}
-    //       maxLength={40}
-    //       placeholder={I18n.t('license_expiry_date')}
-    //     />
-    //
-    //     <FormLabel title={I18n.t('license_image')}/>
-    //
-    //
-    //     <FormLabel title={I18n.t('visa_expiry_date')}/>
-    //     <FormTextInput
-    //       onChangeText={value => this.onFieldChange('visa_expiry_date', value)}
-    //       value={visa_expiry_date}
-    //       maxLength={40}
-    //       placeholder={I18n.t('visa_expiry_date')}
-    //     />
-    //
-    //     <FormLabel title={I18n.t('visa_image')}/>
-    //
-    //     <FormSubmit
-    //       onPress={onButtonPress}
-    //       underlayColor="transparent"
-    //       title={I18n.t('save')}
-    //       style={{marginTop: 50}}
-    //     />
-    //
-    //   </View>
-    // );
+
   }
 }
 

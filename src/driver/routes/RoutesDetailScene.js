@@ -88,13 +88,14 @@ class RoutesDetailScene extends Component {
     return (
       <ScrollView style={{flex:1,}}>
 
-        <RouteTransitsList
-          items={countries}
-          activeCountryID={activeCountry ? activeCountry.id : 0}
-          onItemPress={this.onTransitTabItemPress}
-        />
+        {/*<RouteTransitsList*/}
+          {/*items={countries}*/}
+          {/*activeCountryID={activeCountry ? activeCountry.id : 0}*/}
+          {/*onItemPress={this.onTransitTabItemPress}*/}
+        {/*/>*/}
 
         <VisaLicenseForm
+          items={countries}
           onButtonPress={this.saveProfile}
           country={activeCountry}
           license={license}
