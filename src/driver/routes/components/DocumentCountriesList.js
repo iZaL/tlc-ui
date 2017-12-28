@@ -42,21 +42,22 @@ export default class DocumentCountriesList extends PureComponent {
     );
   }
 
-  renderContent = () => {
+  renderContent = (item) => {
+    let {onItemPress} = this.props;
     return (
       <View>
         <View style={[styles.contentContainer,]}>
 
           <Separator/>
 
-          <Touchable style={styles.itemContainer}>
+          <Touchable style={styles.itemContainer} onPress={()=>onItemPress(item,'license')}>
             <Text style={styles.itemTitle}>{I18n.t('driving_license')}</Text>
           </Touchable>
 
 
           <Separator/>
 
-          <Touchable style={styles.itemContainer}>
+          <Touchable style={styles.itemContainer} onPress={()=>onItemPress(item,'license')}>
             <Text style={styles.itemTitle}>{I18n.t('visa')}</Text>
           </Touchable>
 

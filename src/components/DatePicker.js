@@ -17,6 +17,7 @@ import {
 
 import Moment from 'moment';
 import colors from 'assets/theme/colors';
+import I18n from 'utils/locale';
 
 const FORMATS = {
   date: 'YYYY-MM-DD',
@@ -459,13 +460,13 @@ DatePicker.defaultProps = {
 
   // slide animation duration time, default to 300ms, IOS only
   duration: 300,
-  confirmBtnText: '确定',
-  cancelBtnText: '取消',
+  confirmBtnText: I18n.t('confirm'),
+  cancelBtnText: I18n.t('cancel'),
   iconSource: '',
   customStyles: {},
 
   // whether or not show the icon
-  showIcon: true,
+  showIcon: false,
   disabled: false,
   hideText: false,
   placeholder: '',

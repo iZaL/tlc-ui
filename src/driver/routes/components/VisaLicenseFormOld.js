@@ -134,7 +134,7 @@ export default class VisaLicenseForm extends PureComponent {
     );
   }
 
-  renderContent = (item, index, isActive) => {
+  render(){
     let {onButtonPress, country} = this.props;
 
     let {visa_expiry_date, visa_image, visa_upload_source, visa_uploaded, license_expiry_date, license_image, license_uploaded, license_upload_source,} = this.state;

@@ -115,9 +115,16 @@ const getVisas = createSelector(
  */
 const getProfileCountries = createSelector(
   [getProfile,getRoutes],
-  ({nationality,residence},profileRoutes) => {
+  ({nationality,residence,licenses,visas},profileRoutes) => {
     let routes = flatten(profileRoutes.map(profile => [profile.origin,profile.destination,...profile.transits]));
-    return [ ...new Set([nationality,residence,...routes]) ]
+    const countries = [ ...new Set([nationality,residence,...routes]) ];
+    return countries.map(country => {
+      return {
+        ...country,
+        license:licenses && licenses.find(license => license.country === country.id) || {},
+        visa:visas && visas.find(license => license.country === country.id) || {},
+      }
+    })
   }
 );
 
