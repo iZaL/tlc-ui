@@ -33,7 +33,7 @@ export default class VisaLicenseForm extends PureComponent {
     expiry_date: null,
     image: null,
     uploaded: false,
-    upload_source: null,
+    uploaded_image: null,
   };
 
   onFieldChange = (field, value) => {
@@ -48,25 +48,34 @@ export default class VisaLicenseForm extends PureComponent {
       }
     };
     ImagePicker.showImagePicker(options, (response) => {
-      console.log('Response = ', response);
       if (response.uri) {
-        console.log('res', response);
-        let source = {uri: response.uri};
-        // You can also display the image using data:
-        // let source = { uri: 'data:image/jpeg;base64,' + response.data };
         this.setState({
           image: response.uri,
-          upload_source: 'data:image/jpeg;base64,' + response.data,
+          uploaded_image: 'data:image/jpeg;base64,' + response.data,
           uploaded: true
         });
       }
     });
   };
 
+
+  onSave = () => {
+    let {country, type, onButtonPress} = this.props;
+    let {expiry_date, image} = this.state;
+
+    onButtonPress({
+      countryID:country.id,
+      type:type,
+      expiry_date:expiry_date,
+      image:image
+    });
+
+  };
+
   render() {
 
-    let {country, type, onButtonPress,onClose} = this.props;
-    console.log('c',country);
+    let {country, type,onClose} = this.props;
+    let {expiry_date, image, uploaded_image, uploaded} = this.state;
 
     let model;
     switch (type) {
@@ -80,10 +89,9 @@ export default class VisaLicenseForm extends PureComponent {
       }
     }
 
-    let {expiry_date, image, upload_source, uploaded} = this.state;
 
     if (uploaded) {
-      image = upload_source
+      image = uploaded_image
     } else {
       image = model.image
     }
@@ -105,14 +113,6 @@ export default class VisaLicenseForm extends PureComponent {
             onDateChange={date => this.onFieldChange('expiry_date', date)}
           />
 
-          {/*<FormTextInput*/}
-            {/*onChangeText={value => this.onFieldChange('expiry_date', value)}*/}
-            {/*defaultValue={model.expiry_date}*/}
-            {/*value={expiry_date}*/}
-            {/*maxLength={40}*/}
-            {/*placeholder={I18n.t('expiry_date')}*/}
-          {/*/>*/}
-
           <Separator style={{marginTop:30,marginBottom:10}}/>
           <FormLabel title={I18n.t('image')}/>
 
@@ -130,7 +130,7 @@ export default class VisaLicenseForm extends PureComponent {
 
           <View style={styles.buttonContainer}>
             <Button title={I18n.t('close').toUpperCase()} onPress={onClose} style={styles.buttons} titleStyle={styles.buttonText}/>
-            <Button title={I18n.t('save').toUpperCase()} onPress={onButtonPress} style={styles.buttons} titleStyle={styles.buttonText}/>
+            <Button title={I18n.t('save').toUpperCase()} onPress={this.onSave} style={styles.buttons} titleStyle={styles.buttonText}/>
           </View>
 
         </View>

@@ -63,8 +63,9 @@ class UploadDocuments extends Component {
     });
   };
 
-  save = () => {
-
+  save = (payload) => {
+    //@todo:save
+    console.log('saving',payload);
   };
 
   hideModal = () => {
