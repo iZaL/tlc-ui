@@ -11,20 +11,20 @@ import UpdateTrailerScene from 'driver/profile/UpdateTrailerScene';
 import UpdateRoutesScene from 'driver/profile/UpdateRoutesScene';
 import UploadDocuments from 'driver/profile/UploadDocuments';
 import RoutesDetailScene from 'driver/routes/RoutesDetailScene';
-import LoadsDetailScene from "driver/loads/LoadsDetailScene";
+import LoadsDetailScene from 'driver/loads/LoadsDetailScene';
 
-const getDrawerIcon = (navigation) => {
+const getDrawerIcon = navigation => {
   return {
     headerLeft: (
-      <DrawerIcon onPress={() => navigation.navigate('DrawerToggle')}/>
+      <DrawerIcon onPress={() => navigation.navigate('DrawerToggle')} />
     ),
-  }
+  };
 };
 
 const HomeStack = StackNavigator({
   Home: {
     screen: Home,
-    navigationOptions: ({navigation}) => getDrawerIcon(navigation)
+    navigationOptions: ({navigation}) => getDrawerIcon(navigation),
   },
   LoadsDetail: {
     screen: LoadsDetailScene,
@@ -34,7 +34,7 @@ const HomeStack = StackNavigator({
 const SettingsStack = StackNavigator({
   Settings: {
     screen: Settings,
-    navigationOptions: ({navigation}) => getDrawerIcon(navigation)
+    navigationOptions: ({navigation}) => getDrawerIcon(navigation),
   },
 });
 

@@ -10,12 +10,11 @@ import Separator from 'components/Separator';
 import IconFactory from 'components/IconFactory';
 
 export default class Drawer extends Component {
-
   state = {
     activeRoute: 'HomeStack',
   };
 
-  shouldComponentUpdate(nextProps,nextState) {
+  shouldComponentUpdate(nextProps, nextState) {
     return this.state.activeRoute !== nextState.activeRoute;
   }
 
@@ -26,7 +25,6 @@ export default class Drawer extends Component {
     this.props.navigation.navigate(routeName);
   };
 
-
   render() {
     let {logout} = this.props.screenProps;
 
@@ -34,7 +32,6 @@ export default class Drawer extends Component {
 
     return (
       <View style={styles.container}>
-
         <DrawerItem
           title={I18n.t('home')}
           routeName="HomeStack"
@@ -61,17 +58,20 @@ export default class Drawer extends Component {
           active={activeRoute === 'ProfileStack'}
         />
 
-
         <Separator />
 
         <DrawerItem
           title={I18n.t('logout')}
           routeName="Logout"
           onItemPress={logout}
-          iconProps={{name: 'logout', type: 'MaterialCommunityIcons', size: 28,paddingLeft:5}}
+          iconProps={{
+            name: 'logout',
+            type: 'MaterialCommunityIcons',
+            size: 28,
+            paddingLeft: 5,
+          }}
           active={activeRoute === 'Logout'}
         />
-
       </View>
     );
   }

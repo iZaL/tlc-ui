@@ -59,6 +59,7 @@ export function entities(
     trailer_makes: {},
     trailers: {},
     routes: {},
+    loads:{}
   },
   action = {},
 ) {

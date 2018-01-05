@@ -19,6 +19,10 @@ export const ACTION_TYPES = {
   FETCH_LOAD_REQUESTS_SUCCESS: '@driver/FETCH_LOAD_REQUESTS_SUCCESS',
   FETCH_LOAD_REQUESTS_FAILURE: '@driver/FETCH_LOAD_REQUESTS_FAILURE',
 
+  FETCH_LOAD_DETAILS_REQUEST: '@driver/FETCH_LOAD_DETAILS_REQUEST',
+  FETCH_LOAD_DETAILS_SUCCESS: '@driver/FETCH_LOAD_DETAILS_SUCCESS',
+  FETCH_LOAD_DETAILS_FAILURE: '@driver/FETCH_LOAD_DETAILS_FAILURE',
+
   FETCH_ROUTE_TRANSITS_REQUEST: '@driver/FETCH_ROUTE_TRANSITS_REQUEST',
   FETCH_ROUTE_TRANSITS_SUCCESS: '@driver/FETCH_ROUTE_TRANSITS_SUCCESS',
   FETCH_ROUTE_TRANSITS_FAILURE: '@driver/FETCH_ROUTE_TRANSITS_FAILURE',
@@ -56,6 +60,14 @@ function fetchLoadRequests(params) {
     params,
   };
 }
+
+function fetchLoadDetails(params) {
+  return {
+    type: ACTION_TYPES.FETCH_LOAD_DETAILS_REQUEST,
+    params,
+  };
+}
+
 function fetchRouteTransits(params) {
   return {
     type: ACTION_TYPES.FETCH_ROUTE_TRANSITS_REQUEST,
@@ -91,5 +103,6 @@ export const ACTIONS = {
   saveTruck,
   saveRoute,
   fetchRouteTransits,
-  fetchLoadRequests
+  fetchLoadRequests,
+  fetchLoadDetails
 };

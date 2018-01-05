@@ -6,8 +6,8 @@ import PropTypes from 'prop-types';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import colors from 'assets/theme/colors';
-import MaterialIcons from "react-native-vector-icons/MaterialIcons";
-import {StyleSheet, View} from "react-native";
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import {StyleSheet, View} from 'react-native';
 
 const components = {
   MaterialCommunityIcons,
@@ -38,9 +38,9 @@ class IconFactory extends Component {
 }
 const styles = StyleSheet.create({
   container: {
-    width:40,
-    justifyContent:'center',
-    alignItems:'center'
+    width: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 export default IconFactory;

@@ -22,8 +22,8 @@ class ProfileHome extends Component {
     switch (route) {
       case 'update_profile':
         scene = 'UpdateProfile';
-        sceneConfig={
-          title:I18n.t('update_profile')
+        sceneConfig = {
+          title: I18n.t('update_profile'),
         };
         break;
       case 'update_truck':
@@ -39,7 +39,7 @@ class ProfileHome extends Component {
         scene = 'UploadDocuments';
         break;
     }
-    return this.props.navigation.navigate(scene,sceneConfig);
+    return this.props.navigation.navigate(scene, sceneConfig);
   };
 
   render() {

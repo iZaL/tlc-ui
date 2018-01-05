@@ -4,63 +4,64 @@
 import React, {Component, PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {StyleSheet, Text, View} from 'react-native';
-import colors from "assets/theme/colors";
+import colors from 'assets/theme/colors';
 import Touchable from 'react-native-platform-touchable';
 import Accordion from 'react-native-collapsible/Accordion';
-import Feather from "react-native-vector-icons/Feather";
-import Separator from "components/Separator";
+import Feather from 'react-native-vector-icons/Feather';
+import Separator from 'components/Separator';
 import I18n from 'utils/locale';
 
 export default class DocumentCountriesList extends PureComponent {
-
   static propTypes = {
-    items: PropTypes.array.isRequired
+    items: PropTypes.array.isRequired,
   };
 
   static defaultProps = {
-    items: []
+    items: [],
   };
 
-  renderSectionHeader = (items:Array) => {
+  renderSectionHeader = (items: Array) => {
     return items.map(item => item);
   };
 
   renderHeader(item, index, isActive) {
     return (
-      <View style={[styles.headerContainer,
-        !isActive && {borderBottomRightRadius: 3, borderBottomLeftRadius: 3,}
-      ]}>
+      <View
+        style={[
+          styles.headerContainer,
+          !isActive && {borderBottomRightRadius: 3, borderBottomLeftRadius: 3},
+        ]}>
         <Text style={styles.headerTitle}>{item.name}</Text>
 
         <Feather
-          name={isActive ? "chevron-up" : "chevron-down"}
+          name={isActive ? 'chevron-up' : 'chevron-down'}
           color={colors.darkGrey}
           size={25}
         />
-
       </View>
     );
   }
 
-  renderContent = (item) => {
+  renderContent = item => {
     let {onItemPress} = this.props;
     return (
       <View>
-        <View style={[styles.contentContainer,]}>
+        <View style={[styles.contentContainer]}>
+          <Separator />
 
-          <Separator/>
-
-          <Touchable style={styles.itemContainer} onPress={()=>onItemPress(item,'license')}>
+          <Touchable
+            style={styles.itemContainer}
+            onPress={() => onItemPress(item, 'license')}>
             <Text style={styles.itemTitle}>{I18n.t('driving_license')}</Text>
           </Touchable>
 
+          <Separator />
 
-          <Separator/>
-
-          <Touchable style={styles.itemContainer} onPress={()=>onItemPress(item,'license')}>
+          <Touchable
+            style={styles.itemContainer}
+            onPress={() => onItemPress(item, 'license')}>
             <Text style={styles.itemTitle}>{I18n.t('visa')}</Text>
           </Touchable>
-
         </View>
       </View>
     );
@@ -69,7 +70,6 @@ export default class DocumentCountriesList extends PureComponent {
   render() {
     let {items} = this.props;
     return (
-
       <View style={styles.container}>
         <Accordion
           sections={this.renderSectionHeader(items)}
@@ -80,7 +80,6 @@ export default class DocumentCountriesList extends PureComponent {
         />
       </View>
     );
-
   }
 }
 
@@ -102,7 +101,7 @@ const styles = StyleSheet.create({
     shadowRadius: 3,
     shadowOffset: {width: 1, height: 1},
     shadowColor: colors.mediumGrey,
-    shadowOpacity: 1
+    shadowOpacity: 1,
   },
   contentContainer: {
     flex: 1,
@@ -118,7 +117,7 @@ const styles = StyleSheet.create({
   headerTitle: {
     flex: 1,
     fontSize: 20,
-    fontWeight: '500'
+    fontWeight: '500',
   },
   headerIcon: {},
   imageContainer: {
@@ -131,14 +130,13 @@ const styles = StyleSheet.create({
   },
   image: {
     width: 90,
-    height: 90
+    height: 90,
   },
   itemContainer: {
     padding: 10,
   },
   itemTitle: {
     fontSize: 18,
-    color: colors.darkGrey
-  }
-
+    color: colors.darkGrey,
+  },
 });

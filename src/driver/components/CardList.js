@@ -4,18 +4,18 @@
 import React, {Component, PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {FlatList, StyleSheet, Text, View} from 'react-native';
-import Separator from "components/Separator";
-import colors from "assets/theme/colors";
+import Separator from 'components/Separator';
+import colors from 'assets/theme/colors';
 
 export default class CardList extends PureComponent {
   static propTypes = {
     items: PropTypes.array.isRequired,
-    onItemPress: PropTypes.func.isRequired
+    onItemPress: PropTypes.func.isRequired,
   };
 
   renderRow = ({item}) => {
     return (
-      <View style={[styles.itemContainer,]}>
+      <View style={[styles.itemContainer]}>
         <Text style={styles.title}>{item.name}</Text>
       </View>
     );
@@ -29,7 +29,7 @@ export default class CardList extends PureComponent {
         style={styles.listContainer}
         renderItem={this.renderRow}
         showsVerticalScrollIndicator={false}
-        ItemSeparatorComponent={() => <Separator/>}
+        ItemSeparatorComponent={() => <Separator />}
         keyExtractor={(item, index) => item.id}
       />
     );
@@ -39,7 +39,7 @@ export default class CardList extends PureComponent {
 const styles = StyleSheet.create({
   listContainer: {
     flex: 1,
-    paddingHorizontal:10,
+    paddingHorizontal: 10,
   },
   itemContainer: {
     flex: 1,
@@ -53,16 +53,15 @@ const styles = StyleSheet.create({
     shadowRadius: 3,
     shadowOffset: {width: 1, height: 1},
     shadowColor: colors.mediumGrey,
-    shadowOpacity: 1
+    shadowOpacity: 1,
   },
   itemContainerActive: {
-    borderBottomColor:colors.primary,
-    borderBottomWidth:2,
+    borderBottomColor: colors.primary,
+    borderBottomWidth: 2,
   },
   title: {
     textAlign: 'left',
     fontSize: 18,
   },
-  titleActive: {
-  }
+  titleActive: {},
 });

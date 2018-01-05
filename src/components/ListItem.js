@@ -42,9 +42,9 @@ const styles = StyleSheet.create({
   },
   iconContainer: {
     flex: 1,
-    alignItems:'center',
-    justifyContent:'center',
-    marginRight:10,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: 10,
     // backgroundColor:'green',
   },
   contentContainer: {

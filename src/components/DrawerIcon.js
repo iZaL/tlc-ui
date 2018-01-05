@@ -1,19 +1,18 @@
 /**
  * @flow
  */
-import React,{Component} from 'react';
+import React, {Component} from 'react';
 import Touchable from 'react-native-platform-touchable';
 import PropTypes from 'prop-types';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import colors from 'assets/theme/colors';
 
 export default class DrawerIcon extends Component {
-
   static propTypes = {
     onPress: PropTypes.func.isRequired,
   };
 
-  shouldComponentUpdate(){
+  shouldComponentUpdate() {
     return false;
   }
 
@@ -32,4 +31,4 @@ export default class DrawerIcon extends Component {
       </Touchable>
     );
   }
-};
+}

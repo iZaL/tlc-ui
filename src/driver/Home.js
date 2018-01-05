@@ -3,36 +3,34 @@ import PropTypes from 'prop-types';
 import {View} from 'react-native';
 import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
 import {connect} from 'react-redux';
-import LoadsList from "driver/loads/components/LoadsList";
-import {SELECTORS as DRIVER_SELECTORS} from "driver/common/selectors";
+import LoadsList from 'driver/loads/components/LoadsList';
+import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
 
 class Home extends Component {
-
   static propTypes = {
-    loads: PropTypes.array.isRequired
+    loads: PropTypes.array.isRequired,
   };
 
   static defaultProps = {
-    loads:[]
+    loads: [],
   };
 
   componentDidMount() {
     this.props.dispatch(DRIVER_ACTIONS.fetchLoadRequests());
   }
 
-  onLoadsListItemPress = (load:object) => {
-    console.log('lo',load);
+  onLoadsListItemPress = (load: object) => {
+    console.log('lo', load);
 
-    this.props.navigation.navigate('LoadsDetail',{
-      loadID:load.id
-    })
+    this.props.navigation.navigate('LoadsDetail', {
+      loadID: load.id,
+    });
   };
 
   render() {
     let {loads} = this.props;
     return (
-      <View
-        style={{flex: 1}}>
+      <View style={{flex: 1}}>
         <LoadsList items={loads} onItemPress={this.onLoadsListItemPress} />
       </View>
     );
@@ -41,7 +39,7 @@ class Home extends Component {
 
 function mapStateToProps(state) {
   return {
-    loads:DRIVER_SELECTORS.getLoadRequests(state),
+    loads: DRIVER_SELECTORS.getLoadRequests(state),
   };
 }
 

@@ -30,6 +30,11 @@ function fetchRouteTransits(params) {
   return fetchAPI(url);
 }
 
+function fetchLoadDetails(params) {
+  const url = `driver/loads/${params.load_id}/details`;
+  return fetchAPI(url);
+}
+
 function saveTruck(body) {
   const url = `driver/trucks`;
   return fetchAPI(url, 'POST', body);
@@ -42,5 +47,6 @@ export const API = {
   saveRoute,
   saveTruck,
   fetchRouteTransits,
-  fetchLoadRequests
+  fetchLoadRequests,
+  fetchLoadDetails,
 };

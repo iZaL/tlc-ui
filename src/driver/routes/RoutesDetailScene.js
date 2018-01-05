@@ -25,7 +25,7 @@ class RoutesDetailScene extends Component {
     }).isRequired,
   };
 
-  state : State = {
+  state: State = {
     activeCountry: undefined,
   };
 
@@ -48,10 +48,10 @@ class RoutesDetailScene extends Component {
   }
 
   componentWillReceiveProps(props) {
-    if(!this.state.activeCountry && props.route.origin.id) {
+    if (!this.state.activeCountry && props.route.origin.id) {
       this.setState({
-        activeCountry:props.route.origin
-      })
+        activeCountry: props.route.origin,
+      });
     }
   }
 
@@ -65,41 +65,37 @@ class RoutesDetailScene extends Component {
     this.setActiveCountry(item);
   };
 
-  saveProfile = () => {
-
-  };
+  saveProfile = () => {};
 
   render() {
-    const {route,visas,licenses} = this.props;
-    const {origin,destination,transits} = route;
+    const {route, visas, licenses} = this.props;
+    const {origin, destination, transits} = route;
     const {activeCountry} = this.state;
 
-    let countries = [origin,...transits,destination];
+    let countries = [origin, ...transits, destination];
 
     let license = {};
     let visa = {};
-    if(activeCountry && activeCountry.id) {
-      license = licenses.find(license => license.country === activeCountry.id );
-      visa = visas.find(visa => visa.country === activeCountry.id );
+    if (activeCountry && activeCountry.id) {
+      license = licenses.find(license => license.country === activeCountry.id);
+      visa = visas.find(visa => visa.country === activeCountry.id);
     }
 
     return (
-      <ScrollView style={{flex:1,}}>
-
+      <ScrollView style={{flex: 1}}>
         {/*<RouteTransitsList*/}
-          {/*items={countries}*/}
-          {/*activeCountryID={activeCountry ? activeCountry.id : 0}*/}
-          {/*onItemPress={this.onTransitTabItemPress}*/}
+        {/*items={countries}*/}
+        {/*activeCountryID={activeCountry ? activeCountry.id : 0}*/}
+        {/*onItemPress={this.onTransitTabItemPress}*/}
         {/*/>*/}
 
         {/*<VisaLicenseForm*/}
-          {/*items={countries}*/}
-          {/*onButtonPress={this.saveProfile}*/}
-          {/*country={activeCountry}*/}
-          {/*license={license}*/}
-          {/*visa={visa}*/}
+        {/*items={countries}*/}
+        {/*onButtonPress={this.saveProfile}*/}
+        {/*country={activeCountry}*/}
+        {/*license={license}*/}
+        {/*visa={visa}*/}
         {/*/>*/}
-
       </ScrollView>
     );
   }
@@ -112,8 +108,8 @@ const makeMapStateToProps = () => {
   const getRouteByID = DRIVER_SELECTORS.getRouteByID();
   const mapStateToProps = (state, props) => {
     return {
-      licenses:DRIVER_SELECTORS.getLicenses(state),
-      visas:DRIVER_SELECTORS.getVisas(state),
+      licenses: DRIVER_SELECTORS.getLicenses(state),
+      visas: DRIVER_SELECTORS.getVisas(state),
       route: getRouteByID(state, props.navigation.state.params.routeID),
     };
   };

@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     color: colors.fadedBlack,
     paddingHorizontal: 10,
     textAlign: 'left',
-    flex:1,
+    flex: 1,
   },
   activeTitle: {
     color: colors.primary,

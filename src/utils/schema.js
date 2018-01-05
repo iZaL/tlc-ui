@@ -23,11 +23,11 @@ driversSchema.define({
   nationality: countriesSchema,
   residence: countriesSchema,
   truck: trucksSchema,
-  licenses: [{country:countriesSchema}],
-  visas: [{country:countriesSchema}],
+  licenses: [{country: countriesSchema}],
+  visas: [{country: countriesSchema}],
   shipper: shippersSchema,
   routes: [routesSchema],
-  loads:[loadsSchema]
+  loads: [loadsSchema],
 });
 
 usersSchema.define({
@@ -50,6 +50,15 @@ countriesSchema.define({
   loading_routes: [routesSchema],
 });
 
+loadsSchema.define({
+  origin:{
+    country:countriesSchema
+  },
+  destination:{
+    country:countriesSchema
+  }
+});
+
 export const Schema = {
   users: usersSchema,
   countries: countriesSchema,
@@ -61,4 +70,5 @@ export const Schema = {
   drivers: driversSchema,
   shippers: shippersSchema,
   routes: routesSchema,
+  loads:loadsSchema
 };

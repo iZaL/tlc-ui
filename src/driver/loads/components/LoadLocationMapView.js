@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {
   StyleSheet,
   View,
@@ -9,7 +9,7 @@ import {
 
 import MapView from 'react-native-maps';
 
-const { width, height } = Dimensions.get('window');
+const {width, height} = Dimensions.get('window');
 
 const ASPECT_RATIO = width / height;
 const LATITUDE = 29.3759;
@@ -22,27 +22,23 @@ const SPACE = 0.01;
 
 function createMarker(modifier = 1) {
   return {
-    latitude: LATITUDE - (SPACE * modifier),
-    longitude: LONGITUDE - (SPACE * modifier),
+    latitude: LATITUDE - SPACE * modifier,
+    longitude: LONGITUDE - SPACE * modifier,
   };
 }
 
 function createMarker2(modifier = 1) {
   return {
-    latitude: LATITUDESA - (SPACE * modifier),
-    longitude: LONGITUDESA - (SPACE * modifier),
+    latitude: LATITUDESA - SPACE * modifier,
+    longitude: LONGITUDESA - SPACE * modifier,
   };
 }
 
-const MARKERS = [
-  createMarker(),
-  createMarker2(2),
-];
+const MARKERS = [createMarker(), createMarker2(2)];
 
-const DEFAULT_PADDING = { top: 50, right: 50, bottom: 50, left: 50 };
+const DEFAULT_PADDING = {top: 50, right: 50, bottom: 50, left: 50};
 
-export default class LoadLocationMapView extends React.Component {
-
+export default class LoadLocationMapView extends Component {
   componentDidMount() {
     this.map.fitToCoordinates(MARKERS, {
       edgePadding: DEFAULT_PADDING,
@@ -54,23 +50,20 @@ export default class LoadLocationMapView extends React.Component {
     return (
       <View style={styles.container}>
         <MapView
-          ref={ref => { this.map = ref; }}
+          ref={ref => {
+            this.map = ref;
+          }}
           style={styles.map}
           initialRegion={{
             latitude: LATITUDE,
             longitude: LONGITUDE,
             latitudeDelta: LATITUDE_DELTA,
             longitudeDelta: LONGITUDE_DELTA,
-          }}
-        >
+          }}>
           {MARKERS.map((marker, i) => (
-            <MapView.Marker
-              key={i}
-              coordinate={marker}
-            />
+            <MapView.Marker key={i} coordinate={marker} />
           ))}
         </MapView>
-
       </View>
     );
   }

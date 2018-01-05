@@ -18,10 +18,25 @@ function* fetchLoadRequests() {
   }
 }
 
+function* fetchLoadDetails(action) {
+  try {
+    const response = yield call(API.fetchLoadDetails,action.params);
+    const normalized = normalize(response.data, Schema.loads);
+    yield put({
+      type: ACTION_TYPES.FETCH_LOAD_DETAILS_SUCCESS,
+      entities: normalized.entities,
+    });
+  } catch (error) {
+    yield put({type: ACTION_TYPES.FETCH_LOAD_DETAILS_FAILURE, error});
+  }
+}
+
 function* fetchLoadRequestsMonitor() {
   yield takeLatest(ACTION_TYPES.FETCH_LOAD_REQUESTS_REQUEST, fetchLoadRequests);
 }
 
-export const sagas = all([
-  fork(fetchLoadRequestsMonitor),
-]);
+function* fetchLoadDetailsMonitor() {
+  yield takeLatest(ACTION_TYPES.FETCH_LOAD_DETAILS_REQUEST, fetchLoadDetails);
+}
+
+export const sagas = all([fork(fetchLoadRequestsMonitor),fork(fetchLoadDetailsMonitor)]);

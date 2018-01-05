@@ -3,21 +3,19 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
 import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
-import {Modal, ScrollView, View} from "react-native";
-import DocumentCountriesList from "driver/routes/components/DocumentCountriesList";
-import VisaLicenseForm from "driver/routes/components/VisaLicenseForm";
+import {Modal, ScrollView, View} from 'react-native';
+import DocumentCountriesList from 'driver/routes/components/DocumentCountriesList';
+import VisaLicenseForm from 'driver/routes/components/VisaLicenseForm';
 
 type State = {
   countries: Array,
   activeCountry: object,
-  type: 'license|visa'
-}
+  type: 'license|visa',
+};
 
 class UploadDocuments extends Component {
   static propTypes = {
-    countries: PropTypes.arrayOf(
-      PropTypes.object,
-    ).isRequired,
+    countries: PropTypes.arrayOf(PropTypes.object).isRequired,
   };
 
   static defaultProps = {
@@ -27,7 +25,7 @@ class UploadDocuments extends Component {
   state: State = {
     modalVisible: false,
     activeCountry: {},
-    type: 'license'
+    type: 'license',
   };
 
   componentDidMount() {
@@ -56,19 +54,19 @@ class UploadDocuments extends Component {
     this.setState({
       modalVisible: true,
       activeCountry: country,
-      type: type
+      type: type,
     });
   };
 
-  save = (payload) => {
+  save = payload => {
     //@todo:save
-    console.log('saving',payload);
+    console.log('saving', payload);
   };
 
   hideModal = () => {
     this.setState({
       modalVisible: false,
-    })
+    });
   };
 
   render() {
@@ -77,20 +75,21 @@ class UploadDocuments extends Component {
 
     return (
       <ScrollView style={{flex: 1}}>
+        <DocumentCountriesList
+          items={countries}
+          onItemPress={this.onDocumentCountriesListItemPress}
+        />
 
-        <DocumentCountriesList items={countries} onItemPress={this.onDocumentCountriesListItemPress}/>
-
-        <Modal
-          animationType="slide"
-          visible={modalVisible}
-          transparent={true}
-        >
+        <Modal animationType="slide" visible={modalVisible} transparent={true}>
           <View style={{flex: 1, backgroundColor: '#00000090'}}>
-            <VisaLicenseForm onClose={this.hideModal} onButtonPress={this.save} country={activeCountry} type={type}/>
+            <VisaLicenseForm
+              onClose={this.hideModal}
+              onButtonPress={this.save}
+              country={activeCountry}
+              type={type}
+            />
           </View>
-
         </Modal>
-
       </ScrollView>
     );
   }

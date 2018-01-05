@@ -4,8 +4,8 @@
 import React, {Component, PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {StyleSheet, Text, View} from 'react-native';
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import colors from "assets/theme/colors";
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import colors from 'assets/theme/colors';
 
 export default class LoadInfo extends PureComponent {
   static propTypes = {
@@ -49,23 +49,22 @@ export default class LoadInfo extends PureComponent {
       </View>
     );
   }
-
 }
 
 const styles = StyleSheet.create({
   container: {
-    padding: 5
+    padding: 5,
   },
   itemRowContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingBottom:5,
+    paddingBottom: 5,
   },
   locationName: {
     textAlign: 'left',
     fontSize: 18,
     paddingHorizontal: 5,
-    fontWeight: '500'
+    fontWeight: '500',
   },
   locationIcon: {
     height: 30,
@@ -75,11 +74,11 @@ const styles = StyleSheet.create({
   },
   trailerName: {
     fontSize: 16,
-    paddingRight: 50
+    paddingRight: 50,
   },
   packageName: {
     fontSize: 16,
-    paddingRight: 50
+    paddingRight: 50,
   },
   weight: {
     fontSize: 16,
@@ -88,7 +87,7 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
   },
   label: {
-    color: colors.mediumGrey
+    color: colors.mediumGrey,
   },
   value: {
     fontSize: 16,
