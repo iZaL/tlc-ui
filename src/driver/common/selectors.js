@@ -9,6 +9,7 @@ const trailersSchema = state => state.entities.trailers;
 const routesSchema = state => state.entities.routes;
 const trucksSchema = state => state.entities.trucks;
 const countriesSchema = state => state.entities.countries;
+const loadsSchema = state => state.entities.loads;
 const getIdProp = ({}, itemID) => itemID;
 
 const getProfile = createSelector(
@@ -130,11 +131,10 @@ const getProfileCountries = createSelector(
 
 const getLoadRequests = createSelector(
   [
-    USER_SELECTORS.getAuthUserProfile,
+    USER_SELECTORS.getAuthUserProfile,loadsSchema
   ],
-  (driver) =>  driver.loads
+  (driver,loads) =>  driver.loads ? driver.loads.map(loadID => loads[loadID]) : []
 );
-
 
 export const SELECTORS = {
   getProfile,

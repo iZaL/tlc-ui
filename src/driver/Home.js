@@ -21,6 +21,8 @@ class Home extends Component {
   }
 
   onLoadsListItemPress = (load:object) => {
+    console.log('lo',load);
+
     this.props.navigation.navigate('LoadsDetail',{
       loadID:load.id
     })
@@ -28,7 +30,6 @@ class Home extends Component {
 
   render() {
     let {loads} = this.props;
-    console.log('loads',loads);
     return (
       <View
         style={{flex: 1}}>

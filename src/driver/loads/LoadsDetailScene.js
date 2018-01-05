@@ -34,15 +34,16 @@ class LoadsDetailScene extends Component {
   };
 
   componentDidMount() {
-    const {routeID} = this.props.navigation.state.params;
+    const {loadID} = this.props.navigation.state.params;
     this.props.dispatch(
       DRIVER_ACTIONS.fetchRouteTransits({
-        route_id: routeID,
+        load_id: loadID,
       }),
     );
   }
 
   render() {
+    console.log('props',this.props);
 
     return (
       <View style={{flex: 1, backgroundColor: 'white'}}>
