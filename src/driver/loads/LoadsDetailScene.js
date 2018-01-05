@@ -8,7 +8,8 @@ import LoadLocationMapView from 'driver/loads/components/LoadLocationMapView';
 import LoadPickDropLocation from 'driver/loads/components/LoadPickDropLocation';
 import Separator from 'components/Separator';
 import LoadInfo from 'driver/loads/components/LoadInfo';
-import Button from '../../components/Button';
+import Button from 'components/Button';
+import colors from "assets/theme/colors";
 
 class LoadsDetailScene extends Component {
 
@@ -32,28 +33,35 @@ class LoadsDetailScene extends Component {
         }),
       }),
     }),
-
-    // load: PropTypes.shape({
-    //   origin:PropTypes.object.isRequired,
-    //   route: PropTypes.object.isRequired,
-    // }).isRequired,
+    load: PropTypes.shape({
+      origin:PropTypes.object.isRequired,
+      destination: PropTypes.object.isRequired,
+    }).isRequired,
   };
 
   static defaultProps = {
     navigation: {state: {params: {loadID: 0}}},
     load: {
-      route: {},
+      origin: {},
+      destination: {},
     },
   };
 
 
 
   render() {
-    console.log('location',this.props.load);
+    let {load} = this.props;
+
+    let {origin,destination} = load;
+
     return (
       <View style={{flex: 1, backgroundColor: 'white'}}>
-        <View style={{height: 200}}>
-          <LoadLocationMapView />
+
+        <View style={{height: 200,backgroundColor:colors.lightGrey}}>
+          {
+            origin.latitude && destination.latitude &&
+            <LoadLocationMapView origin={origin} destination={destination}  />
+          }
         </View>
 
         <View style={{padding: 5}}>

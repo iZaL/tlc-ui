@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import {
   StyleSheet,
   View,
@@ -12,41 +13,36 @@ import MapView from 'react-native-maps';
 const {width, height} = Dimensions.get('window');
 
 const ASPECT_RATIO = width / height;
-const LATITUDE = 29.3759;
-const LATITUDESA = 23.8859;
-const LONGITUDE = 47.9774;
-const LONGITUDESA = 45.0792;
 const LATITUDE_DELTA = 0.0922;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
-const SPACE = 0.01;
-
-function createMarker(modifier = 1) {
-  return {
-    latitude: LATITUDE - SPACE * modifier,
-    longitude: LONGITUDE - SPACE * modifier,
-  };
-}
-
-function createMarker2(modifier = 1) {
-  return {
-    latitude: LATITUDESA - SPACE * modifier,
-    longitude: LONGITUDESA - SPACE * modifier,
-  };
-}
-
-const MARKERS = [createMarker(), createMarker2(2)];
 
 const DEFAULT_PADDING = {top: 50, right: 50, bottom: 50, left: 50};
 
 export default class LoadLocationMapView extends Component {
+
+  static propTypes = {
+    origin:PropTypes.shape({
+      latitude:PropTypes.number.isRequired,
+      longitude:PropTypes.number.isRequired,
+    }).isRequired,
+    destination:PropTypes.shape({
+      latitude:PropTypes.number.isRequired,
+      longitude:PropTypes.number.isRequired,
+    }).isRequired,
+  };
+
   componentDidMount() {
-    this.map.fitToCoordinates(MARKERS, {
+    let {origin,destination} = this.props;
+    this.map.fitToCoordinates([origin,destination], {
       edgePadding: DEFAULT_PADDING,
       animated: true,
     });
   }
 
   render() {
+    let {origin,destination} = this.props;
+    console.log('props',this.props);
+    let markers = [origin,destination];
     return (
       <View style={styles.container}>
         <MapView
@@ -55,12 +51,12 @@ export default class LoadLocationMapView extends Component {
           }}
           style={styles.map}
           initialRegion={{
-            latitude: LATITUDE,
-            longitude: LONGITUDE,
+            latitude: origin.latitude,
+            longitude: origin.longitude,
             latitudeDelta: LATITUDE_DELTA,
             longitudeDelta: LONGITUDE_DELTA,
           }}>
-          {MARKERS.map((marker, i) => (
+          {markers.map((marker, i) => (
             <MapView.Marker key={i} coordinate={marker} />
           ))}
         </MapView>
