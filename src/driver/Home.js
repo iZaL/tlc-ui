@@ -1,10 +1,21 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import {View} from 'react-native';
 import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
 import {connect} from 'react-redux';
 import LoadsList from "driver/loads/components/LoadsList";
+import {SELECTORS as DRIVER_SELECTORS} from "driver/common/selectors";
 
 class Home extends Component {
+
+  static propTypes = {
+    loads: PropTypes.array.isRequired
+  };
+
+  static defaultProps = {
+    loads:[]
+  };
+
   componentDidMount() {
     this.props.dispatch(DRIVER_ACTIONS.fetchLoadRequests());
   }
@@ -16,10 +27,12 @@ class Home extends Component {
   };
 
   render() {
+    let {loads} = this.props;
+    console.log('loads',loads);
     return (
       <View
         style={{flex: 1}}>
-        <LoadsList items={[]} onItemPress={this.onLoadsListItemPress} />
+        <LoadsList items={loads} onItemPress={this.onLoadsListItemPress} />
       </View>
     );
   }
@@ -27,7 +40,7 @@ class Home extends Component {
 
 function mapStateToProps(state) {
   return {
-    state,
+    loads:DRIVER_SELECTORS.getLoadRequests(state),
   };
 }
 

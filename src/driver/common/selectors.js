@@ -128,6 +128,14 @@ const getProfileCountries = createSelector(
   }
 );
 
+const getLoadRequests = createSelector(
+  [
+    USER_SELECTORS.getAuthUserProfile,
+  ],
+  (driver) =>  driver.loads
+);
+
+
 export const SELECTORS = {
   getProfile,
   getTruck,
@@ -137,5 +145,6 @@ export const SELECTORS = {
   getRoutes,
   getLicenses,
   getVisas,
-  getProfileCountries
+  getProfileCountries,
+  getLoadRequests
 };

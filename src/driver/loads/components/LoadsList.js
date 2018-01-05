@@ -24,7 +24,7 @@ export default class LoadsList extends PureComponent {
     let {items} = this.props;
     return (
       <FlatList
-        data={[{id: 1}, {id: 2,}]}
+        data={items}
         style={styles.listContainer}
         renderItem={this.renderRow}
         showsVerticalScrollIndicator={false}
