@@ -11,6 +11,7 @@ import UpdateTrailerScene from 'driver/profile/UpdateTrailerScene';
 import UpdateRoutesScene from 'driver/profile/UpdateRoutesScene';
 import UploadDocuments from 'driver/profile/UploadDocuments';
 import RoutesDetailScene from 'driver/routes/RoutesDetailScene';
+import LoadsDetailScene from "driver/loads/LoadsDetailScene";
 
 const HomeStack = StackNavigator({
   Home: {
@@ -20,6 +21,9 @@ const HomeStack = StackNavigator({
         <DrawerIcon onPress={() => navigation.navigate('DrawerToggle')} />
       ),
     }),
+  },
+  LoadsDetail: {
+    screen: LoadsDetailScene,
   },
 });
 
@@ -80,5 +84,5 @@ export const Routes = DrawerNavigator(DrawerRoutes, {
   gesturesEnabled: false,
   contentComponent: props => <Drawer {...props} />,
   drawerWidth: 275,
-  initialRouteName: 'ProfileStack',
+  // initialRouteName: 'ProfileStack',
 });

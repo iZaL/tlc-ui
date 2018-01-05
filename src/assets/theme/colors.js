@@ -8,6 +8,7 @@ export default {
   primary: '#00752f',
   secondary: '#061d23',
   blue: '#1B82F9',
+  darkBlue: '#44748e',
   fadedWhite: '#f7f7f7',
   fadedBlack: '#393939',
   fadedGrey: '#737373',

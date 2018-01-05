@@ -2,21 +2,24 @@ import React, {Component} from 'react';
 import {Text, View} from 'react-native';
 import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
 import {connect} from 'react-redux';
+import LoadsList from "driver/loads/components/LoadsList";
 
 class Home extends Component {
   componentDidMount() {
     this.props.dispatch(DRIVER_ACTIONS.fetchProfile());
   }
 
+  onLoadsListItemPress = (load:object) => {
+    this.props.navigation.navigate('LoadsDetail',{
+      loadID:load.id
+    })
+  };
+
   render() {
     return (
       <View
-        style={{flex: 1, justifyContent: 'center', backgroundColor: 'white'}}>
-        <Text
-          style={{textAlign: 'center', fontSize: 40}}
-          onPress={() => this.props.navigation.navigate('Settings')}>
-          Home
-        </Text>
+        style={{flex: 1}}>
+        <LoadsList items={[]} onItemPress={this.onLoadsListItemPress} />
       </View>
     );
   }

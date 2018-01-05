@@ -28,15 +28,15 @@ const getAuthUserProfile = createSelector(
     return entities[schema][id];
   },
 );
-
-const getUsers = createSelector(schemas, usersEntity, (entities, users) => {
-  return Object.keys(users).map(id => denormalize(id, Schema.users, entities));
-});
+//
+// const getUsers = createSelector(schemas, usersEntity, (entities, users) => {
+//   return Object.keys(users).map(id => denormalize(id, Schema.users, entities));
+// });
 
 export const SELECTORS = {
   isAuthenticated,
   getAuthUser,
   getAuthUserProfile,
   getAuthUserType,
-  getUsers,
+  // getUsers,
 };

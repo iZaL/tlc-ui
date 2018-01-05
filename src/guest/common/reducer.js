@@ -2,7 +2,7 @@ import {ACTION_TYPES} from 'guest/common/actions';
 
 const initialState = {
   id: null,
-  type: 'default',
+  type: 0,
   isAuthenticated: false,
   showPasswordUpdateScene: false,
   showPasswordRecoverScene: false,
