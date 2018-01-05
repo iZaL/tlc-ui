@@ -8,12 +8,15 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import colors from 'assets/theme/colors';
+import MaterialIcons from "react-native-vector-icons/MaterialIcons";
+import {View,StyleSheet} from "react-native";
 
 const components = {
-  Ionicons,
   MaterialCommunityIcons,
-  Entypo,
-  FontAwesome,
+  MaterialIcons,
+  Ionicons,
+  // Entypo,
+  // FontAwesome
 };
 
 class IconFactory extends Component {
@@ -28,8 +31,18 @@ class IconFactory extends Component {
   render() {
     let {type, ...rest} = this.props;
     const Icon = components[type];
-    return <Icon color={colors.fadedGrey} {...rest} />;
+    return (
+      <View style={styles.container}>
+        <Icon color={colors.fadedGrey} {...rest} />
+      </View>
+    );
   }
 }
-
+const styles = StyleSheet.create({
+  container: {
+    width:40,
+    justifyContent:'center',
+    alignItems:'center'
+  },
+});
 export default IconFactory;

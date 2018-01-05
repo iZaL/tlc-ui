@@ -13,14 +13,18 @@ import UploadDocuments from 'driver/profile/UploadDocuments';
 import RoutesDetailScene from 'driver/routes/RoutesDetailScene';
 import LoadsDetailScene from "driver/loads/LoadsDetailScene";
 
+const getDrawerIcon = (navigation) => {
+  return {
+    headerLeft: (
+      <DrawerIcon onPress={() => navigation.navigate('DrawerToggle')}/>
+    ),
+  }
+};
+
 const HomeStack = StackNavigator({
   Home: {
     screen: Home,
-    navigationOptions: ({navigation}) => ({
-      headerLeft: (
-        <DrawerIcon onPress={() => navigation.navigate('DrawerToggle')} />
-      ),
-    }),
+    navigationOptions: ({navigation}) => getDrawerIcon(navigation)
   },
   LoadsDetail: {
     screen: LoadsDetailScene,
@@ -30,11 +34,7 @@ const HomeStack = StackNavigator({
 const SettingsStack = StackNavigator({
   Settings: {
     screen: Settings,
-    navigationOptions: ({navigation}) => ({
-      headerLeft: (
-        <DrawerIcon onPress={() => navigation.navigate('DrawerToggle')} />
-      ),
-    }),
+    navigationOptions: ({navigation}) => getDrawerIcon(navigation)
   },
 });
 

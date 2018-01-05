@@ -10,6 +10,7 @@ import Separator from 'components/Separator';
 import IconFactory from 'components/IconFactory';
 
 export default class Drawer extends Component {
+
   onItemPress = (routeName: string) => {
     this.setState({
       activeRoute: routeName,
@@ -24,28 +25,21 @@ export default class Drawer extends Component {
   render() {
     let {logout} = this.props.screenProps;
 
+    let {activeRoute} = this.state;
+
     return (
       <View style={styles.container}>
+
         <DrawerItem
           title={I18n.t('home')}
           routeName="HomeStack"
           onItemPress={this.onItemPress}
-          icon={
-            <IconFactory type="MaterialCommunityIcons" size={30} name="home" />
-          }
-          active={this.state.activeRoute === 'HomeStack'}
-        />
-
-        <Separator />
-
-        <DrawerItem
-          title={I18n.t('search_loads')}
-          routeName="ProfileStack"
-          onItemPress={this.onItemPress}
-          icon={
-            <IconFactory type="MaterialCommunityIcons" size={30} name="home" />
-          }
-          active={this.state.activeRoute === 'ProfileStack'}
+          iconProps={{
+            name: 'home-outline',
+            type: 'MaterialCommunityIcons',
+            size: 30,
+          }}
+          active={activeRoute === 'HomeStack'}
         />
 
         <Separator />
@@ -54,11 +48,14 @@ export default class Drawer extends Component {
           title={I18n.t('profile')}
           routeName="ProfileStack"
           onItemPress={this.onItemPress}
-          icon={
-            <IconFactory type="MaterialCommunityIcons" size={30} name="home" />
-          }
-          active={this.state.activeRoute === 'ProfileStack'}
+          iconProps={{
+            name: 'person-outline',
+            type: 'MaterialIcons',
+            size: 32,
+          }}
+          active={activeRoute === 'ProfileStack'}
         />
+
 
         <Separator />
 
@@ -66,11 +63,10 @@ export default class Drawer extends Component {
           title={I18n.t('logout')}
           routeName="Logout"
           onItemPress={logout}
-          icon={
-            <IconFactory type="MaterialCommunityIcons" size={30} name="home" />
-          }
-          active={this.state.activeRoute === 'Logout'}
+          iconProps={{name: 'logout', type: 'MaterialCommunityIcons', size: 28,paddingLeft:5}}
+          active={activeRoute === 'Logout'}
         />
+
       </View>
     );
   }
@@ -80,7 +76,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.fadedWhite,
-    paddingHorizontal: 10,
     paddingTop: 30,
   },
 });
