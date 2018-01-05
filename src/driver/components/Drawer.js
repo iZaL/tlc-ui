@@ -11,6 +11,14 @@ import IconFactory from 'components/IconFactory';
 
 export default class Drawer extends Component {
 
+  state = {
+    activeRoute: 'HomeStack',
+  };
+
+  shouldComponentUpdate(nextProps,nextState) {
+    return this.state.activeRoute !== nextState.activeRoute;
+  }
+
   onItemPress = (routeName: string) => {
     this.setState({
       activeRoute: routeName,
@@ -18,9 +26,6 @@ export default class Drawer extends Component {
     this.props.navigation.navigate(routeName);
   };
 
-  state = {
-    activeRoute: 'HomeStack',
-  };
 
   render() {
     let {logout} = this.props.screenProps;

@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
-import {Text, View} from 'react-native';
+import {View} from 'react-native';
 import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
 import {connect} from 'react-redux';
 import LoadsList from "driver/loads/components/LoadsList";
 
 class Home extends Component {
   componentDidMount() {
-    this.props.dispatch(DRIVER_ACTIONS.fetchProfile());
+    this.props.dispatch(DRIVER_ACTIONS.fetchLoadRequests());
   }
 
   onLoadsListItemPress = (load:object) => {

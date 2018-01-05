@@ -58,7 +58,7 @@ class UpdateProfileScene extends Component {
   }
 
   componentWillReceiveProps(props) {
-    let {profile} = this.props;
+    let {profile} = props;
 
     this.setState({
       mobile: profile.mobile,

@@ -6,9 +6,6 @@ import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
 import {Modal, ScrollView, View} from "react-native";
 import DocumentCountriesList from "driver/routes/components/DocumentCountriesList";
 import VisaLicenseForm from "driver/routes/components/VisaLicenseForm";
-import Button from "components/Button";
-import I18n from 'utils/locale';
-import DatePicker from "../../components/DatePicker";
 
 type State = {
   countries: Array,
