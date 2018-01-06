@@ -68,8 +68,8 @@ const getRouteByID = () => {
 
 const getLoadByID = () => {
   return createSelector(
-    [loadsSchema, countriesSchema, getIdProp],
-    (loads, countries, loadID) => {
+    [loadsSchema, countriesSchema, trailersSchema, getIdProp],
+    (loads, countries, trailers, loadID) => {
       let load = loads[loadID];
 
       let loadOrigin = load.origin || {};
@@ -87,7 +87,8 @@ const getLoadByID = () => {
       return {
         ...load,
         origin: origin,
-        destination:destination
+        destination:destination,
+        trailer:trailers[load.trailer] || {}
       };
     },
   );
@@ -164,10 +165,23 @@ const getProfileCountries = createSelector(
 );
 
 const getLoadRequests = createSelector(
-  [USER_SELECTORS.getAuthUserProfile, loadsSchema],
-  (driver, loads) =>
-    driver.loads ? driver.loads.map(loadID => loads[loadID]) : [],
+  [getProfile, loadsSchema, countriesSchema, trailersSchema],
+  (driver, loads, countries, trailers) => {
+    let driverLoads = driver.loads || [];
+    const getLoad = getLoadByID();
+    return (
+      driverLoads.map(loadID => {
+        return getLoad({entities: {loads, countries,trailers}}, loadID);
+      }) || []
+    );
+  },
 );
+
+// const getLoadRequests = createSelector(
+//   [USER_SELECTORS.getAuthUserProfile, loadsSchema],
+//   (driver, loads) =>
+//     driver.loads ? driver.loads.map(loadID => loads[loadID]) : [],
+// );
 
 export const SELECTORS = {
   getProfile,

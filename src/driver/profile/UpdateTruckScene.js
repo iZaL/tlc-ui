@@ -135,8 +135,6 @@ class UpdateTruckScene extends Component {
 
     const {makes, models} = this.props;
 
-    console.log('props', this.props);
-
     return (
       <ScrollView
         style={{

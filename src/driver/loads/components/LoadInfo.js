@@ -9,18 +9,25 @@ import colors from 'assets/theme/colors';
 
 export default class LoadInfo extends PureComponent {
   static propTypes = {
-    // items: PropTypes.array.isRequired,
+    load: PropTypes.object.isRequired,
     // onItemPress: PropTypes.func.isRequired
   };
 
+  static defaultProps = {
+    load:{
+      trailer:{}
+    }
+  };
+
   render() {
-    // let {items} = this.props;
+    let {load} = this.props;
+    console.log('l',load);
     return (
       <View style={styles.container}>
         <View style={[styles.itemRowContainer]}>
           <View style={{flex: 1}}>
             <Text style={styles.label}>Trailer</Text>
-            <Text style={styles.trailerName}>Flatbed</Text>
+            <Text style={styles.trailerName}>{load.trailer.name}</Text>
           </View>
           <View style={{flex: 1}}>
             <Text style={styles.label}>Packaging</Text>

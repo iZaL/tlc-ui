@@ -20,8 +20,6 @@ class Home extends Component {
   }
 
   onLoadsListItemPress = (load: object) => {
-    console.log('lo', load);
-
     this.props.navigation.navigate('LoadsDetail', {
       loadID: load.id,
     });

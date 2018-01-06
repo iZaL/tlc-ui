@@ -56,7 +56,8 @@ loadsSchema.define({
   },
   destination:{
     country:countriesSchema
-  }
+  },
+  trailer:trailersSchema
 });
 
 export const Schema = {

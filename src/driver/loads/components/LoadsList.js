@@ -38,8 +38,8 @@ export default class LoadsList extends PureComponent {
     return (
       <Touchable onPress={() => onItemPress(item)}>
         <View style={[styles.itemContainer]}>
-          <LoadPickDropLocation />
-          <LoadInfo />
+          <LoadPickDropLocation origin={item.origin} destination={item.destination} />
+          <LoadInfo load={item} />
           <Separator style={{marginVertical: 10}} />
           <View style={styles.itemRowContainer}>
             <Text style={styles.viewDetails}>View Details</Text>

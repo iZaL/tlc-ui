@@ -6,14 +6,20 @@ import PropTypes from 'prop-types';
 import {StyleSheet, Text, View} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-export default class LoadsList extends PureComponent {
+export default class LoadPickDropLocation extends PureComponent {
   static propTypes = {
-    // items: PropTypes.array.isRequired,
-    // onItemPress: PropTypes.func.isRequired
+    origin: PropTypes.object.isRequired,
+    destination: PropTypes.object.isRequired
+  };
+
+  static defaultProps = {
+    origin:{country:{}},
+    destination:{country:{}},
   };
 
   render() {
-    // let {items} = this.props;
+    let {origin,destination} = this.props;
+
     return (
       <View style={styles.container}>
         <View style={styles.itemRowContainer}>
@@ -22,7 +28,7 @@ export default class LoadsList extends PureComponent {
             size={30}
             style={styles.locationIcon}
           />
-          <Text style={styles.locationName}>Jahra, Kuwait</Text>
+          <Text style={styles.locationName}>{origin.city}, {origin.country.name}</Text>
         </View>
         <View style={styles.itemRowContainer}>
           <MaterialCommunityIcons
@@ -30,7 +36,7 @@ export default class LoadsList extends PureComponent {
             size={30}
             style={styles.locationIcon}
           />
-          <Text style={styles.locationName}>Jeddah, Saudi Arabia</Text>
+          <Text style={styles.locationName}>{destination.city}, {destination.country.name}</Text>
         </View>
       </View>
     );

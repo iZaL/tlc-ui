@@ -1,12 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {
-  StyleSheet,
-  View,
-  Dimensions,
-  TouchableOpacity,
-  Text,
-} from 'react-native';
+import {Dimensions, StyleSheet, View,} from 'react-native';
 
 import MapView from 'react-native-maps';
 
@@ -31,6 +25,10 @@ export default class LoadLocationMapView extends Component {
     }).isRequired,
   };
 
+  shouldComponentUpdate(nextProps) {
+    return nextProps.origin !== this.props.origin || nextProps.destination !== this.props.destination
+  }
+
   componentDidMount() {
     let {origin,destination} = this.props;
     this.map.fitToCoordinates([origin,destination], {
@@ -41,7 +39,6 @@ export default class LoadLocationMapView extends Component {
 
   render() {
     let {origin,destination} = this.props;
-    console.log('props',this.props);
     let markers = [origin,destination];
     return (
       <View style={styles.container}>

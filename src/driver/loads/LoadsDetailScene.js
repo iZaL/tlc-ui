@@ -41,13 +41,8 @@ class LoadsDetailScene extends Component {
 
   static defaultProps = {
     navigation: {state: {params: {loadID: 0}}},
-    load: {
-      origin: {},
-      destination: {},
-    },
+    load: {},
   };
-
-
 
   render() {
     let {load} = this.props;
@@ -65,8 +60,8 @@ class LoadsDetailScene extends Component {
         </View>
 
         <View style={{padding: 5}}>
-          <LoadPickDropLocation />
-          <LoadInfo />
+          <LoadPickDropLocation origin={origin} destination={destination} />
+          <LoadInfo load={load}/>
         </View>
 
         <Separator style={{marginTop: 10, marginBottom: 50}} />
