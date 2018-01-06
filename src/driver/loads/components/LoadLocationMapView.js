@@ -15,13 +15,13 @@ const DEFAULT_PADDING = {top: 50, right: 50, bottom: 50, left: 50};
 export default class LoadLocationMapView extends Component {
 
   static propTypes = {
-    origin:PropTypes.shape({
-      latitude:PropTypes.number.isRequired,
-      longitude:PropTypes.number.isRequired,
+    origin: PropTypes.shape({
+      latitude: PropTypes.number.isRequired,
+      longitude: PropTypes.number.isRequired,
     }).isRequired,
-    destination:PropTypes.shape({
-      latitude:PropTypes.number.isRequired,
-      longitude:PropTypes.number.isRequired,
+    destination: PropTypes.shape({
+      latitude: PropTypes.number.isRequired,
+      longitude: PropTypes.number.isRequired,
     }).isRequired,
   };
 
@@ -29,17 +29,18 @@ export default class LoadLocationMapView extends Component {
     return nextProps.origin !== this.props.origin || nextProps.destination !== this.props.destination
   }
 
-  componentDidMount() {
-    let {origin,destination} = this.props;
-    this.map.fitToCoordinates([origin,destination], {
+  onMapLayout = () => {
+    let {origin, destination} = this.props;
+    this.map.fitToCoordinates([origin, destination], {
       edgePadding: DEFAULT_PADDING,
       animated: true,
     });
-  }
+  };
 
   render() {
-    let {origin,destination} = this.props;
-    let markers = [origin,destination];
+    let {origin, destination} = this.props;
+    let markers = [origin, destination];
+
     return (
       <View style={styles.container}>
         <MapView
@@ -52,10 +53,15 @@ export default class LoadLocationMapView extends Component {
             longitude: origin.longitude,
             latitudeDelta: LATITUDE_DELTA,
             longitudeDelta: LONGITUDE_DELTA,
-          }}>
-          {markers.map((marker, i) => (
-            <MapView.Marker key={i} coordinate={marker} />
-          ))}
+          }}
+          onLayout={this.onMapLayout}
+        >
+          {
+            // this.state.isMapReady &&
+            markers.map((marker, i) => (
+              <MapView.Marker key={i} coordinate={marker}/>
+            ))
+          }
         </MapView>
       </View>
     );
