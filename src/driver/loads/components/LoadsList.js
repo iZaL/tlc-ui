@@ -12,6 +12,7 @@ import CallButton from 'components/CallButton';
 import Touchable from 'react-native-platform-touchable';
 import LoadPickDropLocation from 'driver/loads/components/LoadPickDropLocation';
 import LoadInfo from 'driver/loads/components/LoadInfo';
+import I18n from 'utils/locale';
 
 export default class LoadsList extends PureComponent {
   static propTypes = {
@@ -42,7 +43,7 @@ export default class LoadsList extends PureComponent {
           <LoadInfo load={item} />
           <Separator style={{marginVertical: 10}} />
           <View style={styles.itemRowContainer}>
-            <Text style={styles.viewDetails}>View Details</Text>
+            <Text style={styles.viewDetails}>{I18n.t('view_details')}</Text>
             <CallButton onPress={() => {}} />
           </View>
         </View>

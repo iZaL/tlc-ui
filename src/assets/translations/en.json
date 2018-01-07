@@ -70,5 +70,12 @@
   "upload_visas" : "Upload Visas",
   "upload_documents": "Upload Documents",
   "driving_license" : "Driving License",
-  "visa" : "Visa"
+  "visa" : "Visa",
+  "view_details" : "View Details",
+  "packaging" : "Packaging",
+  "weight" : "Weight",
+  "pick_up" : "Pick up",
+  "distance" : "Distance",
+  "price" : "Price",
+  "call" : "CALL"
 }

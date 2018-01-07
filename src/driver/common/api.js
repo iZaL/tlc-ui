@@ -20,8 +20,8 @@ function fetchRoutes() {
   return fetchAPI(url);
 }
 
-function fetchLoadRequests() {
-  const url = `driver/loads/requests`;
+function fetchJobs() {
+  const url = `driver/jobs`;
   return fetchAPI(url);
 }
 
@@ -47,6 +47,6 @@ export const API = {
   saveRoute,
   saveTruck,
   fetchRouteTransits,
-  fetchLoadRequests,
+  fetchJobs,
   fetchLoadDetails,
 };

@@ -5,16 +5,16 @@ import {Schema} from 'utils/schema';
 import {normalize} from 'normalizr';
 import {ACTIONS as APP_ACTIONS} from 'app/common/actions';
 
-function* fetchLoadRequests() {
+function* fetchJobs() {
   try {
-    const response = yield call(API.fetchLoadRequests);
+    const response = yield call(API.fetchJobs);
     const normalized = normalize(response.data, Schema.drivers);
     yield put({
-      type: ACTION_TYPES.FETCH_LOAD_REQUESTS_SUCCESS,
+      type: ACTION_TYPES.FETCH_JOBS_SUCCESS,
       entities: normalized.entities,
     });
   } catch (error) {
-    yield put({type: ACTION_TYPES.FETCH_LOAD_REQUESTS_FAILURE, error});
+    yield put({type: ACTION_TYPES.FETCH_JOBS_FAILURE, error});
   }
 }
 
@@ -31,12 +31,12 @@ function* fetchLoadDetails(action) {
   }
 }
 
-function* fetchLoadRequestsMonitor() {
-  yield takeLatest(ACTION_TYPES.FETCH_LOAD_REQUESTS_REQUEST, fetchLoadRequests);
+function* fetchJobsMonitor() {
+  yield takeLatest(ACTION_TYPES.FETCH_JOBS_REQUEST, fetchJobs);
 }
 
 function* fetchLoadDetailsMonitor() {
   yield takeLatest(ACTION_TYPES.FETCH_LOAD_DETAILS_REQUEST, fetchLoadDetails);
 }
 
-export const sagas = all([fork(fetchLoadRequestsMonitor),fork(fetchLoadDetailsMonitor)]);
+export const sagas = all([fork(fetchJobsMonitor),fork(fetchLoadDetailsMonitor)]);

@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import {Text, View, StyleSheet} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import colors from 'assets/theme/colors';
-
+import I18n from 'utils/locale';
 const CallButton = ({onPress}) => {
   return (
     <Touchable onPress={() => {}} style={[styles.callButtonContainer]}>
@@ -17,7 +17,7 @@ const CallButton = ({onPress}) => {
           size={25}
           style={styles.phoneIcon}
         />
-        <Text style={styles.call}>CALL</Text>
+        <Text style={styles.call}>{I18n.t('call')}</Text>
       </View>
     </Touchable>
   );

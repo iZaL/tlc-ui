@@ -7,6 +7,7 @@ import LoadsList from 'driver/loads/components/LoadsList';
 import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
 
 class Home extends Component {
+
   static propTypes = {
     loads: PropTypes.array.isRequired,
   };
@@ -16,7 +17,7 @@ class Home extends Component {
   };
 
   componentDidMount() {
-    this.props.dispatch(DRIVER_ACTIONS.fetchLoadRequests());
+    this.props.dispatch(DRIVER_ACTIONS.fetchJobs());
   }
 
   onLoadsListItemPress = (load: object) => {
