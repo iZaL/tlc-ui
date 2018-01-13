@@ -11,16 +11,21 @@ export default class RegisterScene extends Component {
   static propTypes = {
     handleRegister: PropTypes.func.isRequired,
     onFieldChange: PropTypes.func.isRequired,
-    name: PropTypes.string.isRequired,
+    name_en: PropTypes.string.isRequired,
+    name_ar: PropTypes.string,
+    name_hi: PropTypes.string,
     email: PropTypes.string.isRequired,
     mobile: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired,
     busy: PropTypes.bool.isRequired,
+    isShipper: PropTypes.bool.isRequired
   };
 
   render() {
     const {
-      name,
+      name_en,
+      name_ar,
+      name_hi,
       email,
       mobile,
       password,
@@ -28,20 +33,67 @@ export default class RegisterScene extends Component {
       onFieldChange,
       handleRegister,
       busy,
+      isShipper
     } = this.props;
 
     return (
       <View style={styles.container}>
-        <FormLabel title={I18n.t('name')} />
+
+        {
+          isShipper ?
+            <View>
+
+              <FormLabel title={I18n.t('company_name_en')}/>
+              <FormTextInput
+                onChangeText={value => onFieldChange('name_en', value)}
+                value={name_en}
+                maxLength={40}
+                placeholder={I18n.t('company_name_en')}
+                autoFocus={true}
+              />
+
+              <FormLabel title={I18n.t('company_name_ar')}/>
+              <FormTextInput
+                onChangeText={value => onFieldChange('name_ar', value)}
+                value={name_ar}
+                maxLength={40}
+                placeholder={I18n.t('company_name_ar')}
+                autoFocus={true}
+              />
+
+              {/*<FormLabel title={I18n.t('company_name_hi')}/>*/}
+              {/*<FormTextInput*/}
+                {/*onChangeText={value => onFieldChange('name_hi', value)}*/}
+                {/*value={name_hi}*/}
+                {/*maxLength={40}*/}
+                {/*placeholder={I18n.t('company_name_hi')}*/}
+                {/*autoFocus={true}*/}
+              {/*/>*/}
+
+            </View>
+            :
+            <View>
+              <FormLabel title={I18n.t('name')}/>
+              <FormTextInput
+                onChangeText={value => onFieldChange('name_en', value)}
+                value={name_en}
+                maxLength={40}
+                placeholder={I18n.t('name')}
+                autoFocus={true}
+              />
+            </View>
+        }
+
+        <FormLabel title={I18n.t('name')}/>
         <FormTextInput
-          onChangeText={value => onFieldChange('name', value)}
-          value={name}
+          onChangeText={value => onFieldChange('name_en', value)}
+          value={name_en}
           maxLength={40}
           placeholder={I18n.t('name')}
           autoFocus={true}
         />
 
-        <FormLabel title={I18n.t('email')} />
+        <FormLabel title={I18n.t('email')}/>
 
         <FormTextInput
           onChangeText={value => onFieldChange('email', value)}
@@ -51,7 +103,7 @@ export default class RegisterScene extends Component {
           keyboardType="email-address"
         />
 
-        <FormLabel title={I18n.t('mobile')} />
+        <FormLabel title={I18n.t('mobile')}/>
 
         <FormTextInput
           onChangeText={value => onFieldChange('mobile', value)}
@@ -61,7 +113,7 @@ export default class RegisterScene extends Component {
           keyboardType="phone-pad"
         />
 
-        <FormLabel title={I18n.t('password')} />
+        <FormLabel title={I18n.t('password')}/>
         <FormTextInput
           onChangeText={value => onFieldChange('password', value)}
           value={password}
@@ -70,7 +122,7 @@ export default class RegisterScene extends Component {
           secureTextEntry={true}
         />
 
-        <FormLabel title={I18n.t('confirm_password')} />
+        <FormLabel title={I18n.t('confirm_password')}/>
         <FormTextInput
           onChangeText={value => onFieldChange('password_confirmation', value)}
           value={password_confirmation}

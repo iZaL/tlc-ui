@@ -9,6 +9,7 @@ import LoadPickDropLocation from 'driver/loads/components/LoadPickDropLocation';
 import Separator from 'components/Separator';
 import LoadInfo from 'driver/loads/components/LoadInfo';
 import Button from 'components/Button';
+import I18n from 'utils/locale';
 import colors from "assets/theme/colors";
 
 class LoadsDetailScene extends Component {
@@ -16,7 +17,6 @@ class LoadsDetailScene extends Component {
   shouldComponentUpdate(nextProps) {
     return nextProps.load !== this.props.load;
   }
-
 
   componentDidMount() {
     const {loadID} = this.props.navigation.state.params;
@@ -44,6 +44,10 @@ class LoadsDetailScene extends Component {
     load: {},
   };
 
+  acceptBooking = () => {
+
+  };
+
   render() {
     let {load} = this.props;
 
@@ -66,7 +70,8 @@ class LoadsDetailScene extends Component {
 
         <Separator style={{marginTop: 10, marginBottom: 50}} />
 
-        <Button title="ACCEPT BOOKING" />
+        <Button title={I18n.t('accept_booking').toUpperCase()} onPress={this.acceptBooking} />
+
       </View>
     );
   }

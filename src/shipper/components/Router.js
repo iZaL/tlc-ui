@@ -4,16 +4,22 @@ import Drawer from 'shipper/components/Drawer';
 import Home from 'shipper/Home';
 import Settings from 'shipper/Settings';
 import DrawerIcon from 'components/DrawerIcon';
+import ProfileHome from 'shipper/profile/ProfileHome';
+import UpdateProfileScene from 'driver/profile/UpdateProfileScene';
+
+const getDrawerIcon = navigation => {
+  return {
+    headerLeft: (
+      <DrawerIcon onPress={() => navigation.navigate('DrawerToggle')} />
+    ),
+  };
+};
 
 const HomeStack = StackNavigator(
   {
     Home: {
       screen: Home,
-      navigationOptions: ({navigation}) => ({
-        headerLeft: (
-          <DrawerIcon onPress={() => navigation.navigate('DrawerToggle')} />
-        ),
-      }),
+      navigationOptions: ({navigation}) => getDrawerIcon(navigation),
     },
   },
   {
@@ -23,15 +29,27 @@ const HomeStack = StackNavigator(
   },
 );
 
+const ProfileStack = StackNavigator({
+  Settings: {
+    screen: ProfileHome,
+    navigationOptions: ({navigation}) => ({
+      gesturesEnabled: false,
+      headerLeft: (
+        <DrawerIcon onPress={() => navigation.navigate('DrawerToggle')} />
+      ),
+    }),
+  },
+  UpdateProfile: {
+    screen: UpdateProfileScene,
+  },
+});
+
+
 const SettingsStack = StackNavigator(
   {
     Settings: {
       screen: Settings,
-      navigationOptions: ({navigation}) => ({
-        headerLeft: (
-          <DrawerIcon onPress={() => navigation.navigate('DrawerToggle')} />
-        ),
-      }),
+      navigationOptions: ({navigation}) => getDrawerIcon(navigation),
     },
   },
   {
@@ -45,7 +63,9 @@ const DrawerRoutes = {
   HomeStack: {
     screen: HomeStack,
   },
-  SettingsStack: {
+  ProfileStack: {
+    screen: ProfileStack,
+  },  SettingsStack: {
     screen: SettingsStack,
   },
 };

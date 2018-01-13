@@ -22,6 +22,7 @@ export default class Drawer extends Component {
 
   render() {
     let {logout} = this.props.screenProps;
+    let {activeRoute} = this.state;
 
     return (
       <View style={styles.container}>
@@ -29,18 +30,24 @@ export default class Drawer extends Component {
           title={I18n.t('home')}
           routeName="HomeStack"
           onItemPress={this.onItemPress}
-          icon="ios-paper-plane"
-          active={this.state.activeRoute === 'HomeStack'}
+          iconProps={{
+            name: 'home-outline',
+            type: 'MaterialCommunityIcons',
+            size: 30,
+          }}
+          active={activeRoute === 'HomeStack'}
         />
-
         <Separator />
-
         <DrawerItem
-          title={I18n.t('settings')}
-          routeName="SettingsStack"
+          title={I18n.t('profile')}
+          routeName="ProfileStack"
           onItemPress={this.onItemPress}
-          icon="ios-paper-plane"
-          active={this.state.activeRoute === 'SettingsStack'}
+          iconProps={{
+            name: 'person-outline',
+            type: 'MaterialIcons',
+            size: 32,
+          }}
+          active={activeRoute === 'ProfileStack'}
         />
 
         <Separator />
@@ -49,8 +56,13 @@ export default class Drawer extends Component {
           title={I18n.t('logout')}
           routeName="Logout"
           onItemPress={logout}
-          icon="ios-paper-plane"
-          active={this.state.activeRoute === 'Logout'}
+          iconProps={{
+            name: 'logout',
+            type: 'MaterialCommunityIcons',
+            size: 28,
+            paddingLeft: 5,
+          }}
+          active={activeRoute === 'Logout'}
         />
       </View>
     );
