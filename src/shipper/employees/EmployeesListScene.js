@@ -24,6 +24,12 @@ class ContactsListScene extends Component {
   onEmployeeListItemPress = (employee: object) => {
   };
 
+  onEmployeeListItemEditPress = (employee: object) => {
+    this.props.navigation.navigate('EditEmployee',{
+      employee:employee
+    });
+  };
+
   onAddEmployeePress = () => {
     this.props.navigation.navigate('AddEmployee');
   };
@@ -37,6 +43,7 @@ class ContactsListScene extends Component {
         <EmployeesList
           items={employees}
           onItemPress={this.onEmployeeListItemPress}
+          onItemEditPress={this.onEmployeeListItemEditPress}
         />
 
         <Button title={I18n.t('add_employee')} onPress={this.onAddEmployeePress} style={{ marginTop:30}} />

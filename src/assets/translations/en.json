@@ -93,5 +93,8 @@
   "list_employees" : "List Contacts",
   "add_employee" : "Add Contact",
   "edit_employee" : "Edit Contact",
-  "can_communicate_with_driver" : "Direct communication with Driver"
+  "can_communicate_with_driver" : "Direct communication with Driver",
+  "edit" : "Edit",
+  "details" : "Details",
+  "delete" : "Delete"
 }

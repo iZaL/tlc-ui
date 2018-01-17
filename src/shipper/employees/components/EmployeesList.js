@@ -12,10 +12,14 @@ import Separator from 'components/Separator';
 import I18n from 'utils/locale';
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import Entypo from "react-native-vector-icons/Entypo";
+import Button from "../../../components/Button";
+import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 
 export default class EmployeesList extends PureComponent {
   static propTypes = {
     items: PropTypes.array.isRequired,
+    onItemEditPress: PropTypes.func.isRequired,
+    onItemPress: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -45,34 +49,66 @@ export default class EmployeesList extends PureComponent {
   }
 
   renderContent = item => {
-    console.log('i',item);
-    let {onItemPress} = this.props;
+    let {onItemPress, onItemEditPress} = this.props;
     return (
-        <View style={[styles.contentContainer]}>
+      <View style={[styles.contentContainer]}>
 
-          <View style={styles.row}>
-            <MaterialCommunityIcons name="email" size={30} style={styles.icon} color={colors.primary} />
-            <Text style={styles.email}>{item.email}</Text>
-          </View>
-
-          <Separator style={{marginVertical:10}}/>
-
-          <View style={styles.row}>
-            <MaterialCommunityIcons name="phone" size={30} style={styles.icon} color={colors.primary} />
-            <View>
-              <Text style={styles.email}>{item.mobile}</Text>
-              <Text style={styles.email}>{item.phone}</Text>
-            </View>
-          </View>
-
-          <Separator style={{marginVertical:10}}/>
-
-          <View style={styles.row}>
-            <Entypo name={item.driver_interaction ? 'check' : 'cross'} size={30} style={styles.icon} color={item.driver_interaction ? colors.primary : colors.error} />
-            <Text style={styles.email}> {I18n.t('can_communicate_with_driver')}</Text>
-          </View>
-
+        <View style={styles.row}>
+          <MaterialCommunityIcons name="email" size={30} style={styles.icon} />
+          <Text style={styles.email}>{item.email}</Text>
         </View>
+
+        <Separator style={{marginVertical: 10}}/>
+
+        <View style={styles.row}>
+          <MaterialCommunityIcons name="phone" size={30} style={styles.icon} />
+          <View>
+            <Text style={styles.email}>{item.mobile}</Text>
+            <Text style={styles.email}>{item.phone}</Text>
+          </View>
+        </View>
+
+        <Separator style={{marginVertical: 10}}/>
+
+        <View style={styles.row}>
+          <Entypo name={item.driver_interaction ? 'check' : 'cross'} size={30} style={styles.icon}
+                  color={item.driver_interaction ? colors.primary : colors.error}/>
+          <Text style={styles.email}> {I18n.t('can_communicate_with_driver')}</Text>
+        </View>
+
+
+        <Separator style={{marginVertical: 10}}/>
+
+        <Touchable onPress={() => onItemEditPress(item)}>
+          <View style={styles.row}>
+            <MaterialIcons name='find-in-page' size={30} style={styles.icon}
+                                    />
+            <Text style={styles.email}> {I18n.t('details')}</Text>
+          </View>
+        </Touchable>
+
+        <Separator style={{marginVertical: 10}}/>
+
+        <Touchable onPress={() => onItemEditPress(item)}>
+          <View style={styles.row}>
+            <MaterialCommunityIcons name='account-edit' size={30} style={styles.icon}
+                                    />
+            <Text style={styles.email}> {I18n.t('edit')}</Text>
+          </View>
+        </Touchable>
+
+        <Separator style={{marginVertical: 10}}/>
+
+        <Touchable onPress={() => onItemEditPress(item)}>
+          <View style={styles.row}>
+            <MaterialCommunityIcons name='delete' size={30} style={styles.icon}
+                                    color={colors.error}/>
+            <Text style={styles.email}> {I18n.t('delete')}</Text>
+          </View>
+        </Touchable>
+
+
+      </View>
     );
   };
 
@@ -122,12 +158,12 @@ const styles = StyleSheet.create({
     shadowColor: colors.mediumGrey,
     shadowOpacity: 1,
     marginBottom: 10,
-    padding:10,
+    padding: 10,
   },
-  row:{
-    flex:1,
-    flexDirection:'row',
-    alignItems:'center',
+  row: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   headerTitle: {
     flex: 1,
@@ -154,12 +190,12 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: colors.darkGrey,
   },
-  email:{
-    paddingHorizontal:10,
-    fontSize:18,
+  email: {
+    paddingHorizontal: 10,
+    fontSize: 18,
   },
-  icon:{
-    height:30,
-    width:30
+  icon: {
+    height: 30,
+    width: 30
   }
 });
