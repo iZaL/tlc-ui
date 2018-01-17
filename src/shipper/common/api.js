@@ -15,8 +15,14 @@ function fetchEmployees() {
   return fetchAPI(url);
 }
 
+function saveEmployee(body) {
+  const url = `shipper/employees`;
+  return fetchAPI(url, 'POST', body);
+}
+
 export const API = {
   saveProfile,
+  saveEmployee,
   fetchProfile,
   fetchEmployees
 };

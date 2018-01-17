@@ -15,6 +15,10 @@ export const ACTION_TYPES = {
   FETCH_EMPLOYEES_SUCCESS: '@shipper/FETCH_EMPLOYEES_SUCCESS',
   FETCH_EMPLOYEES_FAILURE: '@shipper/FETCH_EMPLOYEES_FAILURE',
 
+  SAVE_EMPLOYEE_REQUEST: '@shipper/SAVE_EMPLOYEE_REQUEST',
+  SAVE_EMPLOYEE_SUCCESS: '@shipper/SAVE_EMPLOYEE_SUCCESS',
+  SAVE_EMPLOYEE_FAILURE: '@shipper/SAVE_EMPLOYEE_FAILURE',
+
 };
 
 function fetchEmployees(params) {
@@ -36,10 +40,17 @@ function saveProfile(params) {
     params,
   };
 }
+function saveEmployee(params) {
+  return {
+    type: ACTION_TYPES.SAVE_EMPLOYEE_REQUEST,
+    params,
+  };
+}
 
 
 export const ACTIONS = {
   saveProfile,
   fetchProfile,
-  fetchEmployees
+  fetchEmployees,
+  saveEmployee
 };

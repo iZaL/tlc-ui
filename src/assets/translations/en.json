@@ -79,10 +79,13 @@
   "price" : "Price",
   "call" : "CALL",
   "accept_booking" : "Accept Booking",
+  "name_en" : "Name in English",
+  "name_ar" : "Name in Arabic",
+  "name_hi" : "Name in Hindi",
   "company_name_en" : "Company Name in English",
   "company_name_ar" : "Company Name in Arabic",
   "company_name_hi" : "Company Name in Hindi",
-  "office_number" : "Office Telephone",
+  "office_number" : "Office Phone",
   "business_email" : "Business Email",
   "company_email" : "Company Email",
   "address_en" : "Address in English",
@@ -90,5 +93,5 @@
   "list_employees" : "List Contacts",
   "add_employee" : "Add Contact",
   "edit_employee" : "Edit Contact",
-  "can_communicate_with_driver" : "Direct communication with driver"
+  "can_communicate_with_driver" : "Direct communication with Driver"
 }
