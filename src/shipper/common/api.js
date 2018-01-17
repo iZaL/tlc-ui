@@ -10,7 +10,13 @@ function fetchProfile() {
   return fetchAPI(url);
 }
 
+function fetchEmployees() {
+  const url = `shipper/employees`;
+  return fetchAPI(url);
+}
+
 export const API = {
   saveProfile,
   fetchProfile,
+  fetchEmployees
 };

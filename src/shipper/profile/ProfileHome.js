@@ -25,6 +25,12 @@ class ProfileHome extends Component {
           title: I18n.t('update_profile'),
         };
         break;
+      case 'list_contacts':
+        scene = 'ListContacts';
+        sceneConfig = {
+          title: I18n.t('list_contacts'),
+        };
+        break;
     }
     return this.props.navigation.navigate(scene, sceneConfig);
   };
@@ -37,6 +43,13 @@ class ProfileHome extends Component {
           icon={<IconFactory type="Ionicons" size={30} name="md-person" />}
           name="update_profile"
         />
+
+        <ListItem
+          onItemPress={this.onListItemPress}
+          icon={<IconFactory type="MaterialCommunityIcons" size={30} name="contacts" />}
+          name="list_contacts"
+        />
+
       </ScrollView>
     );
   }

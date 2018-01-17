@@ -87,4 +87,8 @@
   "company_email" : "Company Email",
   "address_en" : "Address in English",
   "address_ar" : "Address in Arabic",
+  "list_contacts" : "List Contacts",
+  "add_contact" : "Add Contact",
+  "edit_contact" : "Edit Contact",
+  "can_communicate_with_driver" : "Direct communication with driver"
 }

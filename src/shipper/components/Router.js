@@ -6,6 +6,7 @@ import Settings from 'shipper/Settings';
 import DrawerIcon from 'components/DrawerIcon';
 import ProfileHome from 'shipper/profile/ProfileHome';
 import UpdateProfileScene from 'shipper/profile/UpdateProfileScene';
+import ContactsListScene from 'shipper/profile/ContactsListScene';
 
 const getDrawerIcon = navigation => {
   return {
@@ -42,6 +43,9 @@ const ProfileStack = StackNavigator({
   UpdateProfile: {
     screen: UpdateProfileScene,
   },
+  ListContacts: {
+    screen:ContactsListScene
+  }
 });
 
 
