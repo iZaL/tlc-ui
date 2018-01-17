@@ -25,10 +25,10 @@ class ProfileHome extends Component {
           title: I18n.t('update_profile'),
         };
         break;
-      case 'list_contacts':
-        scene = 'ListContacts';
+      case 'list_employees':
+        scene = 'ListEmployees';
         sceneConfig = {
-          title: I18n.t('list_contacts'),
+          title: I18n.t('list_employees'),
         };
         break;
     }
@@ -47,7 +47,7 @@ class ProfileHome extends Component {
         <ListItem
           onItemPress={this.onListItemPress}
           icon={<IconFactory type="MaterialCommunityIcons" size={30} name="contacts" />}
-          name="list_contacts"
+          name="list_employees"
         />
 
       </ScrollView>

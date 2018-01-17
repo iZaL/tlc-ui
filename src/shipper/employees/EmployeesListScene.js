@@ -25,7 +25,7 @@ class ContactsListScene extends Component {
   };
 
   onAddEmployeePress = () => {
-
+    this.props.navigation.navigate('AddEmployee');
   };
 
   render() {
@@ -39,7 +39,7 @@ class ContactsListScene extends Component {
           onItemPress={this.onEmployeeListItemPress}
         />
 
-        <Button title={I18n.t('add_contact')} onPress={this.onAddEmployeePress} style={{ marginTop:30}} />
+        <Button title={I18n.t('add_employee')} onPress={this.onAddEmployeePress} style={{ marginTop:30}} />
       </ScrollView>
     );
   }

@@ -6,7 +6,9 @@ import Settings from 'shipper/Settings';
 import DrawerIcon from 'components/DrawerIcon';
 import ProfileHome from 'shipper/profile/ProfileHome';
 import UpdateProfileScene from 'shipper/profile/UpdateProfileScene';
-import ContactsListScene from 'shipper/profile/ContactsListScene';
+import EmployeesListScene from 'shipper/employees/EmployeesListScene';
+import AddEmployeeScene from "shipper/employees/AddEmployeeScene";
+import EditEmployeeScene from "shipper/employees/EditEmployeeScene";
 
 const getDrawerIcon = navigation => {
   return {
@@ -43,9 +45,15 @@ const ProfileStack = StackNavigator({
   UpdateProfile: {
     screen: UpdateProfileScene,
   },
-  ListContacts: {
-    screen:ContactsListScene
-  }
+  ListEmployees: {
+    screen:EmployeesListScene
+  },
+  AddEmployee:{
+    screen:AddEmployeeScene
+  },
+  EditEmployee:{
+    screen:EditEmployeeScene
+  },
 });
 
 
