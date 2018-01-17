@@ -85,4 +85,6 @@
   "office_number" : "Office Telephone",
   "business_email" : "Business Email",
   "company_email" : "Company Email",
+  "address_en" : "Address in English",
+  "address_ar" : "Address in Arabic",
 }

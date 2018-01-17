@@ -118,8 +118,6 @@ class UpdateProfileScene extends Component {
 
     const {name_en,name_ar} = user;
 
-    console.log('props',this.props);
-
     return (
       <ScrollView
         style={{
@@ -175,6 +173,23 @@ class UpdateProfileScene extends Component {
           keyboardType="phone-pad"
         />
 
+        <FormLabel title={I18n.t('address_en')} />
+
+        <FormTextInput
+          onChangeText={value => this.onFieldChange('address_en', value)}
+          value={address_en}
+          placeholder={I18n.t('address_en')}
+          keyboardType="phone-pad"
+        />
+
+        <FormLabel title={I18n.t('address_ar')} />
+
+        <FormTextInput
+          onChangeText={value => this.onFieldChange('address_ar', value)}
+          value={address_ar}
+          placeholder={I18n.t('address_ar')}
+          keyboardType="phone-pad"
+        />
 
         <FormSubmit
           onPress={this.saveProfile}
