@@ -82,4 +82,7 @@
   "company_name_en" : "Company Name in English",
   "company_name_ar" : "Company Name in Arabic",
   "company_name_hi" : "Company Name in Hindi",
+  "office_number" : "Office Telephone",
+  "business_email" : "Business Email",
+  "company_email" : "Company Email",
 }

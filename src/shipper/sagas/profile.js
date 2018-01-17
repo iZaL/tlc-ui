@@ -8,12 +8,23 @@ import {ACTIONS as APP_ACTIONS} from 'app/common/actions';
 function* saveProfile(action) {
   try {
     const response = yield call(API.saveProfile, action.params);
-    const normalized = normalize(response.data, Schema.drivers);
+    const normalized = normalize(response.data, Schema.shippers);
+    const {entities, result} = normalized;
+
+    const profile = {
+      shippers: {
+        [result]: {
+          ...entities.shippers[result],
+          meta: response.meta
+        }
+      }
+    };
+
     yield put({
       type: ACTION_TYPES.UPDATE_PROFILE_SUCCESS,
-      entities: normalized.entities,
+      entities: profile,
     });
-    // yield put({type: ACTION_TYPES.UPDATE_PROFILE_SUCCESS, payload: response.data});
+
   } catch (error) {
     yield put(APP_ACTIONS.setNotification(error, 'error'));
     yield put({type: ACTION_TYPES.UPDATE_PROFILE_FAILURE, error});
@@ -23,11 +34,23 @@ function* saveProfile(action) {
 function* fetchProfile() {
   try {
     const response = yield call(API.fetchProfile);
-    const normalized = normalize(response.data, Schema.drivers);
+    const normalized = normalize(response.data, Schema.shippers);
+    const {entities, result} = normalized;
+
+    const profile = {
+      shippers: {
+        [result]: {
+          ...entities.shippers[result],
+          meta: response.meta
+        }
+      }
+    };
+
     yield put({
       type: ACTION_TYPES.FETCH_PROFILE_SUCCESS,
-      entities: normalized.entities,
+      entities: profile,
     });
+
   } catch (error) {
     yield put({type: ACTION_TYPES.FETCH_PROFILE_FAILURE, error});
   }

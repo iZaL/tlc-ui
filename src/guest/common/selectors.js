@@ -17,6 +17,7 @@ const getAuthUser = createSelector(
   },
 );
 
+
 /**
  * for driver, shipper
  */
@@ -28,6 +29,17 @@ const getAuthUserProfile = createSelector(
     return entities[schema][id];
   },
 );
+
+const getAuthUserWithProfile = createSelector(
+  [getAuthUser,getAuthUserProfile],
+  (user,profile) => {
+    return {
+      ...user,
+      profile
+    }
+  }
+);
+
 //
 // const getUsers = createSelector(schemas, usersEntity, (entities, users) => {
 //   return Object.keys(users).map(id => denormalize(id, Schema.users, entities));
@@ -37,6 +49,7 @@ export const SELECTORS = {
   isAuthenticated,
   getAuthUser,
   getAuthUserProfile,
+  getAuthUserWithProfile,
   getAuthUserType,
   // getUsers,
 };

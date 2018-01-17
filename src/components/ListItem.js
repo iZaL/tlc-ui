@@ -26,7 +26,7 @@ const ListItem = ({onItemPress, name, icon, disabled = false}) => {
 
 ListItem.propTypes = {
   onItemPress: PropTypes.func.isRequired,
-  icon: PropTypes.oneOfType(PropTypes.element, PropTypes.string),
+  // icon: PropTypes.oneOfType(PropTypes.element, PropTypes.string),
   name: PropTypes.string.isRequired,
 };
 

@@ -49,7 +49,6 @@ export default class RegisterScene extends Component {
                 value={name_en}
                 maxLength={40}
                 placeholder={I18n.t('company_name_en')}
-                autoFocus={true}
               />
 
               <FormLabel title={I18n.t('company_name_ar')}/>
@@ -58,7 +57,6 @@ export default class RegisterScene extends Component {
                 value={name_ar}
                 maxLength={40}
                 placeholder={I18n.t('company_name_ar')}
-                autoFocus={true}
               />
 
               {/*<FormLabel title={I18n.t('company_name_hi')}/>*/}
@@ -79,7 +77,6 @@ export default class RegisterScene extends Component {
                 value={name_en}
                 maxLength={40}
                 placeholder={I18n.t('name')}
-                autoFocus={true}
               />
             </View>
         }
@@ -90,7 +87,6 @@ export default class RegisterScene extends Component {
           value={name_en}
           maxLength={40}
           placeholder={I18n.t('name')}
-          autoFocus={true}
         />
 
         <FormLabel title={I18n.t('email')}/>

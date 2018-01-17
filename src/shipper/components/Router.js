@@ -5,7 +5,7 @@ import Home from 'shipper/Home';
 import Settings from 'shipper/Settings';
 import DrawerIcon from 'components/DrawerIcon';
 import ProfileHome from 'shipper/profile/ProfileHome';
-import UpdateProfileScene from 'driver/profile/UpdateProfileScene';
+import UpdateProfileScene from 'shipper/profile/UpdateProfileScene';
 
 const getDrawerIcon = navigation => {
   return {

@@ -8,7 +8,7 @@ import {isRTL} from 'utils/locale';
 export default class NavButton extends React.Component {
   static propTypes = {
     text: PropTypes.string,
-    icon: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+    // icon: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
     onPress: PropTypes.func.isRequired,
   };
 

@@ -13,7 +13,7 @@ import colors from 'theme/colors';
 
 export default class Notification extends React.Component {
   static propTypes = {
-    message: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
+    // message: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
     messageType: PropTypes.string,
     dismissNotification: PropTypes.func.isRequired,
   };

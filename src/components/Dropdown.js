@@ -10,7 +10,7 @@ export default class Dropdown extends PureComponent {
   static propTypes = {
     onClose: PropTypes.func.isRequired,
     onItemPress: PropTypes.func.isRequired,
-    selectedValue: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    // selectedValue: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     items: PropTypes.array.isRequired,
     field: PropTypes.string.isRequired,
   };
