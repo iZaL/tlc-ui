@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {Dimensions, StyleSheet, View,} from 'react-native';
+import {Dimensions, StyleSheet, View} from 'react-native';
 import MapView from 'react-native-maps';
 const {width, height} = Dimensions.get('window');
 const ASPECT_RATIO = width / height;
@@ -9,7 +9,6 @@ const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 const DEFAULT_PADDING = {top: 50, right: 50, bottom: 50, left: 50};
 
 export default class LoadLocationMapView extends Component {
-
   static propTypes = {
     origin: PropTypes.shape({
       latitude: PropTypes.number.isRequired,
@@ -22,7 +21,10 @@ export default class LoadLocationMapView extends Component {
   };
 
   shouldComponentUpdate(nextProps) {
-    return nextProps.origin !== this.props.origin || nextProps.destination !== this.props.destination
+    return (
+      nextProps.origin !== this.props.origin ||
+      nextProps.destination !== this.props.destination
+    );
   }
 
   onMapLayout = () => {
@@ -49,16 +51,12 @@ export default class LoadLocationMapView extends Component {
             longitude: origin.longitude,
             latitudeDelta: LATITUDE_DELTA,
             longitudeDelta: LONGITUDE_DELTA,
-
           }}
           cacheEnabled
-          onLayout={this.onMapLayout}
-        >
-          {
-            markers.map((marker, i) => (
-              <MapView.Marker key={i} coordinate={marker}/>
-            ))
-          }
+          onLayout={this.onMapLayout}>
+          {markers.map((marker, i) => (
+            <MapView.Marker key={i} coordinate={marker} />
+          ))}
         </MapView>
       </View>
     );

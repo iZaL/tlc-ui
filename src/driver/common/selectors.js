@@ -75,20 +75,22 @@ const getLoadByID = () => {
       let loadOrigin = load.origin || {};
       let origin = {
         ...loadOrigin,
-        country: loadOrigin.country ? countries[loadOrigin.country]  : {}
+        country: loadOrigin.country ? countries[loadOrigin.country] : {},
       };
 
       let loadDestination = load.destination || {};
       let destination = {
         ...loadDestination,
-        country: loadDestination.country ? countries[loadDestination.country]  : {}
+        country: loadDestination.country
+          ? countries[loadDestination.country]
+          : {},
       };
 
       return {
         ...load,
         origin: origin,
-        destination:destination,
-        trailer:trailers[load.trailer] || {}
+        destination: destination,
+        trailer: trailers[load.trailer] || {},
       };
     },
   );
@@ -153,12 +155,12 @@ const getProfileCountries = createSelector(
       return {
         ...country,
         license:
-        (licenses &&
-          licenses.find(license => license.country === country.id)) ||
-        {},
+          (licenses &&
+            licenses.find(license => license.country === country.id)) ||
+          {},
         visa:
-        (visas && visas.find(license => license.country === country.id)) ||
-        {},
+          (visas && visas.find(license => license.country === country.id)) ||
+          {},
       };
     });
   },
@@ -171,7 +173,7 @@ const getLoadRequests = createSelector(
     const getLoad = getLoadByID();
     return (
       driverLoads.map(loadID => {
-        return getLoad({entities: {loads, countries,trailers}}, loadID);
+        return getLoad({entities: {loads, countries, trailers}}, loadID);
       }) || []
     );
   },

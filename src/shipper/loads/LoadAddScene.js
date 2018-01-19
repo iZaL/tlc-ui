@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {View} from 'react-native';
 import {connect} from 'react-redux';
+import {ScrollView} from 'react-native';
 
-class Home extends Component {
+class LoadAddScene extends Component {
   static propTypes = {};
 
   static defaultProps = {};
@@ -11,14 +11,12 @@ class Home extends Component {
   componentDidMount() {}
 
   render() {
-    return <View style={{flex: 1}} />;
+    return <ScrollView style={{flex: 1}} />;
   }
 }
 
 function mapStateToProps(state) {
-  return {
-    state,
-  };
+  return {};
 }
 
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps)(LoadAddScene);

@@ -42,7 +42,7 @@
   "profile" : "Profile",
   "residence_country": "Residence Country",
   "nationality": "Nationality",
-  "update_profile": "Update Profile",
+  "profile_update": "Update Profile",
   "close" : "Close",
   "select" : "Select",
   "update_truck" : "Update Truck",
@@ -90,11 +90,12 @@
   "company_email" : "Company Email",
   "address_en" : "Address in English",
   "address_ar" : "Address in Arabic",
-  "list_employees" : "List Contacts",
-  "add_employee" : "Add Contact",
-  "edit_employee" : "Edit Contact",
+  "employee_list" : "List Contacts",
+  "employee_add" : "Add Contact",
+  "employee_edit" : "Edit Contact",
   "can_communicate_with_driver" : "Direct communication with Driver",
   "edit" : "Edit",
   "details" : "Details",
-  "delete" : "Delete"
+  "delete" : "Delete",
+  "load_add" : "Post a Load"
 }

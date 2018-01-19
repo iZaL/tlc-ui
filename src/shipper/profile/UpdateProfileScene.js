@@ -8,8 +8,8 @@ import FormLabel from 'components/FormLabel';
 import FormTextInput from 'components/FormTextInput';
 import FormSubmit from 'components/FormSubmit';
 import I18n from 'utils/locale';
-import {SELECTORS as USER_SELECTORS} from "guest/common/selectors";
-import {ACTIONS as SHIPPER_ACTIONS} from "shipper/common/actions";
+import {SELECTORS as USER_SELECTORS} from 'guest/common/selectors';
+import {ACTIONS as SHIPPER_ACTIONS} from 'shipper/common/actions';
 
 type State = {
   mobile: string,
@@ -22,11 +22,11 @@ class UpdateProfileScene extends Component {
       phone: PropTypes.string.isRequired,
       email: PropTypes.string.isRequired,
       meta: PropTypes.shape({
-        name_en:PropTypes.string.isRequired,
-        name_ar:PropTypes.string.isRequired,
+        name_en: PropTypes.string.isRequired,
+        name_ar: PropTypes.string.isRequired,
         address_en: PropTypes.string.isRequired,
         address_ar: PropTypes.string.isRequired,
-      })
+      }),
     }),
   };
 
@@ -35,12 +35,12 @@ class UpdateProfileScene extends Component {
       mobile: '',
       phone: '',
       email: '',
-      meta:{
-        name_en:'',
-        name_ar:'',
-        address_en:'',
-        address_ar:'',
-      }
+      meta: {
+        name_en: '',
+        name_ar: '',
+        address_en: '',
+        address_ar: '',
+      },
     },
   };
 
@@ -56,16 +56,21 @@ class UpdateProfileScene extends Component {
     mobile: '',
     phone: '',
     email: '',
-    address_en:'',
-    address_ar:'',
-    user:{
-      name_en:'',
-      name_ar:'',
+    address_en: '',
+    address_ar: '',
+    user: {
+      name_en: '',
+      name_ar: '',
     },
   };
 
   componentWillReceiveProps(props) {
-    const {mobile,phone,email,meta:{address_en,address_ar,name_en,name_ar}} = props.profile;
+    const {
+      mobile,
+      phone,
+      email,
+      meta: {address_en, address_ar, name_en, name_ar},
+    } = props.profile;
 
     this.setState({
       mobile,
@@ -73,10 +78,10 @@ class UpdateProfileScene extends Component {
       email,
       address_en,
       address_ar,
-      user:{
+      user: {
         name_en,
         name_ar,
-      }
+      },
     });
   }
 
@@ -90,15 +95,15 @@ class UpdateProfileScene extends Component {
     }
   };
 
-  onUserFieldChange = (field,value) => {
+  onUserFieldChange = (field, value) => {
     if (value) {
       switch (field) {
         default:
           this.setState({
-            user:{
+            user: {
               ...this.state.user,
-              [field]: value
-            }
+              [field]: value,
+            },
           });
           break;
       }
@@ -107,16 +112,15 @@ class UpdateProfileScene extends Component {
 
   saveProfile = () => {
     let params = {
-      ...this.state
+      ...this.state,
     };
     this.props.dispatch(PROFILE_ACTIONS.saveProfile(params));
   };
 
-
   render() {
-    const {mobile,phone,email,user,address_en,address_ar} = this.state;
+    const {mobile, phone, email, user, address_en, address_ar} = this.state;
 
-    const {name_en,name_ar} = user;
+    const {name_en, name_ar} = user;
 
     return (
       <ScrollView
@@ -126,8 +130,7 @@ class UpdateProfileScene extends Component {
           padding: 10,
           paddingTop: 20,
         }}>
-
-        <FormLabel title={I18n.t('company_name_en')}/>
+        <FormLabel title={I18n.t('company_name_en')} />
         <FormTextInput
           onChangeText={value => this.onUserFieldChange('name_en', value)}
           value={name_en}
@@ -135,7 +138,7 @@ class UpdateProfileScene extends Component {
           placeholder={I18n.t('company_name_en')}
         />
 
-        <FormLabel title={I18n.t('company_name_ar')}/>
+        <FormLabel title={I18n.t('company_name_ar')} />
         <FormTextInput
           onChangeText={value => this.onUserFieldChange('name_ar', value)}
           value={name_ar}
@@ -196,7 +199,6 @@ class UpdateProfileScene extends Component {
           title={I18n.t('update_profile')}
           style={{marginTop: 50}}
         />
-
       </ScrollView>
     );
   }

@@ -8,17 +8,16 @@ import FormLabel from 'components/FormLabel';
 import FormTextInput from 'components/FormTextInput';
 import FormSubmit from 'components/FormSubmit';
 import I18n from 'utils/locale';
-import {SELECTORS as USER_SELECTORS} from "guest/common/selectors";
-import FormCheck from "components/FormCheck";
-import {View} from "react-native";
+import {SELECTORS as USER_SELECTORS} from 'guest/common/selectors';
+import FormCheck from 'components/FormCheck';
+import {View} from 'react-native';
 import isEmpty from 'lodash/isEmpty';
 
 type State = {
   mobile: string,
 };
 
-class UpdateProfileScene extends Component {
-
+class EmployeeAddScene extends Component {
   // shouldComponentUpdate(nextProps, nextState) {
   //   return this.state !== nextState;
   // }
@@ -29,33 +28,39 @@ class UpdateProfileScene extends Component {
     email: '',
     name_en: '',
     name_ar: '',
-    driver_interaction:true
+    driver_interaction: true,
   };
 
   onFieldChange = (field, value) => {
-    console.log('field',field);
-    console.log('value',value);
+    console.log('field', field);
+    console.log('value', value);
     // if (!isEmpty(value)) {
-      switch (field) {
-        default:
-          this.setState({[field]: value});
-          break;
-      }
+    switch (field) {
+      default:
+        this.setState({[field]: value});
+        break;
+    }
     // }
   };
 
   saveEmployee = () => {
     let params = {
-      ...this.state
+      ...this.state,
     };
     this.props.dispatch(SHIPPER_ACTIONS.saveEmployee(params));
   };
 
-
   render() {
-    const {mobile, phone, email, name_en, name_ar,driver_interaction} = this.state;
+    const {
+      mobile,
+      phone,
+      email,
+      name_en,
+      name_ar,
+      driver_interaction,
+    } = this.state;
 
-    console.log('s',this.state);
+    console.log('s', this.state);
 
     return (
       <ScrollView
@@ -65,8 +70,7 @@ class UpdateProfileScene extends Component {
           padding: 10,
           paddingTop: 20,
         }}>
-
-        <FormLabel title={I18n.t('name_en')}/>
+        <FormLabel title={I18n.t('name_en')} />
         <FormTextInput
           onChangeText={value => this.onFieldChange('name_en', value)}
           value={name_en}
@@ -74,7 +78,7 @@ class UpdateProfileScene extends Component {
           placeholder={I18n.t('name_en')}
         />
 
-        <FormLabel title={I18n.t('name_ar')}/>
+        <FormLabel title={I18n.t('name_ar')} />
         <FormTextInput
           onChangeText={value => this.onFieldChange('name_ar', value)}
           value={name_ar}
@@ -82,7 +86,7 @@ class UpdateProfileScene extends Component {
           placeholder={I18n.t('name_ar')}
         />
 
-        <FormLabel title={I18n.t('mobile')}/>
+        <FormLabel title={I18n.t('mobile')} />
 
         <FormTextInput
           onChangeText={value => this.onFieldChange('mobile', value)}
@@ -92,7 +96,7 @@ class UpdateProfileScene extends Component {
           keyboardType="phone-pad"
         />
 
-        <FormLabel title={I18n.t('office_number')}/>
+        <FormLabel title={I18n.t('office_number')} />
 
         <FormTextInput
           onChangeText={value => this.onFieldChange('phone', value)}
@@ -102,7 +106,7 @@ class UpdateProfileScene extends Component {
           keyboardType="phone-pad"
         />
 
-        <FormLabel title={I18n.t('business_email')}/>
+        <FormLabel title={I18n.t('business_email')} />
 
         <FormTextInput
           onChangeText={value => this.onFieldChange('email', value)}
@@ -112,11 +116,12 @@ class UpdateProfileScene extends Component {
           keyboardType="email-address"
         />
 
-        <View style={{flexDirection: 'row',alignItems:'center'}}>
-          <FormLabel title={I18n.t('can_communicate_with_driver')}/>
+        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+          <FormLabel title={I18n.t('can_communicate_with_driver')} />
           <FormCheck
             checked={driver_interaction}
-            onPress={() => this.onFieldChange('driver_interaction', !driver_interaction)}
+            onPress={() =>
+              this.onFieldChange('driver_interaction', !driver_interaction)}
           />
         </View>
 
@@ -125,7 +130,6 @@ class UpdateProfileScene extends Component {
           title={I18n.t('save')}
           style={{marginTop: 50}}
         />
-
       </ScrollView>
     );
   }
@@ -137,4 +141,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(UpdateProfileScene);
+export default connect(mapStateToProps)(EmployeeAddScene);

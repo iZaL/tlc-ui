@@ -4,11 +4,11 @@ import {connect} from 'react-redux';
 import {ACTIONS as SHIPPER_ACTIONS} from 'shipper/common/actions';
 import {SELECTORS as SHIPPER_SELECTORS} from 'shipper/common/selectors';
 import {ScrollView} from 'react-native';
-import EmployeesList from "shipper/employees/components/EmployeesList";
-import Button from "../../components/Button";
+import EmployeeList from 'shipper/employees/components/EmployeeList';
+import Button from 'components/Button';
 import I18n from 'utils/locale';
 
-class ContactsListScene extends Component {
+class EmployeeListScene extends Component {
   static propTypes = {
     employees: PropTypes.arrayOf(PropTypes.object).isRequired,
   };
@@ -21,12 +21,13 @@ class ContactsListScene extends Component {
     this.props.dispatch(SHIPPER_ACTIONS.fetchEmployees());
   }
 
-  onEmployeeListItemPress = (employee: object) => {
-  };
+  onEmployeeListItemPress = (employee: object) => {};
 
   onEmployeeListItemEditPress = (employee: object) => {
-    this.props.navigation.navigate('EditEmployee',{
-      employee:employee
+    console.log('e', employee);
+
+    this.props.navigation.navigate('EditEmployee', {
+      employee: employee,
     });
   };
 
@@ -39,14 +40,17 @@ class ContactsListScene extends Component {
 
     return (
       <ScrollView style={{flex: 1}}>
-
-        <EmployeesList
+        <EmployeeList
           items={employees}
           onItemPress={this.onEmployeeListItemPress}
           onItemEditPress={this.onEmployeeListItemEditPress}
         />
 
-        <Button title={I18n.t('add_employee')} onPress={this.onAddEmployeePress} style={{ marginTop:30}} />
+        <Button
+          title={I18n.t('add_employee')}
+          onPress={this.onAddEmployeePress}
+          style={{marginTop: 30}}
+        />
       </ScrollView>
     );
   }
@@ -58,4 +62,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(ContactsListScene);
+export default connect(mapStateToProps)(EmployeeListScene);

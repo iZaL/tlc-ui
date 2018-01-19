@@ -19,23 +19,23 @@ class Register extends Component {
   static propTypes = {
     auth: PropTypes.object.isRequired,
     actions: PropTypes.object.isRequired,
-    navigation:PropTypes.shape({
-      state:PropTypes.shape({
-        params:PropTypes.shape({
-          isShipper:PropTypes.bool.isRequired
-        })
-      })
-    })
+    navigation: PropTypes.shape({
+      state: PropTypes.shape({
+        params: PropTypes.shape({
+          isShipper: PropTypes.bool.isRequired,
+        }),
+      }),
+    }),
   };
 
   static defaultProps = {
-    navigation:{
-      state:{
-        params:{
-          isShipper:false
-        }
-      }
-    }
+    navigation: {
+      state: {
+        params: {
+          isShipper: false,
+        },
+      },
+    },
   };
 
   state: State = {
@@ -49,7 +49,6 @@ class Register extends Component {
   };
 
   handleRegister = () => {
-
     let {isShipper} = this.props.navigation.state.params;
 
     let credentials = {

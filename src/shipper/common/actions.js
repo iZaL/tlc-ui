@@ -18,7 +18,6 @@ export const ACTION_TYPES = {
   SAVE_EMPLOYEE_REQUEST: '@shipper/SAVE_EMPLOYEE_REQUEST',
   SAVE_EMPLOYEE_SUCCESS: '@shipper/SAVE_EMPLOYEE_SUCCESS',
   SAVE_EMPLOYEE_FAILURE: '@shipper/SAVE_EMPLOYEE_FAILURE',
-
 };
 
 function fetchEmployees(params) {
@@ -47,10 +46,9 @@ function saveEmployee(params) {
   };
 }
 
-
 export const ACTIONS = {
   saveProfile,
   fetchProfile,
   fetchEmployees,
-  saveEmployee
+  saveEmployee,
 };

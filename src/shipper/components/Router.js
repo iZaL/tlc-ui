@@ -6,9 +6,10 @@ import Settings from 'shipper/Settings';
 import DrawerIcon from 'components/DrawerIcon';
 import ProfileHome from 'shipper/profile/ProfileHome';
 import UpdateProfileScene from 'shipper/profile/UpdateProfileScene';
-import EmployeesListScene from 'shipper/employees/EmployeesListScene';
-import AddEmployeeScene from "shipper/employees/AddEmployeeScene";
-import EditEmployeeScene from "shipper/employees/EditEmployeeScene";
+import EmployeeListScene from 'shipper/employees/EmployeeListScene';
+import EmployeeAddScene from 'shipper/employees/EmployeeAddScene';
+import EmployeeEditScene from 'shipper/employees/EmployeeEditScene';
+import LoadAddScene from 'shipper/loads/LoadAddScene';
 
 const getDrawerIcon = navigation => {
   return {
@@ -42,20 +43,22 @@ const ProfileStack = StackNavigator({
       ),
     }),
   },
-  UpdateProfile: {
+  ProfileUpdate: {
     screen: UpdateProfileScene,
   },
-  ListEmployees: {
-    screen:EmployeesListScene
+  EmployeeList: {
+    screen: EmployeeListScene,
   },
-  AddEmployee:{
-    screen:AddEmployeeScene
+  EmployeeAdd: {
+    screen: EmployeeAddScene,
   },
-  EditEmployee:{
-    screen:EditEmployeeScene
+  EmployeeEdit: {
+    screen: EmployeeEditScene,
+  },
+  LoadAdd: {
+    screen: LoadAddScene,
   },
 });
-
 
 const SettingsStack = StackNavigator(
   {
@@ -77,7 +80,8 @@ const DrawerRoutes = {
   },
   ProfileStack: {
     screen: ProfileStack,
-  },  SettingsStack: {
+  },
+  SettingsStack: {
     screen: SettingsStack,
   },
 };

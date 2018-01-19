@@ -20,7 +20,7 @@ function* fetchJobs() {
 
 function* fetchLoadDetails(action) {
   try {
-    const response = yield call(API.fetchLoadDetails,action.params);
+    const response = yield call(API.fetchLoadDetails, action.params);
     const normalized = normalize(response.data, Schema.loads);
     yield put({
       type: ACTION_TYPES.FETCH_LOAD_DETAILS_SUCCESS,
@@ -39,4 +39,7 @@ function* fetchLoadDetailsMonitor() {
   yield takeLatest(ACTION_TYPES.FETCH_LOAD_DETAILS_REQUEST, fetchLoadDetails);
 }
 
-export const sagas = all([fork(fetchJobsMonitor),fork(fetchLoadDetailsMonitor)]);
+export const sagas = all([
+  fork(fetchJobsMonitor),
+  fork(fetchLoadDetailsMonitor),
+]);

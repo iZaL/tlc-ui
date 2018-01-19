@@ -9,16 +9,16 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 export default class LoadPickDropLocation extends PureComponent {
   static propTypes = {
     origin: PropTypes.object.isRequired,
-    destination: PropTypes.object.isRequired
+    destination: PropTypes.object.isRequired,
   };
 
   static defaultProps = {
-    origin:{country:{}},
-    destination:{country:{}},
+    origin: {country: {}},
+    destination: {country: {}},
   };
 
   render() {
-    let {origin,destination} = this.props;
+    let {origin, destination} = this.props;
 
     return (
       <View style={styles.container}>
@@ -28,7 +28,9 @@ export default class LoadPickDropLocation extends PureComponent {
             size={30}
             style={styles.locationIcon}
           />
-          <Text style={styles.locationName}>{origin.city}, {origin.country.name}</Text>
+          <Text style={styles.locationName}>
+            {origin.city}, {origin.country.name}
+          </Text>
         </View>
         <View style={styles.itemRowContainer}>
           <MaterialCommunityIcons
@@ -36,7 +38,9 @@ export default class LoadPickDropLocation extends PureComponent {
             size={30}
             style={styles.locationIcon}
           />
-          <Text style={styles.locationName}>{destination.city}, {destination.country.name}</Text>
+          <Text style={styles.locationName}>
+            {destination.city}, {destination.country.name}
+          </Text>
         </View>
       </View>
     );

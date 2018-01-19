@@ -104,5 +104,5 @@ export const ACTIONS = {
   saveRoute,
   fetchRouteTransits,
   fetchJobs,
-  fetchLoadDetails
+  fetchLoadDetails,
 };

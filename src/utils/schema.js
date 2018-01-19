@@ -30,8 +30,7 @@ driversSchema.define({
   loads: [loadsSchema],
 });
 
-shippersSchema.define({
-});
+shippersSchema.define({});
 
 usersSchema.define({
   profile: profileSchema,
@@ -55,12 +54,12 @@ countriesSchema.define({
 
 loadsSchema.define({
   origin: {
-    country: countriesSchema
+    country: countriesSchema,
   },
   destination: {
-    country: countriesSchema
+    country: countriesSchema,
   },
-  trailer: trailersSchema
+  trailer: trailersSchema,
 });
 
 export const Schema = {
@@ -74,5 +73,5 @@ export const Schema = {
   drivers: driversSchema,
   shippers: shippersSchema,
   routes: routesSchema,
-  loads: loadsSchema
+  loads: loadsSchema,
 };

@@ -15,14 +15,14 @@ export default class LoadInfo extends PureComponent {
   };
 
   static defaultProps = {
-    load:{
-      trailer:{}
-    }
+    load: {
+      trailer: {},
+    },
   };
 
   render() {
     let {load} = this.props;
-    console.log('l',load);
+    console.log('l', load);
     return (
       <View style={styles.container}>
         <View style={[styles.itemRowContainer]}>

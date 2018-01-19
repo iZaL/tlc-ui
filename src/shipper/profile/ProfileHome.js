@@ -19,16 +19,22 @@ class ProfileHome extends Component {
     let scene;
     let sceneConfig = {};
     switch (route) {
-      case 'update_profile':
-        scene = 'UpdateProfile';
+      case 'profile_update':
+        scene = 'ProfileUpdate';
         sceneConfig = {
-          title: I18n.t('update_profile'),
+          title: I18n.t('profile_update'),
         };
         break;
-      case 'list_employees':
-        scene = 'ListEmployees';
+      case 'employee_list':
+        scene = 'EmployeeList';
         sceneConfig = {
-          title: I18n.t('list_employees'),
+          title: I18n.t('employee_list'),
+        };
+        break;
+      case 'load_add':
+        scene = 'LoadAdd';
+        sceneConfig = {
+          title: I18n.t('load_add'),
         };
         break;
     }
@@ -41,15 +47,36 @@ class ProfileHome extends Component {
         <ListItem
           onItemPress={this.onListItemPress}
           icon={<IconFactory type="Ionicons" size={30} name="md-person" />}
-          name="update_profile"
+          name="profile_update"
         />
+
+        <Separator />
 
         <ListItem
           onItemPress={this.onListItemPress}
-          icon={<IconFactory type="MaterialCommunityIcons" size={30} name="contacts" />}
-          name="list_employees"
+          icon={
+            <IconFactory
+              type="MaterialCommunityIcons"
+              size={30}
+              name="contacts"
+            />
+          }
+          name="employee_list"
         />
 
+        <Separator />
+
+        <ListItem
+          onItemPress={this.onListItemPress}
+          icon={
+            <IconFactory
+              type="MaterialCommunityIcons"
+              size={30}
+              name="contacts"
+            />
+          }
+          name="load_add"
+        />
       </ScrollView>
     );
   }
@@ -57,7 +84,7 @@ class ProfileHome extends Component {
 
 function mapStateToProps(state) {
   return {
-    state
+    state,
   };
 }
 

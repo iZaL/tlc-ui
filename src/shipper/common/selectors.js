@@ -16,10 +16,10 @@ const getProfile = createSelector(
 
 const getEmployees = createSelector(
   [USER_SELECTORS.getAuthUserProfile],
-  (shipper) => shipper.employees || [],
+  shipper => shipper.employees || [],
 );
 
 export const SELECTORS = {
   getProfile,
-  getEmployees
+  getEmployees,
 };

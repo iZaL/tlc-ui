@@ -24,5 +24,5 @@ export const API = {
   saveProfile,
   saveEmployee,
   fetchProfile,
-  fetchEmployees
+  fetchEmployees,
 };

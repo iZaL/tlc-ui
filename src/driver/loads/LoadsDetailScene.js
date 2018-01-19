@@ -10,19 +10,20 @@ import Separator from 'components/Separator';
 import LoadInfo from 'driver/loads/components/LoadInfo';
 import Button from 'components/Button';
 import I18n from 'utils/locale';
-import colors from "assets/theme/colors";
+import colors from 'assets/theme/colors';
 
 class LoadsDetailScene extends Component {
-
   shouldComponentUpdate(nextProps) {
     return nextProps.load !== this.props.load;
   }
 
   componentDidMount() {
     const {loadID} = this.props.navigation.state.params;
-    this.props.dispatch(DRIVER_ACTIONS.fetchLoadDetails({
-      load_id: loadID,
-    }));
+    this.props.dispatch(
+      DRIVER_ACTIONS.fetchLoadDetails({
+        load_id: loadID,
+      }),
+    );
   }
 
   static propTypes = {
@@ -34,7 +35,7 @@ class LoadsDetailScene extends Component {
       }),
     }),
     load: PropTypes.shape({
-      origin:PropTypes.object.isRequired,
+      origin: PropTypes.object.isRequired,
       destination: PropTypes.object.isRequired,
     }).isRequired,
   };
@@ -44,34 +45,33 @@ class LoadsDetailScene extends Component {
     load: {},
   };
 
-  acceptBooking = () => {
-
-  };
+  acceptBooking = () => {};
 
   render() {
     let {load} = this.props;
 
-    let {origin,destination} = load;
+    let {origin, destination} = load;
 
     return (
       <View style={{flex: 1, backgroundColor: 'white'}}>
-
-        <View style={{height: 200,backgroundColor:colors.lightGrey}}>
-          {
-            origin.latitude && destination.latitude &&
-            <LoadLocationMapView origin={origin} destination={destination}  />
-          }
+        <View style={{height: 200, backgroundColor: colors.lightGrey}}>
+          {origin.latitude &&
+            destination.latitude && (
+              <LoadLocationMapView origin={origin} destination={destination} />
+            )}
         </View>
 
         <View style={{padding: 5}}>
           <LoadPickDropLocation origin={origin} destination={destination} />
-          <LoadInfo load={load}/>
+          <LoadInfo load={load} />
         </View>
 
         <Separator style={{marginTop: 10, marginBottom: 50}} />
 
-        <Button title={I18n.t('accept_booking').toUpperCase()} onPress={this.acceptBooking} />
-
+        <Button
+          title={I18n.t('accept_booking').toUpperCase()}
+          onPress={this.acceptBooking}
+        />
       </View>
     );
   }

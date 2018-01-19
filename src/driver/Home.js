@@ -7,7 +7,6 @@ import LoadsList from 'driver/loads/components/LoadsList';
 import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
 
 class Home extends Component {
-
   static propTypes = {
     loads: PropTypes.array.isRequired,
   };

@@ -3,7 +3,7 @@ import {API} from 'shipper/common/api';
 import {ACTION_TYPES} from 'shipper/common/actions';
 import {Schema} from 'utils/schema';
 import {normalize} from 'normalizr';
-import {ACTIONS as APP_ACTIONS} from "app/common/actions";
+import {ACTIONS as APP_ACTIONS} from 'app/common/actions';
 
 function* fetchEmployees() {
   try {
@@ -15,12 +15,10 @@ function* fetchEmployees() {
       type: ACTION_TYPES.FETCH_EMPLOYEES_SUCCESS,
       entities: entities,
     });
-
   } catch (error) {
     yield put({type: ACTION_TYPES.FETCH_EMPLOYEES_FAILURE, error});
   }
 }
-
 
 function* saveEmployee(action) {
   try {
@@ -32,13 +30,11 @@ function* saveEmployee(action) {
       type: ACTION_TYPES.SAVE_EMPLOYEE_SUCCESS,
       entities: entities,
     });
-
   } catch (error) {
     yield put(APP_ACTIONS.setNotification(error, 'error'));
     yield put({type: ACTION_TYPES.SAVE_EMPLOYEE_SUCCESS, error});
   }
 }
-
 
 function* fetchEmployeesMonitor() {
   yield takeLatest(ACTION_TYPES.FETCH_EMPLOYEES_REQUEST, fetchEmployees);

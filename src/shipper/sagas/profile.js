@@ -15,16 +15,15 @@ function* saveProfile(action) {
       shippers: {
         [result]: {
           ...entities.shippers[result],
-          meta: response.meta
-        }
-      }
+          meta: response.meta,
+        },
+      },
     };
 
     yield put({
       type: ACTION_TYPES.UPDATE_PROFILE_SUCCESS,
       entities: profile,
     });
-
   } catch (error) {
     yield put(APP_ACTIONS.setNotification(error, 'error'));
     yield put({type: ACTION_TYPES.UPDATE_PROFILE_FAILURE, error});
@@ -41,16 +40,15 @@ function* fetchProfile() {
       shippers: {
         [result]: {
           ...entities.shippers[result],
-          meta: response.meta
-        }
-      }
+          meta: response.meta,
+        },
+      },
     };
 
     yield put({
       type: ACTION_TYPES.FETCH_PROFILE_SUCCESS,
       entities: profile,
     });
-
   } catch (error) {
     yield put({type: ACTION_TYPES.FETCH_PROFILE_FAILURE, error});
   }
@@ -64,7 +62,4 @@ function* fetchProfileMonitor() {
   yield takeLatest(ACTION_TYPES.FETCH_PROFILE_REQUEST, fetchProfile);
 }
 
-export const sagas = all([
-  fork(fetchProfileMonitor),
-  fork(saveProfileMonitor),
-]);
+export const sagas = all([fork(fetchProfileMonitor), fork(saveProfileMonitor)]);

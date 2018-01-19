@@ -3,7 +3,7 @@ import {StyleSheet, Text} from 'react-native';
 import PropTypes from 'prop-types';
 import colors from 'theme/colors';
 import I18n from 'utils/locale';
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Touchable from 'react-native-platform-touchable';
 
 export default class FormCheck extends Component {
@@ -16,26 +16,27 @@ export default class FormCheck extends Component {
   render() {
     const {checked, style, onPress} = this.props;
     return (
-      <Touchable onPress={onPress} hitSlop={{top:20,bottom:20,right:20,left:20}} style={styles.label}>
-        {
-          checked ? (
-            <MaterialCommunityIcons
-              name="checkbox-marked-circle"
-              size={30}
-              color="green"
-              {...style}
-              style={styles.icon}
-            />
-          ) : (
-            <MaterialCommunityIcons
-              name="checkbox-blank-circle-outline"
-              size={30}
-              color="green"
-              {...style}
-              style={styles.icon}
-            />
-          )
-        }
+      <Touchable
+        onPress={onPress}
+        hitSlop={{top: 20, bottom: 20, right: 20, left: 20}}
+        style={styles.label}>
+        {checked ? (
+          <MaterialCommunityIcons
+            name="checkbox-marked-circle"
+            size={30}
+            color="green"
+            {...style}
+            style={styles.icon}
+          />
+        ) : (
+          <MaterialCommunityIcons
+            name="checkbox-blank-circle-outline"
+            size={30}
+            color="green"
+            {...style}
+            style={styles.icon}
+          />
+        )}
       </Touchable>
     );
   }
@@ -43,10 +44,10 @@ export default class FormCheck extends Component {
 
 const styles = StyleSheet.create({
   label: {
-    paddingHorizontal:10,
+    paddingHorizontal: 10,
   },
-  icon:{
-    height:30,
-    width:30,
-  }
+  icon: {
+    height: 30,
+    width: 30,
+  },
 });

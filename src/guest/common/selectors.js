@@ -17,7 +17,6 @@ const getAuthUser = createSelector(
   },
 );
 
-
 /**
  * for driver, shipper
  */
@@ -31,13 +30,13 @@ const getAuthUserProfile = createSelector(
 );
 
 const getAuthUserWithProfile = createSelector(
-  [getAuthUser,getAuthUserProfile],
-  (user,profile) => {
+  [getAuthUser, getAuthUserProfile],
+  (user, profile) => {
     return {
       ...user,
-      profile
-    }
-  }
+      profile,
+    };
+  },
 );
 
 //

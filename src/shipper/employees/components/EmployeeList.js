@@ -10,12 +10,12 @@ import Accordion from 'react-native-collapsible/Accordion';
 import Feather from 'react-native-vector-icons/Feather';
 import Separator from 'components/Separator';
 import I18n from 'utils/locale';
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import Entypo from "react-native-vector-icons/Entypo";
-import Button from "../../../components/Button";
-import MaterialIcons from "react-native-vector-icons/MaterialIcons";
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Entypo from 'react-native-vector-icons/Entypo';
+import Button from 'components/Button';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
-export default class EmployeesList extends PureComponent {
+export default class EmployeeList extends PureComponent {
   static propTypes = {
     items: PropTypes.array.isRequired,
     onItemEditPress: PropTypes.func.isRequired,
@@ -52,13 +52,12 @@ export default class EmployeesList extends PureComponent {
     let {onItemPress, onItemEditPress} = this.props;
     return (
       <View style={[styles.contentContainer]}>
-
         <View style={styles.row}>
           <MaterialCommunityIcons name="email" size={30} style={styles.icon} />
           <Text style={styles.email}>{item.email}</Text>
         </View>
 
-        <Separator style={{marginVertical: 10}}/>
+        <Separator style={{marginVertical: 10}} />
 
         <View style={styles.row}>
           <MaterialCommunityIcons name="phone" size={30} style={styles.icon} />
@@ -68,46 +67,56 @@ export default class EmployeesList extends PureComponent {
           </View>
         </View>
 
-        <Separator style={{marginVertical: 10}}/>
+        <Separator style={{marginVertical: 10}} />
 
         <View style={styles.row}>
-          <Entypo name={item.driver_interaction ? 'check' : 'cross'} size={30} style={styles.icon}
-                  color={item.driver_interaction ? colors.primary : colors.error}/>
-          <Text style={styles.email}> {I18n.t('can_communicate_with_driver')}</Text>
+          <Entypo
+            name={item.driver_interaction ? 'check' : 'cross'}
+            size={30}
+            style={styles.icon}
+            color={item.driver_interaction ? colors.primary : colors.error}
+          />
+          <Text style={styles.email}>
+            {' '}
+            {I18n.t('can_communicate_with_driver')}
+          </Text>
         </View>
 
-
-        <Separator style={{marginVertical: 10}}/>
+        <Separator style={{marginVertical: 10}} />
 
         <Touchable onPress={() => onItemEditPress(item)}>
           <View style={styles.row}>
-            <MaterialIcons name='find-in-page' size={30} style={styles.icon}
-                                    />
+            <MaterialIcons name="find-in-page" size={30} style={styles.icon} />
             <Text style={styles.email}> {I18n.t('details')}</Text>
           </View>
         </Touchable>
 
-        <Separator style={{marginVertical: 10}}/>
+        <Separator style={{marginVertical: 10}} />
 
         <Touchable onPress={() => onItemEditPress(item)}>
           <View style={styles.row}>
-            <MaterialCommunityIcons name='account-edit' size={30} style={styles.icon}
-                                    />
+            <MaterialCommunityIcons
+              name="account-edit"
+              size={30}
+              style={styles.icon}
+            />
             <Text style={styles.email}> {I18n.t('edit')}</Text>
           </View>
         </Touchable>
 
-        <Separator style={{marginVertical: 10}}/>
+        <Separator style={{marginVertical: 10}} />
 
         <Touchable onPress={() => onItemEditPress(item)}>
           <View style={styles.row}>
-            <MaterialCommunityIcons name='delete' size={30} style={styles.icon}
-                                    color={colors.error}/>
+            <MaterialCommunityIcons
+              name="delete"
+              size={30}
+              style={styles.icon}
+              color={colors.error}
+            />
             <Text style={styles.email}> {I18n.t('delete')}</Text>
           </View>
         </Touchable>
-
-
       </View>
     );
   };
@@ -196,6 +205,6 @@ const styles = StyleSheet.create({
   },
   icon: {
     height: 30,
-    width: 30
-  }
+    width: 30,
+  },
 });
