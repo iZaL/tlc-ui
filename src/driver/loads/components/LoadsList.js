@@ -20,20 +20,6 @@ export default class LoadsList extends PureComponent {
     onItemPress: PropTypes.func.isRequired,
   };
 
-  render() {
-    let {items} = this.props;
-    return (
-      <FlatList
-        data={items}
-        style={styles.listContainer}
-        renderItem={this.renderRow}
-        showsVerticalScrollIndicator={false}
-        ItemSeparatorComponent={() => <Separator />}
-        keyExtractor={(item, index) => index}
-      />
-    );
-  }
-
   renderRow = ({item}) => {
     const {onItemPress} = this.props;
     return (
@@ -53,6 +39,20 @@ export default class LoadsList extends PureComponent {
       </Touchable>
     );
   };
+
+  render() {
+    let {items} = this.props;
+    return (
+      <FlatList
+        data={items}
+        style={styles.listContainer}
+        renderItem={this.renderRow}
+        showsVerticalScrollIndicator={false}
+        ItemSeparatorComponent={() => <Separator />}
+        keyExtractor={(item, index) => index}
+      />
+    );
+  }
 }
 
 const styles = StyleSheet.create({

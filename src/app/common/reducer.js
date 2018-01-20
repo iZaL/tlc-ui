@@ -60,6 +60,7 @@ export function entities(
     trailers: {},
     routes: {},
     loads: {},
+    shipper_locations: {},
   },
   action = {},
 ) {

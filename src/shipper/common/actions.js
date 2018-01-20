@@ -15,9 +15,17 @@ export const ACTION_TYPES = {
   FETCH_EMPLOYEES_SUCCESS: '@shipper/FETCH_EMPLOYEES_SUCCESS',
   FETCH_EMPLOYEES_FAILURE: '@shipper/FETCH_EMPLOYEES_FAILURE',
 
+  FETCH_LOCATIONS_REQUEST: '@shipper/FETCH_LOCATIONS_REQUEST',
+  FETCH_LOCATIONS_SUCCESS: '@shipper/FETCH_LOCATIONS_SUCCESS',
+  FETCH_LOCATIONS_FAILURE: '@shipper/FETCH_LOCATIONS_FAILURE',
+
   SAVE_EMPLOYEE_REQUEST: '@shipper/SAVE_EMPLOYEE_REQUEST',
   SAVE_EMPLOYEE_SUCCESS: '@shipper/SAVE_EMPLOYEE_SUCCESS',
   SAVE_EMPLOYEE_FAILURE: '@shipper/SAVE_EMPLOYEE_FAILURE',
+
+  SAVE_LOCATION_REQUEST: '@shipper/SAVE_LOCATION_REQUEST',
+  SAVE_LOCATION_SUCCESS: '@shipper/SAVE_LOCATION_SUCCESS',
+  SAVE_LOCATION_FAILURE: '@shipper/SAVE_LOCATION_FAILURE',
 };
 
 function fetchEmployees(params) {
@@ -29,6 +37,13 @@ function fetchEmployees(params) {
 function fetchProfile(params) {
   return {
     type: ACTION_TYPES.FETCH_PROFILE_REQUEST,
+    params,
+  };
+}
+
+function fetchLocations(params) {
+  return {
+    type: ACTION_TYPES.FETCH_LOCATIONS_REQUEST,
     params,
   };
 }
@@ -50,5 +65,6 @@ export const ACTIONS = {
   saveProfile,
   fetchProfile,
   fetchEmployees,
+  fetchLocations,
   saveEmployee,
 };

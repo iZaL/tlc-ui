@@ -11,6 +11,8 @@ const shippersSchema = new schema.Entity('shippers');
 const routesSchema = new schema.Entity('routes');
 const loadsSchema = new schema.Entity('loads');
 const driversSchema = new schema.Entity('drivers');
+const shipperLocationsSchema = new schema.Entity('shipper_locations');
+
 const profileSchema = new schema.Union(
   {
     drivers: driversSchema,
@@ -30,7 +32,13 @@ driversSchema.define({
   loads: [loadsSchema],
 });
 
-shippersSchema.define({});
+shippersSchema.define({
+  locations: [shipperLocationsSchema],
+});
+
+shipperLocationsSchema.define({
+  country: countriesSchema,
+});
 
 usersSchema.define({
   profile: profileSchema,

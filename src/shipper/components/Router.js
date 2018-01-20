@@ -10,6 +10,7 @@ import EmployeeListScene from 'shipper/employees/EmployeeListScene';
 import EmployeeAddScene from 'shipper/employees/EmployeeAddScene';
 import EmployeeEditScene from 'shipper/employees/EmployeeEditScene';
 import LoadAddScene from 'shipper/loads/LoadAddScene';
+import LocationListScene from 'shipper/locations/LocationListScene';
 
 const getDrawerIcon = navigation => {
   return {
@@ -33,32 +34,40 @@ const HomeStack = StackNavigator(
   },
 );
 
-const ProfileStack = StackNavigator({
-  Settings: {
-    screen: ProfileHome,
-    navigationOptions: ({navigation}) => ({
-      gesturesEnabled: false,
-      headerLeft: (
-        <DrawerIcon onPress={() => navigation.navigate('DrawerToggle')} />
-      ),
-    }),
+const ProfileStack = StackNavigator(
+  {
+    Settings: {
+      screen: ProfileHome,
+      navigationOptions: ({navigation}) => ({
+        gesturesEnabled: false,
+        headerLeft: (
+          <DrawerIcon onPress={() => navigation.navigate('DrawerToggle')} />
+        ),
+      }),
+    },
+    ProfileUpdate: {
+      screen: UpdateProfileScene,
+    },
+    EmployeeList: {
+      screen: EmployeeListScene,
+    },
+    EmployeeAdd: {
+      screen: EmployeeAddScene,
+    },
+    EmployeeEdit: {
+      screen: EmployeeEditScene,
+    },
+    LoadAdd: {
+      screen: LoadAddScene,
+    },
+    LocationList: {
+      screen: LocationListScene,
+    },
   },
-  ProfileUpdate: {
-    screen: UpdateProfileScene,
+  {
+    initialRouteName:'LoadAdd'
   },
-  EmployeeList: {
-    screen: EmployeeListScene,
-  },
-  EmployeeAdd: {
-    screen: EmployeeAddScene,
-  },
-  EmployeeEdit: {
-    screen: EmployeeEditScene,
-  },
-  LoadAdd: {
-    screen: LoadAddScene,
-  },
-});
+);
 
 const SettingsStack = StackNavigator(
   {
@@ -90,4 +99,5 @@ export const Routes = DrawerNavigator(DrawerRoutes, {
   gesturesEnabled: false,
   contentComponent: props => <Drawer {...props} />,
   drawerWidth: 275,
+  initialRouteName: 'ProfileStack',
 });
