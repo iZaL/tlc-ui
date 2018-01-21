@@ -3,9 +3,9 @@ package com.tlc;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
 import com.imagepicker.ImagePickerPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
-import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
 import com.AlexanderZaytsev.RNI18n.RNI18nPackage;
 import com.microsoft.codepush.react.CodePush;
 import com.facebook.react.ReactNativeHost;
@@ -35,9 +35,9 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new ReactNativePushNotificationPackage(),
             new ImagePickerPackage(),
             new VectorIconsPackage(),
-            new ReactNativePushNotificationPackage(),
             new RNI18nPackage(),
             new CodePush(null, getApplicationContext(), BuildConfig.DEBUG),
             new MapsPackage()
