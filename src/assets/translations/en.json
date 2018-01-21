@@ -101,5 +101,6 @@
   "location_pick_add" : "Add New Pick Location",
   "location_drop_add" : "Add New Drop Location",
   "address" : "Address",
-  "select_area" : "Search"
+  "select_area" : "Search",
+  "load_date" : "Load Date"
 }

@@ -13,11 +13,16 @@ import LoadWhere from 'shipper/loads/components/LoadWhere';
 import LoadWhen from 'shipper/loads/components/LoadWhen';
 import LoadHow from 'shipper/loads/components/LoadHow';
 import Button from '../../components/Button';
+import moment from 'moment';
 
 class LoadAddScene extends Component {
   static propTypes = {};
 
   static defaultProps = {};
+
+  state = {
+    load_date:undefined
+  };
 
   componentDidMount() {}
 
@@ -39,6 +44,25 @@ class LoadAddScene extends Component {
 
   };
 
+  onFieldChange = (field, value) => {
+    if (value) {
+      // let record;
+      // const {makes, models} = this.props;
+      // switch (field) {
+      //   case 'make':
+      //     record = makes.find(record => record.id === value);
+      //     break;
+      //   case 'model':
+      //     record = models.find(record => record.id === value);
+      //     break;
+      //   default:
+      //     record = value;
+      //     break;
+      // }
+      this.setState({[field]: value});
+    }
+  };
+
   render() {
     return (
       <ScrollView style={{flex: 1}}>
@@ -48,6 +72,8 @@ class LoadAddScene extends Component {
             <TabHeader title="2" />
             <TabHeader title="3" />
             <TabHeader title="4" />
+            <TabHeader title="5" />
+            <TabHeader title="6" />
           </TabList>
 
           <TabPanels>
@@ -71,7 +97,10 @@ class LoadAddScene extends Component {
 
             />
 
-            <LoadWhen />
+            <LoadWhen
+              load_date={this.state.load_date}
+              onFieldChange={this.onFieldChange}
+            />
             <LoadHow />
           </TabPanels>
         </Tabs>

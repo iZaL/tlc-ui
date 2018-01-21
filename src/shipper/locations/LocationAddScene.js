@@ -77,7 +77,6 @@ class LocationAddScene extends Component {
         <Button
           title={I18n.t('save')}
           onPress={this.saveAddress}
-          background="success"
           style={{marginVertical:10}}
         />
 
