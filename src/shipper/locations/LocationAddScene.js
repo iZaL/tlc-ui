@@ -62,16 +62,16 @@ class LocationAddScene extends Component {
     let {type} = this.props.navigation.state.params;
 
     return (
-      <View style={{flex: 1,padding:5}}>
-
-        <AddressField
-          address="wa"
-          updateFields={this.updateFormFields}
-        />
+      <View style={{flex: 1}}>
 
         <MapPicker
           updateAddress={this.updateAddressFields}
           address={{...this.state}}
+        />
+
+        <AddressField
+          address="wa"
+          updateFields={this.updateFormFields}
         />
 
         <Button

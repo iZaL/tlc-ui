@@ -15,7 +15,7 @@ export default class AddressField extends PureComponent {
 
     return (
       <View style={styles.container}>
-        <Text style={styles.label}>{I18n.t('address')}</Text>
+        {/*<Text style={styles.label}>{I18n.t('address')}</Text>*/}
         <FormTextInput
           onChangeText={value => updateFields('address_en', value)}
           value={address_en}
@@ -23,6 +23,8 @@ export default class AddressField extends PureComponent {
           keyboardType="numeric"
           style={styles.textInput}
           placeholder={I18n.t('address')}
+          numberOfLines = {2}
+          multiline={true}
         />
       </View>
     );
@@ -30,11 +32,12 @@ export default class AddressField extends PureComponent {
 }
 
 const styles = StyleSheet.create({
-  label: {
-    paddingBottom: 5
-  },
   container: {
-    padding: 5
+    margin: 5,
+    backgroundColor:'white'
+  },
+  label: {
+    padding:5
   },
   textInput: {
     padding: 5,

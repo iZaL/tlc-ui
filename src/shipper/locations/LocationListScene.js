@@ -57,7 +57,6 @@ class LocationListScene extends Component {
           onItemPress={this.onLocationListItemPress}
         />
 
-
       </ScrollView>
     );
   }

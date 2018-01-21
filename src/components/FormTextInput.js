@@ -24,7 +24,7 @@ export default class FormTextInput extends Component {
 
 const styles = StyleSheet.create({
   input: {
-    height: 40,
+    // height: 40,
     borderRightColor: 'transparent',
     borderTopColor: 'transparent',
     borderBottomColor: Platform.OS === 'ios' ? colors.lightGrey : 'transparent',

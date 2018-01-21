@@ -2,7 +2,9 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Text, View, StyleSheet, ScrollView} from 'react-native';
 import Touchable from 'react-native-platform-touchable';
-import LocationListItem from "../../locations/components/LocationListItem";
+import LocationListItem from "shipper/locations/components/LocationListItem";
+import Separator from "components/Separator";
+import colors from "assets/theme/colors";
 
 export default class LoadWhat extends Component {
   static propTypes = {
@@ -20,7 +22,7 @@ export default class LoadWhat extends Component {
     return (
       <ScrollView style={styles.container}>
 
-          <Text onPress={() => this.props.onPickLocationsListPress()}>
+          <Text onPress={() => this.props.onPickLocationsListPress()} style={styles.label}>
             Select Pickup Location
           </Text>
 
@@ -29,7 +31,9 @@ export default class LoadWhat extends Component {
             onPress={onPickLocationItemPress}
           />
 
-          <Text onPress={() => this.props.onDropLocationsListPress()}>
+          <Separator style={{backgroundColor:colors.mediumGrey,marginVertical:20}}/>
+
+          <Text onPress={() => this.props.onDropLocationsListPress()} style={styles.label}>
             Select Drop Location
           </Text>
 
@@ -47,4 +51,9 @@ const styles = StyleSheet.create({
   container: {
     flex:1,
   },
+  label:{
+    paddingBottom:10,
+    fontSize:20,
+    color:colors.primary
+  }
 });
