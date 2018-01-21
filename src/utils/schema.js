@@ -10,6 +10,7 @@ const truckModelsSchema = new schema.Entity('truck_models');
 const shippersSchema = new schema.Entity('shippers');
 const routesSchema = new schema.Entity('routes');
 const loadsSchema = new schema.Entity('loads');
+const tripsSchema = new schema.Entity('trips');
 const driversSchema = new schema.Entity('drivers');
 const shipperLocationsSchema = new schema.Entity('shipper_locations');
 
@@ -30,6 +31,7 @@ driversSchema.define({
   shipper: shippersSchema,
   routes: [routesSchema],
   loads: [loadsSchema],
+  upcoming_trips:[tripsSchema]
 });
 
 shippersSchema.define({
@@ -70,6 +72,11 @@ loadsSchema.define({
   trailer: trailersSchema,
 });
 
+tripsSchema.define({
+  load:loadsSchema,
+  driver:driversSchema
+});
+
 export const Schema = {
   users: usersSchema,
   countries: countriesSchema,
@@ -82,4 +89,5 @@ export const Schema = {
   shippers: shippersSchema,
   routes: routesSchema,
   loads: loadsSchema,
+  trips: tripsSchema,
 };

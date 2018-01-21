@@ -15,9 +15,9 @@ export const ACTION_TYPES = {
   FETCH_ROUTES_SUCCESS: '@driver/FETCH_ROUTES_SUCCESS',
   FETCH_ROUTES_FAILURE: '@driver/FETCH_ROUTES_FAILURE',
 
-  FETCH_JOBS_REQUEST: '@driver/FETCH_JOBS_REQUEST',
-  FETCH_JOBS_SUCCESS: '@driver/FETCH_JOBS_SUCCESS',
-  FETCH_JOBS_FAILURE: '@driver/FETCH_JOBS_FAILURE',
+  FETCH_UPCOMING_TRIPS_REQUEST: '@driver/FETCH_UPCOMING_TRIPS_REQUEST',
+  FETCH_UPCOMING_TRIPS_SUCCESS: '@driver/FETCH_UPCOMING_TRIPS_SUCCESS',
+  FETCH_UPCOMING_TRIPS_FAILURE: '@driver/FETCH_UPCOMING_TRIPS_FAILURE',
 
   FETCH_LOAD_DETAILS_REQUEST: '@driver/FETCH_LOAD_DETAILS_REQUEST',
   FETCH_LOAD_DETAILS_SUCCESS: '@driver/FETCH_LOAD_DETAILS_SUCCESS',
@@ -54,9 +54,9 @@ function fetchRoutes(params) {
   };
 }
 
-function fetchJobs(params) {
+function fetchUpcomingTrips(params) {
   return {
-    type: ACTION_TYPES.FETCH_JOBS_REQUEST,
+    type: ACTION_TYPES.FETCH_UPCOMING_TRIPS_REQUEST,
     params,
   };
 }
@@ -103,6 +103,6 @@ export const ACTIONS = {
   saveTruck,
   saveRoute,
   fetchRouteTransits,
-  fetchJobs,
+  fetchUpcomingTrips,
   fetchLoadDetails,
 };

@@ -16,7 +16,7 @@ class Home extends Component {
   };
 
   componentDidMount() {
-    this.props.dispatch(DRIVER_ACTIONS.fetchJobs());
+    this.props.dispatch(DRIVER_ACTIONS.fetchUpcomingTrips());
   }
 
   onLoadsListItemPress = (load: object) => {
@@ -26,10 +26,11 @@ class Home extends Component {
   };
 
   render() {
-    let {loads} = this.props;
+    let {trips} = this.props;
+    console.log('props',this.props);
     return (
       <View style={{flex: 1}}>
-        <LoadsList items={loads} onItemPress={this.onLoadsListItemPress} />
+        <LoadsList items={trips.map(trip => trip.load)} onItemPress={this.onLoadsListItemPress} />
       </View>
     );
   }
@@ -37,7 +38,7 @@ class Home extends Component {
 
 function mapStateToProps(state) {
   return {
-    loads: DRIVER_SELECTORS.getLoadRequests(state),
+    trips: DRIVER_SELECTORS.getUpcomingTrips(state),
   };
 }
 

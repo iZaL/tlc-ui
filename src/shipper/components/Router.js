@@ -11,6 +11,7 @@ import EmployeeAddScene from 'shipper/employees/EmployeeAddScene';
 import EmployeeEditScene from 'shipper/employees/EmployeeEditScene';
 import LoadAddScene from 'shipper/loads/LoadAddScene';
 import LocationListScene from 'shipper/locations/LocationListScene';
+import LocationAddScene from 'shipper/locations/LocationAddScene';
 
 const getDrawerIcon = navigation => {
   return {
@@ -63,9 +64,12 @@ const ProfileStack = StackNavigator(
     LocationList: {
       screen: LocationListScene,
     },
+    LocationAdd: {
+      screen: LocationAddScene,
+    },
   },
   {
-    initialRouteName:'LoadAdd'
+    // initialRouteName:'LoadAdd'
   },
 );
 
