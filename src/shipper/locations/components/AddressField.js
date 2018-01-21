@@ -1,0 +1,43 @@
+import React, {Component, PureComponent} from 'react';
+import PropTypes from 'prop-types';
+import {StyleSheet, Text, View} from 'react-native';
+import FormTextInput from 'components/FormTextInput';
+import I18n from 'utils/locale';
+
+export default class AddressField extends PureComponent {
+
+  static propTypes = {
+    updateFields: PropTypes.func.isRequired,
+  };
+
+  render() {
+    const {address_en, updateFields} = this.props;
+
+    return (
+      <View style={styles.container}>
+        <Text style={styles.label}>{I18n.t('address')}</Text>
+        <FormTextInput
+          onChangeText={value => updateFields('address_en', value)}
+          value={address_en}
+          maxLength={40}
+          keyboardType="numeric"
+          style={styles.textInput}
+          placeholder={I18n.t('address')}
+        />
+      </View>
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  label: {
+    paddingBottom: 5
+  },
+  container: {
+    padding: 5
+  },
+  textInput: {
+    padding: 5,
+    backgroundColor: 'white',
+  },
+});

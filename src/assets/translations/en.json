@@ -100,4 +100,6 @@
   "load_add" : "Post a Load",
   "location_pick_add" : "Add New Pick Location",
   "location_drop_add" : "Add New Drop Location",
+  "address" : "Address",
+  "select_area" : "Search"
 }
