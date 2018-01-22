@@ -102,5 +102,8 @@
   "location_drop_add" : "Add New Drop Location",
   "address" : "Address",
   "select_area" : "Search",
-  "load_date" : "Load Date"
+  "select_trailer" : "Select Trailer",
+  "select_packaging" : "Select Packaging",
+  "load_date" : "Load Date",
+  "load_time" : "Load Time",
 }

@@ -26,6 +26,14 @@ export const ACTION_TYPES = {
   SAVE_LOCATION_REQUEST: '@shipper/SAVE_LOCATION_REQUEST',
   SAVE_LOCATION_SUCCESS: '@shipper/SAVE_LOCATION_SUCCESS',
   SAVE_LOCATION_FAILURE: '@shipper/SAVE_LOCATION_FAILURE',
+
+  SAVE_LOAD_REQUEST: '@shipper/SAVE_LOAD_REQUEST',
+  SAVE_LOAD_SUCCESS: '@shipper/SAVE_LOAD_SUCCESS',
+  SAVE_LOAD_FAILURE: '@shipper/SAVE_LOAD_FAILURE',
+
+  FETCH_LOAD_ADD_DATA_REQUEST: '@shipper/FETCH_LOAD_ADD_DATA_REQUEST',
+  FETCH_LOAD_ADD_DATA_SUCCESS: '@shipper/FETCH_LOAD_ADD_DATA_SUCCESS',
+  FETCH_LOAD_ADD_DATA_FAILURE: '@shipper/FETCH_LOAD_ADD_DATA_FAILURE',
 };
 
 function fetchEmployees(params) {
@@ -44,6 +52,19 @@ function fetchProfile(params) {
 function fetchLocations(params) {
   return {
     type: ACTION_TYPES.FETCH_LOCATIONS_REQUEST,
+    params,
+  };
+}
+
+/**
+ * Get all data related to add load scene
+ * ex: Trailers, Packaging, Pick & Drop Locations, GatePasses
+ * @param params
+ * @returns {{type: string, params: *}}
+ */
+function fetchLoadAddData(params) {
+  return {
+    type: ACTION_TYPES.FETCH_LOAD_ADD_DATA_REQUEST,
     params,
   };
 }
@@ -67,4 +88,5 @@ export const ACTIONS = {
   fetchEmployees,
   fetchLocations,
   saveEmployee,
+  fetchLoadAddData,
 };

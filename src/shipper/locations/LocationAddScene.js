@@ -3,10 +3,10 @@ import {connect} from 'react-redux';
 import {ScrollView, View} from 'react-native';
 import PropTypes from 'prop-types';
 import {ACTIONS as SHIPPER_ACTIONS} from 'shipper/common/actions';
-import AddressField from "shipper/locations/components/AddressField";
-import Button from "components/Button";
+import AddressField from 'shipper/locations/components/AddressField';
+import Button from 'components/Button';
 import I18n from 'utils/locale';
-import MapPicker from "./components/MapPicker";
+import MapPicker from './components/MapPicker';
 
 type Type = 'pick|drop';
 
@@ -42,8 +42,7 @@ class LocationAddScene extends Component {
     // this.props.dispatch(SHIPPER_ACTIONS.fetchLocations());
   }
 
-  saveAddress = () => {
-  };
+  saveAddress = () => {};
 
   updateFormFields = (key, value) => {
     this.setState({
@@ -63,29 +62,24 @@ class LocationAddScene extends Component {
 
     return (
       <View style={{flex: 1}}>
-
         <MapPicker
           updateAddress={this.updateAddressFields}
           address={{...this.state}}
         />
 
-        <AddressField
-          address="wa"
-          updateFields={this.updateFormFields}
-        />
+        <AddressField address="wa" updateFields={this.updateFormFields} />
 
         <Button
           title={I18n.t('save')}
           onPress={this.saveAddress}
-          style={{marginVertical:10}}
+          style={{marginVertical: 10}}
         />
-
       </View>
     );
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {};
 };
 

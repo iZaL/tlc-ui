@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import {ACTIONS as SHIPPER_ACTIONS} from 'shipper/common/actions';
 import {SELECTORS as SHIPPER_SELECTORS} from 'shipper/common/selectors';
 import LocationList from 'shipper/locations/components/LocationList';
-import Button from "../../components/Button";
+import Button from '../../components/Button';
 import I18n from 'utils/locale';
 
 type Type = 'pick|drop';
@@ -36,9 +36,9 @@ class LocationListScene extends Component {
   onLocationCreatePress = () => {
     let {type} = this.props.navigation.state.params;
 
-    this.props.navigation.navigate('LocationAdd',{
-      type:type
-    })
+    this.props.navigation.navigate('LocationAdd', {
+      type: type,
+    });
   };
 
   render() {
@@ -46,17 +46,20 @@ class LocationListScene extends Component {
     let {type} = this.props.navigation.state.params;
     return (
       <ScrollView style={{flex: 1}}>
-
-        <Button title={type === 'pick' ? I18n.t('location_pick_add') : I18n.t('location_drop_add') }
-                onPress={this.onLocationCreatePress}
-                style={{marginVertical:10}}
+        <Button
+          title={
+            type === 'pick'
+              ? I18n.t('location_pick_add')
+              : I18n.t('location_drop_add')
+          }
+          onPress={this.onLocationCreatePress}
+          style={{marginVertical: 10}}
         />
 
         <LocationList
           items={locations}
           onItemPress={this.onLocationListItemPress}
         />
-
       </ScrollView>
     );
   }

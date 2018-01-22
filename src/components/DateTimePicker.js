@@ -584,4 +584,3 @@ let styles = StyleSheet.create({
     backgroundColor: '#eee',
   },
 });
-

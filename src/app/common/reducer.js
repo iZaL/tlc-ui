@@ -61,7 +61,8 @@ export function entities(
     routes: {},
     loads: {},
     shipper_locations: {},
-    trips:{}
+    trips: {},
+    packaging: {},
   },
   action = {},
 ) {

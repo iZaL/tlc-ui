@@ -180,16 +180,15 @@ const getLoadRequests = createSelector(
   },
 );
 
-
 const getTripByID = () => {
   return createSelector(
     [tripsSchema, loadsSchema, countriesSchema, trailersSchema, getIdProp],
-    (trips, loads, countries,trailers, id) => {
+    (trips, loads, countries, trailers, id) => {
       let trip = trips[id];
       const loadByID = getLoadByID();
       return {
         ...trip,
-        load:loadByID({entities: {loads, countries, trailers}},trip.load)
+        load: loadByID({entities: {loads, countries, trailers}}, trip.load),
       };
     },
   );
@@ -197,13 +196,13 @@ const getTripByID = () => {
 
 const getUpcomingTrips = createSelector(
   [getProfile, tripsSchema, loadsSchema, countriesSchema, trailersSchema],
-  (driver, trips,loads,countries,trailers) => {
+  (driver, trips, loads, countries, trailers) => {
     let upcomingTrips = driver.upcoming_trips || [];
 
     const tripByID = getTripByID();
     return (
       upcomingTrips.map(id => {
-        return tripByID({entities: {trips,loads,countries,trailers}}, id);
+        return tripByID({entities: {trips, loads, countries, trailers}}, id);
       }) || []
     );
   },
@@ -221,5 +220,5 @@ export const SELECTORS = {
   getProfileCountries,
   getLoadRequests,
   getLoadByID,
-  getUpcomingTrips
+  getUpcomingTrips,
 };

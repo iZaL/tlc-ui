@@ -7,7 +7,6 @@ import I18n from 'utils/locale';
 import moment from 'moment';
 
 export default class DatePicker extends Component {
-
   static propTypes = {
     onDateChange: PropTypes.func.isRequired,
     dates: PropTypes.array,
@@ -18,7 +17,7 @@ export default class DatePicker extends Component {
     super(props);
     this.state = {
       activeDate: this.props.activeDate || moment(),
-      dates: this.props.dates || []
+      dates: this.props.dates || [],
     };
   }
 
@@ -34,17 +33,17 @@ export default class DatePicker extends Component {
     }
   }
 
-  shouldComponentUpdate(nextProps,nextState) {
+  shouldComponentUpdate(nextProps, nextState) {
     return (
       nextState.dates !== this.state.dates ||
       nextState.activeDate !== this.state.activeDate
     );
   }
 
-  onDateChange = (date) => {
+  onDateChange = date => {
     if (!this.props.dates) {
       this.setState({
-        activeDate: date
+        activeDate: date,
       });
     }
     this.props.onDateChange(date);
@@ -58,13 +57,13 @@ export default class DatePicker extends Component {
           style={[
             styles.itemContainer,
             activeDate.format('DD/MM') === item.format('DD/MM') &&
-            styles.itemContainerActive,
+              styles.itemContainerActive,
           ]}>
           <Text
             style={[
               styles.day,
               activeDate.format('DD/MM') === item.format('DD/MM') &&
-              styles.dayActive,
+                styles.dayActive,
             ]}>
             {item.format('ddd').toUpperCase()}
           </Text>
@@ -72,7 +71,7 @@ export default class DatePicker extends Component {
             style={[
               styles.date,
               activeDate.format('DD/MM') === item.format('DD/MM') &&
-              styles.dateActive,
+                styles.dateActive,
             ]}>
             {item.date()}
           </Text>
@@ -83,7 +82,7 @@ export default class DatePicker extends Component {
 
   render() {
     console.log('datepicker');
-    const {dates,activeDate} = this.state;
+    const {dates, activeDate} = this.state;
     return (
       <FlatList
         data={dates}
@@ -97,43 +96,41 @@ export default class DatePicker extends Component {
   }
 }
 
-
-const
-  styles = StyleSheet.create({
-    container: {
-      // marginVertical:30,
-      flex: 1,
-      backgroundColor: 'white'
-    },
-    listContainer: {
-      backgroundColor: 'white',
-      marginVertical: 10,
-      paddingHorizontal: 5,
-      // backgroundColor: colors.lightGrey,
-    },
-    itemContainer: {
-      padding: 10,
-      alignItems: 'center',
-    },
-    day: {
-      color: colors.darkGrey,
-      fontSize: 15,
-    },
-    date: {
-      fontSize: 29,
-      color: colors.darkGrey,
-    },
-    itemContainerActive: {
-      backgroundColor: colors.primary,
-    },
-    dayActive: {
-      color: colors.white,
-    },
-    dateActive: {
-      color: colors.white,
-    },
-    sectionTitle: {
-      fontSize: 20,
-      paddingHorizontal: 10,
-    },
-  });
+const styles = StyleSheet.create({
+  container: {
+    // marginVertical:30,
+    flex: 1,
+    backgroundColor: 'white',
+  },
+  listContainer: {
+    backgroundColor: 'white',
+    marginVertical: 10,
+    paddingHorizontal: 5,
+    // backgroundColor: colors.lightGrey,
+  },
+  itemContainer: {
+    padding: 10,
+    alignItems: 'center',
+  },
+  day: {
+    color: colors.darkGrey,
+    fontSize: 15,
+  },
+  date: {
+    fontSize: 29,
+    color: colors.darkGrey,
+  },
+  itemContainerActive: {
+    backgroundColor: colors.primary,
+  },
+  dayActive: {
+    color: colors.white,
+  },
+  dateActive: {
+    color: colors.white,
+  },
+  sectionTitle: {
+    fontSize: 20,
+    paddingHorizontal: 10,
+  },
+});

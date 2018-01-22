@@ -13,6 +13,7 @@ const loadsSchema = new schema.Entity('loads');
 const tripsSchema = new schema.Entity('trips');
 const driversSchema = new schema.Entity('drivers');
 const shipperLocationsSchema = new schema.Entity('shipper_locations');
+const packagingSchema = new schema.Entity('packaging');
 
 const profileSchema = new schema.Union(
   {
@@ -31,7 +32,7 @@ driversSchema.define({
   shipper: shippersSchema,
   routes: [routesSchema],
   loads: [loadsSchema],
-  upcoming_trips:[tripsSchema]
+  upcoming_trips: [tripsSchema],
 });
 
 shippersSchema.define({
@@ -73,8 +74,8 @@ loadsSchema.define({
 });
 
 tripsSchema.define({
-  load:loadsSchema,
-  driver:driversSchema
+  load: loadsSchema,
+  driver: driversSchema,
 });
 
 export const Schema = {
@@ -90,4 +91,5 @@ export const Schema = {
   routes: routesSchema,
   loads: loadsSchema,
   trips: tripsSchema,
+  packaging: packagingSchema,
 };

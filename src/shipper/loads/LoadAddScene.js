@@ -12,19 +12,31 @@ import LoadWhat from 'shipper/loads/components/LoadWhat';
 import LoadWhere from 'shipper/loads/components/LoadWhere';
 import LoadWhen from 'shipper/loads/components/LoadWhen';
 import LoadHow from 'shipper/loads/components/LoadHow';
-import Button from '../../components/Button';
+import {ACTIONS as SHIPPER_ACTIONS} from 'shipper/common/actions';
+
+import Button from 'components/Button';
 import moment from 'moment';
+import {SELECTORS as TRUCK_SELECTORS} from 'trucks/common/selectors';
 
 class LoadAddScene extends Component {
-  static propTypes = {};
-
-  static defaultProps = {};
-
-  state = {
-    load_date:undefined
+  static propTypes = {
+    trailers: PropTypes.array.isRequired,
   };
 
-  componentDidMount() {}
+  static defaultProps = {
+    trailers: [],
+  };
+
+  state = {
+    load_date: undefined,
+    load_time: undefined,
+    trailer_id: undefined,
+    packaging_id: undefined,
+  };
+
+  componentDidMount() {
+    this.props.dispatch(SHIPPER_ACTIONS.fetchLoadAddData());
+  }
 
   onPickLocationsListPress = () => {
     console.log('pick');
@@ -40,17 +52,21 @@ class LoadAddScene extends Component {
     });
   };
 
-  onPickLocationItemPress = () => {
-
-  };
+  onPickLocationItemPress = () => {};
 
   onFieldChange = (field, value) => {
+    console.log('field', field);
+    console.log('value', value);
     if (value) {
       this.setState({[field]: value});
     }
   };
 
   render() {
+    let {load_time, packaging_id, trailer_id} = this.state;
+    let {trailers, packaging} = this.props;
+
+    console.log('props', this.props);
     return (
       <ScrollView style={{flex: 1}}>
         <Tabs>
@@ -64,7 +80,16 @@ class LoadAddScene extends Component {
           </TabList>
 
           <TabPanels>
-            <LoadWhat />
+            <LoadWhat
+              trailers={trailers}
+              packaging={packaging}
+              selectedPackageId={packaging_id}
+              selectedTrailerId={trailer_id}
+              onTrailerSelect={item =>
+                this.onFieldChange('trailer_id', item.id)}
+              onPackagingSelect={item =>
+                this.onFieldChange('packaging_id', item.id)}
+            />
 
             <LoadWhere
               pickLocation={{
@@ -79,17 +104,16 @@ class LoadAddScene extends Component {
               }}
               onPickLocationsListPress={this.onPickLocationsListPress}
               onDropLocationsListPress={this.onDropLocationsListPress}
-
               onPickLocationItemPress={this.onPickLocationItemPress}
-
             />
 
             <LoadWhen
-              onFieldChange={date => this.onFieldChange('load_date',date)}
+              onDateChange={date => this.onFieldChange('load_date', date)}
+              onTimeChange={time => this.onFieldChange('load_time', time)}
+              load_time={load_time}
             />
 
             <LoadHow />
-
           </TabPanels>
         </Tabs>
       </ScrollView>
@@ -98,7 +122,10 @@ class LoadAddScene extends Component {
 }
 
 function mapStateToProps(state) {
-  return {};
+  return {
+    trailers: TRUCK_SELECTORS.getTrailers(state),
+    packaging: TRUCK_SELECTORS.getPackaging(state),
+  };
 }
 
 export default connect(mapStateToProps)(LoadAddScene);

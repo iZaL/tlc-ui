@@ -29,7 +29,10 @@ class Home extends Component {
     let {trips} = this.props;
     return (
       <View style={{flex: 1}}>
-        <LoadsList items={trips.map(trip => trip.load)} onItemPress={this.onLoadsListItemPress} />
+        <LoadsList
+          items={trips.map(trip => trip.load)}
+          onItemPress={this.onLoadsListItemPress}
+        />
       </View>
     );
   }

@@ -43,5 +43,5 @@ export default class Tabs extends Component {
 }
 
 const styles = StyleSheet.create({
-  container:{}
+  container: {},
 });

@@ -21,6 +21,4 @@ function* fetchLoadDetailsMonitor() {
   yield takeLatest(ACTION_TYPES.FETCH_LOAD_DETAILS_REQUEST, fetchLoadDetails);
 }
 
-export const sagas = all([
-  fork(fetchLoadDetailsMonitor),
-]);
+export const sagas = all([fork(fetchLoadDetailsMonitor)]);

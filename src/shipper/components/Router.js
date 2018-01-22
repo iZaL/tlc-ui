@@ -69,7 +69,7 @@ const ProfileStack = StackNavigator(
     },
   },
   {
-    initialRouteName:'LoadAdd'
+    initialRouteName: 'LoadAdd',
   },
 );
 

@@ -18,9 +18,10 @@ function* fetchUpcomingTrips() {
 }
 
 function* fetchUpcomingTripsMonitor() {
-  yield takeLatest(ACTION_TYPES.FETCH_UPCOMING_TRIPS_REQUEST, fetchUpcomingTrips);
+  yield takeLatest(
+    ACTION_TYPES.FETCH_UPCOMING_TRIPS_REQUEST,
+    fetchUpcomingTrips,
+  );
 }
 
-export const sagas = all([
-  fork(fetchUpcomingTripsMonitor),
-]);
+export const sagas = all([fork(fetchUpcomingTripsMonitor)]);

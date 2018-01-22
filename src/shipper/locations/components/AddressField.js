@@ -5,7 +5,6 @@ import FormTextInput from 'components/FormTextInput';
 import I18n from 'utils/locale';
 
 export default class AddressField extends PureComponent {
-
   static propTypes = {
     updateFields: PropTypes.func.isRequired,
   };
@@ -23,7 +22,7 @@ export default class AddressField extends PureComponent {
           keyboardType="numeric"
           style={styles.textInput}
           placeholder={I18n.t('address')}
-          numberOfLines = {2}
+          numberOfLines={2}
           multiline={true}
         />
       </View>
@@ -34,15 +33,15 @@ export default class AddressField extends PureComponent {
 const styles = StyleSheet.create({
   container: {
     margin: 5,
-    marginVertical:10,
-    backgroundColor:'white'
+    marginVertical: 10,
+    backgroundColor: 'white',
   },
   label: {
-    padding:5
+    padding: 5,
   },
   textInput: {
     padding: 10,
-    height:50,
+    height: 50,
     backgroundColor: 'white',
   },
 });
