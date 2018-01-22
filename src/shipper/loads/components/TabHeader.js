@@ -23,10 +23,7 @@ export default class TabHeader extends Component {
   componentDidMount() {}
 
   render() {
-    console.log('t', this.props);
-
     let {title, isActive, onSelect} = this.props;
-
     return (
       <Touchable onPress={onSelect}>
         <View style={[styles.container, isActive && styles.containerActive]}>

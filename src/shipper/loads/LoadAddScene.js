@@ -46,19 +46,6 @@ class LoadAddScene extends Component {
 
   onFieldChange = (field, value) => {
     if (value) {
-      // let record;
-      // const {makes, models} = this.props;
-      // switch (field) {
-      //   case 'make':
-      //     record = makes.find(record => record.id === value);
-      //     break;
-      //   case 'model':
-      //     record = models.find(record => record.id === value);
-      //     break;
-      //   default:
-      //     record = value;
-      //     break;
-      // }
       this.setState({[field]: value});
     }
   };
@@ -98,10 +85,11 @@ class LoadAddScene extends Component {
             />
 
             <LoadWhen
-              load_date={this.state.load_date}
-              onFieldChange={this.onFieldChange}
+              onFieldChange={date => this.onFieldChange('load_date',date)}
             />
+
             <LoadHow />
+
           </TabPanels>
         </Tabs>
       </ScrollView>

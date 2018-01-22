@@ -27,7 +27,6 @@ class Home extends Component {
 
   render() {
     let {trips} = this.props;
-    console.log('props',this.props);
     return (
       <View style={{flex: 1}}>
         <LoadsList items={trips.map(trip => trip.load)} onItemPress={this.onLoadsListItemPress} />

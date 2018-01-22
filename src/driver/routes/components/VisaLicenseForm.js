@@ -13,7 +13,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import ImagePicker from 'react-native-image-picker';
 import Button from 'components/Button';
 import Separator from 'components/Separator';
-import DatePicker from 'components/DatePicker';
+import DateTimePicker from 'components/DateTimePicker';
 
 export default class VisaLicenseForm extends PureComponent {
   static propTypes = {
@@ -96,7 +96,7 @@ export default class VisaLicenseForm extends PureComponent {
         <View style={[styles.contentContainer]}>
           <FormLabel title={I18n.t('expiry_date')} style={{marginBottom: 10}} />
 
-          <DatePicker
+          <DateTimePicker
             date={expiry_date || model.expiry_date}
             mode="date"
             placeholder={I18n.t('select')}

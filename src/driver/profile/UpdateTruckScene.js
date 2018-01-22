@@ -12,7 +12,7 @@ import Dropdown from 'components/Dropdown';
 import Separator from 'components/Separator';
 import FormSubmit from 'components/FormSubmit';
 import I18n from 'utils/locale';
-import DatePicker from 'components/DatePicker';
+import DateTimePicker from 'components/DateTimePicker';
 
 type State = {
   mobile: string,
@@ -216,7 +216,7 @@ class UpdateTruckScene extends Component {
 
         <FormLabel title={I18n.t('registration_expiry')} />
 
-        <DatePicker
+        <DateTimePicker
           date={registration_expiry}
           mode="date"
           placeholder={I18n.t('select')}

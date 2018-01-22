@@ -32,15 +32,11 @@ class EmployeeAddScene extends Component {
   };
 
   onFieldChange = (field, value) => {
-    console.log('field', field);
-    console.log('value', value);
-    // if (!isEmpty(value)) {
     switch (field) {
       default:
         this.setState({[field]: value});
         break;
     }
-    // }
   };
 
   saveEmployee = () => {
@@ -59,8 +55,6 @@ class EmployeeAddScene extends Component {
       name_ar,
       driver_interaction,
     } = this.state;
-
-    console.log('s', this.state);
 
     return (
       <ScrollView

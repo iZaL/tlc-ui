@@ -22,7 +22,6 @@ export default class LoadInfo extends PureComponent {
 
   render() {
     let {load} = this.props;
-    console.log('l', load);
     return (
       <View style={styles.container}>
         <View style={[styles.itemRowContainer]}>
