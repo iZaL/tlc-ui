@@ -24,13 +24,13 @@ class EmployeeListScene extends Component {
   onEmployeeListItemPress = (employee: object) => {};
 
   onEmployeeListItemEditPress = (employee: object) => {
-    this.props.navigation.navigate('EditEmployee', {
+    this.props.navigation.navigate('EmployeeEdit', {
       employee: employee,
     });
   };
 
   onAddEmployeePress = () => {
-    this.props.navigation.navigate('AddEmployee');
+    this.props.navigation.navigate('EmployeeAdd');
   };
 
   render() {

@@ -5,7 +5,7 @@ import Home from 'shipper/Home';
 import Settings from 'shipper/Settings';
 import DrawerIcon from 'components/DrawerIcon';
 import ProfileHome from 'shipper/profile/ProfileHome';
-import UpdateProfileScene from 'shipper/profile/UpdateProfileScene';
+import ProfileUpdateScene from 'shipper/profile/ProfileUpdateScene';
 import EmployeeListScene from 'shipper/employees/EmployeeListScene';
 import EmployeeAddScene from 'shipper/employees/EmployeeAddScene';
 import EmployeeEditScene from 'shipper/employees/EmployeeEditScene';
@@ -47,7 +47,7 @@ const ProfileStack = StackNavigator(
       }),
     },
     ProfileUpdate: {
-      screen: UpdateProfileScene,
+      screen: ProfileUpdateScene,
     },
     EmployeeList: {
       screen: EmployeeListScene,
@@ -103,5 +103,5 @@ export const Routes = DrawerNavigator(DrawerRoutes, {
   gesturesEnabled: false,
   contentComponent: props => <Drawer {...props} />,
   drawerWidth: 275,
-  initialRouteName: 'ProfileStack',
+  // initialRouteName: 'ProfileStack',
 });
