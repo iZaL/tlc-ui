@@ -42,9 +42,7 @@ function* fetchLoadAdd() {
       Schema.packaging,
     ]);
 
-    const normalizedPasses = normalize(response.data.passes, [
-      Schema.passes,
-    ]);
+    const normalizedPasses = normalize(response.data.passes, [Schema.passes]);
 
     console.log('normalizedPackaging', normalizedPackaging);
     console.log('normalizedTrailers', normalizedTrailers);

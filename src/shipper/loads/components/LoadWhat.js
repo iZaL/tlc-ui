@@ -7,7 +7,7 @@ import FormLabel from 'components/FormLabel';
 import I18n from 'utils/locale';
 import colors from 'assets/theme/colors';
 import Separator from 'components/Separator';
-import FormTextInput from "components/FormTextInput";
+import FormTextInput from 'components/FormTextInput';
 export default class LoadWhat extends Component {
   static propTypes = {
     trailers: PropTypes.array.isRequired,
@@ -25,7 +25,7 @@ export default class LoadWhat extends Component {
       packaging_id,
       trailer_id,
       weight,
-      onFieldChange
+      onFieldChange,
     } = this.props;
     return (
       <View style={styles.container}>
@@ -58,9 +58,8 @@ export default class LoadWhat extends Component {
           maxLength={40}
           placeholder={I18n.t('weight')}
           keyboardType="phone-pad"
-          style={{backgroundColor:'white',padding:10}}
+          style={{backgroundColor: 'white', padding: 10}}
         />
-
       </View>
     );
   }

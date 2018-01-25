@@ -5,7 +5,7 @@ import React, {Component, PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {FlatList, ScrollView, StyleSheet, Text, View} from 'react-native';
 import Touchable from 'react-native-platform-touchable';
-import Separator from '../../../components/Separator';
+import Separator from 'components/Separator';
 import colors from 'assets/theme/colors';
 
 export default class RouteTransitsList extends PureComponent {

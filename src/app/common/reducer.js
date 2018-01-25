@@ -63,7 +63,7 @@ export function entities(
     shipper_locations: {},
     trips: {},
     packaging: {},
-    passes:{}
+    passes: {},
   },
   action = {},
 ) {

@@ -80,7 +80,7 @@ tripsSchema.define({
 });
 
 passesSchema.define({
-  country:countriesSchema
+  country: countriesSchema,
 });
 
 export const Schema = {
@@ -97,5 +97,5 @@ export const Schema = {
   loads: loadsSchema,
   trips: tripsSchema,
   packaging: packagingSchema,
-  passes:passesSchema
+  passes: passesSchema,
 };

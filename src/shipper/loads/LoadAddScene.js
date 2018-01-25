@@ -12,13 +12,13 @@ import LoadWhat from 'shipper/loads/components/LoadWhat';
 import LoadWhere from 'shipper/loads/components/LoadWhere';
 import LoadWhen from 'shipper/loads/components/LoadWhen';
 import LoadHow from 'shipper/loads/components/LoadHow';
-import LoadPasses from "shipper/loads/components/LoadPasses";
-import LoadReceiver from "shipper/loads/components/LoadReceiver";
+import LoadPasses from 'shipper/loads/components/LoadPasses';
+import LoadReceiver from 'shipper/loads/components/LoadReceiver';
 import {ACTIONS as SHIPPER_ACTIONS} from 'shipper/common/actions';
 import Button from 'components/Button';
 import moment from 'moment';
 import {SELECTORS as TRUCK_SELECTORS} from 'trucks/common/selectors';
-import TabPanel from "./components/TabPanel";
+import TabPanel from './components/TabPanel';
 import I18n from 'utils/locale';
 
 class LoadAddScene extends Component {
@@ -42,7 +42,7 @@ class LoadAddScene extends Component {
     receiver_email: '',
     receiver_mobile: '',
     receiver_phone: '',
-    passes: []
+    passes: [],
   };
 
   componentDidMount() {
@@ -63,28 +63,36 @@ class LoadAddScene extends Component {
     });
   };
 
-  onPickLocationItemPress = () => {
-  };
+  onPickLocationItemPress = () => {};
 
   onFieldChange = (field, value) => {
     this.setState({[field]: value});
   };
 
-  updatePasses = (id) => {
+  updatePasses = id => {
     console.log('pass', id);
     this.setState({
-      passes: this.state.passes.includes(id) ? this.state.passes.filter(value => value !== id) : this.state.passes.concat(id)
+      passes: this.state.passes.includes(id)
+        ? this.state.passes.filter(value => value !== id)
+        : this.state.passes.concat(id),
     });
   };
 
-  onLoadPassSearch = (searchTerm) => {
-
-  };
+  onLoadPassSearch = searchTerm => {};
 
   render() {
     let {
-      load_time, packaging_id, trailer_id, weight, request_documents, use_own_truck, passes,
-      receiver_email, receiver_mobile, receiver_phone, receiver_name
+      load_time,
+      packaging_id,
+      trailer_id,
+      weight,
+      request_documents,
+      use_own_truck,
+      passes,
+      receiver_email,
+      receiver_mobile,
+      receiver_phone,
+      receiver_name,
     } = this.state;
     let {trailers, packaging, gatePasses} = this.props;
 
@@ -94,16 +102,15 @@ class LoadAddScene extends Component {
       <ScrollView style={{flex: 1}}>
         <Tabs>
           <TabList>
-            <TabHeader title="1"/>
-            <TabHeader title="2"/>
-            <TabHeader title="3"/>
-            <TabHeader title="4"/>
-            <TabHeader title="5"/>
-            <TabHeader title="6"/>
+            <TabHeader title="1" />
+            <TabHeader title="2" />
+            <TabHeader title="3" />
+            <TabHeader title="4" />
+            <TabHeader title="5" />
+            <TabHeader title="6" />
           </TabList>
 
           <TabPanels>
-
             <TabPanel>
               <LoadWhat
                 trailers={trailers}
@@ -134,7 +141,6 @@ class LoadAddScene extends Component {
             </TabPanel>
 
             <TabPanel>
-
               <LoadWhen
                 load_time={load_time}
                 onFieldChange={this.onFieldChange}
@@ -142,7 +148,6 @@ class LoadAddScene extends Component {
             </TabPanel>
 
             <TabPanel>
-
               <LoadHow
                 request_documents={request_documents}
                 use_own_truck={use_own_truck}
@@ -151,7 +156,6 @@ class LoadAddScene extends Component {
             </TabPanel>
 
             <TabPanel>
-
               <LoadPasses
                 items={gatePasses}
                 passes={passes}
@@ -160,9 +164,7 @@ class LoadAddScene extends Component {
               />
             </TabPanel>
 
-            <TabPanel
-              buttonTitle={I18n.t('save')}
-            >
+            <TabPanel buttonTitle={I18n.t('save')}>
               <LoadReceiver
                 onFieldChange={this.onFieldChange}
                 receiver_email={receiver_email}
@@ -171,7 +173,6 @@ class LoadAddScene extends Component {
                 receiver_name={receiver_name}
               />
             </TabPanel>
-
           </TabPanels>
         </Tabs>
       </ScrollView>

@@ -6,7 +6,7 @@ import IconFactory from 'components/IconFactory';
 import {SELECTORS as USER_SELECTORS} from 'guest/common/selectors';
 import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
 import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
-import Separator from '../../components/Separator';
+import Separator from 'components/Separator';
 import I18n from 'utils/locale';
 
 class ProfileHome extends Component {

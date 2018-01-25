@@ -2,25 +2,29 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Text, View, StyleSheet, ScrollView} from 'react-native';
 import Touchable from 'react-native-platform-touchable';
-import FormLabel from "components/FormLabel";
-import FormTextInput from "components/FormTextInput";
+import FormLabel from 'components/FormLabel';
+import FormTextInput from 'components/FormTextInput';
 import I18n from 'utils/locale';
 export default class LoadWhat extends Component {
-
   static propTypes = {
     onFieldChange: PropTypes.func.isRequired,
-    receiver_name:PropTypes.string.isRequired,
-    receiver_email:PropTypes.string.isRequired,
-    receiver_mobile:PropTypes.string.isRequired,
-    receiver_phone:PropTypes.string.isRequired
+    receiver_name: PropTypes.string.isRequired,
+    receiver_email: PropTypes.string.isRequired,
+    receiver_mobile: PropTypes.string.isRequired,
+    receiver_phone: PropTypes.string.isRequired,
   };
 
   render() {
-    const {onFieldChange,receiver_name,receiver_email,receiver_mobile,receiver_phone} = this.props;
+    const {
+      onFieldChange,
+      receiver_name,
+      receiver_email,
+      receiver_mobile,
+      receiver_phone,
+    } = this.props;
 
     return (
       <View style={styles.container}>
-
         <FormLabel title={I18n.t('receiver_name')} />
         <FormTextInput
           onChangeText={value => onFieldChange('receiver_name', value)}
@@ -55,7 +59,6 @@ export default class LoadWhat extends Component {
           placeholder={I18n.t('receiver_phone')}
           keyboardType="phone-pad"
         />
-
       </View>
     );
   }
@@ -64,11 +67,11 @@ export default class LoadWhat extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor:'white',
-    padding:5
+    backgroundColor: 'white',
+    padding: 5,
   },
-  row:{
+  row: {
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
   },
 });

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import {ACTIONS as SHIPPER_ACTIONS} from 'shipper/common/actions';
 import {SELECTORS as SHIPPER_SELECTORS} from 'shipper/common/selectors';
 import LocationList from 'shipper/locations/components/LocationList';
-import Button from '../../components/Button';
+import Button from 'components/Button';
 import I18n from 'utils/locale';
 
 type Type = 'pick|drop';

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Text, View, StyleSheet} from 'react-native';
 import Touchable from 'react-native-platform-touchable';
-import colors from '../../../assets/theme/colors';
+import colors from 'assets/theme/colors';
 
 export default class TabHeader extends Component {
   static propTypes = {

@@ -2,17 +2,17 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Text, View, StyleSheet, ScrollView, FlatList} from 'react-native';
 import Touchable from 'react-native-platform-touchable';
-import FormLabel from "../../../components/FormLabel";
-import FormTextInput from "../../../components/FormTextInput";
-import Separator from "../../../components/Separator";
-import colors from "../../../assets/theme/colors";
+import FormLabel from 'components/FormLabel';
+import FormTextInput from 'components/FormTextInput';
+import Separator from 'components/Separator';
+import colors from 'assets/theme/colors';
 import I18n from 'utils/locale';
-import FormCheck from "../../../components/FormCheck";
+import FormCheck from 'components/FormCheck';
 export default class LoadWhat extends Component {
   static propTypes = {
     onSearch: PropTypes.func.isRequired,
-    items:PropTypes.array.isRequired,
-    passes:PropTypes.array.isRequired
+    items: PropTypes.array.isRequired,
+    passes: PropTypes.array.isRequired,
   };
 
   // render() {
@@ -43,28 +43,30 @@ export default class LoadWhat extends Component {
   // }
 
   renderRow = ({item}) => {
-    let {onFieldChange,passes} = this.props;
+    let {onFieldChange, passes} = this.props;
     return (
       <View style={styles.row}>
-        <FormLabel title={`${item.name} - ${item.country.name}`} style={{flex:1}} />
+        <FormLabel
+          title={`${item.name} - ${item.country.name}`}
+          style={{flex: 1}}
+        />
         <FormCheck
           checked={passes.includes(item.id)}
-          onPress={() =>
-            onFieldChange(item.id)}
+          onPress={() => onFieldChange(item.id)}
         />
       </View>
     );
   };
 
   render() {
-    let {items,passes} = this.props;
+    let {items, passes} = this.props;
     return (
       <FlatList
         data={items}
         style={styles.listContainer}
         renderItem={this.renderRow}
         showsVerticalScrollIndicator={false}
-        ItemSeparatorComponent={() => <Separator style={{marginVertical:5}}/>}
+        ItemSeparatorComponent={() => <Separator style={{marginVertical: 5}} />}
         keyExtractor={(item, index) => index}
         extraData={passes}
       />
@@ -75,11 +77,11 @@ export default class LoadWhat extends Component {
 const styles = StyleSheet.create({
   listContainer: {
     flex: 1,
-    backgroundColor:'white',
-    padding:5
+    backgroundColor: 'white',
+    padding: 5,
   },
-  row:{
+  row: {
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
   },
 });
