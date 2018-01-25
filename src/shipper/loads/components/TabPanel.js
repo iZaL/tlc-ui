@@ -18,7 +18,7 @@ export default class TabPanel extends Component {
     return (
       <View>
         {this.props.children}
-        <Button title={buttonTitle} onPress={() => {}} />
+        <Button title={buttonTitle} onPress={() => {}} style={{marginVertical:10}}/>
       </View>
     );
   }

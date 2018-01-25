@@ -63,7 +63,8 @@ class LoadAddScene extends Component {
     });
   };
 
-  onPickLocationItemPress = () => {};
+  onPickLocationItemPress = () => {
+  };
 
   onFieldChange = (field, value) => {
     this.setState({[field]: value});
@@ -78,7 +79,12 @@ class LoadAddScene extends Component {
     });
   };
 
-  onLoadPassSearch = searchTerm => {};
+  onLoadPassSearch = searchTerm => {
+  };
+
+  onSaveButtonPress = () => {
+    console.log('save');
+  };
 
   render() {
     let {
@@ -102,12 +108,12 @@ class LoadAddScene extends Component {
       <ScrollView style={{flex: 1}}>
         <Tabs>
           <TabList>
-            <TabHeader title="1" />
-            <TabHeader title="2" />
-            <TabHeader title="3" />
-            <TabHeader title="4" />
-            <TabHeader title="5" />
-            <TabHeader title="6" />
+            <TabHeader title="1"/>
+            <TabHeader title="2"/>
+            <TabHeader title="3"/>
+            <TabHeader title="4"/>
+            <TabHeader title="5"/>
+            <TabHeader title="6"/>
           </TabList>
 
           <TabPanels>
@@ -164,15 +170,15 @@ class LoadAddScene extends Component {
               />
             </TabPanel>
 
-            <TabPanel buttonTitle={I18n.t('save')}>
-              <LoadReceiver
-                onFieldChange={this.onFieldChange}
-                receiver_email={receiver_email}
-                receiver_mobile={receiver_mobile}
-                receiver_phone={receiver_phone}
-                receiver_name={receiver_name}
-              />
-            </TabPanel>
+            <LoadReceiver
+              onFieldChange={this.onFieldChange}
+              receiver_email={receiver_email}
+              receiver_mobile={receiver_mobile}
+              receiver_phone={receiver_phone}
+              receiver_name={receiver_name}
+              onSaveButtonPress={this.onSaveButtonPress}
+            />
+
           </TabPanels>
         </Tabs>
       </ScrollView>
