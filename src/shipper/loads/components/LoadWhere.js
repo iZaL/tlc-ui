@@ -16,7 +16,6 @@ export default class LoadWhat extends Component {
   };
 
   render() {
-    console.log('Load Where', this.props);
     let {pickLocation, onPickLocationItemPress} = this.props;
     return (
       <ScrollView style={styles.container}>

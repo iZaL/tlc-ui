@@ -233,7 +233,6 @@ export default class VisaLicenseForm extends PureComponent {
 
   render() {
     let {items} = this.props;
-    console.log('state', this.state);
     return (
       <View style={styles.container}>
         <Accordion

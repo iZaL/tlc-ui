@@ -16,7 +16,6 @@ export default class LoadWhat extends Component {
   };
 
   // render() {
-  //   console.log('Load How');
   //   const {request_documents,use_own_truck,onFieldChange} = this.props;
   //
   //   return (

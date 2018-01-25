@@ -23,7 +23,7 @@ class ProfileHome extends Component {
       case 'update_profile':
         scene = 'UpdateProfile';
         sceneConfig = {
-          title: I18n.t('update_profile'),
+          title: I18n.t('profile_update'),
         };
         break;
       case 'update_truck':

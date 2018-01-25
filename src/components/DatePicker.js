@@ -81,7 +81,6 @@ export default class DatePicker extends Component {
   };
 
   render() {
-    console.log('datepicker');
     const {dates, activeDate} = this.state;
     return (
       <FlatList

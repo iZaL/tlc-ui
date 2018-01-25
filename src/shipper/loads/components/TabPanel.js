@@ -13,12 +13,25 @@ export default class TabPanel extends Component {
     buttonTitle: I18n.t('next'),
   };
 
+  onButtonPress = () => {
+    let {activeIndex, onSelect} = this.props;
+
+    return onSelect(activeIndex + 1);
+  };
+
   render() {
     let {buttonTitle} = this.props;
+
+    console.log('activeIndex', this.props.activeIndex);
+
     return (
       <View>
         {this.props.children}
-        <Button title={buttonTitle} onPress={() => {}} style={{marginVertical:10}}/>
+        <Button
+          title={buttonTitle}
+          onPress={this.onButtonPress}
+          style={{marginVertical: 10}}
+        />
       </View>
     );
   }

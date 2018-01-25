@@ -44,9 +44,6 @@ function* fetchLoadAdd() {
 
     const normalizedPasses = normalize(response.data.passes, [Schema.passes]);
 
-    console.log('normalizedPackaging', normalizedPackaging);
-    console.log('normalizedTrailers', normalizedTrailers);
-
     yield put({
       type: ACTION_TYPES.FETCH_LOAD_ADD_DATA_SUCCESS,
       entities: {

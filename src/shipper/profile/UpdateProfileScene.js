@@ -196,7 +196,7 @@ class UpdateProfileScene extends Component {
 
         <FormSubmit
           onPress={this.saveProfile}
-          title={I18n.t('update_profile')}
+          title={I18n.t('profile_update')}
           style={{marginTop: 50}}
         />
       </ScrollView>

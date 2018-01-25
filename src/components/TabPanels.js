@@ -12,6 +12,7 @@ export default class Tabs extends Component {
       this.props.children[this.props.activeIndex],
       {
         onSelect: this.props.onSelect,
+        activeIndex: this.props.activeIndex,
       },
     );
     return <View style={styles.container}>{children}</View>;

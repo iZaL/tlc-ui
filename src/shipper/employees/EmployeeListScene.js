@@ -45,7 +45,7 @@ class EmployeeListScene extends Component {
         />
 
         <Button
-          title={I18n.t('add_employee')}
+          title={I18n.t('employee_add')}
           onPress={this.onAddEmployeePress}
           style={{marginTop: 30}}
         />

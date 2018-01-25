@@ -5,7 +5,7 @@ import Touchable from 'react-native-platform-touchable';
 import FormLabel from 'components/FormLabel';
 import FormTextInput from 'components/FormTextInput';
 import I18n from 'utils/locale';
-import Button from "../../../components/Button";
+import Button from '../../../components/Button';
 export default class LoadWhat extends Component {
   static propTypes = {
     onFieldChange: PropTypes.func.isRequired,
@@ -22,52 +22,53 @@ export default class LoadWhat extends Component {
       receiver_email,
       receiver_mobile,
       receiver_phone,
-      onSaveButtonPress
+      onSaveButtonPress,
     } = this.props;
-
-    console.log('props',this.props);
 
     return (
       <View style={styles.container}>
         <View style={styles.formContainer}>
-        <FormLabel title={I18n.t('receiver_name')} />
-        <FormTextInput
-          onChangeText={value => onFieldChange('receiver_name', value)}
-          placeholder={I18n.t('receiver_name')}
-          value={receiver_name}
-          maxLength={40}
-        />
+          <FormLabel title={I18n.t('receiver_name')} />
+          <FormTextInput
+            onChangeText={value => onFieldChange('receiver_name', value)}
+            placeholder={I18n.t('receiver_name')}
+            value={receiver_name}
+            maxLength={40}
+          />
 
-        <FormLabel title={I18n.t('receiver_email')} />
-        <FormTextInput
-          onChangeText={value => onFieldChange('receiver_email', value)}
-          value={receiver_email}
-          placeholder={I18n.t('receiver_email')}
-          maxLength={40}
-          keyboardType="email-address"
-        />
+          <FormLabel title={I18n.t('receiver_email')} />
+          <FormTextInput
+            onChangeText={value => onFieldChange('receiver_email', value)}
+            value={receiver_email}
+            placeholder={I18n.t('receiver_email')}
+            maxLength={40}
+            keyboardType="email-address"
+          />
 
-        <FormLabel title={I18n.t('receiver_mobile')} />
-        <FormTextInput
-          onChangeText={value => onFieldChange('receiver_mobile', value)}
-          value={receiver_mobile}
-          maxLength={40}
-          placeholder={I18n.t('receiver_mobile')}
-          keyboardType="phone-pad"
-        />
+          <FormLabel title={I18n.t('receiver_mobile')} />
+          <FormTextInput
+            onChangeText={value => onFieldChange('receiver_mobile', value)}
+            value={receiver_mobile}
+            maxLength={40}
+            placeholder={I18n.t('receiver_mobile')}
+            keyboardType="phone-pad"
+          />
 
-        <FormLabel title={I18n.t('receiver_phone')} />
-        <FormTextInput
-          onChangeText={value => onFieldChange('receiver_phone', value)}
-          value={receiver_phone}
-          maxLength={40}
-          placeholder={I18n.t('receiver_phone')}
-          keyboardType="phone-pad"
-        />
+          <FormLabel title={I18n.t('receiver_phone')} />
+          <FormTextInput
+            onChangeText={value => onFieldChange('receiver_phone', value)}
+            value={receiver_phone}
+            maxLength={40}
+            placeholder={I18n.t('receiver_phone')}
+            keyboardType="phone-pad"
+          />
         </View>
 
-        <Button title={I18n.t('save')} onPress={onSaveButtonPress} style={{marginVertical:10}} />
-
+        <Button
+          title={I18n.t('save')}
+          onPress={onSaveButtonPress}
+          style={{marginVertical: 10}}
+        />
       </View>
     );
   }
@@ -77,10 +78,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  formContainer:{
+  formContainer: {
     backgroundColor: 'white',
     padding: 5,
-    marginBottom:20
+    marginBottom: 20,
   },
   row: {
     flexDirection: 'row',

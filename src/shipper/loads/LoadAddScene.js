@@ -50,21 +50,18 @@ class LoadAddScene extends Component {
   }
 
   onPickLocationsListPress = () => {
-    console.log('pick');
     this.props.navigation.navigate('LocationList', {
       type: 'pick',
     });
   };
 
   onDropLocationsListPress = () => {
-    console.log('drop');
     this.props.navigation.navigate('LocationList', {
       type: 'drop',
     });
   };
 
-  onPickLocationItemPress = () => {
-  };
+  onPickLocationItemPress = () => {};
 
   onFieldChange = (field, value) => {
     this.setState({[field]: value});
@@ -79,8 +76,7 @@ class LoadAddScene extends Component {
     });
   };
 
-  onLoadPassSearch = searchTerm => {
-  };
+  onLoadPassSearch = searchTerm => {};
 
   onSaveButtonPress = () => {
     console.log('save');
@@ -102,18 +98,16 @@ class LoadAddScene extends Component {
     } = this.state;
     let {trailers, packaging, gatePasses} = this.props;
 
-    console.log('props', this.props);
-
     return (
       <ScrollView style={{flex: 1}}>
         <Tabs>
           <TabList>
-            <TabHeader title="1"/>
-            <TabHeader title="2"/>
-            <TabHeader title="3"/>
-            <TabHeader title="4"/>
-            <TabHeader title="5"/>
-            <TabHeader title="6"/>
+            <TabHeader title="1" />
+            <TabHeader title="2" />
+            <TabHeader title="3" />
+            <TabHeader title="4" />
+            <TabHeader title="5" />
+            <TabHeader title="6" />
           </TabList>
 
           <TabPanels>
@@ -178,7 +172,6 @@ class LoadAddScene extends Component {
               receiver_name={receiver_name}
               onSaveButtonPress={this.onSaveButtonPress}
             />
-
           </TabPanels>
         </Tabs>
       </ScrollView>
