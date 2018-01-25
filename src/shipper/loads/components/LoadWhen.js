@@ -11,24 +11,18 @@ import colors from 'assets/theme/colors';
 
 export default class LoadWhat extends Component {
   static propTypes = {
-    onSelect: PropTypes.func.isRequired,
-    onDateChange: PropTypes.func.isRequired,
-    onTimeChange: PropTypes.func.isRequired,
+    onFieldChange: PropTypes.func.isRequired,
     load_time: PropTypes.string,
   };
 
-  static defaultProps = {
-    onSelect: () => {},
-  };
-
   render() {
-    let {onDateChange, load_time, onTimeChange} = this.props;
+    let {load_time, onFieldChange} = this.props;
 
     return (
       <ScrollView>
         <FormLabel title={I18n.t('load_date')} />
 
-        <DatePicker onDateChange={onDateChange} />
+        <DatePicker onDateChange={date => onFieldChange('load_date', date)} />
 
         <Separator
           style={{marginVertical: 10, backgroundColor: colors.mediumGrey}}
@@ -42,7 +36,7 @@ export default class LoadWhat extends Component {
           placeholder={I18n.t('select')}
           confirmBtnText={I18n.t('confirm')}
           cancelBtnText={I18n.t('cancel')}
-          onDateChange={onTimeChange}
+          onDateChange={time => onFieldChange('load_time', time)}
           customStyles={{
             dateText: styles.dateText,
           }}

@@ -18,7 +18,7 @@ export default class FormCheck extends Component {
     return (
       <Touchable
         onPress={onPress}
-        hitSlop={{top: 20, bottom: 20, right: 20, left: 20}}
+        hitSlop={{top: 10, bottom: 10, right: 10, left: 10}}
         style={styles.label}>
         {checked ? (
           <MaterialCommunityIcons

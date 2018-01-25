@@ -40,7 +40,6 @@ export default class LoginScene extends Component {
           value={email}
           maxLength={40}
           keyboardType="email-address"
-          autoFocus={true}
         />
 
         <FormLabel title={I18n.t('password').toUpperCase()} />

@@ -33,11 +33,17 @@ function* saveLoad(action) {
 function* fetchLoadAdd() {
   try {
     const response = yield call(API.fetchLoadAdd);
+
     const normalizedTrailers = normalize(response.data.trailers, [
       Schema.trailers,
     ]);
+
     const normalizedPackaging = normalize(response.data.packaging, [
       Schema.packaging,
+    ]);
+
+    const normalizedPasses = normalize(response.data.passes, [
+      Schema.passes,
     ]);
 
     console.log('normalizedPackaging', normalizedPackaging);
@@ -48,6 +54,7 @@ function* fetchLoadAdd() {
       entities: {
         ...normalizedTrailers.entities,
         ...normalizedPackaging.entities,
+        ...normalizedPasses.entities,
       },
     });
   } catch (error) {
