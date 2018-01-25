@@ -18,7 +18,7 @@
   "confirm": "تأكيد",
   "new_password":"كلمة السر الجديدة",
   "confirm_new_password":"تأكيد كلمة السر الجديدة",
-  "change_language":"تغيير اللغة",
+  "language_select":"تغيير اللغة",
   "search" : "البحث",
   "settings" : "إعدادات",
   "error" : "خطأ",
@@ -30,7 +30,7 @@
   "required" : "مطلوب",
   "save":"حفظ",
   "home" : "رئيسية",
-  "create_order": "Create Order",
+  "order_create": "Create Order",
   "skip" : "Skip",
   "add_to_cart" : "Add to Cart"
 }

@@ -49,7 +49,7 @@ function* register(action) {
 
     yield NavigatorService.navigate('OTPScreen', {
       mobile: response.data.mobile,
-      title: I18n.t('confirm_account'),
+      title: I18n.t('account_confirm'),
     });
   } catch (error) {
     yield put({type: ACTION_TYPES.REGISTER_FAILURE, error});

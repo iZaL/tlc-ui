@@ -29,7 +29,7 @@ export default class LoadWhat extends Component {
     } = this.props;
     return (
       <View style={styles.container}>
-        <FormLabel title={I18n.t('select_packaging')} />
+        <FormLabel title={I18n.t('packaging_select')} />
         <GridList
           items={packaging}
           onItemPress={item => onFieldChange('packaging_id', item.id)}
@@ -40,7 +40,7 @@ export default class LoadWhat extends Component {
           style={{backgroundColor: colors.mediumGrey, marginVertical: 20}}
         />
 
-        <FormLabel title={I18n.t('select_trailer')} />
+        <FormLabel title={I18n.t('trailer_select')} />
         <GridList
           items={trailers}
           onItemPress={item => onFieldChange('trailer_id', item.id)}

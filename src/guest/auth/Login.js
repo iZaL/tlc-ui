@@ -32,7 +32,7 @@ class Login extends Component {
   };
 
   handleRegisterRoute = () => {
-    return Alert.alert(I18n.t('choose_account_type'), '', [
+    return Alert.alert(I18n.t('account_select_type'), '', [
       {
         text: I18n.t('driver'),
         onPress: () => {

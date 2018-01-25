@@ -20,7 +20,7 @@ export default class LoadWhat extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.row}>
-          <FormLabel title={I18n.t('request_documents')} style={{flex: 1}} />
+          <FormLabel title={I18n.t('documents_request')} style={{flex: 1}} />
           <FormCheck
             checked={request_documents}
             onPress={() =>

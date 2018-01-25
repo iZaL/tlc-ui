@@ -185,7 +185,7 @@ export default class MapPicker extends Component {
       <View style={styles.container}>
         <View style={styles.searchInputContainer}>
           <GooglePlacesAutocomplete
-            placeholder={I18n.t('select_area')}
+            placeholder={I18n.t('area_select')}
             minLength={1}
             autoFocus={false}
             fetchDetails={true}
