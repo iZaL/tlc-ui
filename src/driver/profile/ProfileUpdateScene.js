@@ -23,7 +23,7 @@ type State = {
 
 type SceneType = 'nationality|residence';
 
-class UpdateProfileScene extends Component {
+class ProfileUpdateScene extends Component {
   static propTypes = {
     countries: PropTypes.array.isRequired,
     profile: PropTypes.shape({
@@ -195,4 +195,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(UpdateProfileScene);
+export default connect(mapStateToProps)(ProfileUpdateScene);

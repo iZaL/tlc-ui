@@ -13,7 +13,7 @@ type State = {
   type: 'license|visa',
 };
 
-class UploadDocuments extends Component {
+class DocumentsUpload extends Component {
   static propTypes = {
     countries: PropTypes.arrayOf(PropTypes.object).isRequired,
   };
@@ -45,7 +45,7 @@ class UploadDocuments extends Component {
   };
 
   onCardListItemPress = item => {
-    this.props.navigation.navigate('UploadDocuments', {
+    this.props.navigation.navigate('DocumentsUpload', {
       countryID: item.id,
     });
   };
@@ -101,4 +101,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(UploadDocuments);
+export default connect(mapStateToProps)(DocumentsUpload);

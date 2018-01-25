@@ -5,11 +5,11 @@ import DrawerIcon from 'components/DrawerIcon';
 import Home from 'driver/Home';
 import Settings from 'driver/Settings';
 import ProfileHome from 'driver/profile/ProfileHome';
-import UpdateProfileScene from 'driver/profile/UpdateProfileScene';
-import UpdateTruckScene from 'driver/profile/UpdateTruckScene';
-import UpdateTrailerScene from 'driver/profile/UpdateTrailerScene';
-import UpdateRoutesScene from 'driver/profile/UpdateRoutesScene';
-import UploadDocuments from 'driver/profile/UploadDocuments';
+import ProfileUpdateScene from 'driver/profile/ProfileUpdateScene';
+import TruckUpdateScene from 'driver/profile/TruckUpdateScene';
+import TrailerUpdateScene from 'driver/profile/TrailerUpdateScene';
+import RoutesUpdateScene from 'driver/profile/RoutesUpdateScene';
+import DocumentsUploadScene from 'driver/profile/DocumentsUploadScene';
 import RoutesDetailScene from 'driver/routes/RoutesDetailScene';
 import LoadsDetailScene from 'driver/loads/LoadsDetailScene';
 
@@ -48,23 +48,23 @@ const ProfileStack = StackNavigator({
       ),
     }),
   },
-  UpdateProfile: {
-    screen: UpdateProfileScene,
+  ProfileUpdate: {
+    screen: ProfileUpdateScene,
   },
-  UpdateTruck: {
-    screen: UpdateTruckScene,
+  TruckUpdate: {
+    screen: TruckUpdateScene,
   },
-  UpdateTrailer: {
-    screen: UpdateTrailerScene,
+  TrailerUpdate: {
+    screen: TrailerUpdateScene,
   },
-  UpdateRoutes: {
-    screen: UpdateRoutesScene,
+  RoutesUpdate: {
+    screen: RoutesUpdateScene,
   },
   RoutesDetail: {
     screen: RoutesDetailScene,
   },
-  UploadDocuments: {
-    screen: UploadDocuments,
+  DocumentsUpload: {
+    screen: DocumentsUploadScene,
   },
 });
 

@@ -24,7 +24,7 @@ type State = {
 
 type SceneType = 'nationality|residence';
 
-class UpdateTruckScene extends Component {
+class TruckUpdateScene extends Component {
   static propTypes = {
     makes: PropTypes.array.isRequired,
     models: PropTypes.array.isRequired,
@@ -280,4 +280,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(UpdateTruckScene);
+export default connect(mapStateToProps)(TruckUpdateScene);

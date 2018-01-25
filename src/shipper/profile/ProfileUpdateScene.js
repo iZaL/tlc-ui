@@ -15,7 +15,7 @@ type State = {
   mobile: string,
 };
 
-class UpdateProfileScene extends Component {
+class ProfileUpdateScene extends Component {
   static propTypes = {
     profile: PropTypes.shape({
       mobile: PropTypes.string.isRequired,
@@ -210,4 +210,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(UpdateProfileScene);
+export default connect(mapStateToProps)(ProfileUpdateScene);

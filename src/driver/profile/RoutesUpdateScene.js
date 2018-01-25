@@ -6,7 +6,7 @@ import RoutesList from 'driver/routes/components/RoutesList';
 import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
 import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
 
-class UpdateRoutesScene extends Component {
+class RoutesUpdateScene extends Component {
   static propTypes = {
     routes: PropTypes.arrayOf(
       PropTypes.shape({
@@ -58,4 +58,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(UpdateRoutesScene);
+export default connect(mapStateToProps)(RoutesUpdateScene);

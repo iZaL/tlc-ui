@@ -8,7 +8,7 @@ import {SELECTORS as USER_SELECTORS} from 'guest/common/selectors';
 import TrailersList from 'trucks/components/TrailersList';
 import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
 
-class UpdateTrailerScene extends Component {
+class TrailerUpdateScene extends Component {
   static propTypes = {
     trailers: PropTypes.array.isRequired,
   };
@@ -44,4 +44,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(UpdateTrailerScene);
+export default connect(mapStateToProps)(TrailerUpdateScene);

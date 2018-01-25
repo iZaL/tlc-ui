@@ -20,23 +20,23 @@ class ProfileHome extends Component {
     let scene;
     let sceneConfig = {};
     switch (route) {
-      case 'update_profile':
-        scene = 'UpdateProfile';
+      case 'profile_update':
+        scene = 'ProfileUpdate';
         sceneConfig = {
           title: I18n.t('profile_update'),
         };
         break;
-      case 'update_truck':
-        scene = 'UpdateTruck';
+      case 'truck_update':
+        scene = 'TruckUpdate';
         break;
-      case 'update_trailer':
-        scene = 'UpdateTrailer';
+      case 'trailer_update':
+        scene = 'TrailerUpdate';
         break;
-      case 'update_routes':
-        scene = 'UpdateRoutes';
+      case 'routes_update':
+        scene = 'RoutesUpdate';
         break;
-      case 'upload_documents':
-        scene = 'UploadDocuments';
+      case 'documents_upload':
+        scene = 'DocumentsUpload';
         break;
     }
     return this.props.navigation.navigate(scene, sceneConfig);
@@ -50,7 +50,7 @@ class ProfileHome extends Component {
         <ListItem
           onItemPress={this.onListItemPress}
           icon={<IconFactory type="Ionicons" size={30} name="md-person" />}
-          name="update_profile"
+          name="profile_update"
         />
         <Separator />
         <ListItem
@@ -58,7 +58,7 @@ class ProfileHome extends Component {
           icon={
             <IconFactory type="MaterialCommunityIcons" size={30} name="truck" />
           }
-          name="update_truck"
+          name="truck_update"
         />
         <Separator />
         <ListItem
@@ -70,7 +70,7 @@ class ProfileHome extends Component {
               name="truck-trailer"
             />
           }
-          name="update_trailer"
+          name="trailer_update"
           disabled={!truck}
         />
         <Separator />
@@ -83,7 +83,7 @@ class ProfileHome extends Component {
               name="road-variant"
             />
           }
-          name="update_routes"
+          name="routes_update"
           disabled={!truck}
         />
         <Separator />
@@ -96,7 +96,7 @@ class ProfileHome extends Component {
               name="passport"
             />
           }
-          name="upload_documents"
+          name="documents_upload"
           disabled={!truck}
         />
       </ScrollView>
