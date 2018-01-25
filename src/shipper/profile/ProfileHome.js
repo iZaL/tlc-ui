@@ -72,7 +72,7 @@ class ProfileHome extends Component {
             <IconFactory
               type="MaterialCommunityIcons"
               size={30}
-              name="contacts"
+              name="truck-delivery"
             />
           }
           name="load_add"
