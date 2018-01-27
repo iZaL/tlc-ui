@@ -4,6 +4,7 @@ export default {
   mediumGrey: '#BCBCBC',
   info: '#2196f3',
   error: '#f44336',
+  warning: '#f46765',
   success: '#4caf50',
   primary: '#00752f',
   secondary: '#061d23',

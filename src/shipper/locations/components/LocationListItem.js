@@ -20,25 +20,13 @@ export default class LocationListItem extends PureComponent {
     return (
       <Touchable onPress={() => onPress(item)}>
         <View style={[styles.contentContainer]}>
-          <View style={styles.row}>
-            <MaterialCommunityIcons name="pin" size={30} style={styles.icon} />
             <Text style={styles.email}>{item.address}</Text>
-          </View>
 
-          <Separator style={{marginVertical: 10}} />
-
-          <View style={styles.row}>
-            <MaterialCommunityIcons
-              name="map-marker-circle"
-              size={30}
-              style={styles.icon}
-            />
-            <View>
+            <View style={{paddingVertical:5}}>
               <Text style={styles.email}>{item.city}</Text>
               <Text style={styles.email}>{item.state}</Text>
               <Text style={styles.email}>{item.country.name}</Text>
             </View>
-          </View>
         </View>
       </Touchable>
     );
@@ -46,21 +34,6 @@ export default class LocationListItem extends PureComponent {
 }
 
 const styles = StyleSheet.create({
-  headerContainer: {
-    flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    padding: 10,
-    paddingVertical: 15,
-    backgroundColor: 'white',
-    marginTop: 10,
-    borderTopRightRadius: 3,
-    borderTopLeftRadius: 3,
-    shadowRadius: 3,
-    shadowOffset: {width: 1, height: 1},
-    shadowColor: colors.mediumGrey,
-    shadowOpacity: 1,
-  },
   contentContainer: {
     flex: 1,
     backgroundColor: 'white',
@@ -71,7 +44,7 @@ const styles = StyleSheet.create({
     shadowColor: colors.mediumGrey,
     shadowOpacity: 1,
     marginBottom: 10,
-    padding: 10,
+    padding: 5,
   },
   row: {
     flex: 1,

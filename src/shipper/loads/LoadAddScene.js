@@ -49,19 +49,17 @@ class LoadAddScene extends Component {
     this.props.dispatch(SHIPPER_ACTIONS.fetchLoadAddData());
   }
 
-  onPickLocationsListPress = () => {
+  onPickLocationPress = () => {
     this.props.navigation.navigate('LocationList', {
       type: 'pick',
     });
   };
 
-  onDropLocationsListPress = () => {
+  onDropLocationPress = () => {
     this.props.navigation.navigate('LocationList', {
       type: 'drop',
     });
   };
-
-  onPickLocationItemPress = () => {};
 
   onFieldChange = (field, value) => {
     this.setState({[field]: value});
@@ -134,9 +132,18 @@ class LoadAddScene extends Component {
                   state: 'Kassulkeland',
                   type: 'pick',
                 }}
-                onPickLocationsListPress={this.onPickLocationsListPress}
-                onDropLocationsListPress={this.onDropLocationsListPress}
-                onPickLocationItemPress={this.onPickLocationItemPress}
+                dropLocation={{
+                  address: '5823 Olin Crescent↵Hilpertport, NV 36582-2290',
+                  city: 'Lake Jadonshire',
+                  country: {id: 1, name: 'Kuwait'},
+                  id: 4,
+                  latitude: 29.66,
+                  longitude: 47.1,
+                  state: 'Kassulkeland',
+                  type: 'drop',
+                }}
+                onDropLocationPress={this.onDropLocationPress}
+                onPickLocationPress={this.onPickLocationPress}
               />
             </TabPanel>
 

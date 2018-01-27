@@ -69,7 +69,7 @@ const ProfileStack = StackNavigator(
     },
   },
   {
-    // initialRouteName: 'LoadAdd',
+    initialRouteName: 'LoadAdd',
   },
 );
 
@@ -103,5 +103,5 @@ export const Routes = DrawerNavigator(DrawerRoutes, {
   gesturesEnabled: false,
   contentComponent: props => <Drawer {...props} />,
   drawerWidth: 275,
-  // initialRouteName: 'ProfileStack',
+  initialRouteName: 'ProfileStack',
 });
