@@ -9,45 +9,48 @@ import Touchable from 'react-native-platform-touchable';
 import I18n from 'utils/locale';
 
 export default class LoadWhat extends Component {
-
-  shouldComponentUpdate(nextProps,nextState) {
-    return nextProps.pickLocation !== this.props.pickLocation || nextProps.dropLocation !== this.props.dropLocation || this.state !== nextState
+  shouldComponentUpdate(nextProps, nextState) {
+    return (
+      nextProps.origin !== this.props.origin ||
+      nextProps.destination !== this.props.destination ||
+      this.state !== nextState
+    );
   }
 
   static propTypes = {
-    pickLocation: PropTypes.object,
-    dropLocation: PropTypes.object,
+    origin: PropTypes.object,
+    destination: PropTypes.object,
   };
 
   static defaultProps = {
-    pickLocation: {},
-    dropLocation: {},
+    origin: {},
+    destination: {},
   };
 
   state = {
     locationListModalVisible: false,
-    locationType: 'pick',
+    locationType: 'origin',
   };
 
   onDropLocationPress = () => {
     this.setState({
       locationListModalVisible: true,
-      locationType: 'drop',
+      locationType: 'destination',
     });
   };
 
   onPickLocationPress = () => {
     this.setState({
       locationListModalVisible: true,
-      locationType: 'pick',
+      locationType: 'origin',
     });
   };
 
   onLocationListItemPress = item => {
     let field =
-      this.state.locationType === 'pick'
-        ? 'pick_location_id'
-        : 'drop_location_id';
+      this.state.locationType === 'origin'
+        ? 'origin_location_id'
+        : 'destination_location_id';
     this.props.onFieldChange(field, item.id);
     this.setState({
       locationListModalVisible: false,
@@ -61,12 +64,12 @@ export default class LoadWhat extends Component {
   };
 
   render() {
-    let {pickLocation, dropLocation, locations} = this.props;
+    let {origin, destination, locations} = this.props;
     let {locationType, locationListModalVisible} = this.state;
 
     return (
       <View style={styles.container}>
-        {pickLocation.id ? (
+        {origin.id ? (
           <View style={styles.rowContainer}>
             <View style={[styles.leftContainer, {justifyContent: 'flex-end'}]}>
               <MaterialCommunityIcons
@@ -75,26 +78,26 @@ export default class LoadWhat extends Component {
                 color={colors.warning}
                 style={{alignSelf: 'center'}}
               />
-              <View style={styles.line}/>
+              <View style={styles.line} />
             </View>
 
             <View style={styles.rightContainer}>
               <LocationListItem
-                item={pickLocation}
+                item={origin}
                 onPress={this.onPickLocationPress}
               />
             </View>
           </View>
         ) : (
           <Text onPress={this.onPickLocationPress} style={styles.label}>
-            {I18n.t('location_pick_select')}
+            {I18n.t('location_origin_select')}
           </Text>
         )}
 
-        {dropLocation.id ? (
+        {destination.id ? (
           <View style={styles.rowContainer}>
             <View style={styles.leftContainer}>
-              <View style={styles.line}/>
+              <View style={styles.line} />
 
               <MaterialCommunityIcons
                 name="map-marker"
@@ -105,18 +108,20 @@ export default class LoadWhat extends Component {
             </View>
             <View style={styles.rightContainer}>
               <LocationListItem
-                item={dropLocation}
+                item={destination}
                 onPress={this.onDropLocationPress}
               />
             </View>
           </View>
         ) : (
           <Text onPress={this.onDropLocationPress} style={styles.label}>
-            {I18n.t('location_pick_select')}
+            {I18n.t('location_destination_select')}
           </Text>
         )}
 
-        <Modal visible={locationListModalVisible} onRequestClose={this.closeModal}>
+        <Modal
+          visible={locationListModalVisible}
+          onRequestClose={this.closeModal}>
           <Touchable style={styles.modalContainer} onPress={this.closeModal}>
             <LocationList
               items={locations.filter(
@@ -156,10 +161,9 @@ const styles = StyleSheet.create({
     backgroundColor: colors.mediumGrey,
     height: '50%',
   },
-  modalContainer:{
+  modalContainer: {
     flex: 1,
     backgroundColor: '#00000090',
-    paddingTop: 64
+    paddingTop: 64,
   },
-
 });

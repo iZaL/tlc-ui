@@ -1,12 +1,10 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {Modal, ScrollView, Text, View} from 'react-native';
-
+import {ScrollView} from 'react-native';
 import Tabs from 'components/Tabs';
 import TabList from 'components/TabList';
 import TabPanels from 'components/TabPanels';
-
 import TabHeader from 'shipper/loads/components/TabHeader';
 import LoadWhat from 'shipper/loads/components/LoadWhat';
 import LoadWhere from 'shipper/loads/components/LoadWhere';
@@ -15,11 +13,8 @@ import LoadHow from 'shipper/loads/components/LoadHow';
 import LoadPasses from 'shipper/loads/components/LoadPasses';
 import LoadReceiver from 'shipper/loads/components/LoadReceiver';
 import {ACTIONS as SHIPPER_ACTIONS} from 'shipper/common/actions';
-import Button from 'components/Button';
-import moment from 'moment';
 import {SELECTORS as TRUCK_SELECTORS} from 'trucks/common/selectors';
-import TabPanel from './components/TabPanel';
-import I18n from 'utils/locale';
+import TabPanel from 'shipper/loads/components/TabPanel';
 import {SELECTORS as SHIPPER_SELECTORS} from 'shipper/common/selectors';
 
 class LoadAddScene extends Component {
@@ -36,8 +31,8 @@ class LoadAddScene extends Component {
     load_time: undefined,
     trailer_id: undefined,
     packaging_id: undefined,
-    pick_location_id: undefined,
-    drop_location_id: undefined,
+    origin_location_id: undefined,
+    destination_location_id: undefined,
     weight: undefined,
     request_documents: true,
     use_own_truck: false,
@@ -67,7 +62,11 @@ class LoadAddScene extends Component {
   onLoadPassSearch = searchTerm => {};
 
   onSaveButtonPress = () => {
-    console.log('save');
+    let params = {
+      ...this.state,
+    };
+
+    this.props.dispatch(SHIPPER_ACTIONS.saveLoad(params));
   };
 
   render() {
@@ -83,13 +82,11 @@ class LoadAddScene extends Component {
       receiver_mobile,
       receiver_phone,
       receiver_name,
-      pick_location_id,
-      drop_location_id,
+      origin_location_id,
+      destination_location_id,
     } = this.state;
-    let {trailers, packaging, gatePasses, locations} = this.props;
 
-    console.log('pick', pick_location_id);
-    console.log('drop', drop_location_id);
+    let {trailers, packaging, gatePasses, locations} = this.props;
 
     return (
       <ScrollView style={{flex: 1}}>
@@ -117,11 +114,11 @@ class LoadAddScene extends Component {
 
             <TabPanel>
               <LoadWhere
-                pickLocation={locations.find(
-                  location => location.id === pick_location_id,
+                origin={locations.find(
+                  location => location.id === origin_location_id,
                 )}
-                dropLocation={locations.find(
-                  location => location.id === drop_location_id,
+                destination={locations.find(
+                  location => location.id === destination_location_id,
                 )}
                 locations={locations}
                 onFieldChange={this.onFieldChange}

@@ -110,7 +110,7 @@
   "receiver_phone" : "Receiver Phone",
   "receiver_mobile" : "Receiver Mobile",
   "next" : "Next",
-  "location_pick_select" : "Select Pick Location",
-  "location_drop_select" : "Select Drop Location",
+  "location_origin_select" : "Select Pick Location",
+  "location_destination_select" : "Select Drop Location",
 
 }

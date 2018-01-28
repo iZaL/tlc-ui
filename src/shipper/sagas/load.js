@@ -11,22 +11,22 @@ function* saveLoad(action) {
     const normalized = normalize(response.data, Schema.shippers);
     const {entities, result} = normalized;
 
-    const profile = {
-      shippers: {
-        [result]: {
-          ...entities.shippers[result],
-          meta: response.meta,
-        },
-      },
-    };
+    // const profile = {
+    //   shippers: {
+    //     [result]: {
+    //       ...entities.shippers[result],
+    //       meta: response.meta,
+    //     },
+    //   },
+    // };
 
     yield put({
-      type: ACTION_TYPES.UPDATE_PROFILE_SUCCESS,
-      entities: profile,
+      type: ACTION_TYPES.SAVE_LOAD_SUCCESS,
+      // entities: profile,
     });
   } catch (error) {
     yield put(APP_ACTIONS.setNotification(error, 'error'));
-    yield put({type: ACTION_TYPES.UPDATE_PROFILE_FAILURE, error});
+    yield put({type: ACTION_TYPES.SAVE_LOAD_FAILURE, error});
   }
 }
 
@@ -61,7 +61,7 @@ function* fetchLoadAdd() {
 }
 
 function* saveLoadMonitor() {
-  yield takeLatest(ACTION_TYPES.SAVE_LOAD_REQUEST, saveLoadMonitor);
+  yield takeLatest(ACTION_TYPES.SAVE_LOAD_REQUEST, saveLoad);
 }
 
 function* fetchLoadAddDataMonitor() {

@@ -75,9 +75,17 @@ function saveProfile(params) {
     params,
   };
 }
+
 function saveEmployee(params) {
   return {
     type: ACTION_TYPES.SAVE_EMPLOYEE_REQUEST,
+    params,
+  };
+}
+
+function saveLoad(params) {
+  return {
+    type: ACTION_TYPES.SAVE_LOAD_REQUEST,
     params,
   };
 }
@@ -89,4 +97,5 @@ export const ACTIONS = {
   fetchLocations,
   saveEmployee,
   fetchLoadAddData,
+  saveLoad,
 };
