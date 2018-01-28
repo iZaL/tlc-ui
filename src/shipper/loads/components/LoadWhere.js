@@ -11,21 +11,23 @@ export default class LoadWhat extends Component {
   static propTypes = {
     onPickLocationPress: PropTypes.func.isRequired,
     onDropLocationPress: PropTypes.func.isRequired,
-    pickLocation: PropTypes.object.isRequired,
-    dropLocation: PropTypes.object.isRequired,
+    pickLocation: PropTypes.object,
+    dropLocation: PropTypes.object,
   };
 
-  static defaultProps = {};
+  static defaultProps = {
+    pickLocation:{},
+    dropLocation:{}
+  };
 
   render() {
-    let {pickLocation, dropLocation, onDropLocationPress, onPickLocationPress} = this.props;
+    let { onDropLocationPress, onPickLocationPress, pickLocation, dropLocation} = this.props;
 
     return (
       <View style={styles.container}>
 
-
           {
-            pickLocation ?
+            pickLocation.id ?
 
               <View style={styles.rowContainer}>
 
@@ -59,7 +61,7 @@ export default class LoadWhat extends Component {
           }
 
           {
-            dropLocation ?
+            dropLocation.id ?
 
               <View style={styles.rowContainer}>
 
@@ -76,7 +78,7 @@ export default class LoadWhat extends Component {
                 </View>
                 <View style={styles.rightContainer}>
                   <LocationListItem
-                    item={pickLocation}
+                    item={dropLocation}
                     onPress={onDropLocationPress}
                   />
                 </View>
@@ -87,7 +89,6 @@ export default class LoadWhat extends Component {
                 style={styles.label}>
                 Select Drop Location
               </Text>
-
           }
 
       </View>

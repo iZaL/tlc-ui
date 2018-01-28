@@ -6,7 +6,8 @@ import {ACTIONS as SHIPPER_ACTIONS} from 'shipper/common/actions';
 import AddressField from 'shipper/locations/components/AddressField';
 import Button from 'components/Button';
 import I18n from 'utils/locale';
-import MapPicker from './components/MapPicker';
+import MapPicker from 'shipper/locations/components/MapPicker';
+import {SELECTORS as SHIPPER_SELECTORS} from "shipper/common/selectors";
 
 type Type = 'pick|drop';
 
@@ -39,7 +40,7 @@ class LocationAddScene extends Component {
   };
 
   componentDidMount() {
-    // this.props.dispatch(SHIPPER_ACTIONS.fetchLocations());
+    this.props.dispatch(SHIPPER_ACTIONS.fetchLocations());
   }
 
   saveAddress = () => {};
@@ -79,8 +80,14 @@ class LocationAddScene extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {};
+const mapStateToProps = () => {
+  const getLocationsByType = SHIPPER_SELECTORS.getLocationsByType();
+  const mapStateToProps = (state, props) => {
+    return {
+      locations: getLocationsByType(state, props.navigation.state.params.type),
+    };
+  };
+  return mapStateToProps;
 };
 
 export default connect(mapStateToProps)(LocationAddScene);

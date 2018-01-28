@@ -17,16 +17,17 @@ export default class LocationListItem extends PureComponent {
 
   render() {
     let {item, onPress} = this.props;
+    console.log('it',item);
     return (
       <Touchable onPress={() => onPress(item)}>
         <View style={[styles.contentContainer]}>
-            <Text style={styles.email}>{item.address}</Text>
+          <Text style={styles.email}>{item.address}</Text>
 
-            <View style={{paddingVertical:5}}>
-              <Text style={styles.email}>{item.city}</Text>
-              <Text style={styles.email}>{item.state}</Text>
-              <Text style={styles.email}>{item.country.name}</Text>
-            </View>
+          <View style={{paddingVertical: 5}}>
+            <Text style={styles.email}>{item.city}</Text>
+            <Text style={styles.email}>{item.state}</Text>
+            <Text style={styles.email}>{item.country.name}</Text>
+          </View>
         </View>
       </Touchable>
     );

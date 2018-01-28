@@ -20,6 +20,7 @@ import moment from 'moment';
 import {SELECTORS as TRUCK_SELECTORS} from 'trucks/common/selectors';
 import TabPanel from './components/TabPanel';
 import I18n from 'utils/locale';
+import {SELECTORS as SHIPPER_SELECTORS} from "shipper/common/selectors";
 
 class LoadAddScene extends Component {
   static propTypes = {
@@ -35,6 +36,8 @@ class LoadAddScene extends Component {
     load_time: undefined,
     trailer_id: undefined,
     packaging_id: undefined,
+    pick_location_id:1,
+    drop_location_id:2,
     weight: undefined,
     request_documents: true,
     use_own_truck: false,
@@ -93,8 +96,13 @@ class LoadAddScene extends Component {
       receiver_mobile,
       receiver_phone,
       receiver_name,
+      pick_location_id,
+      drop_location_id
     } = this.state;
-    let {trailers, packaging, gatePasses} = this.props;
+    let {trailers, packaging, gatePasses,locations} = this.props;
+
+    console.log('locations',locations);
+
 
     return (
       <ScrollView style={{flex: 1}}>
@@ -122,26 +130,8 @@ class LoadAddScene extends Component {
 
             <TabPanel>
               <LoadWhere
-                pickLocation={{
-                  address: '5823 Olin Crescent↵Hilpertport, NV 36582-2290',
-                  city: 'Lake Jadonshire',
-                  country: {id: 1, name: 'Kuwait'},
-                  id: 4,
-                  latitude: 29.66,
-                  longitude: 47.1,
-                  state: 'Kassulkeland',
-                  type: 'pick',
-                }}
-                dropLocation={{
-                  address: '5823 Olin Crescent↵Hilpertport, NV 36582-2290',
-                  city: 'Lake Jadonshire',
-                  country: {id: 1, name: 'Kuwait'},
-                  id: 4,
-                  latitude: 29.66,
-                  longitude: 47.1,
-                  state: 'Kassulkeland',
-                  type: 'drop',
-                }}
+                pickLocation={locations.find(location => location.id === pick_location_id)}
+                dropLocation={locations.find(location => location.id === drop_location_id)}
                 onDropLocationPress={this.onDropLocationPress}
                 onPickLocationPress={this.onPickLocationPress}
               />
@@ -191,6 +181,7 @@ function mapStateToProps(state) {
     trailers: TRUCK_SELECTORS.getTrailers(state),
     packaging: TRUCK_SELECTORS.getPackaging(state),
     gatePasses: TRUCK_SELECTORS.getPasses(state),
+    locations: SHIPPER_SELECTORS.getLocations(state),
   };
 }
 
