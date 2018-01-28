@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {Text, View, StyleSheet, ScrollView} from 'react-native';
-import Touchable from 'react-native-platform-touchable';
+import {Modal, StyleSheet, Text, View} from 'react-native';
 import LocationListItem from 'shipper/locations/components/LocationListItem';
-import Separator from 'components/Separator';
 import colors from 'assets/theme/colors';
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import LocationList from 'shipper/locations/components/LocationList';
+import Touchable from 'react-native-platform-touchable';
 
 export default class LoadWhat extends Component {
   static propTypes = {
@@ -16,81 +16,114 @@ export default class LoadWhat extends Component {
   };
 
   static defaultProps = {
-    pickLocation:{},
-    dropLocation:{}
+    pickLocation: {},
+    dropLocation: {},
+  };
+
+  state = {
+    locationListModalVisible: false,
+    locationType: 'pick',
+  };
+
+  onDropLocationPress = () => {
+    this.setState({
+      locationListModalVisible: true,
+      locationType: 'drop',
+    });
+  };
+
+  onPickLocationPress = () => {
+    this.setState({
+      locationListModalVisible: true,
+      locationType: 'pick',
+    });
+  };
+
+  onLocationListItemPress = item => {
+    let field =
+      this.state.locationType === 'pick'
+        ? 'pick_location_id'
+        : 'pick_location_id';
+    this.props.onFieldChange(field, item.id);
+    this.setState({
+      locationListModalVisible: false,
+    });
+  };
+
+  closeModal = () => {
+    this.setState({
+      locationListModalVisible: false,
+    });
   };
 
   render() {
-    let { onDropLocationPress, onPickLocationPress, pickLocation, dropLocation} = this.props;
+    let {pickLocation, dropLocation, locations, onFieldChange} = this.props;
+    let {locationType, locationListModalVisible} = this.state;
+
+    console.log('state', this.state);
 
     return (
       <View style={styles.container}>
+        {pickLocation.id ? (
+          <View style={styles.rowContainer}>
+            <View style={[styles.leftContainer, {justifyContent: 'flex-end'}]}>
+              <MaterialCommunityIcons
+                name="adjust"
+                size={25}
+                color={colors.warning}
+                style={{alignSelf: 'center'}}
+              />
+              <View style={styles.line}/>
+            </View>
 
-          {
-            pickLocation.id ?
+            <View style={styles.rightContainer}>
+              <LocationListItem
+                item={pickLocation}
+                onPress={this.onPickLocationPress}
+              />
+            </View>
+          </View>
+        ) : (
+          <Text onPress={this.onPickLocationPress} style={styles.label}>
+            Select Pickup Location
+          </Text>
+        )}
 
-              <View style={styles.rowContainer}>
+        {dropLocation.id ? (
+          <View style={styles.rowContainer}>
+            <View style={styles.leftContainer}>
+              <View style={styles.line}/>
 
-                <View style={[styles.leftContainer,{justifyContent:'flex-end'}]}>
+              <MaterialCommunityIcons
+                name="map-marker"
+                size={33}
+                style={{alignSelf: 'center'}}
+                color={colors.primary}
+              />
+            </View>
+            <View style={styles.rightContainer}>
+              <LocationListItem
+                item={dropLocation}
+                onPress={this.onDropLocationPress}
+              />
+            </View>
+          </View>
+        ) : (
+          <Text onPress={this.onDropLocationPress} style={styles.label}>
+            Select Drop Location
+          </Text>
+        )}
 
-                  <MaterialCommunityIcons
-                    name="adjust"
-                    size={25}
-                    color={colors.warning}
-                    style={{alignSelf: 'center'}}
-                  />
-                  <View style={styles.line}/>
-
-                </View>
-
-                <View style={styles.rightContainer}>
-                  <LocationListItem
-                    item={pickLocation}
-                    onPress={onPickLocationPress}
-                  />
-                </View>
-
-              </View>
-
-              :
-              <Text
-                onPress={onPickLocationPress}
-                style={styles.label}>
-                Select Pickup Location
-              </Text>
-          }
-
-          {
-            dropLocation.id ?
-
-              <View style={styles.rowContainer}>
-
-                <View style={styles.leftContainer}>
-                  <View style={styles.line}/>
-
-                  <MaterialCommunityIcons
-                    name="map-marker"
-                    size={33}
-                    style={{alignSelf: 'center'}}
-                    color={colors.primary}
-                  />
-
-                </View>
-                <View style={styles.rightContainer}>
-                  <LocationListItem
-                    item={dropLocation}
-                    onPress={onDropLocationPress}
-                  />
-                </View>
-              </View>
-              :
-              <Text
-                onPress={onDropLocationPress}
-                style={styles.label}>
-                Select Drop Location
-              </Text>
-          }
-
+        <Modal visible={locationListModalVisible} onRequestClose={this.closeModal}>
+          <Touchable style={styles.modalContainer} onPress={this.closeModal}>
+            <LocationList
+              items={locations.filter(
+                location => location.type === locationType,
+              )}
+              onItemPress={this.onLocationListItemPress}
+            />
+          </Touchable>
+        </Modal>
       </View>
     );
   }
@@ -99,17 +132,14 @@ export default class LoadWhat extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // flexDirection: 'row',
   },
   rowContainer: {
     flex: 1,
     flexDirection: 'row',
   },
   leftContainer: {
-    // backgroundColor:'yellow',
-    width:40,
-    // justifyContent: 'center',
-    alignItems: 'center'
+    width: 40,
+    alignItems: 'center',
   },
   rightContainer: {
     flex: 1,
@@ -119,9 +149,15 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: colors.primary,
   },
-  line:{
-    width:StyleSheet.hairlineWidth,
-    backgroundColor:colors.mediumGrey,
-    height:'50%'
-  }
+  line: {
+    width: StyleSheet.hairlineWidth,
+    backgroundColor: colors.mediumGrey,
+    height: '50%',
+  },
+  modalContainer:{
+    flex: 1,
+    backgroundColor: '#00000090',
+    paddingTop: 64
+  },
+
 });

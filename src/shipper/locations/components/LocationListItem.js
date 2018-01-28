@@ -17,7 +17,7 @@ export default class LocationListItem extends PureComponent {
 
   render() {
     let {item, onPress} = this.props;
-    console.log('it',item);
+    console.log('it', item);
     return (
       <Touchable onPress={() => onPress(item)}>
         <View style={[styles.contentContainer]}>

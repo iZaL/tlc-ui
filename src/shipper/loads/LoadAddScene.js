@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {ScrollView, Text} from 'react-native';
+import {Modal, ScrollView, Text, View} from 'react-native';
 
 import Tabs from 'components/Tabs';
 import TabList from 'components/TabList';
@@ -20,7 +20,7 @@ import moment from 'moment';
 import {SELECTORS as TRUCK_SELECTORS} from 'trucks/common/selectors';
 import TabPanel from './components/TabPanel';
 import I18n from 'utils/locale';
-import {SELECTORS as SHIPPER_SELECTORS} from "shipper/common/selectors";
+import {SELECTORS as SHIPPER_SELECTORS} from 'shipper/common/selectors';
 
 class LoadAddScene extends Component {
   static propTypes = {
@@ -36,8 +36,8 @@ class LoadAddScene extends Component {
     load_time: undefined,
     trailer_id: undefined,
     packaging_id: undefined,
-    pick_location_id:1,
-    drop_location_id:2,
+    pick_location_id: 1,
+    drop_location_id: 2,
     weight: undefined,
     request_documents: true,
     use_own_truck: false,
@@ -53,15 +53,19 @@ class LoadAddScene extends Component {
   }
 
   onPickLocationPress = () => {
-    this.props.navigation.navigate('LocationList', {
-      type: 'pick',
+    // this.props.navigation.navigate('LocationList', {
+    //   type: 'pick',
+    // });
+
+    this.setState({
+      locationListModalVisible: true,
     });
   };
 
   onDropLocationPress = () => {
-    this.props.navigation.navigate('LocationList', {
-      type: 'drop',
-    });
+    // this.props.navigation.navigate('LocationList', {
+    //   type: 'drop',
+    // });
   };
 
   onFieldChange = (field, value) => {
@@ -69,7 +73,6 @@ class LoadAddScene extends Component {
   };
 
   updatePasses = id => {
-    console.log('pass', id);
     this.setState({
       passes: this.state.passes.includes(id)
         ? this.state.passes.filter(value => value !== id)
@@ -97,12 +100,12 @@ class LoadAddScene extends Component {
       receiver_phone,
       receiver_name,
       pick_location_id,
-      drop_location_id
+      drop_location_id,
     } = this.state;
-    let {trailers, packaging, gatePasses,locations} = this.props;
+    let {trailers, packaging, gatePasses, locations} = this.props;
 
-    console.log('locations',locations);
-
+    console.log('pick', pick_location_id);
+    console.log('drop', drop_location_id);
 
     return (
       <ScrollView style={{flex: 1}}>
@@ -130,10 +133,16 @@ class LoadAddScene extends Component {
 
             <TabPanel>
               <LoadWhere
-                pickLocation={locations.find(location => location.id === pick_location_id)}
-                dropLocation={locations.find(location => location.id === drop_location_id)}
+                pickLocation={locations.find(
+                  location => location.id === pick_location_id,
+                )}
+                dropLocation={locations.find(
+                  location => location.id === drop_location_id,
+                )}
                 onDropLocationPress={this.onDropLocationPress}
                 onPickLocationPress={this.onPickLocationPress}
+                locations={locations}
+                onFieldChange={this.onFieldChange}
               />
             </TabPanel>
 

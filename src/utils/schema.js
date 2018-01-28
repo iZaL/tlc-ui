@@ -98,5 +98,5 @@ export const Schema = {
   trips: tripsSchema,
   packaging: packagingSchema,
   passes: passesSchema,
-  shipper_locations:shipperLocationsSchema
+  shipper_locations: shipperLocationsSchema,
 };

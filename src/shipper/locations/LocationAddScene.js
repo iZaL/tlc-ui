@@ -7,7 +7,7 @@ import AddressField from 'shipper/locations/components/AddressField';
 import Button from 'components/Button';
 import I18n from 'utils/locale';
 import MapPicker from 'shipper/locations/components/MapPicker';
-import {SELECTORS as SHIPPER_SELECTORS} from "shipper/common/selectors";
+import {SELECTORS as SHIPPER_SELECTORS} from 'shipper/common/selectors';
 
 type Type = 'pick|drop';
 
