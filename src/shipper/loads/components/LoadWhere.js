@@ -6,11 +6,15 @@ import colors from 'assets/theme/colors';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import LocationList from 'shipper/locations/components/LocationList';
 import Touchable from 'react-native-platform-touchable';
+import I18n from 'utils/locale';
 
 export default class LoadWhat extends Component {
+
+  shouldComponentUpdate(nextProps,nextState) {
+    return nextProps.pickLocation !== this.props.pickLocation || nextProps.dropLocation !== this.props.dropLocation || this.state !== nextState
+  }
+
   static propTypes = {
-    onPickLocationPress: PropTypes.func.isRequired,
-    onDropLocationPress: PropTypes.func.isRequired,
     pickLocation: PropTypes.object,
     dropLocation: PropTypes.object,
   };
@@ -43,7 +47,7 @@ export default class LoadWhat extends Component {
     let field =
       this.state.locationType === 'pick'
         ? 'pick_location_id'
-        : 'pick_location_id';
+        : 'drop_location_id';
     this.props.onFieldChange(field, item.id);
     this.setState({
       locationListModalVisible: false,
@@ -57,10 +61,8 @@ export default class LoadWhat extends Component {
   };
 
   render() {
-    let {pickLocation, dropLocation, locations, onFieldChange} = this.props;
+    let {pickLocation, dropLocation, locations} = this.props;
     let {locationType, locationListModalVisible} = this.state;
-
-    console.log('state', this.state);
 
     return (
       <View style={styles.container}>
@@ -85,7 +87,7 @@ export default class LoadWhat extends Component {
           </View>
         ) : (
           <Text onPress={this.onPickLocationPress} style={styles.label}>
-            Select Pickup Location
+            {I18n.t('location_pick_select')}
           </Text>
         )}
 
@@ -110,7 +112,7 @@ export default class LoadWhat extends Component {
           </View>
         ) : (
           <Text onPress={this.onDropLocationPress} style={styles.label}>
-            Select Drop Location
+            {I18n.t('location_pick_select')}
           </Text>
         )}
 

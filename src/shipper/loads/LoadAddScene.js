@@ -36,8 +36,8 @@ class LoadAddScene extends Component {
     load_time: undefined,
     trailer_id: undefined,
     packaging_id: undefined,
-    pick_location_id: 1,
-    drop_location_id: 2,
+    pick_location_id: undefined,
+    drop_location_id: undefined,
     weight: undefined,
     request_documents: true,
     use_own_truck: false,
@@ -51,22 +51,6 @@ class LoadAddScene extends Component {
   componentDidMount() {
     this.props.dispatch(SHIPPER_ACTIONS.fetchLoadAddData());
   }
-
-  onPickLocationPress = () => {
-    // this.props.navigation.navigate('LocationList', {
-    //   type: 'pick',
-    // });
-
-    this.setState({
-      locationListModalVisible: true,
-    });
-  };
-
-  onDropLocationPress = () => {
-    // this.props.navigation.navigate('LocationList', {
-    //   type: 'drop',
-    // });
-  };
 
   onFieldChange = (field, value) => {
     this.setState({[field]: value});
@@ -139,8 +123,6 @@ class LoadAddScene extends Component {
                 dropLocation={locations.find(
                   location => location.id === drop_location_id,
                 )}
-                onDropLocationPress={this.onDropLocationPress}
-                onPickLocationPress={this.onPickLocationPress}
                 locations={locations}
                 onFieldChange={this.onFieldChange}
               />
