@@ -51,6 +51,19 @@ export default class Drawer extends Component {
         />
 
         <Separator />
+        <DrawerItem
+          title={I18n.t('loads')}
+          routeName="LoadStack"
+          onItemPress={this.onItemPress}
+          iconProps={{
+            name: 'truck-delivery',
+            type: 'MaterialCommunityIcons',
+            size: 32,
+          }}
+          active={activeRoute === 'LoadStack'}
+        />
+
+        <Separator />
 
         <DrawerItem
           title={I18n.t('logout')}

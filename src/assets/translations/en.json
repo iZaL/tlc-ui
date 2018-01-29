@@ -95,9 +95,10 @@
   "edit" : "Edit",
   "details" : "Details",
   "delete" : "Delete",
+  "loads" : "Loads",
   "load_add" : "Post a Load",
-  "location_pick_add" : "Add New Pick Location",
-  "location_drop_add" : "Add New Drop Location",
+  "location_origin_add" : "Add New Pick Location",
+  "location_destination_add" : "Add New Drop Location",
   "address" : "Address",
   "area_select" : "Search",
   "packaging_select" : "Select Packaging",
@@ -112,5 +113,7 @@
   "next" : "Next",
   "location_origin_select" : "Select Pick Location",
   "location_destination_select" : "Select Drop Location",
+  "location_origin_list" : "Pick Locations",
+  "location_destination_list" : "Drop Locations",
 
 }

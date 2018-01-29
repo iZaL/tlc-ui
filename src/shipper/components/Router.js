@@ -12,6 +12,7 @@ import EmployeeEditScene from 'shipper/employees/EmployeeEditScene';
 import LoadAddScene from 'shipper/loads/LoadAddScene';
 import LocationListScene from 'shipper/locations/LocationListScene';
 import LocationAddScene from 'shipper/locations/LocationAddScene';
+import LoadList from "shipper/loads/LoadListScene";
 
 const getDrawerIcon = navigation => {
   return {
@@ -69,11 +70,30 @@ const ProfileStack = StackNavigator(
     },
   },
   {
-    initialRouteName: 'LoadAdd',
+    // initialRouteName: 'LoadAdd',
+  },
+);
+const LoadStack = StackNavigator(
+  {
+    LoadList: {
+      screen: LoadList,
+      navigationOptions: ({navigation}) => ({
+        gesturesEnabled: false,
+        headerLeft: (
+          <DrawerIcon onPress={() => navigation.navigate('DrawerToggle')} />
+        ),
+      }),
+    },
+    LoadAdd: {
+      screen: LoadAddScene,
+    },
+  },
+  {
+    // initialRouteName: 'LoadAdd',
   },
 );
 
-const SettingsStack = StackNavigator(
+const SettingStack = StackNavigator(
   {
     Settings: {
       screen: Settings,
@@ -94,8 +114,11 @@ const DrawerRoutes = {
   ProfileStack: {
     screen: ProfileStack,
   },
-  SettingsStack: {
-    screen: SettingsStack,
+  SettingStack: {
+    screen: SettingStack,
+  },
+  LoadStack: {
+    screen: LoadStack,
   },
 };
 
@@ -103,5 +126,5 @@ export const Routes = DrawerNavigator(DrawerRoutes, {
   gesturesEnabled: false,
   contentComponent: props => <Drawer {...props} />,
   drawerWidth: 275,
-  initialRouteName: 'ProfileStack',
+  // initialRouteName: 'ProfileStack',
 });

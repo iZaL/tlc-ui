@@ -8,7 +8,7 @@ import LocationList from 'shipper/locations/components/LocationList';
 import Button from 'components/Button';
 import I18n from 'utils/locale';
 
-type Type = 'pick|drop';
+type Type = 'origin|destination';
 
 class LocationListScene extends Component {
   static propTypes = {
@@ -22,7 +22,7 @@ class LocationListScene extends Component {
   };
 
   static defaultProps = {
-    type: 'pick',
+    type: 'origin',
   };
 
   componentDidMount() {
@@ -48,9 +48,9 @@ class LocationListScene extends Component {
       <ScrollView style={{flex: 1}}>
         <Button
           title={
-            type === 'pick'
-              ? I18n.t('location_pick_add')
-              : I18n.t('location_drop_add')
+            type === 'origin'
+              ? I18n.t('location_origin_add')
+              : I18n.t('location_destination_add')
           }
           onPress={this.onLocationCreatePress}
           style={{marginVertical: 10}}

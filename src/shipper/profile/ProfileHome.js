@@ -37,6 +37,21 @@ class ProfileHome extends Component {
           title: I18n.t('load_add'),
         };
         break;
+
+      case 'location_origin_list':
+        scene = 'LocationList';
+        sceneConfig = {
+          title: I18n.t('location_origin_list'),
+          type:'origin'
+        };
+        break;
+      case 'location_destination_list':
+        scene = 'LocationList';
+        sceneConfig = {
+          title: I18n.t('location_destination_list'),
+          type:'destination'
+        };
+        break;
     }
     return this.props.navigation.navigate(scene, sceneConfig);
   };
@@ -77,6 +92,36 @@ class ProfileHome extends Component {
           }
           name="load_add"
         />
+
+        <Separator />
+
+        <ListItem
+          onItemPress={this.onListItemPress}
+          icon={
+            <IconFactory
+              type="MaterialCommunityIcons"
+              size={30}
+              name="truck-delivery"
+            />
+          }
+          name="location_origin_list"
+        />
+
+        <Separator />
+
+        <ListItem
+          onItemPress={this.onListItemPress}
+          icon={
+            <IconFactory
+              type="MaterialCommunityIcons"
+              size={30}
+              name="truck-delivery"
+            />
+          }
+          name="location_destination_list"
+        />
+
+
       </ScrollView>
     );
   }
