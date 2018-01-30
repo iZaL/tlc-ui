@@ -1,53 +1,64 @@
 PODS:
+  - CocoaLumberjack (3.4.1):
+    - CocoaLumberjack/Default (= 3.4.1)
+    - CocoaLumberjack/Extensions (= 3.4.1)
+  - CocoaLumberjack/Default (3.4.1)
+  - CocoaLumberjack/Extensions (3.4.1):
+    - CocoaLumberjack/Default
   - GoogleMaps (2.5.0):
     - GoogleMaps/Maps (= 2.5.0)
   - GoogleMaps/Base (2.5.0)
   - GoogleMaps/Maps (2.5.0):
     - GoogleMaps/Base
-  - React (0.52.0):
-    - React/Core (= 0.52.0)
+  - React (0.52.2):
+    - React/Core (= 0.52.2)
   - react-native-google-maps (0.19.0):
     - GoogleMaps (= 2.5.0)
     - React
   - react-native-maps (0.19.0):
     - React
-  - React/BatchedBridge (0.52.0):
+  - React/BatchedBridge (0.52.2):
     - React/Core
     - React/cxxreact_legacy
-  - React/Core (0.52.0):
-    - yoga (= 0.52.0.React)
-  - React/cxxreact_legacy (0.52.0):
+  - React/Core (0.52.2):
+    - yoga (= 0.52.2.React)
+  - React/cxxreact_legacy (0.52.2):
     - React/jschelpers_legacy
     - React/jsinspector_legacy
-  - React/fishhook (0.52.0)
-  - React/jschelpers_legacy (0.52.0)
-  - React/jsinspector_legacy (0.52.0)
-  - React/RCTActionSheet (0.52.0):
+  - React/fishhook (0.52.2)
+  - React/jschelpers_legacy (0.52.2)
+  - React/jsinspector_legacy (0.52.2)
+  - React/RCTActionSheet (0.52.2):
     - React/Core
-  - React/RCTAnimation (0.52.0):
+  - React/RCTAnimation (0.52.2):
     - React/Core
-  - React/RCTBlob (0.52.0):
+  - React/RCTBlob (0.52.2):
     - React/Core
-  - React/RCTGeolocation (0.52.0):
+  - React/RCTGeolocation (0.52.2):
     - React/Core
-  - React/RCTImage (0.52.0):
+  - React/RCTImage (0.52.2):
     - React/Core
     - React/RCTNetwork
-  - React/RCTLinkingIOS (0.52.0):
+  - React/RCTLinkingIOS (0.52.2):
     - React/Core
-  - React/RCTNetwork (0.52.0):
+  - React/RCTNetwork (0.52.2):
     - React/Core
-  - React/RCTSettings (0.52.0):
+  - React/RCTSettings (0.52.2):
     - React/Core
-  - React/RCTText (0.52.0):
+  - React/RCTText (0.52.2):
     - React/Core
-  - React/RCTVibration (0.52.0):
+  - React/RCTVibration (0.52.2):
     - React/Core
-  - React/RCTWebSocket (0.52.0):
+  - React/RCTWebSocket (0.52.2):
     - React/Core
     - React/fishhook
     - React/RCTBlob
-  - yoga (0.52.0.React)
+  - RNBackgroundFetch (2.2.1):
+    - React
+  - RNBackgroundGeolocation (2.10.1):
+    - CocoaLumberjack (~> 3.0)
+    - React
+  - yoga (0.52.2.React)
 
 DEPENDENCIES:
   - GoogleMaps
@@ -65,6 +76,8 @@ DEPENDENCIES:
   - React/RCTText (from `../node_modules/react-native`)
   - React/RCTVibration (from `../node_modules/react-native`)
   - React/RCTWebSocket (from `../node_modules/react-native`)
+  - RNBackgroundFetch (from `../node_modules/react-native-background-fetch`)
+  - RNBackgroundGeolocation (from `../node_modules/react-native-background-geolocation`)
   - yoga (from `../node_modules/react-native/ReactCommon/yoga/yoga.podspec`)
 
 EXTERNAL SOURCES:
@@ -74,16 +87,23 @@ EXTERNAL SOURCES:
     :path: ../node_modules/react-native-maps
   react-native-maps:
     :path: ../node_modules/react-native-maps
+  RNBackgroundFetch:
+    :path: ../node_modules/react-native-background-fetch
+  RNBackgroundGeolocation:
+    :path: ../node_modules/react-native-background-geolocation
   yoga:
     :path: ../node_modules/react-native/ReactCommon/yoga/yoga.podspec
 
 SPEC CHECKSUMS:
+  CocoaLumberjack: 2e258a064cacc8eb9a2aca318e24d02a0a7fd56d
   GoogleMaps: c087b8e5dfe87ca6ebf59adb9b4894a4146bec4f
-  React: 61a6bdf17a9ff16875c230e6ff278d9de274e16c
+  React: 001655c2b9dfc2f55e8271c60098d4f4227fb1b3
   react-native-google-maps: dc6d7644b0517e6e232644d2b66004714b91e152
   react-native-maps: d3b689927722398a12a4b3007fd9a0c60e1c48cd
-  yoga: 646606bf554d54a16711f35596178522fbc00480
+  RNBackgroundFetch: f62e9e27a069511ae7b7015eff9c48c8221fe625
+  RNBackgroundGeolocation: 2b8b5dd7c2d075cb432b16bfec9aedee46072e27
+  yoga: 18f5bf8fba4b4a31ca4b42ac931fce5537e1923c
 
-PODFILE CHECKSUM: 9c858ac2b4ad979711c6c3e2a09f785a4657342e
+PODFILE CHECKSUM: 72fe209b62c6d95c13c7b2a4873d77b9490e1edb
 
 COCOAPODS: 1.2.0
