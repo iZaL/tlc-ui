@@ -17,8 +17,27 @@ function* fetchLoadDetails(action) {
   }
 }
 
+
+function* fetchLoadsByStatus(action:object) {
+  try {
+    const response = yield call(API.fetchLoadsByStatus,action.params.status);
+    const normalized = normalize(response.data, [Schema.loads]);
+    yield put({
+      type: ACTION_TYPES.FETCH_LOADS_BY_STATUS_SUCCESS,
+      entities: normalized.entities,
+      result:normalized.result
+    });
+  } catch (error) {
+    yield put({type: ACTION_TYPES.FETCH_LOADS_BY_STATUS_FAILURE, error});
+  }
+}
+
 function* fetchLoadDetailsMonitor() {
   yield takeLatest(ACTION_TYPES.FETCH_LOAD_DETAILS_REQUEST, fetchLoadDetails);
 }
 
-export const sagas = all([fork(fetchLoadDetailsMonitor)]);
+function* fetchLoadsByStatusMonitor() {
+  yield takeLatest(ACTION_TYPES.FETCH_LOADS_BY_STATUS_REQUEST, fetchLoadsByStatus);
+}
+
+export const sagas = all([fork(fetchLoadDetailsMonitor),fork(fetchLoadsByStatusMonitor)]);

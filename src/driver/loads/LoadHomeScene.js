@@ -3,17 +3,11 @@ import {connect} from 'react-redux';
 import {ScrollView} from 'react-native';
 import ListItem from 'components/ListItem';
 import IconFactory from 'components/IconFactory';
-import {SELECTORS as SHIPPER_SELECTORS} from 'shipper/common/selectors';
-import {ACTIONS as SHIPPER_ACTIONS} from 'shipper/common/actions';
 import Separator from 'components/Separator';
 import I18n from 'utils/locale';
 
 class ProfileHome extends Component {
   static propTypes = {};
-
-  componentDidMount() {
-    this.props.dispatch(SHIPPER_ACTIONS.fetchProfile());
-  }
 
   onListItemPress = route => {
     let scene;

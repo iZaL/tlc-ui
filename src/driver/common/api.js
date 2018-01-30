@@ -40,6 +40,11 @@ function saveTruck(body) {
   return fetchAPI(url, 'POST', body);
 }
 
+function fetchLoadsByStatus(status) {
+  const url = `driver/loads/status/${status}`;
+  return fetchAPI(url);
+}
+
 export const API = {
   saveProfile,
   fetchProfile,
@@ -49,4 +54,6 @@ export const API = {
   fetchRouteTransits,
   fetchUpcomingTrips,
   fetchLoadDetails,
+  fetchLoadsByStatus,
+
 };

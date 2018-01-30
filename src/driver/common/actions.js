@@ -38,6 +38,10 @@ export const ACTION_TYPES = {
   SYNC_ROUTE_REQUEST: '@truck/SYNC_ROUTE_REQUEST',
   SYNC_ROUTE_SUCCESS: '@truck/SYNC_ROUTE_SUCCESS',
   SYNC_ROUTE_FAILURE: '@truck/SYNC_ROUTE_FAILURE',
+
+  FETCH_LOADS_BY_STATUS_REQUEST: '@driver/FETCH_LOADS_BY_STATUS_REQUEST',
+  FETCH_LOADS_BY_STATUS_SUCCESS: '@driver/FETCH_LOADS_BY_STATUS_SUCCESS',
+  FETCH_LOADS_BY_STATUS_FAILURE: '@driver/FETCH_LOADS_BY_STATUS_FAILURE',
 };
 
 function fetchProfile(params) {
@@ -96,6 +100,14 @@ function saveRoute(params) {
   };
 }
 
+function fetchLoadsByStatus(params) {
+  return {
+    type: ACTION_TYPES.FETCH_LOADS_BY_STATUS_REQUEST,
+    params,
+  };
+}
+
+
 export const ACTIONS = {
   saveProfile,
   fetchProfile,
@@ -105,4 +117,6 @@ export const ACTIONS = {
   fetchRouteTransits,
   fetchUpcomingTrips,
   fetchLoadDetails,
+  fetchLoadsByStatus,
+
 };
