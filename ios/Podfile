@@ -29,7 +29,6 @@ target 'tlc' do
     pod 'RNBackgroundFetch', :path => '../node_modules/react-native-background-fetch'
 end
 
-
 post_install do |installer|
   installer.pods_project.targets.each do |target|
     if target.name == 'react-native-google-maps'
