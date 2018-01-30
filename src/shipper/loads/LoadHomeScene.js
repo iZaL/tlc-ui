@@ -19,37 +19,32 @@ class ProfileHome extends Component {
     let scene;
     let sceneConfig = {};
     switch (route) {
-      case 'profile_update':
-        scene = 'ProfileUpdate';
-        sceneConfig = {
-          title: I18n.t('profile_update'),
-        };
-        break;
-      case 'employee_list':
-        scene = 'EmployeeList';
-        sceneConfig = {
-          title: I18n.t('employee_list'),
-        };
-        break;
       case 'load_add':
         scene = 'LoadAdd';
         sceneConfig = {
           title: I18n.t('load_add'),
         };
         break;
-
-      case 'location_origin_list':
-        scene = 'LocationList';
+      case 'load_working_list':
+        scene = 'LoadList';
         sceneConfig = {
-          title: I18n.t('location_origin_list'),
-          type:'origin'
+          title: I18n.t('load_working_list'),
+          status : 'completed'
+        };
+
+      case 'load_completed_list':
+        scene = 'LoadList';
+        sceneConfig = {
+          title: I18n.t('load_completed_list'),
+          status : 'completed'
         };
         break;
-      case 'location_destination_list':
-        scene = 'LocationList';
+
+      case 'load_approved_list':
+        scene = 'LoadList';
         sceneConfig = {
-          title: I18n.t('location_destination_list'),
-          type:'destination'
+          title: I18n.t('load_approved_list'),
+          status : 'approved'
         };
         break;
     }
@@ -59,25 +54,6 @@ class ProfileHome extends Component {
   render() {
     return (
       <ScrollView style={{flex: 1, backgroundColor: 'white'}}>
-        <ListItem
-          onItemPress={this.onListItemPress}
-          icon={<IconFactory type="Ionicons" size={30} name="md-person" />}
-          name="profile_update"
-        />
-
-        <Separator />
-
-        <ListItem
-          onItemPress={this.onListItemPress}
-          icon={
-            <IconFactory
-              type="MaterialCommunityIcons"
-              size={30}
-              name="contacts"
-            />
-          }
-          name="employee_list"
-        />
 
         <Separator />
 
@@ -104,7 +80,7 @@ class ProfileHome extends Component {
               name="truck-delivery"
             />
           }
-          name="location_origin_list"
+          name="load_working_list"
         />
 
         <Separator />
@@ -118,9 +94,22 @@ class ProfileHome extends Component {
               name="truck-delivery"
             />
           }
-          name="location_destination_list"
+          name="load_approved_list"
         />
 
+        <Separator />
+
+        <ListItem
+          onItemPress={this.onListItemPress}
+          icon={
+            <IconFactory
+              type="MaterialCommunityIcons"
+              size={30}
+              name="truck-delivery"
+            />
+          }
+          name="load_completed_list"
+        />
 
       </ScrollView>
     );

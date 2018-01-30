@@ -34,6 +34,10 @@ export const ACTION_TYPES = {
   FETCH_LOAD_ADD_DATA_REQUEST: '@shipper/FETCH_LOAD_ADD_DATA_REQUEST',
   FETCH_LOAD_ADD_DATA_SUCCESS: '@shipper/FETCH_LOAD_ADD_DATA_SUCCESS',
   FETCH_LOAD_ADD_DATA_FAILURE: '@shipper/FETCH_LOAD_ADD_DATA_FAILURE',
+
+  FETCH_LOADS_BY_STATUS_REQUEST: '@shipper/FETCH_LOADS_BY_STATUS_REQUEST',
+  FETCH_LOADS_BY_STATUS_SUCCESS: '@shipper/FETCH_LOADS_BY_STATUS_SUCCESS',
+  FETCH_LOADS_BY_STATUS_FAILURE: '@shipper/FETCH_LOADS_BY_STATUS_FAILURE',
 };
 
 function fetchEmployees(params) {
@@ -69,6 +73,13 @@ function fetchLoadAddData(params) {
   };
 }
 
+function fetchLoadsByStatus(params) {
+  return {
+    type: ACTION_TYPES.FETCH_LOADS_BY_STATUS_REQUEST,
+    params,
+  };
+}
+
 function saveProfile(params) {
   return {
     type: ACTION_TYPES.UPDATE_PROFILE_REQUEST,
@@ -97,5 +108,6 @@ export const ACTIONS = {
   fetchLocations,
   saveEmployee,
   fetchLoadAddData,
+  fetchLoadsByStatus,
   saveLoad,
 };

@@ -24,6 +24,11 @@ function fetchLoadAdd() {
   return fetchAPI(url);
 }
 
+function fetchLoadsByStatus(status) {
+  const url = `shipper/loads/status/${status}`;
+  return fetchAPI(url);
+}
+
 function saveLoad(body) {
   const url = `shipper/loads`;
   return fetchAPI(url, 'POST', body);
@@ -48,4 +53,5 @@ export const API = {
   fetchEmployees,
   fetchLocations,
   fetchLoadAdd,
+  fetchLoadsByStatus,
 };

@@ -104,6 +104,10 @@
   "packaging_select" : "Select Packaging",
   "load_date" : "Load Date",
   "load_time" : "Load Time",
+  "load_completed_list" : "Past Loads",
+  "load_working_list" : "Loads on progress",
+  "load_approved_list" : "Upcoming Loads",
+
   "documents_request" : "Request Documents",
   "use_own_truck" : "Use Own Truck",
   "receiver_name" : "Receiver Name",
@@ -115,5 +119,6 @@
   "location_destination_select" : "Select Drop Location",
   "location_origin_list" : "Pick Locations",
   "location_destination_list" : "Drop Locations",
+
 
 }

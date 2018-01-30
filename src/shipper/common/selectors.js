@@ -1,9 +1,12 @@
 import {createSelector} from 'reselect';
 import {SELECTORS as USER_SELECTORS} from 'guest/common/selectors';
-import flatten from 'lodash/flatten';
+import {denormalize} from 'normalizr';
+import {Schema} from 'utils/schema';
 
+const entities = state => state.entities;
 const countriesSchema = state => state.entities.countries;
 const shipperLocationsSchema = state => state.entities.shipper_locations;
+const loadsSchema = state => state.entities.loads;
 const getIdProp = ({}, itemID) => itemID;
 
 const getProfile = createSelector(
@@ -43,9 +46,31 @@ const getLocations = createSelector(
   },
 );
 
+
 const getLocationsByType = () => {
   return createSelector([getLocations, getIdProp], (locations, type) =>
     locations.filter(location => location.type === type),
+  );
+};
+
+const getLoadByID = () => {
+  return createSelector(
+    [entities, getIdProp],
+    (schema, id) => denormalize(id, Schema.loads, schema),
+  );
+};
+
+const getLoads = createSelector(
+  [entities,getProfile,loadsSchema],
+  (schema,shipper,loads) => {
+    let shipperLoads = Object.keys(loads).map(loadID => loads[loadID]).filter(load => load.shipper === shipper.id) || [];
+    return shipperLoads.map(load => denormalize(load.id, Schema.loads, schema));
+  },
+);
+
+const getLoadsByStatus = () => {
+  return createSelector([getLoads, getIdProp], (loads, status) =>
+    loads.filter(load => load.status === status),
   );
 };
 
@@ -53,5 +78,7 @@ export const SELECTORS = {
   getProfile,
   getEmployees,
   getLocationsByType,
+  getLoadsByStatus,
   getLocations,
+  getLoads
 };

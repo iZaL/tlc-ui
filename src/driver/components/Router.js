@@ -4,14 +4,16 @@ import Drawer from 'driver/components/Drawer';
 import DrawerIcon from 'components/DrawerIcon';
 import Home from 'driver/Home';
 import Settings from 'driver/Settings';
-import ProfileHome from 'driver/profile/ProfileHome';
+import ProfileHomeScene from 'driver/profile/ProfileHomeScene';
 import ProfileUpdateScene from 'driver/profile/ProfileUpdateScene';
 import TruckUpdateScene from 'driver/profile/TruckUpdateScene';
 import TrailerUpdateScene from 'driver/profile/TrailerUpdateScene';
 import RoutesUpdateScene from 'driver/profile/RoutesUpdateScene';
 import DocumentsUploadScene from 'driver/profile/DocumentsUploadScene';
 import RoutesDetailScene from 'driver/routes/RoutesDetailScene';
-import LoadsDetailScene from 'driver/loads/LoadsDetailScene';
+import LoadDetailScene from 'driver/loads/LoadDetailScene';
+import LoadListScene from "driver/loads/LoadListScene";
+import LoadHomeScene from "driver/loads/LoadHomeScene";
 
 const getDrawerIcon = navigation => {
   return {
@@ -26,8 +28,8 @@ const HomeStack = StackNavigator({
     screen: Home,
     navigationOptions: ({navigation}) => getDrawerIcon(navigation),
   },
-  LoadsDetail: {
-    screen: LoadsDetailScene,
+  LoadDetail: {
+    screen: LoadDetailScene,
   },
 });
 
@@ -40,7 +42,7 @@ const SettingsStack = StackNavigator({
 
 const ProfileStack = StackNavigator({
   Settings: {
-    screen: ProfileHome,
+    screen: ProfileHomeScene,
     navigationOptions: ({navigation}) => ({
       gesturesEnabled: false,
       headerLeft: (
@@ -68,6 +70,30 @@ const ProfileStack = StackNavigator({
   },
 });
 
+const LoadStack = StackNavigator(
+  {
+    LoadStackHome: {
+      screen: LoadHomeScene,
+      navigationOptions: ({navigation}) => ({
+        gesturesEnabled: false,
+        headerLeft: (
+          <DrawerIcon onPress={() => navigation.navigate('DrawerToggle')} />
+        ),
+      }),
+    },
+    LoadList: {
+      screen: LoadListScene,
+    },
+    LoadDetail:{
+      screen: LoadDetailScene
+    }
+  },
+  {
+    // initialRouteName: 'LoadAdd',
+  },
+);
+
+
 const DrawerRoutes = {
   HomeStack: {
     screen: HomeStack,
@@ -78,6 +104,9 @@ const DrawerRoutes = {
   SettingsStack: {
     screen: SettingsStack,
   },
+  LoadStack:{
+    screen: LoadStack
+  }
 };
 
 export const Routes = DrawerNavigator(DrawerRoutes, {

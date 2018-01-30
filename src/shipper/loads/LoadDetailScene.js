@@ -12,7 +12,7 @@ import Button from 'components/Button';
 import I18n from 'utils/locale';
 import colors from 'assets/theme/colors';
 
-class LoadsDetailScene extends Component {
+class LoadDetailScene extends Component {
   shouldComponentUpdate(nextProps) {
     return nextProps.load !== this.props.load;
   }
@@ -68,10 +68,6 @@ class LoadsDetailScene extends Component {
 
         <Separator style={{marginTop: 10, marginBottom: 50}} />
 
-        <Button
-          title={I18n.t('accept_booking').toUpperCase()}
-          onPress={this.acceptBooking}
-        />
       </View>
     );
   }
@@ -87,4 +83,4 @@ const makeMapStateToProps = () => {
   return mapStateToProps;
 };
 
-export default connect(makeMapStateToProps)(LoadsDetailScene);
+export default connect(makeMapStateToProps)(LoadDetailScene);

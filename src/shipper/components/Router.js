@@ -4,7 +4,7 @@ import Drawer from 'shipper/components/Drawer';
 import Home from 'shipper/Home';
 import Settings from 'shipper/Settings';
 import DrawerIcon from 'components/DrawerIcon';
-import ProfileHome from 'shipper/profile/ProfileHome';
+import ProfileHomeScene from 'shipper/profile/ProfileHomeScene';
 import ProfileUpdateScene from 'shipper/profile/ProfileUpdateScene';
 import EmployeeListScene from 'shipper/employees/EmployeeListScene';
 import EmployeeAddScene from 'shipper/employees/EmployeeAddScene';
@@ -12,7 +12,9 @@ import EmployeeEditScene from 'shipper/employees/EmployeeEditScene';
 import LoadAddScene from 'shipper/loads/LoadAddScene';
 import LocationListScene from 'shipper/locations/LocationListScene';
 import LocationAddScene from 'shipper/locations/LocationAddScene';
-import LoadList from "shipper/loads/LoadListScene";
+import LoadListScene from "shipper/loads/LoadListScene";
+import LoadHomeScene from "shipper/loads/LoadHomeScene";
+import LoadDetailScene from "shipper/loads/LoadDetailScene";
 
 const getDrawerIcon = navigation => {
   return {
@@ -38,8 +40,8 @@ const HomeStack = StackNavigator(
 
 const ProfileStack = StackNavigator(
   {
-    Settings: {
-      screen: ProfileHome,
+    ProfileStackHome: {
+      screen: ProfileHomeScene,
       navigationOptions: ({navigation}) => ({
         gesturesEnabled: false,
         headerLeft: (
@@ -59,9 +61,6 @@ const ProfileStack = StackNavigator(
     EmployeeEdit: {
       screen: EmployeeEditScene,
     },
-    LoadAdd: {
-      screen: LoadAddScene,
-    },
     LocationList: {
       screen: LocationListScene,
     },
@@ -75,8 +74,8 @@ const ProfileStack = StackNavigator(
 );
 const LoadStack = StackNavigator(
   {
-    LoadList: {
-      screen: LoadList,
+    LoadStackHome: {
+      screen: LoadHomeScene,
       navigationOptions: ({navigation}) => ({
         gesturesEnabled: false,
         headerLeft: (
@@ -84,9 +83,15 @@ const LoadStack = StackNavigator(
         ),
       }),
     },
+    LoadList: {
+      screen: LoadListScene,
+    },
     LoadAdd: {
       screen: LoadAddScene,
     },
+    LoadDetail:{
+      screen: LoadDetailScene
+    }
   },
   {
     // initialRouteName: 'LoadAdd',
@@ -126,5 +131,5 @@ export const Routes = DrawerNavigator(DrawerRoutes, {
   gesturesEnabled: false,
   contentComponent: props => <Drawer {...props} />,
   drawerWidth: 275,
-  // initialRouteName: 'ProfileStack',
+  initialRouteName: 'LoadStack',
 });
