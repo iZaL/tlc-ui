@@ -47,6 +47,7 @@ const getAuthUserWithProfile = createSelector(
 export const SELECTORS = {
   isAuthenticated,
   getAuthUser,
+  getAuthUserID,
   getAuthUserProfile,
   getAuthUserWithProfile,
   getAuthUserType,

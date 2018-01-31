@@ -9,6 +9,7 @@ if (__DEV__) {
       Platform.OS === 'ios'
         ? 'http://tlc.test/api'
         : 'http://10.0.2.1:9000/api',
+    SOCKET_SERVER: 'http://tlc.test:3000',
     GOOGLE_MAPS_KEY: 'AIzaSyCpQX4H0QPxVgKuNMZ0ELG_ymgT8RHcKh4',
     GOOGLE_MAPS_IOS_KEY: 'AIzaSyDPCgdWqrkBe4v3uSuU-MZGJIZ0AQxfbCo',
     GOOGLE_MAPS_ANDROID_KEY: 'AIzaSyCpQX4H0QPxVgKuNMZ0ELG_ymgT8RHcKh4',
@@ -25,6 +26,7 @@ if (__DEV__) {
   module.exports = {
     ...defaults,
     API_URL: '',
+    SOCKET_SERVER: 'http://bp.ideasowners.net:3000',
     GOOGLE_MAPS_KEY: 'AIzaSyCpQX4H0QPxVgKuNMZ0ELG_ymgT8RHcKh4',
     GOOGLE_MAPS_IOS_KEY: 'AIzaSyDPCgdWqrkBe4v3uSuU-MZGJIZ0AQxfbCo',
     GOOGLE_MAPS_ANDROID_KEY: 'AIzaSyCpQX4H0QPxVgKuNMZ0ELG_ymgT8RHcKh4',

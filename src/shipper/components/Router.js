@@ -15,6 +15,7 @@ import LocationAddScene from 'shipper/locations/LocationAddScene';
 import LoadListScene from "shipper/loads/LoadListScene";
 import LoadHomeScene from "shipper/loads/LoadHomeScene";
 import LoadDetailScene from "shipper/loads/LoadDetailScene";
+import TripTrackScene from "shipper/trips/TripTrackScene";
 
 const getDrawerIcon = navigation => {
   return {
@@ -91,6 +92,9 @@ const LoadStack = StackNavigator(
     },
     LoadDetail:{
       screen: LoadDetailScene
+    },
+    TripTrack:{
+      screen: TripTrackScene
     }
   },
   {

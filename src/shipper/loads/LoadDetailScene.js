@@ -47,6 +47,13 @@ class LoadDetailScene extends Component {
 
   acceptBooking = () => {};
 
+
+  loadTripMapScene = () => {
+    this.props.navigation.navigate('TripTrack',{
+      tripID:1
+    });
+  };
+
   render() {
     let {load} = this.props;
 
@@ -67,6 +74,13 @@ class LoadDetailScene extends Component {
         </View>
 
         <Separator style={{marginTop: 10, marginBottom: 50}} />
+
+
+        <Button
+          title={I18n.t('map').toUpperCase()}
+          onPress={this.loadTripMapScene}
+          style={{ marginVertical:10}}
+        />
 
       </View>
     );

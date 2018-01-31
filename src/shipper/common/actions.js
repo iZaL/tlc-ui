@@ -38,6 +38,11 @@ export const ACTION_TYPES = {
   FETCH_LOADS_BY_STATUS_REQUEST: '@shipper/FETCH_LOADS_BY_STATUS_REQUEST',
   FETCH_LOADS_BY_STATUS_SUCCESS: '@shipper/FETCH_LOADS_BY_STATUS_SUCCESS',
   FETCH_LOADS_BY_STATUS_FAILURE: '@shipper/FETCH_LOADS_BY_STATUS_FAILURE',
+
+  LOCATION_RECEIVED: '@shipper/LOCATION_RECEIVED',
+
+  SUBSCRIBE_TO_TRIP_TRACK_CHANNEL: '@shipper/SUBSCRIBE_TO_TRIP_TRACK_CHANNEL',
+
 };
 
 function fetchEmployees(params) {
@@ -101,6 +106,14 @@ function saveLoad(params) {
   };
 }
 
+
+function subscribeToTripTrack(params) {
+  return {
+    type: ACTION_TYPES.SUBSCRIBE_TO_TRIP_TRACK_CHANNEL,
+    params,
+  };
+}
+
 export const ACTIONS = {
   saveProfile,
   fetchProfile,
@@ -110,4 +123,5 @@ export const ACTIONS = {
   fetchLoadAddData,
   fetchLoadsByStatus,
   saveLoad,
+  subscribeToTripTrack,
 };

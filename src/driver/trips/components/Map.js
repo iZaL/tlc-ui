@@ -50,6 +50,10 @@ export default class Map extends Component {
   componentDidMount() {
     const {trip} = this.props;
 
+    let url =  `${API_URL}/trips/${trip.id}/location/update`;
+
+    console.log('url',url);
+
     BackgroundGeolocation.on('location', this.onLocation);
     BackgroundGeolocation.on('http', this.onHttp);
 
@@ -60,7 +64,7 @@ export default class Map extends Component {
         preventSuspend: false,
         startOnBoot: true,
         foregroundService: true,
-        // url: `http://${API_URL}/trips/${trip.id}/location/update`,
+        url:url,
         autoSync: true,
         debug: true,
         logLevel: BackgroundGeolocation.LOG_LEVEL_VERBOSE,
@@ -80,9 +84,8 @@ export default class Map extends Component {
   }
 
   onLocation = location => {
-    console.log('location',location);
+    // console.log('location',location);
     this.map.fitToElements(true);
-
     // console.log('[event] location: ', location);
     const lastPosition = this.state.origin;
     const currentLocation = {
@@ -101,7 +104,7 @@ export default class Map extends Component {
     }
   };
 
-  onHttp(response) {
+  onHttp = (response) => {
     console.log('[event] http: ', response);
     // this.addEvent('http', new Date(), response);
   }

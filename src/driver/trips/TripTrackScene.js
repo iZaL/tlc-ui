@@ -87,7 +87,9 @@ const makeMapStateToProps = () => {
   const mapStateToProps = (state, props) => {
     return {
       // trip: getTripByID(state, props.navigation.state.params.tripID),
-      trip: {},
+      trip: {
+        id:1
+      },
     };
   };
   return mapStateToProps;

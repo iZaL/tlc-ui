@@ -8,6 +8,7 @@ const countriesSchema = state => state.entities.countries;
 const shipperLocationsSchema = state => state.entities.shipper_locations;
 const loadsSchema = state => state.entities.loads;
 const getIdProp = ({}, itemID) => itemID;
+const getTrackings = state => state.shipper.trackings;
 
 const getProfile = createSelector(
   [USER_SELECTORS.getAuthUserProfile],
@@ -74,11 +75,20 @@ const getLoadsByStatus = () => {
   );
 };
 
+const getLocationUpdatesForTrip = () => {
+  return createSelector(
+    [getTrackings, getIdProp],
+    (tracking, trip) => tracking[trip] || {},
+  );
+};
+
 export const SELECTORS = {
   getProfile,
   getEmployees,
   getLocationsByType,
   getLoadsByStatus,
   getLocations,
-  getLoads
+  getLoads,
+  getLocationUpdatesForTrip,
+
 };

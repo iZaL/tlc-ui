@@ -25,6 +25,8 @@ export const ACTION_TYPES = {
 
   LOGOUT: '@user/LOGOUT',
   SET_AUTH_TOKEN: '@user/SET_AUTH_TOKEN',
+
+  SYNC_USER_TO_SOCKET: '@user/SYNC_USER_TO_SOCKET',
 };
 
 function login(credentials) {
