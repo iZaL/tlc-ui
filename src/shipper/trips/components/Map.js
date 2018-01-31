@@ -62,7 +62,10 @@ export default class Map extends Component {
             anchor={{x: 0.5, y: 0.5, position: 'relative'}}
             coordinate={origin}
             identifier="MarkerOrigin">
-
+            <Image
+              source={images.car}
+              style={[styles.image, rotate && {transform: [{rotate}]}]}
+            />
           </MapView.Marker>
 
           <MapView.Marker
