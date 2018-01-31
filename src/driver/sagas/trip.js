@@ -17,11 +17,30 @@ function* fetchUpcomingTrips() {
   }
 }
 
+function* fetchTripDetails(action) {
+  try {
+    const response = yield call(API.fetchTripDetails,action.id);
+    const normalized = normalize(response.data, Schema.trips);
+    yield put({
+      type: ACTION_TYPES.FETCH_TRIP_DETAILS_SUCCESS,
+      entities: normalized.entities,
+    });
+  } catch (error) {
+    yield put({type: ACTION_TYPES.FETCH_TRIP_DETAILS_FAILURE, error});
+  }
+}
+
 function* fetchUpcomingTripsMonitor() {
   yield takeLatest(
     ACTION_TYPES.FETCH_UPCOMING_TRIPS_REQUEST,
     fetchUpcomingTrips,
   );
 }
+function* fetchTripDetailsMonitor() {
+  yield takeLatest(
+    ACTION_TYPES.FETCH_UPCOMING_TRIPS_REQUEST,
+    fetchTripDetails,
+  );
+}
 
-export const sagas = all([fork(fetchUpcomingTripsMonitor)]);
+export const sagas = all([fork(fetchUpcomingTripsMonitor),fork(fetchTripDetailsMonitor)]);

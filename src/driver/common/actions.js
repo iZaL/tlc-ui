@@ -42,6 +42,10 @@ export const ACTION_TYPES = {
   FETCH_LOADS_BY_STATUS_REQUEST: '@driver/FETCH_LOADS_BY_STATUS_REQUEST',
   FETCH_LOADS_BY_STATUS_SUCCESS: '@driver/FETCH_LOADS_BY_STATUS_SUCCESS',
   FETCH_LOADS_BY_STATUS_FAILURE: '@driver/FETCH_LOADS_BY_STATUS_FAILURE',
+
+  FETCH_TRIP_DETAILS_REQUEST: '@driver/FETCH_TRIP_DETAILS_REQUEST',
+  FETCH_TRIP_DETAILS_SUCCESS: '@driver/FETCH_TRIP_DETAILS_SUCCESS',
+  FETCH_TRIP_DETAILS_FAILURE: '@driver/FETCH_TRIP_DETAILS_FAILURE',
 };
 
 function fetchProfile(params) {
@@ -68,6 +72,14 @@ function fetchUpcomingTrips(params) {
 function fetchLoadDetails(params) {
   return {
     type: ACTION_TYPES.FETCH_LOAD_DETAILS_REQUEST,
+    params,
+  };
+}
+
+function fetchTripDetails(id,params) {
+  return {
+    type: ACTION_TYPES.FETCH_TRIP_DETAILS_REQUEST,
+    id:id,
     params,
   };
 }
@@ -108,6 +120,7 @@ function fetchLoadsByStatus(params) {
 }
 
 
+
 export const ACTIONS = {
   saveProfile,
   fetchProfile,
@@ -118,5 +131,5 @@ export const ACTIONS = {
   fetchUpcomingTrips,
   fetchLoadDetails,
   fetchLoadsByStatus,
-
+  fetchTripDetails
 };

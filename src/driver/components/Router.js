@@ -14,6 +14,7 @@ import RoutesDetailScene from 'driver/routes/RoutesDetailScene';
 import LoadDetailScene from 'driver/loads/LoadDetailScene';
 import LoadListScene from "driver/loads/LoadListScene";
 import LoadHomeScene from "driver/loads/LoadHomeScene";
+import TripTrackScene from "driver/trips/TripTrackScene";
 
 const getDrawerIcon = navigation => {
   return {
@@ -86,6 +87,9 @@ const LoadStack = StackNavigator(
     },
     LoadDetail:{
       screen: LoadDetailScene
+    },
+    TripTrack:{
+      screen: TripTrackScene
     }
   },
   {
@@ -113,5 +117,5 @@ export const Routes = DrawerNavigator(DrawerRoutes, {
   gesturesEnabled: false,
   contentComponent: props => <Drawer {...props} />,
   drawerWidth: 275,
-  // initialRouteName: 'ProfileStack',
+  initialRouteName: 'LoadStack',
 });

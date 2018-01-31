@@ -35,6 +35,11 @@ function fetchLoadDetails(params) {
   return fetchAPI(url);
 }
 
+function fetchTripDetails(id,params = {}) {
+  const url = `driver/trips/${id}/details`;
+  return fetchAPI(url);
+}
+
 function saveTruck(body) {
   const url = `driver/trucks`;
   return fetchAPI(url, 'POST', body);
@@ -53,6 +58,7 @@ export const API = {
   saveTruck,
   fetchRouteTransits,
   fetchUpcomingTrips,
+  fetchTripDetails,
   fetchLoadDetails,
   fetchLoadsByStatus,
 

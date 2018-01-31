@@ -76,7 +76,6 @@
   "distance" : "Distance",
   "price" : "Price",
   "call" : "CALL",
-  "accept_booking" : "Accept Booking",
   "name_en" : "Name in English",
   "name_ar" : "Name in Arabic",
   "name_hi" : "Name in Hindi",
@@ -95,18 +94,23 @@
   "edit" : "Edit",
   "details" : "Details",
   "delete" : "Delete",
-  "loads" : "Loads",
-  "load_add" : "Post a Load",
   "location_origin_add" : "Add New Pick Location",
   "location_destination_add" : "Add New Drop Location",
   "address" : "Address",
   "area_select" : "Search",
   "packaging_select" : "Select Packaging",
+
+  "loads" : "Loads",
+  "load_add" : "Post a Load",
   "load_date" : "Load Date",
   "load_time" : "Load Time",
   "load_completed_list" : "Past Loads",
   "load_working_list" : "Loads on progress",
   "load_approved_list" : "Upcoming Loads",
+  "load_accept" : "Accept Booking",
+
+  "trip_start" : "Start Job",
+  "trip_end" : "End Job",
 
   "documents_request" : "Request Documents",
   "use_own_truck" : "Use Own Truck",
@@ -115,10 +119,13 @@
   "receiver_phone" : "Receiver Phone",
   "receiver_mobile" : "Receiver Mobile",
   "next" : "Next",
+
   "location_origin_select" : "Select Pick Location",
   "location_destination_select" : "Select Drop Location",
   "location_origin_list" : "Pick Locations",
   "location_destination_list" : "Drop Locations",
+
+  "map" : "Map"
 
 
 }
