@@ -95,13 +95,13 @@ def enableSeparateBuildPerCPUArchitecture = false
 def enableProguardInReleaseBuilds = false
 
 android {
-    compileSdkVersion 24
-    buildToolsVersion "24.0.0"
+    compileSdkVersion 26
+    buildToolsVersion "26.0.2"
 
     defaultConfig {
         applicationId "com.tlc"
         minSdkVersion 16
-        targetSdkVersion 24
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
         ndk {
@@ -144,6 +144,7 @@ repositories {
 }
 
 dependencies {
+    compile(name: 'tslocationmanager', ext: 'aar')
     compile(project(':react-native-push-notification')) {
         exclude group: 'com.google.android.gms'
     }
@@ -154,23 +155,21 @@ dependencies {
     compile(project(':react-native-maps')) {
         exclude group: 'com.google.android.gms'
     }
+    compile project(':react-native-background-geolocation')
     compile fileTree(dir: "libs", include: ["*.jar"])
     compile "com.android.support:appcompat-v7:23.0.1"
     compile "com.facebook.react:react-native:+"  // From node_modules
 
-    compile(name: 'tslocationmanager', ext: 'aar')
-    compile project(':react-native-background-geolocation')
-
-    compile ("com.google.android.gms:play-services-base:11.6.0") {
+    compile ("com.google.android.gms:play-services-base:11.8.0") {
         force = true;
     }
-    compile ("com.google.android.gms:play-services-maps:11.6.0") {
+    compile ("com.google.android.gms:play-services-maps:11.8.0") {
         force = true;
     }
-    compile ("com.google.android.gms:play-services-gcm:11.6.0") {
+    compile ("com.google.android.gms:play-services-gcm:11.8.0") {
         force = true;
     }
-    compile ("com.google.android.gms:play-services-location:11.6.0") {
+    compile ("com.google.android.gms:play-services-location:11.8.0") {
         force = true;
     }
 }

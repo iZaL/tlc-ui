@@ -8,11 +8,11 @@ if (__DEV__) {
     API_URL:
       Platform.OS === 'ios'
         ? 'http://tlc.test/api'
-        : 'http://10.0.2.1:9000/api',
-    SOCKET_SERVER: 'http://tlc.test:3000',
-    GOOGLE_MAPS_KEY: 'AIzaSyCpQX4H0QPxVgKuNMZ0ELG_ymgT8RHcKh4',
-    GOOGLE_MAPS_IOS_KEY: 'AIzaSyDPCgdWqrkBe4v3uSuU-MZGJIZ0AQxfbCo',
-    GOOGLE_MAPS_ANDROID_KEY: 'AIzaSyCpQX4H0QPxVgKuNMZ0ELG_ymgT8RHcKh4',
+        : 'http://10.0.2.2:9000/api',
+    SOCKET_SERVER: 'http://10.0.2.2:3000',
+    GOOGLE_MAPS_KEY: 'AIzaSyDhsuOKB6KZML6i0uyAi5oHoRCU94Dhnm0',
+    GOOGLE_MAPS_IOS_KEY: 'AIzaSyDhsuOKB6KZML6i0uyAi5oHoRCU94Dhnm0',
+    GOOGLE_MAPS_ANDROID_KEY: 'AIzaSyDhsuOKB6KZML6i0uyAi5oHoRCU94Dhnm0',
     DEFAULT_LANGUAGE: 'en',
     DEFAULT_COUNTRY: 'KW',
     AUTH_KEY: 'AUTH_KEY',
@@ -21,6 +21,8 @@ if (__DEV__) {
     PUSH_TOKEN_KEY: 'PUSH_TOKEN_KEY',
     COUNTRY_KEY: 'COUNTRY_KEY',
     CODE_PUSH_ENABLED: false,
+
+
   };
 } else {
   module.exports = {

@@ -35,14 +35,14 @@ public class MainApplication extends Application implements ReactApplication {
     @Override
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
-            new RNBackgroundGeolocation(),
             new MainReactPackage(),
             new ReactNativePushNotificationPackage(),
             new ImagePickerPackage(),
             new VectorIconsPackage(),
             new RNI18nPackage(),
             new CodePush(null, getApplicationContext(), BuildConfig.DEBUG),
-            new MapsPackage()
+            new MapsPackage(),
+            new RNBackgroundGeolocation()
       );
     }
 

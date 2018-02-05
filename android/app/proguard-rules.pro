@@ -61,6 +61,7 @@
 -keep class okhttp3.** { *; }
 -keep interface okhttp3.** { *; }
 -dontwarn okhttp3.**
+-dontwarn okio.**
 
 # okio
 
@@ -72,9 +73,6 @@
 # BackgroundGeolocation
 -keep class com.transistorsoft.** { *; }
 -dontwarn com.transistorsoft.**
-
-# OkHttp
--dontwarn okio.**
 
 # BackgroundGeolocation (EventBus)
 -keepclassmembers class * extends de.greenrobot.event.util.ThrowableFailureEvent {

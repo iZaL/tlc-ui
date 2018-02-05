@@ -38,11 +38,11 @@ export default class Map extends Component {
     console.log('heading',heading);
 
     const rotate =
-      typeof heading === 'number' && heading >= 0 ? `${heading}deg` : undefined;
-
-    if(rotate) {
-      console.log('rotated',rotate);
-    }
+      typeof heading === 'number' && heading >= 0 ? heading : 0;
+    //
+    // if(rotate) {
+    //   console.log('rotated',rotate);
+    // }
 
     return (
       <View style={styles.container}>
@@ -61,11 +61,14 @@ export default class Map extends Component {
             style={styles.mapMarker}
             anchor={{x: 0.5, y: 0.5, position: 'relative'}}
             coordinate={origin}
-            identifier="MarkerOrigin">
-            <Image
-              source={images.car}
-              style={[styles.image, rotate && {transform: [{rotate}]}]}
-            />
+            identifier="MarkerOrigin"
+            image={images.car}
+            rotation={rotate || 0}
+          >
+            {/*<Image*/}
+              {/*source={images.car}*/}
+              {/*style={[styles.image, rotate && {transform: [{rotate}]}]}*/}
+            {/*/>*/}
           </MapView.Marker>
 
           <MapView.Marker

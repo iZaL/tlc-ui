@@ -174,6 +174,8 @@ export default class Map extends Component {
       <View style={styles.container}>
         <MapView
           // provider={PROVIDER_GOOGLE}
+          showsUserLocation={true}
+          followsUserLocation={false}
           ref={ref => {
             this.map = ref;
           }}
@@ -184,16 +186,16 @@ export default class Map extends Component {
             longitudeDelta: LONGITUDE_DELTA,
           }}
           onLayout={this.onMapLayout}>
-          <MapView.Marker
-            style={styles.mapMarker}
-            anchor={{x: 0.5, y: 0.5, position: 'relative'}}
-            coordinate={origin}
-            identifier="MarkerOrigin">
-            <Image
-              source={images.car}
-              style={[styles.image, rotate && {transform: [{rotate}]}]}
-            />
-          </MapView.Marker>
+          {/*<MapView.Marker*/}
+            {/*style={styles.mapMarker}*/}
+            {/*anchor={{x: 0.5, y: 0.5, position: 'relative'}}*/}
+            {/*coordinate={origin}*/}
+            {/*identifier="MarkerOrigin">*/}
+            {/*<Image*/}
+              {/*source={images.car}*/}
+              {/*style={[styles.image, rotate && {transform: [{rotate}]}]}*/}
+            {/*/>*/}
+          {/*</MapView.Marker>*/}
 
           <MapView.Marker
             coordinate={destination}
