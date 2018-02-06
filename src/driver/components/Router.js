@@ -15,11 +15,13 @@ import LoadDetailScene from 'driver/loads/LoadDetailScene';
 import LoadListScene from 'driver/loads/LoadListScene';
 import LoadHomeScene from 'driver/loads/LoadHomeScene';
 import TripTrackScene from 'driver/trips/TripTrackScene';
+import I18n from 'utils/locale';
+import colors from "assets/theme/colors";
 
 const getDrawerIcon = navigation => {
   return {
     headerLeft: (
-      <DrawerIcon onPress={() => navigation.navigate('DrawerToggle')} />
+      <DrawerIcon onPress={() => navigation.navigate('DrawerToggle')}/>
     ),
   };
 };
@@ -27,7 +29,10 @@ const getDrawerIcon = navigation => {
 const HomeStack = StackNavigator({
   Home: {
     screen: Home,
-    navigationOptions: ({navigation}) => getDrawerIcon(navigation),
+    navigationOptions: ({navigation}) => ({
+      title:I18n.t('home'),
+      ...getDrawerIcon(navigation),
+    }),
   },
   LoadDetail: {
     screen: LoadDetailScene,
@@ -37,7 +42,10 @@ const HomeStack = StackNavigator({
 const SettingsStack = StackNavigator({
   Settings: {
     screen: Settings,
-    navigationOptions: ({navigation}) => getDrawerIcon(navigation),
+    navigationOptions: ({navigation}) => ({
+      title:I18n.t('settings'),
+      ...getDrawerIcon(navigation),
+    }),
   },
 });
 
@@ -45,41 +53,60 @@ const ProfileStack = StackNavigator({
   Settings: {
     screen: ProfileHomeScene,
     navigationOptions: ({navigation}) => ({
-      gesturesEnabled: false,
-      headerLeft: (
-        <DrawerIcon onPress={() => navigation.navigate('DrawerToggle')} />
-      ),
+      title:I18n.t('profile'),
+      ...getDrawerIcon(navigation)
     }),
   },
   ProfileUpdate: {
     screen: ProfileUpdateScene,
+    navigationOptions: () => ({
+      title: I18n.t('profile_update'),
+    }),
   },
   TruckUpdate: {
     screen: TruckUpdateScene,
+    navigationOptions: () => ({
+      title: I18n.t('truck_update'),
+    }),
   },
   TrailerUpdate: {
     screen: TrailerUpdateScene,
+    navigationOptions: () => ({
+      title: I18n.t('trailer_update'),
+    }),
   },
   RoutesUpdate: {
     screen: RoutesUpdateScene,
+    navigationOptions: () => ({
+      title: I18n.t('route_update'),
+    }),
   },
   RoutesDetail: {
     screen: RoutesDetailScene,
+    navigationOptions: () => ({
+      title: I18n.t('route_detail'),
+    }),
   },
   DocumentsUpload: {
     screen: DocumentsUploadScene,
+    navigationOptions: () => ({
+      title: I18n.t('documents_upload'),
+    }),
   },
-});
+}, {
+  navigationOptions: {
+    gesturesEnabled: false,
+    headerTintColor: colors.primary,
+  },
+},);
 
 const LoadStack = StackNavigator(
   {
     LoadStackHome: {
       screen: LoadHomeScene,
       navigationOptions: ({navigation}) => ({
-        gesturesEnabled: false,
-        headerLeft: (
-          <DrawerIcon onPress={() => navigation.navigate('DrawerToggle')} />
-        ),
+        title:I18n.t('loads'),
+        ...getDrawerIcon(navigation)
       }),
     },
     LoadList: {
@@ -93,7 +120,10 @@ const LoadStack = StackNavigator(
     },
   },
   {
-    // initialRouteName: 'LoadAdd',
+    navigationOptions: {
+      gesturesEnabled: false,
+      headerTintColor: colors.primary,
+    },
   },
 );
 
@@ -116,5 +146,5 @@ export const Routes = DrawerNavigator(DrawerRoutes, {
   gesturesEnabled: false,
   contentComponent: props => <Drawer {...props} />,
   drawerWidth: 275,
-  initialRouteName: 'LoadStack',
+  // initialRouteName: 'LoadStack',
 });

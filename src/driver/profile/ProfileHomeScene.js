@@ -32,7 +32,7 @@ class ProfileHome extends Component {
       case 'trailer_update':
         scene = 'TrailerUpdate';
         break;
-      case 'routes_update':
+      case 'route_update':
         scene = 'RoutesUpdate';
         break;
       case 'documents_upload':
@@ -83,7 +83,7 @@ class ProfileHome extends Component {
               name="road-variant"
             />
           }
-          name="routes_update"
+          name="route_update"
           disabled={!truck}
         />
         <Separator />

@@ -43,12 +43,7 @@
   "select" : "Select",
   "truck_update" : "Update Truck",
   "truck_add" : "Add Truck",
-  "routes_add" : "Add Routes",
-  "routes_update" : "Update Routes",
-  "trailer" : "Trailer",
-  "trailer_add" : "Add Trailer",
-  "trailer_update" : "Update Trailer",
-  "trailer_select" : "Select Trailer",
+
   "make" : "Make",
   "model" : "Model",
   "plate_number" : "Number Plate",
@@ -65,7 +60,6 @@
   "image" : "Image",
   "licenses_upload" : "Upload Licenses",
   "visas_upload" : "Upload Visas",
-  "documents_upload": "Upload Documents",
   "driving_license" : "Driving License",
   "visa" : "Visa",
   "view_details" : "View Details",
@@ -118,6 +112,7 @@
   "trip_track" : "Tracking...",
 
   "documents_request" : "Request Documents",
+  "documents_upload" : "Upload Documents",
   "use_own_truck" : "Use Own Truck",
   "receiver_name" : "Receiver Name",
   "receiver_email" : "Receiver Email",
@@ -139,6 +134,13 @@
   "driver_detail" : "Driver Detail",
   "driver_rate" : "Rate Driver",
 
+  "routes_add" : "Add Routes",
+  "route_update" : "Update Routes",
+  "route_detail" : "Route Detail",
 
+  "trailer" : "Trailer",
+  "trailer_add" : "Add Trailer",
+  "trailer_update" : "Update Trailer",
+  "trailer_select" : "Select Trailer",
 
 }
