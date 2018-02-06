@@ -18,6 +18,7 @@ import LoadDetailScene from 'shipper/loads/LoadDetailScene';
 import TripTrackScene from 'shipper/trips/TripTrackScene';
 import colors from 'assets/theme/colors';
 import I18n from 'utils/locale';
+import LoadDetailOptionsListScene from "shipper/loads/LoadDetailOptionsListScene";
 
 const getDrawerIcon = navigation => {
   return {
@@ -117,6 +118,12 @@ const LoadStack = StackNavigator(
       screen: LoadAddScene,
       navigationOptions: () => ({
         title: I18n.t('load_add'),
+      }),
+    },
+    LoadDetailOptionsList:{
+      screen: LoadDetailOptionsListScene,
+      navigationOptions: () => ({
+        title: I18n.t('load_detail_options_list'),
       }),
     },
     LoadDetail: {

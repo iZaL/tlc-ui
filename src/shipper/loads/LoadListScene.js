@@ -10,6 +10,7 @@ import I18n from 'utils/locale';
 type STATUS = 'working|confirmed|completed';
 
 class LoadListScene extends Component {
+
   static navigationOptions = ({navigation}) => {
     const {params} = navigation.state;
     const status = (params && params.status) || null;
@@ -42,7 +43,7 @@ class LoadListScene extends Component {
   }
 
   onLoadsListItemPress = (load: object) => {
-    this.props.navigation.navigate('LoadDetail', {
+    this.props.navigation.navigate('LoadDetailOptionsList', {
       loadID: load.id,
     });
   };

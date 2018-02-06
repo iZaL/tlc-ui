@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {ScrollView, Text, View} from 'react-native';
+import {ScrollView, View} from 'react-native';
 import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
 import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
 import LoadLocationMapView from 'driver/loads/components/LoadLocationMapView';
@@ -13,7 +13,6 @@ import I18n from 'utils/locale';
 import colors from 'assets/theme/colors';
 
 class LoadDetailScene extends Component {
-
   shouldComponentUpdate(nextProps) {
     return nextProps.load !== this.props.load;
   }
@@ -35,23 +34,15 @@ class LoadDetailScene extends Component {
         }),
       }),
     }),
-    // load: PropTypes.shape({
-    //   origin: PropTypes.object.isRequired,
-    //   destination: PropTypes.object.isRequired,
-    // }).isRequired,
+    load: PropTypes.shape({
+      origin: PropTypes.object.isRequired,
+      destination: PropTypes.object.isRequired,
+    }).isRequired,
   };
 
   static defaultProps = {
     navigation: {state: {params: {loadID: 0}}},
     load: {},
-  };
-
-  static navigationOptions = ({navigation}) => {
-    return {
-      headerRight: (
-        <Text style={{paddingRight:10,color:colors.primary,fontWeight:'bold'}}>{I18n.t('edit')}</Text>
-      ),
-    };
   };
 
   acceptBooking = () => {};
@@ -81,7 +72,13 @@ class LoadDetailScene extends Component {
           <LoadInfo load={load} />
         </View>
 
+        <Separator style={{marginTop: 10, marginBottom: 50}} />
 
+        <Button
+          title={I18n.t('map').toUpperCase()}
+          onPress={this.loadTripMapScene}
+          style={{marginVertical: 10}}
+        />
       </View>
     );
   }

@@ -7,43 +7,47 @@ import {SELECTORS as SHIPPER_SELECTORS} from 'shipper/common/selectors';
 import {ACTIONS as SHIPPER_ACTIONS} from 'shipper/common/actions';
 import Separator from 'components/Separator';
 import I18n from 'utils/locale';
+import PropTypes from 'prop-types';
 
-class ProfileHome extends Component {
-  static propTypes = {};
-
-  componentDidMount() {
-    this.props.dispatch(SHIPPER_ACTIONS.fetchProfile());
-  }
+class LoadDetailOptionsListScene extends Component {
+  static propTypes = {
+    navigation: PropTypes.shape({
+      state: PropTypes.shape({
+        params: PropTypes.shape({
+          loadID: PropTypes.number.isRequired,
+        }),
+      }),
+    }),
+    // load: PropTypes.shape({
+    //   origin: PropTypes.object.isRequired,
+    //   destination: PropTypes.object.isRequired,
+    // }).isRequired,
+  };
 
   onListItemPress = route => {
+
+    const {loadID} = this.props.navigation.state.params;
+
     let scene;
     let sceneConfig = {};
     switch (route) {
-      case 'profile_update':
-        scene = 'ProfileUpdate';
+      case 'load_detail':
+        scene = 'LoadDetail';
         sceneConfig = {
-          title: I18n.t('profile_update'),
+          loadID: loadID,
         };
         break;
-      case 'employee_list':
-        scene = 'EmployeeList';
+      case 'load_track':
+        scene = 'TripTrack';
         sceneConfig = {
-          title: I18n.t('employee_list'),
+          tripID: 1,
         };
         break;
-      case 'location_origin_list':
-        scene = 'LocationList';
-        sceneConfig = {
-          title: I18n.t('location_origin_list'),
-          type: 'origin',
-        };
+      case 'driver_detail':
+        scene = 'LoadList';
         break;
-      case 'location_destination_list':
-        scene = 'LocationList';
-        sceneConfig = {
-          title: I18n.t('location_destination_list'),
-          type: 'destination',
-        };
+      case 'driver_rate':
+        scene = 'LoadList';
         break;
     }
     return this.props.navigation.navigate(scene, sceneConfig);
@@ -52,10 +56,18 @@ class ProfileHome extends Component {
   render() {
     return (
       <ScrollView style={{flex: 1, backgroundColor: 'white'}}>
+        <Separator />
+
         <ListItem
           onItemPress={this.onListItemPress}
-          icon={<IconFactory type="Ionicons" size={30} name="md-person" />}
-          name="profile_update"
+          icon={
+            <IconFactory
+              type="MaterialCommunityIcons"
+              size={30}
+              name="truck-delivery"
+            />
+          }
+          name="load_detail"
         />
 
         <Separator />
@@ -66,10 +78,10 @@ class ProfileHome extends Component {
             <IconFactory
               type="MaterialCommunityIcons"
               size={30}
-              name="contacts"
+              name="pin"
             />
           }
-          name="employee_list"
+          name="load_track"
         />
 
         <Separator />
@@ -80,10 +92,10 @@ class ProfileHome extends Component {
             <IconFactory
               type="MaterialCommunityIcons"
               size={30}
-              name="adjust"
+              name="account-location"
             />
           }
-          name="location_origin_list"
+          name="driver_detail"
         />
 
         <Separator />
@@ -94,10 +106,10 @@ class ProfileHome extends Component {
             <IconFactory
               type="MaterialCommunityIcons"
               size={30}
-              name="map-marker"
+              name="truck-delivery"
             />
           }
-          name="location_destination_list"
+          name="driver_rate"
         />
       </ScrollView>
     );
@@ -110,4 +122,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(ProfileHome);
+export default connect(mapStateToProps)(LoadDetailOptionsListScene);

@@ -32,7 +32,6 @@
   "home" : "Home",
   "skip" : "Skip",
   "account_select_type" : "Register As",
-  "driver" : "Driver",
   "shipper" : "Shipper",
   "registration_success" : "Registration Success",
   "account_confirm" : "Confirm Account",
@@ -111,9 +110,12 @@
   "load_list" : "Loads",
   "load_detail" : "Load Detail",
   "load_passes" : "Load Passes",
+  "load_detail_options_list" : "Load Options",
+  "load_track" : "Track Load on Map",
 
   "trip_start" : "Start Job",
   "trip_end" : "End Job",
+  "trip_track" : "Tracking...",
 
   "documents_request" : "Request Documents",
   "use_own_truck" : "Use Own Truck",
@@ -131,6 +133,12 @@
   "location_add" : "Add Location",
 
   "map" : "Map",
-  "kg" : "KG"
+  "kg" : "KG",
+
+  "driver" : "Driver",
+  "driver_detail" : "Driver Detail",
+  "driver_rate" : "Rate Driver",
+
+
 
 }

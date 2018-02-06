@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, TouchableHighlight} from 'react-native';
 import PropTypes from 'prop-types';
-import colors from 'theme/colors';
+import colors from 'assets/theme/colors';
 import Touchable from 'react-native-platform-touchable';
 
 export default class Button extends Component {
