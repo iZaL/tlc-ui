@@ -21,8 +21,6 @@ if (__DEV__) {
     PUSH_TOKEN_KEY: 'PUSH_TOKEN_KEY',
     COUNTRY_KEY: 'COUNTRY_KEY',
     CODE_PUSH_ENABLED: false,
-
-
   };
 } else {
   module.exports = {

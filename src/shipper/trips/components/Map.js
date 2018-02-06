@@ -22,7 +22,7 @@ export default class Map extends Component {
   };
 
   componentDidUpdate(nextProps) {
-    if(this.props.origin.latitude !== nextProps.origin.latitude) {
+    if (this.props.origin.latitude !== nextProps.origin.latitude) {
       this.map.fitToElements(true);
     }
   }
@@ -35,10 +35,9 @@ export default class Map extends Component {
     const {destination} = this.props;
     const {origin} = this.props;
     const {heading} = origin;
-    console.log('heading',heading);
+    console.log('heading', heading);
 
-    const rotate =
-      typeof heading === 'number' && heading >= 0 ? heading : 0;
+    const rotate = typeof heading === 'number' && heading >= 0 ? heading : 0;
     //
     // if(rotate) {
     //   console.log('rotated',rotate);
@@ -63,11 +62,10 @@ export default class Map extends Component {
             coordinate={origin}
             identifier="MarkerOrigin"
             image={images.car}
-            rotation={rotate || 0}
-          >
+            rotation={rotate || 0}>
             {/*<Image*/}
-              {/*source={images.car}*/}
-              {/*style={[styles.image, rotate && {transform: [{rotate}]}]}*/}
+            {/*source={images.car}*/}
+            {/*style={[styles.image, rotate && {transform: [{rotate}]}]}*/}
             {/*/>*/}
           </MapView.Marker>
 
@@ -89,8 +87,7 @@ const styles = StyleSheet.create({
   map: {
     flex: 1,
   },
-  mapMarker: {
-  },
+  mapMarker: {},
   image: {
     width: 20,
     height: 40,

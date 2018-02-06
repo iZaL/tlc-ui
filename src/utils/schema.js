@@ -72,7 +72,7 @@ loadsSchema.define({
     country: countriesSchema,
   },
   trailer: trailersSchema,
-  shipper:shippersSchema
+  shipper: shippersSchema,
 });
 
 tripsSchema.define({

@@ -31,7 +31,7 @@ function* login(action) {
       payload: response.data,
     });
 
-    if(response.meta) {
+    if (response.meta) {
       yield call(setStorageItem, AUTH_KEY, response.meta.api_token || '');
     }
 

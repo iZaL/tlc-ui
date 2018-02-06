@@ -12,17 +12,17 @@ import EmployeeEditScene from 'shipper/employees/EmployeeEditScene';
 import LoadAddScene from 'shipper/loads/LoadAddScene';
 import LocationListScene from 'shipper/locations/LocationListScene';
 import LocationAddScene from 'shipper/locations/LocationAddScene';
-import LoadListScene from "shipper/loads/LoadListScene";
-import LoadHomeScene from "shipper/loads/LoadHomeScene";
-import LoadDetailScene from "shipper/loads/LoadDetailScene";
-import TripTrackScene from "shipper/trips/TripTrackScene";
-import colors from "assets/theme/colors";
+import LoadListScene from 'shipper/loads/LoadListScene';
+import LoadHomeScene from 'shipper/loads/LoadHomeScene';
+import LoadDetailScene from 'shipper/loads/LoadDetailScene';
+import TripTrackScene from 'shipper/trips/TripTrackScene';
+import colors from 'assets/theme/colors';
 import I18n from 'utils/locale';
 
 const getDrawerIcon = navigation => {
   return {
     headerLeft: (
-      <DrawerIcon onPress={() => navigation.navigate('DrawerToggle')}/>
+      <DrawerIcon onPress={() => navigation.navigate('DrawerToggle')} />
     ),
   };
 };
@@ -33,7 +33,7 @@ const HomeStack = StackNavigator(
       screen: Home,
       navigationOptions: ({navigation}) => ({
         ...getDrawerIcon(navigation),
-        title: 'Home'
+        title: 'Home',
       }),
     },
   },
@@ -52,44 +52,43 @@ const ProfileStack = StackNavigator(
       navigationOptions: ({navigation}) => ({
         gesturesEnabled: false,
         headerLeft: (
-          <DrawerIcon onPress={() => navigation.navigate('DrawerToggle')}/>
+          <DrawerIcon onPress={() => navigation.navigate('DrawerToggle')} />
         ),
-        title: I18n.t('profile')
+        title: I18n.t('profile'),
       }),
     },
     ProfileUpdate: {
       screen: ProfileUpdateScene,
       navigationOptions: () => ({
-        title: I18n.t('profile_update')
-      })
+        title: I18n.t('profile_update'),
+      }),
     },
     EmployeeList: {
       screen: EmployeeListScene,
       navigationOptions: () => ({
-        title: I18n.t('employee_list')
-      })
+        title: I18n.t('employee_list'),
+      }),
     },
     EmployeeAdd: {
       screen: EmployeeAddScene,
       navigationOptions: () => ({
-        title: I18n.t('employee_add')
-      })
+        title: I18n.t('employee_add'),
+      }),
     },
     EmployeeEdit: {
       screen: EmployeeEditScene,
       navigationOptions: () => ({
-        title: I18n.t('employee_edit')
-      })
+        title: I18n.t('employee_edit'),
+      }),
     },
     LocationList: {
       screen: LocationListScene,
-
     },
     LocationAdd: {
       screen: LocationAddScene,
       navigationOptions: () => ({
-        title: I18n.t('location_add')
-      })
+        title: I18n.t('location_add'),
+      }),
     },
   },
   {
@@ -106,9 +105,9 @@ const LoadStack = StackNavigator(
       navigationOptions: ({navigation}) => ({
         gesturesEnabled: false,
         headerLeft: (
-          <DrawerIcon onPress={() => navigation.navigate('DrawerToggle')}/>
+          <DrawerIcon onPress={() => navigation.navigate('DrawerToggle')} />
         ),
-        title: I18n.t('loads')
+        title: I18n.t('loads'),
       }),
     },
     LoadList: {
@@ -117,21 +116,21 @@ const LoadStack = StackNavigator(
     LoadAdd: {
       screen: LoadAddScene,
       navigationOptions: () => ({
-        title: I18n.t('load_add')
-      })
+        title: I18n.t('load_add'),
+      }),
     },
     LoadDetail: {
       screen: LoadDetailScene,
       navigationOptions: () => ({
-        title: I18n.t('load_detail')
-      })
+        title: I18n.t('load_detail'),
+      }),
     },
     TripTrack: {
       screen: TripTrackScene,
       navigationOptions: () => ({
-        title: I18n.t('trip_track')
-      })
-    }
+        title: I18n.t('trip_track'),
+      }),
+    },
   },
   {
     navigationOptions: {
@@ -147,7 +146,7 @@ const SettingStack = StackNavigator(
     Settings: {
       screen: Settings,
       navigationOptions: ({navigation}) => ({
-        title:I18n.t('settings'),
+        title: I18n.t('settings'),
         ...getDrawerIcon(navigation),
       }),
     },

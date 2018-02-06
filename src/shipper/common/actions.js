@@ -42,7 +42,6 @@ export const ACTION_TYPES = {
   LOCATION_RECEIVED: '@shipper/LOCATION_RECEIVED',
 
   SUBSCRIBE_TO_TRIP_TRACK_CHANNEL: '@shipper/SUBSCRIBE_TO_TRIP_TRACK_CHANNEL',
-
 };
 
 function fetchEmployees(params) {
@@ -105,7 +104,6 @@ function saveLoad(params) {
     params,
   };
 }
-
 
 function subscribeToTripTrack(params) {
   return {

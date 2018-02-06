@@ -12,9 +12,9 @@ import RoutesUpdateScene from 'driver/profile/RoutesUpdateScene';
 import DocumentsUploadScene from 'driver/profile/DocumentsUploadScene';
 import RoutesDetailScene from 'driver/routes/RoutesDetailScene';
 import LoadDetailScene from 'driver/loads/LoadDetailScene';
-import LoadListScene from "driver/loads/LoadListScene";
-import LoadHomeScene from "driver/loads/LoadHomeScene";
-import TripTrackScene from "driver/trips/TripTrackScene";
+import LoadListScene from 'driver/loads/LoadListScene';
+import LoadHomeScene from 'driver/loads/LoadHomeScene';
+import TripTrackScene from 'driver/trips/TripTrackScene';
 
 const getDrawerIcon = navigation => {
   return {
@@ -85,18 +85,17 @@ const LoadStack = StackNavigator(
     LoadList: {
       screen: LoadListScene,
     },
-    LoadDetail:{
-      screen: LoadDetailScene
+    LoadDetail: {
+      screen: LoadDetailScene,
     },
-    TripTrack:{
-      screen: TripTrackScene
-    }
+    TripTrack: {
+      screen: TripTrackScene,
+    },
   },
   {
     // initialRouteName: 'LoadAdd',
   },
 );
-
 
 const DrawerRoutes = {
   HomeStack: {
@@ -108,9 +107,9 @@ const DrawerRoutes = {
   SettingsStack: {
     screen: SettingsStack,
   },
-  LoadStack:{
-    screen: LoadStack
-  }
+  LoadStack: {
+    screen: LoadStack,
+  },
 };
 
 export const Routes = DrawerNavigator(DrawerRoutes, {

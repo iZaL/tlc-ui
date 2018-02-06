@@ -21,7 +21,7 @@ function subscribe(socket) {
   console.log('socket', socket);
   return eventChannel(emit => {
     socket.on('location.updated', data => {
-      console.log('location',data);
+      console.log('location', data);
       emit({
         type: SHIPPER_ACTIONS.LOCATION_RECEIVED,
         payload: data,
@@ -51,7 +51,9 @@ function* syncUserToSocket(socket) {
 
 function* subscribeToTripTrack(socket) {
   while (true) {
-    const threadParams = yield take(SHIPPER_ACTIONS.SUBSCRIBE_TO_TRIP_TRACK_CHANNEL);
+    const threadParams = yield take(
+      SHIPPER_ACTIONS.SUBSCRIBE_TO_TRIP_TRACK_CHANNEL,
+    );
     socket.emit('trip.track.subscribe', threadParams.params.trip_id);
   }
 }

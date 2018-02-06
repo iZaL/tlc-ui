@@ -17,17 +17,17 @@ class LoadListScene extends Component {
         }),
       }),
     }).isRequired,
-    loads:PropTypes.array
+    loads: PropTypes.array,
   };
 
   static defaultProps = {
     // status: 'working',
-    loads:[]
+    loads: [],
   };
 
   componentDidMount() {
     let {status} = this.props.navigation.state.params;
-    this.props.dispatch(DRIVER_ACTIONS.fetchLoadsByStatus({status:status}));
+    this.props.dispatch(DRIVER_ACTIONS.fetchLoadsByStatus({status: status}));
   }
 
   onLoadsListItemPress = (load: object) => {
@@ -38,12 +38,7 @@ class LoadListScene extends Component {
 
   render() {
     let {loads} = this.props;
-    return (
-        <LoadsList
-          items={loads}
-          onItemPress={this.onLoadsListItemPress}
-        />
-    );
+    return <LoadsList items={loads} onItemPress={this.onLoadsListItemPress} />;
   }
 }
 
@@ -51,7 +46,8 @@ const makeMapStateToProps = () => {
   const getLoadsByStatus = DRIVER_SELECTORS.getLoadsByStatus();
   const mapStateToProps = (state, props) => {
     return {
-      loads: getLoadsByStatus(state, props.navigation.state.params.status) || [],
+      loads:
+        getLoadsByStatus(state, props.navigation.state.params.status) || [],
     };
   };
   return mapStateToProps;

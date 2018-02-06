@@ -48,7 +48,7 @@ class TripTrackScene extends Component {
 
     let address = {
       latitude: 37.37166518,
-      longitude: -122.217832462
+      longitude: -122.217832462,
     };
 
     return (
@@ -69,7 +69,7 @@ const makeMapStateToProps = () => {
   const mapStateToProps = (state, props) => {
     const tripID = props.navigation.state.params.tripID;
     return {
-      tracking: getLocationUpdatesForJob(state, tripID)
+      tracking: getLocationUpdatesForJob(state, tripID),
     };
   };
   return mapStateToProps;

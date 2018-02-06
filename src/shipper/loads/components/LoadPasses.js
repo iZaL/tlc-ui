@@ -62,15 +62,16 @@ export default class LoadWhat extends Component {
     let {items, passes} = this.props;
     return (
       <View>
-
-        <FormLabel title={I18n.t('load_passes')} style={{marginBottom:10}}/>
+        <FormLabel title={I18n.t('load_passes')} style={{marginBottom: 10}} />
 
         <FlatList
           data={items}
           style={styles.listContainer}
           renderItem={this.renderRow}
           showsVerticalScrollIndicator={false}
-          ItemSeparatorComponent={() => <Separator style={{marginVertical: 5}}/>}
+          ItemSeparatorComponent={() => (
+            <Separator style={{marginVertical: 5}} />
+          )}
           keyExtractor={(item, index) => index}
           extraData={passes}
         />

@@ -29,7 +29,10 @@ export default class LoadWhat extends Component {
     } = this.props;
     return (
       <View style={styles.container}>
-        <FormLabel title={I18n.t('packaging_select')} style={{marginBottom:5}}/>
+        <FormLabel
+          title={I18n.t('packaging_select')}
+          style={{marginBottom: 5}}
+        />
         <GridList
           items={packaging}
           onItemPress={item => onFieldChange('packaging_id', item.id)}
@@ -40,7 +43,7 @@ export default class LoadWhat extends Component {
           style={{backgroundColor: colors.mediumGrey, marginVertical: 20}}
         />
 
-        <FormLabel title={I18n.t('trailer_select')} style={{marginBottom:5}}/>
+        <FormLabel title={I18n.t('trailer_select')} style={{marginBottom: 5}} />
         <GridList
           items={trailers}
           onItemPress={item => onFieldChange('trailer_id', item.id)}
@@ -51,7 +54,10 @@ export default class LoadWhat extends Component {
           style={{backgroundColor: colors.mediumGrey, marginVertical: 20}}
         />
 
-        <FormLabel title={`${I18n.t('weight')} (${I18n.t('kg')})`} style={{marginBottom:5}} />
+        <FormLabel
+          title={`${I18n.t('weight')} (${I18n.t('kg')})`}
+          style={{marginBottom: 5}}
+        />
         <FormTextInput
           onChangeText={value => onFieldChange('weight', value)}
           value={weight}

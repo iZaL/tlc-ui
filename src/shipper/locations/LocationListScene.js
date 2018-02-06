@@ -21,13 +21,13 @@ class LocationListScene extends Component {
     }),
   };
 
-  static navigationOptions = ({ navigation }) => {
-    const { params } = navigation.state;
-    const type = params && params.type || null;
-    let title = type ? `location_${type}_select` : 'location_list' ;
+  static navigationOptions = ({navigation}) => {
+    const {params} = navigation.state;
+    const type = (params && params.type) || null;
+    let title = type ? `location_${type}_select` : 'location_list';
     return {
-      title: I18n.t(title) ,
-    }
+      title: I18n.t(title),
+    };
   };
 
   static defaultProps = {

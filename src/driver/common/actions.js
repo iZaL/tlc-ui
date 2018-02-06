@@ -76,10 +76,10 @@ function fetchLoadDetails(params) {
   };
 }
 
-function fetchTripDetails(id,params) {
+function fetchTripDetails(id, params) {
   return {
     type: ACTION_TYPES.FETCH_TRIP_DETAILS_REQUEST,
-    id:id,
+    id: id,
     params,
   };
 }
@@ -119,8 +119,6 @@ function fetchLoadsByStatus(params) {
   };
 }
 
-
-
 export const ACTIONS = {
   saveProfile,
   fetchProfile,
@@ -131,5 +129,5 @@ export const ACTIONS = {
   fetchUpcomingTrips,
   fetchLoadDetails,
   fetchLoadsByStatus,
-  fetchTripDetails
+  fetchTripDetails,
 };

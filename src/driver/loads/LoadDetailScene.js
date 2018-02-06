@@ -13,7 +13,6 @@ import I18n from 'utils/locale';
 import colors from 'assets/theme/colors';
 
 class LoadDetailScene extends Component {
-
   shouldComponentUpdate(nextProps) {
     return nextProps.load !== this.props.load;
   }
@@ -49,8 +48,8 @@ class LoadDetailScene extends Component {
   acceptBooking = () => {};
 
   loadTripMapScene = () => {
-    this.props.navigation.navigate('TripTrack',{
-      tripID:1
+    this.props.navigation.navigate('TripTrack', {
+      tripID: 1,
     });
   };
 
@@ -78,13 +77,13 @@ class LoadDetailScene extends Component {
         <Button
           title={I18n.t('load_accept').toUpperCase()}
           onPress={this.acceptBooking}
-          style={{ marginVertical:10}}
+          style={{marginVertical: 10}}
         />
 
         <Button
           title={I18n.t('map').toUpperCase()}
           onPress={this.loadTripMapScene}
-          style={{ marginVertical:10}}
+          style={{marginVertical: 10}}
         />
       </ScrollView>
     );

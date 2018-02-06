@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {Dimensions, Image, Linking, StyleSheet, Text, View,} from 'react-native';
+import {Dimensions, Image, Linking, StyleSheet, Text, View} from 'react-native';
 import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
 import images from 'assets/theme/images';
 import Button from 'components/Button';
@@ -16,7 +16,6 @@ const LATITUDE_DELTA = 0.0922;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
 export default class Map extends Component {
-
   static propTypes = {
     origin: PropTypes.shape({
       latitude: PropTypes.number.isRequired,
@@ -28,7 +27,7 @@ export default class Map extends Component {
     }),
     startTrip: PropTypes.func.isRequired,
     finishTrip: PropTypes.func.isRequired,
-    tripStatus:PropTypes.string
+    tripStatus: PropTypes.string,
   };
 
   static defaultProps = {
@@ -50,9 +49,9 @@ export default class Map extends Component {
   componentDidMount() {
     const {trip} = this.props;
 
-    let url =  `${API_URL}/trips/${trip.id}/location/update`;
+    let url = `${API_URL}/trips/${trip.id}/location/update`;
 
-    console.log('url',url);
+    console.log('url', url);
 
     BackgroundGeolocation.on('location', this.onLocation);
     BackgroundGeolocation.on('http', this.onHttp);
@@ -64,7 +63,7 @@ export default class Map extends Component {
         preventSuspend: false,
         startOnBoot: true,
         foregroundService: true,
-        url:url,
+        url: url,
         autoSync: true,
         debug: true,
         logLevel: BackgroundGeolocation.LOG_LEVEL_VERBOSE,
@@ -104,10 +103,10 @@ export default class Map extends Component {
     }
   };
 
-  onHttp = (response) => {
+  onHttp = response => {
     console.log('[event] http: ', response);
     // this.addEvent('http', new Date(), response);
-  }
+  };
   //
   // onMotionChange(event) {
   //   // console.log('[event] motionchange: ', event.isMoving, event.location);
@@ -168,7 +167,8 @@ export default class Map extends Component {
     const {destination} = this.props;
     const {origin, enabled} = this.state;
     const {heading} = this.state.origin;
-    const rotate = typeof heading === 'number' && heading >= 0 ? `${heading}deg` : undefined;
+    const rotate =
+      typeof heading === 'number' && heading >= 0 ? `${heading}deg` : undefined;
 
     return (
       <View style={styles.container}>
@@ -187,14 +187,14 @@ export default class Map extends Component {
           }}
           onLayout={this.onMapLayout}>
           {/*<MapView.Marker*/}
-            {/*style={styles.mapMarker}*/}
-            {/*anchor={{x: 0.5, y: 0.5, position: 'relative'}}*/}
-            {/*coordinate={origin}*/}
-            {/*identifier="MarkerOrigin">*/}
-            {/*<Image*/}
-              {/*source={images.car}*/}
-              {/*style={[styles.image, rotate && {transform: [{rotate}]}]}*/}
-            {/*/>*/}
+          {/*style={styles.mapMarker}*/}
+          {/*anchor={{x: 0.5, y: 0.5, position: 'relative'}}*/}
+          {/*coordinate={origin}*/}
+          {/*identifier="MarkerOrigin">*/}
+          {/*<Image*/}
+          {/*source={images.car}*/}
+          {/*style={[styles.image, rotate && {transform: [{rotate}]}]}*/}
+          {/*/>*/}
           {/*</MapView.Marker>*/}
 
           <MapView.Marker
@@ -242,8 +242,7 @@ const styles = StyleSheet.create({
   map: {
     flex: 1,
   },
-  mapMarker: {
-  },
+  mapMarker: {},
   image: {
     width: 20,
     height: 40,

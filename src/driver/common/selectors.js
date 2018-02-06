@@ -214,8 +214,8 @@ const getUpcomingTrips = createSelector(
 
 //@todo: Get correct driver loads
 const getLoads = createSelector(
-  [entities,getProfile,loadsSchema],
-  (schema,driver,loads) => {
+  [entities, getProfile, loadsSchema],
+  (schema, driver, loads) => {
     let driverLoads = Object.keys(loads).map(loadID => loads[loadID]) || [];
     return driverLoads.map(load => denormalize(load.id, Schema.loads, schema));
   },
@@ -241,5 +241,4 @@ export const SELECTORS = {
   getLoadByID,
   getUpcomingTrips,
   getLoadsByStatus,
-
 };

@@ -14,7 +14,7 @@ class TripTrackScene extends Component {
     navigation: PropTypes.shape({
       state: PropTypes.shape({
         params: PropTypes.shape({
-          tripID:PropTypes.number.isRequired
+          tripID: PropTypes.number.isRequired,
         }),
       }),
     }).isRequired,
@@ -22,7 +22,7 @@ class TripTrackScene extends Component {
 
   componentDidMount() {
     let {tripID} = this.props.navigation.state.params;
-    this.props.dispatch(DRIVER_ACTIONS.fetchTripDetails(tripID))
+    this.props.dispatch(DRIVER_ACTIONS.fetchTripDetails(tripID));
   }
 
   constructor(props) {
@@ -34,19 +34,23 @@ class TripTrackScene extends Component {
       // longitude: 47.98511826155676,
     };
 
-    BackgroundGeolocation.getCurrentPosition((location) => {
-      let {latitude,longitude} = location.coords;
-      this.origin = {
-        latitude:latitude,
-        longitude:longitude
-      }
-    }, (error) => {
-      console.warn('- getCurrentPosition error: ', error);
-    }, {
-      persist: true,
-      samples: 1,
-      maximumAge: 5000
-    });
+    BackgroundGeolocation.getCurrentPosition(
+      location => {
+        let {latitude, longitude} = location.coords;
+        this.origin = {
+          latitude: latitude,
+          longitude: longitude,
+        };
+      },
+      error => {
+        console.warn('- getCurrentPosition error: ', error);
+      },
+      {
+        persist: true,
+        samples: 1,
+        maximumAge: 5000,
+      },
+    );
   }
 
   onStartTripPress = () => {
@@ -64,7 +68,7 @@ class TripTrackScene extends Component {
 
     let address = {
       latitude: 37.37166518,
-      longitude : -122.217832462
+      longitude: -122.217832462,
     };
 
     return (
@@ -88,7 +92,7 @@ const makeMapStateToProps = () => {
     return {
       // trip: getTripByID(state, props.navigation.state.params.tripID),
       trip: {
-        id:1
+        id: 1,
       },
     };
   };

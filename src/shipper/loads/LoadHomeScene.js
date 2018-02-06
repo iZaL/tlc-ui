@@ -29,14 +29,14 @@ class ProfileHome extends Component {
         scene = 'LoadList';
         sceneConfig = {
           title: I18n.t('load_working_list'),
-          status : 'completed'
+          status: 'completed',
         };
 
       case 'load_completed_list':
         scene = 'LoadList';
         sceneConfig = {
           title: I18n.t('load_completed_list'),
-          status : 'completed'
+          status: 'completed',
         };
         break;
 
@@ -44,7 +44,7 @@ class ProfileHome extends Component {
         scene = 'LoadList';
         sceneConfig = {
           title: I18n.t('load_approved_list'),
-          status : 'approved'
+          status: 'approved',
         };
         break;
     }
@@ -54,7 +54,6 @@ class ProfileHome extends Component {
   render() {
     return (
       <ScrollView style={{flex: 1, backgroundColor: 'white'}}>
-
         <Separator />
 
         <ListItem
@@ -110,7 +109,6 @@ class ProfileHome extends Component {
           }
           name="load_completed_list"
         />
-
       </ScrollView>
     );
   }

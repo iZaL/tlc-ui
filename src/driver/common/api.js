@@ -35,7 +35,7 @@ function fetchLoadDetails(params) {
   return fetchAPI(url);
 }
 
-function fetchTripDetails(id,params = {}) {
+function fetchTripDetails(id, params = {}) {
   const url = `driver/trips/${id}/details`;
   return fetchAPI(url);
 }
@@ -61,5 +61,4 @@ export const API = {
   fetchTripDetails,
   fetchLoadDetails,
   fetchLoadsByStatus,
-
 };

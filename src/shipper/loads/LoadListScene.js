@@ -10,15 +10,14 @@ import I18n from 'utils/locale';
 type STATUS = 'working|confirmed|completed';
 
 class LoadListScene extends Component {
-
-  static navigationOptions = ({ navigation }) => {
-    const { params } = navigation.state;
-    const status = params && params.status || null;
-    let title = status ? `load_${status}_list` : 'loads' ;
-    console.log('title',title);
+  static navigationOptions = ({navigation}) => {
+    const {params} = navigation.state;
+    const status = (params && params.status) || null;
+    let title = status ? `load_${status}_list` : 'loads';
+    console.log('title', title);
     return {
-      title: I18n.t(title) ,
-    }
+      title: I18n.t(title),
+    };
   };
 
   static propTypes = {
@@ -29,17 +28,17 @@ class LoadListScene extends Component {
         }),
       }),
     }).isRequired,
-    loads:PropTypes.array
+    loads: PropTypes.array,
   };
 
   static defaultProps = {
     // status: 'working',
-    loads:[]
+    loads: [],
   };
 
   componentDidMount() {
     let {status} = this.props.navigation.state.params;
-    this.props.dispatch(SHIPPER_ACTIONS.fetchLoadsByStatus({status:status}));
+    this.props.dispatch(SHIPPER_ACTIONS.fetchLoadsByStatus({status: status}));
   }
 
   onLoadsListItemPress = (load: object) => {
@@ -50,12 +49,7 @@ class LoadListScene extends Component {
 
   render() {
     let {loads} = this.props;
-    return (
-        <LoadsList
-          items={loads}
-          onItemPress={this.onLoadsListItemPress}
-        />
-    );
+    return <LoadsList items={loads} onItemPress={this.onLoadsListItemPress} />;
   }
 }
 
@@ -63,7 +57,8 @@ const makeMapStateToProps = () => {
   const getLoadsByStatus = SHIPPER_SELECTORS.getLoadsByStatus();
   const mapStateToProps = (state, props) => {
     return {
-      loads: getLoadsByStatus(state, props.navigation.state.params.status) || [],
+      loads:
+        getLoadsByStatus(state, props.navigation.state.params.status) || [],
     };
   };
   return mapStateToProps;

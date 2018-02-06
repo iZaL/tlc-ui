@@ -35,14 +35,14 @@ class ProfileHome extends Component {
         scene = 'LocationList';
         sceneConfig = {
           title: I18n.t('location_origin_list'),
-          type:'origin'
+          type: 'origin',
         };
         break;
       case 'location_destination_list':
         scene = 'LocationList';
         sceneConfig = {
           title: I18n.t('location_destination_list'),
-          type:'destination'
+          type: 'destination',
         };
         break;
     }
@@ -99,8 +99,6 @@ class ProfileHome extends Component {
           }
           name="location_destination_list"
         />
-
-
       </ScrollView>
     );
   }

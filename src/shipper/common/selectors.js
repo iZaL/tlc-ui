@@ -47,7 +47,6 @@ const getLocations = createSelector(
   },
 );
 
-
 const getLocationsByType = () => {
   return createSelector([getLocations, getIdProp], (locations, type) =>
     locations.filter(location => location.type === type),
@@ -55,16 +54,18 @@ const getLocationsByType = () => {
 };
 
 const getLoadByID = () => {
-  return createSelector(
-    [entities, getIdProp],
-    (schema, id) => denormalize(id, Schema.loads, schema),
+  return createSelector([entities, getIdProp], (schema, id) =>
+    denormalize(id, Schema.loads, schema),
   );
 };
 
 const getLoads = createSelector(
-  [entities,getProfile,loadsSchema],
-  (schema,shipper,loads) => {
-    let shipperLoads = Object.keys(loads).map(loadID => loads[loadID]).filter(load => load.shipper === shipper.id) || [];
+  [entities, getProfile, loadsSchema],
+  (schema, shipper, loads) => {
+    let shipperLoads =
+      Object.keys(loads)
+        .map(loadID => loads[loadID])
+        .filter(load => load.shipper === shipper.id) || [];
     return shipperLoads.map(load => denormalize(load.id, Schema.loads, schema));
   },
 );
@@ -90,5 +91,4 @@ export const SELECTORS = {
   getLocations,
   getLoads,
   getLocationUpdatesForTrip,
-
 };
