@@ -36,10 +36,10 @@ class LoadAddScene extends Component {
     weight: undefined,
     request_documents: true,
     use_own_truck: false,
-    receiver_name: '',
-    receiver_email: '',
-    receiver_mobile: '',
-    receiver_phone: '',
+    receiver_name: 'ABCD',
+    receiver_email: 'abcd@test.com',
+    receiver_mobile: '00966989382332',
+    receiver_phone: '00966989382332',
     passes: [],
   };
 

@@ -8,6 +8,7 @@ import Separator from 'components/Separator';
 import colors from 'assets/theme/colors';
 import I18n from 'utils/locale';
 import FormCheck from 'components/FormCheck';
+
 export default class LoadWhat extends Component {
   static propTypes = {
     onSearch: PropTypes.func.isRequired,
@@ -60,15 +61,20 @@ export default class LoadWhat extends Component {
   render() {
     let {items, passes} = this.props;
     return (
-      <FlatList
-        data={items}
-        style={styles.listContainer}
-        renderItem={this.renderRow}
-        showsVerticalScrollIndicator={false}
-        ItemSeparatorComponent={() => <Separator style={{marginVertical: 5}} />}
-        keyExtractor={(item, index) => index}
-        extraData={passes}
-      />
+      <View>
+
+        <FormLabel title={I18n.t('load_passes')} style={{marginBottom:10}}/>
+
+        <FlatList
+          data={items}
+          style={styles.listContainer}
+          renderItem={this.renderRow}
+          showsVerticalScrollIndicator={false}
+          ItemSeparatorComponent={() => <Separator style={{marginVertical: 5}}/>}
+          keyExtractor={(item, index) => index}
+          extraData={passes}
+        />
+      </View>
     );
   }
 }

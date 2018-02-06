@@ -108,6 +108,9 @@
   "load_working_list" : "Loads on progress",
   "load_approved_list" : "Upcoming Loads",
   "load_accept" : "Accept Booking",
+  "load_list" : "Loads",
+  "load_detail" : "Load Detail",
+  "load_passes" : "Load Passes",
 
   "trip_start" : "Start Job",
   "trip_end" : "End Job",
@@ -124,8 +127,10 @@
   "location_destination_select" : "Select Drop Location",
   "location_origin_list" : "Pick Locations",
   "location_destination_list" : "Drop Locations",
+  "location_list" : "Locations",
+  "location_add" : "Add Location",
 
-  "map" : "Map"
-
+  "map" : "Map",
+  "kg" : "KG"
 
 }

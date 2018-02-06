@@ -16,11 +16,13 @@ import LoadListScene from "shipper/loads/LoadListScene";
 import LoadHomeScene from "shipper/loads/LoadHomeScene";
 import LoadDetailScene from "shipper/loads/LoadDetailScene";
 import TripTrackScene from "shipper/trips/TripTrackScene";
+import colors from "assets/theme/colors";
+import I18n from 'utils/locale';
 
 const getDrawerIcon = navigation => {
   return {
     headerLeft: (
-      <DrawerIcon onPress={() => navigation.navigate('DrawerToggle')} />
+      <DrawerIcon onPress={() => navigation.navigate('DrawerToggle')}/>
     ),
   };
 };
@@ -29,12 +31,16 @@ const HomeStack = StackNavigator(
   {
     Home: {
       screen: Home,
-      navigationOptions: ({navigation}) => getDrawerIcon(navigation),
+      navigationOptions: ({navigation}) => ({
+        ...getDrawerIcon(navigation),
+        title: 'Home'
+      }),
     },
   },
   {
     navigationOptions: {
       gesturesEnabled: false,
+      headerTintColor: colors.primary,
     },
   },
 );
@@ -46,31 +52,51 @@ const ProfileStack = StackNavigator(
       navigationOptions: ({navigation}) => ({
         gesturesEnabled: false,
         headerLeft: (
-          <DrawerIcon onPress={() => navigation.navigate('DrawerToggle')} />
+          <DrawerIcon onPress={() => navigation.navigate('DrawerToggle')}/>
         ),
+        title: I18n.t('profile')
       }),
     },
     ProfileUpdate: {
       screen: ProfileUpdateScene,
+      navigationOptions: () => ({
+        title: I18n.t('profile_update')
+      })
     },
     EmployeeList: {
       screen: EmployeeListScene,
+      navigationOptions: () => ({
+        title: I18n.t('employee_list')
+      })
     },
     EmployeeAdd: {
       screen: EmployeeAddScene,
+      navigationOptions: () => ({
+        title: I18n.t('employee_add')
+      })
     },
     EmployeeEdit: {
       screen: EmployeeEditScene,
+      navigationOptions: () => ({
+        title: I18n.t('employee_edit')
+      })
     },
     LocationList: {
       screen: LocationListScene,
+
     },
     LocationAdd: {
       screen: LocationAddScene,
+      navigationOptions: () => ({
+        title: I18n.t('location_add')
+      })
     },
   },
   {
-    // initialRouteName: 'LoadAdd',
+    navigationOptions: {
+      gesturesEnabled: false,
+      headerTintColor: colors.primary,
+    },
   },
 );
 const LoadStack = StackNavigator(
@@ -80,8 +106,9 @@ const LoadStack = StackNavigator(
       navigationOptions: ({navigation}) => ({
         gesturesEnabled: false,
         headerLeft: (
-          <DrawerIcon onPress={() => navigation.navigate('DrawerToggle')} />
+          <DrawerIcon onPress={() => navigation.navigate('DrawerToggle')}/>
         ),
+        title: I18n.t('loads')
       }),
     },
     LoadList: {
@@ -89,15 +116,28 @@ const LoadStack = StackNavigator(
     },
     LoadAdd: {
       screen: LoadAddScene,
+      navigationOptions: () => ({
+        title: I18n.t('load_add')
+      })
     },
-    LoadDetail:{
-      screen: LoadDetailScene
+    LoadDetail: {
+      screen: LoadDetailScene,
+      navigationOptions: () => ({
+        title: I18n.t('load_detail')
+      })
     },
-    TripTrack:{
-      screen: TripTrackScene
+    TripTrack: {
+      screen: TripTrackScene,
+      navigationOptions: () => ({
+        title: I18n.t('trip_track')
+      })
     }
   },
   {
+    navigationOptions: {
+      gesturesEnabled: false,
+      headerTintColor: colors.primary,
+    },
     // initialRouteName: 'LoadAdd',
   },
 );
@@ -106,12 +146,16 @@ const SettingStack = StackNavigator(
   {
     Settings: {
       screen: Settings,
-      navigationOptions: ({navigation}) => getDrawerIcon(navigation),
+      navigationOptions: ({navigation}) => ({
+        title:I18n.t('settings'),
+        ...getDrawerIcon(navigation),
+      }),
     },
   },
   {
     navigationOptions: {
       gesturesEnabled: false,
+      headerTintColor: colors.primary,
     },
   },
 );
@@ -135,5 +179,5 @@ export const Routes = DrawerNavigator(DrawerRoutes, {
   gesturesEnabled: false,
   contentComponent: props => <Drawer {...props} />,
   drawerWidth: 275,
-  initialRouteName: 'LoadStack',
+  // initialRouteName: 'LoadStack',
 });
