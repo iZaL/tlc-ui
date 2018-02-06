@@ -10,7 +10,6 @@ import I18n from 'utils/locale';
 type STATUS = 'working|confirmed|completed';
 
 class LoadListScene extends Component {
-
   static navigationOptions = ({navigation}) => {
     const {params} = navigation.state;
     const status = (params && params.status) || null;

@@ -13,7 +13,6 @@ import I18n from 'utils/locale';
 import colors from 'assets/theme/colors';
 
 class LoadDetailScene extends Component {
-
   shouldComponentUpdate(nextProps) {
     return nextProps.load !== this.props.load;
   }
@@ -35,10 +34,6 @@ class LoadDetailScene extends Component {
         }),
       }),
     }),
-    // load: PropTypes.shape({
-    //   origin: PropTypes.object.isRequired,
-    //   destination: PropTypes.object.isRequired,
-    // }).isRequired,
   };
 
   static defaultProps = {
@@ -49,7 +44,10 @@ class LoadDetailScene extends Component {
   static navigationOptions = ({navigation}) => {
     return {
       headerRight: (
-        <Text style={{paddingRight:10,color:colors.primary,fontWeight:'bold'}}>{I18n.t('edit')}</Text>
+        <Text
+          style={{paddingRight: 10, color: colors.primary, fontWeight: 'bold'}}>
+          {I18n.t('edit')}
+        </Text>
       ),
     };
   };
@@ -80,8 +78,6 @@ class LoadDetailScene extends Component {
           <LoadPickDropLocation origin={origin} destination={destination} />
           <LoadInfo load={load} />
         </View>
-
-
       </View>
     );
   }

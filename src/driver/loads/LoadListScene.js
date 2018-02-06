@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import LoadsList from 'driver/loads/components/LoadsList';
 import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
 import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
+import I18n from 'utils/locale';
 
 type STATUS = 'working|confirmed|completed';
 
@@ -23,6 +24,16 @@ class LoadListScene extends Component {
   static defaultProps = {
     // status: 'working',
     loads: [],
+  };
+
+  static navigationOptions = ({navigation}) => {
+    const {params} = navigation.state;
+    const status = (params && params.status) || null;
+    let title = status ? `load_${status}_list` : 'loads';
+    console.log('title', title);
+    return {
+      title: I18n.t(title),
+    };
   };
 
   componentDidMount() {

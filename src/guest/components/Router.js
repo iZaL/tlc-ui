@@ -7,6 +7,8 @@ import Home from 'guest/Home';
 import DrawerIcon from 'components/DrawerIcon';
 import Drawer from 'guest/components/Drawer';
 import {DrawerNavigator, StackNavigator} from 'react-navigation';
+import colors from 'assets/theme/colors';
+import I18n from 'utils/locale';
 
 export const AuthRoutes = StackNavigator(
   {
@@ -15,17 +17,27 @@ export const AuthRoutes = StackNavigator(
     },
     RegisterScreen: {
       screen: Register,
+      navigationOptions: () => ({
+        title: I18n.t('register'),
+      }),
     },
     ForgotScreen: {
       screen: Forgot,
+      navigationOptions: () => ({
+        title: I18n.t('forgot_password'),
+      }),
     },
     OTPScreen: {
       screen: OTP,
+      navigationOptions: () => ({
+        title: I18n.t('confirm'),
+      }),
     },
   },
   {
     navigationOptions: {
       gesturesEnabled: false,
+      headerTintColor: colors.primary,
     },
   },
 );

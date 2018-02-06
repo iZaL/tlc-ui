@@ -25,7 +25,6 @@ class LoadDetailOptionsListScene extends Component {
   };
 
   onListItemPress = route => {
-
     const {loadID} = this.props.navigation.state.params;
 
     let scene;
@@ -75,11 +74,7 @@ class LoadDetailOptionsListScene extends Component {
         <ListItem
           onItemPress={this.onListItemPress}
           icon={
-            <IconFactory
-              type="MaterialCommunityIcons"
-              size={30}
-              name="pin"
-            />
+            <IconFactory type="MaterialCommunityIcons" size={30} name="pin" />
           }
           name="load_track"
         />

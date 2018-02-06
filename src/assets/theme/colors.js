@@ -15,5 +15,5 @@ export default {
   fadedGrey: '#737373',
   black: '#000000',
   white: '#ffffff',
-  transparent: 'transparent'
+  transparent: 'transparent',
 };

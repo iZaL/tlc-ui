@@ -29,7 +29,6 @@ export default class LoginScene extends Component {
       handleRegisterRoute,
       handleForgotPasswordRoute,
       busy,
-      onSkip,
     } = this.props;
 
     return (
@@ -66,24 +65,14 @@ export default class LoginScene extends Component {
           title={I18n.t('create_account').toUpperCase()}
         />
 
-        <Touchable
+        <Button
           onPress={() => handleForgotPasswordRoute()}
-          style={{paddingTop: 50}}
-          underlayColor="transparent"
-          disabled={busy}>
-          <Text style={[styles.link]}>
-            {I18n.t('forgot_password').toUpperCase()}
-          </Text>
-        </Touchable>
-
-        <Touchable
-          onPress={() => onSkip()}
-          underlayColor="transparent"
-          disabled={busy}>
-          <Text style={[styles.link, {marginVertical: 50}]}>
-            {I18n.t('skip')}
-          </Text>
-        </Touchable>
+          style={styles.buttonSecondary}
+          disabled={busy}
+          background="transparent"
+          title={I18n.t('forgot_password').toUpperCase()}
+          titleStyle={styles.link}
+        />
       </View>
     );
   }

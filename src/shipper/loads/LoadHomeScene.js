@@ -62,7 +62,7 @@ class ProfileHome extends Component {
             <IconFactory
               type="MaterialCommunityIcons"
               size={30}
-              name="truck-delivery"
+              name="rocket"
             />
           }
           name="load_add"
@@ -86,13 +86,7 @@ class ProfileHome extends Component {
 
         <ListItem
           onItemPress={this.onListItemPress}
-          icon={
-            <IconFactory
-              type="MaterialCommunityIcons"
-              size={30}
-              name="truck-delivery"
-            />
-          }
+          icon={<IconFactory type="Entypo" size={30} name="back-in-time" />}
           name="load_approved_list"
         />
 
@@ -100,13 +94,7 @@ class ProfileHome extends Component {
 
         <ListItem
           onItemPress={this.onListItemPress}
-          icon={
-            <IconFactory
-              type="MaterialCommunityIcons"
-              size={30}
-              name="truck-delivery"
-            />
-          }
+          icon={<IconFactory type="MaterialIcons" size={30} name="timelapse" />}
           name="load_completed_list"
         />
       </ScrollView>

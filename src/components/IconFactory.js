@@ -8,12 +8,13 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import colors from 'assets/theme/colors';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {StyleSheet, View} from 'react-native';
+import Entypo from 'react-native-vector-icons/Entypo';
 
 const components = {
   MaterialCommunityIcons,
   MaterialIcons,
   Ionicons,
-  // Entypo,
+  Entypo,
   // FontAwesome
 };
 

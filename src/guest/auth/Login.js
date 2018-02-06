@@ -4,7 +4,6 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {ACTIONS} from 'guest/common/actions';
 import LoginScene from 'guest/auth/scenes/LoginScene';
-import {NavigationActions} from 'react-navigation';
 import {Alert} from 'react-native';
 import I18n from 'utils/locale';
 
@@ -60,15 +59,6 @@ class Login extends Component {
     this.setState({[field]: value});
   };
 
-  goBack = () => {
-    const navigationAction = NavigationActions.back();
-    this.props.navigation.dispatch(navigationAction);
-  };
-
-  onSkip = () => {
-    this.props.navigation.navigate('Main');
-  };
-
   render() {
     const {auth} = this.props;
     return (
@@ -77,10 +67,8 @@ class Login extends Component {
         handleLogin={this.handleLogin}
         handleRegisterRoute={this.handleRegisterRoute}
         handleForgotPasswordRoute={this.handleForgotPasswordRoute}
-        onSkip={this.onSkip}
         onFieldChange={this.onFieldChange}
         busy={auth.login.busy}
-        onRightButtonPress={this.goBack}
       />
     );
   }
