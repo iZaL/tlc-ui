@@ -1,36 +1,35 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import {StyleSheet, Text, View,} from 'react-native';
-import Modal from "react-native-modal";
+import {StyleSheet, Text, View} from 'react-native';
+import Modal from 'react-native-modal';
 import isEmpty from 'lodash/isEmpty';
 import colors from 'theme/colors';
 
 export default class Notification extends React.Component {
-
   static propTypes = {
     // message: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
     messageType: PropTypes.string,
   };
 
   state = {
-    visible:false
+    visible: false,
   };
 
-  shouldComponentUpdate(nextProps,nextState) {
+  shouldComponentUpdate(nextProps, nextState) {
     return nextState.visible !== this.state.visible;
   }
 
   componentWillReceiveProps(nextProps) {
-    if(!isEmpty(nextProps.message)) {
+    if (!isEmpty(nextProps.message)) {
       this.setState({
-        visible:true
-      })
+        visible: true,
+      });
     }
   }
 
   closeModal = () => {
     this.setState({
-      visible: false
+      visible: false,
     });
   };
 
@@ -43,9 +42,13 @@ export default class Notification extends React.Component {
         <Modal
           isVisible={visible}
           style={styles.bottomModal}
-          onBackdropPress={()=>this.closeModal()}
-        >
-          <View style={[styles.modalContent,{backgroundColor:colors[messageType]},modalStyle]}>
+          onBackdropPress={() => this.closeModal()}>
+          <View
+            style={[
+              styles.modalContent,
+              {backgroundColor: colors[messageType]},
+              modalStyle,
+            ]}>
             <Text style={styles.text}>{message}</Text>
           </View>
         </Modal>
@@ -68,23 +71,22 @@ export default class Notification extends React.Component {
   }
 }
 
-
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "white",
+    backgroundColor: 'white',
   },
   modalContent: {
     backgroundColor: colors.primary,
     padding: 22,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   bottomModal: {
-    justifyContent: "flex-end",
-    margin: 0
+    justifyContent: 'flex-end',
+    margin: 0,
   },
-  text:{
-    color:'white',
-    fontSize:25,
-  }
+  text: {
+    color: 'white',
+    fontSize: 25,
+  },
 });

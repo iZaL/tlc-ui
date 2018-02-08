@@ -5,7 +5,7 @@ import {Routes as DriverRoutes} from 'driver/components/Router';
 import {Routes as ShipperRoutes} from 'shipper/components/Router';
 import {AuthRoutes, Routes as DefaultRoutes} from 'guest/components/Router';
 import NavigatorService from 'components/NavigatorService';
-import RootModal from "../app/RootModal";
+import RootModal from '../app/RootModal';
 
 export default class Navigator extends Component {
   shouldComponentUpdate(nextProps) {
@@ -34,14 +34,14 @@ export default class Navigator extends Component {
 
     const RootModalStack = StackNavigator(
       {
-        main: {screen:RootModal}
+        main: {screen: RootModal},
       },
       {
         cardStyle: {
           backgroundColor: 'transparent',
         },
         headerMode: 'none',
-      }
+      },
     );
 
     const AppNavigatorStack = StackNavigator(
@@ -60,22 +60,22 @@ export default class Navigator extends Component {
 
     const RootNavigator = StackNavigator(
       {
-        RootModal : {
-          screen:RootModal,
-          navigationOptions:{
-            gesturesEnabled:false
-          }
+        RootModal: {
+          screen: RootModal,
+          navigationOptions: {
+            gesturesEnabled: false,
+          },
         },
-        App:{screen:AppNavigatorStack},
+        App: {screen: AppNavigatorStack},
       },
       {
         headerMode: 'none',
         mode: 'modal',
-        initialRouteName:'App',
+        initialRouteName: 'App',
         // cardStyle: {
         //   backgroundColor: 'transparent',
         // },
-      }
+      },
     );
 
     return (

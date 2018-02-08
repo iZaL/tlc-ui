@@ -12,8 +12,8 @@ import Dropdown from 'components/Dropdown';
 import Separator from 'components/Separator';
 import FormSubmit from 'components/FormSubmit';
 import I18n from 'utils/locale';
-import AppModal from "components/AppModal";
-import AlertBox from "components/AlertBox";
+import AppModal from 'components/AppModal';
+import AlertBox from 'components/AlertBox';
 
 type State = {
   mobile: string,
@@ -53,7 +53,7 @@ class ProfileUpdateScene extends Component {
     residence: {},
     showDropDown: false,
     dropDownField: null,
-    showModal: false
+    showModal: false,
   };
 
   componentDidMount() {
@@ -95,32 +95,34 @@ class ProfileUpdateScene extends Component {
         nationality_country_id: nationality.id,
         residence_country_id: residence.id,
         resolve,
-        reject
+        reject,
       };
       this.props.dispatch(PROFILE_ACTIONS.saveProfile(params));
-    }).then(() => {
-      // this.setState({
-      //   showModal: true
-      // })
-
-      // return (
-      //   <AppModal
-      //     render={(closeModal) => {
-      //       return (
-      //         <View style={styles.modalContent}>
-      //           <Button title="Close" onPress={()=>closeModal}/>
-      //         </View>
-      //       )
-      //     }}
-      //   />
-      // );
-
-      // this.props.navigation.navigate('RootModal');
-      // return (
-      // );
-    }).catch((e) => {
-      this.props.dispatch(APP_ACTIONS.setNotification('Update Failed', 'error'))
-    });
+    })
+      .then(() => {
+        // this.setState({
+        //   showModal: true
+        // })
+        // return (
+        //   <AppModal
+        //     render={(closeModal) => {
+        //       return (
+        //         <View style={styles.modalContent}>
+        //           <Button title="Close" onPress={()=>closeModal}/>
+        //         </View>
+        //       )
+        //     }}
+        //   />
+        // );
+        // this.props.navigation.navigate('RootModal');
+        // return (
+        // );
+      })
+      .catch(e => {
+        this.props.dispatch(
+          APP_ACTIONS.setNotification('Update Failed', 'error'),
+        );
+      });
   };
 
   showDropDown = (showDropDown: boolean, dropDownField: SceneType) => {
@@ -145,7 +147,7 @@ class ProfileUpdateScene extends Component {
           padding: 10,
           paddingTop: 20,
         }}>
-        <FormLabel title={I18n.t('mobile')}/>
+        <FormLabel title={I18n.t('mobile')} />
 
         <FormTextInput
           onChangeText={value => this.onFieldChange('mobile', value)}
@@ -155,7 +157,7 @@ class ProfileUpdateScene extends Component {
           keyboardType="phone-pad"
         />
 
-        <FormLabel title={I18n.t('nationality')}/>
+        <FormLabel title={I18n.t('nationality')} />
 
         {showDropDown && dropDownField === 'nationality' ? (
           <Dropdown
@@ -179,9 +181,9 @@ class ProfileUpdateScene extends Component {
           </Text>
         )}
 
-        <Separator style={{marginVertical: 10}}/>
+        <Separator style={{marginVertical: 10}} />
 
-        <FormLabel title={I18n.t('residence_country')}/>
+        <FormLabel title={I18n.t('residence_country')} />
         {showDropDown && dropDownField === 'residence' ? (
           <Dropdown
             onClose={this.showDropDown}
@@ -204,7 +206,7 @@ class ProfileUpdateScene extends Component {
           </Text>
         )}
 
-        <Separator style={{marginVertical: 10}}/>
+        <Separator style={{marginVertical: 10}} />
 
         <FormSubmit
           onPress={this.saveProfile}
@@ -213,15 +215,14 @@ class ProfileUpdateScene extends Component {
         />
 
         {/*<AppModal*/}
-          {/*visible={this.state.showModal}*/}
-          {/*closeOnBackdropPress={true}*/}
-          {/*render={(closeModal) => {*/}
-            {/*return (*/}
-              {/*<AlertBox text="Profile Updated" />*/}
-            {/*)*/}
-          {/*}}*/}
+        {/*visible={this.state.showModal}*/}
+        {/*closeOnBackdropPress={true}*/}
+        {/*render={(closeModal) => {*/}
+        {/*return (*/}
+        {/*<AlertBox text="Profile Updated" />*/}
+        {/*)*/}
+        {/*}}*/}
         {/*/>*/}
-
       </ScrollView>
     );
   }

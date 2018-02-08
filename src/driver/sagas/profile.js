@@ -6,8 +6,7 @@ import {normalize} from 'normalizr';
 import {ACTIONS as APP_ACTIONS} from 'app/common/actions';
 
 function* saveProfile(action) {
-
-  const { params: { resolve, reject, ...rest } } = action;
+  const {params: {resolve, reject, ...rest}} = action;
 
   try {
     const response = yield call(API.saveProfile, rest);

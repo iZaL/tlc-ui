@@ -69,12 +69,11 @@ class App extends Component {
     if (!app.booted) return null;
 
     if (!app.installed) {
-      return <LanguageSelectScene onItemPress={this.onLanguageSelect}/>;
+      return <LanguageSelectScene onItemPress={this.onLanguageSelect} />;
     }
 
     return (
       <SafeAreaView style={{flex: 1}}>
-
         <Notification
           message={app.notifications.message}
           messageType={app.notifications.messageType}
