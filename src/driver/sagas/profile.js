@@ -1,4 +1,4 @@
-import {all, call, fork, put, takeLatest} from 'redux-saga/effects';
+import {all, call, fork, put, takeLatest, take} from 'redux-saga/effects';
 import {API} from 'driver/common/api';
 import {ACTION_TYPES} from 'driver/common/actions';
 import {Schema} from 'utils/schema';
@@ -6,17 +6,21 @@ import {normalize} from 'normalizr';
 import {ACTIONS as APP_ACTIONS} from 'app/common/actions';
 
 function* saveProfile(action) {
+
+  const { params: { resolve, reject, ...rest } } = action;
+
   try {
-    const response = yield call(API.saveProfile, action.params);
+    const response = yield call(API.saveProfile, rest);
     const normalized = normalize(response.data, Schema.drivers);
     yield put({
       type: ACTION_TYPES.UPDATE_PROFILE_SUCCESS,
       entities: normalized.entities,
     });
-    // yield put({type: ACTION_TYPES.UPDATE_PROFILE_SUCCESS, payload: response.data});
+    yield resolve();
   } catch (error) {
     yield put(APP_ACTIONS.setNotification(error, 'error'));
     yield put({type: ACTION_TYPES.UPDATE_PROFILE_FAILURE, error});
+    yield reject(error);
   }
 }
 
@@ -46,7 +50,7 @@ function* saveTruck(action) {
       entities: normalized.entities,
     });
   } catch (error) {
-    yield put(APP_ACTIONS.setNotification(error, 'error'));
+    // yield put(APP_ACTIONS.setNotification(error, 'error'));
     yield put({type: ACTION_TYPES.SAVE_TRUCK_FAILURE, error});
   }
 }

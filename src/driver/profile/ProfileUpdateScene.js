@@ -57,15 +57,15 @@ class ProfileUpdateScene extends Component {
     this.props.dispatch(APP_ACTIONS.fetchCountries());
   }
 
-  componentWillReceiveProps(props) {
-    let {profile} = props;
-
-    this.setState({
-      mobile: profile.mobile,
-      nationality: profile.nationality,
-      residence: profile.residence,
-    });
-  }
+  // componentWillReceiveProps(props) {
+  //   let {profile} = props;
+  //
+  //   this.setState({
+  //     mobile: profile.mobile,
+  //     nationality: profile.nationality,
+  //     residence: profile.residence,
+  //   });
+  // }
 
   onFieldChange = (field, value) => {
     if (value) {
@@ -86,13 +86,21 @@ class ProfileUpdateScene extends Component {
 
   saveProfile = () => {
     const {mobile, nationality, residence} = this.state;
-
-    let params = {
-      mobile,
-      nationality_country_id: nationality.id,
-      residence_country_id: residence.id,
-    };
-    this.props.dispatch(PROFILE_ACTIONS.saveProfile(params));
+    return new Promise((resolve, reject) => {
+      let params = {
+        mobile,
+        nationality_country_id: nationality.id,
+        residence_country_id: residence.id,
+        resolve,
+        reject
+      };
+      this.props.dispatch(PROFILE_ACTIONS.saveProfile(params));
+    }).then(()=> {
+      // return (
+      // );
+    }).catch((e) => {
+      this.props.dispatch(APP_ACTIONS.setNotification('Update Failed','error'))
+    });
   };
 
   showDropDown = (showDropDown: boolean, dropDownField: SceneType) => {
