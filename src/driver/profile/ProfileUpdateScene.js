@@ -5,13 +5,15 @@ import {SELECTORS as COUNTRY_SELECTORS} from 'app/selectors/country';
 import {ACTIONS as APP_ACTIONS} from 'app/common/actions';
 import {ACTIONS as PROFILE_ACTIONS} from 'driver/common/actions';
 import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
-import {ScrollView, Text} from 'react-native';
+import {ScrollView, Text, View} from 'react-native';
 import FormLabel from 'components/FormLabel';
 import FormTextInput from 'components/FormTextInput';
 import Dropdown from 'components/Dropdown';
 import Separator from 'components/Separator';
 import FormSubmit from 'components/FormSubmit';
 import I18n from 'utils/locale';
+import AppModal from "components/AppModal";
+import AlertBox from "components/AlertBox";
 
 type State = {
   mobile: string,
@@ -51,21 +53,22 @@ class ProfileUpdateScene extends Component {
     residence: {},
     showDropDown: false,
     dropDownField: null,
+    showModal: false
   };
 
   componentDidMount() {
     this.props.dispatch(APP_ACTIONS.fetchCountries());
   }
 
-  // componentWillReceiveProps(props) {
-  //   let {profile} = props;
-  //
-  //   this.setState({
-  //     mobile: profile.mobile,
-  //     nationality: profile.nationality,
-  //     residence: profile.residence,
-  //   });
-  // }
+  componentWillReceiveProps(props) {
+    let {profile} = props;
+
+    this.setState({
+      mobile: profile.mobile,
+      nationality: profile.nationality,
+      residence: profile.residence,
+    });
+  }
 
   onFieldChange = (field, value) => {
     if (value) {
@@ -95,11 +98,28 @@ class ProfileUpdateScene extends Component {
         reject
       };
       this.props.dispatch(PROFILE_ACTIONS.saveProfile(params));
-    }).then(()=> {
+    }).then(() => {
+      // this.setState({
+      //   showModal: true
+      // })
+
+      // return (
+      //   <AppModal
+      //     render={(closeModal) => {
+      //       return (
+      //         <View style={styles.modalContent}>
+      //           <Button title="Close" onPress={()=>closeModal}/>
+      //         </View>
+      //       )
+      //     }}
+      //   />
+      // );
+
+      // this.props.navigation.navigate('RootModal');
       // return (
       // );
     }).catch((e) => {
-      this.props.dispatch(APP_ACTIONS.setNotification('Update Failed','error'))
+      this.props.dispatch(APP_ACTIONS.setNotification('Update Failed', 'error'))
     });
   };
 
@@ -125,7 +145,7 @@ class ProfileUpdateScene extends Component {
           padding: 10,
           paddingTop: 20,
         }}>
-        <FormLabel title={I18n.t('mobile')} />
+        <FormLabel title={I18n.t('mobile')}/>
 
         <FormTextInput
           onChangeText={value => this.onFieldChange('mobile', value)}
@@ -135,7 +155,7 @@ class ProfileUpdateScene extends Component {
           keyboardType="phone-pad"
         />
 
-        <FormLabel title={I18n.t('nationality')} />
+        <FormLabel title={I18n.t('nationality')}/>
 
         {showDropDown && dropDownField === 'nationality' ? (
           <Dropdown
@@ -159,9 +179,9 @@ class ProfileUpdateScene extends Component {
           </Text>
         )}
 
-        <Separator style={{marginVertical: 10}} />
+        <Separator style={{marginVertical: 10}}/>
 
-        <FormLabel title={I18n.t('residence_country')} />
+        <FormLabel title={I18n.t('residence_country')}/>
         {showDropDown && dropDownField === 'residence' ? (
           <Dropdown
             onClose={this.showDropDown}
@@ -184,13 +204,24 @@ class ProfileUpdateScene extends Component {
           </Text>
         )}
 
-        <Separator style={{marginVertical: 10}} />
+        <Separator style={{marginVertical: 10}}/>
 
         <FormSubmit
           onPress={this.saveProfile}
           title={I18n.t('profile_update')}
           style={{marginTop: 50}}
         />
+
+        {/*<AppModal*/}
+          {/*visible={this.state.showModal}*/}
+          {/*closeOnBackdropPress={true}*/}
+          {/*render={(closeModal) => {*/}
+            {/*return (*/}
+              {/*<AlertBox text="Profile Updated" />*/}
+            {/*)*/}
+          {/*}}*/}
+        {/*/>*/}
+
       </ScrollView>
     );
   }

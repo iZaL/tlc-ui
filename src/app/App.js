@@ -69,18 +69,16 @@ class App extends Component {
     if (!app.booted) return null;
 
     if (!app.installed) {
-      return <LanguageSelectScene onItemPress={this.onLanguageSelect} />;
+      return <LanguageSelectScene onItemPress={this.onLanguageSelect}/>;
     }
 
     return (
       <SafeAreaView style={{flex: 1}}>
-        {app.notifications.message && (
-          <Notification
-            message={app.notifications.message}
-            messageType={app.notifications.messageType}
-            dismissNotification={this.dismissNotification}
-          />
-        )}
+
+        <Notification
+          message={app.notifications.message}
+          messageType={app.notifications.messageType}
+        />
 
         <PushNotificationManager
           setPushToken={this.setPushToken}

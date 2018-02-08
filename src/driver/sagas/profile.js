@@ -17,6 +17,7 @@ function* saveProfile(action) {
       entities: normalized.entities,
     });
     yield resolve();
+    yield put(APP_ACTIONS.setNotification('Profile Updated', 'success'));
   } catch (error) {
     yield put(APP_ACTIONS.setNotification(error, 'error'));
     yield put({type: ACTION_TYPES.UPDATE_PROFILE_FAILURE, error});
