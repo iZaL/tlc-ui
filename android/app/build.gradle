@@ -144,6 +144,7 @@ repositories {
 }
 
 dependencies {
+    compile project(':react-native-device-info')
     compile(name: 'tslocationmanager', ext: 'aar')
     compile(project(':react-native-push-notification')) {
         exclude group: 'com.google.android.gms'
