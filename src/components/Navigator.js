@@ -5,7 +5,7 @@ import {Routes as DriverRoutes} from 'driver/components/Router';
 import {Routes as ShipperRoutes} from 'shipper/components/Router';
 import {AuthRoutes, Routes as DefaultRoutes} from 'guest/components/Router';
 import NavigatorService from 'components/NavigatorService';
-import RootModal from '../app/RootModal';
+import RootModal from 'app/RootModal';
 
 export default class Navigator extends Component {
   shouldComponentUpdate(nextProps) {
@@ -30,19 +30,27 @@ export default class Navigator extends Component {
 
   render() {
     const {isAuthenticated, userType, logout} = this.props;
+    console.log('rendered app');
     const screen = this.resolveScreenForUser(userType);
 
-    const RootModalStack = StackNavigator(
-      {
-        main: {screen: RootModal},
+    // const RootModalStack = StackNavigator(
+    //   {
+    //     main: {screen: RootModal},
+    //   },
+    //   {
+    //     cardStyle: {
+    //       backgroundColor: 'transparent',
+    //     },
+    //     headerMode: 'none',
+    //   },
+    // );
+
+    const RootModalStack = {
+      screen: RootModal,
+      navigationOptions: {
+        gesturesEnabled: false,
       },
-      {
-        cardStyle: {
-          backgroundColor: 'transparent',
-        },
-        headerMode: 'none',
-      },
-    );
+    };
 
     const AppNavigatorStack = StackNavigator(
       {
@@ -60,12 +68,7 @@ export default class Navigator extends Component {
 
     const RootNavigator = StackNavigator(
       {
-        RootModal: {
-          screen: RootModal,
-          navigationOptions: {
-            gesturesEnabled: false,
-          },
-        },
+        RootModal: RootModalStack,
         App: {screen: AppNavigatorStack},
       },
       {
