@@ -1,18 +1,22 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React,{Component} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import Modal from 'react-native-modal';
 import isEmpty from 'lodash/isEmpty';
-import colors from 'theme/colors';
+import colors from 'assets/theme/colors';
 
-export default class Notification extends React.Component {
+export default class Notification extends Component {
   static propTypes = {
-    // message: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
-    messageType: PropTypes.string,
+    message: PropTypes.string,
+    type: PropTypes.string,
   };
 
   state = {
     visible: false,
+  };
+
+  static defaultProps = {
+    type : 'success'
   };
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -31,10 +35,11 @@ export default class Notification extends React.Component {
     this.setState({
       visible: false,
     });
+    this.props.dismissNotification();
   };
 
   render() {
-    const {messageType, message, modalStyle} = this.props;
+    const {type, message} = this.props;
     const {visible} = this.state;
 
     return (
@@ -46,28 +51,20 @@ export default class Notification extends React.Component {
           <View
             style={[
               styles.modalContent,
-              {backgroundColor: colors[messageType]},
-              modalStyle,
+              {
+                backgroundColor:colors[type]
+              }
             ]}>
-            <Text style={styles.text}>{message}</Text>
+
+            {
+              <Text style={styles.text}>{message}</Text>
+            }
+
           </View>
         </Modal>
       </View>
     );
 
-    // return (
-    //   <AppModal
-    //     visible={showModal}
-    //     closeOnBackdropPress={true}
-    //     render={(closeModal) => {
-    //       return (
-    //         <View style={[styles.container,{backgroundColor:colors[messageType]}]}>
-    //           <Text style={styles.text}> {message} </Text>
-    //         </View>
-    //       )
-    //     }}
-    //   />
-    // );
   }
 }
 

@@ -5,7 +5,6 @@ import PushNotification from 'react-native-push-notification';
 export default class PushNotificationManager extends Component {
   static propTypes = {
     setPushToken: PropTypes.func.isRequired,
-    navigateToScene: PropTypes.func.isRequired,
   };
 
   shouldComponentUpdate() {

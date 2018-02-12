@@ -100,28 +100,11 @@ class ProfileUpdateScene extends Component {
       this.props.dispatch(PROFILE_ACTIONS.saveProfile(params));
     })
       .then(() => {
-        // this.setState({
-        //   showModal: true
-        // })
-        // return (
-        //   <AppModal
-        //     render={(closeModal) => {
-        //       return (
-        //         <View style={styles.modalContent}>
-        //           <Button title="Close" onPress={()=>closeModal}/>
-        //         </View>
-        //       )
-        //     }}
-        //   />
-        // );
-        // this.props.navigation.navigate('RootModal');
-        // return (
-        // );
       })
       .catch(e => {
-        this.props.dispatch(
-          APP_ACTIONS.setNotification('Update Failed', 'error'),
-        );
+        // this.props.dispatch(
+        //   APP_ACTIONS.setNotification('Update Failed', 'error'),
+        // );
       });
   };
 

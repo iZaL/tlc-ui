@@ -1,46 +1,51 @@
 import PropTypes from 'prop-types';
 import React, {Component} from 'react';
-import Navigator from 'components/Navigator';
-import LanguageSelectScene from 'app/scenes/LanguageSelectScene';
 import CodePush from 'react-native-code-push';
+import BackgroundGeolocation from 'react-native-background-geolocation';
+
 import PushNotificationManager from 'app/components/PushNotificationManager';
 import Notification from 'app/components/Notification';
+import LanguageSelectScene from 'app/scenes/LanguageSelectScene';
+import Navigator from 'components/Navigator';
+
 import {SafeAreaView, AppState} from 'react-native';
 import {connect} from 'react-redux';
 import {ACTIONS} from 'app/common/actions';
 import {ACTIONS as USER_ACTIONS} from 'guest/common/actions';
 import {SELECTORS as USER_SELECTOR} from 'guest/common/selectors';
 import {CODE_PUSH_ENABLED} from 'utils/env';
-import BackgroundGeolocation from 'react-native-background-geolocation';
 
 class App extends Component {
+
   static propTypes = {
     app: PropTypes.object.isRequired,
+    notifications: PropTypes.object.isRequired,
+    isAuthenticated:PropTypes.bool,
+    userType:PropTypes.number
+  };
+
+  static defaultProps = {
+    isAuthenticated:false,
+    userType:0
   };
 
   componentDidMount() {
-    if (CODE_PUSH_ENABLED) {
-      CodePush.sync();
-    }
+
     this.props.dispatch(ACTIONS.boot());
     BackgroundGeolocation.stop();
     BackgroundGeolocation.removeListeners();
     AppState.addEventListener('change', this.handleAppStateChange);
+
+    if (CODE_PUSH_ENABLED) {
+      CodePush.sync();
+    }
   }
 
   componentWillUnmount() {
     AppState.removeEventListener('change', this.handleAppStateChange);
   }
 
-  handleAppStateChange(appState) {
-    if (appState === 'background') {
-      let date = new Date(Date.now() + 5 * 1000);
-      // PushNotification.localNotificationSchedule({
-      //   message: "My Notification Message",
-      //   date:date,
-      // });
-    }
-  }
+  handleAppStateChange = appState => {};
 
   onLanguageSelect = name => {
     this.props.dispatch(ACTIONS.setLanguage(name));
@@ -64,7 +69,7 @@ class App extends Component {
   };
 
   render() {
-    const {app, isAuthenticated, userType} = this.props;
+    const {app, isAuthenticated, userType, notifications} = this.props;
 
     if (!app.booted) return null;
 
@@ -74,14 +79,16 @@ class App extends Component {
 
     return (
       <SafeAreaView style={{flex: 1}}>
-        <Notification
-          message={app.notifications.message}
-          messageType={app.notifications.messageType}
-        />
 
         <PushNotificationManager
           setPushToken={this.setPushToken}
           navigateToScene={this.navigateToScene}
+        />
+
+        <Notification
+          message={notifications.message}
+          type={notifications.type}
+          dismissNotification={this.dismissNotification}
         />
 
         <Navigator
@@ -89,6 +96,7 @@ class App extends Component {
           userType={userType}
           logout={this.logout}
         />
+
       </SafeAreaView>
     );
   }
@@ -97,6 +105,7 @@ class App extends Component {
 function mapStateToProps(state) {
   return {
     app: state.app,
+    notifications:state.notifications,
     isAuthenticated: USER_SELECTOR.isAuthenticated(state),
     userType: USER_SELECTOR.getAuthUserType(state),
   };
