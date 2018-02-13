@@ -15,7 +15,7 @@ function* saveRoute(action) {
     });
     // yield put({type: ACTION_TYPES.UPDATE_PROFILE_SUCCESS, payload: response.data});
   } catch (error) {
-    yield put(APP_ACTIONS.setNotification(error, 'error'));
+    yield put(APP_ACTIONS.setNotification({message: error, type: 'error'}));
     yield put({type: ACTION_TYPES.SAVE_ROUTE_FAILURE, error});
   }
 }
@@ -30,7 +30,7 @@ function* saveRoute(action) {
 //     });
 //     // yield put({type: ACTION_TYPES.UPDATE_PROFILE_SUCCESS, payload: response.data});
 //   } catch (error) {
-//     yield put(APP_ACTIONS.setNotification(error, 'error'));
+//     yield put(APP_ACTIONS.setNotification({      message:error,      type:'error'    }));
 //     yield put({type: ACTION_TYPES.SAVE_ROUTE_FAILURE, error});
 //   }
 // }

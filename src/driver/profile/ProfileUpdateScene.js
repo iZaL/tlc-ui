@@ -99,8 +99,7 @@ class ProfileUpdateScene extends Component {
       };
       this.props.dispatch(PROFILE_ACTIONS.saveProfile(params));
     })
-      .then(() => {
-      })
+      .then(() => {})
       .catch(e => {
         // this.props.dispatch(
         //   APP_ACTIONS.setNotification('Update Failed', 'error'),

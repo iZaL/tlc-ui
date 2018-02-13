@@ -40,7 +40,12 @@ function* login(action) {
     // });
   } catch (error) {
     yield put({type: ACTION_TYPES.LOGIN_FAILURE, error});
-    yield put(APP_ACTIONS.setNotification(error, 'error'));
+    yield put(
+      APP_ACTIONS.setNotification({
+        message: error,
+        type: 'error',
+      }),
+    );
   }
 }
 
@@ -55,7 +60,7 @@ function* register(action) {
     });
   } catch (error) {
     yield put({type: ACTION_TYPES.REGISTER_FAILURE, error});
-    yield put(APP_ACTIONS.setNotification(error, 'error'));
+    yield put(APP_ACTIONS.setNotification({message: error, type: 'error'}));
   }
 }
 
@@ -74,7 +79,7 @@ function* forgotPassword(action) {
       payload: response.data,
     });
   } catch (error) {
-    yield put(APP_ACTIONS.setNotification(error, 'error'));
+    yield put(APP_ACTIONS.setNotification({message: error, type: 'error'}));
     yield put({type: ACTION_TYPES.FORGOT_PASSWORD_FAILURE, error});
   }
 }
@@ -87,7 +92,7 @@ function* recoverPassword(action) {
       payload: response.data,
     });
   } catch (error) {
-    yield put(APP_ACTIONS.setNotification(error, 'error'));
+    yield put(APP_ACTIONS.setNotification({message: error, type: 'error'}));
     yield put({type: ACTION_TYPES.RECOVER_PASSWORD_FAILURE, error});
   }
 }
@@ -109,7 +114,7 @@ function* updatePassword(action) {
 
     yield put(NavigationActions.back(null));
   } catch (error) {
-    yield put(APP_ACTIONS.setNotification(error, 'error'));
+    yield put(APP_ACTIONS.setNotification({message: error, type: 'error'}));
     yield put({type: ACTION_TYPES.UPDATE_PASSWORD_FAILURE, error});
   }
 }
@@ -136,7 +141,7 @@ function* confirmOTP(action) {
     //   })
     // );
   } catch (error) {
-    yield put(APP_ACTIONS.setNotification(error, 'error'));
+    yield put(APP_ACTIONS.setNotification({message: error, type: 'error'}));
     yield put({type: ACTION_TYPES.CONFIRM_OTP_FAILURE, error});
   }
 }

@@ -66,7 +66,10 @@ class LoadAddScene extends Component {
       ...this.state,
     };
 
-    this.props.dispatch(SHIPPER_ACTIONS.saveLoad(params));
+    return new Promise((resolve, reject) => {
+      this.props.dispatch(SHIPPER_ACTIONS.saveLoad({params, resolve}));
+      // dispatch(someActionCreator({ values, resolve, reject }))
+    }).then(() => {});
   };
 
   render() {

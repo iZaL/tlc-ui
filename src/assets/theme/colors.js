@@ -8,7 +8,7 @@ export default {
   success: '#4caf50',
   primary: '#00752f',
   secondary: '#061d23',
-  blue: '#1B82F9',
+  blue: '#146ac2',
   darkBlue: '#44748e',
   fadedWhite: '#f7f7f7',
   fadedBlack: '#393939',

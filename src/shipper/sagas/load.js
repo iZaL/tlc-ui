@@ -4,10 +4,13 @@ import {ACTION_TYPES} from 'shipper/common/actions';
 import {Schema} from 'utils/schema';
 import {normalize} from 'normalizr';
 import {ACTIONS as APP_ACTIONS} from 'app/common/actions';
+import I18n from 'utils/locale';
 
 function* saveLoad(action) {
+  const {payload: {params, resolve}} = action;
+
   try {
-    const response = yield call(API.saveLoad, action.params);
+    const response = yield call(API.saveLoad, params);
     const normalized = normalize(response.data, Schema.shippers);
     const {entities, result} = normalized;
 
@@ -24,8 +27,16 @@ function* saveLoad(action) {
       type: ACTION_TYPES.SAVE_LOAD_SUCCESS,
       // entities: profile,
     });
+
+    yield put(
+      APP_ACTIONS.setNotification({
+        message: I18n.t('load_add_success'),
+        position: 'center',
+      }),
+    );
+    yield resolve();
   } catch (error) {
-    yield put(APP_ACTIONS.setNotification(error, 'error'));
+    yield put(APP_ACTIONS.setNotification({message: error, type: 'error'}));
     yield put({type: ACTION_TYPES.SAVE_LOAD_FAILURE, error});
   }
 }

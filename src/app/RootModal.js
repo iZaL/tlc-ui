@@ -44,10 +44,8 @@ export default class RootModal extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Modal
-          isVisible={this.state.visible}
-          style={styles.bottomModal}>
-          // onBackdropPress={() => this.setState({ visibleModal: null })}
+        <Modal isVisible={this.state.visible} style={styles.bottomModal}>
+          // onBackdropPress={() => this.setState({visibleModal: null})}
           // onBackdropPress={() => this.closeModal()}
           {/*{this._renderModalContent()}*/}
           {this.props.render(this.closeModal)}

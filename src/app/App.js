@@ -16,21 +16,19 @@ import {SELECTORS as USER_SELECTOR} from 'guest/common/selectors';
 import {CODE_PUSH_ENABLED} from 'utils/env';
 
 class App extends Component {
-
   static propTypes = {
     app: PropTypes.object.isRequired,
     notifications: PropTypes.object.isRequired,
-    isAuthenticated:PropTypes.bool,
-    userType:PropTypes.number
+    isAuthenticated: PropTypes.bool,
+    userType: PropTypes.number,
   };
 
   static defaultProps = {
-    isAuthenticated:false,
-    userType:0
+    isAuthenticated: false,
+    userType: 0,
   };
 
   componentDidMount() {
-
     this.props.dispatch(ACTIONS.boot());
     BackgroundGeolocation.stop();
     BackgroundGeolocation.removeListeners();
@@ -79,15 +77,13 @@ class App extends Component {
 
     return (
       <SafeAreaView style={{flex: 1}}>
-
         <PushNotificationManager
           setPushToken={this.setPushToken}
           navigateToScene={this.navigateToScene}
         />
 
         <Notification
-          message={notifications.message}
-          type={notifications.type}
+          {...notifications}
           dismissNotification={this.dismissNotification}
         />
 
@@ -96,7 +92,6 @@ class App extends Component {
           userType={userType}
           logout={this.logout}
         />
-
       </SafeAreaView>
     );
   }
@@ -105,7 +100,7 @@ class App extends Component {
 function mapStateToProps(state) {
   return {
     app: state.app,
-    notifications:state.notifications,
+    notifications: state.notifications,
     isAuthenticated: USER_SELECTOR.isAuthenticated(state),
     userType: USER_SELECTOR.getAuthUserType(state),
   };

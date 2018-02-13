@@ -98,10 +98,10 @@ function saveEmployee(params) {
   };
 }
 
-function saveLoad(params) {
+function saveLoad(payload) {
   return {
     type: ACTION_TYPES.SAVE_LOAD_REQUEST,
-    params,
+    payload,
   };
 }
 

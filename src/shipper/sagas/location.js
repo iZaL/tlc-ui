@@ -31,7 +31,7 @@ function* saveLocation(action) {
       entities: entities,
     });
   } catch (error) {
-    yield put(APP_ACTIONS.setNotification(error, 'error'));
+    yield put(APP_ACTIONS.setNotification({message: error, type: 'error'}));
     yield put({type: ACTION_TYPES.SAVE_LOCATION_SUCCESS, error});
   }
 }

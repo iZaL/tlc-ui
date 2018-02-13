@@ -2,15 +2,20 @@
 import {ACTION_TYPES} from 'app/common/actions';
 
 type MESSAGE_TYPE = 'error|success|warning';
+type POSITION = 'center|top|bottom';
 
 type State = {
   message: string,
   type: MESSAGE_TYPE,
+  position: POSITION,
+  backdropDismiss: boolean,
 };
 
 const initialState: State = {
   message: '',
-  type: null,
+  type: 'success',
+  position: 'bottom',
+  backdropDismiss: true,
 };
 
 export function reducer(state = initialState, action = {}) {
@@ -18,17 +23,13 @@ export function reducer(state = initialState, action = {}) {
     case ACTION_TYPES.SET_NOTIFICATION:
       return {
         ...state,
-        message: action.payload.message,
-        type: action.payload.messageType,
+        ...action.payload,
       };
     case ACTION_TYPES.DISMISS_NOTIFICATION:
       return {
-        ...state,
-        message: null,
-        type: null,
+        ...initialState,
       };
     default:
       return state;
   }
 }
-

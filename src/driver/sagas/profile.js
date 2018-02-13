@@ -4,6 +4,7 @@ import {ACTION_TYPES} from 'driver/common/actions';
 import {Schema} from 'utils/schema';
 import {normalize} from 'normalizr';
 import {ACTIONS as APP_ACTIONS} from 'app/common/actions';
+import I18n from 'utils/locale';
 
 function* saveProfile(action) {
   const {params: {resolve, reject, ...rest}} = action;
@@ -11,14 +12,29 @@ function* saveProfile(action) {
   try {
     const response = yield call(API.saveProfile, rest);
     const normalized = normalize(response.data, Schema.drivers);
+
     yield put({
       type: ACTION_TYPES.UPDATE_PROFILE_SUCCESS,
       entities: normalized.entities,
     });
-    yield put(APP_ACTIONS.setNotification('Profile Updated', 'success'));
+
+    yield put(
+      APP_ACTIONS.setNotification({
+        message: I18n.t('profile_saved'),
+        type: 'success',
+        position: 'center',
+        backdropDismiss: false,
+      }),
+    );
+
     yield resolve();
   } catch (error) {
-    yield put(APP_ACTIONS.setNotification(error, 'error'));
+    yield put(
+      APP_ACTIONS.setNotification({
+        message: error,
+        type: 'error',
+      }),
+    );
     yield put({type: ACTION_TYPES.UPDATE_PROFILE_FAILURE, error});
     yield reject(error);
   }
@@ -49,8 +65,15 @@ function* saveTruck(action) {
       type: ACTION_TYPES.SAVE_TRUCK_SUCCESS,
       entities: normalized.entities,
     });
+
+    yield put(
+      APP_ACTIONS.setNotification({
+        message: I18n.t('truck_saved'),
+        type: 'success',
+      }),
+    );
   } catch (error) {
-    // yield put(APP_ACTIONS.setNotification(error, 'error'));
+    // yield put(APP_ACTIONS.setNotification({      message:error,      type:'error'    }));
     yield put({type: ACTION_TYPES.SAVE_TRUCK_FAILURE, error});
   }
 }

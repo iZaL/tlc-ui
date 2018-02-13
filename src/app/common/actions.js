@@ -64,13 +64,10 @@ function dismissNotification() {
   };
 }
 
-function setNotification(message, messageType) {
+function setNotification(payload) {
   return {
     type: ACTION_TYPES.SET_NOTIFICATION,
-    payload: {
-      message: message,
-      messageType: messageType,
-    },
+    payload,
   };
 }
 
