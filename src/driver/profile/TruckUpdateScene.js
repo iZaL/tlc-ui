@@ -43,9 +43,9 @@ class TruckUpdateScene extends Component {
     },
   };
 
-  shouldComponentUpdate(nextProps, nextState) {
-    return nextState !== this.state;
-  }
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   return nextState !== this.state;
+  // }
 
   state: State = {
     make: {},
@@ -65,10 +65,17 @@ class TruckUpdateScene extends Component {
 
   static getDerivedStateFromProps(nextProps) {
     let {truck} = nextProps;
-    this.setState({
-      ...truck,
-    });
+    return {
+      ...truck
+    }
   }
+
+  // componentWillReceiveProps(props) {
+  //   let {truck} = props;
+  //   this.setState({
+  //     ...truck,
+  //   });
+  // }
 
   onFieldChange = (field, value) => {
     if (value) {

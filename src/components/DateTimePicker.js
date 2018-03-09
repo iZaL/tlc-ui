@@ -51,17 +51,9 @@ export default class DateTimePicker extends Component {
     this.setModalVisible = this.setModalVisible.bind(this);
   }
 
-  componentDidMount() {
-    // ignore the warning of Failed propType for date of DatePickerIOS, will remove after being fixed by official
-    if (!console.ignoredYellowBox) {
-      console.ignoredYellowBox = [];
-    }
-    console.ignoredYellowBox.push('Warning: Failed propType');
-  }
-
-  static getDerivedStateFromProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.date !== this.props.date) {
-      return {date: this.getDate(nextProps.date)};
+      this.setState({date: this.getDate(nextProps.date)});
     }
   }
 

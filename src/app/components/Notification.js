@@ -24,14 +24,13 @@ export default class Notification extends Component {
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    if(nextProps.visible === prevState.visible) {
-      return null;
-    }
 
     if (!isEmpty(nextProps.message)) {
       return {
         visible: true,
       }
+    } else {
+      return null
     }
   }
 
