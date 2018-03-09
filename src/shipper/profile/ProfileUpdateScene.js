@@ -64,15 +64,15 @@ class ProfileUpdateScene extends Component {
     },
   };
 
-  componentWillReceiveProps(props) {
+  static getDerivedStateFromProps(nextProps) {
     const {
       mobile,
       phone,
       email,
       meta: {address_en, address_ar, name_en, name_ar},
-    } = props.profile;
+    } = nextProps.profile;
 
-    this.setState({
+    return {
       mobile,
       phone,
       email,
@@ -82,7 +82,7 @@ class ProfileUpdateScene extends Component {
         name_en,
         name_ar,
       },
-    });
+    }
   }
 
   onFieldChange = (field, value) => {

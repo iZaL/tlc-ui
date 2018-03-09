@@ -47,11 +47,12 @@ class RoutesDetailScene extends Component {
     );
   }
 
-  componentWillReceiveProps(props) {
-    if (!this.state.activeCountry && props.route.origin.id) {
-      this.setState({
-        activeCountry: props.route.origin,
-      });
+
+  static getDerivedStateFromProps(nextProps) {
+    if (!this.state.activeCountry && nextProps.route.origin.id) {
+      return {
+        activeCountry: nextProps.route.origin,
+      }
     }
   }
 

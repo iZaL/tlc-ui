@@ -23,11 +23,15 @@ export default class Notification extends Component {
     return nextState.visible !== this.state.visible;
   }
 
-  componentWillReceiveProps(nextProps) {
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if(nextProps.visible === prevState.visible) {
+      return null;
+    }
+
     if (!isEmpty(nextProps.message)) {
-      this.setState({
+      return {
         visible: true,
-      });
+      }
     }
   }
 

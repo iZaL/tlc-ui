@@ -13,11 +13,11 @@ export default class AppModal extends Component {
     closeOnBackdropPress: false,
   };
 
-  componentWillReceiveProps(nextProps) {
+  static getDerivedStateFromProps(nextProps) {
     if (nextProps.visible !== this.state.visible) {
-      this.setState({
+      return {
         visible: nextProps.visible,
-      });
+      }
     }
   }
 

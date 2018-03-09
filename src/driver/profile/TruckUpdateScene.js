@@ -63,8 +63,8 @@ class TruckUpdateScene extends Component {
     this.props.dispatch(TRUCK_ACTIONS.fetchTruckMakesModels());
   }
 
-  componentWillReceiveProps(props) {
-    let {truck} = props;
+  static getDerivedStateFromProps(nextProps) {
+    let {truck} = nextProps;
     this.setState({
       ...truck,
     });

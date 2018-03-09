@@ -60,15 +60,28 @@ class ProfileUpdateScene extends Component {
     this.props.dispatch(APP_ACTIONS.fetchCountries());
   }
 
-  componentWillReceiveProps(props) {
-    let {profile} = props;
 
-    this.setState({
+  static getDerivedStateFromProps(nextProps) {
+
+    let {profile} = nextProps;
+
+    return {
       mobile: profile.mobile,
       nationality: profile.nationality,
       residence: profile.residence,
-    });
+    }
   }
+
+  //
+  // componentWillReceiveProps(props) {
+  //   let {profile} = props;
+  //
+  //   this.setState({
+  //     mobile: profile.mobile,
+  //     nationality: profile.nationality,
+  //     residence: profile.residence,
+  //   });
+  // }
 
   onFieldChange = (field, value) => {
     if (value) {

@@ -50,10 +50,11 @@ export default class VisaLicenseForm extends PureComponent {
     visa_upload_source: null,
   };
 
-  componentWillReceiveProps(nextProps) {
+
+  static getDerivedStateFromProps(nextProps) {
     let {country, visa, license} = nextProps;
     if (country.id) {
-      this.setState({
+      return {
         license_image: license.image,
         license_uploaded: false,
         license_upload_source: null,
@@ -62,7 +63,7 @@ export default class VisaLicenseForm extends PureComponent {
         visa_uploaded: false,
         visa_upload_source: null,
         visa_expiry_date: visa.expiry_date,
-      });
+      }
     }
   }
 
