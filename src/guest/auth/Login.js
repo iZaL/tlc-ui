@@ -18,7 +18,7 @@ class Login extends Component {
   };
 
   state = {
-    email: 'shipper@test.com',
+    email: 'customer@test.com',
     password: 'password',
   };
 
@@ -36,15 +36,15 @@ class Login extends Component {
         text: I18n.t('driver'),
         onPress: () => {
           this.props.navigation.navigate('RegisterScreen', {
-            isShipper: false,
+            isCustomer: false,
           });
         },
       },
       {
-        text: I18n.t('shipper'),
+        text: I18n.t('customer'),
         onPress: () => {
           this.props.navigation.navigate('RegisterScreen', {
-            isShipper: true,
+            isCustomer: true,
           });
         },
       },

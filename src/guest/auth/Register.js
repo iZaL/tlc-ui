@@ -22,7 +22,7 @@ class Register extends Component {
     navigation: PropTypes.shape({
       state: PropTypes.shape({
         params: PropTypes.shape({
-          isShipper: PropTypes.bool.isRequired,
+          isCustomer: PropTypes.bool.isRequired,
         }),
       }),
     }),
@@ -32,7 +32,7 @@ class Register extends Component {
     navigation: {
       state: {
         params: {
-          isShipper: false,
+          isCustomer: false,
         },
       },
     },
@@ -49,13 +49,13 @@ class Register extends Component {
   };
 
   handleRegister = () => {
-    let {isShipper} = this.props.navigation.state.params;
+    let {isCustomer} = this.props.navigation.state.params;
 
     let credentials = {
       ...this.state,
-      name_ar: isShipper ? this.state.name_ar : this.state.name_en,
-      // name_hi: isShipper ? this.state.name_hi : this.state.name_en,
-      isShipper: this.props.navigation.state.params.isShipper,
+      name_ar: isCustomer ? this.state.name_ar : this.state.name_en,
+      // name_hi: isCustomer ? this.state.name_hi : this.state.name_en,
+      isCustomer: this.props.navigation.state.params.isCustomer,
     };
 
     this.props.actions.register(credentials);
@@ -67,14 +67,14 @@ class Register extends Component {
 
   render() {
     const {auth} = this.props;
-    const {isShipper} = this.props.navigation.state.params;
+    const {isCustomer} = this.props.navigation.state.params;
     return (
       <RegisterScene
         {...this.state}
         handleRegister={this.handleRegister}
         onFieldChange={this.onFieldChange}
         busy={auth.register.busy}
-        isShipper={isShipper}
+        isCustomer={isCustomer}
       />
     );
   }

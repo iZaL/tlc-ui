@@ -18,7 +18,7 @@ export default class RegisterScene extends Component {
     mobile: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired,
     busy: PropTypes.bool.isRequired,
-    isShipper: PropTypes.bool.isRequired,
+    isCustomer: PropTypes.bool.isRequired,
   };
 
   render() {
@@ -33,12 +33,12 @@ export default class RegisterScene extends Component {
       onFieldChange,
       handleRegister,
       busy,
-      isShipper,
+      isCustomer,
     } = this.props;
 
     return (
       <View style={styles.container}>
-        {isShipper ? (
+        {isCustomer ? (
           <View>
             <FormLabel title={I18n.t('company_name_en')} />
             <FormTextInput

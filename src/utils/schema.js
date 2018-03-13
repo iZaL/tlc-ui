@@ -7,19 +7,19 @@ const truckMakesSchema = new schema.Entity('truck_makes');
 const trailerMakesSchema = new schema.Entity('trailer_makes');
 const trailersSchema = new schema.Entity('trailers');
 const truckModelsSchema = new schema.Entity('truck_models');
-const shippersSchema = new schema.Entity('shippers');
+const customersSchema = new schema.Entity('customers');
 const routesSchema = new schema.Entity('routes');
 const loadsSchema = new schema.Entity('loads');
 const tripsSchema = new schema.Entity('trips');
 const driversSchema = new schema.Entity('drivers');
-const shipperLocationsSchema = new schema.Entity('shipper_locations');
+const customerLocationsSchema = new schema.Entity('customer_locations');
 const packagingSchema = new schema.Entity('packaging');
 const passesSchema = new schema.Entity('passes');
 
 const profileSchema = new schema.Union(
   {
     drivers: driversSchema,
-    shippers: shippersSchema,
+    customers: customersSchema,
   },
   input => input.schema,
 );
@@ -30,17 +30,17 @@ driversSchema.define({
   truck: trucksSchema,
   licenses: [{country: countriesSchema}],
   visas: [{country: countriesSchema}],
-  shipper: shippersSchema,
+  customer: customersSchema,
   routes: [routesSchema],
   loads: [loadsSchema],
   upcoming_trips: [tripsSchema],
 });
 
-shippersSchema.define({
-  locations: [shipperLocationsSchema],
+customersSchema.define({
+  locations: [customerLocationsSchema],
 });
 
-shipperLocationsSchema.define({
+customerLocationsSchema.define({
   country: countriesSchema,
 });
 
@@ -72,7 +72,7 @@ loadsSchema.define({
     country: countriesSchema,
   },
   trailer: trailersSchema,
-  shipper: shippersSchema,
+  customer: customersSchema,
 });
 
 tripsSchema.define({
@@ -93,11 +93,11 @@ export const Schema = {
   trailer_makes: trailerMakesSchema,
   trailers: trailersSchema,
   drivers: driversSchema,
-  shippers: shippersSchema,
+  customers: customersSchema,
   routes: routesSchema,
   loads: loadsSchema,
   trips: tripsSchema,
   packaging: packagingSchema,
   passes: passesSchema,
-  shipper_locations: shipperLocationsSchema,
+  customer_locations: customerLocationsSchema,
 };

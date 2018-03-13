@@ -3,7 +3,7 @@ import {all, call, cancel, fork, put, select, take} from 'redux-saga/effects';
 import {SOCKET_SERVER} from 'utils/env';
 import {eventChannel} from 'redux-saga';
 
-import {ACTION_TYPES as SHIPPER_ACTIONS} from 'shipper/common/actions';
+import {ACTION_TYPES as CUSTOMER_ACTIONS} from 'customer/common/actions';
 
 import {ACTION_TYPES as AUTH_ACTIONS} from 'guest/common/actions';
 import {SELECTORS as AUTH_SELECTORS} from 'guest/common/selectors';
@@ -23,7 +23,7 @@ function subscribe(socket) {
     socket.on('location.updated', data => {
       console.log('location', data);
       emit({
-        type: SHIPPER_ACTIONS.LOCATION_RECEIVED,
+        type: CUSTOMER_ACTIONS.LOCATION_RECEIVED,
         payload: data,
       });
     });
@@ -52,7 +52,7 @@ function* syncUserToSocket(socket) {
 function* subscribeToTripTrack(socket) {
   while (true) {
     const threadParams = yield take(
-      SHIPPER_ACTIONS.SUBSCRIBE_TO_TRIP_TRACK_CHANNEL,
+      CUSTOMER_ACTIONS.SUBSCRIBE_TO_TRIP_TRACK_CHANNEL,
     );
     socket.emit('trip.track.subscribe', threadParams.params.trip_id);
   }

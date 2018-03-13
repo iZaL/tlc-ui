@@ -18,7 +18,7 @@ const getAuthUser = createSelector(
 );
 
 /**
- * for driver, shipper
+ * for driver, customer
  */
 const getAuthUserProfile = createSelector(
   schemas,

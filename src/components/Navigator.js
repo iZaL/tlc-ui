@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {StackNavigator} from 'react-navigation';
 import {Routes as AdminRoutes} from 'admin/components/Router';
 import {Routes as DriverRoutes} from 'driver/components/Router';
-import {Routes as ShipperRoutes} from 'shipper/components/Router';
+import {Routes as CustomerRoutes} from 'customer/components/Router';
 import {AuthRoutes, Routes as DefaultRoutes} from 'guest/components/Router';
 import NavigatorService from 'components/NavigatorService';
 import RootModal from 'app/RootModal';
@@ -20,7 +20,7 @@ export default class Navigator extends Component {
       case 10:
         return 'Driver';
       case 20:
-        return 'Shipper';
+        return 'Customer';
       case 100:
         return 'Admin';
       default:
@@ -56,7 +56,7 @@ export default class Navigator extends Component {
       {
         Admin: {screen: AdminRoutes},
         Driver: {screen: DriverRoutes},
-        Shipper: {screen: ShipperRoutes},
+        Customer: {screen: CustomerRoutes},
         Default: {screen: DefaultRoutes},
         Auth: {screen: AuthRoutes},
       },
