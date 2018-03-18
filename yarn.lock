@@ -4407,7 +4407,7 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@15.6.0, prop-types@^15.5.10, prop-types@^15.5.8, prop-types@^15.6.0:
+prop-types@^15.5.10, prop-types@^15.5.8, prop-types@^15.6.0:
   version "15.6.0"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.0.tgz#ceaf083022fc46b4a35f69e13ef75aed0d639856"
   dependencies:
@@ -4607,18 +4607,18 @@ react-native-image-picker@^0.26.7:
   version "0.26.7"
   resolved "https://registry.yarnpkg.com/react-native-image-picker/-/react-native-image-picker-0.26.7.tgz#ad2ee957f7f6cc01396893ea03d84cb2adb2e376"
 
-"react-native-maps@github:react-community/react-native-maps":
+react-native-maps@^0.20.1:
   version "0.20.1"
-  resolved "https://codeload.github.com/react-community/react-native-maps/tar.gz/624ba2acce84d710e628a6a3c0ef61fa4db86c58"
+  resolved "https://registry.yarnpkg.com/react-native-maps/-/react-native-maps-0.20.1.tgz#b5247a9a26446b2e1ffc3f680db8ba6ccc960096"
   dependencies:
     babel-plugin-module-resolver "^2.3.0"
     babel-preset-react-native "1.9.0"
 
-react-native-modal@^5.2.0:
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/react-native-modal/-/react-native-modal-5.2.0.tgz#96e69c0c56d9eb9e5a3ac0cb85b835e0897c2feb"
+react-native-modal@^5.3.0:
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/react-native-modal/-/react-native-modal-5.3.0.tgz#000ccc40034a097125d6dfbe9ce846ec5958e3fc"
   dependencies:
-    prop-types "15.6.0"
+    prop-types "^15.6.1"
     react-native-animatable "^1.2.4"
 
 react-native-platform-touchable@^1.1.1:
