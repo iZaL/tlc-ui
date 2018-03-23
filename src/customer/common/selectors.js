@@ -66,7 +66,9 @@ const getLoads = createSelector(
       Object.keys(loads)
         .map(loadID => loads[loadID])
         .filter(load => load.customer === customer.id) || [];
-    return customerLoads.map(load => denormalize(load.id, Schema.loads, schema));
+    return customerLoads.map(load =>
+      denormalize(load.id, Schema.loads, schema),
+    );
   },
 );
 

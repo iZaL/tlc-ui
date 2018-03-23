@@ -115,7 +115,8 @@ class EmployeeAddScene extends Component {
           <FormCheck
             checked={driver_interaction}
             onPress={() =>
-              this.onFieldChange('driver_interaction', !driver_interaction)}
+              this.onFieldChange('driver_interaction', !driver_interaction)
+            }
           />
         </View>
 

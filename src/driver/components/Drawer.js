@@ -44,7 +44,7 @@ export default class Drawer extends Component {
           active={activeRoute === 'HomeStack'}
         />
 
-        <Separator style={{marginVertical:10}} />
+        <Separator style={{marginVertical: 10}} />
 
         <DrawerItem
           title={I18n.t('profile')}
@@ -58,7 +58,7 @@ export default class Drawer extends Component {
           active={activeRoute === 'ProfileStack'}
         />
 
-        <Separator style={{marginVertical:10}} />
+        <Separator style={{marginVertical: 10}} />
         <DrawerItem
           title={I18n.t('loads')}
           routeName="LoadStack"
@@ -71,7 +71,7 @@ export default class Drawer extends Component {
           active={activeRoute === 'LoadStack'}
         />
 
-        <Separator style={{marginVertical:10}} />
+        <Separator style={{marginVertical: 10}} />
 
         <DrawerItem
           title={I18n.t('logout')}

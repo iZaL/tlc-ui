@@ -5,7 +5,7 @@ import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
 import {connect} from 'react-redux';
 import LoadsList from 'driver/loads/components/LoadsList';
 import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
-import {ACTIONS as APP_ACTIONS} from "app/common/actions";
+import {ACTIONS as APP_ACTIONS} from 'app/common/actions';
 
 class Home extends Component {
   static propTypes = {
@@ -19,11 +19,9 @@ class Home extends Component {
   componentDidMount() {
     this.props.dispatch(DRIVER_ACTIONS.fetchUpcomingTrips());
     this.props.dispatch(APP_ACTIONS.fetchCountries());
-
   }
-  componentDidCatch(error){
-    console.log('er',error);
-
+  componentDidCatch(error) {
+    console.log('er', error);
   }
 
   onLoadsListItemPress = (load: object) => {

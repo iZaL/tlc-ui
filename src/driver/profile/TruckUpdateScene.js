@@ -13,7 +13,7 @@ import Separator from 'components/Separator';
 import FormSubmit from 'components/FormSubmit';
 import I18n from 'utils/locale';
 import DateTimePicker from 'components/DateTimePicker';
-import {SELECTORS as COUNTRY_SELECTORS} from "app/selectors/country";
+import {SELECTORS as COUNTRY_SELECTORS} from 'app/selectors/country';
 
 type State = {
   mobile: string,
@@ -42,7 +42,6 @@ class TruckUpdateScene extends Component {
       make: {},
       model: {},
     },
-
   };
 
   // shouldComponentUpdate(nextProps, nextState) {
@@ -59,7 +58,7 @@ class TruckUpdateScene extends Component {
     year: '',
     showDropDown: false,
     dropDownField: null,
-    registration_country: ''
+    registration_country: '',
   };
 
   componentDidMount() {
@@ -69,8 +68,8 @@ class TruckUpdateScene extends Component {
   static getDerivedStateFromProps(nextProps) {
     let {truck} = nextProps;
     return {
-      ...truck
-    }
+      ...truck,
+    };
   }
 
   // componentWillReceiveProps(props) {
@@ -83,7 +82,7 @@ class TruckUpdateScene extends Component {
   onFieldChange = (field, value) => {
     if (value) {
       let record;
-      const {makes, models,countries} = this.props;
+      const {makes, models, countries} = this.props;
       switch (field) {
         case 'make':
           record = makes.find(record => record.id === value);
@@ -111,7 +110,7 @@ class TruckUpdateScene extends Component {
       registration_number,
       plate_number,
       max_weight,
-      registration_country
+      registration_country,
     } = this.state;
 
     let params = {
@@ -122,7 +121,7 @@ class TruckUpdateScene extends Component {
       registration_number,
       plate_number,
       max_weight,
-      registration_country_id:registration_country.id
+      registration_country_id: registration_country.id,
     };
 
     this.props.dispatch(DRIVER_ACTIONS.saveTruck(params));
@@ -185,7 +184,7 @@ class TruckUpdateScene extends Component {
 
         {/*<Separator style={{marginVertical: 10}} />*/}
 
-        <FormLabel title={I18n.t('model')}/>
+        <FormLabel title={I18n.t('model')} />
 
         {showDropDown && dropDownField === 'model' ? (
           <Dropdown
@@ -209,9 +208,9 @@ class TruckUpdateScene extends Component {
           </Text>
         )}
 
-        <Separator style={{marginVertical: 10}}/>
+        <Separator style={{marginVertical: 10}} />
 
-        <FormLabel title={I18n.t('plate_number')}/>
+        <FormLabel title={I18n.t('plate_number')} />
 
         <FormTextInput
           onChangeText={value => this.onFieldChange('plate_number', value)}
@@ -220,7 +219,7 @@ class TruckUpdateScene extends Component {
           placeholder={I18n.t('plate_number')}
         />
 
-        <FormLabel title={I18n.t('registration_country')}/>
+        <FormLabel title={I18n.t('registration_country')} />
 
         {showDropDown && dropDownField === 'registration_country' ? (
           <Dropdown
@@ -240,24 +239,26 @@ class TruckUpdateScene extends Component {
               paddingTop: 5,
             }}
             onPress={() => this.showDropDown(true, 'registration_country')}>
-            {registration_country.id ? registration_country.name : I18n.t('select')}
+            {registration_country.id
+              ? registration_country.name
+              : I18n.t('select')}
           </Text>
         )}
 
-        <Separator style={{marginVertical: 10}}/>
+        <Separator style={{marginVertical: 10}} />
 
-        <FormLabel title={I18n.t('registration_number')}/>
+        <FormLabel title={I18n.t('registration_number')} />
 
         <FormTextInput
           onChangeText={value =>
-            this.onFieldChange('registration_number', value)}
+            this.onFieldChange('registration_number', value)
+          }
           value={registration_number}
           maxLength={40}
           placeholder={I18n.t('registration_number')}
         />
 
-
-        <FormLabel title={I18n.t('registration_expiry')}/>
+        <FormLabel title={I18n.t('registration_expiry')} />
 
         <DateTimePicker
           date={registration_expiry}
@@ -271,7 +272,7 @@ class TruckUpdateScene extends Component {
           onDateChange={date => this.onFieldChange('registration_expiry', date)}
         />
 
-        <FormLabel title={I18n.t('max_weight')}/>
+        <FormLabel title={I18n.t('max_weight')} />
 
         <FormTextInput
           onChangeText={value => this.onFieldChange('max_weight', value)}
@@ -280,7 +281,7 @@ class TruckUpdateScene extends Component {
           placeholder={I18n.t('max_weight')}
         />
 
-        <FormLabel title={I18n.t('year')}/>
+        <FormLabel title={I18n.t('year')} />
 
         {showDropDown && dropDownField === 'year' ? (
           <Dropdown
@@ -321,7 +322,6 @@ function mapStateToProps(state) {
     // makes: TRUCK_SELECTORS.getTruckMakes(state),
     models: TRUCK_SELECTORS.getTruckModels(state),
     countries: COUNTRY_SELECTORS.getCountries(state),
-
   };
 }
 

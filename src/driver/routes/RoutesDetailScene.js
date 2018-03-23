@@ -4,8 +4,8 @@ import {connect} from 'react-redux';
 import {ScrollView} from 'react-native';
 import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
 import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
-import RouteTransitsList from "./components/RouteTransitsList";
-import VisaLicenseForm from "./components/VisaLicenseForm";
+import RouteTransitsList from './components/RouteTransitsList';
+import VisaLicenseForm from './components/VisaLicenseForm';
 
 type State = {
   activeCountry: undefined,
@@ -49,12 +49,11 @@ class RoutesDetailScene extends Component {
     );
   }
 
-
   static getDerivedStateFromProps(nextProps) {
     // if (!this.state.activeCountry && nextProps.route.origin.id) {
-      return {
-        activeCountry: nextProps.route.origin,
-      }
+    return {
+      activeCountry: nextProps.route.origin,
+    };
     // }
   }
 
@@ -68,16 +67,14 @@ class RoutesDetailScene extends Component {
     this.setActiveCountry(item);
   };
 
-  saveProfile = () => {
-  };
+  saveProfile = () => {};
 
   render() {
     const {route, visas, licenses} = this.props;
     const {origin, destination, transits} = route;
     const {activeCountry} = this.state;
 
-    console.log('ac',activeCountry);
-
+    console.log('ac', activeCountry);
 
     let countries = [origin, ...transits, destination];
 

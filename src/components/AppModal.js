@@ -17,7 +17,7 @@ export default class AppModal extends Component {
     if (nextProps.visible !== this.state.visible) {
       return {
         visible: nextProps.visible,
-      }
+      };
     }
   }
 

@@ -24,7 +24,8 @@ export default class LoadWhat extends Component {
           <FormCheck
             checked={request_documents}
             onPress={() =>
-              onFieldChange('request_documents', !request_documents)}
+              onFieldChange('request_documents', !request_documents)
+            }
           />
         </View>
 

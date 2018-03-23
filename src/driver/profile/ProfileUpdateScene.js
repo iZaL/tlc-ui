@@ -14,11 +14,10 @@ import FormSubmit from 'components/FormSubmit';
 import I18n from 'utils/locale';
 import AppModal from 'components/AppModal';
 import AlertBox from 'components/AlertBox';
-import SelectBox from "components/SelectBox";
+import SelectBox from 'components/SelectBox';
 import Modal from 'react-native-modal';
-import ListItem from "components/ListItem";
-import IconFactory from "components/IconFactory";
-
+import ListItem from 'components/ListItem';
+import IconFactory from 'components/IconFactory';
 
 type State = {
   mobile: string,
@@ -65,9 +64,7 @@ class ProfileUpdateScene extends Component {
     this.props.dispatch(APP_ACTIONS.fetchCountries());
   }
 
-
   static getDerivedStateFromProps(nextProps, prevState) {
-
     let {profile} = nextProps;
 
     if (nextProps.profile === prevState.profile) {
@@ -78,7 +75,7 @@ class ProfileUpdateScene extends Component {
       mobile: profile.mobile,
       nationality: profile.nationality,
       residencies: profile.residencies,
-    }
+    };
   }
 
   //
@@ -121,8 +118,7 @@ class ProfileUpdateScene extends Component {
       };
       this.props.dispatch(PROFILE_ACTIONS.saveProfile(params));
     })
-      .then(() => {
-      })
+      .then(() => {})
       .catch(e => {
         // this.props.dispatch(
         //   APP_ACTIONS.setNotification('Update Failed', 'error'),
@@ -137,13 +133,9 @@ class ProfileUpdateScene extends Component {
     });
   };
 
-  loadNationalityScene = (countryID: number) => {
+  loadNationalityScene = (countryID: number) => {};
 
-  };
-
-  onListItemPress = (name: string) => {
-
-  };
+  onListItemPress = (name: string) => {};
 
   render() {
     const {countries} = this.props;
@@ -151,7 +143,6 @@ class ProfileUpdateScene extends Component {
     const {residencies, nationality, mobile} = this.state;
 
     console.log('residencies', residencies);
-
 
     const {showDropDown, dropDownField} = this.state;
 
@@ -163,7 +154,7 @@ class ProfileUpdateScene extends Component {
           padding: 10,
           paddingTop: 20,
         }}>
-        <FormLabel title={I18n.t('mobile')}/>
+        <FormLabel title={I18n.t('mobile')} />
 
         <FormTextInput
           onChangeText={value => this.onFieldChange('mobile', value)}
@@ -173,7 +164,7 @@ class ProfileUpdateScene extends Component {
           keyboardType="phone-pad"
         />
 
-        <FormLabel title={I18n.t('nationality')}/>
+        <FormLabel title={I18n.t('nationality')} />
 
         {showDropDown && dropDownField === 'nationality' ? (
           <Dropdown
@@ -197,14 +188,13 @@ class ProfileUpdateScene extends Component {
           </Text>
         )}
 
-        <Separator style={{marginVertical: 10}}/>
+        <Separator style={{marginVertical: 10}} />
 
         <ListItem
           onItemPress={this.onListItemPress}
           name="residence"
           arrow={true}
         />
-
 
         {/*<FormLabel title={I18n.t('residence')} style={{marginBottom: 10}}/>*/}
 
@@ -216,7 +206,7 @@ class ProfileUpdateScene extends Component {
         {/*}*/}
         {/*</View>*/}
 
-        <Separator style={{marginVertical: 10}}/>
+        <Separator style={{marginVertical: 10}} />
 
         <ListItem
           onItemPress={this.onListItemPress}
@@ -224,7 +214,7 @@ class ProfileUpdateScene extends Component {
           arrow={true}
         />
 
-        <Separator style={{marginVertical: 10}}/>
+        <Separator style={{marginVertical: 10}} />
 
         {/*<FormLabel title={I18n.t('residence_country')} />*/}
         {/*{showDropDown && dropDownField === 'residence' ? (*/}
@@ -277,7 +267,6 @@ class ProfileUpdateScene extends Component {
         {/*/>*/}
         {/*</View>*/}
         {/*</Modal>*/}
-
       </ScrollView>
     );
   }

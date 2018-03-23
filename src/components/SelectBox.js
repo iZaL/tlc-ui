@@ -5,7 +5,6 @@ import colors from 'assets/theme/colors';
 import Touchable from 'react-native-platform-touchable';
 
 export default class SelectBox extends Component {
-
   shouldComponentUpdate(nextProps) {
     return (
       nextProps.disabled !== this.props.disabled ||
@@ -16,35 +15,23 @@ export default class SelectBox extends Component {
   static propTypes = {
     onPress: PropTypes.func.isRequired,
     children: PropTypes.node,
-    title:PropTypes.string.isRequired,
-    id:PropTypes.number.isRequired
+    title: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
   };
 
   static defaultProps = {
-    disabled: false
+    disabled: false,
   };
 
   render() {
-    const {
-      style,
-      children,
-      onPress,
-      disabled,
-      title,
-      id
-    } = this.props;
+    const {style, children, onPress, disabled, title, id} = this.props;
 
     return (
       <Touchable
         disabled={disabled}
-        style={[
-          styles.container,
-          style
-        ]}
-        onPress={()=>onPress(id)}
-      >
+        style={[styles.container, style]}
+        onPress={() => onPress(id)}>
         <Text style={{color: 'white', margin: 10}}> {title} </Text>
-
       </Touchable>
     );
   }

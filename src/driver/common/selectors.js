@@ -23,7 +23,10 @@ const getProfile = createSelector(
     return {
       ...driver,
       nationality: countries[driver.nationality],
-      residencies: driver.residencies && driver.residencies.map(residency => countries[residency]) || [],
+      residencies:
+        (driver.residencies &&
+          driver.residencies.map(residency => countries[residency])) ||
+        [],
     };
   },
 );
@@ -36,9 +39,9 @@ const getTruck = createSelector(
     truckModelsSchema,
     trailersSchema,
     driversSchema,
-    countriesSchema
+    countriesSchema,
   ],
-  (driver, trucks, truckMakes, truckModels, trailers, drivers,countries) => {
+  (driver, trucks, truckMakes, truckModels, trailers, drivers, countries) => {
     let truck = trucks[driver.truck];
     return (
       (truck && {
@@ -47,7 +50,7 @@ const getTruck = createSelector(
         model: truckModels[truck.model],
         trailer: trailers[truck.trailer],
         driver: drivers[truck.driver],
-        registration_country:countries[truck.registration_country]
+        registration_country: countries[truck.registration_country],
       }) ||
       {}
     );
@@ -106,7 +109,9 @@ const getRouteByID = () => {
 const getAvailableRoutes = createSelector(
   [getTruck, routesSchema, countriesSchema],
   (truck, routes, countries) => {
-    let loadingRoutes = truck.registration_country ? truck.registration_country.loading_routes : [];
+    let loadingRoutes = truck.registration_country
+      ? truck.registration_country.loading_routes
+      : [];
     const routeByID = getRouteByID();
     return (
       loadingRoutes.map(routeID => {

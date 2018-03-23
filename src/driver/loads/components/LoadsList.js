@@ -48,7 +48,9 @@ export default class LoadsList extends PureComponent {
         style={styles.listContainer}
         renderItem={this.renderRow}
         showsVerticalScrollIndicator={false}
-        ItemSeparatorComponent={() => <Separator style={{marginVertical:10}} />}
+        ItemSeparatorComponent={() => (
+          <Separator style={{marginVertical: 10}} />
+        )}
         keyExtractor={(item, index) => `${index}`}
       />
     );

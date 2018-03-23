@@ -82,7 +82,7 @@ class ProfileUpdateScene extends Component {
         name_en,
         name_ar,
       },
-    }
+    };
   }
 
   onFieldChange = (field, value) => {

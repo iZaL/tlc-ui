@@ -55,7 +55,10 @@ function* fetchLoadAdd() {
 
     const normalizedPasses = normalize(response.data.passes, [Schema.passes]);
 
-    const normalizedCustomer = normalize(response.data.customer, Schema.customers);
+    const normalizedCustomer = normalize(
+      response.data.customer,
+      Schema.customers,
+    );
 
     yield put({
       type: ACTION_TYPES.FETCH_LOAD_ADD_DATA_SUCCESS,
