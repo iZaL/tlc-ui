@@ -15,6 +15,8 @@ import I18n from 'utils/locale';
 import AppModal from 'components/AppModal';
 import AlertBox from 'components/AlertBox';
 import SelectBox from "../../components/SelectBox";
+import Modal from 'react-native-modal';
+
 
 type State = {
   mobile: string,
@@ -242,6 +244,18 @@ class ProfileUpdateScene extends Component {
         {/*)*/}
         {/*}}*/}
         {/*/>*/}
+
+        {/*<Modal animationType="slide" isVisible={modalVisible} transparent={true}>*/}
+          {/*<View style={{flex: 1, backgroundColor: '#00000090'}}>*/}
+            {/*<VisaLicenseForm*/}
+              {/*onClose={this.hideModal}*/}
+              {/*onButtonPress={this.save}*/}
+              {/*country={activeCountry}*/}
+              {/*type={type}*/}
+            {/*/>*/}
+          {/*</View>*/}
+        {/*</Modal>*/}
+
       </ScrollView>
     );
   }

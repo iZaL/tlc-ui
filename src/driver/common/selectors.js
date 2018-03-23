@@ -36,8 +36,9 @@ const getTruck = createSelector(
     truckModelsSchema,
     trailersSchema,
     driversSchema,
+    countriesSchema
   ],
-  (driver, trucks, truckMakes, truckModels, trailers, drivers) => {
+  (driver, trucks, truckMakes, truckModels, trailers, drivers,countries) => {
     let truck = trucks[driver.truck];
     return (
       (truck && {
@@ -46,6 +47,7 @@ const getTruck = createSelector(
         model: truckModels[truck.model],
         trailer: trailers[truck.trailer],
         driver: drivers[truck.driver],
+        registration_country:countries[truck.registration_country]
       }) ||
       {}
     );

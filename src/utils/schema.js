@@ -52,6 +52,7 @@ trucksSchema.define({
   make: truckMakesSchema,
   model: truckModelsSchema,
   trailer: trailersSchema,
+  registration_country:countriesSchema
 });
 
 routesSchema.define({

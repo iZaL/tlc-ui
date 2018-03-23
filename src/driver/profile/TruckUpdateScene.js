@@ -13,16 +13,17 @@ import Separator from 'components/Separator';
 import FormSubmit from 'components/FormSubmit';
 import I18n from 'utils/locale';
 import DateTimePicker from 'components/DateTimePicker';
+import {SELECTORS as COUNTRY_SELECTORS} from "app/selectors/country";
 
 type State = {
   mobile: string,
   nationality: string,
   residence: string,
   showDropDown: boolean,
-  dropDownField: 'residence|nationality',
+  dropDownField: 'registration_country|nationality',
 };
 
-type SceneType = 'nationality|residence';
+type SceneType = 'registration_country|residence';
 
 class TruckUpdateScene extends Component {
   static propTypes = {
@@ -41,6 +42,7 @@ class TruckUpdateScene extends Component {
       make: {},
       model: {},
     },
+
   };
 
   // shouldComponentUpdate(nextProps, nextState) {
@@ -57,6 +59,7 @@ class TruckUpdateScene extends Component {
     year: '',
     showDropDown: false,
     dropDownField: null,
+    registration_country:''
   };
 
   componentDidMount() {
@@ -105,6 +108,7 @@ class TruckUpdateScene extends Component {
       registration_number,
       plate_number,
       max_weight,
+      registration_country
     } = this.state;
 
     let params = {
@@ -115,6 +119,7 @@ class TruckUpdateScene extends Component {
       registration_number,
       plate_number,
       max_weight,
+      registration_country
     };
 
     this.props.dispatch(DRIVER_ACTIONS.saveTruck(params));
@@ -138,9 +143,10 @@ class TruckUpdateScene extends Component {
       registration_expiry,
       plate_number,
       max_weight,
+      registration_country,
     } = this.state;
 
-    const {makes, models} = this.props;
+    const {makes, models,countries} = this.props;
 
     return (
       <ScrollView
@@ -150,31 +156,31 @@ class TruckUpdateScene extends Component {
           padding: 10,
           paddingTop: 20,
         }}>
-        <FormLabel title={I18n.t('make')} />
+        {/*<FormLabel title={I18n.t('make')} />*/}
 
-        {showDropDown && dropDownField === 'make' ? (
-          <Dropdown
-            onClose={this.showDropDown}
-            items={makes}
-            selectedValue={make.id}
-            onItemPress={this.onFieldChange}
-            field="make"
-          />
-        ) : (
-          <Text
-            style={{
-              fontSize: 18,
-              color: 'black',
-              fontWeight: '300',
-              textAlign: 'left',
-              paddingTop: 5,
-            }}
-            onPress={() => this.showDropDown(true, 'make')}>
-            {make.id ? make.name : I18n.t('select')}
-          </Text>
-        )}
+        {/*{showDropDown && dropDownField === 'make' ? (*/}
+          {/*<Dropdown*/}
+            {/*onClose={this.showDropDown}*/}
+            {/*items={makes}*/}
+            {/*selectedValue={make.id}*/}
+            {/*onItemPress={this.onFieldChange}*/}
+            {/*field="make"*/}
+          {/*/>*/}
+        {/*) : (*/}
+          {/*<Text*/}
+            {/*style={{*/}
+              {/*fontSize: 18,*/}
+              {/*color: 'black',*/}
+              {/*fontWeight: '300',*/}
+              {/*textAlign: 'left',*/}
+              {/*paddingTop: 5,*/}
+            {/*}}*/}
+            {/*onPress={() => this.showDropDown(true, 'make')}>*/}
+            {/*{make.id ? make.name : I18n.t('select')}*/}
+          {/*</Text>*/}
+        {/*)}*/}
 
-        <Separator style={{marginVertical: 10}} />
+        {/*<Separator style={{marginVertical: 10}} />*/}
 
         <FormLabel title={I18n.t('model')} />
 
@@ -211,6 +217,32 @@ class TruckUpdateScene extends Component {
           placeholder={I18n.t('plate_number')}
         />
 
+        <FormLabel title={I18n.t('registration_country')}/>
+
+        {showDropDown && dropDownField === 'registration_country' ? (
+          <Dropdown
+            onClose={this.showDropDown}
+            items={countries}
+            selectedValue={registration_country.id}
+            onItemPress={this.onFieldChange}
+            field="registration_country"
+          />
+        ) : (
+          <Text
+            style={{
+              fontSize: 18,
+              color: 'black',
+              fontWeight: '300',
+              textAlign: 'left',
+              paddingTop: 5,
+            }}
+            onPress={() => this.showDropDown(true, 'registration_country')}>
+            {registration_country.id ? registration_country.name : I18n.t('select')}
+          </Text>
+        )}
+
+        <Separator style={{marginVertical: 10}} />
+
         <FormLabel title={I18n.t('registration_number')} />
 
         <FormTextInput
@@ -220,6 +252,8 @@ class TruckUpdateScene extends Component {
           maxLength={40}
           placeholder={I18n.t('registration_number')}
         />
+
+
 
         <FormLabel title={I18n.t('registration_expiry')} />
 
@@ -282,8 +316,10 @@ class TruckUpdateScene extends Component {
 function mapStateToProps(state) {
   return {
     truck: DRIVER_SELECTORS.getTruck(state),
-    makes: TRUCK_SELECTORS.getTruckMakes(state),
+    // makes: TRUCK_SELECTORS.getTruckMakes(state),
     models: TRUCK_SELECTORS.getTruckModels(state),
+    countries: COUNTRY_SELECTORS.getCountries(state),
+
   };
 }
 

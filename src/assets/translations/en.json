@@ -50,6 +50,7 @@
   "plate_number" : "Number Plate",
   "registration_expiry" : "Registration Expiry Date",
   "registration_number" : "Registration Number",
+  "registration_country" : "Registration Country",
   "max_weight" : "Max Weight",
   "year":"Year",
   "search_loads" : "Search Loads",
