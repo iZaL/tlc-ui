@@ -24,6 +24,7 @@ export async function fetchAPI(
         method: method,
         body: body,
         url: localeAwareUrl,
+        api_token: apiToken,
       });
       console.groupEnd();
     }

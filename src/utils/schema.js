@@ -26,7 +26,7 @@ const profileSchema = new schema.Union(
 
 driversSchema.define({
   nationality: countriesSchema,
-  residence: countriesSchema,
+  residencies: [countriesSchema],
   truck: trucksSchema,
   licenses: [{country: countriesSchema}],
   visas: [{country: countriesSchema}],
