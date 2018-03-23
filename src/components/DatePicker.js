@@ -87,7 +87,7 @@ export default class DatePicker extends Component {
         data={dates}
         renderItem={this.renderItem}
         style={styles.listContainer}
-        keyExtractor={(item, index) => index}
+        keyExtractor={(item, index) => `${index}`}
         horizontal={true}
         extraData={activeDate}
       />

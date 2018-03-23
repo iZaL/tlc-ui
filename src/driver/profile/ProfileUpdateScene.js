@@ -14,6 +14,7 @@ import FormSubmit from 'components/FormSubmit';
 import I18n from 'utils/locale';
 import AppModal from 'components/AppModal';
 import AlertBox from 'components/AlertBox';
+import SelectBox from "../../components/SelectBox";
 
 type State = {
   mobile: string,
@@ -31,7 +32,7 @@ class ProfileUpdateScene extends Component {
     profile: PropTypes.shape({
       mobile: PropTypes.string.isRequired,
       nationality: PropTypes.object.isRequired,
-      residence: PropTypes.object.isRequired,
+      residencies: PropTypes.array.isRequired,
     }),
   };
 
@@ -39,7 +40,7 @@ class ProfileUpdateScene extends Component {
     profile: {
       mobile: '',
       nationality: {},
-      residence: {},
+      residencies: [],
     },
   };
 
@@ -50,7 +51,7 @@ class ProfileUpdateScene extends Component {
   state: State = {
     mobile: '',
     nationality: {},
-    residence: {},
+    residencies: [],
     showDropDown: false,
     dropDownField: null,
     showModal: false,
@@ -61,14 +62,18 @@ class ProfileUpdateScene extends Component {
   }
 
 
-  static getDerivedStateFromProps(nextProps) {
+  static getDerivedStateFromProps(nextProps, prevState) {
 
     let {profile} = nextProps;
+
+    if (nextProps.profile === prevState.profile) {
+      return null;
+    }
 
     return {
       mobile: profile.mobile,
       nationality: profile.nationality,
-      residence: profile.residence,
+      residencies: profile.residencies,
     }
   }
 
@@ -101,18 +106,19 @@ class ProfileUpdateScene extends Component {
   };
 
   saveProfile = () => {
-    const {mobile, nationality, residence} = this.state;
+    const {mobile, nationality, residencies} = this.state;
     return new Promise((resolve, reject) => {
       let params = {
         mobile,
         nationality_country_id: nationality.id,
-        residence_country_id: residence.id,
+        // residence_country_id: residence.id,
         resolve,
         reject,
       };
       this.props.dispatch(PROFILE_ACTIONS.saveProfile(params));
     })
-      .then(() => {})
+      .then(() => {
+      })
       .catch(e => {
         // this.props.dispatch(
         //   APP_ACTIONS.setNotification('Update Failed', 'error'),
@@ -127,10 +133,17 @@ class ProfileUpdateScene extends Component {
     });
   };
 
+  loadNationalityScene = (countryID:number) => {
+
+  };
+
   render() {
     const {countries} = this.props;
 
-    const {residence, nationality, mobile} = this.state;
+    const {residencies, nationality, mobile} = this.state;
+
+    console.log('residencies', residencies);
+
 
     const {showDropDown, dropDownField} = this.state;
 
@@ -142,7 +155,7 @@ class ProfileUpdateScene extends Component {
           padding: 10,
           paddingTop: 20,
         }}>
-        <FormLabel title={I18n.t('mobile')} />
+        <FormLabel title={I18n.t('mobile')}/>
 
         <FormTextInput
           onChangeText={value => this.onFieldChange('mobile', value)}
@@ -152,7 +165,7 @@ class ProfileUpdateScene extends Component {
           keyboardType="phone-pad"
         />
 
-        <FormLabel title={I18n.t('nationality')} />
+        <FormLabel title={I18n.t('nationality')}/>
 
         {showDropDown && dropDownField === 'nationality' ? (
           <Dropdown
@@ -176,32 +189,43 @@ class ProfileUpdateScene extends Component {
           </Text>
         )}
 
-        <Separator style={{marginVertical: 10}} />
+        <Separator style={{marginVertical: 10}}/>
 
-        <FormLabel title={I18n.t('residence_country')} />
-        {showDropDown && dropDownField === 'residence' ? (
-          <Dropdown
-            onClose={this.showDropDown}
-            items={countries}
-            selectedValue={residence.id}
-            onItemPress={this.onFieldChange}
-            field="residence"
-          />
-        ) : (
-          <Text
-            style={{
-              fontSize: 18,
-              color: 'black',
-              fontWeight: '300',
-              textAlign: 'left',
-              paddingTop: 5,
-            }}
-            onPress={() => this.showDropDown(true, 'residence')}>
-            {residence.id ? residence.name : I18n.t('select')}
-          </Text>
-        )}
+        <FormLabel title={I18n.t('residence')} style={{marginBottom: 10}}/>
 
-        <Separator style={{marginVertical: 10}} />
+        <View style={{flexDirection: 'row'}}>
+          {
+            residencies.map((residency,index) =>
+              <SelectBox onPress={this.loadNationalityScene} style={{marginRight: 10}} id={residency.id} title={residency.name} key={`${index}`}/>
+            )
+          }
+        </View>
+
+
+        {/*<FormLabel title={I18n.t('residence_country')} />*/}
+        {/*{showDropDown && dropDownField === 'residence' ? (*/}
+        {/*<Dropdown*/}
+        {/*onClose={this.showDropDown}*/}
+        {/*items={countries}*/}
+        {/*selectedValue={residence.id}*/}
+        {/*onItemPress={this.onFieldChange}*/}
+        {/*field="residence"*/}
+        {/*/>*/}
+        {/*) : (*/}
+        {/*<Text*/}
+        {/*style={{*/}
+        {/*fontSize: 18,*/}
+        {/*color: 'black',*/}
+        {/*fontWeight: '300',*/}
+        {/*textAlign: 'left',*/}
+        {/*paddingTop: 5,*/}
+        {/*}}*/}
+        {/*onPress={() => this.showDropDown(true, 'residence')}>*/}
+        {/*{residence.id ? residence.name : I18n.t('select')}*/}
+        {/*</Text>*/}
+        {/*)}*/}
+
+        {/*<Separator style={{marginVertical: 10}} />*/}
 
         <FormSubmit
           onPress={this.saveProfile}

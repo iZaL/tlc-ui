@@ -51,6 +51,7 @@ class ProfileHome extends Component {
           onItemPress={this.onListItemPress}
           icon={<IconFactory type="Ionicons" size={30} name="md-person" />}
           name="profile_update"
+          arrow={true}
         />
         <Separator />
         <ListItem
@@ -59,6 +60,7 @@ class ProfileHome extends Component {
             <IconFactory type="MaterialCommunityIcons" size={30} name="truck" />
           }
           name="truck_update"
+          arrow={true}
         />
         <Separator />
         <ListItem
@@ -72,6 +74,7 @@ class ProfileHome extends Component {
           }
           name="trailer_update"
           disabled={!truck}
+          arrow={true}
         />
         <Separator />
         <ListItem
@@ -85,6 +88,7 @@ class ProfileHome extends Component {
           }
           name="route_update"
           disabled={!truck}
+          arrow={true}
         />
         <Separator />
         <ListItem
@@ -98,6 +102,7 @@ class ProfileHome extends Component {
           }
           name="documents_upload"
           disabled={!truck}
+          arrow={true}
         />
       </ScrollView>
     );

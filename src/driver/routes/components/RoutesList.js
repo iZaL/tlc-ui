@@ -78,7 +78,7 @@ export default class RoutesList extends Component {
         showsVerticalScrollIndicator={false}
         contentInset={{bottom: 100}}
         ItemSeparatorComponent={() => <Separator />}
-        keyExtractor={(item, index) => index}
+        keyExtractor={(item, index) => `${index}`}
       />
     );
   }

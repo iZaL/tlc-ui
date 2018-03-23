@@ -7,8 +7,9 @@ import PropTypes from 'prop-types';
 import {StyleSheet, Text, View} from 'react-native';
 import colors from 'assets/theme/colors';
 import I18n from 'utils/locale';
+import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 
-const ListItem = ({onItemPress, name, icon, disabled = false}) => {
+const ListItem = ({onItemPress, name, icon, disabled = false, arrow = false}) => {
   return (
     <Touchable onPress={() => onItemPress(name)} disabled={disabled}>
       <View style={[styles.container, disabled && {opacity: 0.5}]}>
@@ -18,7 +19,10 @@ const ListItem = ({onItemPress, name, icon, disabled = false}) => {
           <Text style={styles.name}>{I18n.t([name])}</Text>
         </View>
 
-        <View style={styles.arrowContainer} />
+        {
+          arrow &&
+          <MaterialIcons name="arrow-forward" color={colors.lightGrey} size={30}/>
+        }
       </View>
     </Touchable>
   );

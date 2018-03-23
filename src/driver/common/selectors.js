@@ -23,7 +23,7 @@ const getProfile = createSelector(
     return {
       ...driver,
       nationality: countries[driver.nationality],
-      residence: countries[driver.residence],
+      residencies: driver.residencies && driver.residencies.map(residency => countries[residency]) || [],
     };
   },
 );
@@ -147,7 +147,7 @@ const getVisas = createSelector(
  */
 const getProfileCountries = createSelector(
   [getProfile, getRoutes],
-  ({nationality, residence, licenses, visas}, profileRoutes) => {
+  ({nationality, residencies, licenses, visas}, profileRoutes) => {
     let routes = flatten(
       profileRoutes.map(profile => [
         profile.origin,
@@ -155,7 +155,7 @@ const getProfileCountries = createSelector(
         ...profile.transits,
       ]),
     );
-    const countries = [...new Set([nationality, residence, ...routes])];
+    const countries = [...new Set([nationality, ...residencies, ...routes])];
     return countries.map(country => {
       return {
         ...country,

@@ -49,7 +49,7 @@ export default class LoadsList extends PureComponent {
         renderItem={this.renderRow}
         showsVerticalScrollIndicator={false}
         ItemSeparatorComponent={() => <Separator />}
-        keyExtractor={(item, index) => index}
+        keyExtractor={(item, index) => `${index}`}
       />
     );
   }

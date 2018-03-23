@@ -72,7 +72,7 @@ export default class LoadWhat extends Component {
           ItemSeparatorComponent={() => (
             <Separator style={{marginVertical: 5}} />
           )}
-          keyExtractor={(item, index) => index}
+          keyExtractor={(item, index) => `${index}`}
           extraData={passes}
         />
       </View>

@@ -149,5 +149,5 @@ export const Routes = DrawerNavigator(DrawerRoutes, {
   gesturesEnabled: false,
   contentComponent: props => <Drawer {...props} />,
   drawerWidth: 275,
-  // initialRouteName: 'LoadStack',
+  initialRouteName: 'ProfileStack',
 });
