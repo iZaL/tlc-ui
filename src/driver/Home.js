@@ -21,6 +21,10 @@ class Home extends Component {
     this.props.dispatch(APP_ACTIONS.fetchCountries());
 
   }
+  componentDidCatch(error){
+    console.log('er',error);
+
+  }
 
   onLoadsListItemPress = (load: object) => {
     this.props.navigation.navigate('LoadDetail', {

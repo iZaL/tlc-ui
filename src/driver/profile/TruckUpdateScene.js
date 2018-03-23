@@ -59,7 +59,7 @@ class TruckUpdateScene extends Component {
     year: '',
     showDropDown: false,
     dropDownField: null,
-    registration_country:''
+    registration_country: ''
   };
 
   componentDidMount() {
@@ -83,13 +83,16 @@ class TruckUpdateScene extends Component {
   onFieldChange = (field, value) => {
     if (value) {
       let record;
-      const {makes, models} = this.props;
+      const {makes, models,countries} = this.props;
       switch (field) {
         case 'make':
           record = makes.find(record => record.id === value);
           break;
         case 'model':
           record = models.find(record => record.id === value);
+          break;
+        case 'registration_country':
+          record = countries.find(record => record.id === value);
           break;
         default:
           record = value;
@@ -112,14 +115,14 @@ class TruckUpdateScene extends Component {
     } = this.state;
 
     let params = {
-      make_id: make.id,
+      // make_id: make.id,
       model_id: model.id,
       year,
       registration_expiry,
       registration_number,
       plate_number,
       max_weight,
-      registration_country
+      registration_country_id:registration_country.id
     };
 
     this.props.dispatch(DRIVER_ACTIONS.saveTruck(params));
@@ -146,7 +149,7 @@ class TruckUpdateScene extends Component {
       registration_country,
     } = this.state;
 
-    const {makes, models,countries} = this.props;
+    const {makes, models, countries} = this.props;
 
     return (
       <ScrollView
@@ -159,30 +162,30 @@ class TruckUpdateScene extends Component {
         {/*<FormLabel title={I18n.t('make')} />*/}
 
         {/*{showDropDown && dropDownField === 'make' ? (*/}
-          {/*<Dropdown*/}
-            {/*onClose={this.showDropDown}*/}
-            {/*items={makes}*/}
-            {/*selectedValue={make.id}*/}
-            {/*onItemPress={this.onFieldChange}*/}
-            {/*field="make"*/}
-          {/*/>*/}
+        {/*<Dropdown*/}
+        {/*onClose={this.showDropDown}*/}
+        {/*items={makes}*/}
+        {/*selectedValue={make.id}*/}
+        {/*onItemPress={this.onFieldChange}*/}
+        {/*field="make"*/}
+        {/*/>*/}
         {/*) : (*/}
-          {/*<Text*/}
-            {/*style={{*/}
-              {/*fontSize: 18,*/}
-              {/*color: 'black',*/}
-              {/*fontWeight: '300',*/}
-              {/*textAlign: 'left',*/}
-              {/*paddingTop: 5,*/}
-            {/*}}*/}
-            {/*onPress={() => this.showDropDown(true, 'make')}>*/}
-            {/*{make.id ? make.name : I18n.t('select')}*/}
-          {/*</Text>*/}
+        {/*<Text*/}
+        {/*style={{*/}
+        {/*fontSize: 18,*/}
+        {/*color: 'black',*/}
+        {/*fontWeight: '300',*/}
+        {/*textAlign: 'left',*/}
+        {/*paddingTop: 5,*/}
+        {/*}}*/}
+        {/*onPress={() => this.showDropDown(true, 'make')}>*/}
+        {/*{make.id ? make.name : I18n.t('select')}*/}
+        {/*</Text>*/}
         {/*)}*/}
 
         {/*<Separator style={{marginVertical: 10}} />*/}
 
-        <FormLabel title={I18n.t('model')} />
+        <FormLabel title={I18n.t('model')}/>
 
         {showDropDown && dropDownField === 'model' ? (
           <Dropdown
@@ -206,9 +209,9 @@ class TruckUpdateScene extends Component {
           </Text>
         )}
 
-        <Separator style={{marginVertical: 10}} />
+        <Separator style={{marginVertical: 10}}/>
 
-        <FormLabel title={I18n.t('plate_number')} />
+        <FormLabel title={I18n.t('plate_number')}/>
 
         <FormTextInput
           onChangeText={value => this.onFieldChange('plate_number', value)}
@@ -241,9 +244,9 @@ class TruckUpdateScene extends Component {
           </Text>
         )}
 
-        <Separator style={{marginVertical: 10}} />
+        <Separator style={{marginVertical: 10}}/>
 
-        <FormLabel title={I18n.t('registration_number')} />
+        <FormLabel title={I18n.t('registration_number')}/>
 
         <FormTextInput
           onChangeText={value =>
@@ -254,8 +257,7 @@ class TruckUpdateScene extends Component {
         />
 
 
-
-        <FormLabel title={I18n.t('registration_expiry')} />
+        <FormLabel title={I18n.t('registration_expiry')}/>
 
         <DateTimePicker
           date={registration_expiry}
@@ -269,7 +271,7 @@ class TruckUpdateScene extends Component {
           onDateChange={date => this.onFieldChange('registration_expiry', date)}
         />
 
-        <FormLabel title={I18n.t('max_weight')} />
+        <FormLabel title={I18n.t('max_weight')}/>
 
         <FormTextInput
           onChangeText={value => this.onFieldChange('max_weight', value)}
@@ -278,7 +280,7 @@ class TruckUpdateScene extends Component {
           placeholder={I18n.t('max_weight')}
         />
 
-        <FormLabel title={I18n.t('year')} />
+        <FormLabel title={I18n.t('year')}/>
 
         {showDropDown && dropDownField === 'year' ? (
           <Dropdown

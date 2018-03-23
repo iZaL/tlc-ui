@@ -48,12 +48,13 @@ class ProfileHome extends Component {
     return (
       <ScrollView style={{flex: 1, backgroundColor: 'white'}}>
         <ListItem
+          style={{marginTop:10}}
           onItemPress={this.onListItemPress}
           icon={<IconFactory type="Ionicons" size={30} name="md-person" />}
           name="profile_update"
           arrow={true}
         />
-        <Separator />
+        <Separator style={{marginVertical:10}} />
         <ListItem
           onItemPress={this.onListItemPress}
           icon={
@@ -62,7 +63,7 @@ class ProfileHome extends Component {
           name="truck_update"
           arrow={true}
         />
-        <Separator />
+        <Separator style={{marginVertical:10}} />
         <ListItem
           onItemPress={this.onListItemPress}
           icon={
@@ -76,7 +77,7 @@ class ProfileHome extends Component {
           disabled={!truck}
           arrow={true}
         />
-        <Separator />
+        <Separator style={{marginVertical:10}} />
         <ListItem
           onItemPress={this.onListItemPress}
           icon={
@@ -90,7 +91,7 @@ class ProfileHome extends Component {
           disabled={!truck}
           arrow={true}
         />
-        <Separator />
+        <Separator style={{marginVertical:10}} />
         <ListItem
           onItemPress={this.onListItemPress}
           icon={

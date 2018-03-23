@@ -14,8 +14,10 @@ import FormSubmit from 'components/FormSubmit';
 import I18n from 'utils/locale';
 import AppModal from 'components/AppModal';
 import AlertBox from 'components/AlertBox';
-import SelectBox from "../../components/SelectBox";
+import SelectBox from "components/SelectBox";
 import Modal from 'react-native-modal';
+import ListItem from "components/ListItem";
+import IconFactory from "components/IconFactory";
 
 
 type State = {
@@ -135,7 +137,11 @@ class ProfileUpdateScene extends Component {
     });
   };
 
-  loadNationalityScene = (countryID:number) => {
+  loadNationalityScene = (countryID: number) => {
+
+  };
+
+  onListItemPress = (name: string) => {
 
   };
 
@@ -193,16 +199,32 @@ class ProfileUpdateScene extends Component {
 
         <Separator style={{marginVertical: 10}}/>
 
-        <FormLabel title={I18n.t('residence')} style={{marginBottom: 10}}/>
+        <ListItem
+          onItemPress={this.onListItemPress}
+          name="residence"
+          arrow={true}
+        />
 
-        <View style={{flexDirection: 'row'}}>
-          {
-            residencies.map((residency,index) =>
-              <SelectBox onPress={this.loadNationalityScene} style={{marginRight: 10}} id={residency.id} title={residency.name} key={`${index}`}/>
-            )
-          }
-        </View>
 
+        {/*<FormLabel title={I18n.t('residence')} style={{marginBottom: 10}}/>*/}
+
+        {/*<View style={{flexDirection: 'row'}}>*/}
+        {/*{*/}
+        {/*residencies.map((residency,index) =>*/}
+        {/*<SelectBox onPress={this.loadNationalityScene} style={{marginRight: 10}} id={residency.id} title={residency.name} key={`${index}`}/>*/}
+        {/*)*/}
+        {/*}*/}
+        {/*</View>*/}
+
+        <Separator style={{marginVertical: 10}}/>
+
+        <ListItem
+          onItemPress={this.onListItemPress}
+          name="language"
+          arrow={true}
+        />
+
+        <Separator style={{marginVertical: 10}}/>
 
         {/*<FormLabel title={I18n.t('residence_country')} />*/}
         {/*{showDropDown && dropDownField === 'residence' ? (*/}
@@ -246,14 +268,14 @@ class ProfileUpdateScene extends Component {
         {/*/>*/}
 
         {/*<Modal animationType="slide" isVisible={modalVisible} transparent={true}>*/}
-          {/*<View style={{flex: 1, backgroundColor: '#00000090'}}>*/}
-            {/*<VisaLicenseForm*/}
-              {/*onClose={this.hideModal}*/}
-              {/*onButtonPress={this.save}*/}
-              {/*country={activeCountry}*/}
-              {/*type={type}*/}
-            {/*/>*/}
-          {/*</View>*/}
+        {/*<View style={{flex: 1, backgroundColor: '#00000090'}}>*/}
+        {/*<VisaLicenseForm*/}
+        {/*onClose={this.hideModal}*/}
+        {/*onButtonPress={this.save}*/}
+        {/*country={activeCountry}*/}
+        {/*type={type}*/}
+        {/*/>*/}
+        {/*</View>*/}
         {/*</Modal>*/}
 
       </ScrollView>

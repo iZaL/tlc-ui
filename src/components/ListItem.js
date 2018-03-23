@@ -9,11 +9,14 @@ import colors from 'assets/theme/colors';
 import I18n from 'utils/locale';
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 
-const ListItem = ({onItemPress, name, icon, disabled = false, arrow = false}) => {
+const ListItem = ({onItemPress, name, icon, disabled = false, arrow = false, style}) => {
   return (
     <Touchable onPress={() => onItemPress(name)} disabled={disabled}>
-      <View style={[styles.container, disabled && {opacity: 0.5}]}>
-        <View style={styles.iconContainer}>{icon}</View>
+      <View style={[styles.container, style, disabled && {opacity: 0.5}]}>
+        {
+          icon &&
+          <View style={styles.iconContainer}>{icon}</View>
+        }
 
         <View style={styles.contentContainer}>
           <Text style={styles.name}>{I18n.t([name])}</Text>
@@ -42,7 +45,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     // backgroundColor:'yellow',
-    padding: 10,
+    // padding: 10,
   },
   iconContainer: {
     flex: 1,

@@ -104,9 +104,10 @@ const getRouteByID = () => {
 };
 
 const getAvailableRoutes = createSelector(
-  [getProfile, routesSchema, countriesSchema],
-  (driver, routes, countries) => {
-    let loadingRoutes = driver.residence.loading_routes || [];
+  [getTruck, routesSchema, countriesSchema],
+  (truck, routes, countries) => {
+    let loadingRoutes = truck.registration_country ? truck.registration_country.loading_routes : [];
+    console.log('loadingRoutes',loadingRoutes);
     const routeByID = getRouteByID();
     return (
       loadingRoutes.map(routeID => {
