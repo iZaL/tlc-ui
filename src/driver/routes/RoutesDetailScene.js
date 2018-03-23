@@ -4,6 +4,8 @@ import {connect} from 'react-redux';
 import {ScrollView} from 'react-native';
 import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
 import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
+import RouteTransitsList from "./components/RouteTransitsList";
+import VisaLicenseForm from "./components/VisaLicenseForm";
 
 type State = {
   activeCountry: undefined,
@@ -49,11 +51,11 @@ class RoutesDetailScene extends Component {
 
 
   static getDerivedStateFromProps(nextProps) {
-    if (!this.state.activeCountry && nextProps.route.origin.id) {
+    // if (!this.state.activeCountry && nextProps.route.origin.id) {
       return {
         activeCountry: nextProps.route.origin,
       }
-    }
+    // }
   }
 
   setActiveCountry = country => {
@@ -66,12 +68,16 @@ class RoutesDetailScene extends Component {
     this.setActiveCountry(item);
   };
 
-  saveProfile = () => {};
+  saveProfile = () => {
+  };
 
   render() {
     const {route, visas, licenses} = this.props;
     const {origin, destination, transits} = route;
     const {activeCountry} = this.state;
+
+    console.log('ac',activeCountry);
+
 
     let countries = [origin, ...transits, destination];
 
@@ -84,19 +90,19 @@ class RoutesDetailScene extends Component {
 
     return (
       <ScrollView style={{flex: 1}}>
-        {/*<RouteTransitsList*/}
-        {/*items={countries}*/}
-        {/*activeCountryID={activeCountry ? activeCountry.id : 0}*/}
-        {/*onItemPress={this.onTransitTabItemPress}*/}
-        {/*/>*/}
+        <RouteTransitsList
+          items={countries}
+          activeCountryID={activeCountry ? activeCountry.id : 0}
+          onItemPress={this.onTransitTabItemPress}
+        />
 
-        {/*<VisaLicenseForm*/}
-        {/*items={countries}*/}
-        {/*onButtonPress={this.saveProfile}*/}
-        {/*country={activeCountry}*/}
-        {/*license={license}*/}
-        {/*visa={visa}*/}
-        {/*/>*/}
+        <VisaLicenseForm
+          items={countries}
+          onButtonPress={this.saveProfile}
+          country={activeCountry}
+          license={license}
+          visa={visa}
+        />
       </ScrollView>
     );
   }

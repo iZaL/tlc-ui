@@ -123,7 +123,7 @@ export default class VisaLicenseForm extends PureComponent {
             )}
           </Touchable>
 
-          <Separator />
+          <Separator style={{marginVertical:10}} />
 
           <View style={styles.buttonContainer}>
             <Button

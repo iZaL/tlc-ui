@@ -33,7 +33,7 @@ export default class Drawer extends Component {
           active={this.state.activeRoute === 'HomeStack'}
         />
 
-        <Separator />
+        <Separator style={{marginVertical:10}} />
 
         <DrawerItem
           title={I18n.t('logout')}

@@ -47,7 +47,7 @@ export default class DocumentCountriesList extends PureComponent {
     return (
       <View>
         <View style={[styles.contentContainer]}>
-          <Separator />
+          <Separator style={{marginVertical:10}} />
 
           <Touchable
             style={styles.itemContainer}
@@ -55,7 +55,7 @@ export default class DocumentCountriesList extends PureComponent {
             <Text style={styles.itemTitle}>{I18n.t('driving_license')}</Text>
           </Touchable>
 
-          <Separator />
+          <Separator style={{marginVertical:10}} />
 
           <Touchable
             style={styles.itemContainer}

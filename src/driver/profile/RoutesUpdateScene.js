@@ -20,10 +20,6 @@ class RoutesUpdateScene extends Component {
     this.props.dispatch(DRIVER_ACTIONS.fetchRoutes());
   }
 
-  componentDidCatch(){
-    console.log('err');
-  }
-
   toggleItem = (item: object) => {
     this.props.dispatch(
       DRIVER_ACTIONS.saveRoute({
@@ -44,7 +40,6 @@ class RoutesUpdateScene extends Component {
 
   render() {
     const {routes} = this.props;
-    console.log('routes',routes)
     return (
       <View style={{flex: 1}}>
         <RoutesList

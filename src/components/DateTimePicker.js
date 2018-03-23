@@ -51,7 +51,7 @@ export default class DateTimePicker extends Component {
     this.setModalVisible = this.setModalVisible.bind(this);
   }
 
-  UNSAFE_componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps) {
     if (nextProps.date !== this.props.date) {
       this.setState({date: this.getDate(nextProps.date)});
     }

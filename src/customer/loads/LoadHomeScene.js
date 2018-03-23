@@ -54,9 +54,9 @@ class ProfileHome extends Component {
   render() {
     return (
       <ScrollView style={{flex: 1, backgroundColor: 'white'}}>
-        <Separator />
 
         <ListItem
+          style={{marginTop:10}}
           onItemPress={this.onListItemPress}
           icon={
             <IconFactory
@@ -68,7 +68,7 @@ class ProfileHome extends Component {
           name="load_add"
         />
 
-        <Separator />
+        <Separator style={{marginVertical:10}} />
 
         <ListItem
           onItemPress={this.onListItemPress}
@@ -82,7 +82,7 @@ class ProfileHome extends Component {
           name="load_working_list"
         />
 
-        <Separator />
+        <Separator style={{marginVertical:10}} />
 
         <ListItem
           onItemPress={this.onListItemPress}
@@ -90,7 +90,7 @@ class ProfileHome extends Component {
           name="load_approved_list"
         />
 
-        <Separator />
+        <Separator style={{marginVertical:10}} />
 
         <ListItem
           onItemPress={this.onListItemPress}

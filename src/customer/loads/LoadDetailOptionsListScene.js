@@ -55,7 +55,7 @@ class LoadDetailOptionsListScene extends Component {
   render() {
     return (
       <ScrollView style={{flex: 1, backgroundColor: 'white'}}>
-        <Separator />
+        <Separator style={{marginVertical:10}} />
 
         <ListItem
           onItemPress={this.onListItemPress}
@@ -69,7 +69,7 @@ class LoadDetailOptionsListScene extends Component {
           name="load_detail"
         />
 
-        <Separator />
+        <Separator style={{marginVertical:10}} />
 
         <ListItem
           onItemPress={this.onListItemPress}
@@ -79,7 +79,7 @@ class LoadDetailOptionsListScene extends Component {
           name="load_track"
         />
 
-        <Separator />
+        <Separator style={{marginVertical:10}} />
 
         <ListItem
           onItemPress={this.onListItemPress}
@@ -93,7 +93,7 @@ class LoadDetailOptionsListScene extends Component {
           name="driver_detail"
         />
 
-        <Separator />
+        <Separator style={{marginVertical:10}} />
 
         <ListItem
           onItemPress={this.onListItemPress}
