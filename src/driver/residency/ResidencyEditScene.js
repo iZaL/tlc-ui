@@ -8,7 +8,7 @@ import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
 import I18n from 'utils/locale';
 import {SELECTORS as COUNTRY_SELECTORS} from "app/selectors/country";
 
-class ResidencyListScene extends Component {
+class ResidencyEditScene extends Component {
 
   static propTypes = {
     residencies: PropTypes.array,
@@ -44,4 +44,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(ResidencyListScene);
+export default connect(mapStateToProps)(ResidencyEditScene);

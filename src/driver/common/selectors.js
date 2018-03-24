@@ -23,10 +23,11 @@ const getProfile = createSelector(
     return {
       ...driver,
       nationality: countries[driver.nationality],
-      residencies:
-        (driver.residencies &&
-          driver.residencies.map(residency => countries[residency])) ||
-        [],
+      residencies: driver.residencies || [],
+      // residencies:
+      //   (driver.residencies &&
+      //     driver.residencies.map(residency => countries[residency])) ||
+      //   [],
     };
   },
 );
@@ -167,12 +168,12 @@ const getProfileCountries = createSelector(
       return {
         ...country,
         license:
-          (licenses &&
-            licenses.find(license => license.country === country.id)) ||
-          {},
+        (licenses &&
+          licenses.find(license => license.country === country.id)) ||
+        {},
         visa:
-          (visas && visas.find(license => license.country === country.id)) ||
-          {},
+        (visas && visas.find(license => license.country === country.id)) ||
+        {},
       };
     });
   },
@@ -234,8 +235,21 @@ const getLoadsByStatus = () => {
   );
 };
 
+const getResidencies = createSelector(
+  [getProfile, countriesSchema],
+  (driver, countries) => {
+    return driver.residencies.map(residency => {
+      return {
+        ...residency,
+        country: countries[residency.country]
+      }
+    })
+  },
+);
+
 export const SELECTORS = {
   getProfile,
+  getResidencies,
   getTruck,
   getTrailer,
   getRouteByID,

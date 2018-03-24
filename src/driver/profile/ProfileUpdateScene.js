@@ -135,7 +135,19 @@ class ProfileUpdateScene extends Component {
 
   loadNationalityScene = (countryID: number) => {};
 
-  onListItemPress = (name: string) => {};
+  onListItemPress = (route: string) => {
+
+    let scene;
+    let sceneConfig = {};
+    switch (route) {
+      case 'residence':
+        scene = 'ResidencyList';
+        break;
+    }
+
+    return this.props.navigation.navigate(scene, sceneConfig);
+
+  };
 
   render() {
     const {countries} = this.props;

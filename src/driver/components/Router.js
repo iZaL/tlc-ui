@@ -17,6 +17,8 @@ import LoadHomeScene from 'driver/loads/LoadHomeScene';
 import TripTrackScene from 'driver/trips/TripTrackScene';
 import I18n from 'utils/locale';
 import colors from 'assets/theme/colors';
+import ResidencyListScene from "driver/residency/ResidencyListScene";
+import ResidencyEditScene from "driver/residency/ResidencyEditScene";
 
 const getDrawerIcon = navigation => {
   return {
@@ -92,6 +94,18 @@ const ProfileStack = StackNavigator(
       screen: DocumentsUploadScene,
       navigationOptions: () => ({
         title: I18n.t('documents_upload'),
+      }),
+    },
+    ResidencyList: {
+      screen: ResidencyListScene,
+      navigationOptions: () => ({
+        title: I18n.t('residency_list'),
+      }),
+    },
+    ResidencyEdit: {
+      screen: ResidencyEditScene,
+      navigationOptions: () => ({
+        title: I18n.t('residency_edit'),
       }),
     },
   },
