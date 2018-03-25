@@ -20,6 +20,7 @@ export default class FormTextInput extends Component {
         placeholderTextColor={colors.mediumGrey}
         autoCorrect={false}
         autoCapitalize="none"
+        underlineColor={colors.primary}
       />
     );
   }

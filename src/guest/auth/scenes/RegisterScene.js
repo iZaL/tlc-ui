@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, {Component} from 'react';
-import {StyleSheet, View} from 'react-native';
+import {ScrollView, StyleSheet, View} from 'react-native';
 import I18n from 'utils/locale';
 import FormLabel from 'components/FormLabel';
 import FormTextInput from 'components/FormTextInput';
@@ -37,10 +37,10 @@ export default class RegisterScene extends Component {
     } = this.props;
 
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container} contentInset={{bottom:50}}>
         {isCustomer ? (
           <View>
-            <FormLabel title={I18n.t('company_name_en')} />
+            {/*<FormLabel title={I18n.t('company_name_en')} />*/}
             <FormTextInput
               onChangeText={value => onFieldChange('name_en', value)}
               value={name_en}
@@ -48,7 +48,7 @@ export default class RegisterScene extends Component {
               placeholder={I18n.t('company_name_en')}
             />
 
-            <FormLabel title={I18n.t('company_name_ar')} />
+            {/*<FormLabel title={I18n.t('company_name_ar')} />*/}
             <FormTextInput
               onChangeText={value => onFieldChange('name_ar', value)}
               value={name_ar}
@@ -67,7 +67,7 @@ export default class RegisterScene extends Component {
           </View>
         ) : (
           <View>
-            <FormLabel title={I18n.t('name')} />
+            {/*<FormLabel title={I18n.t('name')} />*/}
             <FormTextInput
               onChangeText={value => onFieldChange('name_en', value)}
               value={name_en}
@@ -77,7 +77,7 @@ export default class RegisterScene extends Component {
           </View>
         )}
 
-        <FormLabel title={I18n.t('name')} />
+        {/*<FormLabel title={I18n.t('name')} />*/}
         <FormTextInput
           onChangeText={value => onFieldChange('name_en', value)}
           value={name_en}
@@ -85,7 +85,7 @@ export default class RegisterScene extends Component {
           placeholder={I18n.t('name')}
         />
 
-        <FormLabel title={I18n.t('email')} />
+        {/*<FormLabel title={I18n.t('email')} />*/}
 
         <FormTextInput
           onChangeText={value => onFieldChange('email', value)}
@@ -95,7 +95,7 @@ export default class RegisterScene extends Component {
           keyboardType="email-address"
         />
 
-        <FormLabel title={I18n.t('mobile')} />
+        {/*<FormLabel title={I18n.t('mobile')} />*/}
 
         <FormTextInput
           onChangeText={value => onFieldChange('mobile', value)}
@@ -105,7 +105,7 @@ export default class RegisterScene extends Component {
           keyboardType="phone-pad"
         />
 
-        <FormLabel title={I18n.t('password')} />
+        {/*<FormLabel title={I18n.t('password')} />*/}
         <FormTextInput
           onChangeText={value => onFieldChange('password', value)}
           value={password}
@@ -114,13 +114,13 @@ export default class RegisterScene extends Component {
           secureTextEntry={true}
         />
 
-        <FormLabel title={I18n.t('confirm_password')} />
+        {/*<FormLabel title={I18n.t('confirm_password')} />*/}
         <FormTextInput
           onChangeText={value => onFieldChange('password_confirmation', value)}
           value={password_confirmation}
           maxLength={40}
           secureTextEntry={true}
-          placeholder={I18n.t('password')}
+          placeholder={I18n.t('confirm_password')}
         />
 
         <FormSubmit
@@ -129,7 +129,7 @@ export default class RegisterScene extends Component {
           title={busy ? I18n.t('signing_up') : I18n.t('create_account')}
           style={{marginTop: 50}}
         />
-      </View>
+      </ScrollView>
     );
   }
 }

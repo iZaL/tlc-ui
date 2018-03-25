@@ -129,8 +129,10 @@ class ProfileUpdateScene extends Component {
           backgroundColor: 'white',
           padding: 10,
           paddingTop: 20,
-        }}>
-        <FormLabel title={I18n.t('company_name_en')} />
+        }}
+        contentContainerStyle={{paddingBottom:100}}
+      >
+        {/*<FormLabel title={I18n.t('company_name_en')} />*/}
         <FormTextInput
           onChangeText={value => this.onUserFieldChange('name_en', value)}
           value={name_en}
@@ -138,7 +140,7 @@ class ProfileUpdateScene extends Component {
           placeholder={I18n.t('company_name_en')}
         />
 
-        <FormLabel title={I18n.t('company_name_ar')} />
+        {/*<FormLabel title={I18n.t('company_name_ar')} />*/}
         <FormTextInput
           onChangeText={value => this.onUserFieldChange('name_ar', value)}
           value={name_ar}
@@ -146,7 +148,7 @@ class ProfileUpdateScene extends Component {
           placeholder={I18n.t('company_name_ar')}
         />
 
-        <FormLabel title={I18n.t('mobile')} />
+        {/*<FormLabel title={I18n.t('mobile')} />*/}
 
         <FormTextInput
           onChangeText={value => this.onFieldChange('mobile', value)}
@@ -156,7 +158,7 @@ class ProfileUpdateScene extends Component {
           keyboardType="phone-pad"
         />
 
-        <FormLabel title={I18n.t('office_number')} />
+        {/*<FormLabel title={I18n.t('office_number')} />*/}
 
         <FormTextInput
           onChangeText={value => this.onFieldChange('phone', value)}
@@ -166,26 +168,24 @@ class ProfileUpdateScene extends Component {
           keyboardType="phone-pad"
         />
 
-        <FormLabel title={I18n.t('company_email')} />
+        {/*<FormLabel title={I18n.t('company_email')} />*/}
 
         <FormTextInput
           onChangeText={value => this.onFieldChange('email', value)}
           value={email}
           maxLength={40}
           placeholder={I18n.t('company_email')}
-          keyboardType="phone-pad"
         />
 
-        <FormLabel title={I18n.t('address_en')} />
+        {/*<FormLabel title={I18n.t('address_en')} />*/}
 
         <FormTextInput
           onChangeText={value => this.onFieldChange('address_en', value)}
           value={address_en}
           placeholder={I18n.t('address_en')}
-          keyboardType="phone-pad"
         />
 
-        <FormLabel title={I18n.t('address_ar')} />
+        {/*<FormLabel title={I18n.t('address_ar')} />*/}
 
         <FormTextInput
           onChangeText={value => this.onFieldChange('address_ar', value)}

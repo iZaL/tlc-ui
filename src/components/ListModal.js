@@ -11,7 +11,6 @@ import Separator from 'components/Separator';
 import colors from "assets/theme/colors";
 import {Checkbox, Headline} from "react-native-paper";
 import I18n from 'utils/locale';
-// import {Heading} from 'react-native-paper';
 
 export default class CountryListModal extends Component {
 
@@ -36,8 +35,6 @@ export default class CountryListModal extends Component {
           <Text style={styles.itemTitle}>{item.name}</Text>
           <Checkbox
             checked={activeID === item.id}
-            onPress={() => {
-            }}
           />
         </View>
       </Touchable>
@@ -45,7 +42,7 @@ export default class CountryListModal extends Component {
   };
 
   render() {
-    let {isVisible, onConfirm, onCancel, items, title} = this.props;
+    let {isVisible, onCancel, items, title} = this.props;
 
     return (
       <View style={styles.container}>

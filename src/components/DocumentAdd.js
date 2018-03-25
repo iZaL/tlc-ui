@@ -8,7 +8,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import colors from 'assets/theme/colors';
 import images from 'assets/theme/images';
 import DateTimePicker from 'react-native-modal-datetime-picker';
-import CountryListModal from 'components/CountryListModal';
+import ListModal from 'components/ListModal';
 
 import I18n from 'utils/locale';
 
@@ -31,7 +31,7 @@ export default class DocumentAdd extends Component {
     // item: PropTypes.object.isRequired,
     onCountryPress: PropTypes.func.isRequired,
     onFieldChange: PropTypes.func.isRequired,
-    number: PropTypes.string.isRequired,
+    number: PropTypes.oneOf([PropTypes.string,PropTypes.number]).isRequired,
     expiry_date: PropTypes.string.isRequired,
     country: PropTypes.object.isRequired,
     image: PropTypes.string,
@@ -137,7 +137,7 @@ export default class DocumentAdd extends Component {
           onCancel={this._hideDateTimePicker}
         />
 
-        <CountryListModal
+        <ListModal
           items={countries}
           isVisible={this.state.isCountryModalVisible}
           onConfirm={this._handleCountryPicker}

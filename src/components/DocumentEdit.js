@@ -8,7 +8,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import colors from 'assets/theme/colors';
 import images from 'assets/theme/images';
 import DateTimePicker from 'react-native-modal-datetime-picker';
-import CountryListModal from 'components/CountryListModal';
+import CountryListModal from 'components/ListModal';
 
 import I18n from 'utils/locale';
 
