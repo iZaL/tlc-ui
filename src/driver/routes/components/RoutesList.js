@@ -8,7 +8,7 @@ import Separator from 'components/Separator';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Touchable from 'react-native-platform-touchable';
 import {Switch} from 'react-native-paper';
-import colors from "assets/theme/colors";
+import colors from 'assets/theme/colors';
 
 export default class RoutesList extends Component {
   shouldComponentUpdate(nextProps) {
@@ -42,27 +42,26 @@ export default class RoutesList extends Component {
           </View>
         </Touchable>
         {/*<Touchable*/}
-          {/*onPress={() => onIconPress(item)}*/}
-          {/*underlayColor="transparent"*/}
-          {/*hitSlop={{top: 10, left: 10, right: 10, bottom: 10}}>*/}
-          {/*<View style={styles.checkbox}>*/}
-            {/*{item.has_added ? (*/}
-              {/*<MaterialCommunityIcons*/}
-                {/*key={item.id}*/}
-                {/*name="checkbox-marked-circle"*/}
-                {/*size={30}*/}
-                {/*color="green"*/}
-              {/*/>*/}
-            {/*) : (*/}
-              {/*<MaterialCommunityIcons*/}
-                {/*key={item.id}*/}
-                {/*name="checkbox-blank-circle-outline"*/}
-                {/*size={30}*/}
-                {/*color="green"*/}
-              {/*/>*/}
-            {/*)}*/}
-          {/*</View>*/}
-
+        {/*onPress={() => onIconPress(item)}*/}
+        {/*underlayColor="transparent"*/}
+        {/*hitSlop={{top: 10, left: 10, right: 10, bottom: 10}}>*/}
+        {/*<View style={styles.checkbox}>*/}
+        {/*{item.has_added ? (*/}
+        {/*<MaterialCommunityIcons*/}
+        {/*key={item.id}*/}
+        {/*name="checkbox-marked-circle"*/}
+        {/*size={30}*/}
+        {/*color="green"*/}
+        {/*/>*/}
+        {/*) : (*/}
+        {/*<MaterialCommunityIcons*/}
+        {/*key={item.id}*/}
+        {/*name="checkbox-blank-circle-outline"*/}
+        {/*size={30}*/}
+        {/*color="green"*/}
+        {/*/>*/}
+        {/*)}*/}
+        {/*</View>*/}
 
         {/*</Touchable>*/}
 
@@ -71,7 +70,6 @@ export default class RoutesList extends Component {
           onValueChange={() => onIconPress(item)}
           color={colors.primary}
         />
-
       </View>
     );
   };
@@ -88,9 +86,7 @@ export default class RoutesList extends Component {
         automaticallyAdjustContentInsets={false}
         showsVerticalScrollIndicator={false}
         contentInset={{bottom: 100}}
-        ItemSeparatorComponent={() => (
-          <Separator />
-        )}
+        ItemSeparatorComponent={() => <Separator />}
         keyExtractor={(item, index) => `${index}`}
       />
     );

@@ -6,10 +6,13 @@ import LoadsList from 'driver/loads/components/LoadsList';
 import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
 import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
 import I18n from 'utils/locale';
-import {SELECTORS as COUNTRY_SELECTORS} from "app/selectors/country";
+import {SELECTORS as COUNTRY_SELECTORS} from 'app/selectors/country';
+import DocumentCard from 'components/DocumentCard';
+import DocumentList from 'components/DocumentList';
+import {FAB} from 'react-native-paper';
+import colors from 'assets/theme/colors';
 
 class ResidencyListScene extends Component {
-
   static propTypes = {
     residencies: PropTypes.array,
   };
@@ -29,11 +32,37 @@ class ResidencyListScene extends Component {
     });
   };
 
+  onAddPress = () => {
+    console.log('on add');
+    this.props.navigation.navigate('ResidencyAdd', {});
+  };
+
+  onEditPress = () => {};
+
+  onDeletePress = () => {};
+
   render() {
     let {residencies} = this.props;
-    console.log('residencies',residencies);
-    return <View/>
-    // return <CountryList items={loads} onItemPress={this.onLoadsListItemPress} />;
+    return (
+      <View style={{flex: 1}}>
+        <DocumentList
+          items={residencies}
+          onEditPress={this.onEditPress}
+          onDeletePress={this.onDeletePress}
+        />
+        <FAB
+          icon="add"
+          dark
+          onPress={this.onAddPress}
+          medium
+          style={{
+            left: 20,
+            bottom: 20,
+            backgroundColor: colors.primary,
+          }}
+        />
+      </View>
+    );
   }
 }
 

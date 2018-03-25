@@ -6,10 +6,9 @@ import LoadsList from 'driver/loads/components/LoadsList';
 import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
 import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
 import I18n from 'utils/locale';
-import {SELECTORS as COUNTRY_SELECTORS} from "app/selectors/country";
+import {SELECTORS as COUNTRY_SELECTORS} from 'app/selectors/country';
 
 class ResidencyEditScene extends Component {
-
   static propTypes = {
     residencies: PropTypes.array,
   };
@@ -31,8 +30,8 @@ class ResidencyEditScene extends Component {
 
   render() {
     let {residencies} = this.props;
-    console.log('residencies',residencies);
-    return <View/>
+    console.log('residencies', residencies);
+    return <View />;
     // return <CountryList items={loads} onItemPress={this.onLoadsListItemPress} />;
   }
 }

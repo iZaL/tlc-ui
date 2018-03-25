@@ -210,7 +210,7 @@ class TruckUpdateScene extends Component {
 
         <Separator style={{marginVertical: 10}} />
 
-        <FormLabel title={I18n.t('plate_number')} />
+        {/*<FormLabel title={I18n.t('plate_number')} />*/}
 
         <FormTextInput
           onChangeText={value => this.onFieldChange('plate_number', value)}
@@ -247,7 +247,7 @@ class TruckUpdateScene extends Component {
 
         <Separator style={{marginVertical: 10}} />
 
-        <FormLabel title={I18n.t('registration_number')} />
+        {/*<FormLabel title={I18n.t('registration_number')} />*/}
 
         <FormTextInput
           onChangeText={value =>
@@ -272,7 +272,7 @@ class TruckUpdateScene extends Component {
           onDateChange={date => this.onFieldChange('registration_expiry', date)}
         />
 
-        <FormLabel title={I18n.t('max_weight')} />
+        {/*<FormLabel title={I18n.t('max_weight')} />*/}
 
         <FormTextInput
           onChangeText={value => this.onFieldChange('max_weight', value)}

@@ -136,7 +136,6 @@ class ProfileUpdateScene extends Component {
   loadNationalityScene = (countryID: number) => {};
 
   onListItemPress = (route: string) => {
-
     let scene;
     let sceneConfig = {};
     switch (route) {
@@ -146,7 +145,6 @@ class ProfileUpdateScene extends Component {
     }
 
     return this.props.navigation.navigate(scene, sceneConfig);
-
   };
 
   render() {
@@ -166,7 +164,7 @@ class ProfileUpdateScene extends Component {
           padding: 10,
           paddingTop: 20,
         }}>
-        <FormLabel title={I18n.t('mobile')} />
+        {/*<FormLabel title={I18n.t('mobile')} />*/}
 
         <FormTextInput
           onChangeText={value => this.onFieldChange('mobile', value)}

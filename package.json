@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
-    "prettier": "prettier --write --no-bracket-spacing --single-quote --jsx-bracket-same-line --trailing-comma all --print-width 80 'src/**/*.js'"
+    "prettier": "prettier --write --no-bracket-spacing --single-quote --jsx-bracket-same-line --trailing-comma all --print-width 80 'src/**/*.js'",
+    "storybook": "storybook start -p 7007"
   },
   "dependencies": {
     "babel-plugin-module-resolver": "^3.1.0",
@@ -26,6 +27,7 @@
     "react-native-image-picker": "^0.26.7",
     "react-native-maps": "git+ssh://git@github.com:react-community/react-native-maps.git",
     "react-native-modal": "^5.3.0",
+    "react-native-modal-datetime-picker": "^4.13.0",
     "react-native-paper": "^1.2.4",
     "react-native-platform-touchable": "^1.1.1",
     "react-native-push-notification": "^3.0.2",
@@ -51,7 +53,13 @@
     "prettier": "^1.11.1",
     "react-test-renderer": "16.2.0",
     "reactotron-react-native": "^1.14.0",
-    "reactotron-redux": "^1.13.0"
+    "reactotron-redux": "^1.13.0",
+    "@storybook/react-native": "^3.3.15",
+    "@storybook/addon-actions": "^3.3.15",
+    "@storybook/addon-links": "^3.3.15",
+    "@storybook/addons": "^3.3.15",
+    "babel-core": "^6.26.0",
+    "react-dom": "^16.3.0-alpha.1"
   },
   "jest": {
     "preset": "react-native"

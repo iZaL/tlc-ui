@@ -168,12 +168,12 @@ const getProfileCountries = createSelector(
       return {
         ...country,
         license:
-        (licenses &&
-          licenses.find(license => license.country === country.id)) ||
-        {},
+          (licenses &&
+            licenses.find(license => license.country === country.id)) ||
+          {},
         visa:
-        (visas && visas.find(license => license.country === country.id)) ||
-        {},
+          (visas && visas.find(license => license.country === country.id)) ||
+          {},
       };
     });
   },
@@ -241,9 +241,9 @@ const getResidencies = createSelector(
     return driver.residencies.map(residency => {
       return {
         ...residency,
-        country: countries[residency.country]
-      }
-    })
+        country: countries[residency.country],
+      };
+    });
   },
 );
 
