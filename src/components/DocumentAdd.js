@@ -14,14 +14,13 @@ import {
   CardCover,
   TextInput,
   Title,
-  Headline
+  Headline,
 } from 'react-native-paper';
 import {View} from 'react-native';
 import moment from 'moment';
 import DocumentUpload from 'components/DocumentUpload';
 
 export default class DocumentAdd extends PureComponent {
-
   static propTypes = {
     onSavePress: PropTypes.func.isRequired,
     onDeletePress: PropTypes.func,
@@ -77,13 +76,11 @@ export default class DocumentAdd extends PureComponent {
       <View style={{flex: 1}}>
         <Card>
           <CardContent>
-
             <Button
               onPress={this._showCountryModalPicker}
               buttonStyle={{
-                textAlign: 'left'
-              }}
-            >
+                textAlign: 'left',
+              }}>
               {(country && country.name) || I18n.t('select_country')}
             </Button>
 
@@ -92,7 +89,6 @@ export default class DocumentAdd extends PureComponent {
               value={number}
               onChangeText={text => onFieldChange('number', text)}
             />
-
           </CardContent>
 
           <DocumentUpload

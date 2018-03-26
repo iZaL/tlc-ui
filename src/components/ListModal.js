@@ -27,7 +27,10 @@ export default class CountryListModal extends Component {
   };
 
   shouldComponentUpdate(nextProps) {
-    return this.props.isVisible !== nextProps.isVisible || this.props.activeID !== nextProps.activeID;
+    return (
+      this.props.isVisible !== nextProps.isVisible ||
+      this.props.activeID !== nextProps.activeID
+    );
   }
 
   renderItem = ({item}) => {
