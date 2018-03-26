@@ -47,6 +47,8 @@
   "nationality": "Nationality",
   "close" : "Close",
   "select" : "Select",
+  "select_expiry_date" : "Select Expiry Date",
+  "select_country" : "Select Country",
   "truck_update" : "Update Truck",
   "truck_add" : "Add Truck",
 

@@ -130,8 +130,7 @@ class ProfileUpdateScene extends Component {
           padding: 10,
           paddingTop: 20,
         }}
-        contentContainerStyle={{paddingBottom:100}}
-      >
+        contentContainerStyle={{paddingBottom: 100}}>
         {/*<FormLabel title={I18n.t('company_name_en')} />*/}
         <FormTextInput
           onChangeText={value => this.onUserFieldChange('name_en', value)}

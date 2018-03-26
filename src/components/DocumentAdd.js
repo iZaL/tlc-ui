@@ -1,52 +1,37 @@
 /**
  * @flow
  */
-import React, {Component} from 'react';
-import Touchable from 'react-native-platform-touchable';
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import colors from 'assets/theme/colors';
-import images from 'assets/theme/images';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import ListModal from 'components/ListModal';
-
 import I18n from 'utils/locale';
-
 import {
   Button,
   Card,
   CardActions,
   CardContent,
   CardCover,
-  Title,
-  Paragraph,
   TextInput,
+  Title,
+  Headline
 } from 'react-native-paper';
-import {View} from "react-native";
+import {View} from 'react-native';
+import moment from 'moment';
+import DocumentUpload from 'components/DocumentUpload';
 
-export default class DocumentAdd extends Component {
+export default class DocumentAdd extends PureComponent {
+
   static propTypes = {
-    onEditPress: PropTypes.func,
+    onSavePress: PropTypes.func.isRequired,
     onDeletePress: PropTypes.func,
-    // item: PropTypes.object.isRequired,
-    onCountryPress: PropTypes.func.isRequired,
     onFieldChange: PropTypes.func.isRequired,
-    number: PropTypes.oneOf([PropTypes.string,PropTypes.number]).isRequired,
-    expiry_date: PropTypes.string.isRequired,
-    country: PropTypes.object.isRequired,
+    number: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    expiry_date: PropTypes.any,
     image: PropTypes.string,
     buttonText: PropTypes.string,
     countries: PropTypes.array.isRequired,
-    // country: PropTypes.object.isRequired,
-    // expiry_date: PropTypes.string.isRequired,
-    // title: PropTypes.string.isRequired,
-    // image: PropTypes.string.isRequired,
-    // number: PropTypes.string.isRequired,
   };
-
-  // shouldComponentUpdate() {
-  //   return false;
-  // }
 
   state = {
     isDateTimePickerVisible: false,
@@ -54,87 +39,96 @@ export default class DocumentAdd extends Component {
   };
 
   static defaultProps = {
-    onEditPress: () => {
-    },
-    onDeletePress: () => {
-    },
     buttonText: I18n.t('save'),
-    // image:images.document_image
   };
-
 
   _showDateTimePicker = () => this.setState({isDateTimePickerVisible: true});
   _showCountryModalPicker = () => this.setState({isCountryModalVisible: true});
   _hideDateTimePicker = () => this.setState({isDateTimePickerVisible: false});
   _hideCountryModal = () => this.setState({isCountryModalVisible: false});
 
-  _handleDatePicker = (date) => {
-    console.log('A date has been picked: ', date);
+  _handleDatePicker = date => {
+    this.props.onFieldChange('expiry_date', date);
     this._hideDateTimePicker();
   };
 
-  _handleCountryPicker = (countryID) => {
-    console.log('country',countryID);
+  _handleCountryPicker = countryID => {
+    this.props.onFieldChange('countryID', countryID);
     this._hideCountryModal();
   };
 
   render() {
     let {
-      onEditPress,
-      onDeletePress,
-      onCountryPress,
       number,
       onFieldChange,
-      country,
       expiry_date,
       buttonText,
       image,
-      countries
+      countries,
+      countryID,
+      onSavePress,
     } = this.props;
 
-    // let {
-    //   country,
-    //   image,
-    //   expiry_date,
-    //   title,
-    //   number,
-    // } = item;
+    let country = countryID
+      ? countries.find(country => country.id === countryID)
+      : {};
 
     return (
       <View style={{flex: 1}}>
         <Card>
           <CardContent>
-            <Title onPress={this._showCountryModalPicker}>{country && country.name || I18n.t('select_country')}</Title>
+
+            <Button
+              onPress={this._showCountryModalPicker}
+              buttonStyle={{
+                textAlign: 'left'
+              }}
+            >
+              {(country && country.name) || I18n.t('select_country')}
+            </Button>
+
             <TextInput
               label={I18n.t('registration_number')}
               value={number}
-              onChangeText={text => onFieldChange('registration_number', text)}
+              onChangeText={text => onFieldChange('number', text)}
             />
+
           </CardContent>
 
-          {
-            image ?
-              <CardCover source={{uri: image}}/>
-              :
-              <View/>
-          }
+          <DocumentUpload
+            onPress={image => onFieldChange('image', image)}
+            image={image}
+            style={{marginHorizontal: 15}}
+          />
 
           <View style={{flexDirection: 'row'}}>
             <CardActions>
-              <Button onPress={this._showDateTimePicker}>{I18n.t('expiry_date')} : {expiry_date}</Button>
+              <Button onPress={this._showDateTimePicker}>
+                {I18n.t('expiry_date')}
+                :{' '}
+                {expiry_date
+                  ? moment(expiry_date).format('DD-MMM-YYYY')
+                  : I18n.t('select_expiry_date')}
+              </Button>
             </CardActions>
-            <CardActions style={{flex: 1, justifyContent: 'flex-end', alignItems: 'flex-end'}}>
-              <Button primary onPress={() => alert('wa')}>
-                {buttonText}</Button>
+            <CardActions
+              style={{
+                flex: 1,
+                justifyContent: 'flex-end',
+                alignItems: 'flex-end',
+              }}>
+              <Button primary onPress={onSavePress}>
+                {buttonText}
+              </Button>
             </CardActions>
           </View>
-
         </Card>
 
         <DateTimePicker
           isVisible={this.state.isDateTimePickerVisible}
           onConfirm={this._handleDatePicker}
           onCancel={this._hideDateTimePicker}
+          date={expiry_date}
         />
 
         <ListModal
@@ -143,9 +137,8 @@ export default class DocumentAdd extends Component {
           onConfirm={this._handleCountryPicker}
           onCancel={this._hideCountryModal}
           title={I18n.t('residency_country_select')}
-          activeID={1}
+          activeID={countryID}
         />
-
       </View>
     );
   }

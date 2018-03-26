@@ -37,7 +37,7 @@ export default class RegisterScene extends Component {
     } = this.props;
 
     return (
-      <ScrollView style={styles.container} contentInset={{bottom:50}}>
+      <ScrollView style={styles.container} contentInset={{bottom: 50}}>
         {isCustomer ? (
           <View>
             {/*<FormLabel title={I18n.t('company_name_en')} />*/}

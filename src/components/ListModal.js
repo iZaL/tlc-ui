@@ -8,24 +8,27 @@ import {FlatList, Text, View, StyleSheet} from 'react-native';
 
 import Modal from 'react-native-modal';
 import Separator from 'components/Separator';
-import colors from "assets/theme/colors";
-import {Checkbox, Headline} from "react-native-paper";
+import colors from 'assets/theme/colors';
+import {Checkbox, Headline} from 'react-native-paper';
 import I18n from 'utils/locale';
 
 export default class CountryListModal extends Component {
-
   static propTypes = {
     isVisible: PropTypes.bool.isRequired,
     onConfirm: PropTypes.func.isRequired,
     onCancel: PropTypes.func.isRequired,
     items: PropTypes.array.isRequired,
     title: PropTypes.string,
-    activeID: PropTypes.number.isRequired
+    activeID: PropTypes.number,
   };
 
   static defaultProps = {
-    title: I18n.t('select_country')
+    title: I18n.t('select_country'),
   };
+
+  shouldComponentUpdate(nextProps) {
+    return this.props.isVisible !== nextProps.isVisible || this.props.activeID !== nextProps.activeID;
+  }
 
   renderItem = ({item}) => {
     let {onConfirm, activeID} = this.props;
@@ -33,9 +36,7 @@ export default class CountryListModal extends Component {
       <Touchable onPress={() => onConfirm(item.id)}>
         <View style={styles.itemRowContainer}>
           <Text style={styles.itemTitle}>{item.name}</Text>
-          <Checkbox
-            checked={activeID === item.id}
-          />
+          <Checkbox checked={activeID === item.id} />
         </View>
       </Touchable>
     );
@@ -53,10 +54,9 @@ export default class CountryListModal extends Component {
             backgroundColor: 'white',
             // margin: 0,
             paddingTop: 64,
-            paddingHorizontal: 20
+            paddingHorizontal: 20,
           }}
-          onBackdropPress={onCancel}
-        >
+          onBackdropPress={onCancel}>
           <Headline style={styles.headline}>{title}</Headline>
           <FlatList
             data={items}
@@ -64,7 +64,7 @@ export default class CountryListModal extends Component {
             renderItem={this.renderItem}
             showsVerticalScrollIndicator={false}
             ItemSeparatorComponent={() => (
-              <Separator style={{marginVertical: 10}}/>
+              <Separator style={{marginVertical: 10}} />
             )}
             keyExtractor={(item, index) => `${index}`}
           />
@@ -104,9 +104,9 @@ const styles = StyleSheet.create({
     fontWeight: '500',
   },
   headline: {
-    textAlign: 'center'
+    textAlign: 'center',
   },
-  itemTitle:{
-    flex:1,
-  }
+  itemTitle: {
+    flex: 1,
+  },
 });

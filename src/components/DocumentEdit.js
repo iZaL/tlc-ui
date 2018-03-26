@@ -22,7 +22,7 @@ import {
   Paragraph,
   TextInput,
 } from 'react-native-paper';
-import {View} from "react-native";
+import {View} from 'react-native';
 
 export default class DocumentEdit extends Component {
   static propTypes = {
@@ -54,27 +54,24 @@ export default class DocumentEdit extends Component {
   };
 
   static defaultProps = {
-    onEditPress: () => {
-    },
-    onDeletePress: () => {
-    },
+    onEditPress: () => {},
+    onDeletePress: () => {},
     buttonText: I18n.t('save'),
     // image:images.document_image
   };
-
 
   _showDateTimePicker = () => this.setState({isDateTimePickerVisible: true});
   _showCountryModalPicker = () => this.setState({isCountryModalVisible: true});
   _hideDateTimePicker = () => this.setState({isDateTimePickerVisible: false});
   _hideCountryModal = () => this.setState({isCountryModalVisible: false});
 
-  _handleDatePicker = (date) => {
+  _handleDatePicker = date => {
     console.log('A date has been picked: ', date);
     this._hideDateTimePicker();
   };
 
-  _handleCountryPicker = (countryID) => {
-    console.log('country',countryID);
+  _handleCountryPicker = countryID => {
+    console.log('country', countryID);
     this._hideCountryModal();
   };
 
@@ -89,7 +86,7 @@ export default class DocumentEdit extends Component {
       expiry_date,
       buttonText,
       image,
-      countries
+      countries,
     } = this.props;
 
     // let {
@@ -104,7 +101,9 @@ export default class DocumentEdit extends Component {
       <View style={{flex: 1}}>
         <Card>
           <CardContent>
-            <Title onPress={this._showCountryModalPicker}>{country && country.name || I18n.t('select_country')}</Title>
+            <Title onPress={this._showCountryModalPicker}>
+              {(country && country.name) || I18n.t('select_country')}
+            </Title>
             <TextInput
               label={I18n.t('registration_number')}
               value={number}
@@ -112,23 +111,25 @@ export default class DocumentEdit extends Component {
             />
           </CardContent>
 
-          {
-            image ?
-              <CardCover source={{uri: image}}/>
-              :
-              <View/>
-          }
+          {image ? <CardCover source={{uri: image}} /> : <View />}
 
           <View style={{flexDirection: 'row'}}>
             <CardActions>
-              <Button onPress={this._showDateTimePicker}>{I18n.t('expiry_date')} : {expiry_date}</Button>
+              <Button onPress={this._showDateTimePicker}>
+                {I18n.t('expiry_date')} : {expiry_date}
+              </Button>
             </CardActions>
-            <CardActions style={{flex: 1, justifyContent: 'flex-end', alignItems: 'flex-end'}}>
+            <CardActions
+              style={{
+                flex: 1,
+                justifyContent: 'flex-end',
+                alignItems: 'flex-end',
+              }}>
               <Button primary onPress={() => alert('wa')}>
-                {buttonText}</Button>
+                {buttonText}
+              </Button>
             </CardActions>
           </View>
-
         </Card>
 
         <DateTimePicker
@@ -142,7 +143,6 @@ export default class DocumentEdit extends Component {
           isVisible={this.state.isCountryModalVisible}
           onConfirm={this._handleCountryPicker}
         />
-
       </View>
     );
   }

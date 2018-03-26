@@ -8,6 +8,7 @@ import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
 import I18n from 'utils/locale';
 import {SELECTORS as COUNTRY_SELECTORS} from 'app/selectors/country';
 import DocumentAdd from 'components/DocumentAdd';
+import {moment} from 'moment';
 
 class ResidencyAddScene extends Component {
   static propTypes = {
@@ -19,28 +20,10 @@ class ResidencyAddScene extends Component {
   };
 
   state = {
-    number: 22222,
-    expiry_date: '18-02-2010',
-    country: {
-      id: 1,
-      name: 'Kuwait',
-    },
-    image: 'http://justsmile.test/img/stock/18.jpg',
-  };
-
-  // componentDidMount() {
-  //   let {status} = this.props.navigation.state.params;
-  //   this.props.dispatch(DRIVER_ACTIONS.fetchLoadsByStatus({status: status}));
-  // }
-
-  onLoadsListItemPress = (load: object) => {
-    this.props.navigation.navigate('ResidencyDetail', {
-      loadID: load.id,
-    });
-  };
-
-  onCountryPress = countryID => {
-    console.log('country', countryID);
+    number: null,
+    expiry_date: new Date(),
+    countryID: null,
+    image: null,
   };
 
   onFieldChange = (field, value) => {
@@ -49,14 +32,17 @@ class ResidencyAddScene extends Component {
     });
   };
 
+  onSave = () => {
+    console.log('save');
+  };
+
   render() {
     let {countries} = this.props;
-    console.log('countries', countries);
-
+    console.log('state', this.state);
     return (
       <DocumentAdd
-        onCountryPress={this.onCountryPress}
         onFieldChange={this.onFieldChange}
+        onSavePress={this.onSave}
         countries={countries}
         {...this.state}
       />
