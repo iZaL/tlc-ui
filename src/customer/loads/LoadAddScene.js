@@ -16,6 +16,7 @@ import {ACTIONS as CUSTOMER_ACTIONS} from 'customer/common/actions';
 import {SELECTORS as TRUCK_SELECTORS} from 'trucks/common/selectors';
 import TabPanel from 'customer/loads/components/TabPanel';
 import {SELECTORS as CUSTOMER_SELECTORS} from 'customer/common/selectors';
+import PackageDimensions from "customer/loads/components/PackageDimensions";
 
 class LoadAddScene extends Component {
   static propTypes = {
@@ -31,6 +32,13 @@ class LoadAddScene extends Component {
     load_time: undefined,
     trailer_id: undefined,
     packaging_id: undefined,
+    packaging_dimension:{
+      length:null,
+      width:null,
+      height:null,
+      weight:null,
+      quantity:null,
+    },
     origin_location_id: undefined,
     destination_location_id: undefined,
     weight: undefined,
@@ -41,6 +49,7 @@ class LoadAddScene extends Component {
     receiver_mobile: '00966989382332',
     receiver_phone: '00966989382332',
     passes: [],
+    showPackageDimsSelectionModal:false
   };
 
   componentDidMount() {
@@ -48,7 +57,15 @@ class LoadAddScene extends Component {
   }
 
   onFieldChange = (field, value) => {
+
+    console.log('field',field);
+
     this.setState({[field]: value});
+
+    if(field == 'packaging_id') {
+      this.showModal('showPackageDimsSelectionModal');
+    }
+
   };
 
   updatePasses = id => {
@@ -72,6 +89,29 @@ class LoadAddScene extends Component {
     }).then(() => {});
   };
 
+  showModal = (name) => {
+    this.setState({
+      [name] : true
+    });
+  };
+
+  hideModal = (name) => {
+    this.setState({
+      [name] : false
+    });
+  };
+
+  onPackagingDimensionsFieldChange = (field,name) => {
+    console.log('field',field);
+    this.setState({
+      packaging_dimension:{
+        ...this.state.packaging_dimension,
+        [field]:name
+      }
+    })
+  };
+
+
   render() {
     let {
       load_time,
@@ -87,7 +127,11 @@ class LoadAddScene extends Component {
       receiver_name,
       origin_location_id,
       destination_location_id,
+      showPackageDimsSelectionModal,
+      packaging_dimension
     } = this.state;
+
+    console.log('field',packaging_dimension);
 
     let {trailers, packaging, gatePasses, locations} = this.props;
 
@@ -113,6 +157,15 @@ class LoadAddScene extends Component {
                 weight={weight}
                 onFieldChange={this.onFieldChange}
               />
+
+              <PackageDimensions
+                visible={showPackageDimsSelectionModal}
+                onFieldChange={this.onPackagingDimensionsFieldChange}
+                onCancel={()=>this.hideModal('showPackageDimsSelectionModal')}
+                onConfirm={()=>this.hideModal('showPackageDimsSelectionModal')}
+                {...packaging_dimension}
+              />
+
             </TabPanel>
 
             <TabPanel>
@@ -160,6 +213,7 @@ class LoadAddScene extends Component {
               receiver_name={receiver_name}
               onSaveButtonPress={this.onSaveButtonPress}
             />
+
           </TabPanels>
         </Tabs>
       </ScrollView>

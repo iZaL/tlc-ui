@@ -20,6 +20,12 @@ import colors from 'assets/theme/colors';
 import ResidencyListScene from 'driver/residence/ResidencyListScene';
 import ResidencyEditScene from 'driver/residence/ResidencyEditScene';
 import ResidencyAddScene from 'driver/residence/ResidencyAddScene';
+import LicenseListScene from 'driver/license/LicenseListScene';
+import LicenseEditScene from 'driver/license/LicenseEditScene';
+import LicenseAddScene from 'driver/license/LicenseAddScene';
+import NationalityListScene from 'driver/nationality/NationalityListScene';
+import NationalityEditScene from 'driver/nationality/NationalityEditScene';
+import NationalityAddScene from 'driver/nationality/NationalityAddScene';
 
 const getDrawerIcon = navigation => {
   return {
@@ -113,6 +119,42 @@ const ProfileStack = StackNavigator(
       screen: ResidencyAddScene,
       navigationOptions: () => ({
         title: I18n.t('residency_add'),
+      }),
+    },
+    LicenseList: {
+      screen: LicenseListScene,
+      navigationOptions: () => ({
+        title: I18n.t('license'),
+      }),
+    },
+    LicenseEdit: {
+      screen: LicenseEditScene,
+      navigationOptions: () => ({
+        title: I18n.t('license_edit'),
+      }),
+    },
+    LicenseAdd: {
+      screen:LicenseAddScene,
+      navigationOptions: () => ({
+        title: I18n.t('license_add'),
+      }),
+    },
+    NationalityList: {
+      screen: NationalityListScene,
+      navigationOptions: () => ({
+        title: I18n.t('nationality'),
+      }),
+    },
+    NationalityEdit: {
+      screen: NationalityEditScene,
+      navigationOptions: () => ({
+        title: I18n.t('nationality_edit'),
+      }),
+    },
+    NationalityAdd: {
+      screen:NationalityAddScene,
+      navigationOptions: () => ({
+        title: I18n.t('nationality_add'),
       }),
     },
   },

@@ -37,6 +37,7 @@
   "account_confirm" : "Confirm Account",
   "profile" : "Profile",
   "profile_update": "Update Profile",
+
   "residence_country": "Residence Country",
   "residency_list": "Residencies",
   "residency_edit": "Edit Residence",
@@ -44,7 +45,25 @@
   "residency_add": "Add Residence",
   "residency_country_select": "Select Residence Country",
   "residence": "Residence",
+  "residencies": "Residencies",
+
+  "license_country": "License Country",
+  "license_list": "Licenses",
+  "license_edit": "Edit License",
+  "license_delete": "Delete License",
+  "license_add": "Add License",
+  "license_country_select": "Select License Country",
+  "license": "License",
+  "licenses": "Licenses",
+
   "nationality": "Nationality",
+  "nationality_country": "Nationality Country",
+  "nationality_list": "Nationalities",
+  "nationality_edit": "Edit Nationality",
+  "nationality_delete": "Delete Nationality",
+  "nationality_add": "Add Nationality",
+  "nationality_country_select": "Select Nationality Country",
+
   "close" : "Close",
   "select" : "Select",
   "select_expiry_date" : "Select Expiry Date",
@@ -61,19 +80,22 @@
   "max_weight" : "Max Weight",
   "year":"Year",
   "search_loads" : "Search Loads",
+
   "license_expiry_date" : "License Expiry Date",
   "license_image" : "License Image",
+
   "visa_expiry_date" : "Visa Expiry Date",
   "visa_image" : "Visa Image",
+  "visas_upload" : "Upload Visas",
+  "visa" : "Visa",
+  "visas" : "Visas",
+
   "expiry_date" : "Expiry Date",
   "image" : "Image",
   "licenses_upload" : "Upload Licenses",
-  "visas_upload" : "Upload Visas",
   "driving_license" : "Driving License",
-  "visa" : "Visa",
   "view_details" : "View Details",
   "packaging" : "Packaging",
-  "weight" : "Weight",
   "pick_up" : "Pick up",
   "distance" : "Distance",
   "price" : "Price",
@@ -137,7 +159,6 @@
   "location_add" : "Add Location",
 
   "map" : "Map",
-  "kg" : "KG",
 
   "driver" : "Driver",
   "driver_detail" : "Driver Detail",
@@ -154,5 +175,20 @@
 
   "continue" : "Continue",
   "language" : "Language",
+  "languages" : "Languages",
+
+  "length" : "Length",
+  "width" : "Width",
+  "height" : "Height",
+  "weight" : "Weight",
+  "quantity" : "Quantity",
+
+  "cm" : "cm",
+  "m" : "m",
+  "metre": "metre",
+  "centimetre": "centimetre",
+  "kg" : "KG",
+  "tons" : "Tons",
+  "inch" : "inch"
 
 }
