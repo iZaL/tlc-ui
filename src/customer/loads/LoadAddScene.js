@@ -17,6 +17,8 @@ import {SELECTORS as TRUCK_SELECTORS} from 'trucks/common/selectors';
 import TabPanel from 'customer/loads/components/TabPanel';
 import {SELECTORS as CUSTOMER_SELECTORS} from 'customer/common/selectors';
 import PackageDimensions from "customer/loads/components/PackageDimensions";
+import TrailerQuantity from "customer/loads/components/TrailerQuantity";
+import moment from 'moment';
 
 class LoadAddScene extends Component {
   static propTypes = {
@@ -28,10 +30,11 @@ class LoadAddScene extends Component {
   };
 
   state = {
-    load_date: undefined,
-    load_time: undefined,
-    trailer_id: undefined,
-    packaging_id: undefined,
+    load_date: null,
+    load_time: moment(),
+    trailer_id: null,
+    trailer_quantity:1,
+    packaging_id: null,
     packaging_dimension:{
       length:null,
       width:null,
@@ -39,9 +42,9 @@ class LoadAddScene extends Component {
       weight:null,
       quantity:null,
     },
-    origin_location_id: undefined,
-    destination_location_id: undefined,
-    weight: undefined,
+    origin_location_id: null,
+    destination_location_id: null,
+    weight: null,
     request_documents: true,
     use_own_truck: false,
     receiver_name: 'ABCD',
@@ -49,7 +52,8 @@ class LoadAddScene extends Component {
     receiver_mobile: '00966989382332',
     receiver_phone: '00966989382332',
     passes: [],
-    showPackageDimsSelectionModal:false
+    showPackageDimsSelectionModal:false,
+    showTrailerQuantitySelectionModal:false,
   };
 
   componentDidMount() {
@@ -64,6 +68,10 @@ class LoadAddScene extends Component {
 
     if(field == 'packaging_id') {
       this.showModal('showPackageDimsSelectionModal');
+    }
+
+    if(field == 'trailer_id') {
+      this.showModal('showTrailerQuantitySelectionModal');
     }
 
   };
@@ -128,6 +136,8 @@ class LoadAddScene extends Component {
       origin_location_id,
       destination_location_id,
       showPackageDimsSelectionModal,
+      showTrailerQuantitySelectionModal,
+      trailer_quantity,
       packaging_dimension
     } = this.state;
 
@@ -164,6 +174,14 @@ class LoadAddScene extends Component {
                 onCancel={()=>this.hideModal('showPackageDimsSelectionModal')}
                 onConfirm={()=>this.hideModal('showPackageDimsSelectionModal')}
                 {...packaging_dimension}
+              />
+
+              <TrailerQuantity
+                visible={showTrailerQuantitySelectionModal}
+                onFieldChange={(quantity)=>this.onFieldChange('trailer_quantity',quantity)}
+                onCancel={()=>this.hideModal('showTrailerQuantitySelectionModal')}
+                onConfirm={()=>this.hideModal('showTrailerQuantitySelectionModal')}
+                selected={trailer_quantity}
               />
 
             </TabPanel>

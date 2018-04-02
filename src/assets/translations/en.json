@@ -189,6 +189,8 @@
   "centimetre": "centimetre",
   "kg" : "KG",
   "tons" : "Tons",
-  "inch" : "inch"
+  "inch" : "inch",
+
+  "select_time" : "Select Loading Time"
 
 }
