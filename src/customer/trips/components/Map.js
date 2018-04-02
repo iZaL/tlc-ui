@@ -35,7 +35,6 @@ export default class Map extends Component {
     const {destination} = this.props;
     const {origin} = this.props;
     const {heading} = origin;
-    console.log('heading', heading);
 
     const rotate = typeof heading === 'number' && heading >= 0 ? heading : 0;
     //

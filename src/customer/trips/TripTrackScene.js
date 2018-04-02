@@ -31,7 +31,6 @@ class TripTrackScene extends Component {
 
   render() {
     let {tracking} = this.props;
-    console.log('tracking', tracking);
     let origin;
 
     if (tracking.latitude) {

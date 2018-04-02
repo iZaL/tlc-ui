@@ -1,19 +1,18 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {ScrollView, StyleSheet, Text, View,Picker} from 'react-native';
+import {ScrollView, StyleSheet, Text, View, Picker} from 'react-native';
 import Modal from 'react-native-modal';
 import FormTextInput from 'components/FormTextInput';
 import I18n from 'utils/locale';
-import {Button} from "react-native-paper";
+import {Button} from 'react-native-paper';
 
 export default class TrailerQuantity extends Component {
-
   static propTypes = {
     onFieldChange: PropTypes.func.isRequired,
     visible: PropTypes.bool.isRequired,
     onConfirm: PropTypes.func.isRequired,
     onCancel: PropTypes.func.isRequired,
-    selected:PropTypes.any
+    selected: PropTypes.any,
     // length:PropTypes.oneOfType(PropTypes.number,PropTypes.string),
     // width:PropTypes.oneOfType(PropTypes.number,PropTypes.string),
     // height:PropTypes.oneOfType(PropTypes.number,PropTypes.string),
@@ -25,40 +24,40 @@ export default class TrailerQuantity extends Component {
     const {onFieldChange, visible, onCancel, onConfirm, selected} = this.props;
 
     return (
-
       <View style={{flex: 1, margin: 20, backgroundColor: 'white'}}>
-
         <Modal
           animationType="slide"
           isVisible={visible}
           transparent={true}
-          onBackdropPress={onCancel}
-        >
+          onBackdropPress={onCancel}>
           <View style={styles.addressContainer}>
-              <Picker
-                selectedValue={selected}
-                onValueChange={(itemValue, itemIndex) => onFieldChange(itemValue)}>
-                <Picker.Item label="1" value="1" />
-                <Picker.Item label="2" value="2" />
-                <Picker.Item label="3" value="3" />
-                <Picker.Item label="4" value="4" />
-                <Picker.Item label="5" value="5" />
-                <Picker.Item label="6" value="6" />
-              </Picker>
+            <Picker
+              selectedValue={selected}
+              onValueChange={(itemValue, itemIndex) =>
+                onFieldChange(itemValue)
+              }>
+              <Picker.Item label="1" value="1" />
+              <Picker.Item label="2" value="2" />
+              <Picker.Item label="3" value="3" />
+              <Picker.Item label="4" value="4" />
+              <Picker.Item label="5" value="5" />
+              <Picker.Item label="6" value="6" />
+            </Picker>
 
             <View style={{flexDirection: 'row', justifyContent: 'center'}}>
-              <Button raised onPress={onCancel}>{I18n.t('close')}</Button>
-              <Button raised primary onPress={onConfirm}>{I18n.t('save')}</Button>
+              <Button raised onPress={onCancel}>
+                {I18n.t('close')}
+              </Button>
+              <Button raised primary onPress={onConfirm}>
+                {I18n.t('save')}
+              </Button>
             </View>
-
           </View>
-
         </Modal>
       </View>
     );
   }
 }
-
 
 const styles = StyleSheet.create({
   label: {
@@ -67,7 +66,7 @@ const styles = StyleSheet.create({
   },
   addressContainer: {
     flex: 1,
-    backgroundColor: 'white'
+    backgroundColor: 'white',
   },
   addressField: {
     flex: 1,

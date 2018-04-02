@@ -51,8 +51,6 @@ export default class Map extends Component {
 
     let url = `${API_URL}/trips/${trip.id}/location/update`;
 
-    console.log('url', url);
-
     BackgroundGeolocation.on('location', this.onLocation);
     BackgroundGeolocation.on('http', this.onHttp);
 
@@ -104,7 +102,6 @@ export default class Map extends Component {
   };
 
   onHttp = response => {
-    console.log('[event] http: ', response);
     // this.addEvent('http', new Date(), response);
   };
   //

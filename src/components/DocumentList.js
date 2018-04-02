@@ -14,7 +14,6 @@ export default class DocumentList extends Component {
   }
 
   renderItem = ({item}) => {
-    console.log('item', item);
     const {onEditPress, onDeletePress} = this.props;
     return (
       <DocumentCard
@@ -27,7 +26,6 @@ export default class DocumentList extends Component {
 
   render() {
     let {items} = this.props;
-    console.log('items', items);
 
     return (
       <FlatList

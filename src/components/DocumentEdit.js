@@ -66,12 +66,10 @@ export default class DocumentEdit extends Component {
   _hideCountryModal = () => this.setState({isCountryModalVisible: false});
 
   _handleDatePicker = date => {
-    console.log('A date has been picked: ', date);
     this._hideDateTimePicker();
   };
 
   _handleCountryPicker = countryID => {
-    console.log('country', countryID);
     this._hideCountryModal();
   };
 

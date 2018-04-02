@@ -22,8 +22,6 @@ export default class TabPanel extends Component {
   render() {
     let {buttonTitle} = this.props;
 
-    console.log('activeIndex', this.props.activeIndex);
-
     return (
       <View>
         {this.props.children}

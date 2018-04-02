@@ -79,17 +79,10 @@ export default class VisaLicenseForm extends PureComponent {
     };
 
     ImagePicker.showImagePicker(options, response => {
-      console.log('Response = ', response);
-
       if (response.didCancel) {
-        console.log('User cancelled image picker');
       } else if (response.error) {
-        console.log('ImagePicker Error: ', response.error);
       } else if (response.customButton) {
-        console.log('User tapped custom button: ', response.customButton);
       } else {
-        console.log('res', response);
-
         let source = {uri: response.uri};
 
         // You can also display the image using data:

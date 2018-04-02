@@ -54,18 +54,19 @@ export default class LoadWhat extends Component {
           style={{backgroundColor: colors.mediumGrey, marginVertical: 20}}
         />
 
-        <FormLabel
-          title={`${I18n.t('weight')} (${I18n.t('kg')})`}
-          style={{marginBottom: 5}}
-        />
-        <FormTextInput
-          onChangeText={value => onFieldChange('weight', value)}
-          value={weight}
-          maxLength={40}
-          placeholder={I18n.t('weight')}
-          keyboardType="phone-pad"
-          style={{backgroundColor: 'white', padding: 10}}
-        />
+        {/*<FormLabel*/}
+        {/*title={`${I18n.t('weight')} (${I18n.t('kg')})`}*/}
+        {/*style={{marginBottom: 5}}*/}
+        {/*/>*/}
+        <View style={{padding: 5, backgroundColor: 'white'}}>
+          <FormTextInput
+            onChangeText={value => onFieldChange('weight', value)}
+            value={weight}
+            maxLength={40}
+            placeholder={I18n.t('weight')}
+            keyboardType="phone-pad"
+          />
+        </View>
       </View>
     );
   }

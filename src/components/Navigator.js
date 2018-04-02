@@ -30,7 +30,6 @@ export default class Navigator extends Component {
 
   render() {
     const {isAuthenticated, userType, logout} = this.props;
-    console.log('rendered app');
     const screen = this.resolveScreenForUser(userType);
 
     // const RootModalStack = StackNavigator(

@@ -46,7 +46,7 @@ export default class GridList extends Component {
         data={items}
         renderItem={this.renderItem}
         style={styles.listContainer}
-        keyExtractor={(item,index) => `${index}`}
+        keyExtractor={(item, index) => `${index}`}
         horizontal={true}
         extraData={activeItemID}
       />

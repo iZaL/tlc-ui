@@ -8,13 +8,13 @@ import DatePicker from 'components/DatePicker';
 import Separator from 'components/Separator';
 import colors from 'assets/theme/colors';
 import DateTimePicker from 'react-native-modal-datetime-picker';
-import {Button} from "react-native-paper";
-import moment from "moment";
+import {Button} from 'react-native-paper';
+import moment from 'moment';
 
 export default class LoadWhat extends Component {
   static propTypes = {
     onFieldChange: PropTypes.func.isRequired,
-    load_time: PropTypes.string,
+    load_time: PropTypes.object,
     // onCancel:PropTypes.func.isRequired,
     // visible:PropTypes.bool.isRequired
   };
@@ -25,58 +25,55 @@ export default class LoadWhat extends Component {
 
   showTimePicker = () => {
     this.setState({
-      showTimePicker: true
+      showTimePicker: true,
     });
   };
 
   hideTimePicker = () => {
     this.setState({
-      showTimePicker: false
+      showTimePicker: false,
     });
   };
 
-  onTimeChange = (time) => {
+  onTimeChange = time => {
     let selectedTime = moment(time);
-    console.log('se',selectedTime);
-    this.props.onFieldChange('load_time', selectedTime)
+    this.props.onFieldChange('load_time', selectedTime);
   };
 
   render() {
-    let {load_time, onFieldChange, } = this.props;
-
-    console.log('load_time',load_time);
-
+    let {load_time, onFieldChange} = this.props;
     let {showTimePicker} = this.state;
 
     return (
       <ScrollView>
-        <FormLabel title={I18n.t('load_date')}/>
+        <FormLabel title={I18n.t('load_date')} />
 
-        <DatePicker onDateChange={date => onFieldChange('load_date', date)}/>
+        <DatePicker onDateChange={date => onFieldChange('load_date', date)} />
 
         <Separator
           style={{marginVertical: 10, backgroundColor: colors.mediumGrey}}
         />
 
-        <Button raised onPress={this.showTimePicker}><Text style={{fontSize: 20}}>{load_time.format('h:mm a')}</Text></Button>
+        <Button raised onPress={this.showTimePicker}>
+          <Text style={{fontSize: 20}}>{load_time.format('h:mm a')}</Text>
+        </Button>
 
-          <DateTimePicker
-            isVisible={showTimePicker}
-            date={load_time.toDate()}
-            mode="time"
-            titleIOS={I18n.t('select_time')}
-            confirmBtnText={I18n.t('confirm')}
-            cancelBtnText={I18n.t('cancel')}
-            onDateChange={this.onTimeChange}
-            onCancel={this.hideTimePicker}
-            onConfirm={this.hideTimePicker}
-            neverDisableConfirmIOS={true}
-            customStyles={{
-              dateText: styles.dateText,
-              placeholderText: styles.placeholderText,
-            }}
-          />
-
+        <DateTimePicker
+          isVisible={showTimePicker}
+          date={load_time.toDate()}
+          mode="time"
+          titleIOS={I18n.t('select_time')}
+          confirmBtnText={I18n.t('confirm')}
+          cancelBtnText={I18n.t('cancel')}
+          onDateChange={this.onTimeChange}
+          onCancel={this.hideTimePicker}
+          onConfirm={this.hideTimePicker}
+          neverDisableConfirmIOS={true}
+          customStyles={{
+            dateText: styles.dateText,
+            placeholderText: styles.placeholderText,
+          }}
+        />
       </ScrollView>
     );
   }

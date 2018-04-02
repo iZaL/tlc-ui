@@ -33,7 +33,6 @@ class ResidencyListScene extends Component {
   };
 
   onAddPress = () => {
-    console.log('on add');
     this.props.navigation.navigate('ResidencyAdd', {});
   };
 

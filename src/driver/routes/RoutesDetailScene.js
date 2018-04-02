@@ -74,8 +74,6 @@ class RoutesDetailScene extends Component {
     const {origin, destination, transits} = route;
     const {activeCountry} = this.state;
 
-    console.log('ac', activeCountry);
-
     let countries = [origin, ...transits, destination];
 
     let license = {};

@@ -38,7 +38,6 @@ class ResidencyAddScene extends Component {
 
   render() {
     let {countries} = this.props;
-    console.log('state', this.state);
     return (
       <DocumentAdd
         onFieldChange={this.onFieldChange}

@@ -161,11 +161,7 @@ class ProfileUpdateScene extends Component {
 
   render() {
     const {countries} = this.props;
-
     const {residencies, nationality, mobile} = this.state;
-
-    console.log('residencies', residencies);
-
     const {showDropDown, dropDownField} = this.state;
 
     return (
@@ -179,35 +175,35 @@ class ProfileUpdateScene extends Component {
         {/*<FormLabel title={I18n.t('mobile')} />*/}
 
         {/*<FormTextInput*/}
-          {/*onChangeText={value => this.onFieldChange('mobile', value)}*/}
-          {/*value={mobile}*/}
-          {/*maxLength={40}*/}
-          {/*placeholder={I18n.t('mobile')}*/}
-          {/*keyboardType="phone-pad"*/}
+        {/*onChangeText={value => this.onFieldChange('mobile', value)}*/}
+        {/*value={mobile}*/}
+        {/*maxLength={40}*/}
+        {/*placeholder={I18n.t('mobile')}*/}
+        {/*keyboardType="phone-pad"*/}
         {/*/>*/}
 
         {/*<FormLabel title={I18n.t('nationality')} />*/}
 
         {/*{showDropDown && dropDownField === 'nationality' ? (*/}
-          {/*<Dropdown*/}
-            {/*onClose={this.showDropDown}*/}
-            {/*items={countries}*/}
-            {/*selectedValue={nationality.id}*/}
-            {/*onItemPress={this.onFieldChange}*/}
-            {/*field="nationality"*/}
-          {/*/>*/}
+        {/*<Dropdown*/}
+        {/*onClose={this.showDropDown}*/}
+        {/*items={countries}*/}
+        {/*selectedValue={nationality.id}*/}
+        {/*onItemPress={this.onFieldChange}*/}
+        {/*field="nationality"*/}
+        {/*/>*/}
         {/*) : (*/}
-          {/*<Text*/}
-            {/*style={{*/}
-              {/*fontSize: 18,*/}
-              {/*color: 'black',*/}
-              {/*fontWeight: '300',*/}
-              {/*textAlign: 'left',*/}
-              {/*paddingTop: 5,*/}
-            {/*}}*/}
-            {/*onPress={() => this.showDropDown(true, 'nationality')}>*/}
-            {/*{nationality.id ? nationality.name : I18n.t('select')}*/}
-          {/*</Text>*/}
+        {/*<Text*/}
+        {/*style={{*/}
+        {/*fontSize: 18,*/}
+        {/*color: 'black',*/}
+        {/*fontWeight: '300',*/}
+        {/*textAlign: 'left',*/}
+        {/*paddingTop: 5,*/}
+        {/*}}*/}
+        {/*onPress={() => this.showDropDown(true, 'nationality')}>*/}
+        {/*{nationality.id ? nationality.name : I18n.t('select')}*/}
+        {/*</Text>*/}
         {/*)}*/}
 
         <ListItem
@@ -239,7 +235,6 @@ class ProfileUpdateScene extends Component {
           name="licenses"
           arrow={true}
         />
-
 
         {/*<FormLabel title={I18n.t('residence')} style={{marginBottom: 10}}/>*/}
 

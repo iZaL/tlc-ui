@@ -27,7 +27,6 @@ class ResidencyEditScene extends Component {
 
   render() {
     let {residencies} = this.props;
-    console.log('residencies', residencies);
     return <View />;
     // return <CountryList items={loads} onItemPress={this.onLoadsListItemPress} />;
   }

@@ -30,7 +30,6 @@ class LoadListScene extends Component {
     const {params} = navigation.state;
     const status = (params && params.status) || null;
     let title = status ? `load_${status}_list` : 'loads';
-    console.log('title', title);
     return {
       title: I18n.t(title),
     };

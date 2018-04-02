@@ -134,7 +134,7 @@ const ProfileStack = StackNavigator(
       }),
     },
     LicenseAdd: {
-      screen:LicenseAddScene,
+      screen: LicenseAddScene,
       navigationOptions: () => ({
         title: I18n.t('license_add'),
       }),
@@ -152,7 +152,7 @@ const ProfileStack = StackNavigator(
       }),
     },
     NationalityAdd: {
-      screen:NationalityAddScene,
+      screen: NationalityAddScene,
       navigationOptions: () => ({
         title: I18n.t('nationality_add'),
       }),

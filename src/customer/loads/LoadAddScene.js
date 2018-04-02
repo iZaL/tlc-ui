@@ -16,8 +16,8 @@ import {ACTIONS as CUSTOMER_ACTIONS} from 'customer/common/actions';
 import {SELECTORS as TRUCK_SELECTORS} from 'trucks/common/selectors';
 import TabPanel from 'customer/loads/components/TabPanel';
 import {SELECTORS as CUSTOMER_SELECTORS} from 'customer/common/selectors';
-import PackageDimensions from "customer/loads/components/PackageDimensions";
-import TrailerQuantity from "customer/loads/components/TrailerQuantity";
+import PackageDimensions from 'customer/loads/components/PackageDimensions';
+import TrailerQuantity from 'customer/loads/components/TrailerQuantity';
 import moment from 'moment';
 
 class LoadAddScene extends Component {
@@ -33,14 +33,14 @@ class LoadAddScene extends Component {
     load_date: null,
     load_time: moment(),
     trailer_id: null,
-    trailer_quantity:1,
+    trailer_quantity: 1,
     packaging_id: null,
-    packaging_dimension:{
-      length:null,
-      width:null,
-      height:null,
-      weight:null,
-      quantity:null,
+    packaging_dimension: {
+      length: null,
+      width: null,
+      height: null,
+      weight: null,
+      quantity: null,
     },
     origin_location_id: null,
     destination_location_id: null,
@@ -52,8 +52,8 @@ class LoadAddScene extends Component {
     receiver_mobile: '00966989382332',
     receiver_phone: '00966989382332',
     passes: [],
-    showPackageDimsSelectionModal:false,
-    showTrailerQuantitySelectionModal:false,
+    showPackageDimsSelectionModal: false,
+    showTrailerQuantitySelectionModal: false,
   };
 
   componentDidMount() {
@@ -61,19 +61,15 @@ class LoadAddScene extends Component {
   }
 
   onFieldChange = (field, value) => {
-
-    console.log('field',field);
-
     this.setState({[field]: value});
 
-    if(field == 'packaging_id') {
+    if (field == 'packaging_id') {
       this.showModal('showPackageDimsSelectionModal');
     }
 
-    if(field == 'trailer_id') {
+    if (field == 'trailer_id') {
       this.showModal('showTrailerQuantitySelectionModal');
     }
-
   };
 
   updatePasses = id => {
@@ -97,28 +93,26 @@ class LoadAddScene extends Component {
     }).then(() => {});
   };
 
-  showModal = (name) => {
+  showModal = name => {
     this.setState({
-      [name] : true
+      [name]: true,
     });
   };
 
-  hideModal = (name) => {
+  hideModal = name => {
     this.setState({
-      [name] : false
+      [name]: false,
     });
   };
 
-  onPackagingDimensionsFieldChange = (field,name) => {
-    console.log('field',field);
+  onPackagingDimensionsFieldChange = (field, name) => {
     this.setState({
-      packaging_dimension:{
+      packaging_dimension: {
         ...this.state.packaging_dimension,
-        [field]:name
-      }
-    })
+        [field]: name,
+      },
+    });
   };
-
 
   render() {
     let {
@@ -138,10 +132,8 @@ class LoadAddScene extends Component {
       showPackageDimsSelectionModal,
       showTrailerQuantitySelectionModal,
       trailer_quantity,
-      packaging_dimension
+      packaging_dimension,
     } = this.state;
-
-    console.log('field',packaging_dimension);
 
     let {trailers, packaging, gatePasses, locations} = this.props;
 
@@ -171,19 +163,26 @@ class LoadAddScene extends Component {
               <PackageDimensions
                 visible={showPackageDimsSelectionModal}
                 onFieldChange={this.onPackagingDimensionsFieldChange}
-                onCancel={()=>this.hideModal('showPackageDimsSelectionModal')}
-                onConfirm={()=>this.hideModal('showPackageDimsSelectionModal')}
+                onCancel={() => this.hideModal('showPackageDimsSelectionModal')}
+                onConfirm={() =>
+                  this.hideModal('showPackageDimsSelectionModal')
+                }
                 {...packaging_dimension}
               />
 
               <TrailerQuantity
                 visible={showTrailerQuantitySelectionModal}
-                onFieldChange={(quantity)=>this.onFieldChange('trailer_quantity',quantity)}
-                onCancel={()=>this.hideModal('showTrailerQuantitySelectionModal')}
-                onConfirm={()=>this.hideModal('showTrailerQuantitySelectionModal')}
+                onFieldChange={quantity =>
+                  this.onFieldChange('trailer_quantity', quantity)
+                }
+                onCancel={() =>
+                  this.hideModal('showTrailerQuantitySelectionModal')
+                }
+                onConfirm={() =>
+                  this.hideModal('showTrailerQuantitySelectionModal')
+                }
                 selected={trailer_quantity}
               />
-
             </TabPanel>
 
             <TabPanel>
@@ -231,7 +230,6 @@ class LoadAddScene extends Component {
               receiver_name={receiver_name}
               onSaveButtonPress={this.onSaveButtonPress}
             />
-
           </TabPanels>
         </Tabs>
       </ScrollView>
