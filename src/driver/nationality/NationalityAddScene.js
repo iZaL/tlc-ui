@@ -1,14 +1,9 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
-import {View} from 'react-native';
 import {connect} from 'react-redux';
-import LoadsList from 'driver/loads/components/LoadsList';
-import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
-import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
-import I18n from 'utils/locale';
 import {SELECTORS as COUNTRY_SELECTORS} from 'app/selectors/country';
 import DocumentAdd from 'components/DocumentAdd';
 import {moment} from 'moment';
+import I18n from 'utils/locale';
 
 class NationalityAddScene extends Component {
   static propTypes = {
@@ -17,14 +12,30 @@ class NationalityAddScene extends Component {
 
   static defaultProps = {
     residencies: [],
+    nationality: {
+      number: null,
+      expiry_date: new Date(),
+      countryID: null,
+      image: null
+    }
   };
 
-  state = {
-    number: null,
-    expiry_date: new Date(),
-    countryID: null,
-    image: null,
+  static navigationOptions = ({navigation}) => {
+    return {
+      title:navigation.state.params && `${navigation.state.params.title} ${I18n.t('edit')}` || ''
+    };
   };
+
+  constructor(props) {
+    super(props);
+    let {number, expiry_date, countryID, image} = this.props.navigation.state.params;
+    this.state = {
+      number: number,
+      expiry_date: expiry_date,
+      countryID: countryID,
+      image: image,
+    };
+  }
 
   onFieldChange = (field, value) => {
     this.setState({
@@ -38,6 +49,8 @@ class NationalityAddScene extends Component {
 
   render() {
     let {countries} = this.props;
+    console.log('props', this.props.navigation.state.params);
+
     return (
       <DocumentAdd
         onFieldChange={this.onFieldChange}

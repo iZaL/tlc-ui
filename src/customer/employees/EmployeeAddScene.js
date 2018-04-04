@@ -12,6 +12,9 @@ import {SELECTORS as USER_SELECTORS} from 'guest/common/selectors';
 import FormCheck from 'components/FormCheck';
 import {View} from 'react-native';
 import isEmpty from 'lodash/isEmpty';
+import {Checkbox} from "react-native-paper";
+import Touchable from 'react-native-platform-touchable';
+import Separator from "components/Separator";
 
 type State = {
   mobile: string,
@@ -62,9 +65,7 @@ class EmployeeAddScene extends Component {
           flex: 1,
           backgroundColor: 'white',
           padding: 10,
-          paddingTop: 20,
         }}>
-        <FormLabel title={I18n.t('name_en')} />
         <FormTextInput
           onChangeText={value => this.onFieldChange('name_en', value)}
           value={name_en}
@@ -72,15 +73,12 @@ class EmployeeAddScene extends Component {
           placeholder={I18n.t('name_en')}
         />
 
-        <FormLabel title={I18n.t('name_ar')} />
         <FormTextInput
           onChangeText={value => this.onFieldChange('name_ar', value)}
           value={name_ar}
           maxLength={40}
           placeholder={I18n.t('name_ar')}
         />
-
-        <FormLabel title={I18n.t('mobile')} />
 
         <FormTextInput
           onChangeText={value => this.onFieldChange('mobile', value)}
@@ -90,8 +88,6 @@ class EmployeeAddScene extends Component {
           keyboardType="phone-pad"
         />
 
-        <FormLabel title={I18n.t('office_number')} />
-
         <FormTextInput
           onChangeText={value => this.onFieldChange('phone', value)}
           value={phone}
@@ -99,8 +95,6 @@ class EmployeeAddScene extends Component {
           placeholder={I18n.t('office_number')}
           keyboardType="phone-pad"
         />
-
-        <FormLabel title={I18n.t('business_email')} />
 
         <FormTextInput
           onChangeText={value => this.onFieldChange('email', value)}
@@ -110,20 +104,23 @@ class EmployeeAddScene extends Component {
           keyboardType="email-address"
         />
 
-        <View style={{flexDirection: 'row', alignItems: 'center'}}>
-          <FormLabel title={I18n.t('can_communicate_with_driver')} />
-          <FormCheck
-            checked={driver_interaction}
-            onPress={() =>
-              this.onFieldChange('driver_interaction', !driver_interaction)
-            }
-          />
-        </View>
+        <Touchable onPress={() => this.onFieldChange('driver_interaction', !driver_interaction)}>
+          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+            <FormLabel title={I18n.t('can_communicate_with_driver')} style={{flex: 1}}/>
+            <FormCheck
+              checked={driver_interaction}
+              onPress={()=>this.onFieldChange('driver_interaction', !driver_interaction)}
+            />
+
+          </View>
+        </Touchable>
+
+        <Separator style={{marginVertical:10}}/>
 
         <FormSubmit
           onPress={this.saveEmployee}
           title={I18n.t('save')}
-          style={{marginTop: 50}}
+          style={{marginTop: 20}}
         />
       </ScrollView>
     );

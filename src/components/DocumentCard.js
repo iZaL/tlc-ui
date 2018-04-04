@@ -62,7 +62,7 @@ export default class DocumentCard extends Component {
               justifyContent: 'flex-end',
               alignItems: 'flex-end',
             }}>
-            <Button primary onPress={() => alert('wa')}>
+            <Button primary onPress={()=>onEditPress(item)}>
               {I18n.t('edit')}
             </Button>
           </CardActions>

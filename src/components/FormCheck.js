@@ -9,7 +9,7 @@ import Touchable from 'react-native-platform-touchable';
 export default class FormCheck extends Component {
   static propTypes = {
     checked: PropTypes.bool.isRequired,
-    onPress: PropTypes.func.isRequired,
+    onPress: PropTypes.func,
     // style:PropTypes.object
   };
 

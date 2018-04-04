@@ -137,25 +137,22 @@ class ProfileUpdateScene extends Component {
 
   onListItemPress = (route: string) => {
     let scene;
-    let sceneConfig = {};
+    let sceneConfig = {
+      route,
+      title:I18n.t(route)
+    };
+
     switch (route) {
       case 'nationality':
-        scene = 'NationalityList';
-        break;
-      case 'residencies':
-        scene = 'ResidencyList';
-        break;
-      case 'licenses':
-        scene = 'LicenseList';
-        break;
       case 'visas':
-        scene = 'VisaList';
+      case 'residencies':
+      case 'licenses':
+        scene = 'NationalityList';
         break;
       case 'languages':
         scene = 'LanguageList';
         break;
     }
-
     return this.props.navigation.navigate(scene, sceneConfig);
   };
 

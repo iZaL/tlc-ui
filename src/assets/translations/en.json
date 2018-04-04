@@ -114,7 +114,7 @@
   "employee_list" : "List Contacts",
   "employee_add" : "Add Contact",
   "employee_edit" : "Edit Contact",
-  "can_communicate_with_driver" : "Direct communication with Driver",
+  "can_communicate_with_driver" : "Allow direct communication with the driver",
   "edit" : "Edit",
   "details" : "Details",
   "delete" : "Delete",
@@ -191,6 +191,6 @@
   "tons" : "Tons",
   "inch" : "inch",
 
-  "select_time" : "Select Loading Time"
+  "select_time" : "Select Loading Time",
 
 }

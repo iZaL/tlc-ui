@@ -22,21 +22,41 @@ class NationalityListScene extends Component {
   //   this.props.dispatch(DRIVER_ACTIONS.fetchLoadsByStatus({status: status}));
   // }
 
-  onLoadsListItemPress = (load: object) => {
-    this.props.navigation.navigate('ResidencyDetail', {
-      loadID: load.id,
-    });
+  static navigationOptions = ({navigation}) => {
+    return {
+      title:navigation.state.params && navigation.state.params.title || ''
+    };
   };
 
   onAddPress = () => {
-    this.props.navigation.navigate('ResidencyAdd', {});
+    this.props.navigation.navigate('NationalityAdd', {});
   };
 
-  onEditPress = () => {};
+  onEditPress = (nationality:object) => {
+    let {number,expiry_date,image} = nationality;
+
+    let payload = {
+      number: number,
+      expiry_date: new Date(expiry_date),
+      countryID: nationality.country.id,
+      image: image,
+    };
+
+    let {route,title} = this.props.navigation.state.params;
+
+    let sceneConfig = {
+      route,
+      title,
+      ...payload
+    };
+
+    this.props.navigation.navigate('NationalityAdd', sceneConfig);
+  };
 
   onDeletePress = () => {};
 
   render() {
+
     let {residencies} = this.props;
     return (
       <View style={{flex: 1}}>
