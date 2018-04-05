@@ -8,6 +8,8 @@ import Separator from 'components/Separator';
 import I18n from 'utils/locale';
 import ListItem from 'components/ListItem';
 import List from "components/List";
+import ListModal from "components/ListModal";
+import FormTextInput from "../../components/FormTextInput";
 
 class ProfileUpdateScene extends Component {
   static propTypes = {
@@ -15,8 +17,10 @@ class ProfileUpdateScene extends Component {
   };
 
   state = {
-    isLanguageModalVisible:false,
-    activeLanguages:['english','arabic']
+    languageModalVisible: false,
+    personalInformationModalVisible: false,
+    activeLanguages: ['english', 'arabic'],
+    mobile: '',
   };
 
   componentDidMount() {
@@ -26,7 +30,7 @@ class ProfileUpdateScene extends Component {
     let scene = 'NationalityList';
     let sceneConfig = {
       route,
-      title:I18n.t(route)
+      title: I18n.t(route)
     };
 
     // switch (route) {
@@ -44,25 +48,32 @@ class ProfileUpdateScene extends Component {
     return this.props.navigation.navigate(scene, sceneConfig);
   };
 
-  _showLanguageModal = () => {
+  showModal = (name) => {
     this.setState({
-      isLanguageModalVisible:true
+      [name]: true
     })
   };
 
-  _hideLanguageModal = () => {
+  hideModal = (name) => {
     this.setState({
-      isLanguageModalVisible:false
+      [name]: false
     })
   };
 
-  _handleLanguagePress = (language:string) => {
+  handleLanguagePress = (language: string) => {
     this.setState({
-      activeLanguages:this.state.activeLanguages.includes(language) ? this.state.activeLanguages.filter(lang => lang != language) : this.state.activeLanguages.concat(language)
+      activeLanguages: this.state.activeLanguages.includes(language) ? this.state.activeLanguages.filter(lang => lang != language) : this.state.activeLanguages.concat(language)
     });
   };
 
+  onFieldChange = (field, value) => {
+    this.setState({[field]: value});
+  };
+
   render() {
+
+    let {mobile,personalInformationModalVisible,languageModalVisible,activeLanguages} = this.state;
+
     return (
       <ScrollView
         style={{
@@ -73,12 +84,20 @@ class ProfileUpdateScene extends Component {
         }}>
 
         <ListItem
+          onItemPress={() => this.showModal('personalInformationModalVisible')}
+          name="personal_information"
+          arrow={true}
+        />
+
+        <Separator style={{marginVertical: 10}}/>
+
+        <ListItem
           onItemPress={this.onListItemPress}
           name="nationality"
           arrow={true}
         />
 
-        <Separator style={{marginVertical: 10}} />
+        <Separator style={{marginVertical: 10}}/>
 
         <ListItem
           onItemPress={this.onListItemPress}
@@ -86,7 +105,7 @@ class ProfileUpdateScene extends Component {
           arrow={true}
         />
 
-        <Separator style={{marginVertical: 10}} />
+        <Separator style={{marginVertical: 10}}/>
 
         <ListItem
           onItemPress={this.onListItemPress}
@@ -94,7 +113,7 @@ class ProfileUpdateScene extends Component {
           arrow={true}
         />
 
-        <Separator style={{marginVertical: 10}} />
+        <Separator style={{marginVertical: 10}}/>
 
         <ListItem
           onItemPress={this.onListItemPress}
@@ -102,22 +121,43 @@ class ProfileUpdateScene extends Component {
           arrow={true}
         />
 
-        <Separator style={{marginVertical: 10}} />
+        <Separator style={{marginVertical: 10}}/>
 
         <ListItem
-          onItemPress={this._showLanguageModal}
+          onItemPress={() => this.showModal('languageModalVisible')}
           name="languages"
           arrow={true}
         />
 
         <List
-          items={[{id:'english',name:I18n.t('english')},{id:'arabic',name:I18n.t('arabic')},{id:'hindi',name:I18n.t('hindi')}]}
-          isVisible={this.state.isLanguageModalVisible}
-          onConfirm={this._handleLanguagePress}
-          onCancel={this._hideLanguageModal}
+          items={[{id: 'english', name: I18n.t('english')}, {id: 'arabic', name: I18n.t('arabic')}, {
+            id: 'hindi',
+            name: I18n.t('hindi')
+          }]}
+          isVisible={languageModalVisible}
+          onConfirm={this.handleLanguagePress}
+          onCancel={() => this.hideModal('languageModalVisible')}
           title={I18n.t('select_languages')}
-          activeIDs={this.state.activeLanguages}
+          activeIDs={activeLanguages}
         />
+
+        <ListModal
+          isVisible={personalInformationModalVisible}
+          transparent={false}
+          onBackdropPress={() => this.hideModal('personalInformationModalVisible')}
+          title={I18n.t('personal_information')}
+          onCancel={() => this.hideModal('personalInformationModalVisible')}
+        >
+
+          <FormTextInput
+            onChangeText={value => this.onFieldChange('mobile', value)}
+            value={mobile}
+            maxLength={40}
+            placeholder={I18n.t('mobile')}
+            keyboardType="phone-pad"
+          />
+
+        </ListModal>
 
       </ScrollView>
     );

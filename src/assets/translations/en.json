@@ -198,6 +198,8 @@
   "arabic" : "Arabic",
   "hindi" : "Hindi",
 
-  "select_languages" : "Select Languages You Speak"
+  "select_languages" : "Select Languages You Speak",
+
+  "personal_information" : "Personal Information"
 
 }
