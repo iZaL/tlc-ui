@@ -22,7 +22,7 @@ class NationalityAddScene extends Component {
 
   static navigationOptions = ({navigation}) => {
     return {
-      title:navigation.state.params && `${navigation.state.params.title} ${I18n.t('edit')}` || ''
+      title:navigation.state.params && `${navigation.state.params.title} ${navigation.state.params.type}` || ''
     };
   };
 

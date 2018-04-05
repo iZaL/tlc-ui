@@ -25,7 +25,7 @@ const profileSchema = new schema.Union(
 );
 
 driversSchema.define({
-  nationality: countriesSchema,
+  nationalities: [{country: countriesSchema}],
   residencies: [{country: countriesSchema}],
   licenses: [{country: countriesSchema}],
   visas: [{country: countriesSchema}],

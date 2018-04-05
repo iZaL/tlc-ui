@@ -24,11 +24,10 @@ export default class DocumentCard extends Component {
     onEditPress: PropTypes.func,
     onDeletePress: PropTypes.func,
     item: PropTypes.object.isRequired,
-    // country: PropTypes.object.isRequired,
-    // expiry_date: PropTypes.string.isRequired,
-    // title: PropTypes.string.isRequired,
-    // image: PropTypes.string.isRequired,
-    // number: PropTypes.string.isRequired,
+    country: PropTypes.object,
+    expiry_date: PropTypes.string,
+    image: PropTypes.string,
+    number: PropTypes.string,
   };
 
   shouldComponentUpdate() {
@@ -36,22 +35,26 @@ export default class DocumentCard extends Component {
   }
 
   static defaultProps = {
-    onEditPress: () => {},
-    onDeletePress: () => {},
+    onEditPress: () => {
+    },
+    onDeletePress: () => {
+    },
   };
 
   render() {
     let {onEditPress, onDeletePress, item} = this.props;
 
-    let {country, image, expiry_date, title, number} = item;
+    let {country, image, expiry_date, number} = item;
 
     return (
       <Card>
         <CardContent>
-          <Title>{country.name}</Title>
+          <Title>{country && country.name}</Title>
           <Paragraph>{number}</Paragraph>
         </CardContent>
-        <CardCover source={{uri: image}} />
+
+        { image ? <CardCover source={{uri: image}}/> : <View/> }
+
         <View style={{flexDirection: 'row'}}>
           <CardActions>
             <Button>{expiry_date}</Button>
@@ -62,7 +65,7 @@ export default class DocumentCard extends Component {
               justifyContent: 'flex-end',
               alignItems: 'flex-end',
             }}>
-            <Button primary onPress={()=>onEditPress(item)}>
+            <Button primary onPress={() => onEditPress(item)}>
               {I18n.t('edit')}
             </Button>
           </CardActions>

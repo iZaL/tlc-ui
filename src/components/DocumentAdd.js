@@ -19,6 +19,7 @@ import {
 import {View} from 'react-native';
 import moment from 'moment';
 import DocumentUpload from 'components/DocumentUpload';
+import List from "components/List";
 
 export default class DocumentAdd extends PureComponent {
   static propTypes = {
@@ -53,7 +54,7 @@ export default class DocumentAdd extends PureComponent {
 
   _handleCountryPicker = countryID => {
     this.props.onFieldChange('countryID', countryID);
-    this._hideCountryModal();
+    // this._hideCountryModal();
   };
 
   render() {
@@ -127,14 +128,15 @@ export default class DocumentAdd extends PureComponent {
           date={expiry_date}
         />
 
-        <ListModal
+        <List
           items={countries}
           isVisible={this.state.isCountryModalVisible}
           onConfirm={this._handleCountryPicker}
           onCancel={this._hideCountryModal}
           title={I18n.t('residency_country_select')}
-          activeID={countryID}
+          activeIDs={[countryID]}
         />
+
       </View>
     );
   }

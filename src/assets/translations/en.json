@@ -116,6 +116,7 @@
   "employee_edit" : "Edit Contact",
   "can_communicate_with_driver" : "Allow direct communication with the driver",
   "edit" : "Edit",
+  "add" : "Add",
   "details" : "Details",
   "delete" : "Delete",
   "location_origin_add" : "Add New Pick Location",
@@ -192,5 +193,11 @@
   "inch" : "inch",
 
   "select_time" : "Select Loading Time",
+
+  "english" : "English",
+  "arabic" : "Arabic",
+  "hindi" : "Hindi",
+
+  "select_languages" : "Select Languages You Speak"
 
 }

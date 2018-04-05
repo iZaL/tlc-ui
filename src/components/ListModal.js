@@ -2,76 +2,46 @@
  * @flow
  */
 import React, {Component} from 'react';
-import Touchable from 'react-native-platform-touchable';
 import PropTypes from 'prop-types';
-import {FlatList, Text, View, StyleSheet} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 
 import Modal from 'react-native-modal';
-import Separator from 'components/Separator';
 import colors from 'assets/theme/colors';
-import {Checkbox, Headline} from 'react-native-paper';
+import {Button, Headline} from 'react-native-paper';
 import I18n from 'utils/locale';
 
-export default class CountryListModal extends Component {
+export default class ListModal extends Component {
+
   static propTypes = {
     isVisible: PropTypes.bool.isRequired,
-    onConfirm: PropTypes.func.isRequired,
     onCancel: PropTypes.func.isRequired,
-    items: PropTypes.array.isRequired,
+    children:PropTypes.any.isRequired,
     title: PropTypes.string,
-    activeID: PropTypes.number,
   };
 
   static defaultProps = {
-    title: I18n.t('select_country'),
-  };
-
-  shouldComponentUpdate(nextProps) {
-    return (
-      this.props.isVisible !== nextProps.isVisible ||
-      this.props.activeID !== nextProps.activeID
-    );
-  }
-
-  renderItem = ({item}) => {
-    let {onConfirm, activeID} = this.props;
-    return (
-      <Touchable onPress={() => onConfirm(item.id)}>
-        <View style={styles.itemRowContainer}>
-          <Text style={styles.itemTitle}>{item.name}</Text>
-          <Checkbox checked={activeID === item.id} />
-        </View>
-      </Touchable>
-    );
+    title: '',
   };
 
   render() {
-    let {isVisible, onCancel, items, title} = this.props;
+    let {isVisible, onCancel, title,children,style} = this.props;
 
     return (
       <View style={styles.container}>
         <Modal
           isVisible={isVisible}
           transparent={false}
-          style={{
+          style={[{
             backgroundColor: 'white',
-            // margin: 0,
             paddingTop: 64,
             paddingHorizontal: 20,
-          }}
+          },style]}
           onBackdropPress={onCancel}>
           <Headline style={styles.headline}>{title}</Headline>
-          <FlatList
-            data={items}
-            style={styles.listContainer}
-            renderItem={this.renderItem}
-            showsVerticalScrollIndicator={false}
-            ItemSeparatorComponent={() => (
-              <Separator style={{marginVertical: 10}} />
-            )}
-            keyExtractor={(item, index) => `${index}`}
-          />
+          {children}
+          <Button onPress={onCancel} raised primary dark style={{marginBottom:50,paddingVertical:10}}>{I18n.t('save')}</Button>
         </Modal>
+
       </View>
     );
   }
@@ -85,8 +55,10 @@ const styles = StyleSheet.create({
     // backgroundColor: 'white',
     // margin: 0,
     // padding: 0
+    flex:1,
   },
   listContainer: {
+    flex:1,
     margin: 5,
     marginTop: 20,
   },

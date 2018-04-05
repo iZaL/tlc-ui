@@ -135,16 +135,6 @@ const getRoutes = createSelector(
   },
 );
 
-const getLicenses = createSelector(
-  [USER_SELECTORS.getAuthUserProfile],
-  driver => driver.licenses || [],
-);
-
-const getVisas = createSelector(
-  [USER_SELECTORS.getAuthUserProfile],
-  driver => driver.visas || [],
-);
-
 /**
  * Get all countries related to the driver,
  * Residence,
@@ -238,10 +228,46 @@ const getLoadsByStatus = () => {
 const getResidencies = createSelector(
   [getProfile, countriesSchema],
   (driver, countries) => {
-    return driver.residencies.map(residency => {
+    return driver.residencies.map(record => {
       return {
-        ...residency,
-        country: countries[residency.country],
+        ...record,
+        country: countries[record.country],
+      };
+    });
+  },
+);
+
+const getNationalities = createSelector(
+  [getProfile, countriesSchema],
+  (driver, countries) => {
+    return driver.nationalities.map(record => {
+      return {
+        ...record,
+        country: countries[record.country],
+      };
+    });
+  },
+);
+
+const getLicenses = createSelector(
+  [getProfile,countriesSchema],
+  (driver, countries) => {
+    return driver.licenses.map(record => {
+      return {
+        ...record,
+        country: countries[record.country],
+      };
+    });
+  },
+);
+
+const getVisas = createSelector(
+  [getProfile,countriesSchema],
+  (driver, countries) => {
+    return driver.visas.map(record => {
+      return {
+        ...record,
+        country: countries[record.country],
       };
     });
   },
@@ -250,13 +276,14 @@ const getResidencies = createSelector(
 export const SELECTORS = {
   getProfile,
   getResidencies,
+  getLicenses,
+  getVisas,
+  getNationalities,
   getTruck,
   getTrailer,
   getRouteByID,
   getAvailableRoutes,
   getRoutes,
-  getLicenses,
-  getVisas,
   getProfileCountries,
   getLoadRequests,
   getLoadByID,
