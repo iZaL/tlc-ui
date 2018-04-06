@@ -14,7 +14,7 @@ export default class LoginScene extends Component {
     handleForgotPasswordRoute: PropTypes.func.isRequired,
     handleRegisterRoute: PropTypes.func.isRequired,
     handleLogin: PropTypes.func.isRequired,
-    onFieldChange: PropTypes.func.isRequired,
+    onValueChange: PropTypes.func.isRequired,
     email: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired,
     busy: PropTypes.bool.isRequired,
@@ -24,7 +24,7 @@ export default class LoginScene extends Component {
     const {
       email,
       password,
-      onFieldChange,
+      onValueChange,
       handleLogin,
       handleRegisterRoute,
       handleForgotPasswordRoute,
@@ -35,18 +35,18 @@ export default class LoginScene extends Component {
       <View style={styles.container}>
 
         <FormTextInput
-          placeholder={I18n.t('email')}
-          onChangeText={onFieldChange}
-          field={email}
+          label={I18n.t('email')}
+          onValueChange={onValueChange}
+          field="email"
           value={email}
           maxLength={40}
           keyboardType="email-address"
         />
 
         <FormTextInput
-          placeholder={I18n.t('password')}
-          onChangeText={onFieldChange}
-          field={password}
+          label={I18n.t('password')}
+          onValueChange={onValueChange}
+          field="password"
           value={password}
           maxLength={40}
           secureTextEntry={true}

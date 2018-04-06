@@ -8,7 +8,7 @@ import I18n from 'utils/locale';
 import Button from '../../../components/Button';
 export default class LoadWhat extends Component {
   static propTypes = {
-    onFieldChange: PropTypes.func.isRequired,
+    onValueChange: PropTypes.func.isRequired,
     receiver_name: PropTypes.string.isRequired,
     receiver_email: PropTypes.string.isRequired,
     receiver_mobile: PropTypes.string.isRequired,
@@ -17,7 +17,7 @@ export default class LoadWhat extends Component {
 
   render() {
     const {
-      onFieldChange,
+      onValueChange,
       receiver_name,
       receiver_email,
       receiver_mobile,
@@ -30,37 +30,37 @@ export default class LoadWhat extends Component {
         <View style={styles.formContainer}>
 
           <FormTextInput
-            onChangeText={onFieldChange}
+            onChangeText={onValueChange}
             value={receiver_name}
             field={receiver_name}
-            placeholder={I18n.t('receiver_name')}
+            label={I18n.t('receiver_name')}
             maxLength={40}
           />
 
           <FormTextInput
-            onChangeText={onFieldChange}
+            onChangeText={onValueChange}
             value={receiver_email}
             vafieldlue={receiver_email}
-            placeholder={I18n.t('receiver_email')}
+            label={I18n.t('receiver_email')}
             maxLength={40}
             keyboardType="email-address"
           />
 
           <FormTextInput
-            onChangeText={onFieldChange}
+            onChangeText={onValueChange}
             value={receiver_mobile}
             field={receiver_mobile}
             maxLength={40}
-            placeholder={I18n.t('receiver_mobile')}
+            label={I18n.t('receiver_mobile')}
             keyboardType="phone-pad"
           />
 
           <FormTextInput
-            onChangeText={onFieldChange}
+            onChangeText={onValueChange}
             value={receiver_phone}
             field={receiver_phone}
             maxLength={40}
-            placeholder={I18n.t('receiver_phone')}
+            label={I18n.t('receiver_phone')}
             keyboardType="phone-pad"
           />
         </View>

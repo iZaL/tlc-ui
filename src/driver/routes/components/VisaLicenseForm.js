@@ -35,7 +35,7 @@ export default class VisaLicenseForm extends PureComponent {
     uploaded_image: null,
   };
 
-  onFieldChange = (field, value) => {
+  onValueChange = (field, value) => {
     this.setState({[field]: value});
   };
 
@@ -99,11 +99,11 @@ export default class VisaLicenseForm extends PureComponent {
           <DateTimePicker
             date={expiry_date || model.expiry_date}
             mode="date"
-            placeholder={I18n.t('select')}
+            label={I18n.t('select')}
             format="YYYY-MM-DD"
             minDate="2015-01-01"
             maxDate="2040-01-01"
-            onDateChange={date => this.onFieldChange('expiry_date', date)}
+            onDateChange={date => this.onValueChange('expiry_date', date)}
           />
 
           <Separator style={{marginTop: 30, marginBottom: 10}} />

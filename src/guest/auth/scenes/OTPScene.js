@@ -11,23 +11,23 @@ export default class OTPScene extends Component {
   static propTypes = {
     onButtonPress: PropTypes.func.isRequired,
     code: PropTypes.string.isRequired,
-    onFieldChange: PropTypes.func.isRequired,
+    onValueChange: PropTypes.func.isRequired,
     resendCode: PropTypes.func.isRequired,
   };
 
   render() {
-    const {code, onButtonPress, onFieldChange, resendCode} = this.props;
+    const {code, onButtonPress, onValueChange, resendCode} = this.props;
 
     return (
       <View style={styles.container}>
         <FormLabel title={I18n.t('confirmation_code')} />
 
         <FormTextInput
-          onChangeText={onFieldChange}
+          onValueChange={onValueChange}
           field={code}
           value={code}
           maxLength={40}
-          placeholder={I18n.t('confirmation_code')}
+          label={I18n.t('confirmation_code')}
         />
 
         <FormSubmit

@@ -8,7 +8,7 @@ import {Button} from 'react-native-paper';
 
 export default class PackageDimensions extends Component {
   static propTypes = {
-    onFieldChange: PropTypes.func.isRequired,
+    onValueChange: PropTypes.func.isRequired,
     visible: PropTypes.bool.isRequired,
     onConfirm: PropTypes.func.isRequired,
     onCancel: PropTypes.func.isRequired,
@@ -21,7 +21,7 @@ export default class PackageDimensions extends Component {
 
   render() {
     const {
-      onFieldChange,
+      onValueChange,
       visible,
       onCancel,
       onConfirm,
@@ -42,7 +42,7 @@ export default class PackageDimensions extends Component {
           <View style={styles.addressContainer}>
             <View style={{flexDirection: 'row'}}>
               <FormTextInput
-                onChangeText={onFieldChange}
+                onChangeText={onValueChange}
                 value={length}
                 field={length}
                 maxLength={40}
@@ -53,7 +53,7 @@ export default class PackageDimensions extends Component {
               />
 
               <FormTextInput
-                onChangeText={onFieldChange}
+                onChangeText={onValueChange}
                 field={width}
                 value={width}
                 maxLength={40}
@@ -64,7 +64,7 @@ export default class PackageDimensions extends Component {
               />
 
               <FormTextInput
-                onChangeText={onFieldChange}
+                onChangeText={onValueChange}
                 field={height}
                 value={height}
                 maxLength={40}
@@ -77,7 +77,7 @@ export default class PackageDimensions extends Component {
 
             <View style={{flexDirection: 'row'}}>
               <FormTextInput
-                onChangeText={onFieldChange}
+                onChangeText={onValueChange}
                 field={weight}
                 value={weight}
                 maxLength={40}
@@ -88,7 +88,7 @@ export default class PackageDimensions extends Component {
               />
 
               <FormTextInput
-                onChangeText={onFieldChange}
+                onChangeText={onValueChange}
                 field={quantity}
                 value={quantity}
                 maxLength={40}

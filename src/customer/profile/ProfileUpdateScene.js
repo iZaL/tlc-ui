@@ -85,7 +85,7 @@ class ProfileUpdateScene extends Component {
     };
   }
 
-  onFieldChange = (field, value) => {
+  onValueChange = (field, value) => {
     if (value) {
       switch (field) {
         default:
@@ -133,70 +133,70 @@ class ProfileUpdateScene extends Component {
         contentContainerStyle={{paddingBottom: 100}}>
         {/*<FormLabel title={I18n.t('company_name_en')} />*/}
         <FormTextInput
-          onChangeText={this.onUserFieldChange}
+          onValueChange={this.onUserFieldChange}
           value={name_en}
           field={name_en}
           maxLength={40}
-          placeholder={I18n.t('company_name_en')}
+          label={I18n.t('company_name_en')}
         />
 
         {/*<FormLabel title={I18n.t('company_name_ar')} />*/}
         <FormTextInput
-          onChangeText={this.onUserFieldChange}
+          onValueChange={this.onUserFieldChange}
           value={name_ar}
           field={name_ar}
           maxLength={40}
-          placeholder={I18n.t('company_name_ar')}
+          label={I18n.t('company_name_ar')}
         />
 
         {/*<FormLabel title={I18n.t('mobile')} />*/}
 
         <FormTextInput
-          onChangeText={this.onFieldChange}
+          onValueChange={this.onValueChange}
           value={mobile}
           field={mobile}
           maxLength={40}
-          placeholder={I18n.t('mobile')}
+          label={I18n.t('mobile')}
           keyboardType="phone-pad"
         />
 
         {/*<FormLabel title={I18n.t('office_number')} />*/}
 
         <FormTextInput
-          onChangeText={this.onFieldChange}
+          onValueChange={this.onValueChange}
           value={phone}
           field={phone}
           maxLength={40}
-          placeholder={I18n.t('office_number')}
+          label={I18n.t('office_number')}
           keyboardType="phone-pad"
         />
 
         {/*<FormLabel title={I18n.t('company_email')} />*/}
 
         <FormTextInput
-          onChangeText={this.onFieldChange}
+          onValueChange={this.onValueChange}
           value={email}
           field={email}
           maxLength={40}
-          placeholder={I18n.t('company_email')}
+          label={I18n.t('company_email')}
         />
 
         {/*<FormLabel title={I18n.t('address_en')} />*/}
 
         <FormTextInput
-          onChangeText={this.onFieldChange}
+          onValueChange={this.onValueChange}
           value={address_en}
           field={address_en}
-          placeholder={I18n.t('address_en')}
+          label={I18n.t('address_en')}
         />
 
         {/*<FormLabel title={I18n.t('address_ar')} />*/}
 
         <FormTextInput
-          onChangeText={this.onFieldChange}
+          onValueChange={this.onValueChange}
           value={address_ar}
           field={address_ar}
-          placeholder={I18n.t('address_ar')}
+          label={I18n.t('address_ar')}
           keyboardType="phone-pad"
         />
 

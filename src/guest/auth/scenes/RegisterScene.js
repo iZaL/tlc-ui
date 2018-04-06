@@ -10,7 +10,7 @@ import colors from 'assets/theme/colors';
 export default class RegisterScene extends Component {
   static propTypes = {
     handleRegister: PropTypes.func.isRequired,
-    onFieldChange: PropTypes.func.isRequired,
+    onValueChange: PropTypes.func.isRequired,
     name_en: PropTypes.string.isRequired,
     name_ar: PropTypes.string,
     name_hi: PropTypes.string,
@@ -30,7 +30,7 @@ export default class RegisterScene extends Component {
       mobile,
       password,
       password_confirmation,
-      onFieldChange,
+      onValueChange,
       handleRegister,
       busy,
       isCustomer,
@@ -41,76 +41,76 @@ export default class RegisterScene extends Component {
         {isCustomer ? (
           <View>
             <FormTextInput
-              onChangeText={onFieldChange}
+              onChangeText={onValueChange}
               field="name_en"
               value={name_en}
               maxLength={40}
-              placeholder={I18n.t('company_name_en')}
+              label={I18n.t('company_name_en')}
             />
 
             <FormTextInput
-              onChangeText={onFieldChange}
+              onChangeText={onValueChange}
               field="name_ar"
               value={name_ar}
               maxLength={40}
-              placeholder={I18n.t('company_name_ar')}
+              label={I18n.t('company_name_ar')}
             />
 
           </View>
         ) : (
           <View>
             <FormTextInput
-              onChangeText={onFieldChange}
+              onChangeText={onValueChange}
               field="name_en"
               value={name_en}
               maxLength={40}
-              placeholder={I18n.t('name')}
+              label={I18n.t('name')}
             />
           </View>
         )}
 
         <FormTextInput
-          onChangeText={onFieldChange}
+          onValueChange={onValueChange}
           field="name_en"
           value={name_en}
           maxLength={40}
-          placeholder={I18n.t('name')}
+          label={I18n.t('name')}
         />
 
         <FormTextInput
-          onChangeText={onFieldChange}
+          onValueChange={onValueChange}
           field="email"
           value={email}
           maxLength={40}
-          placeholder={I18n.t('email')}
+          label={I18n.t('email')}
           keyboardType="email-address"
         />
 
         <FormTextInput
-          onChangeText={onFieldChange}
+          onValueChange={onValueChange}
           field="mobile"
           value={mobile}
           maxLength={40}
-          placeholder={I18n.t('mobile')}
+          label={I18n.t('mobile')}
           keyboardType="phone-pad"
         />
 
         <FormTextInput
-          onChangeText={onFieldChange}
+          onValueChange={onValueChange}
           field="password"
           value={password}
           maxLength={40}
-          placeholder={I18n.t('password')}
+          label={I18n.t('password')}
           secureTextEntry={true}
         />
 
         <FormTextInput
-          onChangeText={onFieldChange}
+          onValueChange={onValueChange}
           field="password_confirmation"
           value={password_confirmation}
           maxLength={40}
           secureTextEntry={true}
-          placeholder={I18n.t('confirm_password')}
+          label={I18n.t('confirm_password')}
         />
 
         <FormSubmit

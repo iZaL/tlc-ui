@@ -8,7 +8,7 @@ import FormSubmit from 'components/FormSubmit';
 
 export default class PasswordUpdateScene extends Component {
   static propTypes = {
-    onFieldChange: PropTypes.func.isRequired,
+    onValueChange: PropTypes.func.isRequired,
     onUpdatePassword: PropTypes.func.isRequired,
     onRightButtonPress: PropTypes.func.isRequired,
     password: PropTypes.string.isRequired,
@@ -17,7 +17,7 @@ export default class PasswordUpdateScene extends Component {
 
   render() {
     const {
-      onFieldChange,
+      onValueChange,
       password,
       confirmedPassword,
       onUpdatePassword,
@@ -29,21 +29,21 @@ export default class PasswordUpdateScene extends Component {
         <FormLabel title={I18n.t('new_password')} />
 
         <FormTextInput
-          onChangeText={onFieldChange}
+          onValueChange={onValueChange}
           field={password}
           value={password}
           maxLength={40}
-          placeholder={I18n.t('new_password')}
+          label={I18n.t('new_password')}
           secureTextEntry={true}
         />
 
         <FormLabel title={I18n.t('confirm_new_password')} />
         <FormTextInput
-          onChangeText={onFieldChange}
+          onValueChange={onValueChange}
           field="password_confirmation"
           value={confirmedPassword}
           maxLength={40}
-          placeholder={I18n.t('confirm_new_password')}
+          label={I18n.t('confirm_new_password')}
           secureTextEntry={true}
         />
 

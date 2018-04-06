@@ -6,27 +6,34 @@ import colors from 'assets/theme/colors';
 
 export default class FormTextInput extends Component {
 
+  shouldComponentUpdate(nextProps) {
+    return nextProps.value !== this.props.value || nextProps.disabled !== this.props.disabled;
+  }
+
   static propTypes = {
     field:PropTypes.string.isRequired,
-    onChangeText:PropTypes.func.isRequired
+    onValueChange:PropTypes.func.isRequired,
+    label:PropTypes.string.isRequired
   };
 
-  onChangeText = (value) => {
-    let {field,onChangeText} = this.props;
-    onChangeText(field,value);
+  onValueChange = (value) => {
+    let {field,onValueChange} = this.props;
+    onValueChange(field,value);
   };
 
   render() {
-    const {style, placeholder, ...rest} = this.props;
+    const {style, label,placeholder,...rest} = this.props;
     return (
       <TextInput
-        onChangeText={this.onChangeText}
-        label={placeholder}
+        onChangeText={this.onValueChange}
+        label={label}
+        placeholder={placeholder ? placeholder:label}
         style={[styles.input, style]}
         placeholderTextColor={colors.mediumGrey}
         autoCorrect={false}
         autoCapitalize="none"
         underlineColor={colors.primary}
+        {...rest}
       />
     );
   }

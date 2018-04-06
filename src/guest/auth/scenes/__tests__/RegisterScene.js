@@ -7,7 +7,7 @@ test('renders Notification Component', () => {
     <RegisterScene
       handleRegister={() => {}}
       handleLoginRoute={() => {}}
-      onFieldChange={() => {}}
+      onValueChange={() => {}}
       name="zal"
       email="z4ls@live.com"
       mobile="97978803"

@@ -29,6 +29,10 @@ class ProfileUpdateScene extends Component {
     this.props.dispatch(DRIVER_ACTIONS.fetchProfile());
   }
 
+  onProfileInfoPress = () => {
+    return this.props.navigation.navigate('ProfileInfoUpdate');
+  };
+
   onListItemPress = (route: string) => {
     let scene = 'NationalityList';
     let sceneConfig = {
@@ -38,15 +42,15 @@ class ProfileUpdateScene extends Component {
     return this.props.navigation.navigate(scene, sceneConfig);
   };
 
-  showModal = name => {
+  showModal = () => {
     this.setState({
-      [name]: true,
+      'languageModalVisible': true,
     });
   };
 
-  hideModal = name => {
+  hideModal = () => {
     this.setState({
-      [name]: false,
+      'languageModalVisible': false,
     });
   };
 
@@ -58,14 +62,12 @@ class ProfileUpdateScene extends Component {
     });
   };
 
-  onFieldChange = (field, value) => {
+  onValueChange = (field, value) => {
     this.setState({[field]: value});
   };
 
   render() {
     let {
-      mobile,
-      personalInformationModalVisible,
       languageModalVisible,
       activeLanguages,
     } = this.state;
@@ -78,8 +80,9 @@ class ProfileUpdateScene extends Component {
           padding: 10,
           paddingTop: 20,
         }}>
+
         <ListItem
-          onItemPress={() => this.showModal('personalInformationModalVisible')}
+          onItemPress={this.onProfileInfoPress}
           name="personal_information"
           arrow={true}
         />
@@ -119,7 +122,7 @@ class ProfileUpdateScene extends Component {
         <Separator style={{marginVertical: 10}} />
 
         <ListItem
-          onItemPress={() => this.showModal('languageModalVisible')}
+          onItemPress={this.showModal}
           name="languages"
           arrow={true}
         />
@@ -135,36 +138,11 @@ class ProfileUpdateScene extends Component {
           ]}
           isVisible={languageModalVisible}
           onConfirm={this.handleLanguagePress}
-          onCancel={() => this.hideModal('languageModalVisible')}
+          onCancel={this.hideModal}
           title={I18n.t('select_languages')}
           activeIDs={activeLanguages}
         />
 
-        <ListModal
-          isVisible={personalInformationModalVisible}
-          transparent={false}
-          onBackdropPress={() =>
-            this.hideModal('personalInformationModalVisible')
-          }
-          title={I18n.t('personal_information')}
-          onCancel={() => this.hideModal('personalInformationModalVisible')}>
-          <FormTextInput
-            onChangeText={this.onFieldChange}
-            field={mobile}
-            value={mobile}
-            maxLength={40}
-            placeholder={I18n.t('mobile')}
-            keyboardType="phone-pad"
-          />
-          <FormTextInput
-            onChangeText={this.onFieldChange}
-            field={mobile}
-            value={mobile}
-            maxLength={40}
-            placeholder={I18n.t('phone')}
-            keyboardType="phone-pad"
-          />
-        </ListModal>
       </ScrollView>
     );
   }

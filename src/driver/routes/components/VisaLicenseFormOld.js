@@ -66,7 +66,7 @@ export default class VisaLicenseForm extends PureComponent {
     }
   }
 
-  onFieldChange = (field, value) => {
+  onValueChange = (field, value) => {
     this.setState({[field]: value});
   };
 
@@ -164,11 +164,11 @@ export default class VisaLicenseForm extends PureComponent {
         <View style={[styles.contentContainer]}>
           <FormLabel title={I18n.t('license_expiry_date')} />
           <FormTextInput
-            onChangeText={this.onFieldChange}
+            onChangeText={this.onValueChange}
             field={license_expiry_date}
             value={license_expiry_date}
             maxLength={40}
-            placeholder={I18n.t('license_expiry_date')}
+            label={I18n.t('license_expiry_date')}
           />
 
           <FormLabel title={I18n.t('license_image')} />
@@ -191,11 +191,11 @@ export default class VisaLicenseForm extends PureComponent {
           <FormLabel title={I18n.t('visa_expiry_date')} />
 
           <FormTextInput
-            onChangeText={this.onFieldChange}
+            onChangeText={this.onValueChange}
             field={visa_expiry_date}
             value={visa_expiry_date}
             maxLength={40}
-            placeholder={I18n.t('visa_expiry_date')}
+            label={I18n.t('visa_expiry_date')}
           />
 
           <FormLabel title={I18n.t('visa_image')} />

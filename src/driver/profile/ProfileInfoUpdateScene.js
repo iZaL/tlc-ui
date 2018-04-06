@@ -52,24 +52,32 @@ class ProfileInfoUpdateScene extends Component {
         email:email,
         image:image,
         name:name,
-        // profile:{
-        //   mobile:profile.mobile,
-        //   phone:profile.phone,
-        // }
+        profile:{
+          mobile:profile.mobile,
+          phone:profile.phone,
+        }
       },
     }
 
   }
 
-  onFieldChange = (field, value) => {
-    this.setState({[field]: value});
+  onValueChange = (field, value) => {
+    this.setState({
+      user:{
+        ...this.state.user,
+        [field]:value
+      }
+    })
   };
 
   onDriverFieldChange = (name,value) => {
     this.setState({
-      driver:{
-        ...this.state.driver,
-        [name]:value
+      user:{
+        ...this.state.user,
+        profile:{
+          ...this.state.user.profile,
+          [name]:value
+        }
       }
     })
   };
@@ -78,60 +86,50 @@ class ProfileInfoUpdateScene extends Component {
 
     let {name,email,mobile,profile,password,password_confirmation,}  = this.state.user;
 
-    console.log('this.props',this.props.user);
-
     return (
       <ScrollView style={{flex: 1, backgroundColor: 'white',padding:10}}>
 
-        {/*<Avatar*/}
-          {/*small*/}
-          {/*rounded*/}
-          {/*icon={{name: 'user'}}*/}
-          {/*onPress={() => console.log("Works!")}*/}
-          {/*activeOpacity={0.7}*/}
-        {/*/>*/}
-
         <FormTextInput
-          onChangeText={this.onFieldChange}
+          onValueChange={this.onValueChange}
           field="name"
           value={name}
           maxLength={40}
-          placeholder={I18n.t('name')}
+          label={I18n.t('name')}
         />
 
         <FormTextInput
-          onChangeText={this.onFieldChange}
+          onValueChange={this.onValueChange}
           field="email"
           value={email}
           maxLength={40}
-          placeholder={I18n.t('email')}
+          label={I18n.t('email')}
           keyboardType="email-address"
         />
 
         <FormTextInput
-          onChangeText={this.onFieldChange}
+          onValueChange={this.onValueChange}
           field="mobile"
           value={mobile}
           maxLength={40}
-          placeholder={I18n.t('mobile_primary')}
+          label={I18n.t('mobile_primary')}
           keyboardType="phone-pad"
         />
 
         <FormTextInput
-          onChangeText={this.onDriverFieldChange}
+          onValueChange={this.onDriverFieldChange}
           field="mobile"
           value={profile ? profile.mobile : ''}
           maxLength={40}
-          placeholder={I18n.t('mobile')}
+          label={I18n.t('mobile')}
           keyboardType="phone-pad"
         />
 
         <FormTextInput
-          onChangeText={this.onDriverFieldChange}
+          onValueChange={this.onDriverFieldChange}
           field="phone"
           value={profile ? profile.phone : ''}
           maxLength={40}
-          placeholder={I18n.t('phone')}
+          label={I18n.t('phone')}
           keyboardType="phone-pad"
         />
 

@@ -14,7 +14,7 @@ export default class LoadWhat extends Component {
     packaging: PropTypes.array.isRequired,
     packaging_id: PropTypes.number,
     trailer_id: PropTypes.number,
-    onFieldChange: PropTypes.func.isRequired,
+    onValueChange: PropTypes.func.isRequired,
     weight: PropTypes.string,
   };
 
@@ -25,7 +25,7 @@ export default class LoadWhat extends Component {
       packaging_id,
       trailer_id,
       weight,
-      onFieldChange,
+      onValueChange,
     } = this.props;
     return (
       <View style={styles.container}>
@@ -35,7 +35,7 @@ export default class LoadWhat extends Component {
         />
         <GridList
           items={packaging}
-          onItemPress={item => onFieldChange('packaging_id', item.id)}
+          onItemPress={item => onValueChange('packaging_id', item.id)}
           activeItemID={packaging_id}
         />
 
@@ -46,7 +46,7 @@ export default class LoadWhat extends Component {
         <FormLabel title={I18n.t('trailer_select')} style={{marginBottom: 5}} />
         <GridList
           items={trailers}
-          onItemPress={item => onFieldChange('trailer_id', item.id)}
+          onItemPress={item => onValueChange('trailer_id', item.id)}
           activeItemID={trailer_id}
         />
 
@@ -60,11 +60,11 @@ export default class LoadWhat extends Component {
         {/*/>*/}
         <View style={{padding: 5, backgroundColor: 'white'}}>
           <FormTextInput
-            onChangeText={onFieldChange}
+            onChangeText={onValueChange}
             field={weight}
             value={weight}
             maxLength={40}
-            placeholder={I18n.t('weight')}
+            label={I18n.t('weight')}
             keyboardType="phone-pad"
           />
         </View>

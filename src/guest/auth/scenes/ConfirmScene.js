@@ -9,7 +9,7 @@ import FormSubmit from 'components/FormSubmit';
 
 export default class ConfirmScene extends Component {
   static propTypes = {
-    onFieldChange: PropTypes.func.isRequired,
+    onValueChange: PropTypes.func.isRequired,
     onRecoverPassword: PropTypes.func.isRequired,
     onForgotPassword: PropTypes.func.isRequired,
     onRightButtonPress: PropTypes.func.isRequired,
@@ -18,7 +18,7 @@ export default class ConfirmScene extends Component {
 
   render() {
     const {
-      onFieldChange,
+      onValueChange,
       confirmationCode,
       onRecoverPassword,
       onForgotPassword,
@@ -30,11 +30,11 @@ export default class ConfirmScene extends Component {
         <FormLabel title={I18n.t('confirmation_code')} />
 
         <FormTextInput
-          onChangeText={onFieldChange}
+          onValueChange={onValueChange}
           field={confirmationCode}
           value={confirmationCode}
           maxLength={40}
-          placeholder={I18n.t('confirmation_code')}
+          label={I18n.t('confirmation_code')}
         />
 
         <FormSubmit

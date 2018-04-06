@@ -10,12 +10,12 @@ import I18n from 'utils/locale';
 import FormCheck from 'components/FormCheck';
 export default class LoadWhat extends Component {
   static propTypes = {
-    onFieldChange: PropTypes.func.isRequired,
+    onValueChange: PropTypes.func.isRequired,
     request_documents: PropTypes.bool.isRequired,
   };
 
   render() {
-    const {request_documents, use_own_truck, onFieldChange} = this.props;
+    const {request_documents, use_own_truck, onValueChange} = this.props;
 
     return (
       <View style={styles.container}>
@@ -24,7 +24,7 @@ export default class LoadWhat extends Component {
           <FormCheck
             checked={request_documents}
             onPress={() =>
-              onFieldChange('request_documents', !request_documents)
+              onValueChange('request_documents', !request_documents)
             }
           />
         </View>
@@ -35,7 +35,7 @@ export default class LoadWhat extends Component {
           <FormLabel title={I18n.t('use_own_truck')} style={{flex: 1}} />
           <FormCheck
             checked={use_own_truck}
-            onPress={() => onFieldChange('use_own_truck', !use_own_truck)}
+            onPress={() => onValueChange('use_own_truck', !use_own_truck)}
           />
         </View>
       </View>

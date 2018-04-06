@@ -12,13 +12,13 @@ export default class ForgotScene extends Component {
     busy: PropTypes.bool.isRequired,
     onRightButtonPress: PropTypes.func.isRequired,
     onForgotPassword: PropTypes.func.isRequired,
-    onFieldChange: PropTypes.func.isRequired,
+    onValueChange: PropTypes.func.isRequired,
   };
 
   render() {
     const {
       email,
-      onFieldChange,
+      onValueChange,
       onForgotPassword,
       onRightButtonPress,
     } = this.props;
@@ -28,11 +28,11 @@ export default class ForgotScene extends Component {
         <FormLabel title={I18n.t('email')} />
 
         <FormTextInput
-          onChangeText={onFieldChange}
+          onValueChange={onValueChange}
           field={email}
           value={email}
           maxLength={40}
-          placeholder={I18n.t('email')}
+          label={I18n.t('email')}
           keyboardType="email-address"
         />
 

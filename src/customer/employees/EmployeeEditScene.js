@@ -71,7 +71,7 @@ class EmployeeEditScene extends Component {
     };
   }
 
-  onFieldChange = (field, value) => {
+  onValueChange = (field, value) => {
     switch (field) {
       default:
         this.setState({[field]: value});
@@ -106,51 +106,51 @@ class EmployeeEditScene extends Component {
           padding: 10,
         }}>
         <FormTextInput
-          onChangeText={this.onFieldChange}
+          onValueChange={this.onValueChange}
           field={name_en}
           value={name_en}
           maxLength={40}
-          placeholder={I18n.t('name_en')}
+          label={I18n.t('name_en')}
         />
 
         <FormTextInput
-          onChangeText={this.onFieldChange}
+          onValueChange={this.onValueChange}
           field={name_ar}
           value={name_ar}
           maxLength={40}
-          placeholder={I18n.t('name_ar')}
+          label={I18n.t('name_ar')}
         />
 
         <FormTextInput
-          onChangeText={this.onFieldChange}
+          onValueChange={this.onValueChange}
           field={mobile}
           value={mobile}
           maxLength={40}
-          placeholder={I18n.t('mobile')}
+          label={I18n.t('mobile')}
           keyboardType="phone-pad"
         />
 
         <FormTextInput
-          onChangeText={this.onFieldChange}
+          onValueChange={this.onValueChange}
           field={phone}
           value={phone}
           maxLength={40}
-          placeholder={I18n.t('office_number')}
+          label={I18n.t('office_number')}
           keyboardType="phone-pad"
         />
 
         <FormTextInput
-          onChangeText={this.onFieldChange}
+          onValueChange={this.onValueChange}
           field={email}
           value={email}
           maxLength={40}
-          placeholder={I18n.t('company_email')}
+          label={I18n.t('company_email')}
           keyboardType="email-address"
         />
 
         <Touchable
           onPress={() =>
-            this.onFieldChange('driver_interaction', !driver_interaction)
+            this.onValueChange('driver_interaction', !driver_interaction)
           }>
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
             <FormLabel
@@ -160,7 +160,7 @@ class EmployeeEditScene extends Component {
             <FormCheck
               checked={driver_interaction}
               onPress={() =>
-                this.onFieldChange('driver_interaction', !driver_interaction)
+                this.onValueChange('driver_interaction', !driver_interaction)
               }
             />
           </View>

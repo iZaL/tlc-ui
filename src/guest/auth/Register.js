@@ -61,7 +61,7 @@ class Register extends Component {
     this.props.actions.register(credentials);
   };
 
-  onFieldChange = (field, value) => {
+  onValueChange = (field, value) => {
     this.setState({[field]: value});
   };
 
@@ -72,7 +72,7 @@ class Register extends Component {
       <RegisterScene
         {...this.state}
         handleRegister={this.handleRegister}
-        onFieldChange={this.onFieldChange}
+        onValueChange={this.onValueChange}
         busy={auth.register.busy}
         isCustomer={isCustomer}
       />

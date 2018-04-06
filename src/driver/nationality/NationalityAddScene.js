@@ -44,7 +44,7 @@ class NationalityAddScene extends Component {
     };
   }
 
-  onFieldChange = (field, value) => {
+  onValueChange = (field, value) => {
     this.setState({
       [field]: value,
     });
@@ -58,7 +58,7 @@ class NationalityAddScene extends Component {
     let {countries} = this.props;
     return (
       <DocumentAdd
-        onFieldChange={this.onFieldChange}
+        onValueChange={this.onValueChange}
         onSavePress={this.onSave}
         countries={countries}
         {...this.state}

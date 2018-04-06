@@ -60,7 +60,7 @@ class LoadAddScene extends Component {
     this.props.dispatch(CUSTOMER_ACTIONS.fetchLoadAddData());
   }
 
-  onFieldChange = (field, value) => {
+  onValueChange = (field, value) => {
     this.setState({[field]: value});
 
     if (field == 'packaging_id') {
@@ -157,12 +157,12 @@ class LoadAddScene extends Component {
                 packaging_id={packaging_id}
                 trailer_id={trailer_id}
                 weight={weight}
-                onFieldChange={this.onFieldChange}
+                onValueChange={this.onValueChange}
               />
 
               <PackageDimensions
                 visible={showPackageDimsSelectionModal}
-                onFieldChange={this.onPackagingDimensionsFieldChange}
+                onValueChange={this.onPackagingDimensionsFieldChange}
                 onCancel={() => this.hideModal('showPackageDimsSelectionModal')}
                 onConfirm={() =>
                   this.hideModal('showPackageDimsSelectionModal')
@@ -172,8 +172,8 @@ class LoadAddScene extends Component {
 
               <TrailerQuantity
                 visible={showTrailerQuantitySelectionModal}
-                onFieldChange={quantity =>
-                  this.onFieldChange('trailer_quantity', quantity)
+                onValueChange={quantity =>
+                  this.onValueChange('trailer_quantity', quantity)
                 }
                 onCancel={() =>
                   this.hideModal('showTrailerQuantitySelectionModal')
@@ -194,14 +194,14 @@ class LoadAddScene extends Component {
                   location => location.id === destination_location_id,
                 )}
                 locations={locations}
-                onFieldChange={this.onFieldChange}
+                onValueChange={this.onValueChange}
               />
             </TabPanel>
 
             <TabPanel>
               <LoadWhen
                 load_time={load_time}
-                onFieldChange={this.onFieldChange}
+                onValueChange={this.onValueChange}
               />
             </TabPanel>
 
@@ -209,7 +209,7 @@ class LoadAddScene extends Component {
               <LoadHow
                 request_documents={request_documents}
                 use_own_truck={use_own_truck}
-                onFieldChange={this.onFieldChange}
+                onValueChange={this.onValueChange}
               />
             </TabPanel>
 
@@ -218,12 +218,12 @@ class LoadAddScene extends Component {
                 items={gatePasses}
                 passes={passes}
                 onSearch={this.onLoadPassSearch}
-                onFieldChange={this.updatePasses}
+                onValueChange={this.updatePasses}
               />
             </TabPanel>
 
             <LoadReceiver
-              onFieldChange={this.onFieldChange}
+              onValueChange={this.onValueChange}
               receiver_email={receiver_email}
               receiver_mobile={receiver_mobile}
               receiver_phone={receiver_phone}

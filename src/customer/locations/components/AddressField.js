@@ -6,23 +6,23 @@ import I18n from 'utils/locale';
 
 export default class AddressField extends PureComponent {
   static propTypes = {
-    onFieldChange: PropTypes.func.isRequired,
+    onValueChange: PropTypes.func.isRequired,
   };
 
   render() {
-    const {address_en, onFieldChange} = this.props;
+    const {address_en, onValueChange} = this.props;
 
     return (
       <View style={styles.container}>
         {/*<Text style={styles.label}>{I18n.t('address')}</Text>*/}
         <FormTextInput
-          onChangeText={onFieldChange}
+          onValueChange={onValueChange}
           field={address_en}
           value={address_en}
           maxLength={40}
           keyboardType="numeric"
           style={styles.textInput}
-          placeholder={I18n.t('address')}
+          label={I18n.t('address')}
           numberOfLines={2}
           multiline={true}
         />

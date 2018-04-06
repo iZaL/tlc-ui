@@ -23,7 +23,7 @@ class OTP extends Component {
     });
   };
 
-  onFieldChange = (field, value) => {
+  onValueChange = (field, value) => {
     this.setState({[field]: value});
   };
 
@@ -35,7 +35,7 @@ class OTP extends Component {
     const {code} = this.state;
     return (
       <OTPScene
-        onFieldChange={this.onFieldChange}
+        onValueChange={this.onValueChange}
         code={code}
         onButtonPress={this.confirmOTP}
         resendCode={this.resendOTP}

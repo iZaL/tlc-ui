@@ -42,7 +42,7 @@ class Forgot extends Component {
     });
   };
 
-  onFieldChange = (field, value) => {
+  onValueChange = (field, value) => {
     this.setState({[field]: value});
   };
 
@@ -61,7 +61,7 @@ class Forgot extends Component {
     if (auth.showPasswordUpdateScene) {
       renderingComponent = (
         <PasswordUpdateScene
-          onFieldChange={this.onFieldChange}
+          onValueChange={this.onValueChange}
           password={password}
           confirmedPassword={confirmedPassword}
           onUpdatePassword={this.onUpdatePassword}
@@ -72,7 +72,7 @@ class Forgot extends Component {
       renderingComponent = (
         <ConfirmScene
           onRecoverPassword={this.onRecoverPassword}
-          onFieldChange={this.onFieldChange}
+          onValueChange={this.onValueChange}
           confirmationCode={confirmationCode}
           onForgotPassword={this.onForgotPassword}
           onRightButtonPress={this.goBack}
@@ -83,7 +83,7 @@ class Forgot extends Component {
         <ForgotScene
           {...this.state}
           onForgotPassword={this.onForgotPassword}
-          onFieldChange={this.onFieldChange}
+          onValueChange={this.onValueChange}
           busy={auth.login.busy}
           onRightButtonPress={this.goBack}
         />

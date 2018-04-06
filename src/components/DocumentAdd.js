@@ -15,7 +15,7 @@ export default class DocumentAdd extends PureComponent {
   static propTypes = {
     onSavePress: PropTypes.func.isRequired,
     onDeletePress: PropTypes.func,
-    onFieldChange: PropTypes.func.isRequired,
+    onValueChange: PropTypes.func.isRequired,
     number: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     expiry_date: PropTypes.any,
     image: PropTypes.string,
@@ -38,18 +38,18 @@ export default class DocumentAdd extends PureComponent {
   _hideCountryModal = () => this.setState({isCountryModalVisible: false});
 
   _handleDatePicker = date => {
-    this.props.onFieldChange('expiry_date', date);
+    this.props.onValueChange('expiry_date', date);
     this._hideDateTimePicker();
   };
 
   _handleCountryPicker = countryID => {
-    this.props.onFieldChange('countryID', countryID);
+    this.props.onValueChange('countryID', countryID);
   };
 
   render() {
     let {
       number,
-      onFieldChange,
+      onValueChange,
       expiry_date,
       buttonText,
       image,
@@ -77,13 +77,13 @@ export default class DocumentAdd extends PureComponent {
             <TextInput
               label={I18n.t('registration_number')}
               value={number}
-              onChangeText={onFieldChange}
+              onChangeText={onValueChange}
               field="number"
             />
           </CardContent>
 
           <DocumentUpload
-            onPress={image => onFieldChange('image', image)}
+            onPress={image => onValueChange('image', image)}
             image={image}
             style={{marginHorizontal: 15}}
           />

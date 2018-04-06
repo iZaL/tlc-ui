@@ -79,7 +79,7 @@ class TruckUpdateScene extends Component {
   //   });
   // }
 
-  onFieldChange = (field, value) => {
+  onValueChange = (field, value) => {
     if (value) {
       let record;
       const {makes, models, countries} = this.props;
@@ -165,7 +165,7 @@ class TruckUpdateScene extends Component {
         {/*onClose={this.showDropDown}*/}
         {/*items={makes}*/}
         {/*selectedValue={make.id}*/}
-        {/*onItemPress={this.onFieldChange}*/}
+        {/*onItemPress={this.onValueChange}*/}
         {/*field="make"*/}
         {/*/>*/}
         {/*) : (*/}
@@ -191,7 +191,7 @@ class TruckUpdateScene extends Component {
             onClose={this.showDropDown}
             items={models}
             selectedValue={model.id}
-            onItemPress={this.onFieldChange}
+            onItemPress={this.onValueChange}
             field="model"
           />
         ) : (
@@ -213,11 +213,11 @@ class TruckUpdateScene extends Component {
         {/*<FormLabel title={I18n.t('plate_number')} />*/}
 
         <FormTextInput
-          onChangeText={this.onFieldChange}
+          onValueChange={this.onValueChange}
           field={plate_number}
           value={plate_number}
           maxLength={40}
-          placeholder={I18n.t('plate_number')}
+          label={I18n.t('plate_number')}
         />
 
         <FormLabel title={I18n.t('registration_country')} />
@@ -227,7 +227,7 @@ class TruckUpdateScene extends Component {
             onClose={this.showDropDown}
             items={countries}
             selectedValue={registration_country.id}
-            onItemPress={this.onFieldChange}
+            onItemPress={this.onValueChange}
             field="registration_country"
           />
         ) : (
@@ -251,11 +251,11 @@ class TruckUpdateScene extends Component {
         {/*<FormLabel title={I18n.t('registration_number')} />*/}
 
         <FormTextInput
-          onChangeText={this.onFieldChange}
+          onValueChange={this.onValueChange}
           field={registration_number}
           value={registration_number}
           maxLength={40}
-          placeholder={I18n.t('registration_number')}
+          label={I18n.t('registration_number')}
         />
 
         <FormLabel title={I18n.t('registration_expiry')} />
@@ -263,23 +263,23 @@ class TruckUpdateScene extends Component {
         <DateTimePicker
           date={registration_expiry}
           mode="date"
-          placeholder={I18n.t('select')}
+          label={I18n.t('select')}
           format="YYYY-MM-DD"
           minDate="2015-01-01"
           maxDate="2040-01-01"
           confirmBtnText={I18n.t('confirm')}
           cancelBtnText={I18n.t('cancel')}
-          onDateChange={date => this.onFieldChange('registration_expiry', date)}
+          onDateChange={date => this.onValueChange('registration_expiry', date)}
         />
 
         {/*<FormLabel title={I18n.t('max_weight')} />*/}
 
         <FormTextInput
-          onChangeText={this.onFieldChange}
+          onValueChange={this.onValueChange}
           field={max_weight}
           value={max_weight}
           maxLength={40}
-          placeholder={I18n.t('max_weight')}
+          label={I18n.t('max_weight')}
         />
 
         <FormLabel title={I18n.t('year')} />
@@ -289,7 +289,7 @@ class TruckUpdateScene extends Component {
             onClose={this.showDropDown}
             items={['2001', '2002', '2003', '2004']}
             selectedValue={year}
-            onItemPress={this.onFieldChange}
+            onItemPress={this.onValueChange}
             field="year"
           />
         ) : (

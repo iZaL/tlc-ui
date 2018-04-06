@@ -89,7 +89,7 @@ class ProfileUpdateScene extends Component {
   //   });
   // }
 
-  onFieldChange = (field, value) => {
+  onValueChange = (field, value) => {
     if (value) {
       switch (field) {
         case 'nationality':
@@ -216,7 +216,7 @@ class ProfileUpdateScene extends Component {
         {/*onClose={this.showDropDown}*/}
         {/*items={countries}*/}
         {/*selectedValue={residence.id}*/}
-        {/*onItemPress={this.onFieldChange}*/}
+        {/*onItemPress={this.onValueChange}*/}
         {/*field="residence"*/}
         {/*/>*/}
         {/*) : (*/}

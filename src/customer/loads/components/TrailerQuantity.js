@@ -8,7 +8,7 @@ import {Button} from 'react-native-paper';
 
 export default class TrailerQuantity extends Component {
   static propTypes = {
-    onFieldChange: PropTypes.func.isRequired,
+    onValueChange: PropTypes.func.isRequired,
     visible: PropTypes.bool.isRequired,
     onConfirm: PropTypes.func.isRequired,
     onCancel: PropTypes.func.isRequired,
@@ -21,7 +21,7 @@ export default class TrailerQuantity extends Component {
   };
 
   render() {
-    const {onFieldChange, visible, onCancel, onConfirm, selected} = this.props;
+    const {onValueChange, visible, onCancel, onConfirm, selected} = this.props;
 
     return (
       <View style={{flex: 1, margin: 20, backgroundColor: 'white'}}>
@@ -34,7 +34,7 @@ export default class TrailerQuantity extends Component {
             <Picker
               selectedValue={selected}
               onValueChange={(itemValue, itemIndex) =>
-                onFieldChange(itemValue)
+                onValueChange(itemValue)
               }>
               <Picker.Item label="1" value="1" />
               <Picker.Item label="2" value="2" />

@@ -55,19 +55,20 @@ class Login extends Component {
     this.props.navigation.navigate('ForgotScreen');
   };
 
-  onFieldChange = (field, value) => {
+  onValueChange = (field, value) => {
     this.setState({[field]: value});
   };
 
   render() {
     const {auth} = this.props;
+
     return (
       <LoginScene
         {...this.state}
         handleLogin={this.handleLogin}
         handleRegisterRoute={this.handleRegisterRoute}
         handleForgotPasswordRoute={this.handleForgotPasswordRoute}
-        onFieldChange={this.onFieldChange}
+        onValueChange={this.onValueChange}
         busy={auth.login.busy}
       />
     );

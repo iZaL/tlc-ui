@@ -8,7 +8,7 @@ test('renders Notification Component', () => {
       handleForgotPasswordRoute={() => {}}
       handleRegisterRoute={() => {}}
       handleLogin={() => {}}
-      onFieldChange={() => {}}
+      onValueChange={() => {}}
       email="z4ls@live.com"
       password="password"
       busy={false}

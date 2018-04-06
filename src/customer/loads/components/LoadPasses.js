@@ -17,7 +17,7 @@ export default class LoadWhat extends Component {
   };
 
   renderRow = ({item}) => {
-    let {onFieldChange, passes} = this.props;
+    let {onValueChange, passes} = this.props;
     return (
       <View style={styles.row}>
         <FormLabel
@@ -26,7 +26,7 @@ export default class LoadWhat extends Component {
         />
         <FormCheck
           checked={passes.includes(item.id)}
-          onPress={() => onFieldChange(item.id)}
+          onPress={() => onValueChange(item.id)}
         />
       </View>
     );

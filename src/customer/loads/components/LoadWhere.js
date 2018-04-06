@@ -51,7 +51,7 @@ export default class LoadWhat extends Component {
       this.state.locationType === 'origin'
         ? 'origin_location_id'
         : 'destination_location_id';
-    this.props.onFieldChange(field, item.id);
+    this.props.onValueChange(field, item.id);
     this.setState({
       locationListModalVisible: false,
     });

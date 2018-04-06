@@ -30,7 +30,7 @@ export default class DocumentEdit extends Component {
     onDeletePress: PropTypes.func,
     // item: PropTypes.object.isRequired,
     onCountryPress: PropTypes.func.isRequired,
-    onFieldChange: PropTypes.func.isRequired,
+    onValueChange: PropTypes.func.isRequired,
     number: PropTypes.string.isRequired,
     expiry_date: PropTypes.string.isRequired,
     country: PropTypes.object.isRequired,
@@ -79,7 +79,7 @@ export default class DocumentEdit extends Component {
       onDeletePress,
       onCountryPress,
       number,
-      onFieldChange,
+      onValueChange,
       country,
       expiry_date,
       buttonText,
@@ -105,7 +105,7 @@ export default class DocumentEdit extends Component {
             <TextInput
               label={I18n.t('registration_number')}
               value={number}
-              onChangeText={onFieldChange}
+              onChangeText={onValueChange}
               field="registration_number"
             />
           </CardContent>
