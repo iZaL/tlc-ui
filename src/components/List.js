@@ -11,7 +11,7 @@ import Separator from 'components/Separator';
 import colors from 'assets/theme/colors';
 import {Button, Checkbox, Headline} from 'react-native-paper';
 import I18n from 'utils/locale';
-import ListModal from "./ListModal";
+import ListModal from './ListModal';
 
 export default class List extends Component {
   static propTypes = {
@@ -40,7 +40,7 @@ export default class List extends Component {
       <Touchable onPress={() => onConfirm(item.id)}>
         <View style={styles.itemRowContainer}>
           <Text style={styles.itemTitle}>{item.name}</Text>
-          <Checkbox checked={activeIDs.includes(item.id)}/>
+          <Checkbox checked={activeIDs.includes(item.id)} />
         </View>
       </Touchable>
     );
@@ -55,15 +55,14 @@ export default class List extends Component {
         transparent={false}
         onBackdropPress={onCancel}
         title={title}
-        onCancel={onCancel}
-      >
+        onCancel={onCancel}>
         <FlatList
           data={items}
           style={styles.listContainer}
           renderItem={this.renderItem}
           showsVerticalScrollIndicator={false}
           ItemSeparatorComponent={() => (
-            <Separator style={{marginVertical: 10}}/>
+            <Separator style={{marginVertical: 10}} />
           )}
           keyExtractor={(item, index) => `${index}`}
         />

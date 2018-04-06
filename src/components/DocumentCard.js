@@ -35,10 +35,8 @@ export default class DocumentCard extends Component {
   }
 
   static defaultProps = {
-    onEditPress: () => {
-    },
-    onDeletePress: () => {
-    },
+    onEditPress: () => {},
+    onDeletePress: () => {},
   };
 
   render() {
@@ -53,7 +51,7 @@ export default class DocumentCard extends Component {
           <Paragraph>{number}</Paragraph>
         </CardContent>
 
-        { image ? <CardCover source={{uri: image}}/> : <View/> }
+        {image ? <CardCover source={{uri: image}} /> : <View />}
 
         <View style={{flexDirection: 'row'}}>
           <CardActions>

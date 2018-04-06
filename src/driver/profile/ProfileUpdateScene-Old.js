@@ -139,7 +139,7 @@ class ProfileUpdateScene extends Component {
     let scene;
     let sceneConfig = {
       route,
-      title:I18n.t(route)
+      title: I18n.t(route),
     };
 
     switch (route) {

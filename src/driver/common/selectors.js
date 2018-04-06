@@ -22,12 +22,42 @@ const getProfile = createSelector(
   (driver, countries) => {
     return {
       ...driver,
-      nationality: countries[driver.nationality],
-      residencies: driver.residencies || [],
-      // residencies:
-      //   (driver.residencies &&
-      //     driver.residencies.map(residency => countries[residency])) ||
-      //   [],
+      nationalities:
+        (driver.nationalities &&
+          driver.nationalities.map(record => {
+            return {
+              ...record,
+              country: countries[record.country],
+            };
+          })) ||
+        [],
+      residencies:
+        (driver.residencies &&
+          driver.residencies.map(record => {
+            return {
+              ...record,
+              country: countries[record.country],
+            };
+          })) ||
+        [],
+      visas:
+        (driver.visas &&
+          driver.visas.map(record => {
+            return {
+              ...record,
+              country: countries[record.country],
+            };
+          })) ||
+        [],
+      licenses:
+        (driver.licenses &&
+          driver.licenses.map(record => {
+            return {
+              ...record,
+              country: countries[record.country],
+            };
+          })) ||
+        [],
     };
   },
 );
@@ -143,9 +173,11 @@ const getRoutes = createSelector(
  * Route Transit (Origin,Destination)
  * @return [Countries]
  */
+
 const getProfileCountries = createSelector(
   [getProfile, getRoutes],
-  ({nationality, residencies, licenses, visas}, profileRoutes) => {
+  ({nationalities, residencies, licenses, visas}, profileRoutes) => {
+
     let routes = flatten(
       profileRoutes.map(profile => [
         profile.origin,
@@ -153,19 +185,17 @@ const getProfileCountries = createSelector(
         ...profile.transits,
       ]),
     );
-    const countries = [...new Set([nationality, ...residencies, ...routes])];
-    return countries.map(country => {
-      return {
-        ...country,
-        license:
-          (licenses &&
-            licenses.find(license => license.country === country.id)) ||
-          {},
-        visa:
-          (visas && visas.find(license => license.country === country.id)) ||
-          {},
-      };
-    });
+
+    return [
+      ...new Set([
+        ...nationalities.map(record => record.country),
+        ...residencies.map(record => record.country),
+        ...licenses.map(record => record.country),
+        ...visas.map(record => record.country),
+        ...routes,
+      ]),
+    ];
+
   },
 );
 
@@ -250,7 +280,7 @@ const getNationalities = createSelector(
 );
 
 const getLicenses = createSelector(
-  [getProfile,countriesSchema],
+  [getProfile, countriesSchema],
   (driver, countries) => {
     return driver.licenses.map(record => {
       return {
@@ -262,7 +292,7 @@ const getLicenses = createSelector(
 );
 
 const getVisas = createSelector(
-  [getProfile,countriesSchema],
+  [getProfile, countriesSchema],
   (driver, countries) => {
     return driver.visas.map(record => {
       return {

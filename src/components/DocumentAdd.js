@@ -19,7 +19,7 @@ import {
 import {View} from 'react-native';
 import moment from 'moment';
 import DocumentUpload from 'components/DocumentUpload';
-import List from "components/List";
+import List from 'components/List';
 
 export default class DocumentAdd extends PureComponent {
   static propTypes = {
@@ -136,7 +136,6 @@ export default class DocumentAdd extends PureComponent {
           title={I18n.t('residency_country_select')}
           activeIDs={[countryID]}
         />
-
       </View>
     );
   }

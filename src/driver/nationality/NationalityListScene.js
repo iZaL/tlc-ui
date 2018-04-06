@@ -25,7 +25,7 @@ class NationalityListScene extends Component {
 
   static navigationOptions = ({navigation}) => {
     return {
-      title: navigation.state.params && navigation.state.params.title || ''
+      title: (navigation.state.params && navigation.state.params.title) || '',
     };
   };
 
@@ -57,17 +57,15 @@ class NationalityListScene extends Component {
       route,
       title,
       type: I18n.t('edit'),
-      ...payload
+      ...payload,
     };
 
     this.props.navigation.navigate('NationalityAdd', sceneConfig);
   };
 
-  onDeletePress = () => {
-  };
+  onDeletePress = () => {};
 
   render() {
-
     let {collection} = this.props;
     return (
       <View style={{flex: 1}}>
@@ -93,7 +91,6 @@ class NationalityListScene extends Component {
 }
 
 function mapStateToProps(state, props) {
-
   let collection = [];
 
   let {route} = props.navigation.state.params;

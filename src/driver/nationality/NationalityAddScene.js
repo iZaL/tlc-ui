@@ -16,19 +16,27 @@ class NationalityAddScene extends Component {
       number: null,
       expiry_date: new Date(),
       countryID: null,
-      image: null
-    }
+      image: null,
+    },
   };
 
   static navigationOptions = ({navigation}) => {
     return {
-      title:navigation.state.params && `${navigation.state.params.title} ${navigation.state.params.type}` || ''
+      title:
+        (navigation.state.params &&
+          `${navigation.state.params.title} ${navigation.state.params.type}`) ||
+        '',
     };
   };
 
   constructor(props) {
     super(props);
-    let {number, expiry_date, countryID, image} = this.props.navigation.state.params;
+    let {
+      number,
+      expiry_date,
+      countryID,
+      image,
+    } = this.props.navigation.state.params;
     this.state = {
       number: number,
       expiry_date: expiry_date,

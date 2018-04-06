@@ -7,9 +7,9 @@ import {ScrollView} from 'react-native';
 import Separator from 'components/Separator';
 import I18n from 'utils/locale';
 import ListItem from 'components/ListItem';
-import List from "components/List";
-import ListModal from "components/ListModal";
-import FormTextInput from "../../components/FormTextInput";
+import List from 'components/List';
+import ListModal from 'components/ListModal';
+import FormTextInput from '../../components/FormTextInput';
 
 class ProfileUpdateScene extends Component {
   static propTypes = {
@@ -23,14 +23,13 @@ class ProfileUpdateScene extends Component {
     mobile: '',
   };
 
-  componentDidMount() {
-  }
+  componentDidMount() {}
 
   onListItemPress = (route: string) => {
     let scene = 'NationalityList';
     let sceneConfig = {
       route,
-      title: I18n.t(route)
+      title: I18n.t(route),
     };
 
     // switch (route) {
@@ -48,21 +47,23 @@ class ProfileUpdateScene extends Component {
     return this.props.navigation.navigate(scene, sceneConfig);
   };
 
-  showModal = (name) => {
+  showModal = name => {
     this.setState({
-      [name]: true
-    })
+      [name]: true,
+    });
   };
 
-  hideModal = (name) => {
+  hideModal = name => {
     this.setState({
-      [name]: false
-    })
+      [name]: false,
+    });
   };
 
   handleLanguagePress = (language: string) => {
     this.setState({
-      activeLanguages: this.state.activeLanguages.includes(language) ? this.state.activeLanguages.filter(lang => lang != language) : this.state.activeLanguages.concat(language)
+      activeLanguages: this.state.activeLanguages.includes(language)
+        ? this.state.activeLanguages.filter(lang => lang != language)
+        : this.state.activeLanguages.concat(language),
     });
   };
 
@@ -71,8 +72,12 @@ class ProfileUpdateScene extends Component {
   };
 
   render() {
-
-    let {mobile,personalInformationModalVisible,languageModalVisible,activeLanguages} = this.state;
+    let {
+      mobile,
+      personalInformationModalVisible,
+      languageModalVisible,
+      activeLanguages,
+    } = this.state;
 
     return (
       <ScrollView
@@ -82,14 +87,13 @@ class ProfileUpdateScene extends Component {
           padding: 10,
           paddingTop: 20,
         }}>
-
         <ListItem
           onItemPress={() => this.showModal('personalInformationModalVisible')}
           name="personal_information"
           arrow={true}
         />
 
-        <Separator style={{marginVertical: 10}}/>
+        <Separator style={{marginVertical: 10}} />
 
         <ListItem
           onItemPress={this.onListItemPress}
@@ -97,7 +101,7 @@ class ProfileUpdateScene extends Component {
           arrow={true}
         />
 
-        <Separator style={{marginVertical: 10}}/>
+        <Separator style={{marginVertical: 10}} />
 
         <ListItem
           onItemPress={this.onListItemPress}
@@ -105,7 +109,7 @@ class ProfileUpdateScene extends Component {
           arrow={true}
         />
 
-        <Separator style={{marginVertical: 10}}/>
+        <Separator style={{marginVertical: 10}} />
 
         <ListItem
           onItemPress={this.onListItemPress}
@@ -113,7 +117,7 @@ class ProfileUpdateScene extends Component {
           arrow={true}
         />
 
-        <Separator style={{marginVertical: 10}}/>
+        <Separator style={{marginVertical: 10}} />
 
         <ListItem
           onItemPress={this.onListItemPress}
@@ -121,7 +125,7 @@ class ProfileUpdateScene extends Component {
           arrow={true}
         />
 
-        <Separator style={{marginVertical: 10}}/>
+        <Separator style={{marginVertical: 10}} />
 
         <ListItem
           onItemPress={() => this.showModal('languageModalVisible')}
@@ -130,10 +134,14 @@ class ProfileUpdateScene extends Component {
         />
 
         <List
-          items={[{id: 'english', name: I18n.t('english')}, {id: 'arabic', name: I18n.t('arabic')}, {
-            id: 'hindi',
-            name: I18n.t('hindi')
-          }]}
+          items={[
+            {id: 'english', name: I18n.t('english')},
+            {id: 'arabic', name: I18n.t('arabic')},
+            {
+              id: 'hindi',
+              name: I18n.t('hindi'),
+            },
+          ]}
           isVisible={languageModalVisible}
           onConfirm={this.handleLanguagePress}
           onCancel={() => this.hideModal('languageModalVisible')}
@@ -144,11 +152,11 @@ class ProfileUpdateScene extends Component {
         <ListModal
           isVisible={personalInformationModalVisible}
           transparent={false}
-          onBackdropPress={() => this.hideModal('personalInformationModalVisible')}
+          onBackdropPress={() =>
+            this.hideModal('personalInformationModalVisible')
+          }
           title={I18n.t('personal_information')}
-          onCancel={() => this.hideModal('personalInformationModalVisible')}
-        >
-
+          onCancel={() => this.hideModal('personalInformationModalVisible')}>
           <FormTextInput
             onChangeText={value => this.onFieldChange('mobile', value)}
             value={mobile}
@@ -156,9 +164,7 @@ class ProfileUpdateScene extends Component {
             placeholder={I18n.t('mobile')}
             keyboardType="phone-pad"
           />
-
         </ListModal>
-
       </ScrollView>
     );
   }

@@ -12,9 +12,9 @@ import {SELECTORS as USER_SELECTORS} from 'guest/common/selectors';
 import FormCheck from 'components/FormCheck';
 import {View} from 'react-native';
 import isEmpty from 'lodash/isEmpty';
-import {Checkbox} from "react-native-paper";
+import {Checkbox} from 'react-native-paper';
 import Touchable from 'react-native-platform-touchable';
-import Separator from "components/Separator";
+import Separator from 'components/Separator';
 
 type State = {
   mobile: string,
@@ -104,18 +104,25 @@ class EmployeeAddScene extends Component {
           keyboardType="email-address"
         />
 
-        <Touchable onPress={() => this.onFieldChange('driver_interaction', !driver_interaction)}>
+        <Touchable
+          onPress={() =>
+            this.onFieldChange('driver_interaction', !driver_interaction)
+          }>
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
-            <FormLabel title={I18n.t('can_communicate_with_driver')} style={{flex: 1}}/>
+            <FormLabel
+              title={I18n.t('can_communicate_with_driver')}
+              style={{flex: 1}}
+            />
             <FormCheck
               checked={driver_interaction}
-              onPress={()=>this.onFieldChange('driver_interaction', !driver_interaction)}
+              onPress={() =>
+                this.onFieldChange('driver_interaction', !driver_interaction)
+              }
             />
-
           </View>
         </Touchable>
 
-        <Separator style={{marginVertical:10}}/>
+        <Separator style={{marginVertical: 10}} />
 
         <FormSubmit
           onPress={this.saveEmployee}

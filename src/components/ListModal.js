@@ -11,11 +11,10 @@ import {Button, Headline} from 'react-native-paper';
 import I18n from 'utils/locale';
 
 export default class ListModal extends Component {
-
   static propTypes = {
     isVisible: PropTypes.bool.isRequired,
     onCancel: PropTypes.func.isRequired,
-    children:PropTypes.any.isRequired,
+    children: PropTypes.any.isRequired,
     title: PropTypes.string,
   };
 
@@ -24,24 +23,33 @@ export default class ListModal extends Component {
   };
 
   render() {
-    let {isVisible, onCancel, title,children,style} = this.props;
+    let {isVisible, onCancel, title, children, style} = this.props;
 
     return (
       <View style={styles.container}>
         <Modal
           isVisible={isVisible}
           transparent={false}
-          style={[{
-            backgroundColor: 'white',
-            paddingTop: 64,
-            paddingHorizontal: 20,
-          },style]}
+          style={[
+            {
+              backgroundColor: 'white',
+              paddingTop: 64,
+              paddingHorizontal: 20,
+            },
+            style,
+          ]}
           onBackdropPress={onCancel}>
           <Headline style={styles.headline}>{title}</Headline>
           {children}
-          <Button onPress={onCancel} raised primary dark style={{marginBottom:50,paddingVertical:10}}>{I18n.t('save')}</Button>
+          <Button
+            onPress={onCancel}
+            raised
+            primary
+            dark
+            style={{marginBottom: 50, paddingVertical: 10}}>
+            {I18n.t('save')}
+          </Button>
         </Modal>
-
       </View>
     );
   }
@@ -49,10 +57,10 @@ export default class ListModal extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex:1,
+    flex: 1,
   },
   listContainer: {
-    flex:1,
+    flex: 1,
     margin: 5,
     marginTop: 20,
   },
