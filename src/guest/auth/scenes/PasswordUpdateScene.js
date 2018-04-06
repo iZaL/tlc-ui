@@ -29,7 +29,8 @@ export default class PasswordUpdateScene extends Component {
         <FormLabel title={I18n.t('new_password')} />
 
         <FormTextInput
-          onChangeText={value => onFieldChange('password', value)}
+          onChangeText={onFieldChange}
+          field={password}
           value={password}
           maxLength={40}
           placeholder={I18n.t('new_password')}
@@ -38,7 +39,8 @@ export default class PasswordUpdateScene extends Component {
 
         <FormLabel title={I18n.t('confirm_new_password')} />
         <FormTextInput
-          onChangeText={value => onFieldChange('password_confirmation', value)}
+          onChangeText={onFieldChange}
+          field="password_confirmation"
           value={confirmedPassword}
           maxLength={40}
           placeholder={I18n.t('confirm_new_password')}

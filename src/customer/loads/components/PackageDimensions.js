@@ -42,8 +42,9 @@ export default class PackageDimensions extends Component {
           <View style={styles.addressContainer}>
             <View style={{flexDirection: 'row'}}>
               <FormTextInput
-                onChangeText={value => onFieldChange('length', value)}
+                onChangeText={onFieldChange}
                 value={length}
+                field={length}
                 maxLength={40}
                 keyboardType="numeric"
                 autoFocus={false}
@@ -52,7 +53,8 @@ export default class PackageDimensions extends Component {
               />
 
               <FormTextInput
-                onChangeText={value => onFieldChange('width', value)}
+                onChangeText={onFieldChange}
+                field={width}
                 value={width}
                 maxLength={40}
                 keyboardType="numeric"
@@ -62,7 +64,8 @@ export default class PackageDimensions extends Component {
               />
 
               <FormTextInput
-                onChangeText={value => onFieldChange('height', value)}
+                onChangeText={onFieldChange}
+                field={height}
                 value={height}
                 maxLength={40}
                 keyboardType="numeric"
@@ -74,7 +77,8 @@ export default class PackageDimensions extends Component {
 
             <View style={{flexDirection: 'row'}}>
               <FormTextInput
-                onChangeText={value => onFieldChange('weight', value)}
+                onChangeText={onFieldChange}
+                field={weight}
                 value={weight}
                 maxLength={40}
                 keyboardType="numeric"
@@ -84,7 +88,8 @@ export default class PackageDimensions extends Component {
               />
 
               <FormTextInput
-                onChangeText={value => onFieldChange('quantity', value)}
+                onChangeText={onFieldChange}
+                field={quantity}
                 value={quantity}
                 maxLength={40}
                 keyboardType="numeric"

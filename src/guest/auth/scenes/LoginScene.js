@@ -33,19 +33,20 @@ export default class LoginScene extends Component {
 
     return (
       <View style={styles.container}>
-        {/*<FormLabel title={I18n.t('email').toUpperCase()} />*/}
+
         <FormTextInput
-          label={I18n.t('email')}
-          onChangeText={value => onFieldChange('email', value)}
+          placeholder={I18n.t('email')}
+          onChangeText={onFieldChange}
+          field={email}
           value={email}
           maxLength={40}
           keyboardType="email-address"
         />
 
-        {/*<FormLabel title={I18n.t('password').toUpperCase()} />*/}
         <FormTextInput
-          label={I18n.t('password')}
-          onChangeText={value => onFieldChange('password', value)}
+          placeholder={I18n.t('password')}
+          onChangeText={onFieldChange}
+          field={password}
           value={password}
           maxLength={40}
           secureTextEntry={true}

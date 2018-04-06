@@ -105,7 +105,8 @@ export default class DocumentEdit extends Component {
             <TextInput
               label={I18n.t('registration_number')}
               value={number}
-              onChangeText={text => onFieldChange('registration_number', text)}
+              onChangeText={onFieldChange}
+              field="registration_number"
             />
           </CardContent>
 

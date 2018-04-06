@@ -77,7 +77,8 @@ export default class DocumentAdd extends PureComponent {
             <TextInput
               label={I18n.t('registration_number')}
               value={number}
-              onChangeText={text => onFieldChange('number', text)}
+              onChangeText={onFieldChange}
+              field="number"
             />
           </CardContent>
 

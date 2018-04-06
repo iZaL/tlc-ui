@@ -67,21 +67,24 @@ class EmployeeAddScene extends Component {
           padding: 10,
         }}>
         <FormTextInput
-          onChangeText={value => this.onFieldChange('name_en', value)}
+          onChangeText={this.onFieldChange}
+          field="name_en"
           value={name_en}
           maxLength={40}
           placeholder={I18n.t('name_en')}
         />
 
         <FormTextInput
-          onChangeText={value => this.onFieldChange('name_ar', value)}
+          onChangeText={this.onFieldChange}
+          field="name_ar"
           value={name_ar}
           maxLength={40}
           placeholder={I18n.t('name_ar')}
         />
 
         <FormTextInput
-          onChangeText={value => this.onFieldChange('mobile', value)}
+          onChangeText={this.onFieldChange}
+          field="mobile"
           value={mobile}
           maxLength={40}
           placeholder={I18n.t('mobile')}
@@ -89,7 +92,8 @@ class EmployeeAddScene extends Component {
         />
 
         <FormTextInput
-          onChangeText={value => this.onFieldChange('phone', value)}
+          onChangeText={this.onFieldChange}
+          field="phone"
           value={phone}
           maxLength={40}
           placeholder={I18n.t('office_number')}
@@ -97,8 +101,9 @@ class EmployeeAddScene extends Component {
         />
 
         <FormTextInput
-          onChangeText={value => this.onFieldChange('email', value)}
+          onChangeText={this.onFieldChange}
           value={email}
+          field={email}
           maxLength={40}
           placeholder={I18n.t('business_email')}
           keyboardType="email-address"

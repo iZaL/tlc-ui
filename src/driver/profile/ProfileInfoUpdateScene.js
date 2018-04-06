@@ -92,14 +92,16 @@ class ProfileInfoUpdateScene extends Component {
         {/*/>*/}
 
         <FormTextInput
-          onChangeText={value => this.onFieldChange('name', value)}
+          onChangeText={this.onFieldChange}
+          field="name"
           value={name}
           maxLength={40}
           placeholder={I18n.t('name')}
         />
 
         <FormTextInput
-          onChangeText={value => this.onFieldChange('email', value)}
+          onChangeText={this.onFieldChange}
+          field="email"
           value={email}
           maxLength={40}
           placeholder={I18n.t('email')}
@@ -107,7 +109,8 @@ class ProfileInfoUpdateScene extends Component {
         />
 
         <FormTextInput
-          onChangeText={value => this.onFieldChange('mobile', value)}
+          onChangeText={this.onFieldChange}
+          field="mobile"
           value={mobile}
           maxLength={40}
           placeholder={I18n.t('mobile_primary')}
@@ -115,7 +118,8 @@ class ProfileInfoUpdateScene extends Component {
         />
 
         <FormTextInput
-          onChangeText={value => this.onDriverFieldChange('mobile', value)}
+          onChangeText={this.onDriverFieldChange}
+          field="mobile"
           value={profile ? profile.mobile : ''}
           maxLength={40}
           placeholder={I18n.t('mobile')}
@@ -123,7 +127,8 @@ class ProfileInfoUpdateScene extends Component {
         />
 
         <FormTextInput
-          onChangeText={value => this.onDriverFieldChange('mobile', value)}
+          onChangeText={this.onDriverFieldChange}
+          field="phone"
           value={profile ? profile.phone : ''}
           maxLength={40}
           placeholder={I18n.t('phone')}

@@ -45,7 +45,7 @@ class LocationAddScene extends Component {
 
   saveAddress = () => {};
 
-  updateFormFields = (key, value) => {
+  onFieldChange = (key, value) => {
     this.setState({
       [key]: value,
     });
@@ -68,7 +68,7 @@ class LocationAddScene extends Component {
           address={{...this.state}}
         />
 
-        <AddressField address="wa" updateFields={this.updateFormFields} />
+        <AddressField address="wa" onFieldChange={this.onFieldChange} />
 
         <Button
           title={I18n.t('save')}

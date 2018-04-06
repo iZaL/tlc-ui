@@ -149,14 +149,16 @@ class ProfileUpdateScene extends Component {
           title={I18n.t('personal_information')}
           onCancel={() => this.hideModal('personalInformationModalVisible')}>
           <FormTextInput
-            onChangeText={value => this.onFieldChange('mobile', value)}
+            onChangeText={this.onFieldChange}
+            field={mobile}
             value={mobile}
             maxLength={40}
             placeholder={I18n.t('mobile')}
             keyboardType="phone-pad"
           />
           <FormTextInput
-            onChangeText={value => this.onFieldChange('mobile', value)}
+            onChangeText={this.onFieldChange}
+            field={mobile}
             value={mobile}
             maxLength={40}
             placeholder={I18n.t('phone')}

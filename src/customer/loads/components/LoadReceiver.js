@@ -28,36 +28,37 @@ export default class LoadWhat extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.formContainer}>
-          {/*<FormLabel title={I18n.t('receiver_name')} />*/}
+
           <FormTextInput
-            onChangeText={value => onFieldChange('receiver_name', value)}
-            placeholder={I18n.t('receiver_name')}
+            onChangeText={onFieldChange}
             value={receiver_name}
+            field={receiver_name}
+            placeholder={I18n.t('receiver_name')}
             maxLength={40}
           />
 
-          {/*<FormLabel title={I18n.t('receiver_email')} />*/}
           <FormTextInput
-            onChangeText={value => onFieldChange('receiver_email', value)}
+            onChangeText={onFieldChange}
             value={receiver_email}
+            vafieldlue={receiver_email}
             placeholder={I18n.t('receiver_email')}
             maxLength={40}
             keyboardType="email-address"
           />
 
-          {/*<FormLabel title={I18n.t('receiver_mobile')} />*/}
           <FormTextInput
-            onChangeText={value => onFieldChange('receiver_mobile', value)}
+            onChangeText={onFieldChange}
             value={receiver_mobile}
+            field={receiver_mobile}
             maxLength={40}
             placeholder={I18n.t('receiver_mobile')}
             keyboardType="phone-pad"
           />
 
-          {/*<FormLabel title={I18n.t('receiver_phone')} />*/}
           <FormTextInput
-            onChangeText={value => onFieldChange('receiver_phone', value)}
+            onChangeText={onFieldChange}
             value={receiver_phone}
+            field={receiver_phone}
             maxLength={40}
             placeholder={I18n.t('receiver_phone')}
             keyboardType="phone-pad"

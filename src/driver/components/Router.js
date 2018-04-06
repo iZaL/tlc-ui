@@ -121,7 +121,7 @@ const ProfileStack = StackNavigator(
       gesturesEnabled: false,
       headerTintColor: colors.primary,
     },
-    initialRouteName:'ProfileInfoUpdate'
+    // initialRouteName:'ProfileInfoUpdate'
   },
 );
 
@@ -171,5 +171,5 @@ export const Routes = DrawerNavigator(DrawerRoutes, {
   gesturesEnabled: false,
   contentComponent: props => <Drawer {...props} />,
   drawerWidth: 275,
-  initialRouteName: 'ProfileStack',
+  // initialRouteName: 'ProfileStack',
 });

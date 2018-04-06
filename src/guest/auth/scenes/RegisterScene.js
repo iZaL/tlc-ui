@@ -40,36 +40,28 @@ export default class RegisterScene extends Component {
       <ScrollView style={styles.container} contentInset={{bottom: 50}}>
         {isCustomer ? (
           <View>
-            {/*<FormLabel title={I18n.t('company_name_en')} />*/}
             <FormTextInput
-              onChangeText={value => onFieldChange('name_en', value)}
+              onChangeText={onFieldChange}
+              field="name_en"
               value={name_en}
               maxLength={40}
               placeholder={I18n.t('company_name_en')}
             />
 
-            {/*<FormLabel title={I18n.t('company_name_ar')} />*/}
             <FormTextInput
-              onChangeText={value => onFieldChange('name_ar', value)}
+              onChangeText={onFieldChange}
+              field="name_ar"
               value={name_ar}
               maxLength={40}
               placeholder={I18n.t('company_name_ar')}
             />
 
-            {/*<FormLabel title={I18n.t('company_name_hi')}/>*/}
-            {/*<FormTextInput*/}
-            {/*onChangeText={value => onFieldChange('name_hi', value)}*/}
-            {/*value={name_hi}*/}
-            {/*maxLength={40}*/}
-            {/*placeholder={I18n.t('company_name_hi')}*/}
-            {/*autoFocus={true}*/}
-            {/*/>*/}
           </View>
         ) : (
           <View>
-            {/*<FormLabel title={I18n.t('name')} />*/}
             <FormTextInput
-              onChangeText={value => onFieldChange('name_en', value)}
+              onChangeText={onFieldChange}
+              field="name_en"
               value={name_en}
               maxLength={40}
               placeholder={I18n.t('name')}
@@ -77,46 +69,44 @@ export default class RegisterScene extends Component {
           </View>
         )}
 
-        {/*<FormLabel title={I18n.t('name')} />*/}
         <FormTextInput
-          onChangeText={value => onFieldChange('name_en', value)}
+          onChangeText={onFieldChange}
+          field="name_en"
           value={name_en}
           maxLength={40}
           placeholder={I18n.t('name')}
         />
 
-        {/*<FormLabel title={I18n.t('email')} />*/}
-
         <FormTextInput
-          onChangeText={value => onFieldChange('email', value)}
+          onChangeText={onFieldChange}
+          field="email"
           value={email}
           maxLength={40}
           placeholder={I18n.t('email')}
           keyboardType="email-address"
         />
 
-        {/*<FormLabel title={I18n.t('mobile')} />*/}
-
         <FormTextInput
-          onChangeText={value => onFieldChange('mobile', value)}
+          onChangeText={onFieldChange}
+          field="mobile"
           value={mobile}
           maxLength={40}
           placeholder={I18n.t('mobile')}
           keyboardType="phone-pad"
         />
 
-        {/*<FormLabel title={I18n.t('password')} />*/}
         <FormTextInput
-          onChangeText={value => onFieldChange('password', value)}
+          onChangeText={onFieldChange}
+          field="password"
           value={password}
           maxLength={40}
           placeholder={I18n.t('password')}
           secureTextEntry={true}
         />
 
-        {/*<FormLabel title={I18n.t('confirm_password')} />*/}
         <FormTextInput
-          onChangeText={value => onFieldChange('password_confirmation', value)}
+          onChangeText={onFieldChange}
+          field="password_confirmation"
           value={password_confirmation}
           maxLength={40}
           secureTextEntry={true}

@@ -133,16 +133,18 @@ class ProfileUpdateScene extends Component {
         contentContainerStyle={{paddingBottom: 100}}>
         {/*<FormLabel title={I18n.t('company_name_en')} />*/}
         <FormTextInput
-          onChangeText={value => this.onUserFieldChange('name_en', value)}
+          onChangeText={this.onUserFieldChange}
           value={name_en}
+          field={name_en}
           maxLength={40}
           placeholder={I18n.t('company_name_en')}
         />
 
         {/*<FormLabel title={I18n.t('company_name_ar')} />*/}
         <FormTextInput
-          onChangeText={value => this.onUserFieldChange('name_ar', value)}
+          onChangeText={this.onUserFieldChange}
           value={name_ar}
+          field={name_ar}
           maxLength={40}
           placeholder={I18n.t('company_name_ar')}
         />
@@ -150,8 +152,9 @@ class ProfileUpdateScene extends Component {
         {/*<FormLabel title={I18n.t('mobile')} />*/}
 
         <FormTextInput
-          onChangeText={value => this.onFieldChange('mobile', value)}
+          onChangeText={this.onFieldChange}
           value={mobile}
+          field={mobile}
           maxLength={40}
           placeholder={I18n.t('mobile')}
           keyboardType="phone-pad"
@@ -160,8 +163,9 @@ class ProfileUpdateScene extends Component {
         {/*<FormLabel title={I18n.t('office_number')} />*/}
 
         <FormTextInput
-          onChangeText={value => this.onFieldChange('phone', value)}
+          onChangeText={this.onFieldChange}
           value={phone}
+          field={phone}
           maxLength={40}
           placeholder={I18n.t('office_number')}
           keyboardType="phone-pad"
@@ -170,8 +174,9 @@ class ProfileUpdateScene extends Component {
         {/*<FormLabel title={I18n.t('company_email')} />*/}
 
         <FormTextInput
-          onChangeText={value => this.onFieldChange('email', value)}
+          onChangeText={this.onFieldChange}
           value={email}
+          field={email}
           maxLength={40}
           placeholder={I18n.t('company_email')}
         />
@@ -179,16 +184,18 @@ class ProfileUpdateScene extends Component {
         {/*<FormLabel title={I18n.t('address_en')} />*/}
 
         <FormTextInput
-          onChangeText={value => this.onFieldChange('address_en', value)}
+          onChangeText={this.onFieldChange}
           value={address_en}
+          field={address_en}
           placeholder={I18n.t('address_en')}
         />
 
         {/*<FormLabel title={I18n.t('address_ar')} />*/}
 
         <FormTextInput
-          onChangeText={value => this.onFieldChange('address_ar', value)}
+          onChangeText={this.onFieldChange}
           value={address_ar}
+          field={address_ar}
           placeholder={I18n.t('address_ar')}
           keyboardType="phone-pad"
         />

@@ -60,7 +60,8 @@ export default class LoadWhat extends Component {
         {/*/>*/}
         <View style={{padding: 5, backgroundColor: 'white'}}>
           <FormTextInput
-            onChangeText={value => onFieldChange('weight', value)}
+            onChangeText={onFieldChange}
+            field={weight}
             value={weight}
             maxLength={40}
             placeholder={I18n.t('weight')}

@@ -30,7 +30,8 @@ export default class ConfirmScene extends Component {
         <FormLabel title={I18n.t('confirmation_code')} />
 
         <FormTextInput
-          onChangeText={value => onFieldChange('confirmationCode', value)}
+          onChangeText={onFieldChange}
+          field={confirmationCode}
           value={confirmationCode}
           maxLength={40}
           placeholder={I18n.t('confirmation_code')}

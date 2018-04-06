@@ -1,26 +1,27 @@
 import React, {Component} from 'react';
-import {StyleSheet, Platform} from 'react-native';
-import colors from 'theme/colors';
-import {isRTL} from 'utils/locale';
+import {StyleSheet} from 'react-native';
 import {TextInput} from 'react-native-paper';
+import PropTypes from 'prop-types';
+import colors from 'assets/theme/colors';
 
 export default class FormTextInput extends Component {
 
   static propTypes = {
-    // style:PropTypes.object
+    field:PropTypes.string.isRequired,
+    onChangeText:PropTypes.func.isRequired
   };
 
-  shouldComponentUpdate(nextProps) {
-    return this.props.value !== nextProps.value;
-  }
+  onChangeText = (value) => {
+    let {field,onChangeText} = this.props;
+    onChangeText(field,value);
+  };
 
   render() {
     const {style, placeholder, ...rest} = this.props;
-    console.log('rendering',placeholder);
     return (
       <TextInput
+        onChangeText={this.onChangeText}
         label={placeholder}
-        {...rest}
         style={[styles.input, style]}
         placeholderTextColor={colors.mediumGrey}
         autoCorrect={false}

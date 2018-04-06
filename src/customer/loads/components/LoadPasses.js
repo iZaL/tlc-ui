@@ -16,32 +16,6 @@ export default class LoadWhat extends Component {
     passes: PropTypes.array.isRequired,
   };
 
-  // render() {
-  //   const {request_documents,use_own_truck,onFieldChange} = this.props;
-  //
-  //   return (
-  //     <View style={styles.container}>
-  //
-  //       <FormTextInput
-  //         onChangeText={value => onFieldChange('password', value)}
-  //         value={use_own_truck}
-  //         maxLength={40}
-  //         secureTextEntry={true}
-  //       />
-  //
-  //       <View style={styles.row}>
-  //         <FormLabel title={I18n.t('request_documents')} style={{flex:1}} />
-  //         <FormCheck
-  //           checked={request_documents}
-  //           onPress={() =>
-  //             onFieldChange('request_documents', !request_documents)}
-  //         />
-  //       </View>
-  //
-  //     </View>
-  //   );
-  // }
-
   renderRow = ({item}) => {
     let {onFieldChange, passes} = this.props;
     return (
