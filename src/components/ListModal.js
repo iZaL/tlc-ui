@@ -59,27 +59,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  listContainer: {
-    flex: 1,
-    margin: 5,
-    marginTop: 20,
-  },
-  itemContainer: {
-    backgroundColor: 'white',
-    padding: 5,
-    marginBottom: 5,
-  },
-  itemRowContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    padding: 5,
-  },
-  viewDetails: {
-    flex: 1,
-    fontSize: 18,
-    color: colors.darkBlue,
-    fontWeight: '500',
-  },
   headline: {
     textAlign: 'center',
   },

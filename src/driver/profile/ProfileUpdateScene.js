@@ -97,7 +97,7 @@ class ProfileUpdateScene extends Component {
 
         <ListItem
           onItemPress={this.onListItemPress}
-          name="nationality"
+          name="nationalities"
           arrow={true}
         />
 
@@ -162,6 +162,13 @@ class ProfileUpdateScene extends Component {
             value={mobile}
             maxLength={40}
             placeholder={I18n.t('mobile')}
+            keyboardType="phone-pad"
+          />
+          <FormTextInput
+            onChangeText={value => this.onFieldChange('mobile', value)}
+            value={mobile}
+            maxLength={40}
+            placeholder={I18n.t('phone')}
             keyboardType="phone-pad"
           />
         </ListModal>

@@ -303,6 +303,20 @@ const getVisas = createSelector(
   },
 );
 
+const getDocumentsByType = () => {
+  return createSelector(
+    [getProfile, countriesSchema,getIdProp],
+    (driver, countries,type) => {
+      return driver[type].map(record => {
+        return {
+          ...record,
+        };
+      });
+    }
+  );
+};
+
+
 export const SELECTORS = {
   getProfile,
   getResidencies,
@@ -319,4 +333,5 @@ export const SELECTORS = {
   getLoadByID,
   getUpcomingTrips,
   getLoadsByStatus,
+  getDocumentsByType
 };
