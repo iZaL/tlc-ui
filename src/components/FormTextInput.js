@@ -5,12 +5,18 @@ import {isRTL} from 'utils/locale';
 import {TextInput} from 'react-native-paper';
 
 export default class FormTextInput extends Component {
+
   static propTypes = {
     // style:PropTypes.object
   };
 
+  shouldComponentUpdate(nextProps) {
+    return this.props.value !== nextProps.value;
+  }
+
   render() {
     const {style, placeholder, ...rest} = this.props;
+    console.log('rendering',placeholder);
     return (
       <TextInput
         label={placeholder}

@@ -3,21 +3,20 @@ import {connect} from 'react-redux';
 import {SELECTORS as COUNTRY_SELECTORS} from 'app/selectors/country';
 import DocumentAdd from 'components/DocumentAdd';
 import {moment} from 'moment';
-import I18n from 'utils/locale';
+import PropTypes from 'prop-types';
 
 class NationalityAddScene extends Component {
+
   static propTypes = {
-    // residencies: PropTypes.array,
+    residencies: PropTypes.array,
   };
 
   static defaultProps = {
     residencies: [],
-    nationality: {
-      number: null,
-      expiry_date: new Date(),
-      countryID: null,
-      image: null,
-    },
+    number: null,
+    expiry_date: new Date(),
+    countryID: null,
+    image: null,
   };
 
   static navigationOptions = ({navigation}) => {
@@ -57,8 +56,6 @@ class NationalityAddScene extends Component {
 
   render() {
     let {countries} = this.props;
-    console.log('props', this.props.navigation.state.params);
-
     return (
       <DocumentAdd
         onFieldChange={this.onFieldChange}

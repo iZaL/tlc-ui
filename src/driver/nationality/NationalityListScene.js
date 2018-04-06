@@ -93,33 +93,14 @@ class NationalityListScene extends Component {
 }
 
 const makeMapStateToProps = () => {
-
   let getDocuments = DRIVER_SELECTORS.getDocumentsByType();
-
   const mapStateToProps = (state, ownProps) => {
     let {route} = ownProps.navigation.state.params;
     return {
       collection: getDocuments(state, route)
     }
   };
-
   return mapStateToProps;
-
-  // switch (route) {
-  // case 'nationality':
-  //   collection = DRIVER_SELECTORS.getNationalities(state);
-  //   break;
-  // case 'visas':
-  //   collection = DRIVER_SELECTORS.getVisas(state);
-  //   break;
-  // case 'residencies':
-  //   collection = DRIVER_SELECTORS.getResidencies(state);
-  //   break;
-  // case 'licenses':
-  //   collection = DRIVER_SELECTORS.getLicenses(state);
-  //   break;
-  // }
-
 };
 
 export default connect(makeMapStateToProps)(NationalityListScene);

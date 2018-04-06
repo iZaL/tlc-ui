@@ -3,6 +3,7 @@
   "name":"Name",
   "phone":"Phone",
   "mobile":"Mobile",
+  "mobile_primary":"Primary Mobile",
   "description":"Description",
   "password":"Password",
   "confirm_password":"Confirm Password",

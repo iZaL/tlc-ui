@@ -19,6 +19,7 @@ import I18n from 'utils/locale';
 import colors from 'assets/theme/colors';
 import NationalityListScene from 'driver/nationality/NationalityListScene';
 import NationalityAddScene from 'driver/nationality/NationalityAddScene';
+import ProfileInfoUpdateScene from "driver/profile/ProfileInfoUpdateScene";
 
 const getDrawerIcon = navigation => {
   return {
@@ -53,7 +54,7 @@ const SettingsStack = StackNavigator({
 
 const ProfileStack = StackNavigator(
   {
-    Settings: {
+    ProfileHome: {
       screen: ProfileHomeScene,
       navigationOptions: ({navigation}) => ({
         title: I18n.t('profile'),
@@ -62,6 +63,12 @@ const ProfileStack = StackNavigator(
     },
     ProfileUpdate: {
       screen: ProfileUpdateScene,
+      navigationOptions: () => ({
+        title: I18n.t('profile_update'),
+      }),
+    },
+    ProfileInfoUpdate: {
+      screen: ProfileInfoUpdateScene,
       navigationOptions: () => ({
         title: I18n.t('profile_update'),
       }),
@@ -114,6 +121,7 @@ const ProfileStack = StackNavigator(
       gesturesEnabled: false,
       headerTintColor: colors.primary,
     },
+    initialRouteName:'ProfileInfoUpdate'
   },
 );
 

@@ -9,21 +9,25 @@ import I18n from 'utils/locale';
 import ListItem from 'components/ListItem';
 import List from 'components/List';
 import ListModal from 'components/ListModal';
-import FormTextInput from '../../components/FormTextInput';
+import FormTextInput from 'components/FormTextInput';
+import {ACTIONS as DRIVER_ACTIONS} from "driver/common/actions";
 
 class ProfileUpdateScene extends Component {
+
   static propTypes = {
     countries: PropTypes.array.isRequired,
   };
 
   state = {
     languageModalVisible: false,
-    personalInformationModalVisible: false,
+    personalInformationModalVisible: true,
     activeLanguages: ['english', 'arabic'],
     mobile: '',
   };
 
-  componentDidMount() {}
+  componentDidMount() {
+    this.props.dispatch(DRIVER_ACTIONS.fetchProfile());
+  }
 
   onListItemPress = (route: string) => {
     let scene = 'NationalityList';
@@ -31,19 +35,6 @@ class ProfileUpdateScene extends Component {
       route,
       title: I18n.t(route),
     };
-
-    // switch (route) {
-    //   case 'nationality':
-    //   case 'visas':
-    //   case 'residencies':
-    //   case 'licenses':
-    //     scene = 'NationalityList';
-    //     break;
-    //   case 'languages':
-    //     scene = 'LanguageList';
-    //     break;
-    // }
-
     return this.props.navigation.navigate(scene, sceneConfig);
   };
 
