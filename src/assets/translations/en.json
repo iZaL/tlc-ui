@@ -72,6 +72,11 @@
   "select_country" : "Select Country",
   "truck_update" : "Update Truck",
   "truck_add" : "Add Truck",
+  "truck_model" : "Truck Model",
+  "truck_registration" : "Truck Registration",
+  "truck_info" : "Truck Information",
+  "truck_images" : "Truck Images",
+  "truck_details" : "Truck Details",
 
   "make" : "Make",
   "model" : "Model",
@@ -202,6 +207,9 @@
 
   "select_languages" : "Select Languages You Speak",
 
-  "personal_information" : "Personal Information"
+  "personal_information" : "Personal Information",
+
+  "contact_mobile1" : "Contact Mobile Number",
+  "contact_mobile2" : "Another Mobile Number to Contact",
 
 }

@@ -14,6 +14,7 @@ import FormSubmit from 'components/FormSubmit';
 import I18n from 'utils/locale';
 import DateTimePicker from 'components/DateTimePicker';
 import {SELECTORS as COUNTRY_SELECTORS} from 'app/selectors/country';
+import ListItem from "../../components/ListItem";
 
 type State = {
   mobile: string,
@@ -134,6 +135,10 @@ class TruckUpdateScene extends Component {
     });
   };
 
+  loadRegistrationScene = () => {
+    this.props.navigation.navigate('TruckRegistration');
+  };
+
   render() {
     const {
       make,
@@ -158,160 +163,38 @@ class TruckUpdateScene extends Component {
           padding: 10,
           paddingTop: 20,
         }}>
-        {/*<FormLabel title={I18n.t('make')} />*/}
 
-        {/*{showDropDown && dropDownField === 'make' ? (*/}
-        {/*<Dropdown*/}
-        {/*onClose={this.showDropDown}*/}
-        {/*items={makes}*/}
-        {/*selectedValue={make.id}*/}
-        {/*onItemPress={this.onValueChange}*/}
-        {/*field="make"*/}
-        {/*/>*/}
-        {/*) : (*/}
-        {/*<Text*/}
-        {/*style={{*/}
-        {/*fontSize: 18,*/}
-        {/*color: 'black',*/}
-        {/*fontWeight: '300',*/}
-        {/*textAlign: 'left',*/}
-        {/*paddingTop: 5,*/}
-        {/*}}*/}
-        {/*onPress={() => this.showDropDown(true, 'make')}>*/}
-        {/*{make.id ? make.name : I18n.t('select')}*/}
-        {/*</Text>*/}
-        {/*)}*/}
-
-        {/*<Separator style={{marginVertical: 10}} />*/}
-
-        <FormLabel title={I18n.t('model')} />
-
-        {showDropDown && dropDownField === 'model' ? (
-          <Dropdown
-            onClose={this.showDropDown}
-            items={models}
-            selectedValue={model.id}
-            onItemPress={this.onValueChange}
-            field="model"
-          />
-        ) : (
-          <Text
-            style={{
-              fontSize: 18,
-              color: 'black',
-              fontWeight: '300',
-              textAlign: 'left',
-              paddingTop: 5,
-            }}
-            onPress={() => this.showDropDown(true, 'model')}>
-            {model.id ? model.name : I18n.t('select')}
-          </Text>
-        )}
+        <ListItem
+          onItemPress={this.onProfileInfoPress}
+          name="truck_model"
+          arrow={true}
+        />
 
         <Separator style={{marginVertical: 10}} />
 
-        {/*<FormLabel title={I18n.t('plate_number')} />*/}
-
-        <FormTextInput
-          onValueChange={this.onValueChange}
-          field={plate_number}
-          value={plate_number}
-          maxLength={40}
-          label={I18n.t('plate_number')}
+        <ListItem
+          onItemPress={this.onProfileInfoPress}
+          name="truck_registration"
+          arrow={true}
         />
-
-        <FormLabel title={I18n.t('registration_country')} />
-
-        {showDropDown && dropDownField === 'registration_country' ? (
-          <Dropdown
-            onClose={this.showDropDown}
-            items={countries}
-            selectedValue={registration_country.id}
-            onItemPress={this.onValueChange}
-            field="registration_country"
-          />
-        ) : (
-          <Text
-            style={{
-              fontSize: 18,
-              color: 'black',
-              fontWeight: '300',
-              textAlign: 'left',
-              paddingTop: 5,
-            }}
-            onPress={() => this.showDropDown(true, 'registration_country')}>
-            {registration_country.id
-              ? registration_country.name
-              : I18n.t('select')}
-          </Text>
-        )}
 
         <Separator style={{marginVertical: 10}} />
 
-        {/*<FormLabel title={I18n.t('registration_number')} />*/}
-
-        <FormTextInput
-          onValueChange={this.onValueChange}
-          field={registration_number}
-          value={registration_number}
-          maxLength={40}
-          label={I18n.t('registration_number')}
+        <ListItem
+          onItemPress={this.loadRegistrationScene}
+          name="truck_details"
+          arrow={true}
         />
 
-        <FormLabel title={I18n.t('registration_expiry')} />
+        <Separator style={{marginVertical: 10}} />
 
-        <DateTimePicker
-          date={registration_expiry}
-          mode="date"
-          label={I18n.t('select')}
-          format="YYYY-MM-DD"
-          minDate="2015-01-01"
-          maxDate="2040-01-01"
-          confirmBtnText={I18n.t('confirm')}
-          cancelBtnText={I18n.t('cancel')}
-          onDateChange={date => this.onValueChange('registration_expiry', date)}
+
+        <ListItem
+          onItemPress={this.onProfileInfoPress}
+          name="truck_images"
+          arrow={true}
         />
 
-        {/*<FormLabel title={I18n.t('max_weight')} />*/}
-
-        <FormTextInput
-          onValueChange={this.onValueChange}
-          field={max_weight}
-          value={max_weight}
-          maxLength={40}
-          label={I18n.t('max_weight')}
-        />
-
-        <FormLabel title={I18n.t('year')} />
-
-        {showDropDown && dropDownField === 'year' ? (
-          <Dropdown
-            onClose={this.showDropDown}
-            items={['2001', '2002', '2003', '2004']}
-            selectedValue={year}
-            onItemPress={this.onValueChange}
-            field="year"
-          />
-        ) : (
-          <Text
-            style={{
-              fontSize: 18,
-              color: 'black',
-              fontWeight: '300',
-              textAlign: 'left',
-              paddingTop: 5,
-            }}
-            onPress={() => this.showDropDown(true, 'year')}>
-            {year ? year : I18n.t('select')}
-          </Text>
-        )}
-
-        <FormSubmit
-          onPress={this.save}
-          disabled={false}
-          title={I18n.t('save')}
-          style={{marginTop: 50}}
-        />
       </ScrollView>
     );
   }

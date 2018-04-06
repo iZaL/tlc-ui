@@ -11,6 +11,7 @@ import I18n from 'utils/locale';
 import FormTextInput from "components/FormTextInput";
 import {Button} from "react-native-paper";
 import {Avatar} from "react-native-elements";
+import DocumentUpload from "../../components/DocumentUpload";
 
 class ProfileInfoUpdateScene extends Component {
   static propTypes = {};
@@ -82,12 +83,23 @@ class ProfileInfoUpdateScene extends Component {
     })
   };
 
+  save = () => {
+
+  };
+
   render() {
 
-    let {name,email,mobile,profile,password,password_confirmation,}  = this.state.user;
+    let {name,email,mobile,image,profile,password,password_confirmation,}  = this.state.user;
 
     return (
-      <ScrollView style={{flex: 1, backgroundColor: 'white',padding:10}}>
+      <ScrollView style={{flex: 1, backgroundColor: 'white'}} contentContainerStyle={{padding:10}}>
+
+        <DocumentUpload
+          onPress={image => this.onValueChange('image', image)}
+          image={image}
+          style={{flex:1,marginHorizontal: 15,width:110,height:110,borderRadius:55,alignSelf:'center',}}
+          imageStyle={{borderRadius:50}}
+        />
 
         <FormTextInput
           onValueChange={this.onValueChange}
@@ -120,7 +132,7 @@ class ProfileInfoUpdateScene extends Component {
           field="mobile"
           value={profile ? profile.mobile : ''}
           maxLength={40}
-          label={I18n.t('mobile')}
+          label={I18n.t('contact_mobile1')}
           keyboardType="phone-pad"
         />
 
@@ -129,7 +141,7 @@ class ProfileInfoUpdateScene extends Component {
           field="phone"
           value={profile ? profile.phone : ''}
           maxLength={40}
-          label={I18n.t('phone')}
+          label={I18n.t('contact_mobile2')}
           keyboardType="phone-pad"
         />
 

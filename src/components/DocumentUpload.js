@@ -47,14 +47,15 @@ export default class DocumentUpload extends Component {
   };
 
   render() {
-    let {onPress, style} = this.props;
+    let {onPress, style, imageStyle} = this.props;
     return (
       <Touchable onPress={() => this.openImagePicker()}>
         <View style={[styles.container, style]}>
           {this.state.uploaded_image ? (
             <Image
-              style={styles.image}
+              style={[styles.image,imageStyle]}
               source={{uri: this.state.uploaded_image}}
+              resizeMode="cover"
             />
           ) : (
             <MaterialIcons
@@ -77,9 +78,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderColor: colors.mediumGrey,
     borderWidth: 5,
+    position:'relative',
   },
   image: {
     width: '100%',
     height: '100%',
+    // position: 'absolute',
+    // top: 0,
+    // left: 0,
+    // bottom: 0,
+    // right: 0,
+    // flex:1,
+    // width: null,
+    // height: null
   },
 });
