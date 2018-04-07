@@ -11,7 +11,7 @@ import I18n from 'utils/locale';
 import FormTextInput from 'components/FormTextInput';
 import {Button} from 'react-native-paper';
 import {Avatar} from 'react-native-elements';
-import DocumentUpload from '../../components/DocumentUpload';
+import DocumentUpload from 'components/DocumentUpload';
 
 class ProfileInfoUpdateScene extends Component {
   static propTypes = {};

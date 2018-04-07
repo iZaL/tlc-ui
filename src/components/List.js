@@ -55,8 +55,7 @@ export default class List extends Component {
         transparent={false}
         onBackdropPress={onCancel}
         title={title}
-        onCancel={onCancel}
-      >
+        onCancel={onCancel}>
         <FlatList
           data={items}
           style={styles.listContainer}

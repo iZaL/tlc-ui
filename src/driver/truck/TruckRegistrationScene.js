@@ -49,11 +49,6 @@ class TruckRegistrationScene extends Component {
     };
   }
 
-  componentDidMount() {
-    this.props.dispatch(DRIVER_ACTIONS.fetchProfile());
-    this.props.dispatch(APP_ACTIONS.fetchCountries());
-  }
-
   onValueChange = (field, value) => {
     this.setState({
       [field]: value,

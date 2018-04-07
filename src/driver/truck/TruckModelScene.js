@@ -11,7 +11,7 @@ import I18n from 'utils/locale';
 import Touchable from 'react-native-platform-touchable';
 import FormLabel from '../../components/FormLabel';
 import List from '../../components/List';
-import Separator from "../../components/Separator";
+import Separator from '../../components/Separator';
 
 class TruckModelScene extends Component {
   static propTypes = {
@@ -35,6 +35,7 @@ class TruckModelScene extends Component {
   };
 
   componentDidMount() {
+    this.props.dispatch(DRIVER_ACTIONS.fetchProfile());
     this.props.dispatch(TRUCK_ACTIONS.fetchTruckMakesModels());
   }
 
@@ -42,15 +43,10 @@ class TruckModelScene extends Component {
     let {model} = nextProps.navigation.state.params.truck;
     return {
       model_id: model.id,
-      make_id: model.make ? model.make.id : null,
+      make_id: model.make_id,
       showMakeModal: false,
       showModelModal: false,
     };
-  }
-
-  componentDidMount() {
-    this.props.dispatch(DRIVER_ACTIONS.fetchProfile());
-    this.props.dispatch(APP_ACTIONS.fetchCountries());
   }
 
   onValueChange = (field, value) => {
@@ -90,7 +86,7 @@ class TruckModelScene extends Component {
   setMake = id => {
     this.setState({
       make_id: id,
-      model_id:null
+      model_id: null,
     });
   };
 
@@ -104,21 +100,39 @@ class TruckModelScene extends Component {
     let {make_id, model_id} = this.state;
     let {truck, makes} = this.props;
 
+    let models = [];
+    if (make_id) {
+      let make = makes.find(make => make.id == make_id);
+      if (make) {
+        models = make.models || [];
+      }
+    }
+
     return (
-      <View style={{flex: 1, backgroundColor: 'white', paddingTop:20, padding: 10}}>
+      <View
+        style={{
+          flex: 1,
+          backgroundColor: 'white',
+          paddingTop: 20,
+          padding: 10,
+        }}>
         <Touchable onPress={this.showMakeModal}>
-          <View >
+          <View>
             <FormLabel title={I18n.t('truck_make')} />
-            <Text style={{paddingTop:10,fontSize:18}}>{make_id ? truck.model.make.name : I18n.t('select')}</Text>
+            <Text style={{paddingTop: 10, fontSize: 18}}>
+              {make_id ? truck.model.make.name : I18n.t('select')}
+            </Text>
           </View>
         </Touchable>
 
-        <Separator style={{marginVertical:20}}/>
+        <Separator style={{marginVertical: 20}} />
 
         <Touchable onPress={this.showModelModal} disabled={!make_id}>
           <View>
             <FormLabel title={I18n.t('truck_model')} />
-            <Text style={{paddingTop:10, fontSize:18}}>{model_id ? truck.model.name : I18n.t('select')}</Text>
+            <Text style={{paddingTop: 10, fontSize: 18}}>
+              {model_id ? truck.model.name : I18n.t('select')}
+            </Text>
           </View>
         </Touchable>
 
@@ -137,9 +151,8 @@ class TruckModelScene extends Component {
           isVisible={this.state.showModelModal}
           onConfirm={this.setModel}
           onCancel={this.hideModelModal}
-          items={makes.find(make => make.id == make_id).models || []}
+          items={models}
         />
-
       </View>
     );
   }

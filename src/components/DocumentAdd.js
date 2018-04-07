@@ -5,17 +5,12 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import I18n from 'utils/locale';
-import {
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  TextInput,
-} from 'react-native-paper';
+import {Button, Card, CardActions, CardContent} from 'react-native-paper';
 import {View} from 'react-native';
 import moment from 'moment';
 import DocumentUpload from 'components/DocumentUpload';
 import List from 'components/List';
+import FormTextInput from './FormTextInput';
 
 export default class DocumentAdd extends PureComponent {
   static propTypes = {
@@ -80,10 +75,10 @@ export default class DocumentAdd extends PureComponent {
               {(country && country.name) || I18n.t('select_country')}
             </Button>
 
-            <TextInput
+            <FormTextInput
               label={I18n.t('registration_number')}
               value={number}
-              onChangeText={onValueChange}
+              onValueChange={onValueChange}
               field="number"
             />
           </CardContent>

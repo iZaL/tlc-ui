@@ -41,7 +41,7 @@ export default class RegisterScene extends Component {
         {isCustomer ? (
           <View>
             <FormTextInput
-              onChangeText={onValueChange}
+              onValueChange={onValueChange}
               field="name_en"
               value={name_en}
               maxLength={40}
@@ -49,7 +49,7 @@ export default class RegisterScene extends Component {
             />
 
             <FormTextInput
-              onChangeText={onValueChange}
+              onValueChange={onValueChange}
               field="name_ar"
               value={name_ar}
               maxLength={40}
@@ -59,7 +59,7 @@ export default class RegisterScene extends Component {
         ) : (
           <View>
             <FormTextInput
-              onChangeText={onValueChange}
+              onValueChange={onValueChange}
               field="name_en"
               value={name_en}
               maxLength={40}

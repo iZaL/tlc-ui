@@ -22,6 +22,7 @@ import NationalityAddScene from 'driver/nationality/NationalityAddScene';
 import ProfileInfoUpdateScene from 'driver/profile/ProfileInfoUpdateScene';
 import TruckRegistrationScene from 'driver/truck/TruckRegistrationScene';
 import TruckModelScene from 'driver/truck/TruckModelScene';
+import TruckInfoUpdateScene from 'driver/truck/TruckInfoUpdateScene';
 
 const getDrawerIcon = navigation => {
   return {
@@ -93,6 +94,12 @@ const ProfileStack = StackNavigator(
         title: I18n.t('truck_model'),
       }),
     },
+    TruckInfoUpdate: {
+      screen: TruckInfoUpdateScene,
+      navigationOptions: () => ({
+        title: I18n.t('truck_details'),
+      }),
+    },
     TrailerUpdate: {
       screen: TrailerUpdateScene,
       navigationOptions: () => ({
@@ -135,7 +142,7 @@ const ProfileStack = StackNavigator(
       gesturesEnabled: false,
       headerTintColor: colors.primary,
     },
-    initialRouteName: 'TruckUpdate',
+    // initialRouteName: 'TruckUpdate',
   },
 );
 

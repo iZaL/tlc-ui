@@ -42,7 +42,7 @@ export default class PackageDimensions extends Component {
           <View style={styles.addressContainer}>
             <View style={{flexDirection: 'row'}}>
               <FormTextInput
-                onChangeText={onValueChange}
+                onValueChange={onValueChange}
                 value={length}
                 field={length}
                 maxLength={40}
@@ -53,7 +53,7 @@ export default class PackageDimensions extends Component {
               />
 
               <FormTextInput
-                onChangeText={onValueChange}
+                onValueChange={onValueChange}
                 field={width}
                 value={width}
                 maxLength={40}
@@ -64,7 +64,7 @@ export default class PackageDimensions extends Component {
               />
 
               <FormTextInput
-                onChangeText={onValueChange}
+                onValueChange={onValueChange}
                 field={height}
                 value={height}
                 maxLength={40}
@@ -77,7 +77,7 @@ export default class PackageDimensions extends Component {
 
             <View style={{flexDirection: 'row'}}>
               <FormTextInput
-                onChangeText={onValueChange}
+                onValueChange={onValueChange}
                 field={weight}
                 value={weight}
                 maxLength={40}
@@ -88,7 +88,7 @@ export default class PackageDimensions extends Component {
               />
 
               <FormTextInput
-                onChangeText={onValueChange}
+                onValueChange={onValueChange}
                 field={quantity}
                 value={quantity}
                 maxLength={40}

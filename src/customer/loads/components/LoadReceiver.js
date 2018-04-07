@@ -29,7 +29,7 @@ export default class LoadWhat extends Component {
       <View style={styles.container}>
         <View style={styles.formContainer}>
           <FormTextInput
-            onChangeText={onValueChange}
+            onValueChange={onValueChange}
             value={receiver_name}
             field={receiver_name}
             label={I18n.t('receiver_name')}
@@ -37,7 +37,7 @@ export default class LoadWhat extends Component {
           />
 
           <FormTextInput
-            onChangeText={onValueChange}
+            onValueChange={onValueChange}
             value={receiver_email}
             vafieldlue={receiver_email}
             label={I18n.t('receiver_email')}
@@ -46,7 +46,7 @@ export default class LoadWhat extends Component {
           />
 
           <FormTextInput
-            onChangeText={onValueChange}
+            onValueChange={onValueChange}
             value={receiver_mobile}
             field={receiver_mobile}
             maxLength={40}
@@ -55,7 +55,7 @@ export default class LoadWhat extends Component {
           />
 
           <FormTextInput
-            onChangeText={onValueChange}
+            onValueChange={onValueChange}
             value={receiver_phone}
             field={receiver_phone}
             maxLength={40}

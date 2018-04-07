@@ -2,11 +2,7 @@
  * @flow
  */
 import React, {Component} from 'react';
-import Touchable from 'react-native-platform-touchable';
 import PropTypes from 'prop-types';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import colors from 'assets/theme/colors';
-import images from 'assets/theme/images';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import CountryListModal from 'components/ListModal';
 
@@ -18,9 +14,8 @@ import {
   CardActions,
   CardContent,
   CardCover,
-  Title,
-  Paragraph,
   TextInput,
+  Title,
 } from 'react-native-paper';
 import {View} from 'react-native';
 
@@ -28,7 +23,6 @@ export default class DocumentEdit extends Component {
   static propTypes = {
     onEditPress: PropTypes.func,
     onDeletePress: PropTypes.func,
-    // item: PropTypes.object.isRequired,
     onCountryPress: PropTypes.func.isRequired,
     onValueChange: PropTypes.func.isRequired,
     number: PropTypes.string.isRequired,
@@ -37,16 +31,7 @@ export default class DocumentEdit extends Component {
     image: PropTypes.string,
     buttonText: PropTypes.string,
     countries: PropTypes.array.isRequired,
-    // country: PropTypes.object.isRequired,
-    // expiry_date: PropTypes.string.isRequired,
-    // title: PropTypes.string.isRequired,
-    // image: PropTypes.string.isRequired,
-    // number: PropTypes.string.isRequired,
   };
-
-  // shouldComponentUpdate() {
-  //   return false;
-  // }
 
   state = {
     isDateTimePickerVisible: false,
@@ -57,7 +42,6 @@ export default class DocumentEdit extends Component {
     onEditPress: () => {},
     onDeletePress: () => {},
     buttonText: I18n.t('save'),
-    // image:images.document_image
   };
 
   _showDateTimePicker = () => this.setState({isDateTimePickerVisible: true});
@@ -75,9 +59,6 @@ export default class DocumentEdit extends Component {
 
   render() {
     let {
-      onEditPress,
-      onDeletePress,
-      onCountryPress,
       number,
       onValueChange,
       country,
@@ -86,14 +67,6 @@ export default class DocumentEdit extends Component {
       image,
       countries,
     } = this.props;
-
-    // let {
-    //   country,
-    //   image,
-    //   expiry_date,
-    //   title,
-    //   number,
-    // } = item;
 
     return (
       <View style={{flex: 1}}>
@@ -105,7 +78,7 @@ export default class DocumentEdit extends Component {
             <TextInput
               label={I18n.t('registration_number')}
               value={number}
-              onChangeText={onValueChange}
+              onValueChange={onValueChange}
               field="registration_number"
             />
           </CardContent>
