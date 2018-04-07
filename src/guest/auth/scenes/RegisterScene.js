@@ -55,7 +55,6 @@ export default class RegisterScene extends Component {
               maxLength={40}
               label={I18n.t('company_name_ar')}
             />
-
           </View>
         ) : (
           <View>

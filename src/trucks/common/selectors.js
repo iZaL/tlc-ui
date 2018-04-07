@@ -10,6 +10,8 @@ const trailerMakesSchema = state => state.entities.trailer_makes;
 const trailersSchema = state => state.entities.trailers;
 const packagingSchema = state => state.entities.packaging;
 const passesSchema = state => state.entities.passes;
+const getIdProp = ({}, itemID) => itemID;
+
 // const timingsEntity = state => state.entities.timings;
 // const addressesEntity = state => state.entities.addresses;
 
@@ -44,15 +46,6 @@ const getPackaging = createSelector([packagingSchema], collection => {
   return Object.keys(collection).map(id => collection[id]) || [];
 });
 
-const getTruckModels = createSelector(
-  [entities, truckModelsSchema],
-  (schema, collection) => {
-    return Object.keys(collection).map(id =>
-      denormalize(id, Schema.truck_models, schema),
-    );
-  },
-);
-
 const getPasses = createSelector(
   [entities, passesSchema],
   (schema, collection) => {
@@ -64,7 +57,6 @@ const getPasses = createSelector(
 
 export const SELECTORS = {
   getTruckMakes,
-  getTruckModels,
   getTrailerMakes,
   getTrailers,
   getPackaging,

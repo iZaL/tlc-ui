@@ -8,10 +8,10 @@ import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
 import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
 import Separator from 'components/Separator';
 import I18n from 'utils/locale';
-import FormTextInput from "components/FormTextInput";
-import {Button} from "react-native-paper";
-import {Avatar} from "react-native-elements";
-import DocumentUpload from "../../components/DocumentUpload";
+import FormTextInput from 'components/FormTextInput';
+import {Button} from 'react-native-paper';
+import {Avatar} from 'react-native-elements';
+import DocumentUpload from '../../components/DocumentUpload';
 
 class ProfileInfoUpdateScene extends Component {
   static propTypes = {};
@@ -21,84 +21,94 @@ class ProfileInfoUpdateScene extends Component {
   }
 
   state = {
-    isPasswordModalVisible:false,
-    user:{
+    isPasswordModalVisible: false,
+    user: {
       mobile: '',
-      email:'',
-      password:'',
-      image:'',
-      name:'',
-      password_confirmation:'',
-      profile:{
-        mobile:'',
-        phone:'',
-      }
+      email: '',
+      password: '',
+      image: '',
+      name: '',
+      password_confirmation: '',
+      profile: {
+        mobile: '',
+        phone: '',
+      },
     },
-
   };
 
-  static getDerivedStateFromProps(nextProps,prevState) {
-
-    if(nextProps.user === prevState.user) {
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.user === prevState.user) {
       return null;
     }
 
-    let {name,email,mobile,profile,image}  = nextProps.user;
+    let {name, email, mobile, profile, image} = nextProps.user;
 
-    console.log('nextProps',nextProps);
+    console.log('nextProps', nextProps);
 
     return {
-      user:{
+      user: {
         mobile: mobile,
-        email:email,
-        image:image,
-        name:name,
-        profile:{
-          mobile:profile.mobile,
-          phone:profile.phone,
-        }
+        email: email,
+        image: image,
+        name: name,
+        profile: {
+          mobile: profile.mobile,
+          phone: profile.phone,
+        },
       },
-    }
-
+    };
   }
 
   onValueChange = (field, value) => {
     this.setState({
-      user:{
+      user: {
         ...this.state.user,
-        [field]:value
-      }
-    })
+        [field]: value,
+      },
+    });
   };
 
-  onDriverFieldChange = (name,value) => {
+  onDriverFieldChange = (name, value) => {
     this.setState({
-      user:{
+      user: {
         ...this.state.user,
-        profile:{
+        profile: {
           ...this.state.user.profile,
-          [name]:value
-        }
-      }
-    })
+          [name]: value,
+        },
+      },
+    });
   };
 
-  save = () => {
-
-  };
+  save = () => {};
 
   render() {
-
-    let {name,email,mobile,image,profile,password,password_confirmation,}  = this.state.user;
+    let {
+      name,
+      email,
+      mobile,
+      image,
+      profile,
+      password,
+      password_confirmation,
+    } = this.state.user;
 
     return (
-      <ScrollView style={{flex: 1, backgroundColor: 'white'}} contentContainerStyle={{padding:10}}>
-
+      <ScrollView
+        style={{flex: 1, backgroundColor: 'white'}}
+        contentContainerStyle={{padding: 10}}>
         <DocumentUpload
           onPress={image => this.onValueChange('image', image)}
           image={image}
-          style={{flex:1,marginHorizontal: 15,width:110,height:110,borderRadius:55,alignSelf:'center',}}
-          imageStyle={{borderRadius:50}}
+          style={{
+            flex: 1,
+            marginHorizontal: 15,
+            width: 110,
+            height: 110,
+            borderRadius: 55,
+            alignSelf: 'center',
+          }}
+          imageStyle={{borderRadius: 50}}
         />
 
         <FormTextInput
@@ -145,8 +155,14 @@ class ProfileInfoUpdateScene extends Component {
           keyboardType="phone-pad"
         />
 
-        <Button onPress={this.save} raised primary dark style={{padding:10,marginTop:20}}>{I18n.t('save')}</Button>
-
+        <Button
+          onPress={this.save}
+          raised
+          primary
+          dark
+          style={{padding: 10, marginTop: 20}}>
+          {I18n.t('save')}
+        </Button>
       </ScrollView>
     );
   }
@@ -154,7 +170,7 @@ class ProfileInfoUpdateScene extends Component {
 
 function mapStateToProps(state) {
   return {
-    user:USER_SELECTORS.getAuthUserWithProfile(state),
+    user: USER_SELECTORS.getAuthUserWithProfile(state),
   };
 }
 

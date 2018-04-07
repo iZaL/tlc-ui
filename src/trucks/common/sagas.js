@@ -8,12 +8,10 @@ function* fetchTruckMakesModels() {
   try {
     const response = yield call(API.fetchTruckMakesModels);
     const normalizedMakes = normalize(response.makes, [Schema.truck_makes]);
-    const normalizedModels = normalize(response.models, [Schema.truck_models]);
     yield put({
       type: ACTION_TYPES.FETCH_TRUCK_MAKES_MODELS_SUCCESS,
       entities: {
         ...normalizedMakes.entities,
-        ...normalizedModels.entities,
       },
     });
   } catch (error) {

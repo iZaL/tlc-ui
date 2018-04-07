@@ -53,7 +53,7 @@ export default class DocumentUpload extends Component {
         <View style={[styles.container, style]}>
           {this.state.uploaded_image ? (
             <Image
-              style={[styles.image,imageStyle]}
+              style={[styles.image, imageStyle]}
               source={{uri: this.state.uploaded_image}}
               resizeMode="cover"
             />
@@ -78,7 +78,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderColor: colors.mediumGrey,
     borderWidth: 5,
-    position:'relative',
   },
   image: {
     width: '100%',

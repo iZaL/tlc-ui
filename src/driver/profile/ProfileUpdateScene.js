@@ -10,10 +10,9 @@ import ListItem from 'components/ListItem';
 import List from 'components/List';
 import ListModal from 'components/ListModal';
 import FormTextInput from 'components/FormTextInput';
-import {ACTIONS as DRIVER_ACTIONS} from "driver/common/actions";
+import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
 
 class ProfileUpdateScene extends Component {
-
   static propTypes = {
     countries: PropTypes.array.isRequired,
   };
@@ -44,13 +43,13 @@ class ProfileUpdateScene extends Component {
 
   showModal = () => {
     this.setState({
-      'languageModalVisible': true,
+      languageModalVisible: true,
     });
   };
 
   hideModal = () => {
     this.setState({
-      'languageModalVisible': false,
+      languageModalVisible: false,
     });
   };
 
@@ -67,10 +66,7 @@ class ProfileUpdateScene extends Component {
   };
 
   render() {
-    let {
-      languageModalVisible,
-      activeLanguages,
-    } = this.state;
+    let {languageModalVisible, activeLanguages} = this.state;
 
     return (
       <ScrollView
@@ -80,7 +76,6 @@ class ProfileUpdateScene extends Component {
           padding: 10,
           paddingTop: 20,
         }}>
-
         <ListItem
           onItemPress={this.onProfileInfoPress}
           name="personal_information"
@@ -121,11 +116,7 @@ class ProfileUpdateScene extends Component {
 
         <Separator style={{marginVertical: 10}} />
 
-        <ListItem
-          onItemPress={this.showModal}
-          name="languages"
-          arrow={true}
-        />
+        <ListItem onItemPress={this.showModal} name="languages" arrow={true} />
 
         <List
           items={[
@@ -142,7 +133,6 @@ class ProfileUpdateScene extends Component {
           title={I18n.t('select_languages')}
           activeIDs={activeLanguages}
         />
-
       </ScrollView>
     );
   }

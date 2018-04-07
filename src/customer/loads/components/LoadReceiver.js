@@ -28,7 +28,6 @@ export default class LoadWhat extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.formContainer}>
-
           <FormTextInput
             onChangeText={onValueChange}
             value={receiver_name}

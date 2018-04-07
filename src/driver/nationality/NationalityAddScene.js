@@ -6,7 +6,6 @@ import {moment} from 'moment';
 import PropTypes from 'prop-types';
 
 class NationalityAddScene extends Component {
-
   static propTypes = {
     residencies: PropTypes.array,
   };

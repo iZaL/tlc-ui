@@ -39,7 +39,6 @@ const getAuthUserWithProfile = createSelector(
   },
 );
 
-
 export const SELECTORS = {
   isAuthenticated,
   getAuthUser,

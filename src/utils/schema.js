@@ -49,7 +49,6 @@ usersSchema.define({
 });
 
 trucksSchema.define({
-  make: truckMakesSchema,
   model: truckModelsSchema,
   trailer: trailersSchema,
   registration_country: countriesSchema,
@@ -85,12 +84,15 @@ passesSchema.define({
   country: countriesSchema,
 });
 
+truckMakesSchema.define({
+  models: [truckModelsSchema],
+});
+
 export const Schema = {
   users: usersSchema,
   countries: countriesSchema,
   trucks: trucksSchema,
   truck_makes: truckMakesSchema,
-  truck_models: truckModelsSchema,
   trailer_makes: trailerMakesSchema,
   trailers: trailersSchema,
   drivers: driversSchema,

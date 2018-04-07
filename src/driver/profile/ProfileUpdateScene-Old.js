@@ -169,7 +169,6 @@ class ProfileUpdateScene extends Component {
           padding: 10,
           paddingTop: 20,
         }}>
-
         <ListItem
           onItemPress={this.onListItemPress}
           name="nationality"

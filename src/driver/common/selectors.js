@@ -74,11 +74,18 @@ const getTruck = createSelector(
   ],
   (driver, trucks, truckMakes, truckModels, trailers, drivers, countries) => {
     let truck = trucks[driver.truck];
+    let truckModel = (truck && truckModels[truck.model]) || {};
+    let truckMake = (truckModel && truckMakes[truckModel.make_id]) || {};
     return (
       (truck && {
         ...truck,
-        make: truckMakes[truck.make],
-        model: truckModels[truck.model],
+        model: {
+          ...truckModel,
+          make: {
+            id: truckMake.id,
+            name: truckMake.name,
+          },
+        },
         trailer: trailers[truck.trailer],
         driver: drivers[truck.driver],
         registration_country: countries[truck.registration_country],
@@ -177,7 +184,6 @@ const getRoutes = createSelector(
 const getProfileCountries = createSelector(
   [getProfile, getRoutes],
   ({nationalities, residencies, licenses, visas}, profileRoutes) => {
-
     let routes = flatten(
       profileRoutes.map(profile => [
         profile.origin,
@@ -195,7 +201,6 @@ const getProfileCountries = createSelector(
         ...routes,
       ]),
     ];
-
   },
 );
 
@@ -305,17 +310,16 @@ const getVisas = createSelector(
 
 const getDocumentsByType = () => {
   return createSelector(
-    [getProfile, countriesSchema,getIdProp],
-    (driver, countries,type) => {
+    [getProfile, countriesSchema, getIdProp],
+    (driver, countries, type) => {
       return driver[type].map(record => {
         return {
           ...record,
         };
       });
-    }
+    },
   );
 };
-
 
 export const SELECTORS = {
   getProfile,
@@ -333,5 +337,5 @@ export const SELECTORS = {
   getLoadByID,
   getUpcomingTrips,
   getLoadsByStatus,
-  getDocumentsByType
+  getDocumentsByType,
 };

@@ -30,7 +30,8 @@ export default class List extends Component {
   shouldComponentUpdate(nextProps) {
     return (
       this.props.isVisible !== nextProps.isVisible ||
-      this.props.activeIDs !== nextProps.activeIDs
+      this.props.activeIDs !== nextProps.activeIDs ||
+      this.props.items !== nextProps.items
     );
   }
 
@@ -48,14 +49,14 @@ export default class List extends Component {
 
   render() {
     let {isVisible, onCancel, items, title} = this.props;
-
     return (
       <ListModal
         isVisible={isVisible}
         transparent={false}
         onBackdropPress={onCancel}
         title={title}
-        onCancel={onCancel}>
+        onCancel={onCancel}
+      >
         <FlatList
           data={items}
           style={styles.listContainer}

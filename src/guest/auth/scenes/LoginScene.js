@@ -33,7 +33,6 @@ export default class LoginScene extends Component {
 
     return (
       <View style={styles.container}>
-
         <FormTextInput
           label={I18n.t('email')}
           onValueChange={onValueChange}

@@ -72,11 +72,12 @@
   "select_country" : "Select Country",
   "truck_update" : "Update Truck",
   "truck_add" : "Add Truck",
-  "truck_model" : "Truck Model",
   "truck_registration" : "Truck Registration",
   "truck_info" : "Truck Information",
   "truck_images" : "Truck Images",
   "truck_details" : "Truck Details",
+  "truck_make" : "Truck Make",
+  "truck_model" : "Truck Model",
 
   "make" : "Make",
   "model" : "Model",

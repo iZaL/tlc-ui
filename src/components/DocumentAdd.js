@@ -5,7 +5,13 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import I18n from 'utils/locale';
-import {Button, Card, CardActions, CardContent, TextInput,} from 'react-native-paper';
+import {
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  TextInput,
+} from 'react-native-paper';
 import {View} from 'react-native';
 import moment from 'moment';
 import DocumentUpload from 'components/DocumentUpload';

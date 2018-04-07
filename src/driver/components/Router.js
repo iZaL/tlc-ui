@@ -19,8 +19,9 @@ import I18n from 'utils/locale';
 import colors from 'assets/theme/colors';
 import NationalityListScene from 'driver/nationality/NationalityListScene';
 import NationalityAddScene from 'driver/nationality/NationalityAddScene';
-import ProfileInfoUpdateScene from "driver/profile/ProfileInfoUpdateScene";
-import TruckRegistrationScene from "driver/truck/TruckRegistrationScene";
+import ProfileInfoUpdateScene from 'driver/profile/ProfileInfoUpdateScene';
+import TruckRegistrationScene from 'driver/truck/TruckRegistrationScene';
+import TruckModelScene from 'driver/truck/TruckModelScene';
 
 const getDrawerIcon = navigation => {
   return {
@@ -80,10 +81,16 @@ const ProfileStack = StackNavigator(
         title: I18n.t('truck_update'),
       }),
     },
-    TruckRegistration:{
-      screen : TruckRegistrationScene,
+    TruckRegistration: {
+      screen: TruckRegistrationScene,
       navigationOptions: () => ({
         title: I18n.t('truck_registration'),
+      }),
+    },
+    TruckModel: {
+      screen: TruckModelScene,
+      navigationOptions: () => ({
+        title: I18n.t('truck_model'),
       }),
     },
     TrailerUpdate: {
@@ -128,7 +135,7 @@ const ProfileStack = StackNavigator(
       gesturesEnabled: false,
       headerTintColor: colors.primary,
     },
-    initialRouteName:'TruckRegistration'
+    initialRouteName: 'TruckUpdate',
   },
 );
 

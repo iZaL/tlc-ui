@@ -14,7 +14,7 @@ import FormSubmit from 'components/FormSubmit';
 import I18n from 'utils/locale';
 import DateTimePicker from 'components/DateTimePicker';
 import {SELECTORS as COUNTRY_SELECTORS} from 'app/selectors/country';
-import ListItem from "../../components/ListItem";
+import ListItem from '../../components/ListItem';
 
 type State = {
   mobile: string,
@@ -28,12 +28,12 @@ type SceneType = 'registration_country|residence';
 
 class TruckUpdateScene extends Component {
   static propTypes = {
-    makes: PropTypes.array.isRequired,
-    models: PropTypes.array.isRequired,
-    truck: PropTypes.shape({
-      make: PropTypes.object.isRequired,
-      model: PropTypes.object.isRequired,
-    }),
+    // makes: PropTypes.array.isRequired,
+    // models: PropTypes.array.isRequired,
+    // truck: PropTypes.shape({
+    //   make: PropTypes.object.isRequired,
+    //   model: PropTypes.object.isRequired,
+    // }),
   };
 
   static defaultProps = {
@@ -63,6 +63,7 @@ class TruckUpdateScene extends Component {
   };
 
   componentDidMount() {
+    this.props.dispatch(DRIVER_ACTIONS.fetchProfile());
     this.props.dispatch(TRUCK_ACTIONS.fetchTruckMakesModels());
   }
 
@@ -135,8 +136,14 @@ class TruckUpdateScene extends Component {
     });
   };
 
-  loadRegistrationScene = () => {
+  loadTruckRegistrationScene = () => {
     this.props.navigation.navigate('TruckRegistration');
+  };
+
+  loadTruckModelScene = () => {
+    this.props.navigation.navigate('TruckModel', {
+      truck: this.props.truck,
+    });
   };
 
   render() {
@@ -163,9 +170,8 @@ class TruckUpdateScene extends Component {
           padding: 10,
           paddingTop: 20,
         }}>
-
         <ListItem
-          onItemPress={this.onProfileInfoPress}
+          onItemPress={this.loadTruckModelScene}
           name="truck_model"
           arrow={true}
         />
@@ -173,28 +179,26 @@ class TruckUpdateScene extends Component {
         <Separator style={{marginVertical: 10}} />
 
         <ListItem
-          onItemPress={this.onProfileInfoPress}
+          onItemPress={this.loadTruckRegistrationScene}
           name="truck_registration"
           arrow={true}
         />
 
         <Separator style={{marginVertical: 10}} />
 
-        <ListItem
-          onItemPress={this.loadRegistrationScene}
-          name="truck_details"
-          arrow={true}
-        />
+        {/*<ListItem*/}
+        {/*onItemPress={this.loadRegistrationScene}*/}
+        {/*name="truck_details"*/}
+        {/*arrow={true}*/}
+        {/*/>*/}
 
-        <Separator style={{marginVertical: 10}} />
+        {/*<Separator style={{marginVertical: 10}} />*/}
 
-
-        <ListItem
-          onItemPress={this.onProfileInfoPress}
-          name="truck_images"
-          arrow={true}
-        />
-
+        {/*<ListItem*/}
+        {/*onItemPress={this.onProfileInfoPress}*/}
+        {/*name="truck_images"*/}
+        {/*arrow={true}*/}
+        {/*/>*/}
       </ScrollView>
     );
   }
@@ -204,8 +208,8 @@ function mapStateToProps(state) {
   return {
     truck: DRIVER_SELECTORS.getTruck(state),
     // makes: TRUCK_SELECTORS.getTruckMakes(state),
-    models: TRUCK_SELECTORS.getTruckModels(state),
-    countries: COUNTRY_SELECTORS.getCountries(state),
+    // models: TRUCK_SELECTORS.getTruckModels(state),
+    // countries: COUNTRY_SELECTORS.getCountries(state),
   };
 }
 

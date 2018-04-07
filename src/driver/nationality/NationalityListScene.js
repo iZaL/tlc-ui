@@ -10,7 +10,6 @@ import colors from 'assets/theme/colors';
 import I18n from 'utils/locale';
 
 class NationalityListScene extends Component {
-
   static propTypes = {
     collection: PropTypes.array,
   };
@@ -64,8 +63,7 @@ class NationalityListScene extends Component {
     this.props.navigation.navigate('NationalityAdd', sceneConfig);
   };
 
-  onDeletePress = () => {
-  };
+  onDeletePress = () => {};
 
   render() {
     let {collection} = this.props;
@@ -97,8 +95,8 @@ const makeMapStateToProps = () => {
   const mapStateToProps = (state, ownProps) => {
     let {route} = ownProps.navigation.state.params;
     return {
-      collection: getDocuments(state, route)
-    }
+      collection: getDocuments(state, route),
+    };
   };
   return mapStateToProps;
 };
