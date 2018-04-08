@@ -54,7 +54,7 @@ class NationalityAddScene extends Component {
   };
 
   render() {
-    let {countries,countryModalTitle} = this.props;
+    let {countries, countryModalTitle} = this.props;
     return (
       <DocumentAdd
         onValueChange={this.onValueChange}

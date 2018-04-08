@@ -22,7 +22,7 @@ export default class DocumentAdd extends PureComponent {
     image: PropTypes.string,
     buttonText: PropTypes.string,
     countries: PropTypes.array.isRequired,
-    countryModalTitle:PropTypes.string
+    countryModalTitle: PropTypes.string,
   };
 
   state = {
@@ -32,7 +32,7 @@ export default class DocumentAdd extends PureComponent {
 
   static defaultProps = {
     buttonText: I18n.t('save'),
-    countryModalTitle:I18n.t('residency_country_select')
+    countryModalTitle: I18n.t('residency_country_select'),
   };
 
   _showDateTimePicker = () => this.setState({isDateTimePickerVisible: true});
@@ -49,8 +49,6 @@ export default class DocumentAdd extends PureComponent {
     this.props.onValueChange('countryID', countryID);
   };
 
-
-
   render() {
     let {
       number,
@@ -61,7 +59,7 @@ export default class DocumentAdd extends PureComponent {
       countries,
       countryID,
       onSavePress,
-      countryModalTitle
+      countryModalTitle,
     } = this.props;
 
     let country = countryID
