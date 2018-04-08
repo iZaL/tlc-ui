@@ -29,7 +29,7 @@ export default class ForgotScene extends Component {
 
         <FormTextInput
           onValueChange={onValueChange}
-          field={email}
+          field="email"
           value={email}
           maxLength={40}
           label={I18n.t('email')}

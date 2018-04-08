@@ -30,7 +30,7 @@ export default class PasswordUpdateScene extends Component {
 
         <FormTextInput
           onValueChange={onValueChange}
-          field={password}
+          field="password"
           value={password}
           maxLength={40}
           label={I18n.t('new_password')}

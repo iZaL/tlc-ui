@@ -135,7 +135,7 @@ class ProfileUpdateScene extends Component {
         <FormTextInput
           onValueChange={this.onUserFieldChange}
           value={name_en}
-          field={name_en}
+          field="name_en"
           maxLength={40}
           label={I18n.t('company_name_en')}
         />
@@ -144,7 +144,7 @@ class ProfileUpdateScene extends Component {
         <FormTextInput
           onValueChange={this.onUserFieldChange}
           value={name_ar}
-          field={name_ar}
+          field="name_ar"
           maxLength={40}
           label={I18n.t('company_name_ar')}
         />
@@ -154,7 +154,7 @@ class ProfileUpdateScene extends Component {
         <FormTextInput
           onValueChange={this.onValueChange}
           value={mobile}
-          field={mobile}
+          field="mobile"
           maxLength={40}
           label={I18n.t('mobile')}
           keyboardType="phone-pad"
@@ -165,7 +165,7 @@ class ProfileUpdateScene extends Component {
         <FormTextInput
           onValueChange={this.onValueChange}
           value={phone}
-          field={phone}
+          field="phone"
           maxLength={40}
           label={I18n.t('office_number')}
           keyboardType="phone-pad"
@@ -176,7 +176,7 @@ class ProfileUpdateScene extends Component {
         <FormTextInput
           onValueChange={this.onValueChange}
           value={email}
-          field={email}
+          field="email"
           maxLength={40}
           label={I18n.t('company_email')}
         />
@@ -186,7 +186,7 @@ class ProfileUpdateScene extends Component {
         <FormTextInput
           onValueChange={this.onValueChange}
           value={address_en}
-          field={address_en}
+          field="address_en"
           label={I18n.t('address_en')}
         />
 
@@ -195,7 +195,7 @@ class ProfileUpdateScene extends Component {
         <FormTextInput
           onValueChange={this.onValueChange}
           value={address_ar}
-          field={address_ar}
+          field="address_ar"
           label={I18n.t('address_ar')}
           keyboardType="phone-pad"
         />

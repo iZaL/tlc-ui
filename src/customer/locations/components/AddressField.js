@@ -17,7 +17,7 @@ export default class AddressField extends PureComponent {
         {/*<Text style={styles.label}>{I18n.t('address')}</Text>*/}
         <FormTextInput
           onValueChange={onValueChange}
-          field={address_en}
+          field="address_en"
           value={address_en}
           maxLength={40}
           keyboardType="numeric"

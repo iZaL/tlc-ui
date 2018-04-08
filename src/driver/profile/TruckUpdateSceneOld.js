@@ -214,7 +214,7 @@ class TruckUpdateScene extends Component {
 
         <FormTextInput
           onValueChange={this.onValueChange}
-          field={plate_number}
+          field="plate_number"
           value={plate_number}
           maxLength={40}
           label={I18n.t('plate_number')}
@@ -252,7 +252,7 @@ class TruckUpdateScene extends Component {
 
         <FormTextInput
           onValueChange={this.onValueChange}
-          field={registration_number}
+          field="registration_number"
           value={registration_number}
           maxLength={40}
           label={I18n.t('registration_number')}
@@ -276,7 +276,7 @@ class TruckUpdateScene extends Component {
 
         <FormTextInput
           onValueChange={this.onValueChange}
-          field={max_weight}
+          field="max_weight"
           value={max_weight}
           maxLength={40}
           label={I18n.t('max_weight')}

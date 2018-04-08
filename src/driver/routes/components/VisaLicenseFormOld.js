@@ -165,7 +165,7 @@ export default class VisaLicenseForm extends PureComponent {
           <FormLabel title={I18n.t('license_expiry_date')} />
           <FormTextInput
             onValueChange={this.onValueChange}
-            field={license_expiry_date}
+            field="license_expiry_date"
             value={license_expiry_date}
             maxLength={40}
             label={I18n.t('license_expiry_date')}
@@ -192,7 +192,7 @@ export default class VisaLicenseForm extends PureComponent {
 
           <FormTextInput
             onValueChange={this.onValueChange}
-            field={visa_expiry_date}
+            field="visa_expiry_date"
             value={visa_expiry_date}
             maxLength={40}
             label={I18n.t('visa_expiry_date')}

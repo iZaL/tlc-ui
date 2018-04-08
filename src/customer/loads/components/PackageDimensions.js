@@ -44,58 +44,58 @@ export default class PackageDimensions extends Component {
               <FormTextInput
                 onValueChange={onValueChange}
                 value={length}
-                field={length}
+                field="length"
                 maxLength={40}
                 keyboardType="numeric"
                 autoFocus={false}
                 style={styles.textInput}
-                placeholder={`${I18n.t('length')} ${I18n.t('cm')}`}
+                label={`${I18n.t('length')} ${I18n.t('cm')}`}
               />
 
               <FormTextInput
                 onValueChange={onValueChange}
-                field={width}
+                field="width"
                 value={width}
                 maxLength={40}
                 keyboardType="numeric"
                 autoFocus={false}
                 style={styles.textInput}
-                placeholder={`${I18n.t('width')} ${I18n.t('cm')}`}
+                label={`${I18n.t('width')} ${I18n.t('cm')}`}
               />
 
               <FormTextInput
                 onValueChange={onValueChange}
-                field={height}
+                field="height"
                 value={height}
                 maxLength={40}
                 keyboardType="numeric"
                 autoFocus={false}
                 style={styles.textInput}
-                placeholder={`${I18n.t('height')} ${I18n.t('cm')}`}
+                label={`${I18n.t('height')} ${I18n.t('cm')}`}
               />
             </View>
 
             <View style={{flexDirection: 'row'}}>
               <FormTextInput
                 onValueChange={onValueChange}
-                field={weight}
+                field="weight"
                 value={weight}
                 maxLength={40}
                 keyboardType="numeric"
                 autoFocus={false}
                 style={styles.textInput}
-                placeholder={`${I18n.t('weight')} ${I18n.t('kg')}`}
+                label={`${I18n.t('weight')} ${I18n.t('kg')}`}
               />
 
               <FormTextInput
                 onValueChange={onValueChange}
-                field={quantity}
+                field="quantity"
                 value={quantity}
                 maxLength={40}
                 keyboardType="numeric"
                 autoFocus={false}
                 style={styles.textInput}
-                placeholder={`${I18n.t('quantity')}`}
+                label={`${I18n.t('quantity')}`}
               />
             </View>
 

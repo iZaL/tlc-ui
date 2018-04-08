@@ -103,7 +103,7 @@ class EmployeeAddScene extends Component {
         <FormTextInput
           onValueChange={this.onValueChange}
           value={email}
-          field={email}
+          field="email"
           maxLength={40}
           label={I18n.t('business_email')}
           keyboardType="email-address"

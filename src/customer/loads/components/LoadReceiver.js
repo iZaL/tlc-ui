@@ -31,7 +31,7 @@ export default class LoadWhat extends Component {
           <FormTextInput
             onValueChange={onValueChange}
             value={receiver_name}
-            field={receiver_name}
+            field="receiver_name"
             label={I18n.t('receiver_name')}
             maxLength={40}
           />
@@ -48,7 +48,7 @@ export default class LoadWhat extends Component {
           <FormTextInput
             onValueChange={onValueChange}
             value={receiver_mobile}
-            field={receiver_mobile}
+            field="receiver_mobile"
             maxLength={40}
             label={I18n.t('receiver_mobile')}
             keyboardType="phone-pad"
@@ -57,7 +57,7 @@ export default class LoadWhat extends Component {
           <FormTextInput
             onValueChange={onValueChange}
             value={receiver_phone}
-            field={receiver_phone}
+            field="receiver_phone"
             maxLength={40}
             label={I18n.t('receiver_phone')}
             keyboardType="phone-pad"

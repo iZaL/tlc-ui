@@ -31,7 +31,7 @@ export default class ConfirmScene extends Component {
 
         <FormTextInput
           onValueChange={onValueChange}
-          field={confirmationCode}
+          field="confirmationCode"
           value={confirmationCode}
           maxLength={40}
           label={I18n.t('confirmation_code')}

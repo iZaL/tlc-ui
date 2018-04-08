@@ -107,7 +107,7 @@ class EmployeeEditScene extends Component {
         }}>
         <FormTextInput
           onValueChange={this.onValueChange}
-          field={name_en}
+          field="name_en"
           value={name_en}
           maxLength={40}
           label={I18n.t('name_en')}
@@ -115,7 +115,7 @@ class EmployeeEditScene extends Component {
 
         <FormTextInput
           onValueChange={this.onValueChange}
-          field={name_ar}
+          field="name_ar"
           value={name_ar}
           maxLength={40}
           label={I18n.t('name_ar')}
@@ -123,7 +123,7 @@ class EmployeeEditScene extends Component {
 
         <FormTextInput
           onValueChange={this.onValueChange}
-          field={mobile}
+          field="mobile"
           value={mobile}
           maxLength={40}
           label={I18n.t('mobile')}
@@ -132,7 +132,7 @@ class EmployeeEditScene extends Component {
 
         <FormTextInput
           onValueChange={this.onValueChange}
-          field={phone}
+          field="phone"
           value={phone}
           maxLength={40}
           label={I18n.t('office_number')}
@@ -141,7 +141,7 @@ class EmployeeEditScene extends Component {
 
         <FormTextInput
           onValueChange={this.onValueChange}
-          field={email}
+          field="email"
           value={email}
           maxLength={40}
           label={I18n.t('company_email')}

@@ -142,7 +142,7 @@ const ProfileStack = StackNavigator(
       gesturesEnabled: false,
       headerTintColor: colors.primary,
     },
-    initialRouteName: 'TrailerUpdate',
+    // initialRouteName: 'TrailerUpdate',
   },
 );
 
