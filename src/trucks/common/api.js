@@ -10,6 +10,11 @@ function fetchTrailerMakes() {
   return fetchAPI(url);
 }
 
+function fetchTrailerTypes() {
+  const url = `trailers/types`;
+  return fetchAPI(url);
+}
+
 function fetchTrailers() {
   const url = `trailers`;
   return fetchAPI(url);
@@ -18,5 +23,6 @@ function fetchTrailers() {
 export const API = {
   fetchTruckMakesModels,
   fetchTrailerMakes,
+  fetchTrailerTypes,
   fetchTrailers,
 };

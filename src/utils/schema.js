@@ -5,6 +5,7 @@ const countriesSchema = new schema.Entity('countries');
 const trucksSchema = new schema.Entity('trucks');
 const truckMakesSchema = new schema.Entity('truck_makes');
 const trailerMakesSchema = new schema.Entity('trailer_makes');
+const trailerTypesSchema = new schema.Entity('trailer_types');
 const trailersSchema = new schema.Entity('trailers');
 const truckModelsSchema = new schema.Entity('truck_models');
 const customersSchema = new schema.Entity('customers');
@@ -88,12 +89,18 @@ truckMakesSchema.define({
   models: [truckModelsSchema],
 });
 
+trailersSchema.define({
+  type:trailerTypesSchema,
+  make:trailerMakesSchema
+});
+
 export const Schema = {
   users: usersSchema,
   countries: countriesSchema,
   trucks: trucksSchema,
   truck_makes: truckMakesSchema,
   trailer_makes: trailerMakesSchema,
+  trailer_types: trailerTypesSchema,
   trailers: trailersSchema,
   drivers: driversSchema,
   customers: customersSchema,

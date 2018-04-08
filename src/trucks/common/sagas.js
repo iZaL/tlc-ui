@@ -23,13 +23,25 @@ function* fetchTrailerMakes() {
   try {
     const response = yield call(API.fetchTrailerMakes);
     const normalized = normalize(response.data, [Schema.trailer_makes]);
-    // const normalizedTrucks = normalize(response.trucks, Schema.trucks);
     yield put({
       type: ACTION_TYPES.FETCH_TRAILER_MAKES_SUCCESS,
       entities: normalized.entities,
     });
   } catch (error) {
     yield put({type: ACTION_TYPES.FETCH_TRAILER_MAKES_FAILURE, error});
+  }
+}
+
+function* fetchTrailerTypes() {
+  try {
+    const response = yield call(API.fetchTrailerTypes);
+    const normalized = normalize(response.data, [Schema.trailer_types]);
+    yield put({
+      type: ACTION_TYPES.FETCH_TRAILER_TYPES_SUCCESS,
+      entities: normalized.entities,
+    });
+  } catch (error) {
+    yield put({type: ACTION_TYPES.FETCH_TRAILER_TYPES_FAILURE, error});
   }
 }
 
@@ -57,6 +69,10 @@ function* fetchTrailerMakesMonitor() {
   yield takeLatest(ACTION_TYPES.FETCH_TRAILER_MAKES_REQUEST, fetchTrailerMakes);
 }
 
+function* fetchTrailerTypesMonitor() {
+  yield takeLatest(ACTION_TYPES.FETCH_TRAILER_TYPES_REQUEST, fetchTrailerTypes);
+}
+
 function* fetchTrailersMonitor() {
   yield takeLatest(ACTION_TYPES.FETCH_TRAILERS_REQUEST, fetchTrailers);
 }
@@ -64,5 +80,6 @@ function* fetchTrailersMonitor() {
 export const sagas = all([
   fork(fetchTruckMakesModelsMonitor),
   fork(fetchTrailerMakesMonitor),
+  fork(fetchTrailerTypesMonitor),
   fork(fetchTrailersMonitor),
 ]);

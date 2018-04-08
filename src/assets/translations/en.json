@@ -184,6 +184,8 @@
   "trailer_add" : "Add Trailer",
   "trailer_update" : "Update Trailer",
   "trailer_select" : "Select Trailer",
+  "trailer_type" : "Trailer Type",
+  "trailer_make"  : "Trailer Make",
 
   "continue" : "Continue",
   "language" : "Language",

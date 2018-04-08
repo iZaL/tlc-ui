@@ -9,6 +9,7 @@ export function reducer(
     trucks: {},
     customers: {},
     trailer_makes: {},
+    trailer_types: {},
     trailers: {},
     routes: {},
     loads: {},

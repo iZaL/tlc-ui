@@ -33,22 +33,24 @@ class TruckModelScene extends Component {
   state = {
     make_id: null,
     model_id: null,
+    showMakeModal: false,
+    showModelModal: false,
   };
 
-  componentDidMount() {
-    this.props.dispatch(DRIVER_ACTIONS.fetchProfile());
-    this.props.dispatch(TRUCK_ACTIONS.fetchTruckMakesModels());
-  }
 
   static getDerivedStateFromProps(nextProps, prevState) {
     let {model} = nextProps.navigation.state.params.truck;
     return {
       model_id: model.id,
       make_id: model.make_id,
-      showMakeModal: false,
-      showModelModal: false,
     };
   }
+
+  componentDidMount() {
+    this.props.dispatch(DRIVER_ACTIONS.fetchProfile());
+    this.props.dispatch(TRUCK_ACTIONS.fetchTruckMakesModels());
+  }
+
 
   onValueChange = (field, value) => {
     this.setState({

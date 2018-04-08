@@ -10,6 +10,10 @@ export const ACTION_TYPES = {
   FETCH_TRAILER_MAKES_REQUEST: '@truck/FETCH_TRAILER_MAKES_REQUEST',
   FETCH_TRAILER_MAKES_SUCCESS: '@truck/FETCH_TRAILER_MAKES_SUCCESS',
   FETCH_TRAILER_MAKES_FAILURE: '@truck/FETCH_TRAILER_MAKES_FAILURE',
+
+  FETCH_TRAILER_TYPES_REQUEST: '@truck/FETCH_TRAILER_TYPES_REQUEST',
+  FETCH_TRAILER_TYPES_SUCCESS: '@truck/FETCH_TRAILER_TYPES_SUCCESS',
+  FETCH_TRAILER_TYPES_FAILURE: '@truck/FETCH_TRAILER_TYPES_FAILURE',
 };
 
 function fetchTruckMakesModels() {
@@ -23,6 +27,14 @@ function fetchTrailerMakes() {
     type: ACTION_TYPES.FETCH_TRAILER_MAKES_REQUEST,
   };
 }
+
+function fetchTrailerTypes() {
+  return {
+    type: ACTION_TYPES.FETCH_TRAILER_TYPES_REQUEST,
+  };
+}
+
+
 function fetchTrailers() {
   return {
     type: ACTION_TYPES.FETCH_TRAILERS_REQUEST,
@@ -32,5 +44,6 @@ function fetchTrailers() {
 export const ACTIONS = {
   fetchTruckMakesModels,
   fetchTrailerMakes,
+  fetchTrailerTypes,
   fetchTrailers,
 };
