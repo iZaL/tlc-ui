@@ -22,6 +22,7 @@ export default class DocumentAdd extends PureComponent {
     image: PropTypes.string,
     buttonText: PropTypes.string,
     countries: PropTypes.array.isRequired,
+    countryModalTitle:PropTypes.string
   };
 
   state = {
@@ -31,6 +32,7 @@ export default class DocumentAdd extends PureComponent {
 
   static defaultProps = {
     buttonText: I18n.t('save'),
+    countryModalTitle:I18n.t('residency_country_select')
   };
 
   _showDateTimePicker = () => this.setState({isDateTimePickerVisible: true});
@@ -47,6 +49,8 @@ export default class DocumentAdd extends PureComponent {
     this.props.onValueChange('countryID', countryID);
   };
 
+
+
   render() {
     let {
       number,
@@ -57,6 +61,7 @@ export default class DocumentAdd extends PureComponent {
       countries,
       countryID,
       onSavePress,
+      countryModalTitle
     } = this.props;
 
     let country = countryID
@@ -86,7 +91,7 @@ export default class DocumentAdd extends PureComponent {
           <DocumentUpload
             onPress={image => onValueChange('image', image)}
             image={image}
-            style={{marginHorizontal: 15}}
+            style={{marginHorizontal: 16}}
           />
 
           <View style={{flexDirection: 'row'}}>
@@ -124,7 +129,7 @@ export default class DocumentAdd extends PureComponent {
           isVisible={this.state.isCountryModalVisible}
           onConfirm={this._handleCountryPicker}
           onCancel={this._hideCountryModal}
-          title={I18n.t('residency_country_select')}
+          title={countryModalTitle}
           activeIDs={[countryID]}
         />
       </View>

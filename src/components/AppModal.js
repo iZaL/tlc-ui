@@ -13,8 +13,8 @@ export default class AppModal extends Component {
     closeOnBackdropPress: false,
   };
 
-  static getDerivedStateFromProps(nextProps) {
-    if (nextProps.visible !== this.state.visible) {
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.visible !== prevState.visible) {
       return {
         visible: nextProps.visible,
       };
@@ -43,15 +43,14 @@ export default class AppModal extends Component {
   };
 
   render() {
-    let {render, modalStyle} = this.props;
+    let {render, modalStyle, closeOnBackdropPress} = this.props;
+    let {visible} = this.state;
     return (
       <View style={styles.container}>
         <Modal
-          isVisible={this.state.visible}
+          isVisible={visible}
           style={styles.bottomModal}
-          onBackdropPress={
-            this.props.closeOnBackdropPress ? this.closeModal : undefined
-          }>
+          onBackdropPress={closeOnBackdropPress ? this.closeModal : undefined}>
           <View style={[styles.modalContent, modalStyle]}>
             {render(this.closeModal)}
           </View>

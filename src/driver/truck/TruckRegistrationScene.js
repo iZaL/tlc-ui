@@ -7,6 +7,7 @@ import {SELECTORS as COUNTRY_SELECTORS} from 'app/selectors/country';
 import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
 import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
 import {ACTIONS as APP_ACTIONS} from 'app/common/actions';
+import I18n from 'utils/locale';
 
 class TruckRegistrationScene extends Component {
   static propTypes = {
@@ -61,13 +62,13 @@ class TruckRegistrationScene extends Component {
 
   render() {
     let {countries} = this.props;
-    console.log('props', this.props);
     return (
       <DocumentAdd
         onValueChange={this.onValueChange}
         onSavePress={this.onSave}
         countries={countries}
         {...this.state}
+        countryModalTitle={I18n.t('truck_registration_country')}
       />
     );
   }

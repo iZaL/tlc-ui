@@ -2,16 +2,17 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
-import {ACTIONS as APP_ACTIONS} from 'app/common/actions';
 import {SELECTORS as TRUCK_SELECTORS} from 'trucks/common/selectors';
 import {ACTIONS as TRUCK_ACTIONS} from 'trucks/common/actions';
 import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
-import {ScrollView, Text, View} from 'react-native';
+import {View} from 'react-native';
 import I18n from 'utils/locale';
 import Touchable from 'react-native-platform-touchable';
-import FormLabel from '../../components/FormLabel';
-import List from '../../components/List';
-import Separator from '../../components/Separator';
+import FormLabel from 'components/FormLabel';
+import List from 'components/List';
+import Separator from 'components/Separator';
+import {Title} from 'react-native-paper';
+import AppButton from 'components/AppButton';
 
 class TruckModelScene extends Component {
   static propTypes = {
@@ -119,9 +120,7 @@ class TruckModelScene extends Component {
         <Touchable onPress={this.showMakeModal}>
           <View>
             <FormLabel title={I18n.t('truck_make')} />
-            <Text style={{paddingTop: 10, fontSize: 18}}>
-              {make_id ? truck.model.make.name : I18n.t('select')}
-            </Text>
+            <Title>{make_id ? truck.model.make.name : I18n.t('select')}</Title>
           </View>
         </Touchable>
 
@@ -130,11 +129,14 @@ class TruckModelScene extends Component {
         <Touchable onPress={this.showModelModal} disabled={!make_id}>
           <View>
             <FormLabel title={I18n.t('truck_model')} />
-            <Text style={{paddingTop: 10, fontSize: 18}}>
-              {model_id ? truck.model.name : I18n.t('select')}
-            </Text>
+
+            <Title>{model_id ? truck.model.name : I18n.t('select')}</Title>
           </View>
         </Touchable>
+
+        <Separator style={{marginVertical: 20}} />
+
+        <AppButton onPress={this.onSave} />
 
         <List
           title={I18n.t('truck_make')}

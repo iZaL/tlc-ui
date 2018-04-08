@@ -8,7 +8,7 @@ import I18n from 'utils/locale';
 
 export default class Dropdown extends PureComponent {
   static propTypes = {
-    onClose: PropTypes.func.isRequired,
+    onClose: PropTypes.func,
     onItemPress: PropTypes.func.isRequired,
     // selectedValue: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     items: PropTypes.array.isRequired,
@@ -20,9 +20,10 @@ export default class Dropdown extends PureComponent {
 
     return (
       <View style={styles.container}>
-        {Platform.OS === 'ios' && (
-          <Text onPress={() => onClose(false, field)}>{I18n.t('close')}</Text>
-        )}
+        {Platform.OS === 'ios' &&
+          onClose && (
+            <Text onPress={() => onClose(false, field)}>{I18n.t('close')}</Text>
+          )}
 
         <Picker
           selectedValue={selectedValue}

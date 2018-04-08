@@ -3,6 +3,7 @@ import {StyleSheet, Text, TouchableHighlight} from 'react-native';
 import PropTypes from 'prop-types';
 import colors from 'assets/theme/colors';
 import Touchable from 'react-native-platform-touchable';
+import I18n from 'utils/locale';
 
 export default class Button extends Component {
   shouldComponentUpdate(nextProps) {
