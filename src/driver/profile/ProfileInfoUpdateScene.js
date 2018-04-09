@@ -1,16 +1,11 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {ScrollView} from 'react-native';
-import ListItem from 'components/ListItem';
-import IconFactory from 'components/IconFactory';
 import {SELECTORS as USER_SELECTORS} from 'guest/common/selectors';
-import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
 import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
-import Separator from 'components/Separator';
 import I18n from 'utils/locale';
 import FormTextInput from 'components/FormTextInput';
 import {Button} from 'react-native-paper';
-import {Avatar} from 'react-native-elements';
 import DocumentUpload from 'components/DocumentUpload';
 
 class ProfileInfoUpdateScene extends Component {

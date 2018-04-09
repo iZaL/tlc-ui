@@ -207,34 +207,37 @@
 			remoteGlobalIDString = 9936F32F1F5F2E5B0010BF04;
 			remoteInfo = "privatedata-tvOS";
 		};
+<<<<<<< ours
 		35CC1BE4201447E000577FF0 /* PBXContainerItemProxy */ = {
-            isa = PBXContainerItemProxy;
-            containerPortal = CC6C37DF7C9E47FDBA7A3936 /* RNI18n.xcodeproj */;
-            proxyType = 2;
-            remoteGlobalIDString = 134814201AA4EA6300B7C361;
-            remoteInfo = RNI18n;
-        };
-        35CC1BE6201447E000577FF0 /* PBXContainerItemProxy */ = {
-            isa = PBXContainerItemProxy;
-            containerPortal = CC6C37DF7C9E47FDBA7A3936 /* RNI18n.xcodeproj */;
-            proxyType = 2;
-            remoteGlobalIDString = 6476C4051EEAA69700B10F51;
-            remoteInfo = "RNI18n-tvOS";
-        };
-        35CC1BE9201447E000577FF0 /* PBXContainerItemProxy */ = {
-            isa = PBXContainerItemProxy;
-            containerPortal = 22116D20003B46FCB4BDAFB8 /* RNImagePicker.xcodeproj */;
-            proxyType = 2;
-            remoteGlobalIDString = 014A3B5C1C6CF33500B6D375;
-            remoteInfo = RNImagePicker;
-        };
-        35CC1BEC201447E000577FF0 /* PBXContainerItemProxy */ = {
-            isa = PBXContainerItemProxy;
-            containerPortal = E7A477DD73F24C58B8A82E0B /* RNVectorIcons.xcodeproj */;
-            proxyType = 2;
-            remoteGlobalIDString = 5DBEB1501B18CEA900B34395;
-            remoteInfo = RNVectorIcons;
-        };
+			isa = PBXContainerItemProxy;
+			containerPortal = CC6C37DF7C9E47FDBA7A3936 /* RNI18n.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RNI18n;
+		};
+		35CC1BE6201447E000577FF0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CC6C37DF7C9E47FDBA7A3936 /* RNI18n.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6476C4051EEAA69700B10F51;
+			remoteInfo = "RNI18n-tvOS";
+		};
+		35CC1BE9201447E000577FF0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 22116D20003B46FCB4BDAFB8 /* RNImagePicker.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 014A3B5C1C6CF33500B6D375;
+			remoteInfo = RNImagePicker;
+		};
+		35CC1BEC201447E000577FF0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E7A477DD73F24C58B8A82E0B /* RNVectorIcons.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5DBEB1501B18CEA900B34395;
+			remoteInfo = RNVectorIcons;
+		};
+=======
+>>>>>>> theirs
 		3DAD3E831DF850E9000B6D8A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 00C302BB1ABCB91800DB3ED1 /* RCTImage.xcodeproj */;
@@ -566,13 +569,27 @@
 			isa = PBXGroup;
 			children = (
 				146834041AC3E56700842450 /* libReact.a */,
+<<<<<<< ours
+				35CC1BD1201447E000577FF0 /* libReact.a */,
+=======
 				3DAD3EA31DF850E9000B6D8A /* libReact.a */,
+>>>>>>> theirs
 				3DAD3EA51DF850E9000B6D8A /* libyoga.a */,
 				3DAD3EA71DF850E9000B6D8A /* libyoga.a */,
 				3DAD3EA91DF850E9000B6D8A /* libcxxreact.a */,
 				3DAD3EAB1DF850E9000B6D8A /* libcxxreact.a */,
 				3DAD3EAD1DF850E9000B6D8A /* libjschelpers.a */,
 				3DAD3EAF1DF850E9000B6D8A /* libjschelpers.a */,
+<<<<<<< ours
+				35CC1BD3201447E000577FF0 /* libjsinspector.a */,
+				35CC1BD5201447E000577FF0 /* libjsinspector-tvOS.a */,
+				35CC1BD7201447E000577FF0 /* libthird-party.a */,
+				35CC1BD9201447E000577FF0 /* libthird-party.a */,
+				35CC1BDB201447E000577FF0 /* libdouble-conversion.a */,
+				35CC1BDD201447E000577FF0 /* libdouble-conversion.a */,
+				35CC1BDF201447E000577FF0 /* libprivatedata.a */,
+				35CC1BE1201447E000577FF0 /* libprivatedata-tvOS.a */,
+=======
 				2DF0FFDF2056DD460020B375 /* libjsinspector.a */,
 				2DF0FFE12056DD460020B375 /* libjsinspector-tvOS.a */,
 				2DF0FFE32056DD460020B375 /* libthird-party.a */,
@@ -581,6 +598,7 @@
 				2DF0FFE92056DD460020B375 /* libdouble-conversion.a */,
 				2DF0FFEB2056DD460020B375 /* libprivatedata.a */,
 				2DF0FFED2056DD460020B375 /* libprivatedata-tvOS.a */,
+>>>>>>> theirs
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1029,6 +1047,7 @@
 			remoteRef = 2D16E6851FA4F8DC00B85C8A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+<<<<<<< ours
 		351B19C020144D5900F2F809 /* libRCTPushNotification.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1146,8 +1165,7 @@
 			fileType = archive.ar;
 			path = libRNVectorIcons.a;
 			remoteRef = 35CC1BEC201447E000577FF0 /* PBXContainerItemProxy */;
-            sourceTree = BUILT_PRODUCTS_DIR;
-        };
+=======
 		2DF0FFDF2056DD460020B375 /* libjsinspector.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1202,6 +1220,7 @@
 			fileType = archive.ar;
 			path = "libprivatedata-tvOS.a";
 			remoteRef = 2DF0FFEC2056DD460020B375 /* PBXContainerItemProxy */;
+>>>>>>> theirs
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		3DAD3E841DF850E9000B6D8A /* libRCTImage-tvOS.a */ = {
@@ -1246,6 +1265,8 @@
 			remoteRef = 3DAD3E981DF850E9000B6D8A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+<<<<<<< ours
+=======
 		3DAD3EA31DF850E9000B6D8A /* libReact.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1253,6 +1274,7 @@
 			remoteRef = 3DAD3EA21DF850E9000B6D8A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+>>>>>>> theirs
 		3DAD3EA51DF850E9000B6D8A /* libyoga.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1713,11 +1735,14 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "tlc-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+<<<<<<< ours
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+=======
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
 				);
+>>>>>>> theirs
 				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.tlc-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
@@ -1739,11 +1764,14 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "tlc-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+<<<<<<< ours
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+=======
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
 				);
+>>>>>>> theirs
 				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.tlc-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
