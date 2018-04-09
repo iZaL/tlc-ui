@@ -2,10 +2,10 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {View} from 'react-native';
 import {connect} from 'react-redux';
-import {FAB} from "react-native-paper";
+import {FAB} from 'react-native-paper';
 import I18n from 'utils/locale';
-import DocumentList from "../../components/DocumentList";
-import colors from "../../assets/theme/colors";
+import DocumentList from '../../components/DocumentList';
+import colors from '../../assets/theme/colors';
 
 class SecurityPassListScene extends Component {
   static propTypes = {
@@ -17,13 +17,13 @@ class SecurityPassListScene extends Component {
   static defaultProps = {
     trailer: {
       make: {},
-      type: {}
+      type: {},
     },
   };
 
   onAddPress = () => {
     let sceneConfig = {
-      title:I18n.t('gate_passes_add'),
+      title: I18n.t('gate_passes_add'),
       type: I18n.t('add'),
     };
 
@@ -41,7 +41,7 @@ class SecurityPassListScene extends Component {
     };
 
     let sceneConfig = {
-      title:I18n.t('security_passes_edit'),
+      title: I18n.t('security_passes_edit'),
       type: I18n.t('edit'),
       ...payload,
     };
@@ -77,7 +77,7 @@ class SecurityPassListScene extends Component {
 
 function mapStateToProps(state) {
   return {
-    gate_passes:[]
+    gate_passes: [],
   };
 }
 

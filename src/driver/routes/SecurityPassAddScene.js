@@ -21,9 +21,9 @@ class SecurityPassAddScene extends Component {
   static navigationOptions = ({navigation}) => {
     return {
       title:
-      (navigation.state.params &&
-        `${navigation.state.params.title} ${navigation.state.params.type}`) ||
-      '',
+        (navigation.state.params &&
+          `${navigation.state.params.title} ${navigation.state.params.type}`) ||
+        '',
     };
   };
 
@@ -70,7 +70,7 @@ class SecurityPassAddScene extends Component {
 function mapStateToProps(state) {
   return {
     countries: COUNTRY_SELECTORS.getCountries(state),
-    gate_passes:[]
+    gate_passes: [],
   };
 }
 

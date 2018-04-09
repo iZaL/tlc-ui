@@ -34,7 +34,6 @@ function fetchTrailerTypes() {
   };
 }
 
-
 function fetchTrailers() {
   return {
     type: ACTION_TYPES.FETCH_TRAILERS_REQUEST,

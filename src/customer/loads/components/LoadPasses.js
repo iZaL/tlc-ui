@@ -36,7 +36,10 @@ export default class LoadWhat extends Component {
     let {items, security_passes} = this.props;
     return (
       <View>
-        <FormLabel title={I18n.t('load_security_passes')} style={{marginBottom: 10}} />
+        <FormLabel
+          title={I18n.t('load_security_passes')}
+          style={{marginBottom: 10}}
+        />
 
         <FlatList
           data={items}

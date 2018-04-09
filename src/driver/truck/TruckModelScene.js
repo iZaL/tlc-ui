@@ -37,7 +37,6 @@ class TruckModelScene extends Component {
     showModelModal: false,
   };
 
-
   static getDerivedStateFromProps(nextProps, prevState) {
     let {model} = nextProps.navigation.state.params.truck;
     return {
@@ -50,7 +49,6 @@ class TruckModelScene extends Component {
     this.props.dispatch(DRIVER_ACTIONS.fetchProfile());
     this.props.dispatch(TRUCK_ACTIONS.fetchTruckMakesModels());
   }
-
 
   onValueChange = (field, value) => {
     this.setState({

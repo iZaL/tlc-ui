@@ -6,7 +6,7 @@ import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
 import {ScrollView} from 'react-native';
 import Separator from 'components/Separator';
 import ListItem from 'components/ListItem';
-import {ACTIONS as TRUCK_ACTIONS} from "trucks/common/actions";
+import {ACTIONS as TRUCK_ACTIONS} from 'trucks/common/actions';
 
 class TruckUpdateScene extends Component {
   static propTypes = {
@@ -23,7 +23,7 @@ class TruckUpdateScene extends Component {
 
   componentDidMount() {
     this.props.dispatch(DRIVER_ACTIONS.fetchProfile());
-   }
+  }
 
   loadTruckRegistrationScene = () => {
     this.props.navigation.navigate('TruckRegistration');

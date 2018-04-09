@@ -9,15 +9,15 @@ import {ACTIONS as TRUCK_ACTIONS} from 'trucks/common/actions';
 import Separator from 'components/Separator';
 import ListItem from 'components/ListItem';
 import Touchable from 'react-native-platform-touchable';
-import FormLabel from "components/FormLabel";
-import {Title} from "react-native-paper";
+import FormLabel from 'components/FormLabel';
+import {Title} from 'react-native-paper';
 import I18n from 'utils/locale';
-import AppButton from "components/AppButton";
-import List from "components/List";
-import ListModal from "../../components/ListModal";
-import Dropdown from "../../components/Dropdown";
-import DocumentUpload from "../../components/DocumentUpload";
-import FormTextInput from "../../components/FormTextInput";
+import AppButton from 'components/AppButton';
+import List from 'components/List';
+import ListModal from '../../components/ListModal';
+import Dropdown from '../../components/Dropdown';
+import DocumentUpload from '../../components/DocumentUpload';
+import FormTextInput from '../../components/FormTextInput';
 
 class TrailerUpdateScene extends Component {
   static propTypes = {
@@ -29,7 +29,7 @@ class TrailerUpdateScene extends Component {
   static defaultProps = {
     trailer: {
       make: {},
-      type: {}
+      type: {},
     },
   };
 
@@ -49,7 +49,17 @@ class TrailerUpdateScene extends Component {
   };
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    let {type, make, image, year, max_weight, length, width, height, axles} = nextProps.trailer;
+    let {
+      type,
+      make,
+      image,
+      year,
+      max_weight,
+      length,
+      width,
+      height,
+      axles,
+    } = nextProps.trailer;
     return {
       make_id: make.id,
       type_id: type.id,
@@ -127,10 +137,22 @@ class TrailerUpdateScene extends Component {
     });
   };
 
-
   render() {
     const {trailer, trailer_types, trailer_makes} = this.props;
-    const {type_id, make_id, image, year, max_weight, length, width, height, axles, showMakeModal, showTypeModal, isYearModalVisible} = this.state;
+    const {
+      type_id,
+      make_id,
+      image,
+      year,
+      max_weight,
+      length,
+      width,
+      height,
+      axles,
+      showMakeModal,
+      showTypeModal,
+      isYearModalVisible,
+    } = this.state;
 
     console.log('state', {...this.state});
 
@@ -143,28 +165,29 @@ class TrailerUpdateScene extends Component {
           paddingTop: 20,
         }}
         contentContainerStyle={{
-          paddingBottom: 30
-        }}
-      >
-
+          paddingBottom: 30,
+        }}>
         <Touchable onPress={this.showMakeModal}>
           <View>
-            <FormLabel title={I18n.t('trailer_make')}/>
-            <Title>{trailer.make.id ? trailer.make.name : I18n.t('select')}</Title>
+            <FormLabel title={I18n.t('trailer_make')} />
+            <Title>
+              {trailer.make.id ? trailer.make.name : I18n.t('select')}
+            </Title>
           </View>
         </Touchable>
 
-        <Separator style={{marginVertical: 15}}/>
+        <Separator style={{marginVertical: 15}} />
 
         <Touchable onPress={this.showTypeModal}>
           <View>
-            <FormLabel title={I18n.t('trailer_type')}/>
-            <Title>{trailer.type.id ? trailer.type.name : I18n.t('select')}</Title>
+            <FormLabel title={I18n.t('trailer_type')} />
+            <Title>
+              {trailer.type.id ? trailer.type.name : I18n.t('select')}
+            </Title>
           </View>
         </Touchable>
 
-
-        <Separator style={{marginTop: 15}}/>
+        <Separator style={{marginTop: 15}} />
 
         <View style={{flexDirection: 'row'}}>
           <FormTextInput
@@ -172,7 +195,7 @@ class TrailerUpdateScene extends Component {
             value={length}
             field="length"
             onValueChange={this.onValueChange}
-            style={{flex:1,marginRight:5}}
+            style={{flex: 1, marginRight: 5}}
           />
 
           <FormTextInput
@@ -180,34 +203,32 @@ class TrailerUpdateScene extends Component {
             value={width}
             field="width"
             onValueChange={this.onValueChange}
-            style={{flex:1}}
+            style={{flex: 1}}
           />
         </View>
 
         <View style={{flexDirection: 'row'}}>
+          <FormTextInput
+            label={I18n.t('height')}
+            value={height}
+            field="height"
+            onValueChange={this.onValueChange}
+            style={{flex: 1, marginRight: 5}}
+          />
 
-        <FormTextInput
-          label={I18n.t('height')}
-          value={height}
-          field="height"
-          onValueChange={this.onValueChange}
-          style={{flex:1,marginRight:5}}
-        />
-
-        <FormTextInput
-          label={I18n.t('max_weight')}
-          value={max_weight}
-          onValueChange={this.onValueChange}
-          field="plate_number"
-          style={{flex:1}}
-        />
+          <FormTextInput
+            label={I18n.t('max_weight')}
+            value={max_weight}
+            onValueChange={this.onValueChange}
+            field="plate_number"
+            style={{flex: 1}}
+          />
         </View>
 
-        <FormLabel title={I18n.t('truck_year')}/>
+        <FormLabel title={I18n.t('truck_year')} />
         <Title onPress={this.showYearModal}>{year || I18n.t('select')}</Title>
 
-
-        <Separator style={{marginVertical: 10}}/>
+        <Separator style={{marginVertical: 10}} />
 
         <Title>{I18n.t('truck_image')}</Title>
         <DocumentUpload
@@ -215,8 +236,7 @@ class TrailerUpdateScene extends Component {
           image={image}
         />
 
-
-        <AppButton onPress={this.onSave}/>
+        <AppButton onPress={this.onSave} />
 
         <List
           title={I18n.t('trailer_type')}
@@ -247,7 +267,6 @@ class TrailerUpdateScene extends Component {
             field="year"
           />
         </ListModal>
-
       </ScrollView>
     );
   }
@@ -257,7 +276,7 @@ function mapStateToProps(state) {
   return {
     trailer: DRIVER_SELECTORS.getTrailer(state),
     trailer_makes: TRUCK_SELECTORS.getTrailerMakes(state),
-    trailer_types: TRUCK_SELECTORS.getTrailerTypes(state)
+    trailer_types: TRUCK_SELECTORS.getTrailerTypes(state),
   };
 }
 

@@ -90,8 +90,8 @@ truckMakesSchema.define({
 });
 
 trailersSchema.define({
-  type:trailerTypesSchema,
-  make:trailerMakesSchema
+  type: trailerTypesSchema,
+  make: trailerMakesSchema,
 });
 
 export const Schema = {

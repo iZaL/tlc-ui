@@ -92,11 +92,11 @@ class RoutesDetailScene extends Component {
         />
 
         {/*<VisaLicenseForm*/}
-          {/*items={countries}*/}
-          {/*onButtonPress={this.saveProfile}*/}
-          {/*country={activeCountry}*/}
-          {/*license={license}*/}
-          {/*visa={visa}*/}
+        {/*items={countries}*/}
+        {/*onButtonPress={this.saveProfile}*/}
+        {/*country={activeCountry}*/}
+        {/*license={license}*/}
+        {/*visa={visa}*/}
         {/*/>*/}
       </ScrollView>
     );

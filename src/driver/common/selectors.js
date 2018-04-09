@@ -23,41 +23,41 @@ const getProfile = createSelector(
     return {
       ...driver,
       nationalities:
-      (driver.nationalities &&
-        driver.nationalities.map(record => {
-          return {
-            ...record,
-            country: countries[record.country],
-          };
-        })) ||
-      [],
+        (driver.nationalities &&
+          driver.nationalities.map(record => {
+            return {
+              ...record,
+              country: countries[record.country],
+            };
+          })) ||
+        [],
       residencies:
-      (driver.residencies &&
-        driver.residencies.map(record => {
-          return {
-            ...record,
-            country: countries[record.country],
-          };
-        })) ||
-      [],
+        (driver.residencies &&
+          driver.residencies.map(record => {
+            return {
+              ...record,
+              country: countries[record.country],
+            };
+          })) ||
+        [],
       visas:
-      (driver.visas &&
-        driver.visas.map(record => {
-          return {
-            ...record,
-            country: countries[record.country],
-          };
-        })) ||
-      [],
+        (driver.visas &&
+          driver.visas.map(record => {
+            return {
+              ...record,
+              country: countries[record.country],
+            };
+          })) ||
+        [],
       licenses:
-      (driver.licenses &&
-        driver.licenses.map(record => {
-          return {
-            ...record,
-            country: countries[record.country],
-          };
-        })) ||
-      [],
+        (driver.licenses &&
+          driver.licenses.map(record => {
+            return {
+              ...record,
+              country: countries[record.country],
+            };
+          })) ||
+        [],
     };
   },
 );
@@ -97,12 +97,12 @@ const getTruck = createSelector(
 
 const getTrailer = createSelector(
   [getTruck, trailersSchema, entities],
-  (truck, trailers, schema) =>  {
+  (truck, trailers, schema) => {
     let trailer = truck.trailer;
-    if(trailer) {
-      return denormalize(truck.trailer.id, Schema.trailers, schema)
+    if (trailer) {
+      return denormalize(truck.trailer.id, Schema.trailers, schema);
     }
-  }
+  },
 );
 
 const getLoadByID = () => {

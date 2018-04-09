@@ -29,7 +29,6 @@ export default class LoadWhat extends Component {
     } = this.props;
     return (
       <View style={styles.container}>
-
         <FormLabel
           title={I18n.t('packaging_select')}
           style={{marginBottom: 5}}
