@@ -1,21 +1,11 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import moment from 'moment';
-import {
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  TextInput,
-  Title,
-} from 'react-native-paper';
+import {Title} from 'react-native-paper';
 import DocumentUpload from '../../components/DocumentUpload';
-import {ScrollView, View} from 'react-native';
-import {SELECTORS as APP_SELECTORS} from 'app/selectors/app';
-import FormTextInput from '../../components/FormTextInput';
+import {View} from 'react-native';
+import FormTextInput from '/components/FormTextInput';
 import I18n from 'utils/locale';
 import Dropdown from 'components/Dropdown';
-import AppModal from 'components/AppModal';
 import FormLabel from 'components/FormLabel';
 import ListModal from 'components/ListModal';
 import Separator from 'components/Separator';

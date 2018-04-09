@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import {Text, TouchableOpacity, View, StyleSheet} from 'react-native';
 import Modal from 'react-native-modal';
-import Button from './Button';
-import colors from '../assets/theme/colors';
+import colors from 'assets/theme/colors';
 
 export default class AppModal extends Component {
   state = {

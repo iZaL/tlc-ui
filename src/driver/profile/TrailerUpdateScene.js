@@ -14,10 +14,10 @@ import {Title} from 'react-native-paper';
 import I18n from 'utils/locale';
 import AppButton from 'components/AppButton';
 import List from 'components/List';
-import ListModal from '../../components/ListModal';
-import Dropdown from '../../components/Dropdown';
-import DocumentUpload from '../../components/DocumentUpload';
-import FormTextInput from '../../components/FormTextInput';
+import ListModal from 'components/ListModal';
+import Dropdown from 'components/Dropdown';
+import DocumentUpload from 'components/DocumentUpload';
+import FormTextInput from 'components/FormTextInput';
 
 class TrailerUpdateScene extends Component {
   static propTypes = {

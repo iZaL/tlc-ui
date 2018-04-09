@@ -16,10 +16,8 @@ import {View} from 'react-native';
 import moment from 'moment';
 import DocumentUpload from 'components/DocumentUpload';
 import List from 'components/List';
-import FormTextInput from 'components/FormTextInput';
 import Touchable from 'react-native-platform-touchable';
 import FormLabel from 'components/FormLabel';
-import Separator from '../../../components/Separator';
 
 export default class SecurityPassAdd extends PureComponent {
   static propTypes = {

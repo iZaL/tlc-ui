@@ -5,7 +5,7 @@ import Touchable from 'react-native-platform-touchable';
 import FormLabel from 'components/FormLabel';
 import FormTextInput from 'components/FormTextInput';
 import I18n from 'utils/locale';
-import Button from '../../../components/Button';
+import Button from 'components/Button';
 export default class LoadWhat extends Component {
   static propTypes = {
     onValueChange: PropTypes.func.isRequired,
