@@ -9,14 +9,13 @@
     "storybook": "storybook start -p 7007"
   },
   "dependencies": {
-    "babel-plugin-module-resolver": "^3.1.0",
     "lodash": "^4.17.5",
     "moment": "^2.21.0",
     "normalizr": "^3.2.4",
     "prop-types": "^15.6.1",
     "qs": "^6.5.1",
-    "react": "^16.3.0-alpha.1",
-    "react-native": "0.54.2",
+    "react": "16.3.1",
+    "react-native": "0.55.2",
     "react-native-background-geolocation": "^2.12.0-beta.1",
     "react-native-code-push": "^5.3.2",
     "react-native-collapsible": "^0.10.0",
@@ -43,22 +42,19 @@
     "socket.io-client": "^2.0.4"
   },
   "devDependencies": {
+    "babel-plugin-module-resolver": "^3.1.0",
     "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
     "babel-jest": "22.4.3",
     "babel-preset-flow": "^6.23.0",
     "babel-preset-react-native": "4.0.0",
     "flow-bin": "^0.68.0",
     "jest": "22.4.3",
     "prettier": "^1.11.1",
+    "react-dom": "^16.3.0-alpha.1",
     "react-test-renderer": "16.2.0",
     "reactotron-react-native": "^1.14.0",
-    "reactotron-redux": "^1.13.0",
-    "@storybook/react-native": "^3.3.15",
-    "@storybook/addon-actions": "^3.3.15",
-    "@storybook/addon-links": "^3.3.15",
-    "@storybook/addons": "^3.3.15",
-    "babel-core": "^6.26.0",
-    "react-dom": "^16.3.0-alpha.1"
+    "reactotron-redux": "^1.13.0"
   },
   "jest": {
     "preset": "react-native"
