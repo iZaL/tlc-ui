@@ -5,4 +5,4 @@ import {sagas as socket} from 'app/sagas/socket';
 
 import {all} from 'redux-saga/effects';
 
-export const sagas = all([app, countries, socket,routes]);
+export const sagas = all([app, countries, socket, routes]);

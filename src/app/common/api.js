@@ -18,5 +18,5 @@ function fetchSecurityPasses(params) {
 export const API = {
   storePushToken,
   fetchCountries,
-  fetchSecurityPasses
+  fetchSecurityPasses,
 };

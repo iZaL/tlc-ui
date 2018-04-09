@@ -35,7 +35,7 @@ driversSchema.define({
   routes: [routesSchema],
   loads: [loadsSchema],
   upcoming_trips: [tripsSchema],
-  security_passes:[{security_pass:securityPassesSchema}]
+  security_passes: [{security_pass: securityPassesSchema}],
 });
 
 customersSchema.define({

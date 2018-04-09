@@ -98,5 +98,5 @@ export const ACTIONS = {
   setLanguage,
   setPushToken,
   fetchCountries,
-  fetchSecurityPasses
+  fetchSecurityPasses,
 };

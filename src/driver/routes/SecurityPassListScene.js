@@ -6,20 +6,20 @@ import {FAB} from 'react-native-paper';
 import I18n from 'utils/locale';
 import DocumentList from 'components/DocumentList';
 import colors from 'assets/theme/colors';
-import {ACTIONS as DRIVER_ACTIONS} from "driver/common/actions";
-import {ACTIONS as APP_ACTIONS} from "app/common/actions";
-import {SELECTORS as DRIVER_SELECTORS} from "driver/common/selectors";
+import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
+import {ACTIONS as APP_ACTIONS} from 'app/common/actions';
+import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
 
 class SecurityPassListScene extends Component {
   static propTypes = {
-    gate_passes: PropTypes.array
+    gate_passes: PropTypes.array,
   };
 
   static defaultProps = {
-    gate_passes:[]
+    gate_passes: [],
   };
 
-  componentDidMount(){
+  componentDidMount() {
     this.props.dispatch(DRIVER_ACTIONS.fetchSecurityPasses());
     // this.props.dispatch(APP_ACTIONS.fetchSecurityPasses());
   }
@@ -41,7 +41,7 @@ class SecurityPassListScene extends Component {
       expiry_date: new Date(expiry_date),
       countryID: pass.country.id,
       image: image,
-      security_pass_id:pass.security_pass
+      security_pass_id: pass.security_pass,
     };
 
     let sceneConfig = {

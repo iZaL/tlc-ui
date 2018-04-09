@@ -141,6 +141,5 @@ export const ACTIONS = {
   fetchLoadDetails,
   fetchLoadsByStatus,
   fetchTripDetails,
-  fetchSecurityPasses
-
+  fetchSecurityPasses,
 };

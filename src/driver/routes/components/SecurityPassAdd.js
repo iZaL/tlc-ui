@@ -5,18 +5,23 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import I18n from 'utils/locale';
-import {Button, Card, CardActions, CardContent, Title} from 'react-native-paper';
+import {
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  Title,
+} from 'react-native-paper';
 import {View} from 'react-native';
 import moment from 'moment';
 import DocumentUpload from 'components/DocumentUpload';
 import List from 'components/List';
 import FormTextInput from 'components/FormTextInput';
 import Touchable from 'react-native-platform-touchable';
-import FormLabel from "components/FormLabel";
-import Separator from "../../../components/Separator";
+import FormLabel from 'components/FormLabel';
+import Separator from '../../../components/Separator';
 
 export default class SecurityPassAdd extends PureComponent {
-
   static propTypes = {
     onSavePress: PropTypes.func.isRequired,
     onDeletePress: PropTypes.func,
@@ -27,8 +32,8 @@ export default class SecurityPassAdd extends PureComponent {
     buttonText: PropTypes.string,
     countries: PropTypes.array.isRequired,
     countryModalTitle: PropTypes.string,
-    security_pass_id:PropTypes.number,
-    securityPass:PropTypes.object
+    security_pass_id: PropTypes.number,
+    securityPass: PropTypes.object,
   };
 
   state = {
@@ -44,10 +49,12 @@ export default class SecurityPassAdd extends PureComponent {
 
   _showDateTimePicker = () => this.setState({isDateTimePickerVisible: true});
   _showCountryModalPicker = () => this.setState({isCountryModalVisible: true});
-  _showSecurityPassModalPicker = () => this.setState({isSecurityPassModalVisible: true});
+  _showSecurityPassModalPicker = () =>
+    this.setState({isSecurityPassModalVisible: true});
   _hideDateTimePicker = () => this.setState({isDateTimePickerVisible: false});
   _hideCountryModal = () => this.setState({isCountryModalVisible: false});
-  _hideSecurityPassModalPicker = () => this.setState({isSecurityPassModalVisible: false});
+  _hideSecurityPassModalPicker = () =>
+    this.setState({isSecurityPassModalVisible: false});
 
   _handleDatePicker = date => {
     this.props.onValueChange('expiry_date', date);
@@ -59,7 +66,7 @@ export default class SecurityPassAdd extends PureComponent {
   };
 
   _handleSecurityPassPicker = id => {
-    this.props.onValueChange('security_pass_id',id);
+    this.props.onValueChange('security_pass_id', id);
   };
 
   render() {
@@ -73,7 +80,7 @@ export default class SecurityPassAdd extends PureComponent {
       onSavePress,
       security_pass_id,
       security_passes,
-      securityPass
+      securityPass,
     } = this.props;
 
     let country = countryID
@@ -95,16 +102,17 @@ export default class SecurityPassAdd extends PureComponent {
             <Touchable onPress={this._showSecurityPassModalPicker}>
               <View>
                 <FormLabel title={I18n.t('security_pass')} />
-                <Title>{security_pass_id ? securityPass.name : I18n.t('select')}</Title>
+                <Title>
+                  {security_pass_id ? securityPass.name : I18n.t('select')}
+                </Title>
               </View>
             </Touchable>
-
           </CardContent>
 
           <DocumentUpload
             onPress={image => onValueChange('image', image)}
             image={image}
-            style={{marginHorizontal: 16,marginTop:10}}
+            style={{marginHorizontal: 16, marginTop: 10}}
           />
 
           <View style={{flexDirection: 'row'}}>

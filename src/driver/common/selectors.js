@@ -307,18 +307,17 @@ const getLicenses = createSelector(
   },
 );
 
-
 const getSecurityPasses = createSelector(
-  [entities,getProfile, countriesSchema,securityPassesSchema],
-  (schema,driver, countries,passes) => {
+  [entities, getProfile, countriesSchema, securityPassesSchema],
+  (schema, driver, countries, passes) => {
     let driverSecurityPasses = driver.security_passes || [];
     return driverSecurityPasses.map(driverPass => {
       let securityPass = passes[driverPass.security_pass];
       return {
         ...securityPass,
         ...driverPass,
-        country:countries[securityPass.country]
-      }
+        country: countries[securityPass.country],
+      };
     });
   },
 );
@@ -367,5 +366,5 @@ export const SELECTORS = {
   getUpcomingTrips,
   getLoadsByStatus,
   getDocumentsByType,
-  getSecurityPasses
+  getSecurityPasses,
 };

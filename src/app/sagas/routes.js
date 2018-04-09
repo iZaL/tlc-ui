@@ -6,7 +6,6 @@ import {normalize} from 'normalizr';
 import {getStorageItem, setStorageItem} from 'utils/functions';
 import {Schema} from 'utils/schema';
 
-
 function* fetchSecurityPasses(action) {
   try {
     const response = yield call(API.fetchSecurityPasses, action.params);
@@ -27,7 +26,4 @@ function* fetchSecurityPassesMonitor() {
   );
 }
 
-
-export const sagas = all([
-  fork(fetchSecurityPassesMonitor),
-]);
+export const sagas = all([fork(fetchSecurityPassesMonitor)]);

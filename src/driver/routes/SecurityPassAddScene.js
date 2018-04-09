@@ -4,9 +4,9 @@ import {SELECTORS as COUNTRY_SELECTORS} from 'app/selectors/country';
 import DocumentAdd from 'components/DocumentAdd';
 import {moment} from 'moment';
 import PropTypes from 'prop-types';
-import SecurityPassAdd from "driver/routes/components/SecurityPassAdd";
-import {ACTIONS as APP_ACTIONS} from "app/common/actions";
-import {SELECTORS as APP_SELECTORS} from "app/selectors/app";
+import SecurityPassAdd from 'driver/routes/components/SecurityPassAdd';
+import {ACTIONS as APP_ACTIONS} from 'app/common/actions';
+import {SELECTORS as APP_SELECTORS} from 'app/selectors/app';
 import I18n from 'utils/locale';
 
 class SecurityPassAddScene extends Component {
@@ -23,15 +23,15 @@ class SecurityPassAddScene extends Component {
   };
 
   componentDidMount() {
-    this.props.dispatch(APP_ACTIONS.fetchSecurityPasses())
+    this.props.dispatch(APP_ACTIONS.fetchSecurityPasses());
   }
 
   static navigationOptions = ({navigation}) => {
     return {
       title:
-      (navigation.state.params &&
-        `${navigation.state.params.title} ${navigation.state.params.type}`) ||
-      '',
+        (navigation.state.params &&
+          `${navigation.state.params.title} ${navigation.state.params.type}`) ||
+        '',
     };
   };
 
@@ -42,14 +42,14 @@ class SecurityPassAddScene extends Component {
       expiry_date,
       countryID,
       image,
-      security_pass_id
+      security_pass_id,
     } = this.props.navigation.state.params;
     this.state = {
       number: number,
       expiry_date: expiry_date,
       countryID: countryID,
       image: image,
-      security_pass_id: security_pass_id
+      security_pass_id: security_pass_id,
     };
   }
 
@@ -58,10 +58,10 @@ class SecurityPassAddScene extends Component {
       [field]: value,
     });
 
-    if(field === 'countryID') {
+    if (field === 'countryID') {
       this.setState({
-        security_pass_id:null
-      })
+        security_pass_id: null,
+      });
     }
   };
 
@@ -74,7 +74,7 @@ class SecurityPassAddScene extends Component {
     let {countryID, security_pass_id} = this.state;
 
     let securityPass = {};
-    if(security_pass_id) {
+    if (security_pass_id) {
       securityPass = security_passes.find(pass => pass.id === security_pass_id);
     }
 
