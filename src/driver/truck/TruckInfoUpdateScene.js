@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Title} from 'react-native-paper';
-import DocumentUpload from '../../components/DocumentUpload';
+import DocumentUpload from 'components/DocumentUpload';
 import {View} from 'react-native';
 import FormTextInput from '/components/FormTextInput';
 import I18n from 'utils/locale';
