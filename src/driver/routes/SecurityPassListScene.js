@@ -26,21 +26,22 @@ class SecurityPassListScene extends Component {
 
   onAddPress = () => {
     let sceneConfig = {
-      title: I18n.t('gate_passes_add'),
+      title: I18n.t('security_passes_add'),
       type: I18n.t('add'),
     };
 
     this.props.navigation.navigate('SecurityPassAdd', sceneConfig);
   };
 
-  onEditPress = (nationality: object) => {
-    let {number, expiry_date, image} = nationality;
+  onEditPress = (pass: object) => {
+    let {number, expiry_date, image} = pass;
 
     let payload = {
       number: number,
       expiry_date: new Date(expiry_date),
-      countryID: nationality.country.id,
+      countryID: pass.country.id,
       image: image,
+      security_pass_id:pass.security_pass
     };
 
     let sceneConfig = {

@@ -10,7 +10,7 @@ import {Schema} from 'utils/schema';
 function* fetchSecurityPasses(action) {
   try {
     const response = yield call(API.fetchSecurityPasses, action.params);
-    const normalized = normalize(response.data, Schema.routes);
+    const normalized = normalize(response.data, [Schema.security_passes]);
     yield put({
       type: ACTION_TYPES.FETCH_SECURITY_PASSES_SUCCESS,
       entities: normalized.entities,

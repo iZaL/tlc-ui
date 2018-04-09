@@ -219,6 +219,7 @@
   "contact_mobile1" : "Contact Mobile Number",
   "contact_mobile2" : "Another Mobile Number to Contact",
 
+  "security_pass" : "Security Pass",
   "security_passes" : "Security Passes",
   "security_passes_add" : "Add Security Pass",
   "security_passes_edit" : "Edit Security Pass",

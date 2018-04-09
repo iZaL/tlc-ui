@@ -82,6 +82,13 @@ function setPushToken(token) {
   };
 }
 
+function fetchSecurityPasses(params) {
+  return {
+    type: ACTION_TYPES.FETCH_SECURITY_PASSES_REQUEST,
+    params,
+  };
+}
+
 export const ACTIONS = {
   boot,
   setCountry,
@@ -91,4 +98,5 @@ export const ACTIONS = {
   setLanguage,
   setPushToken,
   fetchCountries,
+  fetchSecurityPasses
 };
