@@ -13,8 +13,10 @@ import List from 'components/List';
 import FormTextInput from 'components/FormTextInput';
 import Touchable from 'react-native-platform-touchable';
 import FormLabel from "components/FormLabel";
+import Separator from "../../../components/Separator";
 
 export default class SecurityPassAdd extends PureComponent {
+
   static propTypes = {
     onSavePress: PropTypes.func.isRequired,
     onDeletePress: PropTypes.func,
@@ -62,7 +64,6 @@ export default class SecurityPassAdd extends PureComponent {
 
   render() {
     let {
-      number,
       onValueChange,
       expiry_date,
       buttonText,
@@ -70,7 +71,6 @@ export default class SecurityPassAdd extends PureComponent {
       countries,
       countryID,
       onSavePress,
-      countryModalTitle,
       security_pass_id,
       security_passes,
       securityPass
@@ -104,7 +104,7 @@ export default class SecurityPassAdd extends PureComponent {
           <DocumentUpload
             onPress={image => onValueChange('image', image)}
             image={image}
-            style={{marginHorizontal: 16}}
+            style={{marginHorizontal: 16,marginTop:10}}
           />
 
           <View style={{flexDirection: 'row'}}>
@@ -142,7 +142,7 @@ export default class SecurityPassAdd extends PureComponent {
           isVisible={this.state.isCountryModalVisible}
           onConfirm={this._handleCountryPicker}
           onCancel={this._hideCountryModal}
-          title={I18n.t('select')}
+          title={I18n.t('select_country')}
           activeIDs={[countryID]}
         />
 

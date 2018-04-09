@@ -154,8 +154,6 @@ class TrailerUpdateScene extends Component {
       isYearModalVisible,
     } = this.state;
 
-    console.log('state', {...this.state});
-
     return (
       <ScrollView
         style={{

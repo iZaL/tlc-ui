@@ -56,8 +56,6 @@ class SecurityPassListScene extends Component {
   render() {
     let {driver_security_passes} = this.props;
 
-    console.log('pass',driver_security_passes);
-
     return (
       <View style={{flex: 1}}>
         <DocumentList

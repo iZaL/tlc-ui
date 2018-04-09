@@ -66,6 +66,7 @@ export default class RoutesList extends Component {
         {/*</Touchable>*/}
 
         <Switch
+          style={{transform: [{scaleX: 0.8}, {scaleY: 0.8}]}}
           value={item.has_added}
           onValueChange={() => onIconPress(item)}
           color={colors.primary}

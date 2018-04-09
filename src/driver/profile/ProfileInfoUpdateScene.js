@@ -43,8 +43,6 @@ class ProfileInfoUpdateScene extends Component {
 
     let {name, email, mobile, profile, image} = nextProps.user;
 
-    console.log('nextProps', nextProps);
-
     return {
       user: {
         mobile: mobile,

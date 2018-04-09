@@ -80,7 +80,6 @@ class TruckInfoUpdateScene extends Component {
       max_weight,
       isYearModalVisible,
     } = this.state;
-    console.log('state', this.state);
 
     return (
       <View style={{flex: 1, padding: 10, backgroundColor: 'white'}}>

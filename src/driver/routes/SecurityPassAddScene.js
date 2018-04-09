@@ -79,15 +79,10 @@ class SecurityPassAddScene extends Component {
     }
 
     if (countryID) {
-      console.log('wa');
       security_passes = security_passes.filter(pass => {
         return pass.country.id === countryID;
       });
     }
-
-    console.log('state', this.state);
-    console.log('props', this.props);
-    console.log('security_passes', security_passes);
 
     return (
       <SecurityPassAdd
