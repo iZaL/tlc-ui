@@ -15,6 +15,7 @@ const trucksSchema = state => state.entities.trucks;
 const countriesSchema = state => state.entities.countries;
 const loadsSchema = state => state.entities.loads;
 const tripsSchema = state => state.entities.trips;
+const securityPassesSchema = state => state.entities.security_passes;
 const getIdProp = ({}, itemID) => itemID;
 
 const getProfile = createSelector(
@@ -243,7 +244,6 @@ const getUpcomingTrips = createSelector(
   [getProfile, tripsSchema, loadsSchema, countriesSchema, trailersSchema],
   (driver, trips, loads, countries, trailers) => {
     let upcomingTrips = driver.upcoming_trips || [];
-
     const tripByID = getTripByID();
     return (
       upcomingTrips.map(id => {
@@ -271,7 +271,8 @@ const getLoadsByStatus = () => {
 const getResidencies = createSelector(
   [getProfile, countriesSchema],
   (driver, countries) => {
-    return driver.residencies.map(record => {
+    let driverResidencies = driver.residencies || [];
+    return driverResidencies.map(record => {
       return {
         ...record,
         country: countries[record.country],
@@ -283,7 +284,8 @@ const getResidencies = createSelector(
 const getNationalities = createSelector(
   [getProfile, countriesSchema],
   (driver, countries) => {
-    return driver.nationalities.map(record => {
+    let driverNationalities = driver.nationalities || [];
+    return driverNationalities.map(record => {
       return {
         ...record,
         country: countries[record.country],
@@ -295,7 +297,8 @@ const getNationalities = createSelector(
 const getLicenses = createSelector(
   [getProfile, countriesSchema],
   (driver, countries) => {
-    return driver.licenses.map(record => {
+    let driverLicenses = driver.licenses || [];
+    return driverLicenses.map(record => {
       return {
         ...record,
         country: countries[record.country],
@@ -304,10 +307,27 @@ const getLicenses = createSelector(
   },
 );
 
+
+const getSecurityPasses = createSelector(
+  [entities,getProfile, countriesSchema,securityPassesSchema],
+  (schema,driver, countries,passes) => {
+    let driverSecurityPasses = driver.security_passes || [];
+    return driverSecurityPasses.map(driverPass => {
+      let securityPass = passes[driverPass.security_pass];
+      return {
+        ...securityPass,
+        ...driverPass,
+        country:countries[securityPass.country]
+      }
+    });
+  },
+);
+
 const getVisas = createSelector(
   [getProfile, countriesSchema],
   (driver, countries) => {
-    return driver.visas.map(record => {
+    let driverVisas = driver.visas || [];
+    return driverVisas.map(record => {
       return {
         ...record,
         country: countries[record.country],
@@ -320,7 +340,8 @@ const getDocumentsByType = () => {
   return createSelector(
     [getProfile, countriesSchema, getIdProp],
     (driver, countries, type) => {
-      return driver[type].map(record => {
+      let driverDocuments = driver[type] || [];
+      return driverDocuments.map(record => {
         return {
           ...record,
         };
@@ -346,4 +367,5 @@ export const SELECTORS = {
   getUpcomingTrips,
   getLoadsByStatus,
   getDocumentsByType,
+  getSecurityPasses
 };

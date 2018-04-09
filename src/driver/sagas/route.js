@@ -61,6 +61,19 @@ function* fetchRouteTransits(action) {
   }
 }
 
+function* fetchSecurityPasses(action) {
+  try {
+    const response = yield call(API.fetchSecurityPasses, action.params);
+    const normalized = normalize(response.data, Schema.routes);
+    yield put({
+      type: ACTION_TYPES.FETCH_SECURITY_PASSES_SUCCESS,
+      entities: normalized.entities,
+    });
+  } catch (error) {
+    yield put({type: ACTION_TYPES.FETCH_SECURITY_PASSES_FAILURE, error});
+  }
+}
+
 function* saveRouteMonitor() {
   yield takeLatest(ACTION_TYPES.SAVE_ROUTE_REQUEST, saveRoute);
 }
@@ -76,12 +89,20 @@ function* fetchRouteTransitsMonitor() {
   );
 }
 
+function* fetchSecurityPassesMonitor() {
+  yield takeLatest(
+    ACTION_TYPES.FETCH_SECURITY_PASSES_REQUEST,
+    fetchSecurityPasses,
+  );
+}
+
 // function* syncRouteMonitor() {
 //   yield takeLatest(ACTION_TYPES.SYNC_ROUTE_REQUEST, syncRoute);
 // }
 
 export const sagas = all([
   fork(fetchRoutesMonitor),
+  fork(fetchSecurityPassesMonitor),
   fork(saveRouteMonitor),
   fork(fetchRouteTransitsMonitor),
 ]);

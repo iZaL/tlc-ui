@@ -43,6 +43,10 @@ export const ACTION_TYPES = {
   FETCH_LOADS_BY_STATUS_SUCCESS: '@driver/FETCH_LOADS_BY_STATUS_SUCCESS',
   FETCH_LOADS_BY_STATUS_FAILURE: '@driver/FETCH_LOADS_BY_STATUS_FAILURE',
 
+  FETCH_SECURITY_PASSES_REQUEST: '@driver/FETCH_SECURITY_PASSES_REQUEST',
+  FETCH_SECURITY_PASSES_SUCCESS: '@driver/FETCH_SECURITY_PASSES_SUCCESS',
+  FETCH_SECURITY_PASSES_FAILURE: '@driver/FETCH_SECURITY_PASSES_FAILURE',
+
   FETCH_TRIP_DETAILS_REQUEST: '@driver/FETCH_TRIP_DETAILS_REQUEST',
   FETCH_TRIP_DETAILS_SUCCESS: '@driver/FETCH_TRIP_DETAILS_SUCCESS',
   FETCH_TRIP_DETAILS_FAILURE: '@driver/FETCH_TRIP_DETAILS_FAILURE',
@@ -65,6 +69,13 @@ function fetchRoutes(params) {
 function fetchUpcomingTrips(params) {
   return {
     type: ACTION_TYPES.FETCH_UPCOMING_TRIPS_REQUEST,
+    params,
+  };
+}
+
+function fetchSecurityPasses(params) {
+  return {
+    type: ACTION_TYPES.FETCH_SECURITY_PASSES_REQUEST,
     params,
   };
 }
@@ -130,4 +141,6 @@ export const ACTIONS = {
   fetchLoadDetails,
   fetchLoadsByStatus,
   fetchTripDetails,
+  fetchSecurityPasses
+
 };

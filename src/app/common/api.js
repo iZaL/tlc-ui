@@ -10,7 +10,13 @@ function fetchCountries(params = '') {
   return fetchAPI(url);
 }
 
+function fetchSecurityPasses(params) {
+  const url = `security_passes`;
+  return fetchAPI(url);
+}
+
 export const API = {
   storePushToken,
   fetchCountries,
+  fetchSecurityPasses
 };

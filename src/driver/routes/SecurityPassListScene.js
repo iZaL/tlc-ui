@@ -4,22 +4,25 @@ import {View} from 'react-native';
 import {connect} from 'react-redux';
 import {FAB} from 'react-native-paper';
 import I18n from 'utils/locale';
-import DocumentList from '../../components/DocumentList';
-import colors from '../../assets/theme/colors';
+import DocumentList from 'components/DocumentList';
+import colors from 'assets/theme/colors';
+import {ACTIONS as DRIVER_ACTIONS} from "driver/common/actions";
+import {ACTIONS as APP_ACTIONS} from "app/common/actions";
+import {SELECTORS as DRIVER_SELECTORS} from "driver/common/selectors";
 
 class SecurityPassListScene extends Component {
   static propTypes = {
-    truck: PropTypes.shape({
-      model: PropTypes.object.isRequired,
-    }),
+    gate_passes: PropTypes.array
   };
 
   static defaultProps = {
-    trailer: {
-      make: {},
-      type: {},
-    },
+    gate_passes:[]
   };
+
+  componentDidMount(){
+    this.props.dispatch(DRIVER_ACTIONS.fetchSecurityPasses());
+    // this.props.dispatch(APP_ACTIONS.fetchSecurityPasses());
+  }
 
   onAddPress = () => {
     let sceneConfig = {
@@ -50,12 +53,14 @@ class SecurityPassListScene extends Component {
   };
 
   render() {
-    let {gate_passes} = this.props;
+    let {driver_security_passes} = this.props;
+
+    console.log('pass',driver_security_passes);
 
     return (
       <View style={{flex: 1}}>
         <DocumentList
-          items={gate_passes}
+          items={driver_security_passes}
           onEditPress={this.onEditPress}
           onDeletePress={this.onDeletePress}
         />
@@ -77,7 +82,8 @@ class SecurityPassListScene extends Component {
 
 function mapStateToProps(state) {
   return {
-    gate_passes: [],
+    driver_security_passes: DRIVER_SELECTORS.getSecurityPasses(state),
+    // security_passes: APP_SELECTORS.getSecurityPasses(state),
   };
 }
 

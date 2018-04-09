@@ -50,6 +50,11 @@ function fetchLoadsByStatus(status) {
   return fetchAPI(url);
 }
 
+function fetchSecurityPasses(params) {
+  const url = `driver/security_passes`;
+  return fetchAPI(url);
+}
+
 export const API = {
   saveProfile,
   fetchProfile,
@@ -57,6 +62,7 @@ export const API = {
   saveRoute,
   saveTruck,
   fetchRouteTransits,
+  fetchSecurityPasses,
   fetchUpcomingTrips,
   fetchTripDetails,
   fetchLoadDetails,
