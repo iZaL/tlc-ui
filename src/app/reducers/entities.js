@@ -16,7 +16,7 @@ export function reducer(
     customer_locations: {},
     trips: {},
     packaging: {},
-    passes: {},
+    security_passes: {},
   },
   action = {},
 ) {

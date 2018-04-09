@@ -14,6 +14,10 @@ import {Title} from "react-native-paper";
 import I18n from 'utils/locale';
 import AppButton from "components/AppButton";
 import List from "components/List";
+import ListModal from "../../components/ListModal";
+import Dropdown from "../../components/Dropdown";
+import DocumentUpload from "../../components/DocumentUpload";
+import FormTextInput from "../../components/FormTextInput";
 
 class TrailerUpdateScene extends Component {
   static propTypes = {
@@ -24,8 +28,8 @@ class TrailerUpdateScene extends Component {
 
   static defaultProps = {
     trailer: {
-      make:{},
-      type:{}
+      make: {},
+      type: {}
     },
   };
 
@@ -34,13 +38,28 @@ class TrailerUpdateScene extends Component {
     type_id: null,
     showMakeModal: false,
     showTypeModal: false,
+    isYearModalVisible: false,
+    image: null,
+    year: null,
+    max_weight: null,
+    length: null,
+    width: null,
+    height: null,
+    axles: null,
   };
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    let {type,make} = nextProps.trailer;
+    let {type, make, image, year, max_weight, length, width, height, axles} = nextProps.trailer;
     return {
       make_id: make.id,
       type_id: type.id,
+      image: image,
+      year: year,
+      max_weight: max_weight,
+      length: length,
+      width: width,
+      height: height,
+      axles: axles,
     };
   }
 
@@ -90,12 +109,30 @@ class TrailerUpdateScene extends Component {
     console.log('save');
   };
 
-  render() {
-    const {trailer,trailer_types,trailer_makes} = this.props;
-    const {type_id,make_id,showMakeModal,showTypeModal} = this.state;
+  onValueChange = (field, value) => {
+    this.setState({
+      [field]: value,
+    });
+  };
 
-    console.log('trailer_types',trailer_types);
-    console.log('trailer_makes',trailer_makes);
+  hideYearModal = () => {
+    this.setState({
+      isYearModalVisible: false,
+    });
+  };
+
+  showYearModal = () => {
+    this.setState({
+      isYearModalVisible: true,
+    });
+  };
+
+
+  render() {
+    const {trailer, trailer_types, trailer_makes} = this.props;
+    const {type_id, make_id, image, year, max_weight, length, width, height, axles, showMakeModal, showTypeModal, isYearModalVisible} = this.state;
+
+    console.log('state', {...this.state});
 
     return (
       <ScrollView
@@ -104,27 +141,82 @@ class TrailerUpdateScene extends Component {
           backgroundColor: 'white',
           padding: 10,
           paddingTop: 20,
-        }}>
-
-        <Touchable onPress={this.showTypeModal}>
-          <View>
-            <FormLabel title={I18n.t('trailer_type')} />
-            <Title>{trailer.type.id ? trailer.type.name : I18n.t('select')}</Title>
-          </View>
-        </Touchable>
-
-        <Separator style={{marginVertical: 20}} />
+        }}
+        contentContainerStyle={{
+          paddingBottom: 30
+        }}
+      >
 
         <Touchable onPress={this.showMakeModal}>
           <View>
-            <FormLabel title={I18n.t('trailer_make')} />
+            <FormLabel title={I18n.t('trailer_make')}/>
             <Title>{trailer.make.id ? trailer.make.name : I18n.t('select')}</Title>
           </View>
         </Touchable>
 
-        <Separator style={{marginVertical: 20}} />
+        <Separator style={{marginVertical: 15}}/>
 
-        <AppButton onPress={this.onSave} />
+        <Touchable onPress={this.showTypeModal}>
+          <View>
+            <FormLabel title={I18n.t('trailer_type')}/>
+            <Title>{trailer.type.id ? trailer.type.name : I18n.t('select')}</Title>
+          </View>
+        </Touchable>
+
+
+        <Separator style={{marginTop: 15}}/>
+
+        <View style={{flexDirection: 'row'}}>
+          <FormTextInput
+            label={I18n.t('length')}
+            value={length}
+            field="length"
+            onValueChange={this.onValueChange}
+            style={{flex:1,marginRight:5}}
+          />
+
+          <FormTextInput
+            label={I18n.t('width')}
+            value={width}
+            field="width"
+            onValueChange={this.onValueChange}
+            style={{flex:1}}
+          />
+        </View>
+
+        <View style={{flexDirection: 'row'}}>
+
+        <FormTextInput
+          label={I18n.t('height')}
+          value={height}
+          field="height"
+          onValueChange={this.onValueChange}
+          style={{flex:1,marginRight:5}}
+        />
+
+        <FormTextInput
+          label={I18n.t('max_weight')}
+          value={max_weight}
+          onValueChange={this.onValueChange}
+          field="plate_number"
+          style={{flex:1}}
+        />
+        </View>
+
+        <FormLabel title={I18n.t('truck_year')}/>
+        <Title onPress={this.showYearModal}>{year || I18n.t('select')}</Title>
+
+
+        <Separator style={{marginVertical: 10}}/>
+
+        <Title>{I18n.t('truck_image')}</Title>
+        <DocumentUpload
+          onPress={image => this.onValueChange('image', image)}
+          image={image}
+        />
+
+
+        <AppButton onPress={this.onSave}/>
 
         <List
           title={I18n.t('trailer_type')}
@@ -144,6 +236,18 @@ class TrailerUpdateScene extends Component {
           items={trailer_makes}
         />
 
+        <ListModal
+          isVisible={isYearModalVisible}
+          onCancel={this.hideYearModal}
+          title={I18n.t('truck_year')}>
+          <Dropdown
+            items={['1905', '1906', '2001', '2002', '2003', '2004']}
+            selectedValue={year}
+            onItemPress={this.onValueChange}
+            field="year"
+          />
+        </ListModal>
+
       </ScrollView>
     );
   }
@@ -152,8 +256,8 @@ class TrailerUpdateScene extends Component {
 function mapStateToProps(state) {
   return {
     trailer: DRIVER_SELECTORS.getTrailer(state),
-    trailer_makes:TRUCK_SELECTORS.getTrailerMakes(state),
-    trailer_types:TRUCK_SELECTORS.getTrailerTypes(state)
+    trailer_makes: TRUCK_SELECTORS.getTrailerMakes(state),
+    trailer_types: TRUCK_SELECTORS.getTrailerTypes(state)
   };
 }
 

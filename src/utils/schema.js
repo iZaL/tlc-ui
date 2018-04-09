@@ -15,7 +15,7 @@ const tripsSchema = new schema.Entity('trips');
 const driversSchema = new schema.Entity('drivers');
 const customerLocationsSchema = new schema.Entity('customer_locations');
 const packagingSchema = new schema.Entity('packaging');
-const passesSchema = new schema.Entity('passes');
+const securityPassesSchema = new schema.Entity('security_passes');
 
 const profileSchema = new schema.Union(
   {
@@ -81,7 +81,7 @@ tripsSchema.define({
   driver: driversSchema,
 });
 
-passesSchema.define({
+securityPassesSchema.define({
   country: countriesSchema,
 });
 
@@ -108,6 +108,6 @@ export const Schema = {
   loads: loadsSchema,
   trips: tripsSchema,
   packaging: packagingSchema,
-  passes: passesSchema,
+  security_passes: securityPassesSchema,
   customer_locations: customerLocationsSchema,
 };

@@ -80,10 +80,11 @@ class TruckUpdateScene extends Component {
 
         <ListItem
           onItemPress={this.loadTrailerUpdateScene}
-          name="trailer_update"
+          name="trailer_details"
           arrow={true}
         />
-        {/*<Separator style={{marginVertical: 10}} />*/}
+
+        <Separator style={{marginVertical: 10}} />
 
         {/*<ListItem*/}
         {/*onItemPress={this.onProfileInfoPress}*/}

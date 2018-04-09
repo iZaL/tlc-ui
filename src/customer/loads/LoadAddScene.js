@@ -51,7 +51,7 @@ class LoadAddScene extends Component {
     receiver_email: 'abcd@test.com',
     receiver_mobile: '00966989382332',
     receiver_phone: '00966989382332',
-    passes: [],
+    security_passes: [],
     showPackageDimsSelectionModal: false,
     showTrailerQuantitySelectionModal: false,
   };
@@ -74,9 +74,9 @@ class LoadAddScene extends Component {
 
   updatePasses = id => {
     this.setState({
-      passes: this.state.passes.includes(id)
-        ? this.state.passes.filter(value => value !== id)
-        : this.state.passes.concat(id),
+      security_passes: this.state.security_passes.includes(id)
+        ? this.state.security_passes.filter(value => value !== id)
+        : this.state.security_passes.concat(id),
     });
   };
 
@@ -122,7 +122,7 @@ class LoadAddScene extends Component {
       weight,
       request_documents,
       use_own_truck,
-      passes,
+      security_passes,
       receiver_email,
       receiver_mobile,
       receiver_phone,
@@ -135,7 +135,7 @@ class LoadAddScene extends Component {
       packaging_dimension,
     } = this.state;
 
-    let {trailers, packaging, gatePasses, locations} = this.props;
+    let {trailers, packaging, securityPasses, locations} = this.props;
 
     return (
       <ScrollView style={{flex: 1}}>
@@ -215,8 +215,8 @@ class LoadAddScene extends Component {
 
             <TabPanel>
               <LoadPasses
-                items={gatePasses}
-                passes={passes}
+                items={securityPasses}
+                security_passes={security_passes}
                 onSearch={this.onLoadPassSearch}
                 onValueChange={this.updatePasses}
               />
@@ -241,7 +241,7 @@ function mapStateToProps(state) {
   return {
     trailers: TRUCK_SELECTORS.getTrailers(state),
     packaging: TRUCK_SELECTORS.getPackaging(state),
-    gatePasses: TRUCK_SELECTORS.getPasses(state),
+    securityPasses: TRUCK_SELECTORS.getSecurityPasses(state),
     locations: CUSTOMER_SELECTORS.getLocations(state),
   };
 }

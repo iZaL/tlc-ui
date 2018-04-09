@@ -91,13 +91,13 @@ class RoutesDetailScene extends Component {
           onItemPress={this.onTransitTabItemPress}
         />
 
-        <VisaLicenseForm
-          items={countries}
-          onButtonPress={this.saveProfile}
-          country={activeCountry}
-          license={license}
-          visa={visa}
-        />
+        {/*<VisaLicenseForm*/}
+          {/*items={countries}*/}
+          {/*onButtonPress={this.saveProfile}*/}
+          {/*country={activeCountry}*/}
+          {/*license={license}*/}
+          {/*visa={visa}*/}
+        {/*/>*/}
       </ScrollView>
     );
   }

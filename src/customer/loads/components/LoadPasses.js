@@ -13,11 +13,11 @@ export default class LoadWhat extends Component {
   static propTypes = {
     onSearch: PropTypes.func.isRequired,
     items: PropTypes.array.isRequired,
-    passes: PropTypes.array.isRequired,
+    security_passes: PropTypes.array.isRequired,
   };
 
   renderRow = ({item}) => {
-    let {onValueChange, passes} = this.props;
+    let {onValueChange, security_passes} = this.props;
     return (
       <View style={styles.row}>
         <FormLabel
@@ -25,7 +25,7 @@ export default class LoadWhat extends Component {
           style={{flex: 1}}
         />
         <FormCheck
-          checked={passes.includes(item.id)}
+          checked={security_passes.includes(item.id)}
           onPress={() => onValueChange(item.id)}
         />
       </View>
@@ -33,10 +33,10 @@ export default class LoadWhat extends Component {
   };
 
   render() {
-    let {items, passes} = this.props;
+    let {items, security_passes} = this.props;
     return (
       <View>
-        <FormLabel title={I18n.t('load_passes')} style={{marginBottom: 10}} />
+        <FormLabel title={I18n.t('load_security_passes')} style={{marginBottom: 10}} />
 
         <FlatList
           data={items}
@@ -47,7 +47,7 @@ export default class LoadWhat extends Component {
             <Separator style={{marginVertical: 5}} />
           )}
           keyExtractor={(item, index) => `${index}`}
-          extraData={passes}
+          extraData={security_passes}
         />
       </View>
     );

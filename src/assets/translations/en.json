@@ -146,7 +146,7 @@
   "load_accept" : "Accept Booking",
   "load_list" : "Loads",
   "load_detail" : "Load Detail",
-  "load_passes" : "Load Passes",
+  "load_security_passes" : "Load Security Passes",
   "load_detail_options_list" : "Load Options",
   "load_track" : "Track Load on Map",
 
@@ -186,6 +186,7 @@
   "trailer_select" : "Select Trailer",
   "trailer_type" : "Trailer Type",
   "trailer_make"  : "Trailer Make",
+  "trailer_details" : "Trailer Details",
 
   "continue" : "Continue",
   "language" : "Language",
@@ -217,5 +218,9 @@
 
   "contact_mobile1" : "Contact Mobile Number",
   "contact_mobile2" : "Another Mobile Number to Contact",
+
+  "security_passes" : "Security Passes",
+  "security_passes_add" : "Add Security Pass",
+  "security_passes_edit" : "Edit Security Pass",
 
 }

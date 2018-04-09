@@ -23,6 +23,8 @@ import ProfileInfoUpdateScene from 'driver/profile/ProfileInfoUpdateScene';
 import TruckRegistrationScene from 'driver/truck/TruckRegistrationScene';
 import TruckModelScene from 'driver/truck/TruckModelScene';
 import TruckInfoUpdateScene from 'driver/truck/TruckInfoUpdateScene';
+import SecurityPassListScene from "driver/routes/SecurityPassListScene";
+import SecurityPassAddScene from "driver/routes/SecurityPassAddScene";
 
 const getDrawerIcon = navigation => {
   return {
@@ -134,6 +136,18 @@ const ProfileStack = StackNavigator(
       screen: NationalityAddScene,
       navigationOptions: () => ({
         // title: I18n.t('nationality_add'),
+      }),
+    },
+    SecurityPassList: {
+      screen: SecurityPassListScene,
+      navigationOptions: () => ({
+        title: I18n.t('security_passes'),
+      }),
+    },
+    SecurityPassAdd: {
+      screen: SecurityPassAddScene,
+      navigationOptions: () => ({
+        title: I18n.t('security_passes_add'),
       }),
     },
   },

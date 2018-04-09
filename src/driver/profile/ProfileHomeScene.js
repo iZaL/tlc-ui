@@ -38,6 +38,12 @@ class ProfileHome extends Component {
       case 'documents_upload':
         scene = 'DocumentsUpload';
         break;
+      case 'security_passes':
+        sceneConfig = {
+          title: I18n.t('security_passes'),
+        };
+        scene = 'SecurityPassList';
+        break;
     }
     return this.props.navigation.navigate(scene, sceneConfig);
   };
@@ -91,6 +97,21 @@ class ProfileHome extends Component {
           disabled={!truck}
           arrow={true}
         />
+        <Separator style={{marginVertical: 10}} />
+
+        <ListItem
+          onItemPress={this.onListItemPress}
+          name="security_passes"
+          arrow={true}
+          icon={
+            <IconFactory
+              type="MaterialCommunityIcons"
+              size={35}
+              name="passport"
+            />
+          }
+        />
+
         <Separator style={{marginVertical: 10}} />
         <ListItem
           onItemPress={this.onListItemPress}

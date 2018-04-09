@@ -53,7 +53,7 @@ function* fetchLoadAdd() {
       Schema.packaging,
     ]);
 
-    const normalizedPasses = normalize(response.data.passes, [Schema.passes]);
+    const normalizedPasses = normalize(response.data.security_passes, [Schema.security_passes]);
 
     const normalizedCustomer = normalize(
       response.data.customer,
