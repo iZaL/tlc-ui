@@ -12,46 +12,46 @@ import colors from 'assets/theme/colors';
 import {Button, Checkbox, Headline} from 'react-native-paper';
 import I18n from 'utils/locale';
 import ListModal from './ListModal';
-import Listing from "./Listing";
 
-export default class List extends Component {
+export default class Listing extends Component {
   static propTypes = {
-    isVisible: PropTypes.bool.isRequired,
-    onConfirm: PropTypes.func.isRequired,
-    onCancel: PropTypes.func.isRequired,
     items: PropTypes.array.isRequired,
-    title: PropTypes.string,
+    onPress: PropTypes.func.isRequired,
     activeIDs: PropTypes.array,
-  };
-
-  static defaultProps = {
-    title: I18n.t('select_country'),
   };
 
   shouldComponentUpdate(nextProps) {
     return (
-      this.props.isVisible !== nextProps.isVisible ||
       this.props.activeIDs !== nextProps.activeIDs ||
       this.props.items !== nextProps.items
     );
   }
 
-  render() {
-    let {isVisible, onCancel, onConfirm, title, children,items,activeIDs} = this.props;
+  renderItem = ({item}) => {
+    let {onItemPress, activeIDs} = this.props;
     return (
-      <ListModal
-        isVisible={isVisible}
-        transparent={false}
-        onBackdropPress={onCancel}
-        title={title}
-        onCancel={onCancel}>
-        <Listing
-          onItemPress={onConfirm}
-          items={items}
-          activeIDs={activeIDs}
-        />
-        {children}
-      </ListModal>
+      <Touchable onPress={() => onItemPress(item.id)}>
+        <View style={styles.itemRowContainer}>
+          <Text style={styles.itemTitle}>{item.name}</Text>
+          <Checkbox checked={activeIDs.includes(item.id)} color={colors.primary}/>
+        </View>
+      </Touchable>
+    );
+  };
+
+  render() {
+    let {items} = this.props;
+    return (
+      <FlatList
+        data={items}
+        style={styles.listContainer}
+        renderItem={this.renderItem}
+        showsVerticalScrollIndicator={false}
+        ItemSeparatorComponent={() => (
+          <Separator style={{marginVertical: 10}}/>
+        )}
+        keyExtractor={(item, index) => `${index}`}
+      />
     );
   }
 }

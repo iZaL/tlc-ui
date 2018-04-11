@@ -5,9 +5,6 @@ import {View} from 'react-native';
 import RoutesList from 'driver/routes/components/RoutesList';
 import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
 import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
-import {FAB} from "react-native-paper";
-import colors from "assets/theme/colors";
-import {ACTIONS as APP_ACTIONS} from "../../app/common/actions";
 
 class RoutesUpdateScene extends Component {
   static propTypes = {
@@ -20,8 +17,6 @@ class RoutesUpdateScene extends Component {
   };
 
   componentDidMount() {
-    this.props.dispatch(APP_ACTIONS.fetchCountries());
-    this.props.dispatch(DRIVER_ACTIONS.fetchProfile());
     this.props.dispatch(DRIVER_ACTIONS.fetchRoutes());
   }
 
@@ -43,11 +38,6 @@ class RoutesUpdateScene extends Component {
     });
   };
 
-  onAddPress = () => {
-    this.props.navigation.navigate('RoutesAdd', {
-    });
-  };
-
   render() {
     const {routes} = this.props;
     return (
@@ -57,17 +47,6 @@ class RoutesUpdateScene extends Component {
           onItemPress={this.onRoutesListItemPress}
           onIconPress={this.onItemIconPress}
         />
-        <FAB
-          icon="add"
-          dark
-          onPress={this.onAddPress}
-          medium
-          style={{
-            left: 20,
-            bottom: 20,
-            backgroundColor: colors.primary,
-          }}
-        />
       </View>
     );
   }
@@ -75,8 +54,7 @@ class RoutesUpdateScene extends Component {
 
 function mapStateToProps(state) {
   return {
-    // routes: DRIVER_SELECTORS.getAvailableRoutes(state),
-    routes: DRIVER_SELECTORS.getRoutes(state),
+    routes: DRIVER_SELECTORS.getAvailableRoutes(state),
   };
 }
 

@@ -25,6 +25,7 @@ import TruckModelScene from 'driver/truck/TruckModelScene';
 import TruckInfoUpdateScene from 'driver/truck/TruckInfoUpdateScene';
 import SecurityPassListScene from 'driver/routes/SecurityPassListScene';
 import SecurityPassAddScene from 'driver/routes/SecurityPassAddScene';
+import RoutesAddScene from "driver/routes/RoutesAddScene";
 
 const getDrawerIcon = navigation => {
   return {
@@ -114,6 +115,12 @@ const ProfileStack = StackNavigator(
         title: I18n.t('route_update'),
       }),
     },
+    RoutesAdd: {
+      screen: RoutesAddScene,
+      navigationOptions: () => ({
+        title: I18n.t('route_add'),
+      }),
+    },
     RoutesDetail: {
       screen: RoutesDetailScene,
       navigationOptions: () => ({
@@ -156,7 +163,7 @@ const ProfileStack = StackNavigator(
       gesturesEnabled: false,
       headerTintColor: colors.primary,
     },
-    // initialRouteName: 'TrailerUpdate',
+    initialRouteName: 'RoutesAdd',
   },
 );
 

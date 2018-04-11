@@ -176,7 +176,7 @@
   "driver_detail" : "Driver Detail",
   "driver_rate" : "Rate Driver",
 
-  "routes_add" : "Add Routes",
+  "route_add" : "Add Route",
   "route_update" : "Update Routes",
   "route_detail" : "Route Detail",
 
@@ -223,5 +223,13 @@
   "security_passes" : "Security Passes",
   "security_passes_add" : "Add Security Pass",
   "security_passes_edit" : "Edit Security Pass",
+
+  "origin" : "Origin",
+  "destination" : "Destination",
+  "to" : "to",
+  "select_locations" : "Select Locations",
+
+  "select_all" : "Select All",
+  "deselect_all" : "Deselect All",
 
 }
