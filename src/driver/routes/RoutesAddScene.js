@@ -31,6 +31,7 @@ class RoutesAddScene extends Component {
     destination_location_ids: [],
     destination_location_any: false,
     selected_all: true,
+    mode:'add'
   };
 
   static getDerivedStateFromProps(nextProps,nextState) {
@@ -40,7 +41,8 @@ class RoutesAddScene extends Component {
       return {
         selected_all:false,
         destination_country_id:route.destination.id,
-        destination_location_ids:route.locations && route.locations.filter(location => location.has_added).map(location => location.id) || []
+        destination_location_ids:route.locations && route.locations.filter(location => location.has_added).map(location => location.id) || [],
+        mode:'edit'
       }
     }
   }
@@ -52,9 +54,9 @@ class RoutesAddScene extends Component {
   }
 
   showOriginModal = () => {
-    this.setState({
-      isOriginModalVisible: true,
-    });
+    // this.setState({
+    //   isOriginModalVisible: true,
+    // });
   };
 
   hideOriginModal = () => {
@@ -64,9 +66,13 @@ class RoutesAddScene extends Component {
   };
 
   showDestinationModal = () => {
-    this.setState({
-      isDestinationModalVisible: true,
-    });
+
+    if(this.state.mode === 'add') {
+      this.setState({
+        isDestinationModalVisible: true,
+      });
+    }
+
   };
 
   hideDestinationModal = () => {
