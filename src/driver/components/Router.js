@@ -163,7 +163,7 @@ const ProfileStack = StackNavigator(
       gesturesEnabled: false,
       headerTintColor: colors.primary,
     },
-    initialRouteName: 'RoutesAdd',
+    // initialRouteName: 'RoutesAdd',
   },
 );
 
