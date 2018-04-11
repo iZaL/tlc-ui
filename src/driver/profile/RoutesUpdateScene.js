@@ -38,13 +38,18 @@ class RoutesUpdateScene extends Component {
   };
 
   onRoutesListItemPress = item => {
-    this.props.navigation.navigate('RoutesDetail', {
-      routeID: item.id,
+    console.log('item',item);
+
+    this.props.navigation.navigate('RoutesAdd', {
+      route: item,
+      // origin_country: this.props.origin_country,
     });
   };
 
   onAddPress = () => {
-    this.props.navigation.navigate('RoutesAdd', {});
+    this.props.navigation.navigate('RoutesAdd',{
+      route:undefined
+    });
   };
 
   render() {
@@ -74,8 +79,8 @@ class RoutesUpdateScene extends Component {
 
 function mapStateToProps(state) {
   return {
-    // routes: DRIVER_SELECTORS.getAvailableRoutes(state),
     routes: DRIVER_SELECTORS.getRoutes(state),
+    // origin_country:DRIVER_SELECTORS.getTruckRegistrationCountry(state)
   };
 }
 

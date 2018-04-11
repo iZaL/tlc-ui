@@ -33,6 +33,18 @@ class RoutesAddScene extends Component {
     selected_all: true,
   };
 
+  static getDerivedStateFromProps(nextProps,nextState) {
+    let {route} = nextProps.navigation.state.params;
+    if(route) {
+      console.log('route');
+      return {
+        selected_all:false,
+        destination_country_id:route.destination.id,
+        destination_location_ids:route.locations && route.locations.filter(location => location.has_added).map(location => location.id) || []
+      }
+    }
+  }
+
   componentDidMount() {
     this.props.dispatch(APP_ACTIONS.fetchCountries());
     this.props.dispatch(DRIVER_ACTIONS.fetchProfile());
@@ -120,10 +132,15 @@ class RoutesAddScene extends Component {
   };
 
   render() {
-    let {origin_country, destination_countries} = this.props;
 
-    console.log('props',destination_countries);
-    
+    let {destination_countries,origin_country} = this.props;
+
+    // if(!origin_country.id) {
+    //   origin_country = this.props.navigation.state.params.route.origin;
+    // }
+
+    console.log('props',this.props);
+
     let {
       destination_country_id,
       selected_all,
@@ -211,9 +228,7 @@ const makeMapStateToProps = () => {
   const mapStateToProps = (state, props) => {
     return {
       origin_country: DRIVER_SELECTORS.getTruckRegistrationCountry(state),
-      destination_countries: DRIVER_SELECTORS.getRouteDestinationCountries(
-        state,
-      ),
+      destination_countries: DRIVER_SELECTORS.getRouteDestinationCountries(state),
     };
   };
   return mapStateToProps;
