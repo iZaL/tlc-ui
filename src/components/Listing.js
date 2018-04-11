@@ -30,7 +30,7 @@ export default class Listing extends Component {
   renderItem = ({item}) => {
     let {onItemPress, activeIDs} = this.props;
     return (
-      <Touchable onPress={() => onItemPress(item.id)}>
+      <Touchable onPress={() => onItemPress(item)}>
         <View style={styles.itemRowContainer}>
           <Text style={styles.itemTitle}>{item.name}</Text>
           <Checkbox checked={activeIDs.includes(item.id)} color={colors.primary}/>
@@ -40,11 +40,11 @@ export default class Listing extends Component {
   };
 
   render() {
-    let {items} = this.props;
+    let {items,style} = this.props;
     return (
       <FlatList
         data={items}
-        style={styles.listContainer}
+        style={[styles.listContainer,style]}
         renderItem={this.renderItem}
         showsVerticalScrollIndicator={false}
         ItemSeparatorComponent={() => (

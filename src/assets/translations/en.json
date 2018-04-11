@@ -229,7 +229,7 @@
   "to" : "to",
   "select_locations" : "Select Locations",
 
-  "select_all" : "Select All",
-  "deselect_all" : "Deselect All",
+  "select_all" : "select all",
+  "deselect_all" : "unselect all",
 
 }

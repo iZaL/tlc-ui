@@ -103,15 +103,15 @@ class TrailerUpdateScene extends Component {
     });
   };
 
-  setType = id => {
+  setType = type => {
     this.setState({
-      type_id: id,
+      type_id: type.id,
     });
   };
 
-  setMake = id => {
+  setMake = make => {
     this.setState({
-      make_id: id,
+      make_id: make.id,
     });
   };
 

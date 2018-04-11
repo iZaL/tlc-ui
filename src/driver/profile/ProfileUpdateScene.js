@@ -55,9 +55,9 @@ class ProfileUpdateScene extends Component {
 
   handleLanguagePress = (language: string) => {
     this.setState({
-      activeLanguages: this.state.activeLanguages.includes(language)
-        ? this.state.activeLanguages.filter(lang => lang != language)
-        : this.state.activeLanguages.concat(language),
+      activeLanguages: this.state.activeLanguages.includes(language.id)
+        ? this.state.activeLanguages.filter(lang => lang != language.id)
+        : this.state.activeLanguages.concat(language.id),
     });
   };
 

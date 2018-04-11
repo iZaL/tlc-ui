@@ -18,7 +18,11 @@ import AppButton from "../../components/AppButton";
 
 class RoutesAddScene extends Component {
 
-  static defaultProps = {};
+  static defaultProps = {
+    destinationCountry: {
+      locations: []
+    }
+  };
 
   state = {
     isOriginModalVisible: false,
@@ -60,38 +64,75 @@ class RoutesAddScene extends Component {
     });
   };
 
-  setOrigin = () => {
+  setOrigin = (origin) => {
 
   };
 
-  setDestination = (country:{}) => {
+  setDestination = (country) => {
+    let countryLocations = country.locations || [];
     this.setState({
-      destination_country_id: id,
-      selected_all:true,
-      destination_location_ids:[]
-    })
+      destination_country_id: country.id,
+      selected_all: true,
+      destination_location_ids: countryLocations.map(location => location.id)
+    });
   };
 
-  onLocationPress = (id) => {
+  onLocationPress = (location) => {
 
+    let {destination_location_ids} = this.state;
+    let {id} = location;
+
+    this.setState({
+      destination_location_ids: destination_location_ids.includes(id)
+        ? destination_location_ids.filter(locationID => locationID != id)
+        : destination_location_ids.concat(id),
+    });
   };
 
   onSave = () => {
 
   };
 
+  toggleSelectAll = () => {
+    if(this.state.selected_all) {
+      this.unselectAll();
+    } else {
+      this.selectAll();
+    }
+
+    this.setState({
+      selected_all:!this.state.selected_all
+    })
+  };
+
+  unselectAll = () => {
+    this.setState({
+      destination_location_ids:[],
+    })
+  };
+
+  selectAll = () => {
+    let destinationCountry = this.getCountry(this.state.destination_country_id);
+    let countryLocations = destinationCountry.locations || [];
+    this.setState({
+      destination_location_ids: countryLocations.map(location => location.id)
+    });
+  };
+
+  getCountry = (destination_country_id) => {
+    return this.props.destination_countries.find(country => country.id === destination_country_id)
+  };
+
   render() {
 
     let {origin_country, destination_countries} = this.props;
 
-    console.log('props', this.props);
-
-    let {destination_country_id, selected_all} = this.state;
+    let {destination_country_id, selected_all,destination_location_ids} = this.state;
 
     let destinationCountry = {};
 
     if (destination_country_id) {
-      destinationCountry = destination_countries.find(country => country.id === destination_country_id)
+      destinationCountry = this.getCountry(destination_country_id);
     }
 
     return (
@@ -132,27 +173,19 @@ class RoutesAddScene extends Component {
         >
         </List>
 
-        <List
-          title={I18n.t('destination')}
-          activeIDs={[destinationCountry.id]}
-          isVisible={this.state.isDestinationModalVisible}
-          onConfirm={this.setDestination}
-          onCancel={this.hideDestinationModal}
-          items={destination_countries}
-        >
-        </List>
-
         {
-          destinationCountry.id && destinationCountry.show_route_locations &&
-          <View style={{padding: 10}}>
-            <View style={{flexDirection: 'row'}}>
-              <Title>{I18n.t('select_locations')}</Title>
-              <Caption>{selected_all ? I18n.t('deselect_all') : I18n.t('select_all')}</Caption>
+          destinationCountry.id &&
+          destinationCountry.show_route_locations &&
+          destinationCountry.locations && destinationCountry.locations.length &&
+          <View style={{flex:1,padding: 10}}>
+            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+              <Title style={{flex: 1}}>{I18n.t('select_locations')}</Title>
+              <Caption onPress={this.toggleSelectAll}>{selected_all ? I18n.t('deselect_all') : I18n.t('select_all')}</Caption>
             </View>
             <Listing
               onItemPress={this.onLocationPress}
-              activeIDs={[]}
-              items={[{id: 1, name: 'Jeddah'}, {id: 2, name: 'Dammam'}]}
+              activeIDs={destination_location_ids}
+              items={destinationCountry.locations}
             />
           </View>
         }

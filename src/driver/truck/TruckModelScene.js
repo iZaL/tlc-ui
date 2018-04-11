@@ -84,16 +84,16 @@ class TruckModelScene extends Component {
     });
   };
 
-  setMake = id => {
+  setMake = make => {
     this.setState({
-      make_id: id,
+      make_id: make.id,
       model_id: null,
     });
   };
 
-  setModel = id => {
+  setModel = model => {
     this.setState({
-      model_id: id,
+      model_id: model.id,
     });
   };
 

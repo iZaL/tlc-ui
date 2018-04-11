@@ -45,8 +45,8 @@ export default class DocumentAdd extends PureComponent {
     this._hideDateTimePicker();
   };
 
-  _handleCountryPicker = countryID => {
-    this.props.onValueChange('countryID', countryID);
+  _handleCountryPicker = country => {
+    this.props.onValueChange('countryID', country.id);
   };
 
   render() {

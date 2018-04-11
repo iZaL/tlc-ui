@@ -59,12 +59,12 @@ export default class SecurityPassAdd extends PureComponent {
     this._hideDateTimePicker();
   };
 
-  _handleCountryPicker = countryID => {
-    this.props.onValueChange('countryID', countryID);
+  _handleCountryPicker = country => {
+    this.props.onValueChange('countryID', country.id);
   };
 
-  _handleSecurityPassPicker = id => {
-    this.props.onValueChange('security_pass_id', id);
+  _handleSecurityPassPicker = pass => {
+    this.props.onValueChange('security_pass_id', pass.id);
   };
 
   render() {
