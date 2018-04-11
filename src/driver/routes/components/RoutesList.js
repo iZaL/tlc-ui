@@ -71,7 +71,6 @@ export default class RoutesList extends Component {
           onValueChange={() => onIconPress(item)}
           color={colors.primary}
         />
-
       </View>
     );
   };

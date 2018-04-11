@@ -12,7 +12,7 @@ import colors from 'assets/theme/colors';
 import {Button, Checkbox, Headline} from 'react-native-paper';
 import I18n from 'utils/locale';
 import ListModal from './ListModal';
-import Listing from "./Listing";
+import Listing from './Listing';
 
 export default class List extends Component {
   static propTypes = {
@@ -37,7 +37,15 @@ export default class List extends Component {
   }
 
   render() {
-    let {isVisible, onCancel, onConfirm, title, children,items,activeIDs} = this.props;
+    let {
+      isVisible,
+      onCancel,
+      onConfirm,
+      title,
+      children,
+      items,
+      activeIDs,
+    } = this.props;
     return (
       <ListModal
         isVisible={isVisible}
@@ -45,11 +53,7 @@ export default class List extends Component {
         onBackdropPress={onCancel}
         title={title}
         onCancel={onCancel}>
-        <Listing
-          onItemPress={onConfirm}
-          items={items}
-          activeIDs={activeIDs}
-        />
+        <Listing onItemPress={onConfirm} items={items} activeIDs={activeIDs} />
         {children}
       </ListModal>
     );

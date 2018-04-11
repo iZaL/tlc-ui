@@ -33,9 +33,9 @@ export default class ListModal extends Component {
           {
             backgroundColor: 'white',
             paddingTop: 30,
-            paddingBottom:15,
+            paddingBottom: 15,
             paddingHorizontal: 15,
-            justifyContent:'flex-start',
+            justifyContent: 'flex-start',
           },
           style,
         ]}
@@ -47,8 +47,7 @@ export default class ListModal extends Component {
           raised
           primary
           dark
-          style={{paddingVertical: 10,margin:0}}
-        >
+          style={{paddingVertical: 10, margin: 0}}>
           {I18n.t('save')}
         </Button>
       </Modal>
@@ -58,12 +57,11 @@ export default class ListModal extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    alignItems:'flex-start',
-    justifyContent:'flex-start',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
   },
   headline: {
     textAlign: 'center',
   },
-  itemTitle: {
-  },
+  itemTitle: {},
 });

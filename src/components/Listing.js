@@ -33,22 +33,25 @@ export default class Listing extends Component {
       <Touchable onPress={() => onItemPress(item)}>
         <View style={styles.itemRowContainer}>
           <Text style={styles.itemTitle}>{item.name}</Text>
-          <Checkbox checked={activeIDs.includes(item.id)} color={colors.primary}/>
+          <Checkbox
+            checked={activeIDs.includes(item.id)}
+            color={colors.primary}
+          />
         </View>
       </Touchable>
     );
   };
 
   render() {
-    let {items,style} = this.props;
+    let {items, style} = this.props;
     return (
       <FlatList
         data={items}
-        style={[styles.listContainer,style]}
+        style={[styles.listContainer, style]}
         renderItem={this.renderItem}
         showsVerticalScrollIndicator={false}
         ItemSeparatorComponent={() => (
-          <Separator style={{marginVertical: 10}}/>
+          <Separator style={{marginVertical: 10}} />
         )}
         keyExtractor={(item, index) => `${index}`}
       />

@@ -170,14 +170,13 @@ const getAvailableRoutes = createSelector(
 
 const getRouteDestinationCountries = createSelector(
   [getAvailableRoutes],
-  (routes) => routes.map(route => route.destination) || []
+  routes => routes.map(route => route.destination) || [],
 );
 
 const getTruckRegistrationCountry = createSelector(
   [getTruck],
-  (truck) => truck.registration_country || {}
+  truck => truck.registration_country || {},
 );
-
 
 const getRoutes = createSelector(
   [getProfile, routesSchema, countriesSchema],
@@ -379,5 +378,5 @@ export const SELECTORS = {
   getDocumentsByType,
   getSecurityPasses,
   getRouteDestinationCountries,
-  getTruckRegistrationCountry
+  getTruckRegistrationCountry,
 };

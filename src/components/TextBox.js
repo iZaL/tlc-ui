@@ -6,10 +6,9 @@ import Touchable from 'react-native-platform-touchable';
 import I18n from 'utils/locale';
 
 export default class TextBox extends PureComponent {
-
   static propTypes = {
     background: PropTypes.string,
-    disabled:PropTypes.bool
+    disabled: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -17,20 +16,13 @@ export default class TextBox extends PureComponent {
   };
 
   render() {
-    const {
-      style,
-      children,
-      disabled,
-      onPress,
-      ...rest
-    } = this.props;
+    const {style, children, disabled, onPress, ...rest} = this.props;
 
     return (
       <Touchable
         onPress={onPress}
         disabled={disabled}
-        style={[styles.container,style,disabled && {opacity: 0.4},]}
-        >
+        style={[styles.container, style, disabled && {opacity: 0.4}]}>
         <View>
           <Text style={styles.text}>{children}</Text>
         </View>
@@ -41,13 +33,13 @@ export default class TextBox extends PureComponent {
 
 const styles = StyleSheet.create({
   container: {
-    flex:1,
+    flex: 1,
     backgroundColor: colors.fadedBlue,
     borderRadius: 2,
     padding: 20,
-    alignItems:'center',
-    alignSelf:'center',
-    justifyContent:'center',
+    alignItems: 'center',
+    alignSelf: 'center',
+    justifyContent: 'center',
   },
   text: {
     color: 'white',

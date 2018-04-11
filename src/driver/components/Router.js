@@ -25,7 +25,7 @@ import TruckModelScene from 'driver/truck/TruckModelScene';
 import TruckInfoUpdateScene from 'driver/truck/TruckInfoUpdateScene';
 import SecurityPassListScene from 'driver/routes/SecurityPassListScene';
 import SecurityPassAddScene from 'driver/routes/SecurityPassAddScene';
-import RoutesAddScene from "driver/routes/RoutesAddScene";
+import RoutesAddScene from 'driver/routes/RoutesAddScene';
 
 const getDrawerIcon = navigation => {
   return {

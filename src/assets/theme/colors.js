@@ -18,5 +18,5 @@ export default {
   black: '#000000',
   white: '#ffffff',
   transparent: 'transparent',
-  fadedGreen:'#0c8a41',
+  fadedGreen: '#0c8a41',
 };
