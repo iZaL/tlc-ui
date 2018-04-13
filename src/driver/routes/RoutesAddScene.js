@@ -19,11 +19,6 @@ import Entypo from "react-native-vector-icons/Entypo";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
 class RoutesAddScene extends Component {
-  static defaultProps = {
-    destinationCountry: {
-      locations: [],
-    },
-  };
 
   state = {
     isOriginModalVisible: false,
@@ -40,7 +35,6 @@ class RoutesAddScene extends Component {
   static getDerivedStateFromProps(nextProps,nextState) {
     let {route} = nextProps.navigation.state.params;
     if(route) {
-      console.log('route',route);
       return {
         selected_pick_all:false,
         destination_country_id:route.destination.id,
@@ -61,9 +55,6 @@ class RoutesAddScene extends Component {
   }
 
   showOriginModal = () => {
-    // this.setState({
-    //   isOriginModalVisible: true,
-    // });
     this.setState({
       listType:'pick',
     })
@@ -101,7 +92,6 @@ class RoutesAddScene extends Component {
     let countryLocations = country.locations || [];
     this.setState({
       destination_country_id: country.id,
-      selected_drop_all: true,
       destination_location_ids: countryLocations.map(location => location.id),
       listType:'drop',
     });
@@ -164,7 +154,6 @@ class RoutesAddScene extends Component {
 
     this.setState({
       selected_drop_all: !this.state.selected_drop_all,
-      listType:'drop',
     });
   };
 
