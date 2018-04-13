@@ -85,23 +85,19 @@ class RoutesAddScene extends Component {
     });
   };
 
-  showOriginLocationsModal = () => {
-    this.setState({
-      isOriginLocationsModalVisible: true,
-    });
-  };
-
   onDestinationCountrySavePress = () => {
     console.log('onDestinationCountrySavePress');
     this.hideDestinationCountriesModal();
   };
 
   onDestinationBoxPress = () => {
-    // this.setState({
-    //   active_type: 'destination',
-    // });
+    this.setState({
+      active_type: 'destination',
+    });
 
-    this.showDestinationCountriesModal();
+    if(!this.state.destination_country_id) {
+      this.showDestinationCountriesModal();
+    }
     //
     // if (this.state.destination_country_id) {
     //   // this.showDestinationLocationsModal();
@@ -153,7 +149,6 @@ class RoutesAddScene extends Component {
     this.setState({
       destination_country_id: country.id,
       destination_location_ids: countryLocations.map(location => location.id),
-      active_type: 'destination',
     });
   };
 
@@ -242,6 +237,10 @@ class RoutesAddScene extends Component {
     });
   };
 
+  onDestinationCountryPress = () => {
+    this.setState({destination_location_all: true});
+  };
+
   onDestinationCitiesPress = () => {
     this.setState({
       destination_location_all: false,
@@ -272,6 +271,9 @@ class RoutesAddScene extends Component {
       destinationCountry = this.getCountry(destination_country_id);
     }
 
+    console.log('active_type',active_type);
+
+
     return (
       <View style={{flex: 1, backgroundColor: 'white'}}>
         <View
@@ -285,181 +287,169 @@ class RoutesAddScene extends Component {
           <TextBox
             active={active_type === 'origin'}
             onPress={this.onOriginBoxPress}
-            style={{marginRight: 5}}>
-            {origin_country.name
+            style={{marginRight: 5}}
+            title={origin_country.name
               ? origin_country.name.toUpperCase()
               : I18n.t('origin').toUpperCase()}
-          </TextBox>
+          />
 
           <Entypo name="swap" color="white" size={15}/>
 
           <TextBox
             active={active_type === 'destination'}
             onPress={this.onDestinationBoxPress}
-            style={{marginLeft: 5}}>
-            {destinationCountry.name
+            style={{marginLeft: 5}}
+            title={destinationCountry.name
               ? destinationCountry.name.toUpperCase()
               : I18n.t('destination').toUpperCase()}
-          </TextBox>
+          />
         </View>
 
         {active_type === 'origin' &&
         // origin_country.locations &&
         // origin_country.locations.length && (
-          <View style={{flex: 1, padding: 10}}>
+        <View style={{flex: 1, padding: 10}}>
 
-            <DialogTitle>
-              {I18n.t('select_pick_locations')}
-            </DialogTitle>
+          <Title style={{textAlign:'center',paddingBottom:20}}>
+            {I18n.t('select_pick_locations')}
+          </Title>
 
-            <Touchable
-              onPress={this.onOriginCountryPress}
-            >
-              <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                <View style={{flex: 1}}
-                >
-                  <RadioButton
-                    disabled={false}
-                    checked={origin_location_all}
-                    onPress={this.onOriginCountryPress}
-                  />
-                </View>
-                <Title style={{flex: 8, paddingHorizontal: 10}}>
-                  {I18n.t('anywhere_in')} {origin_country.name}
-                </Title>
-              </View>
-            </Touchable>
+          <Touchable
+            onPress={this.onOriginCountryPress}
+          >
+            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+              <Text style={{flex: 1, paddingHorizontal: 10}}>
+                {I18n.t('anywhere_in')} {origin_country.name}
+              </Text>
+              <RadioButton
+                disabled={false}
+                checked={origin_location_all}
+                onPress={this.onOriginCountryPress}
+              />
+            </View>
+          </Touchable>
 
-            <Separator style={{marginVertical: 5}}/>
+          <Separator style={{marginVertical: 5}}/>
 
-            <Touchable
-              onPress={this.onOriginCitiesPress}
-            >
-              <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                <View style={{flex: 1}}
-                >
-                  <RadioButton
-                    disabled={false}
-                    checked={!origin_location_all}
-                    onPress={this.onOriginCitiesPress}
-                    style={{flex: 1}}
-                  />
-                </View>
-                <Title style={{flex: 8, paddingHorizontal: 10}}>
-                  {I18n.t('select_cities')}
-                </Title>
-              </View>
-            </Touchable>
+          <Touchable
+            onPress={this.onOriginCitiesPress}
+          >
+            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+              <Text style={{flex: 1, paddingHorizontal: 10}}>
+                {I18n.t('multiple_locations')}
+              </Text>
+              <RadioButton
+                disabled={false}
+                checked={!origin_location_all}
+                onPress={this.onOriginCitiesPress}
+                style={{flex: 1}}
+              />
+            </View>
+          </Touchable>
 
-            {/*</RadioButtonGroup>*/}
+          {/*</RadioButtonGroup>*/}
 
-            {/*<View style={{flexDirection: 'row', alignItems: 'center'}}>*/}
-            {/*/!*<Title style={{flex: 1}}>*!/*/}
-            {/*/!*{I18n.t('select_pick_locations')}*!/*/}
-            {/*/!*</Title>*!/*/}
-            {/*<Caption onPress={this.toggleOriginSelectAll}>*/}
-            {/*{origin_select_all*/}
-            {/*? I18n.t('deselect_all')*/}
-            {/*: I18n.t('select_all')}*/}
-            {/*</Caption>*/}
-            {/*</View>*/}
-            {/*<Listing*/}
-            {/*onItemPress={this.onOriginLocationItemPress}*/}
-            {/*activeIDs={origin_location_ids}*/}
-            {/*items={origin_country.locations}*/}
-            {/*/>*/}
-          </View>
+          {/*<View style={{flexDirection: 'row', alignItems: 'center'}}>*/}
+          {/*/!*<Title style={{flex: 1}}>*!/*/}
+          {/*/!*{I18n.t('select_pick_locations')}*!/*/}
+          {/*/!*</Title>*!/*/}
+          {/*<Caption onPress={this.toggleOriginSelectAll}>*/}
+          {/*{origin_select_all*/}
+          {/*? I18n.t('deselect_all')*/}
+          {/*: I18n.t('select_all')}*/}
+          {/*</Caption>*/}
+          {/*</View>*/}
+          {/*<Listing*/}
+          {/*onItemPress={this.onOriginLocationItemPress}*/}
+          {/*activeIDs={origin_location_ids}*/}
+          {/*items={origin_country.locations}*/}
+          {/*/>*/}
+        </View>
         }
 
         {active_type === 'destination' &&
         // destinationCountry.id &&
         // destinationCountry.locations &&
         // destinationCountry.locations.length && (
-          <View style={{flex: 1, padding: 10}}>
+        <View style={{flex: 1, padding: 10}}>
 
-            <DialogTitle>
-              {I18n.t('select_drop_locations')}
-            </DialogTitle>
+          <Title style={{textAlign:'center',paddingBottom:20}}>
+            {I18n.t('select_drop_locations')}
+          </Title>
 
-            <Touchable
-              onPress={this.onDestinationCountryPress}
-            >
-              <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                <View style={{flex: 1}}
-                >
-                  <RadioButton
-                    disabled={false}
-                    checked={destination_location_all}
-                    onPress={this.onDestinationCountryPress}
-                  />
-                </View>
-                <Title style={{flex: 8, paddingHorizontal: 10}}>
-                  {I18n.t('anywhere_in')} {destinationCountry.name}
-                </Title>
-              </View>
-            </Touchable>
+          <Touchable
+            onPress={this.onDestinationCountryPress}
+          >
+            <View style={{flexDirection: 'row', alignItems: 'center'}}>
 
-            <Separator style={{marginVertical: 5}}/>
+              <Text style={{flex: 8, paddingHorizontal: 10}}>
+                {I18n.t('anywhere_in')} {destinationCountry.name}
+              </Text>
+              <RadioButton
+                checked={destination_location_all}
+                onPress={this.onDestinationCountryPress}
+              />
+            </View>
+          </Touchable>
 
-            <Touchable
-              onPress={this.onDestinationCitiesPress}
-            >
-              <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                <View style={{flex: 1}}
-                >
-                  <RadioButton
-                    disabled={false}
-                    checked={!destination_location_all}
-                    onPress={this.onDestinationCitiesPress}
-                    style={{flex: 1}}
-                  />
-                </View>
-                <Title style={{flex: 8, paddingHorizontal: 10}}>
-                  {I18n.t('select_cities')}
-                </Title>
-              </View>
-            </Touchable>
+          <Separator style={{marginVertical: 5}}/>
 
-            {/*</RadioButtonGroup>*/}
+          <Touchable
+            onPress={this.onDestinationCitiesPress}
+          >
+            <View style={{flexDirection: 'row', alignItems: 'center'}}>
 
-            {/*<View style={{flexDirection: 'row', alignItems: 'center'}}>*/}
-            {/*/!*<Title style={{flex: 1}}>*!/*/}
-            {/*/!*{I18n.t('select_pick_locations')}*!/*/}
-            {/*/!*</Title>*!/*/}
-            {/*<Caption onPress={this.toggleOriginSelectAll}>*/}
-            {/*{origin_select_all*/}
-            {/*? I18n.t('deselect_all')*/}
-            {/*: I18n.t('select_all')}*/}
-            {/*</Caption>*/}
-            {/*</View>*/}
-            {/*<Listing*/}
-            {/*onItemPress={this.onOriginLocationItemPress}*/}
-            {/*activeIDs={origin_location_ids}*/}
-            {/*items={origin_country.locations}*/}
-            {/*/>*/}
-          </View>
+              <Text style={{flex: 1, paddingHorizontal: 10}}>
+                {I18n.t('multiple_locations')}
+              </Text>
+              <RadioButton
+                checked={!destination_location_all}
+                onPress={this.onDestinationCitiesPress}
+                style={{flex: 1}}
+              />
+            </View>
+          </Touchable>
+
+          {/*</RadioButtonGroup>*/}
+
+          {/*<View style={{flexDirection: 'row', alignItems: 'center'}}>*/}
+          {/*/!*<Title style={{flex: 1}}>*!/*/}
+          {/*/!*{I18n.t('select_pick_locations')}*!/*/}
+          {/*/!*</Title>*!/*/}
+          {/*<Caption onPress={this.toggleOriginSelectAll}>*/}
+          {/*{origin_select_all*/}
+          {/*? I18n.t('deselect_all')*/}
+          {/*: I18n.t('select_all')}*/}
+          {/*</Caption>*/}
+          {/*</View>*/}
+          {/*<Listing*/}
+          {/*onItemPress={this.onOriginLocationItemPress}*/}
+          {/*activeIDs={origin_location_ids}*/}
+          {/*items={origin_country.locations}*/}
+          {/*/>*/}
+        </View>
         }
-{/*{active_type === 'destination' &&*/}
+        {/*{active_type === 'destination' &&*/}
         {/*destinationCountry.id &&*/}
         {/*destinationCountry.locations &&*/}
         {/*destinationCountry.locations.length && (*/}
-          {/*<View style={{flex: 1, padding: 10}}>*/}
-            {/*<View style={{flexDirection: 'row', alignItems: 'center'}}>*/}
-              {/*<Title style={{flex: 1}}>*/}
-                {/*{I18n.t('select_drop_locations')}*/}
-              {/*</Title>*/}
-              {/*<Caption onPress={this.toggleDestinationSelectAll}>*/}
-                {/*{destination_select_all*/}
-                  {/*? I18n.t('deselect_all')*/}
-                  {/*: I18n.t('select_all')}*/}
-              {/*</Caption>*/}
-            {/*</View>*/}
-            {/*<Listing*/}
-              {/*onItemPress={this.onDestinationLocationItemPress}*/}
-              {/*activeIDs={destination_location_ids}*/}
-              {/*items={destinationCountry.locations}*/}
-            {/*/>*/}
-          {/*</View>*/}
+        {/*<View style={{flex: 1, padding: 10}}>*/}
+        {/*<View style={{flexDirection: 'row', alignItems: 'center'}}>*/}
+        {/*<Title style={{flex: 1}}>*/}
+        {/*{I18n.t('select_drop_locations')}*/}
+        {/*</Title>*/}
+        {/*<Caption onPress={this.toggleDestinationSelectAll}>*/}
+        {/*{destination_select_all*/}
+        {/*? I18n.t('deselect_all')*/}
+        {/*: I18n.t('select_all')}*/}
+        {/*</Caption>*/}
+        {/*</View>*/}
+        {/*<Listing*/}
+        {/*onItemPress={this.onDestinationLocationItemPress}*/}
+        {/*activeIDs={destination_location_ids}*/}
+        {/*items={destinationCountry.locations}*/}
+        {/*/>*/}
+        {/*</View>*/}
         {/*)}*/}
 
         <AppButton onPress={this.onSave}/>
@@ -468,7 +458,7 @@ class RoutesAddScene extends Component {
           title={I18n.t('select_locations')}
           onItemPress={this.onOriginLocationItemPress}
           activeIDs={origin_location_ids}
-          items={origin_country.locations}
+          items={origin_country.locations || []}
           isVisible={isOriginLocationsModalVisible}
           onCancel={this.hideOriginLocationsModal}
           onSave={this.onDestinationLocationsSavePress}
@@ -481,14 +471,14 @@ class RoutesAddScene extends Component {
           onSave={this.onDestinationCountrySavePress}
           onItemPress={this.onDestinationCountryItemPress}
           onCancel={this.hideDestinationCountriesModal}
-          items={destination_countries}
+          items={destination_countries || []}
         />
 
         <List
           title={I18n.t('select_locations')}
           onItemPress={this.onDestinationLocationItemPress}
           activeIDs={destination_location_ids}
-          items={destinationCountry.locations}
+          items={destinationCountry.locations || []}
           isVisible={isDestinationLocationsModalVisible}
           onCancel={this.hideDestinationLocationsModal}
           onSave={this.onDestinationLocationsSavePress}

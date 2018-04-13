@@ -236,6 +236,7 @@
   "select_all" : "select all",
   "deselect_all" : "unselect all",
 
-  "anywhere_in" : "Anywhere in"
+  "anywhere_in" : "Anywhere in",
+  "multiple_locations" : "Multiple Locations"
 
 }
