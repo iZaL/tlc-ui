@@ -38,18 +38,18 @@ class RoutesUpdateScene extends Component {
   };
 
   onRoutesListItemPress = item => {
-    console.log('item',item);
+    console.log('item', item);
     this.props.navigation.navigate('RoutesAdd', {
       route: item,
-      mode:'edit'
+      mode: 'edit',
       // origin_country: this.props.origin_country,
     });
   };
 
   onAddPress = () => {
-    this.props.navigation.navigate('RoutesAdd',{
-      route:undefined,
-      mode:'add'
+    this.props.navigation.navigate('RoutesAdd', {
+      route: undefined,
+      mode: 'add',
     });
   };
 

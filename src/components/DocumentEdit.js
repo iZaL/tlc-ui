@@ -113,7 +113,7 @@ export default class DocumentEdit extends Component {
         <CountryListModal
           items={countries}
           isVisible={this.state.isCountryModalVisible}
-          onConfirm={this._handleCountryPicker}
+          onItemPress={this._handleCountryPicker}
         />
       </View>
     );

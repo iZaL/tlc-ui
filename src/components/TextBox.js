@@ -5,15 +5,14 @@ import colors from 'assets/theme/colors';
 import Touchable from 'react-native-platform-touchable';
 
 export default class TextBox extends Component {
-
   static propTypes = {
     background: PropTypes.string,
     disabled: PropTypes.bool,
-    active:PropTypes.bool
+    active: PropTypes.bool,
   };
 
   shouldComponentUpdate(nextProps) {
-    return nextProps.active !== this.props.active
+    return nextProps.active !== this.props.active;
   }
 
   static defaultProps = {
@@ -22,13 +21,18 @@ export default class TextBox extends Component {
 
   render() {
     const {style, children, disabled, onPress, active} = this.props;
-    console.log('active',active);
+    console.log('active', active);
 
     return (
       <Touchable
         onPress={onPress}
         disabled={disabled}
-        style={[styles.container, style, disabled && {opacity: 0.4}, active && styles.active]}>
+        style={[
+          styles.container,
+          style,
+          disabled && {opacity: 0.4},
+          active && styles.active,
+        ]}>
         <View>
           <Text style={styles.text}>{children}</Text>
         </View>
@@ -53,12 +57,12 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '100',
   },
-  active:{
+  active: {
     // opacity:.,
-    borderBottomWidth:2,
-    borderBottomColor:'yellow',
-    borderBottomRightRadius:0,
-    borderBottomLeftRadius:0,
+    borderBottomWidth: 2,
+    borderBottomColor: 'yellow',
+    borderBottomRightRadius: 0,
+    borderBottomLeftRadius: 0,
     // backgroundColor:'yellow'
-  }
+  },
 });

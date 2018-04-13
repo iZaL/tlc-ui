@@ -240,7 +240,7 @@ class TrailerUpdateScene extends Component {
           title={I18n.t('trailer_type')}
           activeIDs={[type_id]}
           isVisible={showTypeModal}
-          onConfirm={this.setType}
+          onItemPress={this.setType}
           onCancel={this.hideTypeModal}
           items={trailer_types}
         />
@@ -249,7 +249,7 @@ class TrailerUpdateScene extends Component {
           title={I18n.t('trailer_make')}
           activeIDs={[make_id]}
           isVisible={showMakeModal}
-          onConfirm={this.setMake}
+          onItemPress={this.setMake}
           onCancel={this.hideMakeModal}
           items={trailer_makes}
         />

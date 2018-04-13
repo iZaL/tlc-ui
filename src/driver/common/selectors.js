@@ -170,13 +170,14 @@ const getAvailableRoutes = createSelector(
 
 const getRouteDestinationCountries = createSelector(
   [getAvailableRoutes],
-  routes => routes.map(route => {
-    return {
-      ...route.destination,
-      disabled: route.has_added || !route.active,
-      has_added:route.has_added
-    }
-  }) || [],
+  routes =>
+    routes.map(route => {
+      return {
+        ...route.destination,
+        disabled: route.has_added || !route.active,
+        has_added: route.has_added,
+      };
+    }) || [],
 );
 
 const getTruckRegistrationCountry = createSelector(

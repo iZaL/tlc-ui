@@ -135,6 +135,7 @@
   "address" : "Address",
   "area_select" : "Search",
   "packaging_select" : "Select Packaging",
+  "destination_country" : "Destination Country",
 
   "loads" : "Loads",
   "load_add" : "Post a Load",
@@ -230,8 +231,11 @@
   "select_locations" : "Select Locations",
   "select_pick_locations" : "Select Pick Locations",
   "select_drop_locations" : "Select Drop Locations",
+  "select_cities" : "Select Cities",
 
   "select_all" : "select all",
   "deselect_all" : "unselect all",
+
+  "anywhere_in" : "Anywhere in"
 
 }

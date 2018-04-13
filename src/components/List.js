@@ -17,7 +17,7 @@ import Listing from './Listing';
 export default class List extends Component {
   static propTypes = {
     isVisible: PropTypes.bool.isRequired,
-    onConfirm: PropTypes.func.isRequired,
+    onItemPress: PropTypes.func.isRequired,
     onCancel: PropTypes.func.isRequired,
     items: PropTypes.array.isRequired,
     title: PropTypes.string,
@@ -40,7 +40,7 @@ export default class List extends Component {
     let {
       isVisible,
       onCancel,
-      onConfirm,
+      onItemPress,
       title,
       children,
       items,
@@ -53,7 +53,7 @@ export default class List extends Component {
         onBackdropPress={onCancel}
         title={title}
         onCancel={onCancel}>
-        <Listing onItemPress={onConfirm} items={items} activeIDs={activeIDs} />
+        <Listing onItemPress={onItemPress} items={items} activeIDs={activeIDs} />
         {children}
       </ListModal>
     );

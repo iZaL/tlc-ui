@@ -142,7 +142,7 @@ class TruckModelScene extends Component {
           title={I18n.t('truck_make')}
           activeIDs={[make_id]}
           isVisible={this.state.showMakeModal}
-          onConfirm={this.setMake}
+          onItemPress={this.setMake}
           onCancel={this.hideMakeModal}
           items={makes}
         />
@@ -151,7 +151,7 @@ class TruckModelScene extends Component {
           title={I18n.t('truck_model')}
           activeIDs={[model_id]}
           isVisible={this.state.showModelModal}
-          onConfirm={this.setModel}
+          onItemPress={this.setModel}
           onCancel={this.hideModelModal}
           items={models}
         />

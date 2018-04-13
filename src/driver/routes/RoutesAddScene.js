@@ -13,38 +13,57 @@ import colors from '../../assets/theme/colors';
 import List from '../../components/List';
 import {ACTIONS as APP_ACTIONS} from '../../app/common/actions';
 import Listing from '../../components/Listing';
-import {Caption, Title} from 'react-native-paper';
+import {Caption, DialogTitle, RadioButton, RadioButtonGroup, Switch, Title} from 'react-native-paper';
 import AppButton from '../../components/AppButton';
-import Entypo from "react-native-vector-icons/Entypo";
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import Entypo from 'react-native-vector-icons/Entypo';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Separator from "../../components/Separator";
+import Touchable from 'react-native-platform-touchable';
 
 class RoutesAddScene extends Component {
-
   state = {
-    isOriginModalVisible: false,
-    isDestinationModalVisible: false,
-    origin_location_ids: [],
+    isDestinationCountriesModalVisible: false,
     destination_country_id: null,
+    isOriginLocationsModalVisible: false,
+    isDestinationLocationsModalVisible: false,
+    origin_location_ids: [],
     destination_location_ids: [],
-    selected_pick_all: true,
-    selected_drop_all: true,
-    listType:'pick',
-    mode:'add'
+    origin_location_all: true,
+    destination_location_all: true,
+    origin_select_all: true,
+    destination_select_all: true,
+    active_type: 'origin',
+    mode: 'add',
   };
 
-  static getDerivedStateFromProps(nextProps,nextState) {
+  static getDerivedStateFromProps(nextProps, nextState) {
     let {route} = nextProps.navigation.state.params;
-    if(route) {
+    if (route) {
       return {
-        selected_pick_all:false,
-        destination_country_id:route.destination.id,
-        destination_location_ids:route.destination.locations && route.destination.locations.filter(location => location.has_added).map(location => location.id) || [],
-        origin_location_ids:nextProps.origin_country && nextProps.origin_country.locations.filter(location => location.has_added).map(location => location.id) || []
-      }
+        origin_select_all: false,
+        destination_country_id: route.destination.id,
+        destination_location_ids:
+        (route.destination.locations &&
+          route.destination.locations
+            .filter(location => location.has_added)
+            .map(location => location.id)) ||
+        [],
+        origin_location_ids:
+        (nextProps.origin_country &&
+          nextProps.origin_country.locations
+            .filter(location => location.has_added)
+            .map(location => location.id)) ||
+        [],
+      };
     } else {
       return {
-        origin_location_ids:nextProps.origin_country && nextProps.origin_country.locations.filter(location => location.has_added).map(location => location.id) || []
-      }
+        origin_location_ids:
+        (nextProps.origin_country &&
+          nextProps.origin_country.locations
+            .filter(location => location.has_added)
+            .map(location => location.id)) ||
+        [],
+      };
     }
   }
 
@@ -54,50 +73,91 @@ class RoutesAddScene extends Component {
     this.props.dispatch(DRIVER_ACTIONS.fetchRoutes());
   }
 
-  showOriginModal = () => {
+  onOriginBoxPress = () => {
     this.setState({
-      listType:'pick',
-    })
-  };
-
-  hideOriginModal = () => {
-    this.setState({
-      isOriginModalVisible: false,
+      active_type: 'origin',
     });
   };
 
-  showDestinationModal = () => {
-    if(this.state.destination_country_id) {
-      this.setState({
-        listType:'drop',
-      })
-    } else {
-      if(this.state.mode === 'add') {
-        this.setState({
-          isDestinationModalVisible: true,
-        });
-      }
-    }
-  };
-
-  hideDestinationModal = () => {
+  hideOriginLocationsModal = () => {
     this.setState({
-      isDestinationModalVisible: false,
+      isOriginLocationsModalVisible: false,
     });
   };
 
-  setOrigin = origin => {};
+  showOriginLocationsModal = () => {
+    this.setState({
+      isOriginLocationsModalVisible: true,
+    });
+  };
 
-  setDestination = country => {
+  onDestinationCountrySavePress = () => {
+    console.log('onDestinationCountrySavePress');
+    this.hideDestinationCountriesModal();
+  };
+
+  onDestinationBoxPress = () => {
+    // this.setState({
+    //   active_type: 'destination',
+    // });
+
+    this.showDestinationCountriesModal();
+    //
+    // if (this.state.destination_country_id) {
+    //   // this.showDestinationLocationsModal();
+    // } else {
+    //   if (this.state.mode === 'add') {
+    //     this.showDestinationCountriesModal();
+    //   }
+    // }
+  };
+
+  hideDestinationCountriesModal = () => {
+    console.log('hideDestinationCountriesModal');
+    this.setState({
+      isDestinationCountriesModalVisible: false
+    });
+  };
+
+  showDestinationCountriesModal = () => {
+    this.setState({
+      isDestinationCountriesModalVisible: true
+    });
+  };
+
+  showDestinationLocationsModal = () => {
+    this.setState({
+      isDestinationLocationsModalVisible: true
+    });
+    // if (this.state.destination_country_id) {
+    //   this.setState({
+    //     active_type: 'drop',
+    //   });
+    // } else {
+    //   if (this.state.mode === 'add') {
+    //     this.setState({
+    //       isDestinationLocationsModalVisible: true,
+    //     });
+    //   }
+    // }
+  };
+
+  hideDestinationLocationsModal = () => {
+    this.setState({
+      isDestinationLocationsModalVisible: false,
+    });
+  };
+
+  onDestinationCountryItemPress = country => {
     let countryLocations = country.locations || [];
     this.setState({
       destination_country_id: country.id,
       destination_location_ids: countryLocations.map(location => location.id),
-      listType:'drop',
+      active_type: 'destination',
     });
   };
 
-  onDestinationLocationPress = location => {
+  onDestinationLocationItemPress = location => {
     let {destination_location_ids} = this.state;
     let {id} = location;
 
@@ -108,7 +168,7 @@ class RoutesAddScene extends Component {
     });
   };
 
-  onOriginLocationPress = location => {
+  onOriginLocationItemPress = location => {
     let {origin_location_ids} = this.state;
     let {id} = location;
 
@@ -117,12 +177,14 @@ class RoutesAddScene extends Component {
         ? origin_location_ids.filter(locationID => locationID != id)
         : origin_location_ids.concat(id),
     });
+
   };
 
-  onSave = () => {};
+  onSave = () => {
+  };
 
-  togglePickSelectAll = () => {
-    if (this.state.selected_pick_all) {
+  toggleOriginSelectAll = () => {
+    if (this.state.origin_select_all) {
       this.setState({
         origin_location_ids: [],
       });
@@ -135,17 +197,19 @@ class RoutesAddScene extends Component {
     }
 
     this.setState({
-      selected_pick_all: !this.state.selected_pick_all,
+      origin_select_all: !this.state.origin_select_all,
     });
   };
 
-  toggleDropSelectAll = () => {
-    if (this.state.selected_drop_all) {
+  toggleDestinationSelectAll = () => {
+    if (this.state.destination_select_all) {
       this.setState({
         destination_location_ids: [],
       });
     } else {
-      let destinationCountry = this.getCountry(this.state.destination_country_id);
+      let destinationCountry = this.getCountry(
+        this.state.destination_country_id,
+      );
       let countryLocations = destinationCountry.locations || [];
       this.setState({
         destination_location_ids: countryLocations.map(location => location.id),
@@ -153,7 +217,7 @@ class RoutesAddScene extends Component {
     }
 
     this.setState({
-      selected_drop_all: !this.state.selected_drop_all,
+      destination_select_all: !this.state.destination_select_all,
     });
   };
 
@@ -163,20 +227,44 @@ class RoutesAddScene extends Component {
     );
   };
 
-  render() {
+  onDestinationLocationsSavePress = () => {
+    this.hideDestinationLocationsModal();
+  };
 
-    let {destination_countries,origin_country} = this.props;
+  onOriginCountryPress = () => {
+    this.setState({origin_location_all: true});
+  };
+
+  onOriginCitiesPress = () => {
+    this.setState({
+      origin_location_all: false,
+      isOriginLocationsModalVisible: true
+    });
+  };
+
+  onDestinationCitiesPress = () => {
+    this.setState({
+      destination_location_all: false,
+      isDestinationLocationsModalVisible: true
+    });
+  };
+
+  render() {
+    let {destination_countries, origin_country} = this.props;
 
     let {
       destination_country_id,
-      selected_pick_all,
-      selected_drop_all,
+      origin_select_all,
+      destination_select_all,
       destination_location_ids,
       origin_location_ids,
-      listType
+      active_type,
+      destination_location_all,
+      origin_location_all,
+      isDestinationLocationsModalVisible,
+      isDestinationCountriesModalVisible,
+      isOriginLocationsModalVisible,
     } = this.state;
-
-    console.log('lis',listType);
 
     let destinationCountry = {};
 
@@ -194,8 +282,10 @@ class RoutesAddScene extends Component {
             backgroundColor: colors.blue,
             alignItems: 'center',
           }}>
-          <TextBox active={listType ==='pick'} onPress={this.showOriginModal} style={{marginRight: 5}}>
-
+          <TextBox
+            active={active_type === 'origin'}
+            onPress={this.onOriginBoxPress}
+            style={{marginRight: 5}}>
             {origin_country.name
               ? origin_country.name.toUpperCase()
               : I18n.t('origin').toUpperCase()}
@@ -203,72 +293,207 @@ class RoutesAddScene extends Component {
 
           <Entypo name="swap" color="white" size={15}/>
 
-          <TextBox active={listType==='drop'} onPress={this.showDestinationModal} style={{marginLeft: 5}}>
-
+          <TextBox
+            active={active_type === 'destination'}
+            onPress={this.onDestinationBoxPress}
+            style={{marginLeft: 5}}>
             {destinationCountry.name
               ? destinationCountry.name.toUpperCase()
               : I18n.t('destination').toUpperCase()}
           </TextBox>
         </View>
 
+        {active_type === 'origin' &&
+        // origin_country.locations &&
+        // origin_country.locations.length && (
+          <View style={{flex: 1, padding: 10}}>
+
+            <DialogTitle>
+              {I18n.t('select_pick_locations')}
+            </DialogTitle>
+
+            <Touchable
+              onPress={this.onOriginCountryPress}
+            >
+              <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                <View style={{flex: 1}}
+                >
+                  <RadioButton
+                    disabled={false}
+                    checked={origin_location_all}
+                    onPress={this.onOriginCountryPress}
+                  />
+                </View>
+                <Title style={{flex: 8, paddingHorizontal: 10}}>
+                  {I18n.t('anywhere_in')} {origin_country.name}
+                </Title>
+              </View>
+            </Touchable>
+
+            <Separator style={{marginVertical: 5}}/>
+
+            <Touchable
+              onPress={this.onOriginCitiesPress}
+            >
+              <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                <View style={{flex: 1}}
+                >
+                  <RadioButton
+                    disabled={false}
+                    checked={!origin_location_all}
+                    onPress={this.onOriginCitiesPress}
+                    style={{flex: 1}}
+                  />
+                </View>
+                <Title style={{flex: 8, paddingHorizontal: 10}}>
+                  {I18n.t('select_cities')}
+                </Title>
+              </View>
+            </Touchable>
+
+            {/*</RadioButtonGroup>*/}
+
+            {/*<View style={{flexDirection: 'row', alignItems: 'center'}}>*/}
+            {/*/!*<Title style={{flex: 1}}>*!/*/}
+            {/*/!*{I18n.t('select_pick_locations')}*!/*/}
+            {/*/!*</Title>*!/*/}
+            {/*<Caption onPress={this.toggleOriginSelectAll}>*/}
+            {/*{origin_select_all*/}
+            {/*? I18n.t('deselect_all')*/}
+            {/*: I18n.t('select_all')}*/}
+            {/*</Caption>*/}
+            {/*</View>*/}
+            {/*<Listing*/}
+            {/*onItemPress={this.onOriginLocationItemPress}*/}
+            {/*activeIDs={origin_location_ids}*/}
+            {/*items={origin_country.locations}*/}
+            {/*/>*/}
+          </View>
+        }
+
+        {active_type === 'destination' &&
+        // destinationCountry.id &&
+        // destinationCountry.locations &&
+        // destinationCountry.locations.length && (
+          <View style={{flex: 1, padding: 10}}>
+
+            <DialogTitle>
+              {I18n.t('select_drop_locations')}
+            </DialogTitle>
+
+            <Touchable
+              onPress={this.onDestinationCountryPress}
+            >
+              <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                <View style={{flex: 1}}
+                >
+                  <RadioButton
+                    disabled={false}
+                    checked={destination_location_all}
+                    onPress={this.onDestinationCountryPress}
+                  />
+                </View>
+                <Title style={{flex: 8, paddingHorizontal: 10}}>
+                  {I18n.t('anywhere_in')} {destinationCountry.name}
+                </Title>
+              </View>
+            </Touchable>
+
+            <Separator style={{marginVertical: 5}}/>
+
+            <Touchable
+              onPress={this.onDestinationCitiesPress}
+            >
+              <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                <View style={{flex: 1}}
+                >
+                  <RadioButton
+                    disabled={false}
+                    checked={!destination_location_all}
+                    onPress={this.onDestinationCitiesPress}
+                    style={{flex: 1}}
+                  />
+                </View>
+                <Title style={{flex: 8, paddingHorizontal: 10}}>
+                  {I18n.t('select_cities')}
+                </Title>
+              </View>
+            </Touchable>
+
+            {/*</RadioButtonGroup>*/}
+
+            {/*<View style={{flexDirection: 'row', alignItems: 'center'}}>*/}
+            {/*/!*<Title style={{flex: 1}}>*!/*/}
+            {/*/!*{I18n.t('select_pick_locations')}*!/*/}
+            {/*/!*</Title>*!/*/}
+            {/*<Caption onPress={this.toggleOriginSelectAll}>*/}
+            {/*{origin_select_all*/}
+            {/*? I18n.t('deselect_all')*/}
+            {/*: I18n.t('select_all')}*/}
+            {/*</Caption>*/}
+            {/*</View>*/}
+            {/*<Listing*/}
+            {/*onItemPress={this.onOriginLocationItemPress}*/}
+            {/*activeIDs={origin_location_ids}*/}
+            {/*items={origin_country.locations}*/}
+            {/*/>*/}
+          </View>
+        }
+{/*{active_type === 'destination' &&*/}
+        {/*destinationCountry.id &&*/}
+        {/*destinationCountry.locations &&*/}
+        {/*destinationCountry.locations.length && (*/}
+          {/*<View style={{flex: 1, padding: 10}}>*/}
+            {/*<View style={{flexDirection: 'row', alignItems: 'center'}}>*/}
+              {/*<Title style={{flex: 1}}>*/}
+                {/*{I18n.t('select_drop_locations')}*/}
+              {/*</Title>*/}
+              {/*<Caption onPress={this.toggleDestinationSelectAll}>*/}
+                {/*{destination_select_all*/}
+                  {/*? I18n.t('deselect_all')*/}
+                  {/*: I18n.t('select_all')}*/}
+              {/*</Caption>*/}
+            {/*</View>*/}
+            {/*<Listing*/}
+              {/*onItemPress={this.onDestinationLocationItemPress}*/}
+              {/*activeIDs={destination_location_ids}*/}
+              {/*items={destinationCountry.locations}*/}
+            {/*/>*/}
+          {/*</View>*/}
+        {/*)}*/}
+
+        <AppButton onPress={this.onSave}/>
+
         <List
-          title={I18n.t('origin')}
-          activeIDs={[origin_country.id]}
-          isVisible={this.state.isOriginModalVisible}
-          onConfirm={this.setOrigin}
-          onCancel={this.hideOriginModal}
-          items={[origin_country]}
+          title={I18n.t('select_locations')}
+          onItemPress={this.onOriginLocationItemPress}
+          activeIDs={origin_location_ids}
+          items={origin_country.locations}
+          isVisible={isOriginLocationsModalVisible}
+          onCancel={this.hideOriginLocationsModal}
+          onSave={this.onDestinationLocationsSavePress}
         />
 
         <List
-          title={I18n.t('destination')}
+          title={I18n.t('destination_country')}
           activeIDs={[destination_country_id]}
-          isVisible={this.state.isDestinationModalVisible}
-          onConfirm={this.setDestination}
-          onCancel={this.hideDestinationModal}
+          isVisible={isDestinationCountriesModalVisible}
+          onSave={this.onDestinationCountrySavePress}
+          onItemPress={this.onDestinationCountryItemPress}
+          onCancel={this.hideDestinationCountriesModal}
           items={destination_countries}
         />
 
-        {
-          listType === 'pick' &&
-          origin_country.locations &&
-          origin_country.locations.length && (
-            <View style={{flex: 1, padding: 10}}>
-              <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                <Title style={{flex: 1}}>{I18n.t('select_pick_locations')}</Title>
-                <Caption onPress={this.togglePickSelectAll}>
-                  {selected_pick_all ? I18n.t('deselect_all') : I18n.t('select_all')}
-                </Caption>
-              </View>
-              <Listing
-                onItemPress={this.onOriginLocationPress}
-                activeIDs={origin_location_ids}
-                items={origin_country.locations}
-              />
-            </View>
-          )}
+        <List
+          title={I18n.t('select_locations')}
+          onItemPress={this.onDestinationLocationItemPress}
+          activeIDs={destination_location_ids}
+          items={destinationCountry.locations}
+          isVisible={isDestinationLocationsModalVisible}
+          onCancel={this.hideDestinationLocationsModal}
+          onSave={this.onDestinationLocationsSavePress}
+        />
 
-        {
-          listType === 'drop' &&
-          destinationCountry.id &&
-          destinationCountry.locations &&
-          destinationCountry.locations.length && (
-            <View style={{flex: 1, padding: 10}}>
-              <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                <Title style={{flex: 1}}>{I18n.t('select_drop_locations')}</Title>
-                <Caption onPress={this.toggleDropSelectAll}>
-                  {selected_drop_all ? I18n.t('deselect_all') : I18n.t('select_all')}
-                </Caption>
-              </View>
-              <Listing
-                onItemPress={this.onDestinationLocationPress}
-                activeIDs={destination_location_ids}
-                items={destinationCountry.locations}
-              />
-            </View>
-          )}
-
-        <AppButton onPress={this.onSave} />
       </View>
     );
   }
@@ -281,7 +506,9 @@ const makeMapStateToProps = () => {
   const mapStateToProps = (state, props) => {
     return {
       origin_country: DRIVER_SELECTORS.getTruckRegistrationCountry(state),
-      destination_countries: DRIVER_SELECTORS.getRouteDestinationCountries(state),
+      destination_countries: DRIVER_SELECTORS.getRouteDestinationCountries(
+        state,
+      ),
     };
   };
   return mapStateToProps;
