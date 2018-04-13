@@ -15,6 +15,8 @@ import {ACTIONS as APP_ACTIONS} from '../../app/common/actions';
 import Listing from '../../components/Listing';
 import {Caption, Title} from 'react-native-paper';
 import AppButton from '../../components/AppButton';
+import Entypo from "react-native-vector-icons/Entypo";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
 class RoutesAddScene extends Component {
   static defaultProps = {
@@ -26,7 +28,6 @@ class RoutesAddScene extends Component {
   state = {
     isOriginModalVisible: false,
     isDestinationModalVisible: false,
-    // origin_id:null,
     origin_location_ids: [],
     destination_country_id: null,
     destination_location_ids: [],
@@ -107,7 +108,6 @@ class RoutesAddScene extends Component {
   };
 
   onDestinationLocationPress = location => {
-    console.log('loca',location);
     let {destination_location_ids} = this.state;
     let {id} = location;
 
@@ -206,14 +206,16 @@ class RoutesAddScene extends Component {
             alignItems: 'center',
           }}>
           <TextBox active={listType ==='pick'} onPress={this.showOriginModal} style={{marginRight: 5}}>
+
             {origin_country.name
               ? origin_country.name.toUpperCase()
               : I18n.t('origin').toUpperCase()}
           </TextBox>
-          <Text style={{color: 'white', paddingHorizontal: 2}}>
-            {I18n.t('to')}
-          </Text>
+
+          <Entypo name="swap" color="white" size={15}/>
+
           <TextBox active={listType==='drop'} onPress={this.showDestinationModal} style={{marginLeft: 5}}>
+
             {destinationCountry.name
               ? destinationCountry.name.toUpperCase()
               : I18n.t('destination').toUpperCase()}
