@@ -1,23 +1,17 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {ScrollView, Text, View} from 'react-native';
+import {Text, View} from 'react-native';
 import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
 import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
-import RouteTransitsList from './components/RouteTransitsList';
-import VisaLicenseForm from './components/VisaLicenseForm';
-import FormLabel from '../../components/FormLabel';
-import TextBox from '../../components/TextBox';
+import TextBox from 'components/TextBox';
 import I18n from 'utils/locale';
-import colors from '../../assets/theme/colors';
-import List from '../../components/List';
-import {ACTIONS as APP_ACTIONS} from '../../app/common/actions';
-import Listing from '../../components/Listing';
-import {Caption, DialogTitle, RadioButton, RadioButtonGroup, Switch, Title} from 'react-native-paper';
-import AppButton from '../../components/AppButton';
+import colors from 'assets/theme/colors';
+import List from 'components/List';
+import {ACTIONS as APP_ACTIONS} from 'app/common/actions';
+import {RadioButton, Title} from 'react-native-paper';
+import AppButton from 'components/AppButton';
 import Entypo from 'react-native-vector-icons/Entypo';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import Separator from "../../components/Separator";
+import Separator from "components/Separator";
 import Touchable from 'react-native-platform-touchable';
 
 class RoutesAddScene extends Component {
@@ -85,6 +79,12 @@ class RoutesAddScene extends Component {
     });
   };
 
+  showOriginLocationsModal = () => {
+    this.setState({
+      isOriginLocationsModalVisible: true
+    })
+  };
+
   onDestinationCountrySavePress = () => {
     console.log('onDestinationCountrySavePress');
     this.hideDestinationCountriesModal();
@@ -125,17 +125,6 @@ class RoutesAddScene extends Component {
     this.setState({
       isDestinationLocationsModalVisible: true
     });
-    // if (this.state.destination_country_id) {
-    //   this.setState({
-    //     active_type: 'drop',
-    //   });
-    // } else {
-    //   if (this.state.mode === 'add') {
-    //     this.setState({
-    //       isDestinationLocationsModalVisible: true,
-    //     });
-    //   }
-    // }
   };
 
   hideDestinationLocationsModal = () => {
@@ -233,8 +222,8 @@ class RoutesAddScene extends Component {
   onOriginCitiesPress = () => {
     this.setState({
       origin_location_all: false,
-      isOriginLocationsModalVisible: true
     });
+    this.showOriginLocationsModal();
   };
 
   onDestinationCountryPress = () => {
@@ -244,8 +233,8 @@ class RoutesAddScene extends Component {
   onDestinationCitiesPress = () => {
     this.setState({
       destination_location_all: false,
-      isDestinationLocationsModalVisible: true
     });
+    this.showDestinationLocationsModal();
   };
 
   render() {
