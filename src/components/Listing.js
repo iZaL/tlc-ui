@@ -16,7 +16,7 @@ import ListModal from './ListModal';
 export default class Listing extends Component {
   static propTypes = {
     items: PropTypes.array.isRequired,
-    onPress: PropTypes.func.isRequired,
+    onItemPress: PropTypes.func.isRequired,
     activeIDs: PropTypes.array,
   };
 
@@ -34,7 +34,7 @@ export default class Listing extends Component {
         <View style={[styles.itemRowContainer,item.disabled && {opacity:.4}]}>
           <Text style={styles.itemTitle}>{item.name}</Text>
           <Checkbox
-            checked={item.has_added || activeIDs.includes(item.id)}
+            checked={activeIDs.includes(item.id)}
             color={colors.primary}
           />
         </View>

@@ -1,28 +1,34 @@
-import React, {PureComponent} from 'react';
-import {StyleSheet, Text, TouchableHighlight, View} from 'react-native';
+import React, {Component} from 'react';
+import {StyleSheet, Text, View} from 'react-native';
 import PropTypes from 'prop-types';
 import colors from 'assets/theme/colors';
 import Touchable from 'react-native-platform-touchable';
-import I18n from 'utils/locale';
 
-export default class TextBox extends PureComponent {
+export default class TextBox extends Component {
+
   static propTypes = {
     background: PropTypes.string,
     disabled: PropTypes.bool,
+    active:PropTypes.bool
   };
+
+  shouldComponentUpdate(nextProps) {
+    return nextProps.active !== this.props.active
+  }
 
   static defaultProps = {
     background: 'primary',
   };
 
   render() {
-    const {style, children, disabled, onPress, ...rest} = this.props;
+    const {style, children, disabled, onPress, active} = this.props;
+    console.log('active',active);
 
     return (
       <Touchable
         onPress={onPress}
         disabled={disabled}
-        style={[styles.container, style, disabled && {opacity: 0.4}]}>
+        style={[styles.container, style, disabled && {opacity: 0.4}, active && styles.active]}>
         <View>
           <Text style={styles.text}>{children}</Text>
         </View>
@@ -47,4 +53,12 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '100',
   },
+  active:{
+    // opacity:.,
+    borderBottomWidth:2,
+    borderBottomColor:'yellow',
+    borderBottomRightRadius:0,
+    borderBottomLeftRadius:0,
+    // backgroundColor:'yellow'
+  }
 });

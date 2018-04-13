@@ -228,6 +228,8 @@
   "destination" : "Destination",
   "to" : "to",
   "select_locations" : "Select Locations",
+  "select_pick_locations" : "Select Pick Locations",
+  "select_drop_locations" : "Select Drop Locations",
 
   "select_all" : "select all",
   "deselect_all" : "unselect all",

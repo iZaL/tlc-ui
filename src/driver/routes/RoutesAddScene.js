@@ -27,22 +27,28 @@ class RoutesAddScene extends Component {
     isOriginModalVisible: false,
     isDestinationModalVisible: false,
     // origin_id:null,
+    origin_location_ids: [],
     destination_country_id: null,
     destination_location_ids: [],
-    destination_location_any: false,
-    selected_all: true,
+    selected_pick_all: true,
+    selected_drop_all: true,
+    listType:'pick',
     mode:'add'
   };
 
   static getDerivedStateFromProps(nextProps,nextState) {
     let {route} = nextProps.navigation.state.params;
     if(route) {
-      console.log('route');
+      console.log('route',route);
       return {
-        selected_all:false,
+        selected_pick_all:false,
         destination_country_id:route.destination.id,
-        destination_location_ids:route.locations && route.locations.filter(location => location.has_added).map(location => location.id) || [],
-        mode:'edit'
+        destination_location_ids:route.destination.locations && route.destination.locations.filter(location => location.has_added).map(location => location.id) || [],
+        origin_location_ids:nextProps.origin_country && nextProps.origin_country.locations.filter(location => location.has_added).map(location => location.id) || []
+      }
+    } else {
+      return {
+        origin_location_ids:nextProps.origin_country && nextProps.origin_country.locations.filter(location => location.has_added).map(location => location.id) || []
       }
     }
   }
@@ -57,6 +63,9 @@ class RoutesAddScene extends Component {
     // this.setState({
     //   isOriginModalVisible: true,
     // });
+    this.setState({
+      listType:'pick',
+    })
   };
 
   hideOriginModal = () => {
@@ -66,13 +75,17 @@ class RoutesAddScene extends Component {
   };
 
   showDestinationModal = () => {
-
-    if(this.state.mode === 'add') {
+    if(this.state.destination_country_id) {
       this.setState({
-        isDestinationModalVisible: true,
-      });
+        listType:'drop',
+      })
+    } else {
+      if(this.state.mode === 'add') {
+        this.setState({
+          isDestinationModalVisible: true,
+        });
+      }
     }
-
   };
 
   hideDestinationModal = () => {
@@ -87,12 +100,14 @@ class RoutesAddScene extends Component {
     let countryLocations = country.locations || [];
     this.setState({
       destination_country_id: country.id,
-      selected_all: true,
+      selected_drop_all: true,
       destination_location_ids: countryLocations.map(location => location.id),
+      listType:'drop',
     });
   };
 
-  onLocationPress = location => {
+  onDestinationLocationPress = location => {
+    console.log('loca',location);
     let {destination_location_ids} = this.state;
     let {id} = location;
 
@@ -103,31 +118,53 @@ class RoutesAddScene extends Component {
     });
   };
 
+  onOriginLocationPress = location => {
+    let {origin_location_ids} = this.state;
+    let {id} = location;
+
+    this.setState({
+      origin_location_ids: origin_location_ids.includes(id)
+        ? origin_location_ids.filter(locationID => locationID != id)
+        : origin_location_ids.concat(id),
+    });
+  };
+
   onSave = () => {};
 
-  toggleSelectAll = () => {
-    if (this.state.selected_all) {
-      this.unselectAll();
+  togglePickSelectAll = () => {
+    if (this.state.selected_pick_all) {
+      this.setState({
+        origin_location_ids: [],
+      });
     } else {
-      this.selectAll();
+      let originCountry = this.getCountry(this.props.origin_country.id);
+      let countryLocations = originCountry.locations || [];
+      this.setState({
+        origin_location_ids: countryLocations.map(location => location.id),
+      });
     }
 
     this.setState({
-      selected_all: !this.state.selected_all,
+      selected_pick_all: !this.state.selected_pick_all,
     });
   };
 
-  unselectAll = () => {
-    this.setState({
-      destination_location_ids: [],
-    });
-  };
+  toggleDropSelectAll = () => {
+    if (this.state.selected_drop_all) {
+      this.setState({
+        destination_location_ids: [],
+      });
+    } else {
+      let destinationCountry = this.getCountry(this.state.destination_country_id);
+      let countryLocations = destinationCountry.locations || [];
+      this.setState({
+        destination_location_ids: countryLocations.map(location => location.id),
+      });
+    }
 
-  selectAll = () => {
-    let destinationCountry = this.getCountry(this.state.destination_country_id);
-    let countryLocations = destinationCountry.locations || [];
     this.setState({
-      destination_location_ids: countryLocations.map(location => location.id),
+      selected_drop_all: !this.state.selected_drop_all,
+      listType:'drop',
     });
   };
 
@@ -141,17 +178,16 @@ class RoutesAddScene extends Component {
 
     let {destination_countries,origin_country} = this.props;
 
-    // if(!origin_country.id) {
-    //   origin_country = this.props.navigation.state.params.route.origin;
-    // }
-
-    console.log('props',this.props);
-
     let {
       destination_country_id,
-      selected_all,
+      selected_pick_all,
+      selected_drop_all,
       destination_location_ids,
+      origin_location_ids,
+      listType
     } = this.state;
+
+    console.log('lis',listType);
 
     let destinationCountry = {};
 
@@ -169,7 +205,7 @@ class RoutesAddScene extends Component {
             backgroundColor: colors.blue,
             alignItems: 'center',
           }}>
-          <TextBox onPress={this.showOriginModal} style={{marginRight: 5}}>
+          <TextBox active={listType ==='pick'} onPress={this.showOriginModal} style={{marginRight: 5}}>
             {origin_country.name
               ? origin_country.name.toUpperCase()
               : I18n.t('origin').toUpperCase()}
@@ -177,7 +213,7 @@ class RoutesAddScene extends Component {
           <Text style={{color: 'white', paddingHorizontal: 2}}>
             {I18n.t('to')}
           </Text>
-          <TextBox onPress={this.showDestinationModal} style={{marginLeft: 5}}>
+          <TextBox active={listType==='drop'} onPress={this.showDestinationModal} style={{marginLeft: 5}}>
             {destinationCountry.name
               ? destinationCountry.name.toUpperCase()
               : I18n.t('destination').toUpperCase()}
@@ -202,19 +238,39 @@ class RoutesAddScene extends Component {
           items={destination_countries}
         />
 
-        {destinationCountry.id &&
-          destinationCountry.show_route_locations &&
+        {
+          listType === 'pick' &&
+          origin_country.locations &&
+          origin_country.locations.length && (
+            <View style={{flex: 1, padding: 10}}>
+              <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                <Title style={{flex: 1}}>{I18n.t('select_pick_locations')}</Title>
+                <Caption onPress={this.togglePickSelectAll}>
+                  {selected_pick_all ? I18n.t('deselect_all') : I18n.t('select_all')}
+                </Caption>
+              </View>
+              <Listing
+                onItemPress={this.onOriginLocationPress}
+                activeIDs={origin_location_ids}
+                items={origin_country.locations}
+              />
+            </View>
+          )}
+
+        {
+          listType === 'drop' &&
+          destinationCountry.id &&
           destinationCountry.locations &&
           destinationCountry.locations.length && (
             <View style={{flex: 1, padding: 10}}>
               <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                <Title style={{flex: 1}}>{I18n.t('select_locations')}</Title>
-                <Caption onPress={this.toggleSelectAll}>
-                  {selected_all ? I18n.t('deselect_all') : I18n.t('select_all')}
+                <Title style={{flex: 1}}>{I18n.t('select_drop_locations')}</Title>
+                <Caption onPress={this.toggleDropSelectAll}>
+                  {selected_drop_all ? I18n.t('deselect_all') : I18n.t('select_all')}
                 </Caption>
               </View>
               <Listing
-                onItemPress={this.onLocationPress}
+                onItemPress={this.onDestinationLocationPress}
                 activeIDs={destination_location_ids}
                 items={destinationCountry.locations}
               />
