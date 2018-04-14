@@ -71,9 +71,6 @@ const ProfileStack = StackNavigator(
     },
     EmployeeAdd: {
       screen: EmployeeAddScene,
-      navigationOptions: () => ({
-        title: I18n.t('employee_add'),
-      }),
     },
     LocationList: {
       screen: LocationListScene,

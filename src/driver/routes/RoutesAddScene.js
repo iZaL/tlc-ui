@@ -12,7 +12,7 @@ import {Caption, Title} from 'react-native-paper';
 import Button from 'components/Button';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Divider from 'components/Divider';
-import CheckedListItem from '../../components/CheckedListItem';
+import CheckedListItem from 'components/CheckedListItem';
 
 class RoutesAddScene extends Component {
   state = {

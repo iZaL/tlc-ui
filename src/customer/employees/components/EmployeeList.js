@@ -22,7 +22,7 @@ export default class EmployeeList extends PureComponent {
     let {onItemPress} = this.props;
 
     return(
-      <ListItem onItemPress={()=>onItemPress(item)} name={item.name} />
+      <ListItem onItemPress={()=>onItemPress(item)} title={item.name} />
     );
 
   };

@@ -8,6 +8,7 @@ import Divider from 'components/Divider';
 import ListItem from 'components/ListItem';
 import {ACTIONS as TRUCK_ACTIONS} from 'trucks/common/actions';
 import {ListSection} from 'react-native-paper';
+import I18n from 'utils/locale';
 
 class TruckUpdateScene extends Component {
   static propTypes = {
@@ -49,13 +50,14 @@ class TruckUpdateScene extends Component {
   render() {
     return (
       <ListSection>
-        <ListItem onItemPress={this.loadTruckModelScene} name="truck_model" />
+        <ListItem onItemPress={this.loadTruckModelScene} title={I18n.t('truck_model')} name="truck_model" />
 
         <Divider />
 
         <ListItem
           onItemPress={this.loadTruckRegistrationScene}
           name="truck_registration"
+          title={I18n.t('truck_registration')}
         />
 
         <Divider />
@@ -63,6 +65,7 @@ class TruckUpdateScene extends Component {
         <ListItem
           onItemPress={this.loadTruckInfoUpdateScene}
           name="truck_details"
+          title={I18n.t('truck_details')}
         />
 
         <Divider />
@@ -70,6 +73,7 @@ class TruckUpdateScene extends Component {
         <ListItem
           onItemPress={this.loadTrailerUpdateScene}
           name="trailer_details"
+          title={I18n.t('trailer_details')}
         />
       </ListSection>
     );

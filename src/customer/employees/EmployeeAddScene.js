@@ -6,33 +6,15 @@ import {View} from 'react-native';
 import FormTextInput from 'components/FormTextInput';
 import Button from 'components/Button';
 import I18n from 'utils/locale';
-import CheckedListItem from "../../components/CheckedListItem";
-
-type State = {
-  mobile: string,
-};
+import CheckedListItem from "components/CheckedListItem";
 
 class EmployeeAddScene extends Component {
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   return this.state !== nextState;
-  // }
 
-  static defaultProps = {
-    mobile: null,
-    phone: null,
-    email: null,
-    name_en: null,
-    driver_interaction: true,
+  static navigationOptions = ({navigation}) => {
+    return {
+      title: (navigation.state.params && navigation.state.params.name) || I18n.t('employee_add'),
+    };
   };
-
-  state: State = {
-    mobile: null,
-    phone: null,
-    email: null,
-    name_en: null,
-    driver_interaction: true,
-  };
-
 
   constructor(props) {
     super(props);
@@ -42,7 +24,7 @@ class EmployeeAddScene extends Component {
       phone,
       email,
       driver_interaction
-    } = props.navigation.state.params;
+    } = props.navigation.state.params || {};
     
     this.state = {
       name_en: name_en,

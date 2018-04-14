@@ -7,7 +7,6 @@ import PropTypes from 'prop-types';
 import {StyleSheet, Text, View} from 'react-native';
 import colors from 'assets/theme/colors';
 import {Checkbox} from 'react-native-paper';
-import ListItem from "./ListItem";
 
 export default class CheckedListItem extends Component {
   static propTypes = {

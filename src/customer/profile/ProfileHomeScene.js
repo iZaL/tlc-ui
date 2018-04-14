@@ -55,6 +55,7 @@ class ProfileHome extends Component {
           onItemPress={this.onListItemPress}
           iconProps={{type: 'Ionicons', name: 'md-person'}}
           name="company_information"
+          title={I18n.t('company_information')}
         />
 
         <Divider />
@@ -63,6 +64,7 @@ class ProfileHome extends Component {
           onItemPress={this.onListItemPress}
           iconProps={{type: 'MaterialCommunityIcons', name: 'contacts'}}
           name="employee_list"
+          title={I18n.t('employee_list')}
         />
 
         <Divider />
@@ -71,6 +73,7 @@ class ProfileHome extends Component {
           onItemPress={this.onListItemPress}
           iconProps={{type: 'MaterialCommunityIcons', name: 'adjust'}}
           name="location_origin_list"
+          title={I18n.t('location_origin_list')}
         />
 
         <Divider />
@@ -79,7 +82,9 @@ class ProfileHome extends Component {
           onItemPress={this.onListItemPress}
           iconProps={{type: 'MaterialCommunityIcons', name: 'map-marker'}}
           name="location_destination_list"
+          title={I18n.t('location_destination_list')}
         />
+
       </ListSection>
     );
   }
