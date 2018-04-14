@@ -5,19 +5,11 @@ import {SELECTORS as COUNTRY_SELECTORS} from 'app/selectors/country';
 import {ACTIONS as APP_ACTIONS} from 'app/common/actions';
 import {ACTIONS as PROFILE_ACTIONS} from 'driver/common/actions';
 import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
-import {ScrollView, Text, View} from 'react-native';
-import FormLabel from 'components/FormLabel';
-import FormTextInput from 'components/FormTextInput';
-import Dropdown from 'components/Dropdown';
+import {ScrollView} from 'react-native';
 import Divider from 'components/Divider';
 import Button from 'components/Button';
 import I18n from 'utils/locale';
-import AppModal from 'components/AppModal';
-import AlertBox from 'components/AlertBox';
-import SelectBox from 'components/SelectBox';
-import Modal from 'react-native-modal';
 import ListItem from 'components/ListItem';
-import IconFactory from 'components/IconFactory';
 
 type State = {
   mobile: string,

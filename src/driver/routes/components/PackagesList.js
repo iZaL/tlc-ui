@@ -8,18 +8,17 @@ import colors from 'assets/theme/colors';
 import I18n from 'utils/locale';
 import Accordion from 'react-native-collapsible/Accordion';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import LocalizedText from 'components/LocalizedText';
 import Touchable from 'react-native-platform-touchable';
 
 let SectionHeader = ({item}) => {
   return (
     <View style={[styles.sectionContainer]}>
       <View>
-        <LocalizedText
+        <Text
           style={[styles.headerText]}
-          en={item.name_en}
-          ar={item.name_ar}
-        />
+        >
+          {item.name}
+        </Text>
       </View>
       <View style={styles.line} />
     </View>
@@ -61,11 +60,13 @@ export default class PackagesList extends Component {
       <View>
         <View style={styles.contentContainer}>
           <View style={styles.rowContent}>
-            <LocalizedText
+            <Text
               style={[styles.itemName]}
               en={item.description_en}
               ar={item.description_ar}
-            />
+            >
+              {item.description}
+            </Text>
             {item.price && <Text style={styles.price}>{item.price} KD</Text>}
           </View>
         </View>

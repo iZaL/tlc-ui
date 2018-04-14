@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import {FlatList, StyleSheet, Text, View} from 'react-native';
 import Touchable from 'react-native-platform-touchable';
 import colors from 'assets/theme/colors';
-import I18n from 'utils/locale';
 import moment from 'moment';
 
 export default class DatePicker extends Component {
