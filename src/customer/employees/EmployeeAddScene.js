@@ -2,16 +2,11 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {ACTIONS as CUSTOMER_ACTIONS} from 'customer/common/actions';
 import {SELECTORS as CUSTOMER_SELECTORS} from 'customer/common/selectors';
-import {ScrollView, View} from 'react-native';
-import FormLabel from 'components/FormLabel';
+import {View} from 'react-native';
 import FormTextInput from 'components/FormTextInput';
 import Button from 'components/Button';
 import I18n from 'utils/locale';
-import FormCheck from 'components/FormCheck';
-import Touchable from 'react-native-platform-touchable';
-import Divider from 'components/Divider';
 import CheckedListItem from "../../components/CheckedListItem";
-import ListItem from "../../components/ListItem";
 
 type State = {
   mobile: string,
@@ -22,14 +17,42 @@ class EmployeeAddScene extends Component {
   //   return this.state !== nextState;
   // }
 
-  state: State = {
-    mobile: '',
-    phone: '',
-    email: '',
-    name_en: '',
-    name_ar: '',
+  static defaultProps = {
+    mobile: null,
+    phone: null,
+    email: null,
+    name_en: null,
     driver_interaction: true,
   };
+
+  state: State = {
+    mobile: null,
+    phone: null,
+    email: null,
+    name_en: null,
+    driver_interaction: true,
+  };
+
+
+  constructor(props) {
+    super(props);
+    let {
+      name_en,
+      mobile,
+      phone,
+      email,
+      driver_interaction
+    } = props.navigation.state.params;
+    
+    this.state = {
+      name_en: name_en,
+      mobile: mobile,
+      phone: phone,
+      email: email,
+      driver_interaction: driver_interaction
+    };
+
+  }
 
   onValueChange = (field, value) => {
     switch (field) {
@@ -58,7 +81,7 @@ class EmployeeAddScene extends Component {
 
     return (
       <View>
-        <View style={{paddingTop:0,padding:10}}>
+        <View style={{paddingTop: 0, padding: 10}}>
           <FormTextInput
             onValueChange={this.onValueChange}
             field="name"

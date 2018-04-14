@@ -11,7 +11,6 @@ import ListItem from "components/ListItem";
 export default class EmployeeList extends PureComponent {
   static propTypes = {
     items: PropTypes.array.isRequired,
-    onItemEditPress: PropTypes.func.isRequired,
     onItemPress: PropTypes.func.isRequired,
   };
 
@@ -23,7 +22,7 @@ export default class EmployeeList extends PureComponent {
     let {onItemPress} = this.props;
 
     return(
-      <ListItem onItemPress={onItemPress} name={item.name} />
+      <ListItem onItemPress={()=>onItemPress(item)} name={item.name} />
     );
 
   };

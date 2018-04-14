@@ -8,7 +8,6 @@ import ProfileHomeScene from 'customer/profile/ProfileHomeScene';
 import ProfileUpdateScene from 'customer/profile/ProfileUpdateScene';
 import EmployeeListScene from 'customer/employees/EmployeeListScene';
 import EmployeeAddScene from 'customer/employees/EmployeeAddScene';
-import EmployeeEditScene from 'customer/employees/EmployeeEditScene';
 import LoadAddScene from 'customer/loads/LoadAddScene';
 import LocationListScene from 'customer/locations/LocationListScene';
 import LocationAddScene from 'customer/locations/LocationAddScene';
@@ -74,12 +73,6 @@ const ProfileStack = StackNavigator(
       screen: EmployeeAddScene,
       navigationOptions: () => ({
         title: I18n.t('employee_add'),
-      }),
-    },
-    EmployeeEdit: {
-      screen: EmployeeEditScene,
-      navigationOptions: () => ({
-        title: I18n.t('employee_edit'),
       }),
     },
     LocationList: {

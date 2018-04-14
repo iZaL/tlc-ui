@@ -7,6 +7,7 @@ import {ScrollView} from 'react-native';
 import EmployeeList from 'customer/employees/components/EmployeeList';
 import Button from 'components/Button';
 import I18n from 'utils/locale';
+import EmployeeListOld from "./components/EmployeeListOld";
 
 class EmployeeListScene extends Component {
   static propTypes = {
@@ -38,7 +39,7 @@ class EmployeeListScene extends Component {
 
     return (
       <ScrollView style={{flex: 1}}>
-        <EmployeeList
+        <EmployeeListOld
           items={employees}
           onItemPress={this.onEmployeeListItemPress}
           onItemEditPress={this.onEmployeeListItemEditPress}
