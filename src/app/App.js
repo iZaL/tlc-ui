@@ -8,7 +8,7 @@ import Notification from 'app/components/Notification';
 import LanguageSelectScene from 'app/scenes/LanguageSelectScene';
 import Navigator from 'components/Navigator';
 
-import {SafeAreaView, AppState} from 'react-native';
+import {SafeAreaView, AppState, View} from 'react-native';
 import {connect} from 'react-redux';
 import {ACTIONS} from 'app/common/actions';
 import {ACTIONS as USER_ACTIONS} from 'guest/common/actions';
@@ -76,7 +76,7 @@ class App extends Component {
     }
 
     return (
-      <SafeAreaView style={{flex: 1}}>
+      <View style={{flex: 1}}>
         <PushNotificationManager
           setPushToken={this.setPushToken}
           navigateToScene={this.navigateToScene}
@@ -92,7 +92,7 @@ class App extends Component {
           userType={userType}
           logout={this.logout}
         />
-      </SafeAreaView>
+      </View>
     );
   }
 }
