@@ -8,7 +8,7 @@ import I18n from 'utils/locale';
 import colors from 'assets/theme/colors';
 import List from 'components/List';
 import {ACTIONS as APP_ACTIONS} from 'app/common/actions';
-import {RadioButton, Title} from 'react-native-paper';
+import {Caption, RadioButton, Title} from 'react-native-paper';
 import AppButton from 'components/AppButton';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Separator from "components/Separator";
@@ -95,7 +95,7 @@ class RoutesAddScene extends Component {
       active_type: 'destination',
     });
 
-    if(!this.state.destination_country_id) {
+    if (!this.state.destination_country_id) {
       this.showDestinationCountriesModal();
     }
     //
@@ -260,9 +260,6 @@ class RoutesAddScene extends Component {
       destinationCountry = this.getCountry(destination_country_id);
     }
 
-    console.log('active_type',active_type);
-
-
     return (
       <View style={{flex: 1, backgroundColor: 'white'}}>
         <View
@@ -295,11 +292,9 @@ class RoutesAddScene extends Component {
         </View>
 
         {active_type === 'origin' &&
-        // origin_country.locations &&
-        // origin_country.locations.length && (
         <View style={{flex: 1, padding: 10}}>
 
-          <Title style={{textAlign:'center',paddingBottom:20}}>
+          <Title style={{textAlign: 'center', paddingBottom: 20}}>
             {I18n.t('select_pick_locations')}
           </Title>
 
@@ -336,33 +331,13 @@ class RoutesAddScene extends Component {
             </View>
           </Touchable>
 
-          {/*</RadioButtonGroup>*/}
-
-          {/*<View style={{flexDirection: 'row', alignItems: 'center'}}>*/}
-          {/*/!*<Title style={{flex: 1}}>*!/*/}
-          {/*/!*{I18n.t('select_pick_locations')}*!/*/}
-          {/*/!*</Title>*!/*/}
-          {/*<Caption onPress={this.toggleOriginSelectAll}>*/}
-          {/*{origin_select_all*/}
-          {/*? I18n.t('deselect_all')*/}
-          {/*: I18n.t('select_all')}*/}
-          {/*</Caption>*/}
-          {/*</View>*/}
-          {/*<Listing*/}
-          {/*onItemPress={this.onOriginLocationItemPress}*/}
-          {/*activeIDs={origin_location_ids}*/}
-          {/*items={origin_country.locations}*/}
-          {/*/>*/}
         </View>
         }
 
         {active_type === 'destination' &&
-        // destinationCountry.id &&
-        // destinationCountry.locations &&
-        // destinationCountry.locations.length && (
         <View style={{flex: 1, padding: 10}}>
 
-          <Title style={{textAlign:'center',paddingBottom:20}}>
+          <Title style={{textAlign: 'center', paddingBottom: 20}}>
             {I18n.t('select_drop_locations')}
           </Title>
 
@@ -399,47 +374,8 @@ class RoutesAddScene extends Component {
             </View>
           </Touchable>
 
-          {/*</RadioButtonGroup>*/}
-
-          {/*<View style={{flexDirection: 'row', alignItems: 'center'}}>*/}
-          {/*/!*<Title style={{flex: 1}}>*!/*/}
-          {/*/!*{I18n.t('select_pick_locations')}*!/*/}
-          {/*/!*</Title>*!/*/}
-          {/*<Caption onPress={this.toggleOriginSelectAll}>*/}
-          {/*{origin_select_all*/}
-          {/*? I18n.t('deselect_all')*/}
-          {/*: I18n.t('select_all')}*/}
-          {/*</Caption>*/}
-          {/*</View>*/}
-          {/*<Listing*/}
-          {/*onItemPress={this.onOriginLocationItemPress}*/}
-          {/*activeIDs={origin_location_ids}*/}
-          {/*items={origin_country.locations}*/}
-          {/*/>*/}
         </View>
         }
-        {/*{active_type === 'destination' &&*/}
-        {/*destinationCountry.id &&*/}
-        {/*destinationCountry.locations &&*/}
-        {/*destinationCountry.locations.length && (*/}
-        {/*<View style={{flex: 1, padding: 10}}>*/}
-        {/*<View style={{flexDirection: 'row', alignItems: 'center'}}>*/}
-        {/*<Title style={{flex: 1}}>*/}
-        {/*{I18n.t('select_drop_locations')}*/}
-        {/*</Title>*/}
-        {/*<Caption onPress={this.toggleDestinationSelectAll}>*/}
-        {/*{destination_select_all*/}
-        {/*? I18n.t('deselect_all')*/}
-        {/*: I18n.t('select_all')}*/}
-        {/*</Caption>*/}
-        {/*</View>*/}
-        {/*<Listing*/}
-        {/*onItemPress={this.onDestinationLocationItemPress}*/}
-        {/*activeIDs={destination_location_ids}*/}
-        {/*items={destinationCountry.locations}*/}
-        {/*/>*/}
-        {/*</View>*/}
-        {/*)}*/}
 
         <AppButton onPress={this.onSave}/>
 
@@ -451,6 +387,13 @@ class RoutesAddScene extends Component {
           isVisible={isOriginLocationsModalVisible}
           onCancel={this.hideOriginLocationsModal}
           onSave={this.onDestinationLocationsSavePress}
+          header={
+            <Caption onPress={this.toggleOriginSelectAll}>
+              {origin_select_all
+                ? I18n.t('deselect_all')
+                : I18n.t('select_all')}
+            </Caption>
+          }
         />
 
         <List
@@ -471,6 +414,13 @@ class RoutesAddScene extends Component {
           isVisible={isDestinationLocationsModalVisible}
           onCancel={this.hideDestinationLocationsModal}
           onSave={this.onDestinationLocationsSavePress}
+          header={
+            <Caption onPress={this.toggleDestinationSelectAll}>
+              {destination_select_all
+                ? I18n.t('deselect_all')
+                : I18n.t('select_all')}
+            </Caption>
+          }
         />
 
       </View>
