@@ -8,7 +8,7 @@ import colors from 'assets/theme/colors';
 import Touchable from 'react-native-platform-touchable';
 import Accordion from 'react-native-collapsible/Accordion';
 import Feather from 'react-native-vector-icons/Feather';
-import Separator from 'components/Separator';
+import Divider from 'components/Divider';
 import I18n from 'utils/locale';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
@@ -57,7 +57,7 @@ export default class EmployeeList extends PureComponent {
           <Text style={styles.email}>{item.email}</Text>
         </View>
 
-        <Separator style={{marginVertical: 10}} />
+        <Divider style={{marginVertical: 10}} />
 
         <View style={styles.row}>
           <MaterialCommunityIcons name="phone" size={30} style={styles.icon} />
@@ -67,7 +67,7 @@ export default class EmployeeList extends PureComponent {
           </View>
         </View>
 
-        <Separator style={{marginVertical: 10}} />
+        <Divider style={{marginVertical: 10}} />
 
         <View style={styles.row}>
           <Entypo
@@ -82,7 +82,7 @@ export default class EmployeeList extends PureComponent {
           </Text>
         </View>
 
-        <Separator style={{marginVertical: 10}} />
+        <Divider style={{marginVertical: 10}} />
 
         <Touchable onPress={() => onItemEditPress(item)}>
           <View style={styles.row}>
@@ -91,7 +91,7 @@ export default class EmployeeList extends PureComponent {
           </View>
         </Touchable>
 
-        <Separator style={{marginVertical: 10}} />
+        <Divider style={{marginVertical: 10}} />
 
         <Touchable onPress={() => onItemEditPress(item)}>
           <View style={styles.row}>
@@ -104,7 +104,7 @@ export default class EmployeeList extends PureComponent {
           </View>
         </Touchable>
 
-        <Separator style={{marginVertical: 10}} />
+        <Divider style={{marginVertical: 10}} />
 
         <Touchable onPress={() => onItemEditPress(item)}>
           <View style={styles.row}>

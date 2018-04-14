@@ -10,7 +10,7 @@ import I18n from 'utils/locale';
 import Touchable from 'react-native-platform-touchable';
 import FormLabel from 'components/FormLabel';
 import List from 'components/List';
-import Separator from 'components/Separator';
+import Divider from 'components/Divider';
 import {Title} from 'react-native-paper';
 import AppButton from 'components/AppButton';
 
@@ -124,7 +124,7 @@ class TruckModelScene extends Component {
           </View>
         </Touchable>
 
-        <Separator style={{marginVertical: 20}} />
+        <Divider style={{marginVertical: 20}} />
 
         <Touchable onPress={this.showModelModal} disabled={!make_id}>
           <View>
@@ -134,7 +134,7 @@ class TruckModelScene extends Component {
           </View>
         </Touchable>
 
-        <Separator style={{marginVertical: 20}} />
+        <Divider style={{marginVertical: 20}} />
 
         <AppButton onPress={this.onSave} />
 

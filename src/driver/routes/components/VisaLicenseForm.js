@@ -12,7 +12,7 @@ import Touchable from 'react-native-platform-touchable';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import ImagePicker from 'react-native-image-picker';
 import Button from 'components/Button';
-import Separator from 'components/Separator';
+import Divider from 'components/Divider';
 import DateTimePicker from 'components/DateTimePicker';
 
 export default class VisaLicenseForm extends PureComponent {
@@ -106,7 +106,7 @@ export default class VisaLicenseForm extends PureComponent {
             onDateChange={date => this.onValueChange('expiry_date', date)}
           />
 
-          <Separator style={{marginTop: 30, marginBottom: 10}} />
+          <Divider style={{marginTop: 30, marginBottom: 10}} />
           <FormLabel title={I18n.t('image')} />
 
           <Touchable
@@ -123,7 +123,7 @@ export default class VisaLicenseForm extends PureComponent {
             )}
           </Touchable>
 
-          <Separator style={{marginVertical: 10}} />
+          <Divider style={{marginVertical: 10}} />
 
           <View style={styles.buttonContainer}>
             <Button

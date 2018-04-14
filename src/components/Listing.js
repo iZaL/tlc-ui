@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import {FlatList, Text, View, StyleSheet} from 'react-native';
 
 import Modal from 'react-native-modal';
-import Separator from 'components/Separator';
+import Divider from 'components/Divider';
 import colors from 'assets/theme/colors';
 import {Button, Checkbox, Headline} from 'react-native-paper';
 import I18n from 'utils/locale';
@@ -49,7 +49,7 @@ export default class Listing extends Component {
         renderItem={this.renderItem}
         showsVerticalScrollIndicator={false}
         ItemSeparatorComponent={() => (
-          <Separator style={{marginVertical: 10}} />
+          <Divider style={{marginVertical: 10}} />
         )}
         keyExtractor={(item, index) => `${index}`}
       />

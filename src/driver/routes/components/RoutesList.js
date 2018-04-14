@@ -4,7 +4,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {FlatList, StyleSheet, Text, View} from 'react-native';
-import Separator from 'components/Separator';
+import Divider from 'components/Divider';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Touchable from 'react-native-platform-touchable';
 import {Switch} from 'react-native-paper';
@@ -87,7 +87,7 @@ export default class RoutesList extends Component {
         automaticallyAdjustContentInsets={false}
         showsVerticalScrollIndicator={false}
         contentInset={{bottom: 100}}
-        ItemSeparatorComponent={() => <Separator />}
+        ItemSeparatorComponent={() => <Divider />}
         keyExtractor={(item, index) => `${index}`}
       />
     );

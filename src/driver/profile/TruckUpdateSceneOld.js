@@ -9,7 +9,7 @@ import {ScrollView, Text} from 'react-native';
 import FormLabel from 'components/FormLabel';
 import FormTextInput from 'components/FormTextInput';
 import Dropdown from 'components/Dropdown';
-import Separator from 'components/Separator';
+import Divider from 'components/Divider';
 import FormSubmit from 'components/FormSubmit';
 import I18n from 'utils/locale';
 import DateTimePicker from 'components/DateTimePicker';
@@ -182,7 +182,7 @@ class TruckUpdateScene extends Component {
         {/*</Text>*/}
         {/*)}*/}
 
-        {/*<Separator style={{marginVertical: 10}} />*/}
+        {/*<Divider style={{marginVertical: 10}} />*/}
 
         <FormLabel title={I18n.t('model')} />
 
@@ -208,7 +208,7 @@ class TruckUpdateScene extends Component {
           </Text>
         )}
 
-        <Separator style={{marginVertical: 10}} />
+        <Divider style={{marginVertical: 10}} />
 
         {/*<FormLabel title={I18n.t('plate_number')} />*/}
 
@@ -246,7 +246,7 @@ class TruckUpdateScene extends Component {
           </Text>
         )}
 
-        <Separator style={{marginVertical: 10}} />
+        <Divider style={{marginVertical: 10}} />
 
         {/*<FormLabel title={I18n.t('registration_number')} />*/}
 

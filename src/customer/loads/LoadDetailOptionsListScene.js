@@ -5,7 +5,7 @@ import ListItem from 'components/ListItem';
 import IconFactory from 'components/IconFactory';
 import {SELECTORS as CUSTOMER_SELECTORS} from 'customer/common/selectors';
 import {ACTIONS as CUSTOMER_ACTIONS} from 'customer/common/actions';
-import Separator from 'components/Separator';
+import Divider from 'components/Divider';
 import I18n from 'utils/locale';
 import PropTypes from 'prop-types';
 
@@ -55,7 +55,7 @@ class LoadDetailOptionsListScene extends Component {
   render() {
     return (
       <ScrollView style={{flex: 1, backgroundColor: 'white'}}>
-        <Separator style={{marginVertical: 10}} />
+        <Divider style={{marginVertical: 10}} />
 
         <ListItem
           onItemPress={this.onListItemPress}
@@ -69,7 +69,7 @@ class LoadDetailOptionsListScene extends Component {
           name="load_detail"
         />
 
-        <Separator style={{marginVertical: 10}} />
+        <Divider style={{marginVertical: 10}} />
 
         <ListItem
           onItemPress={this.onListItemPress}
@@ -79,7 +79,7 @@ class LoadDetailOptionsListScene extends Component {
           name="load_track"
         />
 
-        <Separator style={{marginVertical: 10}} />
+        <Divider style={{marginVertical: 10}} />
 
         <ListItem
           onItemPress={this.onListItemPress}
@@ -93,7 +93,7 @@ class LoadDetailOptionsListScene extends Component {
           name="driver_detail"
         />
 
-        <Separator style={{marginVertical: 10}} />
+        <Divider style={{marginVertical: 10}} />
 
         <ListItem
           onItemPress={this.onListItemPress}

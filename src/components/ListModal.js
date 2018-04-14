@@ -3,10 +3,8 @@
  */
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {StyleSheet, View} from 'react-native';
-
+import {StyleSheet} from 'react-native';
 import Modal from 'react-native-modal';
-import colors from 'assets/theme/colors';
 import {Button, Headline} from 'react-native-paper';
 import I18n from 'utils/locale';
 

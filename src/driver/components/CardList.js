@@ -4,7 +4,7 @@
 import React, {Component, PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {FlatList, StyleSheet, Text, View} from 'react-native';
-import Separator from 'components/Separator';
+import Divider from 'components/Divider';
 import colors from 'assets/theme/colors';
 
 export default class CardList extends PureComponent {
@@ -30,7 +30,7 @@ export default class CardList extends PureComponent {
         renderItem={this.renderRow}
         showsVerticalScrollIndicator={false}
         ItemSeparatorComponent={() => (
-          <Separator style={{marginVertical: 10}} />
+          <Divider style={{marginVertical: 10}} />
         )}
         keyExtractor={(item, index) => {
           `${item.id}`;

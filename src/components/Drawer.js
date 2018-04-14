@@ -7,7 +7,7 @@ import {NavigationActions} from 'react-navigation';
 import colors from 'assets/theme/colors';
 import I18n from 'utils/locale';
 import DrawerItem from 'components/DrawerItem';
-import Separator from 'components/Separator';
+import Divider from 'components/Divider';
 
 export class Drawer extends Component {
   onItemPress = (routeName: string) => {

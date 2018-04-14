@@ -8,7 +8,7 @@ import colors from 'assets/theme/colors';
 import Touchable from 'react-native-platform-touchable';
 import Accordion from 'react-native-collapsible/Accordion';
 import Feather from 'react-native-vector-icons/Feather';
-import Separator from 'components/Separator';
+import Divider from 'components/Divider';
 import I18n from 'utils/locale';
 
 export default class DocumentCountriesList extends PureComponent {
@@ -47,7 +47,7 @@ export default class DocumentCountriesList extends PureComponent {
     return (
       <View>
         <View style={[styles.contentContainer]}>
-          <Separator style={{marginVertical: 10}} />
+          <Divider style={{marginVertical: 10}} />
 
           <Touchable
             style={styles.itemContainer}
@@ -55,7 +55,7 @@ export default class DocumentCountriesList extends PureComponent {
             <Text style={styles.itemTitle}>{I18n.t('driving_license')}</Text>
           </Touchable>
 
-          <Separator style={{marginVertical: 10}} />
+          <Divider style={{marginVertical: 10}} />
 
           <Touchable
             style={styles.itemContainer}

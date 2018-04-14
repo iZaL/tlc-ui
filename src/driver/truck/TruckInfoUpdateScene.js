@@ -8,7 +8,7 @@ import I18n from 'utils/locale';
 import Dropdown from 'components/Dropdown';
 import FormLabel from 'components/FormLabel';
 import ListModal from 'components/ListModal';
-import Separator from 'components/Separator';
+import Divider from 'components/Divider';
 import AppButton from 'components/AppButton';
 
 class TruckInfoUpdateScene extends Component {
@@ -93,7 +93,7 @@ class TruckInfoUpdateScene extends Component {
           image={image}
         />
 
-        <Separator style={{marginVertical: 20}} />
+        <Divider style={{marginVertical: 20}} />
         <FormLabel title={I18n.t('truck_year')} />
         <Title onPress={this.showYearModal}>{year || I18n.t('select')}</Title>
 

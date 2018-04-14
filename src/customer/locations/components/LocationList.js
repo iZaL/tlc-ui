@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import {FlatList, StyleSheet, Text, View} from 'react-native';
 import colors from 'assets/theme/colors';
 import Touchable from 'react-native-platform-touchable';
-import Separator from 'components/Separator';
+import Divider from 'components/Divider';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import LocationListItem from 'customer/locations/components/LocationListItem';
 
@@ -34,7 +34,7 @@ export default class LocationList extends PureComponent {
         renderItem={this.renderRow}
         showsVerticalScrollIndicator={false}
         ItemSeparatorComponent={() => (
-          <Separator style={{marginVertical: 10}} />
+          <Divider style={{marginVertical: 10}} />
         )}
         keyExtractor={(item, index) => `${index}`}
       />

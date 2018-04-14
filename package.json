@@ -26,7 +26,7 @@
     "react-native-maps": "git+ssh://git@github.com:react-community/react-native-maps.git",
     "react-native-modal": "^5.4.0",
     "react-native-modal-datetime-picker": "^5.1.0",
-    "react-native-paper": "^1.2.6",
+    "react-native-paper": "git+ssh://git@github.com:callstack/react-native-paper.git",
     "react-native-platform-touchable": "^1.1.1",
     "react-native-push-notification": "^3.0.2",
     "react-native-swiper": "^1.5.13",

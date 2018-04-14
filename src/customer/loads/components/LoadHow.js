@@ -4,7 +4,7 @@ import {Text, View, StyleSheet, ScrollView} from 'react-native';
 import Touchable from 'react-native-platform-touchable';
 import FormLabel from 'components/FormLabel';
 import FormTextInput from 'components/FormTextInput';
-import Separator from 'components/Separator';
+import Divider from 'components/Divider';
 import colors from 'assets/theme/colors';
 import I18n from 'utils/locale';
 import FormCheck from 'components/FormCheck';
@@ -29,7 +29,7 @@ export default class LoadWhat extends Component {
           />
         </View>
 
-        <Separator style={{marginVertical: 5}} />
+        <Divider style={{marginVertical: 5}} />
 
         <View style={styles.row}>
           <FormLabel title={I18n.t('use_own_truck')} style={{flex: 1}} />

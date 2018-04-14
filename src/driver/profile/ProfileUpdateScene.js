@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {SELECTORS as COUNTRY_SELECTORS} from 'app/selectors/country';
 import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
 import {ScrollView} from 'react-native';
-import Separator from 'components/Separator';
+import Divider from 'components/Divider';
 import I18n from 'utils/locale';
 import ListItem from 'components/ListItem';
 import List from 'components/List';
@@ -82,7 +82,7 @@ class ProfileUpdateScene extends Component {
           arrow={true}
         />
 
-        <Separator style={{marginVertical: 10}} />
+        <Divider style={{marginVertical: 10}} />
 
         <ListItem
           onItemPress={this.onListItemPress}
@@ -90,7 +90,7 @@ class ProfileUpdateScene extends Component {
           arrow={true}
         />
 
-        <Separator style={{marginVertical: 10}} />
+        <Divider style={{marginVertical: 10}} />
 
         <ListItem
           onItemPress={this.onListItemPress}
@@ -98,7 +98,7 @@ class ProfileUpdateScene extends Component {
           arrow={true}
         />
 
-        <Separator style={{marginVertical: 10}} />
+        <Divider style={{marginVertical: 10}} />
 
         <ListItem
           onItemPress={this.onListItemPress}
@@ -106,7 +106,7 @@ class ProfileUpdateScene extends Component {
           arrow={true}
         />
 
-        <Separator style={{marginVertical: 10}} />
+        <Divider style={{marginVertical: 10}} />
 
         <ListItem
           onItemPress={this.onListItemPress}
@@ -114,7 +114,7 @@ class ProfileUpdateScene extends Component {
           arrow={true}
         />
 
-        <Separator style={{marginVertical: 10}} />
+        <Divider style={{marginVertical: 10}} />
 
         <ListItem onItemPress={this.showModal} name="languages" arrow={true} />
 

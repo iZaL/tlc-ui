@@ -11,7 +11,7 @@ import {ACTIONS as APP_ACTIONS} from 'app/common/actions';
 import {Caption, Title} from 'react-native-paper';
 import AppButton from 'components/AppButton';
 import Entypo from 'react-native-vector-icons/Entypo';
-import Separator from 'components/Separator';
+import Divider from 'components/Divider';
 import CheckedListItem from '../../components/CheckedListItem';
 
 class RoutesAddScene extends Component {
@@ -319,7 +319,7 @@ class RoutesAddScene extends Component {
               title={`${I18n.t('anywhere_in')} ${origin_country.name}`}
             />
 
-            <Separator style={{marginVertical: 5}} />
+            <Divider style={{marginVertical: 5}} />
 
             <CheckedListItem
               onPress={this.onOriginCitiesPress}
@@ -342,7 +342,7 @@ class RoutesAddScene extends Component {
                 title={`${I18n.t('anywhere_in')} ${origin_country.name}`}
               />
 
-              <Separator style={{marginVertical: 5}} />
+              <Divider style={{marginVertical: 5}} />
 
               <CheckedListItem
                 onPress={this.onDestinationCitiesPress}

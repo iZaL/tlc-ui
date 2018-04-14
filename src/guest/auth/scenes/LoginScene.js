@@ -5,7 +5,7 @@ import colors from 'assets/theme/colors';
 import I18n from 'utils/locale';
 import FormLabel from 'components/FormLabel';
 import FormTextInput from 'components/FormTextInput';
-import Separator from 'components/Separator';
+import Divider from 'components/Divider';
 import Touchable from 'react-native-platform-touchable';
 import Button from 'components/Button';
 
@@ -58,7 +58,7 @@ export default class LoginScene extends Component {
           style={{marginTop: 25}}
         />
 
-        <Separator style={{marginVertical: 30}} />
+        <Divider style={{marginVertical: 30}} />
 
         <Button
           onPress={() => handleRegisterRoute()}

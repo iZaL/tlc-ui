@@ -4,7 +4,7 @@ import {Text, View, StyleSheet, ScrollView, FlatList} from 'react-native';
 import Touchable from 'react-native-platform-touchable';
 import FormLabel from 'components/FormLabel';
 import FormTextInput from 'components/FormTextInput';
-import Separator from 'components/Separator';
+import Divider from 'components/Divider';
 import colors from 'assets/theme/colors';
 import I18n from 'utils/locale';
 import FormCheck from 'components/FormCheck';
@@ -47,7 +47,7 @@ export default class LoadWhat extends Component {
           renderItem={this.renderRow}
           showsVerticalScrollIndicator={false}
           ItemSeparatorComponent={() => (
-            <Separator style={{marginVertical: 5}} />
+            <Divider style={{marginVertical: 5}} />
           )}
           keyExtractor={(item, index) => `${index}`}
           extraData={security_passes}

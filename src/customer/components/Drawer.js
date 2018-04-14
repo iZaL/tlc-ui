@@ -6,7 +6,7 @@ import {StyleSheet, View} from 'react-native';
 import colors from 'assets/theme/colors';
 import I18n from 'utils/locale';
 import DrawerItem from 'components/DrawerItem';
-import Separator from 'components/Separator';
+import Divider from 'components/Divider';
 
 export default class Drawer extends Component {
   onItemPress = (routeName: string) => {
@@ -27,53 +27,49 @@ export default class Drawer extends Component {
     return (
       <View style={styles.container}>
         <DrawerItem
-          title={I18n.t('home')}
+          label={I18n.t('home')}
           routeName="HomeStack"
           onItemPress={this.onItemPress}
           iconProps={{
             name: 'home-outline',
             type: 'MaterialCommunityIcons',
-            size: 30,
+            size: 24,
           }}
           active={activeRoute === 'HomeStack'}
         />
-        <Separator style={{marginVertical: 10}} />
+
         <DrawerItem
-          title={I18n.t('profile')}
+          label={I18n.t('profile')}
           routeName="ProfileStack"
           onItemPress={this.onItemPress}
           iconProps={{
             name: 'person-outline',
             type: 'MaterialIcons',
-            size: 32,
+            size: 24,
           }}
           active={activeRoute === 'ProfileStack'}
         />
 
-        <Separator style={{marginVertical: 10}} />
         <DrawerItem
-          title={I18n.t('loads')}
+          label={I18n.t('loads')}
           routeName="LoadStack"
           onItemPress={this.onItemPress}
           iconProps={{
             name: 'truck-delivery',
             type: 'MaterialCommunityIcons',
-            size: 32,
+            size: 24,
           }}
           active={activeRoute === 'LoadStack'}
         />
 
-        <Separator style={{marginVertical: 10}} />
-
         <DrawerItem
-          title={I18n.t('logout')}
+          label={I18n.t('logout')}
           routeName="Logout"
           onItemPress={logout}
           iconProps={{
             name: 'logout',
             type: 'MaterialCommunityIcons',
-            size: 28,
-            paddingLeft: 5,
+            size: 24,
           }}
           active={activeRoute === 'Logout'}
         />
@@ -86,7 +82,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.fadedWhite,
-    paddingHorizontal: 10,
-    paddingTop: 30,
+    marginTop:15
+    // paddingHorizontal: 10,
+    // paddingTop: 30,
   },
 });

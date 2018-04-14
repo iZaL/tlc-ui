@@ -10,7 +10,6 @@ import FormSubmit from 'components/FormSubmit';
 import I18n from 'utils/locale';
 import {SELECTORS as USER_SELECTORS} from 'guest/common/selectors';
 import {ACTIONS as CUSTOMER_ACTIONS} from 'customer/common/actions';
-import {ListItem} from 'react-native-paper';
 
 type State = {
   mobile: string,
@@ -128,13 +127,10 @@ class ProfileUpdateScene extends Component {
         style={{
           flex: 1,
           backgroundColor: 'white',
-          // padding: 10,
-          // paddingTop: 20,
+          padding: 10,
+          paddingTop: 20,
         }}
         contentContainerStyle={{paddingBottom: 100}}>
-
-        <ListItem title={I18n.t('company_information')} />
-
         {/*<FormLabel title={I18n.t('company_name_en')} />*/}
         <FormTextInput
           onValueChange={this.onUserFieldChange}

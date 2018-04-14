@@ -6,7 +6,7 @@ import IconFactory from 'components/IconFactory';
 import {SELECTORS as USER_SELECTORS} from 'guest/common/selectors';
 import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
 import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
-import Separator from 'components/Separator';
+import Divider from 'components/Divider';
 import I18n from 'utils/locale';
 
 class ProfileHome extends Component {
@@ -60,7 +60,7 @@ class ProfileHome extends Component {
           name="profile_update"
           arrow={true}
         />
-        <Separator style={{marginVertical: 10}} />
+        <Divider style={{marginVertical: 10}} />
         <ListItem
           onItemPress={this.onListItemPress}
           icon={
@@ -69,7 +69,7 @@ class ProfileHome extends Component {
           name="truck_update"
           arrow={true}
         />
-        <Separator style={{marginVertical: 10}} />
+        <Divider style={{marginVertical: 10}} />
         <ListItem
           onItemPress={this.onListItemPress}
           icon={
@@ -83,7 +83,7 @@ class ProfileHome extends Component {
           disabled={!truck}
           arrow={true}
         />
-        <Separator style={{marginVertical: 10}} />
+        <Divider style={{marginVertical: 10}} />
         <ListItem
           onItemPress={this.onListItemPress}
           icon={
@@ -97,7 +97,7 @@ class ProfileHome extends Component {
           disabled={!truck}
           arrow={true}
         />
-        <Separator style={{marginVertical: 10}} />
+        <Divider style={{marginVertical: 10}} />
 
         <ListItem
           onItemPress={this.onListItemPress}
@@ -112,7 +112,7 @@ class ProfileHome extends Component {
           }
         />
 
-        <Separator style={{marginVertical: 10}} />
+        <Divider style={{marginVertical: 10}} />
         <ListItem
           onItemPress={this.onListItemPress}
           icon={

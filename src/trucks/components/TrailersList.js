@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {FlatList, StyleSheet, Text, View} from 'react-native';
 import Touchable from 'react-native-platform-touchable';
 import colors from 'assets/theme/colors';
-import Separator from 'components/Separator';
+import Divider from 'components/Divider';
 
 export default class TrailersList extends Component {
   static propTypes = {

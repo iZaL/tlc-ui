@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 
 import DocumentCard from 'components/DocumentCard';
 import {FlatList, StyleSheet} from 'react-native';
-import Separator from 'components/Separator';
+import Divider from 'components/Divider';
 
 export default class DocumentList extends Component {
   shouldComponentUpdate() {
@@ -34,7 +34,7 @@ export default class DocumentList extends Component {
         renderItem={this.renderItem}
         showsVerticalScrollIndicator={false}
         ItemSeparatorComponent={() => (
-          <Separator style={{marginVertical: 10}} />
+          <Divider style={{marginVertical: 10}} />
         )}
         keyExtractor={(item, index) => `${index}`}
       />

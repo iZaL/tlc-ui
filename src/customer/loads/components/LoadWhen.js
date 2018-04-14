@@ -5,7 +5,7 @@ import Touchable from 'react-native-platform-touchable';
 import FormLabel from 'components/FormLabel';
 import I18n from 'utils/locale';
 import DatePicker from 'components/DatePicker';
-import Separator from 'components/Separator';
+import Divider from 'components/Divider';
 import colors from 'assets/theme/colors';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import {Button} from 'react-native-paper';
@@ -50,7 +50,7 @@ export default class LoadWhat extends Component {
 
         <DatePicker onDateChange={date => onValueChange('load_date', date)} />
 
-        <Separator
+        <Divider
           style={{marginVertical: 10, backgroundColor: colors.mediumGrey}}
         />
 

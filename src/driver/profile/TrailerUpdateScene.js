@@ -6,7 +6,7 @@ import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
 import {SELECTORS as TRUCK_SELECTORS} from 'trucks/common/selectors';
 import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
 import {ACTIONS as TRUCK_ACTIONS} from 'trucks/common/actions';
-import Separator from 'components/Separator';
+import Divider from 'components/Divider';
 import ListItem from 'components/ListItem';
 import Touchable from 'react-native-platform-touchable';
 import FormLabel from 'components/FormLabel';
@@ -174,7 +174,7 @@ class TrailerUpdateScene extends Component {
           </View>
         </Touchable>
 
-        <Separator style={{marginVertical: 15}} />
+        <Divider style={{marginVertical: 15}} />
 
         <Touchable onPress={this.showTypeModal}>
           <View>
@@ -185,7 +185,7 @@ class TrailerUpdateScene extends Component {
           </View>
         </Touchable>
 
-        <Separator style={{marginTop: 15}} />
+        <Divider style={{marginTop: 15}} />
 
         <View style={{flexDirection: 'row'}}>
           <FormTextInput
@@ -226,7 +226,7 @@ class TrailerUpdateScene extends Component {
         <FormLabel title={I18n.t('truck_year')} />
         <Title onPress={this.showYearModal}>{year || I18n.t('select')}</Title>
 
-        <Separator style={{marginVertical: 10}} />
+        <Divider style={{marginVertical: 10}} />
 
         <Title>{I18n.t('truck_image')}</Title>
         <DocumentUpload

@@ -14,7 +14,7 @@ import {View} from 'react-native';
 import isEmpty from 'lodash/isEmpty';
 import {Checkbox} from 'react-native-paper';
 import Touchable from 'react-native-platform-touchable';
-import Separator from 'components/Separator';
+import Divider from 'components/Divider';
 
 type State = {
   mobile: string,
@@ -127,7 +127,7 @@ class EmployeeAddScene extends Component {
           </View>
         </Touchable>
 
-        <Separator style={{marginVertical: 10}} />
+        <Divider style={{marginVertical: 10}} />
 
         <FormSubmit
           onPress={this.saveEmployee}

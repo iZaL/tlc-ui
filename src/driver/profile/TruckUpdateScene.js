@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
 import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
 import {ScrollView} from 'react-native';
-import Separator from 'components/Separator';
+import Divider from 'components/Divider';
 import ListItem from 'components/ListItem';
 import {ACTIONS as TRUCK_ACTIONS} from 'trucks/common/actions';
 
@@ -60,7 +60,7 @@ class TruckUpdateScene extends Component {
           arrow={true}
         />
 
-        <Separator style={{marginVertical: 10}} />
+        <Divider style={{marginVertical: 10}} />
 
         <ListItem
           onItemPress={this.loadTruckRegistrationScene}
@@ -68,7 +68,7 @@ class TruckUpdateScene extends Component {
           arrow={true}
         />
 
-        <Separator style={{marginVertical: 10}} />
+        <Divider style={{marginVertical: 10}} />
 
         <ListItem
           onItemPress={this.loadTruckInfoUpdateScene}
@@ -76,7 +76,7 @@ class TruckUpdateScene extends Component {
           arrow={true}
         />
 
-        <Separator style={{marginVertical: 10}} />
+        <Divider style={{marginVertical: 10}} />
 
         <ListItem
           onItemPress={this.loadTrailerUpdateScene}
@@ -84,7 +84,7 @@ class TruckUpdateScene extends Component {
           arrow={true}
         />
 
-        <Separator style={{marginVertical: 10}} />
+        <Divider style={{marginVertical: 10}} />
 
         {/*<ListItem*/}
         {/*onItemPress={this.onProfileInfoPress}*/}

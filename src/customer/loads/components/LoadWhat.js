@@ -6,7 +6,7 @@ import GridList from 'components/GridList';
 import FormLabel from 'components/FormLabel';
 import I18n from 'utils/locale';
 import colors from 'assets/theme/colors';
-import Separator from 'components/Separator';
+import Divider from 'components/Divider';
 import FormTextInput from 'components/FormTextInput';
 export default class LoadWhat extends Component {
   static propTypes = {
@@ -40,7 +40,7 @@ export default class LoadWhat extends Component {
           activeItemID={packaging_id}
         />
 
-        <Separator
+        <Divider
           style={{backgroundColor: colors.mediumGrey, marginVertical: 20}}
         />
 
@@ -51,7 +51,7 @@ export default class LoadWhat extends Component {
           activeItemID={trailer_id}
         />
 
-        <Separator
+        <Divider
           style={{backgroundColor: colors.mediumGrey, marginVertical: 20}}
         />
 

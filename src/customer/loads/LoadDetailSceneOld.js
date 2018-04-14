@@ -6,7 +6,7 @@ import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
 import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
 import LoadLocationMapView from 'driver/loads/components/LoadLocationMapView';
 import LoadPickDropLocation from 'driver/loads/components/LoadPickDropLocation';
-import Separator from 'components/Separator';
+import Divider from 'components/Divider';
 import LoadInfo from 'driver/loads/components/LoadInfo';
 import Button from 'components/Button';
 import I18n from 'utils/locale';
@@ -72,7 +72,7 @@ class LoadDetailScene extends Component {
           <LoadInfo load={load} />
         </View>
 
-        <Separator style={{marginTop: 10, marginBottom: 50}} />
+        <Divider style={{marginTop: 10, marginBottom: 50}} />
 
         <Button
           title={I18n.t('map').toUpperCase()}

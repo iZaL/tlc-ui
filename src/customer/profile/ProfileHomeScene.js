@@ -5,7 +5,7 @@ import ListItem from 'components/ListItem';
 import IconFactory from 'components/IconFactory';
 import {SELECTORS as CUSTOMER_SELECTORS} from 'customer/common/selectors';
 import {ACTIONS as CUSTOMER_ACTIONS} from 'customer/common/actions';
-import Separator from 'components/Separator';
+import Divider from 'components/Divider';
 import I18n from 'utils/locale';
 
 class ProfileHome extends Component {
@@ -59,7 +59,7 @@ class ProfileHome extends Component {
           name="profile_update"
         />
 
-        <Separator style={{marginVertical: 10}} />
+        <Divider style={{marginVertical: 10}} />
 
         <ListItem
           onItemPress={this.onListItemPress}
@@ -73,7 +73,7 @@ class ProfileHome extends Component {
           name="employee_list"
         />
 
-        <Separator style={{marginVertical: 10}} />
+        <Divider style={{marginVertical: 10}} />
 
         <ListItem
           onItemPress={this.onListItemPress}
@@ -87,7 +87,7 @@ class ProfileHome extends Component {
           name="location_origin_list"
         />
 
-        <Separator style={{marginVertical: 10}} />
+        <Divider style={{marginVertical: 10}} />
 
         <ListItem
           onItemPress={this.onListItemPress}

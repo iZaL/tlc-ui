@@ -5,7 +5,7 @@ import React, {Component, PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {FlatList, ScrollView, StyleSheet, Text, View} from 'react-native';
 import Touchable from 'react-native-platform-touchable';
-import Separator from 'components/Separator';
+import Divider from 'components/Divider';
 import colors from 'assets/theme/colors';
 
 export default class RouteTransitsList extends PureComponent {
@@ -46,7 +46,7 @@ export default class RouteTransitsList extends PureComponent {
         renderItem={this.renderRow}
         showsHorizontalScrollIndicator={false}
         ItemSeparatorComponent={() => (
-          <Separator style={{marginVertical: 10}} />
+          <Divider style={{marginVertical: 10}} />
         )}
         keyExtractor={(item, index) => {
           `${item.id}`;

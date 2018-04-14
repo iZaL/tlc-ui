@@ -9,7 +9,7 @@ import {ScrollView, Text, View} from 'react-native';
 import FormLabel from 'components/FormLabel';
 import FormTextInput from 'components/FormTextInput';
 import Dropdown from 'components/Dropdown';
-import Separator from 'components/Separator';
+import Divider from 'components/Divider';
 import FormSubmit from 'components/FormSubmit';
 import I18n from 'utils/locale';
 import AppModal from 'components/AppModal';
@@ -175,7 +175,7 @@ class ProfileUpdateScene extends Component {
           arrow={true}
         />
 
-        <Separator style={{marginVertical: 10}} />
+        <Divider style={{marginVertical: 10}} />
 
         <ListItem
           onItemPress={this.onListItemPress}
@@ -183,7 +183,7 @@ class ProfileUpdateScene extends Component {
           arrow={true}
         />
 
-        <Separator style={{marginVertical: 10}} />
+        <Divider style={{marginVertical: 10}} />
 
         <ListItem
           onItemPress={this.onListItemPress}
@@ -191,7 +191,7 @@ class ProfileUpdateScene extends Component {
           arrow={true}
         />
 
-        <Separator style={{marginVertical: 10}} />
+        <Divider style={{marginVertical: 10}} />
 
         <ListItem
           onItemPress={this.onListItemPress}
@@ -199,7 +199,7 @@ class ProfileUpdateScene extends Component {
           arrow={true}
         />
 
-        <Separator style={{marginVertical: 10}} />
+        <Divider style={{marginVertical: 10}} />
 
         <ListItem
           onItemPress={this.onListItemPress}
@@ -207,7 +207,7 @@ class ProfileUpdateScene extends Component {
           arrow={true}
         />
 
-        <Separator style={{marginVertical: 10}} />
+        <Divider style={{marginVertical: 10}} />
 
         {/*<FormLabel title={I18n.t('residence_country')} />*/}
         {/*{showDropDown && dropDownField === 'residence' ? (*/}
@@ -232,7 +232,7 @@ class ProfileUpdateScene extends Component {
         {/*</Text>*/}
         {/*)}*/}
 
-        {/*<Separator style={{marginVertical: 10}} />*/}
+        {/*<Divider style={{marginVertical: 10}} />*/}
 
         <FormSubmit
           onPress={this.saveProfile}

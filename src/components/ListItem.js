@@ -8,31 +8,33 @@ import {StyleSheet, Text, View} from 'react-native';
 import colors from 'assets/theme/colors';
 import I18n from 'utils/locale';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-
+import {ListItem as PaperListItem} from 'react-native-paper';
 const ListItem = ({
   onItemPress,
   name,
   icon,
   disabled = false,
-  arrow = false,
   style,
+  description
 }) => {
   return (
     <Touchable onPress={() => onItemPress(name)} disabled={disabled}>
       <View style={[styles.container, style, disabled && {opacity: 0.5}]}>
-        {icon && <View style={styles.iconContainer}>{icon}</View>}
 
-        <View style={styles.contentContainer}>
-          <Text style={styles.name}>{I18n.t([name])}</Text>
-        </View>
+        <PaperListItem icon={icon} title={name} description={description} />
+        {/*{icon && <View style={styles.iconContainer}>{icon}</View>}*/}
 
-        {arrow && (
-          <MaterialIcons
-            name="arrow-forward"
-            color={colors.lightGrey}
-            size={30}
-          />
-        )}
+        {/*<View style={styles.contentContainer}>*/}
+          {/*<Text style={styles.name}>{I18n.t([name])}</Text>*/}
+        {/*</View>*/}
+
+        {/*{arrow && (*/}
+          {/*<MaterialIcons*/}
+            {/*name="arrow-forward"*/}
+            {/*color={colors.lightGrey}*/}
+            {/*size={30}*/}
+          {/*/>*/}
+        {/*)}*/}
       </View>
     </Touchable>
   );
@@ -48,9 +50,9 @@ export default ListItem;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
+    // flex: 1,
+    // flexDirection: 'row',
+    // alignItems: 'center',
     // backgroundColor:'yellow',
     // padding: 10,
   },

@@ -10,7 +10,7 @@ import FormSubmit from 'components/FormSubmit';
 import I18n from 'utils/locale';
 import FormCheck from 'components/FormCheck';
 import Touchable from 'react-native-platform-touchable';
-import Separator from 'components/Separator';
+import Divider from 'components/Divider';
 
 type State = {
   mobile: string,
@@ -166,7 +166,7 @@ class EmployeeEditScene extends Component {
           </View>
         </Touchable>
 
-        <Separator style={{marginVertical: 10}} />
+        <Divider style={{marginVertical: 10}} />
 
         <FormSubmit
           onPress={this.saveProfile}

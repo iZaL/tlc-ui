@@ -6,7 +6,7 @@ import {StyleSheet, View} from 'react-native';
 import colors from 'assets/theme/colors';
 import I18n from 'utils/locale';
 import DrawerItem from 'components/DrawerItem';
-import Separator from 'components/Separator';
+import Divider from 'components/Divider';
 
 export default class Drawer extends Component {
   onItemPress = (routeName: string) => {
@@ -25,6 +25,7 @@ export default class Drawer extends Component {
 
     return (
       <View style={styles.container}>
+
         <DrawerItem
           title={I18n.t('home')}
           routeName="HomeStack"
@@ -33,7 +34,7 @@ export default class Drawer extends Component {
           active={this.state.activeRoute === 'HomeStack'}
         />
 
-        <Separator />
+        <Divider />
 
         <DrawerItem
           title={I18n.t('settings')}

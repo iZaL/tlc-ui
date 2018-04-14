@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {ScrollView} from 'react-native';
 import ListItem from 'components/ListItem';
 import IconFactory from 'components/IconFactory';
-import Separator from 'components/Separator';
+import Divider from 'components/Divider';
 import I18n from 'utils/locale';
 
 class ProfileHome extends Component {
@@ -54,7 +54,7 @@ class ProfileHome extends Component {
           name="load_working_list"
         />
 
-        <Separator style={{marginVertical: 10}} />
+        <Divider style={{marginVertical: 10}} />
 
         <ListItem
           onItemPress={this.onListItemPress}
@@ -62,7 +62,7 @@ class ProfileHome extends Component {
           name="load_approved_list"
         />
 
-        <Separator style={{marginVertical: 10}} />
+        <Divider style={{marginVertical: 10}} />
 
         <ListItem
           onItemPress={this.onListItemPress}
