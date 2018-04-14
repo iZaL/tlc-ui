@@ -29,7 +29,7 @@ class IconFactory extends Component {
 
   static defaultProps = {
     size: 24,
-    color: 'rgb(0,0,0,0.87)',
+    color: 'rgba(0,0,0,0.87)',
   };
 
   render() {

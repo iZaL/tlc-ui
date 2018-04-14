@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {ScrollView} from 'react-native';
+import {ScrollView, Text} from 'react-native';
 import ListItem from 'components/ListItem';
 import IconFactory from 'components/IconFactory';
 import {SELECTORS as USER_SELECTORS} from 'guest/common/selectors';
@@ -54,55 +54,56 @@ class ProfileHome extends Component {
 
     return (
       <ListSection style={{flex: 1}}>
+
         <ListItem
           onItemPress={this.onListItemPress}
-          iconProps={{type:"Ionicons" ,name:"md-person" }}
+          iconProps={{type: "Ionicons", name: "md-person"}}
           name="profile_update"
         />
-        <Divider />
+        <Divider/>
         <ListItem
           onItemPress={this.onListItemPress}
-          iconProps={{ type:"MaterialCommunityIcons", name:"truck" }}
+          iconProps={{type: "MaterialCommunityIcons", name: "truck"}}
           name="truck_update"
         />
-        <Divider />
+        <Divider/>
         <ListItem
           onItemPress={this.onListItemPress}
-          iconProps={{ type:"MaterialCommunityIcons", name:"truck-trailer" }}
+          iconProps={{type: "MaterialCommunityIcons", name: "truck-trailer"}}
           name="trailer_update"
           disabled={!truck}
         />
-        <Divider />
+        <Divider/>
         <ListItem
           onItemPress={this.onListItemPress}
-          iconProps={{ type:"MaterialCommunityIcons", name:"road-variant" }}
+          iconProps={{type: "MaterialCommunityIcons", name: "road-variant"}}
           name="route_update"
           disabled={!truck}
         />
-        <Divider />
+        <Divider/>
 
         <ListItem
           onItemPress={this.onListItemPress}
           name="security_passes"
-          iconProps={{ type:"MaterialCommunityIcons", name:"passport" }}
+          iconProps={{type: "MaterialCommunityIcons", name: "passport"}}
         />
 
-        <Divider />
+        <Divider/>
         <ListItem
           onItemPress={this.onListItemPress}
-          iconProps={{ type:"MaterialCommunityIcons", name:"passport" }}
+          iconProps={{type: "MaterialCommunityIcons", name: "passport"}}
           name="documents_upload"
           disabled={!truck}
         />
       </ListSection>
-    );
+  );
   }
-}
+  }
 
-function mapStateToProps(state) {
-  return {
+  function mapStateToProps(state) {
+    return {
     truck: DRIVER_SELECTORS.getTruck(state),
   };
-}
+  }
 
-export default connect(mapStateToProps)(ProfileHome);
+  export default connect(mapStateToProps)(ProfileHome);
