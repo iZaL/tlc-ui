@@ -28,8 +28,7 @@ export default class AppButton extends Component {
         primary
         dark
         style={[{padding: 10, marginTop: 20}, style]}
-        disabled={disabled}
-      >
+        disabled={disabled}>
         {title}
       </Button>
     );

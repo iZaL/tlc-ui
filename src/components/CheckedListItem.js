@@ -9,25 +9,20 @@ import colors from 'assets/theme/colors';
 import {Checkbox} from 'react-native-paper';
 
 export default class CheckedListItem extends Component {
-
   static propTypes = {
     title: PropTypes.string.isRequired,
     disabled: PropTypes.bool,
     checked: PropTypes.bool,
-    onPress:PropTypes.func.isRequired
+    onPress: PropTypes.func.isRequired,
   };
 
   render() {
     let {title, disabled, onPress, checked} = this.props;
     return (
       <Touchable onPress={onPress}>
-        <View
-          style={[styles.itemRowContainer, disabled && {opacity: 0.4}]}>
+        <View style={[styles.itemRowContainer, disabled && {opacity: 0.4}]}>
           <Text style={styles.itemTitle}>{title}</Text>
-          <Checkbox
-            checked={checked}
-            color={colors.primary}
-          />
+          <Checkbox checked={checked} color={colors.primary} />
         </View>
       </Touchable>
     );

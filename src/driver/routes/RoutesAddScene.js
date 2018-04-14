@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {Text, View} from 'react-native';
+import {View} from 'react-native';
 import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
 import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
 import TextBox from 'components/TextBox';
@@ -8,56 +8,65 @@ import I18n from 'utils/locale';
 import colors from 'assets/theme/colors';
 import List from 'components/List';
 import {ACTIONS as APP_ACTIONS} from 'app/common/actions';
-import {Caption, RadioButton, Title} from 'react-native-paper';
+import {Caption, Title} from 'react-native-paper';
 import AppButton from 'components/AppButton';
 import Entypo from 'react-native-vector-icons/Entypo';
-import Separator from "components/Separator";
-import Touchable from 'react-native-platform-touchable';
-import CheckedListItem from "../../components/CheckedListItem";
+import Separator from 'components/Separator';
+import CheckedListItem from '../../components/CheckedListItem';
 
 class RoutesAddScene extends Component {
   state = {
-    isDestinationCountriesModalVisible: false,
-    destination_country_id: null,
     isOriginLocationsModalVisible: false,
+    originAny: true,
+    isOriginSelectAllButtonSelected: true,
+
+    isDestinationCountriesModalVisible: false,
     isDestinationLocationsModalVisible: false,
-    origin_location_ids: [],
-    destination_location_ids: [],
-    origin_location_all: true,
-    destination_location_all: true,
-    origin_select_all: true,
-    destination_select_all: true,
-    active_type: 'origin',
+    destinationAny: true,
+    isDestinationSelectAllButtonSelected: true,
+
+    activeType: 'origin',
     mode: 'add',
+
+    //DB Values
+    origin_location_ids: [],
+    destination_country_id: null,
+    destination_location_ids: [],
+  };
+
+  static defaultProps = {
+    destinationCountry: {},
+    origin_country: {},
+    destination_countries: [],
   };
 
   static getDerivedStateFromProps(nextProps, nextState) {
     let {route} = nextProps.navigation.state.params;
     if (route) {
       return {
-        origin_select_all: false,
+        isOriginSelectAllButtonSelected: false,
         destination_country_id: route.destination.id,
         destination_location_ids:
-        (route.destination.locations &&
-          route.destination.locations
-            .filter(location => location.has_added)
-            .map(location => location.id)) ||
-        [],
+          (route.destination.locations &&
+            route.destination.locations
+              .filter(location => location.has_added)
+              .map(location => location.id)) ||
+          [],
         origin_location_ids:
-        (nextProps.origin_country &&
-          nextProps.origin_country.locations
-            .filter(location => location.has_added)
-            .map(location => location.id)) ||
-        [],
+          (nextProps.origin_country &&
+            nextProps.origin_country.locations
+              .filter(location => location.has_added)
+              .map(location => location.id)) ||
+          [],
       };
     } else {
       return {
         origin_location_ids:
-        (nextProps.origin_country &&
-          nextProps.origin_country.locations
-            .filter(location => location.has_added)
-            .map(location => location.id)) ||
-        [],
+          (nextProps.origin_country &&
+            nextProps.origin_country.locations
+              .filter(location => location.has_added)
+              .map(location => location.id)) ||
+          [],
       };
     }
   }
@@ -70,8 +79,19 @@ class RoutesAddScene extends Component {
 
   onOriginBoxPress = () => {
     this.setState({
-      active_type: 'origin',
+      activeType: 'origin',
     });
+  };
+
+  onOriginCountryPress = () => {
+    this.setState({originAny: true});
+  };
+
+  onOriginCitiesPress = () => {
+    this.setState({
+      originAny: false,
+    });
+    this.showOriginLocationsModal();
   };
 
   hideOriginLocationsModal = () => {
@@ -82,18 +102,26 @@ class RoutesAddScene extends Component {
 
   showOriginLocationsModal = () => {
     this.setState({
-      isOriginLocationsModalVisible: true
-    })
+      isOriginLocationsModalVisible: true,
+    });
   };
 
-  onDestinationCountrySavePress = () => {
-    console.log('onDestinationCountrySavePress');
-    this.hideDestinationCountriesModal();
+  onOriginLocationItemPress = location => {
+    let {origin_location_ids} = this.state;
+    let {id} = location;
+
+    this.setState({
+      origin_location_ids: origin_location_ids.includes(id)
+        ? origin_location_ids.filter(locationID => locationID != id)
+        : origin_location_ids.concat(id),
+    });
   };
+
+  // Destination Tab
 
   onDestinationBoxPress = () => {
     this.setState({
-      active_type: 'destination',
+      activeType: 'destination',
     });
 
     if (!this.state.destination_country_id) {
@@ -109,37 +137,27 @@ class RoutesAddScene extends Component {
     // }
   };
 
-  hideDestinationCountriesModal = () => {
-    console.log('hideDestinationCountriesModal');
-    this.setState({
-      isDestinationCountriesModalVisible: false
-    });
-  };
-
-  showDestinationCountriesModal = () => {
-    this.setState({
-      isDestinationCountriesModalVisible: true
-    });
-  };
-
-  showDestinationLocationsModal = () => {
-    this.setState({
-      isDestinationLocationsModalVisible: true
-    });
-  };
-
-  hideDestinationLocationsModal = () => {
-    this.setState({
-      isDestinationLocationsModalVisible: false,
-    });
-  };
-
   onDestinationCountryItemPress = country => {
     let countryLocations = country.locations || [];
     this.setState({
       destination_country_id: country.id,
       destination_location_ids: countryLocations.map(location => location.id),
     });
+  };
+
+  onDestinationCountrySavePress = () => {
+    this.hideDestinationCountriesModal();
+  };
+
+  onDestinationAnyPress = () => {
+    this.setState({destinationAny: true});
+  };
+
+  onDestinationCitiesPress = () => {
+    this.setState({
+      destinationAny: false,
+    });
+    this.showDestinationLocationsModal();
   };
 
   onDestinationLocationItemPress = location => {
@@ -153,23 +171,36 @@ class RoutesAddScene extends Component {
     });
   };
 
-  onOriginLocationItemPress = location => {
-    let {origin_location_ids} = this.state;
-    let {id} = location;
-
-    this.setState({
-      origin_location_ids: origin_location_ids.includes(id)
-        ? origin_location_ids.filter(locationID => locationID != id)
-        : origin_location_ids.concat(id),
-    });
-
+  onDestinationLocationsSavePress = () => {
+    this.hideDestinationLocationsModal();
   };
 
-  onSave = () => {
+  showDestinationCountriesModal = () => {
+    this.setState({
+      isDestinationCountriesModalVisible: true,
+    });
+  };
+
+  hideDestinationCountriesModal = () => {
+    this.setState({
+      isDestinationCountriesModalVisible: false,
+    });
+  };
+
+  showDestinationLocationsModal = () => {
+    this.setState({
+      isDestinationLocationsModalVisible: true,
+    });
+  };
+
+  hideDestinationLocationsModal = () => {
+    this.setState({
+      isDestinationLocationsModalVisible: false,
+    });
   };
 
   toggleOriginSelectAll = () => {
-    if (this.state.origin_select_all) {
+    if (this.state.isOriginSelectAllButtonSelected) {
       this.setState({
         origin_location_ids: [],
       });
@@ -182,12 +213,13 @@ class RoutesAddScene extends Component {
     }
 
     this.setState({
-      origin_select_all: !this.state.origin_select_all,
+      isOriginSelectAllButtonSelected: !this.state
+        .isOriginSelectAllButtonSelected,
     });
   };
 
   toggleDestinationSelectAll = () => {
-    if (this.state.destination_select_all) {
+    if (this.state.isDestinationSelectAllButtonSelected) {
       this.setState({
         destination_location_ids: [],
       });
@@ -202,7 +234,8 @@ class RoutesAddScene extends Component {
     }
 
     this.setState({
-      destination_select_all: !this.state.destination_select_all,
+      isDestinationSelectAllButtonSelected: !this.state
+        .isDestinationSelectAllButtonSelected,
     });
   };
 
@@ -212,50 +245,28 @@ class RoutesAddScene extends Component {
     );
   };
 
-  onDestinationLocationsSavePress = () => {
-    this.hideDestinationLocationsModal();
-  };
-
-  onOriginCountryPress = () => {
-    this.setState({origin_location_all: true});
-  };
-
-  onOriginCitiesPress = () => {
-    this.setState({
-      origin_location_all: false,
-    });
-    this.showOriginLocationsModal();
-  };
-
-  onDestinationCountryPress = () => {
-    this.setState({destination_location_all: true});
-  };
-
-  onDestinationCitiesPress = () => {
-    this.setState({
-      destination_location_all: false,
-    });
-    this.showDestinationLocationsModal();
-  };
+  onSave = () => {};
 
   render() {
-    let {destination_countries, origin_country} = this.props;
+    let {
+      destination_countries,
+      origin_country,
+      destinationCountry,
+    } = this.props;
 
     let {
-      destination_country_id,
-      origin_select_all,
-      destination_select_all,
-      destination_location_ids,
       origin_location_ids,
-      active_type,
-      destination_location_all,
-      origin_location_all,
+      destination_country_id,
+      destination_location_ids,
+      originAny,
+      destinationAny,
+      isOriginSelectAllButtonSelected,
+      isOriginLocationsModalVisible,
+      isDestinationSelectAllButtonSelected,
       isDestinationLocationsModalVisible,
       isDestinationCountriesModalVisible,
-      isOriginLocationsModalVisible,
+      activeType,
     } = this.state;
-
-    let destinationCountry = {};
 
     if (destination_country_id) {
       destinationCountry = this.getCountry(destination_country_id);
@@ -272,76 +283,76 @@ class RoutesAddScene extends Component {
             alignItems: 'center',
           }}>
           <TextBox
-            active={active_type === 'origin'}
+            active={activeType === 'origin'}
             onPress={this.onOriginBoxPress}
             style={{marginRight: 5}}
-            title={origin_country.name
-              ? origin_country.name.toUpperCase()
-              : I18n.t('origin').toUpperCase()}
+            title={
+              origin_country.name
+                ? origin_country.name.toUpperCase()
+                : I18n.t('origin').toUpperCase()
+            }
           />
 
-          <Entypo name="swap" color="white" size={15}/>
+          <Entypo name="swap" color="white" size={15} />
 
           <TextBox
-            active={active_type === 'destination'}
+            active={activeType === 'destination'}
             onPress={this.onDestinationBoxPress}
             style={{marginLeft: 5}}
-            title={destinationCountry.name
-              ? destinationCountry.name.toUpperCase()
-              : I18n.t('destination').toUpperCase()}
+            title={
+              destinationCountry.name
+                ? destinationCountry.name.toUpperCase()
+                : I18n.t('destination').toUpperCase()
+            }
           />
         </View>
 
-        {active_type === 'origin' &&
-        <View style={{flex: 1, padding: 10}}>
+        {activeType === 'origin' && (
+          <View style={{flex: 1, padding: 10}}>
+            <Title style={{textAlign: 'center', paddingBottom: 20}}>
+              {I18n.t('select_pick_locations')}
+            </Title>
 
-          <Title style={{textAlign: 'center', paddingBottom: 20}}>
-            {I18n.t('select_pick_locations')}
-          </Title>
+            <CheckedListItem
+              onPress={this.onOriginCountryPress}
+              checked={originAny}
+              title={`${I18n.t('anywhere_in')} ${origin_country.name}`}
+            />
 
-          <CheckedListItem
-            onPress={this.onOriginCountryPress}
-            checked={origin_location_all}
-            title={`${I18n.t('anywhere_in')} ${origin_country.name}`}
-          />
+            <Separator style={{marginVertical: 5}} />
 
-          <Separator style={{marginVertical: 5}}/>
+            <CheckedListItem
+              onPress={this.onOriginCitiesPress}
+              checked={!originAny}
+              title={I18n.t('multiple_locations')}
+            />
+          </View>
+        )}
 
-          <CheckedListItem
-            onPress={this.onOriginCitiesPress}
-            checked={!origin_location_all}
-            title={I18n.t('multiple_locations')}
-          />
+        {activeType === 'destination' &&
+          destination_country_id && (
+            <View style={{flex: 1, padding: 10}}>
+              <Title style={{textAlign: 'center', paddingBottom: 20}}>
+                {I18n.t('select_drop_locations')}
+              </Title>
 
-        </View>
-        }
+              <CheckedListItem
+                onPress={this.onDestinationAnyPress}
+                checked={destinationAny}
+                title={`${I18n.t('anywhere_in')} ${origin_country.name}`}
+              />
 
-        {active_type === 'destination' &&
-          destination_country_id &&
-        <View style={{flex: 1, padding: 10}}>
+              <Separator style={{marginVertical: 5}} />
 
-          <Title style={{textAlign: 'center', paddingBottom: 20}}>
-            {I18n.t('select_drop_locations')}
-          </Title>
+              <CheckedListItem
+                onPress={this.onDestinationCitiesPress}
+                checked={!destinationAny}
+                title={I18n.t('multiple_locations')}
+              />
+            </View>
+          )}
 
-          <CheckedListItem
-            onPress={this.onDestinationCountryPress}
-            checked={destination_location_all}
-            title={`${I18n.t('anywhere_in')} ${origin_country.name}`}
-          />
-
-          <Separator style={{marginVertical: 5}}/>
-
-          <CheckedListItem
-            onPress={this.onDestinationCitiesPress}
-            checked={!destination_location_all}
-            title={I18n.t('multiple_locations')}
-          />
-
-        </View>
-        }
-
-        <AppButton onPress={this.onSave} disabled={!destination_country_id}/>
+        <AppButton onPress={this.onSave} disabled={!destination_country_id} />
 
         <List
           title={I18n.t('select_locations')}
@@ -353,7 +364,7 @@ class RoutesAddScene extends Component {
           onSave={this.onDestinationLocationsSavePress}
           header={
             <Caption onPress={this.toggleOriginSelectAll}>
-              {origin_select_all
+              {isOriginSelectAllButtonSelected
                 ? I18n.t('deselect_all')
                 : I18n.t('select_all')}
             </Caption>
@@ -380,31 +391,22 @@ class RoutesAddScene extends Component {
           onSave={this.onDestinationLocationsSavePress}
           header={
             <Caption onPress={this.toggleDestinationSelectAll}>
-              {destination_select_all
+              {isDestinationSelectAllButtonSelected
                 ? I18n.t('deselect_all')
                 : I18n.t('select_all')}
             </Caption>
           }
         />
-
       </View>
     );
   }
 }
 
-/**
- * @todo:// make use of current country as a real prop by using it as a selector
- */
-const makeMapStateToProps = () => {
-  const mapStateToProps = (state, props) => {
-    return {
-      origin_country: DRIVER_SELECTORS.getTruckRegistrationCountry(state),
-      destination_countries: DRIVER_SELECTORS.getRouteDestinationCountries(
-        state,
-      ),
-    };
+function mapStateToProps(state) {
+  return {
+    origin_country: DRIVER_SELECTORS.getTruckRegistrationCountry(state),
+    destination_countries: DRIVER_SELECTORS.getRouteDestinationCountries(state),
   };
-  return mapStateToProps;
-};
+}
 
-export default connect(makeMapStateToProps)(RoutesAddScene);
+export default connect(mapStateToProps)(RoutesAddScene);
