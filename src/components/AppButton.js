@@ -20,15 +20,16 @@ export default class AppButton extends Component {
   };
 
   render() {
-    const {onPress, style, title} = this.props;
-
+    const {onPress, style, title, disabled} = this.props;
     return (
       <Button
         onPress={onPress}
         raised
         primary
         dark
-        style={[{padding: 10, marginTop: 20}, style]}>
+        style={[{padding: 10, marginTop: 20}, style]}
+        disabled={disabled}
+      >
         {title}
       </Button>
     );

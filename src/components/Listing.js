@@ -12,6 +12,7 @@ import colors from 'assets/theme/colors';
 import {Button, Checkbox, Headline} from 'react-native-paper';
 import I18n from 'utils/locale';
 import ListModal from './ListModal';
+import CheckedListItem from "./CheckedListItem";
 
 export default class Listing extends Component {
   static propTypes = {
@@ -30,16 +31,12 @@ export default class Listing extends Component {
   renderItem = ({item}) => {
     let {onItemPress, activeIDs} = this.props;
     return (
-      <Touchable onPress={() => (item.disabled ? {} : onItemPress(item))}>
-        <View
-          style={[styles.itemRowContainer, item.disabled && {opacity: 0.4}]}>
-          <Text style={styles.itemTitle}>{item.name}</Text>
-          <Checkbox
-            checked={activeIDs.includes(item.id)}
-            color={colors.primary}
-          />
-        </View>
-      </Touchable>
+      <CheckedListItem
+        onPress={()=>onItemPress(item)}
+        checked={activeIDs.includes(item.id)}
+        disabled={item.disabled}
+        title={item.name}
+      />
     );
   };
 

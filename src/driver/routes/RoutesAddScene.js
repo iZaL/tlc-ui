@@ -13,6 +13,7 @@ import AppButton from 'components/AppButton';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Separator from "components/Separator";
 import Touchable from 'react-native-platform-touchable';
+import CheckedListItem from "../../components/CheckedListItem";
 
 class RoutesAddScene extends Component {
   state = {
@@ -298,38 +299,19 @@ class RoutesAddScene extends Component {
             {I18n.t('select_pick_locations')}
           </Title>
 
-          <Touchable
+          <CheckedListItem
             onPress={this.onOriginCountryPress}
-          >
-            <View style={{flexDirection: 'row', alignItems: 'center'}}>
-              <Text style={{flex: 1, paddingHorizontal: 10}}>
-                {I18n.t('anywhere_in')} {origin_country.name}
-              </Text>
-              <RadioButton
-                disabled={false}
-                checked={origin_location_all}
-                onPress={this.onOriginCountryPress}
-              />
-            </View>
-          </Touchable>
+            checked={origin_location_all}
+            title={`${I18n.t('anywhere_in')} ${origin_country.name}`}
+          />
 
           <Separator style={{marginVertical: 5}}/>
 
-          <Touchable
+          <CheckedListItem
             onPress={this.onOriginCitiesPress}
-          >
-            <View style={{flexDirection: 'row', alignItems: 'center'}}>
-              <Text style={{flex: 1, paddingHorizontal: 10}}>
-                {I18n.t('multiple_locations')}
-              </Text>
-              <RadioButton
-                disabled={false}
-                checked={!origin_location_all}
-                onPress={this.onOriginCitiesPress}
-                style={{flex: 1}}
-              />
-            </View>
-          </Touchable>
+            checked={!origin_location_all}
+            title={I18n.t('multiple_locations')}
+          />
 
         </View>
         }
@@ -342,43 +324,24 @@ class RoutesAddScene extends Component {
             {I18n.t('select_drop_locations')}
           </Title>
 
-          <Touchable
-            onPress={this.onDestinationCountryPress}
-          >
-            <View style={{flexDirection: 'row', alignItems: 'center'}}>
-
-              <Text style={{flex: 8, paddingHorizontal: 10}}>
-                {I18n.t('anywhere_in')} {destinationCountry.name}
-              </Text>
-              <RadioButton
-                checked={destination_location_all}
-                onPress={this.onDestinationCountryPress}
-              />
-            </View>
-          </Touchable>
+          <CheckedListItem
+            onPress={this.onOriginCountryPress}
+            checked={origin_location_all}
+            title={`${I18n.t('anywhere_in')} ${origin_country.name}`}
+          />
 
           <Separator style={{marginVertical: 5}}/>
 
-          <Touchable
+          <CheckedListItem
             onPress={this.onDestinationCitiesPress}
-          >
-            <View style={{flexDirection: 'row', alignItems: 'center'}}>
-
-              <Text style={{flex: 1, paddingHorizontal: 10}}>
-                {I18n.t('multiple_locations')}
-              </Text>
-              <RadioButton
-                checked={!destination_location_all}
-                onPress={this.onDestinationCitiesPress}
-                style={{flex: 1}}
-              />
-            </View>
-          </Touchable>
+            checked={!destination_location_all}
+            title={I18n.t('multiple_locations')}
+          />
 
         </View>
         }
 
-        <AppButton onPress={this.onSave}/>
+        <AppButton onPress={this.onSave} disabled={!destination_country_id}/>
 
         <List
           title={I18n.t('select_locations')}
