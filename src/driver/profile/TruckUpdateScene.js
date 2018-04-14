@@ -7,6 +7,7 @@ import {ScrollView} from 'react-native';
 import Divider from 'components/Divider';
 import ListItem from 'components/ListItem';
 import {ACTIONS as TRUCK_ACTIONS} from 'trucks/common/actions';
+import {ListSection} from 'react-native-paper';
 
 class TruckUpdateScene extends Component {
   static propTypes = {
@@ -47,44 +48,30 @@ class TruckUpdateScene extends Component {
 
   render() {
     return (
-      <ScrollView
-        style={{
-          flex: 1,
-          backgroundColor: 'white',
-          padding: 10,
-          paddingTop: 20,
-        }}>
+      <ListSection>
         <ListItem onItemPress={this.loadTruckModelScene} name="truck_model" />
 
-        <Divider style={{marginVertical: 10}} />
+        <Divider />
 
         <ListItem
           onItemPress={this.loadTruckRegistrationScene}
           name="truck_registration"
         />
 
-        <Divider style={{marginVertical: 10}} />
+        <Divider />
 
         <ListItem
           onItemPress={this.loadTruckInfoUpdateScene}
           name="truck_details"
         />
 
-        <Divider style={{marginVertical: 10}} />
+        <Divider />
 
         <ListItem
           onItemPress={this.loadTrailerUpdateScene}
           name="trailer_details"
         />
-
-        <Divider style={{marginVertical: 10}} />
-
-        {/*<ListItem*/}
-        {/*onItemPress={this.onProfileInfoPress}*/}
-        {/*name="truck_images"*/}
-        {/**/}
-        {/*/>*/}
-      </ScrollView>
+      </ListSection>
     );
   }
 }

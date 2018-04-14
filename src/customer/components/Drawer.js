@@ -34,7 +34,6 @@ export default class Drawer extends Component {
           iconProps={{
             name: 'home-outline',
             type: 'MaterialCommunityIcons',
-            size: 24,
           }}
           active={activeRoute === 'HomeStack'}
         />
@@ -46,7 +45,6 @@ export default class Drawer extends Component {
           iconProps={{
             name: 'person-outline',
             type: 'MaterialIcons',
-            size: 24,
           }}
           active={activeRoute === 'ProfileStack'}
         />
@@ -58,7 +56,6 @@ export default class Drawer extends Component {
           iconProps={{
             name: 'truck-delivery',
             type: 'MaterialCommunityIcons',
-            size: 24,
           }}
           active={activeRoute === 'LoadStack'}
         />
@@ -70,7 +67,6 @@ export default class Drawer extends Component {
           iconProps={{
             name: 'logout',
             type: 'MaterialCommunityIcons',
-            size: 24,
           }}
           active={activeRoute === 'Logout'}
         />

@@ -56,7 +56,7 @@ class ProfileHome extends Component {
       <ListSection style={{flex: 1}}>
         <ListItem
           onItemPress={this.onListItemPress}
-          icon={<IconFactory type="Ionicons" name="md-person" />}
+          iconProps={<IconFactory type="Ionicons" name="md-person" />}
           name="profile_update"
         />
         <Divider />

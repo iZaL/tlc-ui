@@ -29,6 +29,7 @@ class IconFactory extends Component {
 
   static defaultProps = {
     size: 24,
+    color: 'rgb(0,0,0,0.87)',
   };
 
   render() {
@@ -36,10 +37,11 @@ class IconFactory extends Component {
     const Icon = components[type];
     return (
       <Icon
-        color={color ? colors.fadedGrey : color}
+        color={color}
         style={[styles.icon, style]}
         size={size}
         {...rest}
+        // color="green"
       />
     );
   }

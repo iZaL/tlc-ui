@@ -5,6 +5,7 @@ import ListItem from 'components/ListItem';
 import IconFactory from 'components/IconFactory';
 import Divider from 'components/Divider';
 import I18n from 'utils/locale';
+import {ListSection} from 'react-native-paper';
 
 class ProfileHome extends Component {
   static propTypes = {};
@@ -40,36 +41,31 @@ class ProfileHome extends Component {
 
   render() {
     return (
-      <ScrollView style={{flex: 1, backgroundColor: 'white'}}>
+      <ListSection>
         <ListItem
-          style={{marginTop: 10}}
           onItemPress={this.onListItemPress}
           icon={
-            <IconFactory
-              type="MaterialCommunityIcons"
-              size={30}
-              name="truck-delivery"
-            />
+            <IconFactory type="MaterialCommunityIcons" name="truck-delivery" />
           }
           name="load_working_list"
         />
 
-        <Divider style={{marginVertical: 10}} />
+        <Divider />
 
         <ListItem
           onItemPress={this.onListItemPress}
-          icon={<IconFactory type="Entypo" size={30} name="back-in-time" />}
+          icon={<IconFactory type="Entypo" name="back-in-time" />}
           name="load_approved_list"
         />
 
-        <Divider style={{marginVertical: 10}} />
+        <Divider />
 
         <ListItem
           onItemPress={this.onListItemPress}
-          icon={<IconFactory type="MaterialIcons" size={30} name="timelapse" />}
+          icon={<IconFactory type="MaterialIcons" name="timelapse" />}
           name="load_completed_list"
         />
-      </ScrollView>
+      </ListSection>
     );
   }
 }
