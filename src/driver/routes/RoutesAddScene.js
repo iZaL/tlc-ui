@@ -325,8 +325,8 @@ class RoutesAddScene extends Component {
           </Title>
 
           <CheckedListItem
-            onPress={this.onOriginCountryPress}
-            checked={origin_location_all}
+            onPress={this.onDestinationCountryPress}
+            checked={destination_location_all}
             title={`${I18n.t('anywhere_in')} ${origin_country.name}`}
           />
 
