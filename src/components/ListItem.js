@@ -8,14 +8,13 @@ import I18n from 'utils/locale';
 import IconFactory from 'components/IconFactory';
 
 export default class ListItem extends Component {
-
   static propTypes = {
     onItemPress: PropTypes.func.isRequired,
     name: PropTypes.string.isRequired,
     iconProps: PropTypes.object,
   };
 
-  shouldComponentUpdate(){
+  shouldComponentUpdate() {
     return false;
   }
 
@@ -30,6 +29,5 @@ export default class ListItem extends Component {
         inset={true}
       />
     );
-  };
-
+  }
 }

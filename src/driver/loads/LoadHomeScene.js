@@ -44,7 +44,7 @@ class ProfileHome extends Component {
       <ListSection>
         <ListItem
           onItemPress={this.onListItemPress}
-          iconProps={{ type:"MaterialCommunityIcons", name:"truck-delivery"}}
+          iconProps={{type: 'MaterialCommunityIcons', name: 'truck-delivery'}}
           name="load_working_list"
         />
 
@@ -52,7 +52,7 @@ class ProfileHome extends Component {
 
         <ListItem
           onItemPress={this.onListItemPress}
-          iconProps={{type:"Entypo", name:"back-in-time" }}
+          iconProps={{type: 'Entypo', name: 'back-in-time'}}
           name="load_approved_list"
         />
 
@@ -60,7 +60,7 @@ class ProfileHome extends Component {
 
         <ListItem
           onItemPress={this.onListItemPress}
-          iconProps={{type:"MaterialIcons", name:"timelapse" }}
+          iconProps={{type: 'MaterialIcons', name: 'timelapse'}}
           name="load_completed_list"
         />
       </ListSection>
