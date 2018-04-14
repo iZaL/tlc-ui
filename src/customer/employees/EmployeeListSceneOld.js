@@ -21,10 +21,10 @@ class EmployeeListScene extends Component {
     this.props.dispatch(CUSTOMER_ACTIONS.fetchEmployees());
   }
 
-  // onEmployeeListItemPress = (employee: object) => {};
+  onEmployeeListItemPress = (employee: object) => {};
 
-  onEmployeeListItemPress = (employee: object) => {
-    this.props.navigation.navigate('EmployeeAdd', {
+  onEmployeeListItemEditPress = (employee: object) => {
+    this.props.navigation.navigate('EmployeeEdit', {
       employee: employee,
     });
   };
@@ -37,11 +37,11 @@ class EmployeeListScene extends Component {
     const {employees} = this.props;
 
     return (
-      <ScrollView style={{flex: 1,padding:10}}>
-
+      <ScrollView style={{flex: 1}}>
         <EmployeeList
           items={employees}
           onItemPress={this.onEmployeeListItemPress}
+          onItemEditPress={this.onEmployeeListItemEditPress}
         />
 
         <Button

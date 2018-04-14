@@ -4,7 +4,7 @@ import {ScrollView, StyleSheet, View} from 'react-native';
 import I18n from 'utils/locale';
 import FormLabel from 'components/FormLabel';
 import FormTextInput from 'components/FormTextInput';
-import FormSubmit from 'components/FormSubmit';
+import Button from 'components/Button';
 import colors from 'assets/theme/colors';
 
 export default class RegisterScene extends Component {
@@ -112,7 +112,7 @@ export default class RegisterScene extends Component {
           label={I18n.t('confirm_password')}
         />
 
-        <FormSubmit
+        <Button
           onPress={() => handleRegister()}
           disabled={busy}
           title={busy ? I18n.t('signing_up') : I18n.t('create_account')}

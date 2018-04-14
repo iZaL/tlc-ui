@@ -5,7 +5,7 @@ import colors from 'assets/theme/colors';
 import I18n, {isRTL} from 'utils/locale';
 import FormLabel from 'components/FormLabel';
 import FormTextInput from 'components/FormTextInput';
-import FormSubmit from 'components/FormSubmit';
+import Button from 'components/Button';
 
 export default class ConfirmScene extends Component {
   static propTypes = {
@@ -37,7 +37,7 @@ export default class ConfirmScene extends Component {
           label={I18n.t('confirmation_code')}
         />
 
-        <FormSubmit
+        <Button
           onPress={() => onRecoverPassword()}
           underlayColor="transparent"
           disabled={!confirmationCode}

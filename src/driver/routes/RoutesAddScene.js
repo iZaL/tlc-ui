@@ -9,7 +9,7 @@ import colors from 'assets/theme/colors';
 import List from 'components/List';
 import {ACTIONS as APP_ACTIONS} from 'app/common/actions';
 import {Caption, Title} from 'react-native-paper';
-import AppButton from 'components/AppButton';
+import Button from 'components/Button';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Divider from 'components/Divider';
 import CheckedListItem from '../../components/CheckedListItem';
@@ -352,7 +352,7 @@ class RoutesAddScene extends Component {
             </View>
           )}
 
-        <AppButton onPress={this.onSave} disabled={!destination_country_id} />
+        <Button onPress={this.onSave} disabled={!destination_country_id} />
 
         <List
           title={I18n.t('select_locations')}

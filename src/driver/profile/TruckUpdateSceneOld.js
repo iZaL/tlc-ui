@@ -10,7 +10,7 @@ import FormLabel from 'components/FormLabel';
 import FormTextInput from 'components/FormTextInput';
 import Dropdown from 'components/Dropdown';
 import Divider from 'components/Divider';
-import FormSubmit from 'components/FormSubmit';
+import Button from 'components/Button';
 import I18n from 'utils/locale';
 import DateTimePicker from 'components/DateTimePicker';
 import {SELECTORS as COUNTRY_SELECTORS} from 'app/selectors/country';
@@ -306,7 +306,7 @@ class TruckUpdateScene extends Component {
           </Text>
         )}
 
-        <FormSubmit
+        <Button
           onPress={this.save}
           disabled={false}
           title={I18n.t('save')}

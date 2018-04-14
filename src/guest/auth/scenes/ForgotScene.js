@@ -4,7 +4,7 @@ import {StyleSheet, View} from 'react-native';
 import I18n from 'utils/locale';
 import FormLabel from 'components/FormLabel';
 import FormTextInput from 'components/FormTextInput';
-import FormSubmit from 'components/FormSubmit';
+import Button from 'components/Button';
 
 export default class ForgotScene extends Component {
   static propTypes = {
@@ -36,7 +36,7 @@ export default class ForgotScene extends Component {
           keyboardType="email-address"
         />
 
-        <FormSubmit
+        <Button
           onPress={() => onForgotPassword()}
           title={I18n.t('recover_password')}
           style={{marginTop: 50}}

@@ -6,7 +6,7 @@ import {SELECTORS as CUSTOMER_SELECTORS} from 'customer/common/selectors';
 import {ScrollView} from 'react-native';
 import FormLabel from 'components/FormLabel';
 import FormTextInput from 'components/FormTextInput';
-import FormSubmit from 'components/FormSubmit';
+import Button from 'components/Button';
 import I18n from 'utils/locale';
 import {SELECTORS as USER_SELECTORS} from 'guest/common/selectors';
 import {ACTIONS as CUSTOMER_ACTIONS} from 'customer/common/actions';
@@ -126,15 +126,10 @@ class ProfileUpdateScene extends Component {
     return (
       <ScrollView
         style={{
-          flex: 1,
-          backgroundColor: 'white',
-          // padding: 10,
-          // paddingTop: 20,
+          padding: 10,
         }}
         contentContainerStyle={{paddingBottom: 100}}>
-        <ListItem title={I18n.t('company_information')} />
 
-        {/*<FormLabel title={I18n.t('company_name_en')} />*/}
         <FormTextInput
           onValueChange={this.onUserFieldChange}
           value={name_en}
@@ -143,7 +138,6 @@ class ProfileUpdateScene extends Component {
           label={I18n.t('company_name_en')}
         />
 
-        {/*<FormLabel title={I18n.t('company_name_ar')} />*/}
         <FormTextInput
           onValueChange={this.onUserFieldChange}
           value={name_ar}
@@ -151,8 +145,6 @@ class ProfileUpdateScene extends Component {
           maxLength={40}
           label={I18n.t('company_name_ar')}
         />
-
-        {/*<FormLabel title={I18n.t('mobile')} />*/}
 
         <FormTextInput
           onValueChange={this.onValueChange}
@@ -163,8 +155,6 @@ class ProfileUpdateScene extends Component {
           keyboardType="phone-pad"
         />
 
-        {/*<FormLabel title={I18n.t('office_number')} />*/}
-
         <FormTextInput
           onValueChange={this.onValueChange}
           value={phone}
@@ -174,8 +164,6 @@ class ProfileUpdateScene extends Component {
           keyboardType="phone-pad"
         />
 
-        {/*<FormLabel title={I18n.t('company_email')} />*/}
-
         <FormTextInput
           onValueChange={this.onValueChange}
           value={email}
@@ -184,16 +172,13 @@ class ProfileUpdateScene extends Component {
           label={I18n.t('company_email')}
         />
 
-        {/*<FormLabel title={I18n.t('address_en')} />*/}
-
         <FormTextInput
           onValueChange={this.onValueChange}
           value={address_en}
           field="address_en"
           label={I18n.t('address_en')}
+          multiline={true}
         />
-
-        {/*<FormLabel title={I18n.t('address_ar')} />*/}
 
         <FormTextInput
           onValueChange={this.onValueChange}
@@ -201,9 +186,12 @@ class ProfileUpdateScene extends Component {
           field="address_ar"
           label={I18n.t('address_ar')}
           keyboardType="phone-pad"
+          multiline={true}
+          style={{paddingBottom:5}}
+          numberOfLines={2}
         />
 
-        <FormSubmit
+        <Button
           onPress={this.saveProfile}
           title={I18n.t('profile_update')}
           style={{marginTop: 50}}

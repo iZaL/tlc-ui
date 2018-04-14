@@ -5,7 +5,7 @@ import colors from 'assets/theme/colors';
 import I18n from 'utils/locale';
 import FormLabel from 'components/FormLabel';
 import FormTextInput from 'components/FormTextInput';
-import FormSubmit from 'components/FormSubmit';
+import Button from 'components/Button';
 
 export default class OTPScene extends Component {
   static propTypes = {
@@ -30,7 +30,7 @@ export default class OTPScene extends Component {
           label={I18n.t('confirmation_code')}
         />
 
-        <FormSubmit
+        <Button
           onPress={() => onButtonPress()}
           underlayColor="transparent"
           disabled={!code}

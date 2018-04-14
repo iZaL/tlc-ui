@@ -4,7 +4,7 @@ import {StyleSheet, View} from 'react-native';
 import FormLabel from 'components/FormLabel';
 import I18n from 'utils/locale';
 import FormTextInput from 'components/FormTextInput';
-import FormSubmit from 'components/FormSubmit';
+import Button from 'components/Button';
 
 export default class PasswordUpdateScene extends Component {
   static propTypes = {
@@ -47,7 +47,7 @@ export default class PasswordUpdateScene extends Component {
           secureTextEntry={true}
         />
 
-        <FormSubmit
+        <Button
           onPress={() => onUpdatePassword()}
           underlayColor="transparent"
           disabled={!password || !confirmedPassword}

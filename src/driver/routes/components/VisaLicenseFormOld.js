@@ -17,7 +17,7 @@ import I18n from 'utils/locale';
 import colors from 'assets/theme/colors';
 import FormLabel from 'components/FormLabel';
 import FormTextInput from '/components/FormTextInput';
-import FormSubmit from 'components/FormSubmit';
+import Button from 'components/Button';
 import Touchable from 'react-native-platform-touchable';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Accordion from 'react-native-collapsible/Accordion';
@@ -213,7 +213,7 @@ export default class VisaLicenseForm extends PureComponent {
             )}
           </Touchable>
 
-          <FormSubmit
+          <Button
             onPress={() => {}}
             underlayColor="transparent"
             title={I18n.t('save')}

@@ -55,6 +55,7 @@ class LocationListScene extends Component {
     let {type} = this.props.navigation.state.params;
     return (
       <ScrollView style={{flex: 1}}>
+
         <Button
           title={
             type === 'origin'

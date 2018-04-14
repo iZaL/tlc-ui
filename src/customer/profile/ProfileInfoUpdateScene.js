@@ -6,7 +6,7 @@ import {SELECTORS as CUSTOMER_SELECTORS} from 'customer/common/selectors';
 import {ScrollView} from 'react-native';
 import FormLabel from 'components/FormLabel';
 import FormTextInput from 'components/FormTextInput';
-import FormSubmit from 'components/FormSubmit';
+import Button from 'components/Button';
 import I18n from 'utils/locale';
 import {SELECTORS as USER_SELECTORS} from 'guest/common/selectors';
 import {ACTIONS as CUSTOMER_ACTIONS} from 'customer/common/actions';
@@ -200,7 +200,7 @@ class ProfileUpdateScene extends Component {
           keyboardType="phone-pad"
         />
 
-        <FormSubmit
+        <Button
           onPress={this.saveProfile}
           title={I18n.t('profile_update')}
           style={{marginTop: 50}}

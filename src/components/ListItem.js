@@ -24,7 +24,7 @@ export default class ListItem extends Component {
       <PaperListItem
         onPress={() => onItemPress(name)}
         icon={iconProps ? <IconFactory {...iconProps} /> : null}
-        title={I18n.t(name)}
+        title={name}
         description={description}
         inset={true}
       />

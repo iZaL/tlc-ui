@@ -6,7 +6,7 @@ import {SELECTORS as CUSTOMER_SELECTORS} from 'customer/common/selectors';
 import {ScrollView, View} from 'react-native';
 import FormLabel from 'components/FormLabel';
 import FormTextInput from 'components/FormTextInput';
-import FormSubmit from 'components/FormSubmit';
+import Button from 'components/Button';
 import I18n from 'utils/locale';
 import FormCheck from 'components/FormCheck';
 import Touchable from 'react-native-platform-touchable';
@@ -168,7 +168,7 @@ class EmployeeEditScene extends Component {
 
         <Divider style={{marginVertical: 10}} />
 
-        <FormSubmit
+        <Button
           onPress={this.saveProfile}
           title={I18n.t('save')}
           style={{marginTop: 50}}

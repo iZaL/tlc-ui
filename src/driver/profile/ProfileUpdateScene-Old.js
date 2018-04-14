@@ -10,7 +10,7 @@ import FormLabel from 'components/FormLabel';
 import FormTextInput from 'components/FormTextInput';
 import Dropdown from 'components/Dropdown';
 import Divider from 'components/Divider';
-import FormSubmit from 'components/FormSubmit';
+import Button from 'components/Button';
 import I18n from 'utils/locale';
 import AppModal from 'components/AppModal';
 import AlertBox from 'components/AlertBox';
@@ -214,7 +214,7 @@ class ProfileUpdateScene extends Component {
 
         {/*<Divider style={{marginVertical: 10}} />*/}
 
-        <FormSubmit
+        <Button
           onPress={this.saveProfile}
           title={I18n.t('profile_update')}
           style={{marginTop: 50}}

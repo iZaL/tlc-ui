@@ -12,7 +12,7 @@ import FormLabel from 'components/FormLabel';
 import List from 'components/List';
 import Divider from 'components/Divider';
 import {Title} from 'react-native-paper';
-import AppButton from 'components/AppButton';
+import Button from 'components/Button';
 
 class TruckModelScene extends Component {
   static propTypes = {
@@ -136,7 +136,7 @@ class TruckModelScene extends Component {
 
         <Divider style={{marginVertical: 20}} />
 
-        <AppButton onPress={this.onSave} />
+        <Button onPress={this.onSave} />
 
         <List
           title={I18n.t('truck_make')}

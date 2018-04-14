@@ -9,7 +9,7 @@ import Dropdown from 'components/Dropdown';
 import FormLabel from 'components/FormLabel';
 import ListModal from 'components/ListModal';
 import Divider from 'components/Divider';
-import AppButton from 'components/AppButton';
+import Button from 'components/Button';
 
 class TruckInfoUpdateScene extends Component {
   constructor(props) {
@@ -97,7 +97,7 @@ class TruckInfoUpdateScene extends Component {
         <FormLabel title={I18n.t('truck_year')} />
         <Title onPress={this.showYearModal}>{year || I18n.t('select')}</Title>
 
-        <AppButton onPress={this.onSave} />
+        <Button onPress={this.onSave} />
 
         <ListModal
           isVisible={isYearModalVisible}

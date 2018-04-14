@@ -18,7 +18,7 @@ class ProfileHome extends Component {
     let scene;
     let sceneConfig = {};
     switch (route) {
-      case 'profile_update':
+      case 'company_information':
         scene = 'ProfileUpdate';
         sceneConfig = {
           title: I18n.t('profile_update'),
@@ -54,7 +54,7 @@ class ProfileHome extends Component {
         <ListItem
           onItemPress={this.onListItemPress}
           iconProps={{type: 'Ionicons', name: 'md-person'}}
-          name="profile_update"
+          name="company_information"
         />
 
         <Divider />

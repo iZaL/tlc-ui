@@ -12,7 +12,7 @@ import Touchable from 'react-native-platform-touchable';
 import FormLabel from 'components/FormLabel';
 import {Title} from 'react-native-paper';
 import I18n from 'utils/locale';
-import AppButton from 'components/AppButton';
+import Button from 'components/Button';
 import List from 'components/List';
 import ListModal from 'components/ListModal';
 import Dropdown from 'components/Dropdown';
@@ -234,7 +234,7 @@ class TrailerUpdateScene extends Component {
           image={image}
         />
 
-        <AppButton onPress={this.onSave} />
+        <Button onPress={this.onSave} />
 
         <List
           title={I18n.t('trailer_type')}
