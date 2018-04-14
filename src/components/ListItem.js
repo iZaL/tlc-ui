@@ -4,39 +4,25 @@
 import React from 'react';
 import Touchable from 'react-native-platform-touchable';
 import PropTypes from 'prop-types';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import colors from 'assets/theme/colors';
-import I18n from 'utils/locale';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {ListItem as PaperListItem} from 'react-native-paper';
+import I18n from 'utils/locale';
+
 const ListItem = ({
   onItemPress,
   name,
   icon,
-  disabled = false,
-  style,
-  description
+  description,
 }) => {
   return (
-    <Touchable onPress={() => onItemPress(name)} disabled={disabled}>
-      <View style={[styles.container, style, disabled && {opacity: 0.5}]}>
-
-        <PaperListItem icon={icon} title={name} description={description} />
-        {/*{icon && <View style={styles.iconContainer}>{icon}</View>}*/}
-
-        {/*<View style={styles.contentContainer}>*/}
-          {/*<Text style={styles.name}>{I18n.t([name])}</Text>*/}
-        {/*</View>*/}
-
-        {/*{arrow && (*/}
-          {/*<MaterialIcons*/}
-            {/*name="arrow-forward"*/}
-            {/*color={colors.lightGrey}*/}
-            {/*size={30}*/}
-          {/*/>*/}
-        {/*)}*/}
-      </View>
-    </Touchable>
+    <PaperListItem
+      onPress={() => onItemPress(name)}
+      icon={icon}
+      title={I18n.t(name)}
+      description={description}
+      inset={true}
+    />
   );
 };
 
@@ -49,13 +35,6 @@ ListItem.propTypes = {
 export default ListItem;
 
 const styles = StyleSheet.create({
-  container: {
-    // flex: 1,
-    // flexDirection: 'row',
-    // alignItems: 'center',
-    // backgroundColor:'yellow',
-    // padding: 10,
-  },
   iconContainer: {
     flex: 1,
     alignItems: 'center',

@@ -28,14 +28,19 @@ class IconFactory extends Component {
   }
 
   static defaultProps = {
-    size:24
+    size: 24,
   };
 
   render() {
     let {type, style, color, size, ...rest} = this.props;
     const Icon = components[type];
     return (
-        <Icon color={color ? colors.fadedGrey : color} style={[styles.icon,style]} size={size} {...rest}  />
+      <Icon
+        color={color ? colors.fadedGrey : color}
+        style={[styles.icon, style]}
+        size={size}
+        {...rest}
+      />
     );
   }
 }
@@ -46,10 +51,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  icon:{
-    width:24,
-    height:24
-  }
+  icon: {
+    width: 24,
+    height: 24,
+  },
 });
 
 export default IconFactory;

@@ -33,9 +33,7 @@ export default class DocumentList extends Component {
         style={styles.listContainer}
         renderItem={this.renderItem}
         showsVerticalScrollIndicator={false}
-        ItemSeparatorComponent={() => (
-          <Divider style={{marginVertical: 10}} />
-        )}
+        ItemSeparatorComponent={() => <Divider style={{marginVertical: 10}} />}
         keyExtractor={(item, index) => `${index}`}
       />
     );

@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {ScrollView} from 'react-native';
 import ListItem from 'components/ListItem';
 import IconFactory from 'components/IconFactory';
-import {SELECTORS as CUSTOMER_SELECTORS} from 'customer/common/selectors';
 import {ACTIONS as CUSTOMER_ACTIONS} from 'customer/common/actions';
 import Divider from 'components/Divider';
 import I18n from 'utils/locale';
+import {ListSection} from 'react-native-paper';
 
 class ProfileHome extends Component {
   static propTypes = {};
@@ -51,56 +50,37 @@ class ProfileHome extends Component {
 
   render() {
     return (
-      <ScrollView style={{flex: 1, backgroundColor: 'white'}}>
+      <ListSection>
         <ListItem
-          style={{marginTop: 10}}
           onItemPress={this.onListItemPress}
-          icon={<IconFactory type="Ionicons" size={30} name="md-person" />}
+          icon={<IconFactory type="Ionicons" name="md-person" />}
           name="profile_update"
         />
 
-        <Divider style={{marginVertical: 10}} />
+        <Divider />
 
         <ListItem
           onItemPress={this.onListItemPress}
-          icon={
-            <IconFactory
-              type="MaterialCommunityIcons"
-              size={30}
-              name="contacts"
-            />
-          }
+          icon={<IconFactory type="MaterialCommunityIcons" name="contacts" />}
           name="employee_list"
         />
 
-        <Divider style={{marginVertical: 10}} />
+        <Divider />
 
         <ListItem
           onItemPress={this.onListItemPress}
-          icon={
-            <IconFactory
-              type="MaterialCommunityIcons"
-              size={30}
-              name="adjust"
-            />
-          }
+          icon={<IconFactory type="MaterialCommunityIcons" name="adjust" />}
           name="location_origin_list"
         />
 
-        <Divider style={{marginVertical: 10}} />
+        <Divider />
 
         <ListItem
           onItemPress={this.onListItemPress}
-          icon={
-            <IconFactory
-              type="MaterialCommunityIcons"
-              size={30}
-              name="map-marker"
-            />
-          }
+          icon={<IconFactory type="MaterialCommunityIcons" name="map-marker" />}
           name="location_destination_list"
         />
-      </ScrollView>
+      </ListSection>
     );
   }
 }

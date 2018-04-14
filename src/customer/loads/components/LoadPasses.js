@@ -46,9 +46,7 @@ export default class LoadWhat extends Component {
           style={styles.listContainer}
           renderItem={this.renderRow}
           showsVerticalScrollIndicator={false}
-          ItemSeparatorComponent={() => (
-            <Divider style={{marginVertical: 5}} />
-          )}
+          ItemSeparatorComponent={() => <Divider style={{marginVertical: 5}} />}
           keyExtractor={(item, index) => `${index}`}
           extraData={security_passes}
         />

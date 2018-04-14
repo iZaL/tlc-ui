@@ -54,18 +54,13 @@ class TruckUpdateScene extends Component {
           padding: 10,
           paddingTop: 20,
         }}>
-        <ListItem
-          onItemPress={this.loadTruckModelScene}
-          name="truck_model"
-          arrow={true}
-        />
+        <ListItem onItemPress={this.loadTruckModelScene} name="truck_model" />
 
         <Divider style={{marginVertical: 10}} />
 
         <ListItem
           onItemPress={this.loadTruckRegistrationScene}
           name="truck_registration"
-          arrow={true}
         />
 
         <Divider style={{marginVertical: 10}} />
@@ -73,7 +68,6 @@ class TruckUpdateScene extends Component {
         <ListItem
           onItemPress={this.loadTruckInfoUpdateScene}
           name="truck_details"
-          arrow={true}
         />
 
         <Divider style={{marginVertical: 10}} />
@@ -81,7 +75,6 @@ class TruckUpdateScene extends Component {
         <ListItem
           onItemPress={this.loadTrailerUpdateScene}
           name="trailer_details"
-          arrow={true}
         />
 
         <Divider style={{marginVertical: 10}} />
@@ -89,7 +82,7 @@ class TruckUpdateScene extends Component {
         {/*<ListItem*/}
         {/*onItemPress={this.onProfileInfoPress}*/}
         {/*name="truck_images"*/}
-        {/*arrow={true}*/}
+        {/**/}
         {/*/>*/}
       </ScrollView>
     );

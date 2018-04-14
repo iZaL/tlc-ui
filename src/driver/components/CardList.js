@@ -29,9 +29,7 @@ export default class CardList extends PureComponent {
         style={styles.listContainer}
         renderItem={this.renderRow}
         showsVerticalScrollIndicator={false}
-        ItemSeparatorComponent={() => (
-          <Divider style={{marginVertical: 10}} />
-        )}
+        ItemSeparatorComponent={() => <Divider style={{marginVertical: 10}} />}
         keyExtractor={(item, index) => {
           `${item.id}`;
         }}

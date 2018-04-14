@@ -25,7 +25,6 @@ export default class Drawer extends Component {
 
     return (
       <View style={styles.container}>
-
         <DrawerItem
           title={I18n.t('home')}
           routeName="HomeStack"

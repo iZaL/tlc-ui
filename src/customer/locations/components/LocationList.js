@@ -33,9 +33,7 @@ export default class LocationList extends PureComponent {
         style={styles.listContainer}
         renderItem={this.renderRow}
         showsVerticalScrollIndicator={false}
-        ItemSeparatorComponent={() => (
-          <Divider style={{marginVertical: 10}} />
-        )}
+        ItemSeparatorComponent={() => <Divider style={{marginVertical: 10}} />}
         keyExtractor={(item, index) => `${index}`}
       />
     );

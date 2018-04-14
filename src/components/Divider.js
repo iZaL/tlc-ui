@@ -9,9 +9,13 @@ class Divider extends Component {
     return false;
   }
 
+  static defaultProps = {
+    inset: false,
+  };
+
   render() {
-    let {style} = this.props;
-    return <PaperDivider style={[styles.container, style]} />;
+    let {style, inset} = this.props;
+    return <PaperDivider style={[styles.container, style]} inset={inset} />;
   }
 }
 

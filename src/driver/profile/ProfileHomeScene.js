@@ -8,6 +8,7 @@ import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
 import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
 import Divider from 'components/Divider';
 import I18n from 'utils/locale';
+import {ListSection} from 'react-native-paper';
 
 class ProfileHome extends Component {
   static propTypes = {};
@@ -52,76 +53,52 @@ class ProfileHome extends Component {
     const {truck} = this.props;
 
     return (
-      <ScrollView style={{flex: 1, backgroundColor: 'white'}}>
+      <ListSection style={{flex: 1}}>
         <ListItem
           onItemPress={this.onListItemPress}
-          icon={<IconFactory type="Ionicons"  name="md-person" />}
+          icon={<IconFactory type="Ionicons" name="md-person" />}
           name="profile_update"
-          arrow={true}
         />
-        <Divider  />
+        <Divider />
         <ListItem
           onItemPress={this.onListItemPress}
-          icon={
-            <IconFactory type="MaterialCommunityIcons" name="truck" />
-          }
+          icon={<IconFactory type="MaterialCommunityIcons" name="truck" />}
           name="truck_update"
-          arrow={true}
         />
-        <Divider  />
+        <Divider />
         <ListItem
           onItemPress={this.onListItemPress}
           icon={
-            <IconFactory
-              type="MaterialCommunityIcons"
-              name="truck-trailer"
-            />
+            <IconFactory type="MaterialCommunityIcons" name="truck-trailer" />
           }
           name="trailer_update"
           disabled={!truck}
-          arrow={true}
         />
-        <Divider  />
+        <Divider />
         <ListItem
           onItemPress={this.onListItemPress}
           icon={
-            <IconFactory
-              type="MaterialCommunityIcons"
-              name="road-variant"
-            />
+            <IconFactory type="MaterialCommunityIcons" name="road-variant" />
           }
           name="route_update"
           disabled={!truck}
-          arrow={true}
         />
-        <Divider  />
+        <Divider />
 
         <ListItem
           onItemPress={this.onListItemPress}
           name="security_passes"
-          arrow={true}
-          icon={
-            <IconFactory
-              type="MaterialCommunityIcons"
-              name="passport"
-            />
-          }
+          icon={<IconFactory type="MaterialCommunityIcons" name="passport" />}
         />
 
-        <Divider  />
+        <Divider />
         <ListItem
           onItemPress={this.onListItemPress}
-          icon={
-            <IconFactory
-              type="MaterialCommunityIcons"
-              name="passport"
-            />
-          }
+          icon={<IconFactory type="MaterialCommunityIcons" name="passport" />}
           name="documents_upload"
           disabled={!truck}
-          arrow={true}
         />
-      </ScrollView>
+      </ListSection>
     );
   }
 }

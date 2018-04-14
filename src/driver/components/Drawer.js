@@ -8,6 +8,7 @@ import I18n from 'utils/locale';
 import DrawerItem from 'components/DrawerItem';
 import Divider from 'components/Divider';
 import IconFactory from 'components/IconFactory';
+import {DrawerSection} from 'react-native-paper';
 
 export default class Drawer extends Component {
   state = {
@@ -31,8 +32,7 @@ export default class Drawer extends Component {
     let {activeRoute} = this.state;
 
     return (
-      <View style={styles.container}>
-
+      <DrawerSection>
         <DrawerItem
           label={I18n.t('home')}
           routeName="HomeStack"
@@ -76,14 +76,7 @@ export default class Drawer extends Component {
           }}
           active={activeRoute === 'Logout'}
         />
-      </View>
+      </DrawerSection>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: 15,
-  },
-});

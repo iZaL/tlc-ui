@@ -11,6 +11,7 @@ import List from 'components/List';
 import ListModal from 'components/ListModal';
 import FormTextInput from 'components/FormTextInput';
 import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
+import {ListSection} from 'react-native-paper';
 
 class ProfileUpdateScene extends Component {
   static propTypes = {
@@ -69,54 +70,31 @@ class ProfileUpdateScene extends Component {
     let {languageModalVisible, activeLanguages} = this.state;
 
     return (
-      <ScrollView
-        style={{
-          flex: 1,
-          backgroundColor: 'white',
-          padding: 10,
-          paddingTop: 20,
-        }}>
+      <ListSection>
         <ListItem
           onItemPress={this.onProfileInfoPress}
           name="personal_information"
-          arrow={true}
         />
 
-        <Divider style={{marginVertical: 10}} />
+        <Divider />
 
-        <ListItem
-          onItemPress={this.onListItemPress}
-          name="nationalities"
-          arrow={true}
-        />
+        <ListItem onItemPress={this.onListItemPress} name="nationalities" />
 
-        <Divider style={{marginVertical: 10}} />
+        <Divider />
 
-        <ListItem
-          onItemPress={this.onListItemPress}
-          name="residencies"
-          arrow={true}
-        />
+        <ListItem onItemPress={this.onListItemPress} name="residencies" />
 
-        <Divider style={{marginVertical: 10}} />
+        <Divider />
 
-        <ListItem
-          onItemPress={this.onListItemPress}
-          name="visas"
-          arrow={true}
-        />
+        <ListItem onItemPress={this.onListItemPress} name="visas" />
 
-        <Divider style={{marginVertical: 10}} />
+        <Divider />
 
-        <ListItem
-          onItemPress={this.onListItemPress}
-          name="licenses"
-          arrow={true}
-        />
+        <ListItem onItemPress={this.onListItemPress} name="licenses" />
 
-        <Divider style={{marginVertical: 10}} />
+        <Divider />
 
-        <ListItem onItemPress={this.showModal} name="languages" arrow={true} />
+        <ListItem onItemPress={this.showModal} name="languages" />
 
         <List
           items={[
@@ -133,7 +111,7 @@ class ProfileUpdateScene extends Component {
           title={I18n.t('select_languages')}
           activeIDs={activeLanguages}
         />
-      </ScrollView>
+      </ListSection>
     );
   }
 }

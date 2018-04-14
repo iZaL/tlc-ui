@@ -132,7 +132,6 @@ class ProfileUpdateScene extends Component {
           // paddingTop: 20,
         }}
         contentContainerStyle={{paddingBottom: 100}}>
-
         <ListItem title={I18n.t('company_information')} />
 
         {/*<FormLabel title={I18n.t('company_name_en')} />*/}

@@ -48,9 +48,7 @@ export default class Listing extends Component {
         style={[styles.listContainer, style]}
         renderItem={this.renderItem}
         showsVerticalScrollIndicator={false}
-        ItemSeparatorComponent={() => (
-          <Divider style={{marginVertical: 10}} />
-        )}
+        ItemSeparatorComponent={() => <Divider style={{marginVertical: 10}} />}
         keyExtractor={(item, index) => `${index}`}
       />
     );

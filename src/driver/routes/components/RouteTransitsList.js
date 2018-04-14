@@ -45,9 +45,7 @@ export default class RouteTransitsList extends PureComponent {
         style={styles.listContainer}
         renderItem={this.renderRow}
         showsHorizontalScrollIndicator={false}
-        ItemSeparatorComponent={() => (
-          <Divider style={{marginVertical: 10}} />
-        )}
+        ItemSeparatorComponent={() => <Divider style={{marginVertical: 10}} />}
         keyExtractor={(item, index) => {
           `${item.id}`;
         }}
