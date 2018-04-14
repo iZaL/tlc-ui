@@ -53,7 +53,7 @@ class ProfileHome extends Component {
       <ListSection>
         <ListItem
           onItemPress={this.onListItemPress}
-          icon={<IconFactory type="Ionicons" name="md-person" />}
+          iconProps={{ type:"Ionicons" ,name:"md-person"}}
           name="profile_update"
         />
 
@@ -61,7 +61,7 @@ class ProfileHome extends Component {
 
         <ListItem
           onItemPress={this.onListItemPress}
-          icon={<IconFactory type="MaterialCommunityIcons" name="contacts" />}
+          iconProps={{ type:"MaterialCommunityIcons" ,name:"contacts"}}
           name="employee_list"
         />
 
@@ -69,7 +69,7 @@ class ProfileHome extends Component {
 
         <ListItem
           onItemPress={this.onListItemPress}
-          icon={<IconFactory type="MaterialCommunityIcons" name="adjust" />}
+          iconProps={{ type:"MaterialCommunityIcons" ,name:"adjust"}}
           name="location_origin_list"
         />
 
@@ -77,7 +77,7 @@ class ProfileHome extends Component {
 
         <ListItem
           onItemPress={this.onListItemPress}
-          icon={<IconFactory type="MaterialCommunityIcons" name="map-marker" />}
+          iconProps={{ type:"MaterialCommunityIcons" ,name:"map-marker"}}
           name="location_destination_list"
         />
       </ListSection>

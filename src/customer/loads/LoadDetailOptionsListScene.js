@@ -55,55 +55,47 @@ class LoadDetailOptionsListScene extends Component {
   render() {
     return (
       <ScrollView style={{flex: 1, backgroundColor: 'white'}}>
-        <Divider style={{marginVertical: 10}} />
+        <Divider style={{marginVertical: 10}}/>
 
         <ListItem
           onItemPress={this.onListItemPress}
-          icon={
-            <IconFactory
-              type="MaterialCommunityIcons"
-              size={30}
-              name="truck-delivery"
-            />
-          }
+          iconProps={{
+            type: "MaterialCommunityIcons",
+            name: "truck-delivery"
+          }}
           name="load_detail"
         />
 
-        <Divider style={{marginVertical: 10}} />
+        <Divider style={{marginVertical: 10}}/>
 
         <ListItem
           onItemPress={this.onListItemPress}
-          icon={
-            <IconFactory type="MaterialCommunityIcons" size={30} name="pin" />
-          }
+          iconProps={{
+            type: "MaterialCommunityIcons",
+            name: "pin"
+          }}
           name="load_track"
         />
 
-        <Divider style={{marginVertical: 10}} />
+        <Divider style={{marginVertical: 10}}/>
 
         <ListItem
           onItemPress={this.onListItemPress}
-          icon={
-            <IconFactory
-              type="MaterialCommunityIcons"
-              size={30}
-              name="account-location"
-            />
-          }
+          iconProps={{
+            type: "MaterialCommunityIcons",
+            name: "account-location"
+          }}
           name="driver_detail"
         />
 
-        <Divider style={{marginVertical: 10}} />
+        <Divider style={{marginVertical: 10}}/>
 
         <ListItem
           onItemPress={this.onListItemPress}
-          icon={
-            <IconFactory
-              type="MaterialCommunityIcons"
-              size={30}
-              name="truck-delivery"
-            />
-          }
+          iconProps={{
+            type: "MaterialCommunityIcons",
+            name: "truck-delivery"
+          }}
           name="driver_rate"
         />
       </ScrollView>

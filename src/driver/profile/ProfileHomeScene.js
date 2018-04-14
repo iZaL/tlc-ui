@@ -56,30 +56,26 @@ class ProfileHome extends Component {
       <ListSection style={{flex: 1}}>
         <ListItem
           onItemPress={this.onListItemPress}
-          iconProps={<IconFactory type="Ionicons" name="md-person" />}
+          iconProps={{type:"Ionicons" ,name:"md-person" }}
           name="profile_update"
         />
         <Divider />
         <ListItem
           onItemPress={this.onListItemPress}
-          icon={<IconFactory type="MaterialCommunityIcons" name="truck" />}
+          iconProps={{ type:"MaterialCommunityIcons", name:"truck" }}
           name="truck_update"
         />
         <Divider />
         <ListItem
           onItemPress={this.onListItemPress}
-          icon={
-            <IconFactory type="MaterialCommunityIcons" name="truck-trailer" />
-          }
+          iconProps={{ type:"MaterialCommunityIcons", name:"truck-trailer" }}
           name="trailer_update"
           disabled={!truck}
         />
         <Divider />
         <ListItem
           onItemPress={this.onListItemPress}
-          icon={
-            <IconFactory type="MaterialCommunityIcons" name="road-variant" />
-          }
+          iconProps={{ type:"MaterialCommunityIcons", name:"road-variant" }}
           name="route_update"
           disabled={!truck}
         />
@@ -88,13 +84,13 @@ class ProfileHome extends Component {
         <ListItem
           onItemPress={this.onListItemPress}
           name="security_passes"
-          icon={<IconFactory type="MaterialCommunityIcons" name="passport" />}
+          iconProps={{ type:"MaterialCommunityIcons", name:"passport" }}
         />
 
         <Divider />
         <ListItem
           onItemPress={this.onListItemPress}
-          icon={<IconFactory type="MaterialCommunityIcons" name="passport" />}
+          iconProps={{ type:"MaterialCommunityIcons", name:"passport" }}
           name="documents_upload"
           disabled={!truck}
         />

@@ -11,7 +11,7 @@ const ListItem = ({onItemPress, name, iconProps, description}) => {
   return (
     <PaperListItem
       onPress={() => onItemPress(name)}
-      icon={<IconFactory {...iconProps} />}
+      icon={ iconProps ? <IconFactory {...iconProps} /> : null}
       title={I18n.t(name)}
       description={description}
       inset={true}
@@ -22,7 +22,7 @@ const ListItem = ({onItemPress, name, iconProps, description}) => {
 ListItem.propTypes = {
   onItemPress: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
-  iconProps: PropTypes.object.isRequired,
+  iconProps: PropTypes.object,
 };
 
 export default ListItem;
