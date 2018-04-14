@@ -335,6 +335,7 @@ class RoutesAddScene extends Component {
         }
 
         {active_type === 'destination' &&
+          destination_country_id &&
         <View style={{flex: 1, padding: 10}}>
 
           <Title style={{textAlign: 'center', paddingBottom: 20}}>
