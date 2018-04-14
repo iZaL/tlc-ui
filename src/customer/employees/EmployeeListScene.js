@@ -37,7 +37,7 @@ class EmployeeListScene extends Component {
     const {employees} = this.props;
 
     return (
-      <ScrollView style={{flex: 1,padding:10}}>
+      <ScrollView style={{flex: 1}}>
 
         <EmployeeList
           items={employees}

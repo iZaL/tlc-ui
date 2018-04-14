@@ -57,59 +57,56 @@ class EmployeeAddScene extends Component {
     } = this.state;
 
     return (
-      <View
-        style={{
-          padding: 10,
-        }}>
+      <View>
+        <View style={{paddingTop:0,padding:10}}>
+          <FormTextInput
+            onValueChange={this.onValueChange}
+            field="name"
+            value={name_en}
+            maxLength={40}
+            label={I18n.t('name')}
+          />
 
-        <FormTextInput
-          onValueChange={this.onValueChange}
-          field="name"
-          value={name_en}
-          maxLength={40}
-          label={I18n.t('name')}
-        />
+          <FormTextInput
+            onValueChange={this.onValueChange}
+            field="mobile"
+            value={mobile}
+            maxLength={40}
+            label={I18n.t('mobile')}
+            keyboardType="phone-pad"
+          />
 
-        <FormTextInput
-          onValueChange={this.onValueChange}
-          field="mobile"
-          value={mobile}
-          maxLength={40}
-          label={I18n.t('mobile')}
-          keyboardType="phone-pad"
-        />
+          <FormTextInput
+            onValueChange={this.onValueChange}
+            field="phone"
+            value={phone}
+            maxLength={40}
+            label={I18n.t('office_number')}
+            keyboardType="phone-pad"
+          />
 
-        <FormTextInput
-          onValueChange={this.onValueChange}
-          field="phone"
-          value={phone}
-          maxLength={40}
-          label={I18n.t('office_number')}
-          keyboardType="phone-pad"
-        />
+          <FormTextInput
+            onValueChange={this.onValueChange}
+            value={email}
+            field="email"
+            maxLength={40}
+            label={I18n.t('business_email')}
+            keyboardType="email-address"
+          />
 
-        <FormTextInput
-          onValueChange={this.onValueChange}
-          value={email}
-          field="email"
-          maxLength={40}
-          label={I18n.t('business_email')}
-          keyboardType="email-address"
-        />
-
-        <CheckedListItem
-          title={I18n.t('can_communicate_with_driver')}
-          checked={driver_interaction}
-          onPress={() => {
-            this.onValueChange('driver_interaction', !driver_interaction)
-          }}
-          style={{paddingVertical:10}}
-        />
+          <CheckedListItem
+            title={I18n.t('can_communicate_with_driver')}
+            checked={driver_interaction}
+            onPress={() => {
+              this.onValueChange('driver_interaction', !driver_interaction)
+            }}
+            style={{paddingVertical: 10}}
+          />
+        </View>
 
         <Button
           onPress={this.saveEmployee}
           title={I18n.t('save')}
-          style={{marginTop: 20}}
         />
 
       </View>
