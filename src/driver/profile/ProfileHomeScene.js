@@ -54,28 +54,26 @@ class ProfileHome extends Component {
     return (
       <ScrollView style={{flex: 1, backgroundColor: 'white'}}>
         <ListItem
-          style={{marginTop: 10}}
           onItemPress={this.onListItemPress}
-          icon={<IconFactory type="Ionicons" size={30} name="md-person" />}
+          icon={<IconFactory type="Ionicons"  name="md-person" />}
           name="profile_update"
           arrow={true}
         />
-        <Divider style={{marginVertical: 10}} />
+        <Divider  />
         <ListItem
           onItemPress={this.onListItemPress}
           icon={
-            <IconFactory type="MaterialCommunityIcons" size={30} name="truck" />
+            <IconFactory type="MaterialCommunityIcons" name="truck" />
           }
           name="truck_update"
           arrow={true}
         />
-        <Divider style={{marginVertical: 10}} />
+        <Divider  />
         <ListItem
           onItemPress={this.onListItemPress}
           icon={
             <IconFactory
               type="MaterialCommunityIcons"
-              size={30}
               name="truck-trailer"
             />
           }
@@ -83,13 +81,12 @@ class ProfileHome extends Component {
           disabled={!truck}
           arrow={true}
         />
-        <Divider style={{marginVertical: 10}} />
+        <Divider  />
         <ListItem
           onItemPress={this.onListItemPress}
           icon={
             <IconFactory
               type="MaterialCommunityIcons"
-              size={35}
               name="road-variant"
             />
           }
@@ -97,7 +94,7 @@ class ProfileHome extends Component {
           disabled={!truck}
           arrow={true}
         />
-        <Divider style={{marginVertical: 10}} />
+        <Divider  />
 
         <ListItem
           onItemPress={this.onListItemPress}
@@ -106,19 +103,17 @@ class ProfileHome extends Component {
           icon={
             <IconFactory
               type="MaterialCommunityIcons"
-              size={35}
               name="passport"
             />
           }
         />
 
-        <Divider style={{marginVertical: 10}} />
+        <Divider  />
         <ListItem
           onItemPress={this.onListItemPress}
           icon={
             <IconFactory
               type="MaterialCommunityIcons"
-              size={35}
               name="passport"
             />
           }

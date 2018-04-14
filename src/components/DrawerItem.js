@@ -24,16 +24,12 @@ export default class DrawerItem extends Component {
   }
 
   render() {
-    const {label, onItemPress, active, routeName, iconProps,iconStyle} = this.props;
+    const {onItemPress, routeName, iconProps} = this.props;
     return (
       <PaperDrawerItem
-        label={label}
         onPress={() => onItemPress(routeName)}
-        active={active}
         icon={
           <IconFactory
-            style={iconStyle}
-            size={24}
             {...iconProps}
           />
         }

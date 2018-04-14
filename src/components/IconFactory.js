@@ -27,11 +27,15 @@ class IconFactory extends Component {
     return false;
   }
 
+  static defaultProps = {
+    size:24
+  };
+
   render() {
-    let {type, style, color, ...rest} = this.props;
+    let {type, style, color, size, ...rest} = this.props;
     const Icon = components[type];
     return (
-        <Icon color={color ? colors.fadedGrey : color} style={[styles.icon,style]} {...rest}  />
+        <Icon color={color ? colors.fadedGrey : color} style={[styles.icon,style]} size={size} {...rest}  />
     );
   }
 }
