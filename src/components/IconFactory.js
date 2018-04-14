@@ -5,9 +5,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import colors from 'assets/theme/colors';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import {StyleSheet, View} from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
 
 const components = {
@@ -15,12 +13,14 @@ const components = {
   MaterialIcons,
   Ionicons,
   Entypo,
-  // FontAwesome
 };
 
 class IconFactory extends Component {
+
   static propTypes = {
     type: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    size:PropTypes.number,
   };
 
   shouldComponentUpdate() {
@@ -33,30 +33,17 @@ class IconFactory extends Component {
   };
 
   render() {
-    let {type, style, color, size, ...rest} = this.props;
+    let {type, style, color, size, name} = this.props;
     const Icon = components[type];
     return (
       <Icon
+        name={name}
         color={color}
-        style={[styles.icon, style]}
         size={size}
-        {...rest}
-        // color="green"
+        style={[{width:24,height:24}, style]}
       />
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    width: 40,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  icon: {
-    width: 24,
-    height: 24,
-  },
-});
 
 export default IconFactory;
