@@ -10,7 +10,7 @@ import IconFactory from 'components/IconFactory';
 export default class ListItem extends Component {
   static propTypes = {
     onItemPress: PropTypes.func.isRequired,
-    name: PropTypes.string.isRequired,
+    name: PropTypes.string,
     title: PropTypes.string.isRequired,
     iconProps: PropTypes.object,
   };
@@ -23,7 +23,7 @@ export default class ListItem extends Component {
     let {onItemPress, name, title, iconProps, description} = this.props;
     return (
       <PaperListItem
-        onPress={() => onItemPress(name)}
+        onPress={name ? () => onItemPress(name) : onItemPress}
         icon={iconProps ? <IconFactory {...iconProps} /> : null}
         title={title}
         description={description}

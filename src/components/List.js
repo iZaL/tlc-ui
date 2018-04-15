@@ -46,6 +46,7 @@ export default class List extends Component {
       items,
       activeIDs,
       header,
+      titleProp
     } = this.props;
     return (
       <ListModal
@@ -53,12 +54,14 @@ export default class List extends Component {
         transparent={false}
         onBackdropPress={onCancel}
         title={title}
-        onCancel={onCancel}>
+        onCancel={onCancel}
+      >
         {header}
         <Listing
           onItemPress={onItemPress}
           items={items}
           activeIDs={activeIDs}
+          titleProp={titleProp}
         />
         {children}
       </ListModal>

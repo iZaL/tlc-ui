@@ -129,7 +129,6 @@ class ProfileUpdateScene extends Component {
           padding: 10,
         }}
         contentContainerStyle={{paddingBottom: 100}}>
-
         <FormTextInput
           onValueChange={this.onUserFieldChange}
           value={name_en}
@@ -187,7 +186,7 @@ class ProfileUpdateScene extends Component {
           label={I18n.t('address_ar')}
           keyboardType="phone-pad"
           multiline={true}
-          style={{paddingBottom:5}}
+          style={{paddingBottom: 5}}
           numberOfLines={2}
         />
 

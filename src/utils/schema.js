@@ -36,10 +36,12 @@ driversSchema.define({
   loads: [loadsSchema],
   upcoming_trips: [tripsSchema],
   security_passes: [{security_pass: securityPassesSchema}],
+  user:usersSchema
 });
 
 customersSchema.define({
   locations: [customerLocationsSchema],
+  blocked_drivers: [driversSchema],
 });
 
 customerLocationsSchema.define({

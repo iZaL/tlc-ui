@@ -18,6 +18,7 @@ import TripTrackScene from 'customer/trips/TripTrackScene';
 import colors from 'assets/theme/colors';
 import I18n from 'utils/locale';
 import LoadDetailOptionsListScene from 'customer/loads/LoadDetailOptionsListScene';
+import DriversBlockListScene from 'customer/profile/DriversBlockListScene';
 
 const getDrawerIcon = navigation => {
   return {
@@ -79,6 +80,12 @@ const ProfileStack = StackNavigator(
       screen: LocationAddScene,
       navigationOptions: () => ({
         title: I18n.t('location_add'),
+      }),
+    },
+    DriversBlockList: {
+      screen: DriversBlockListScene,
+      navigationOptions: () => ({
+        title: I18n.t('blocked_drivers'),
       }),
     },
   },

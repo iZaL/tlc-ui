@@ -6,34 +6,29 @@ import {View} from 'react-native';
 import FormTextInput from 'components/FormTextInput';
 import Button from 'components/Button';
 import I18n from 'utils/locale';
-import CheckedListItem from "components/CheckedListItem";
+import CheckedListItem from 'components/CheckedListItem';
 
 class EmployeeAddScene extends Component {
-
   static navigationOptions = ({navigation}) => {
     return {
-      title: (navigation.state.params && navigation.state.params.name) || I18n.t('employee_add'),
+      title:
+        (navigation.state.params && navigation.state.params.name) ||
+        I18n.t('employee_add'),
     };
   };
 
   constructor(props) {
     super(props);
-    let {
-      name_en,
-      mobile,
-      phone,
-      email,
-      driver_interaction
-    } = props.navigation.state.params || {};
-    
+    let {name_en, mobile, phone, email, driver_interaction} =
+      props.navigation.state.params || {};
+
     this.state = {
       name_en: name_en,
       mobile: mobile,
       phone: phone,
       email: email,
-      driver_interaction: driver_interaction
+      driver_interaction: driver_interaction,
     };
-
   }
 
   onValueChange = (field, value) => {
@@ -103,17 +98,13 @@ class EmployeeAddScene extends Component {
             title={I18n.t('can_communicate_with_driver')}
             checked={driver_interaction}
             onPress={() => {
-              this.onValueChange('driver_interaction', !driver_interaction)
+              this.onValueChange('driver_interaction', !driver_interaction);
             }}
             style={{paddingVertical: 10}}
           />
         </View>
 
-        <Button
-          onPress={this.saveEmployee}
-          title={I18n.t('save')}
-        />
-
+        <Button onPress={this.saveEmployee} title={I18n.t('save')} />
       </View>
     );
   }

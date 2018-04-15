@@ -5,8 +5,8 @@ import {bindActionCreators} from 'redux';
 import {ACTIONS} from 'guest/common/actions';
 import {Alert, View} from 'react-native';
 import I18n from 'utils/locale';
-import Button from "../../components/Button";
-import FormTextInput from "../../components/FormTextInput";
+import Button from '../../components/Button';
+import FormTextInput from '../../components/FormTextInput';
 
 class Login extends Component {
   static propTypes = {
@@ -61,19 +61,13 @@ class Login extends Component {
   };
 
   render() {
-
-    const {
-      email,
-      password,
-    } = this.state;
+    const {email, password} = this.state;
 
     const {busy} = this.props.auth;
 
     return (
-
-      <View style={{flex: 1,padding:10}}>
-
-        <View style={{padding:5,paddingTop:64}}>
+      <View style={{flex: 1, padding: 10}}>
+        <View style={{padding: 5, paddingTop: 64}}>
           <FormTextInput
             label={I18n.t('email')}
             onValueChange={this.onValueChange}
@@ -99,9 +93,7 @@ class Login extends Component {
           title={busy ? I18n.t('logging_in') : I18n.t('login').toUpperCase()}
           style={{marginTop: 25}}
         />
-
       </View>
-
     );
   }
 }

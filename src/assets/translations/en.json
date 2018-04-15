@@ -238,6 +238,9 @@
   "deselect_all" : "unselect all",
 
   "anywhere_in" : "Anywhere in",
-  "multiple_locations" : "Multiple Locations"
+  "multiple_locations" : "Multiple Locations",
+
+  "blocked_drivers" : "Blocked Drivers",
+  "select_drivers" : "Select Drivers",
 
 }

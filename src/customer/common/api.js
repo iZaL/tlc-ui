@@ -9,6 +9,17 @@ function fetchProfile() {
   const url = `customer/profile`;
   return fetchAPI(url);
 }
+
+function fetchBlockedDrivers() {
+  const url = `customer/drivers/blocked`;
+  return fetchAPI(url);
+}
+
+function fetchDrivers() {
+  const url = `customer/drivers`;
+  return fetchAPI(url);
+}
+
 function fetchLocations() {
   const url = `customer/locations`;
   return fetchAPI(url);
@@ -50,6 +61,8 @@ export const API = {
   saveLocation,
   saveLoad,
   fetchProfile,
+  fetchBlockedDrivers,
+  fetchDrivers,
   fetchEmployees,
   fetchLocations,
   fetchLoadAdd,

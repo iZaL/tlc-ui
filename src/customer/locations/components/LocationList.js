@@ -9,7 +9,7 @@ import Touchable from 'react-native-platform-touchable';
 import Divider from 'components/Divider';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import LocationListItem from 'customer/locations/components/LocationListItem';
-import ListItem from "../../../components/ListItem";
+import ListItem from '../../../components/ListItem';
 
 export default class LocationList extends PureComponent {
   static propTypes = {
@@ -25,10 +25,14 @@ export default class LocationList extends PureComponent {
     let {onItemPress} = this.props;
     // return <LocationListItem onPress={onItemPress} item={item} />;
 
-    let {city,state,address,country} = item;
+    let {city, state, address, country} = item;
 
     return (
-      <ListItem onItemPress={onItemPress} title={address} description={`${city},${state},${country.name}`} />
+      <ListItem
+        onItemPress={onItemPress}
+        title={address}
+        description={`${city},${state},${country.name}`}
+      />
     );
   };
 

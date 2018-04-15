@@ -54,6 +54,45 @@ function* fetchProfile() {
   }
 }
 
+function* fetchBlockedDrivers() {
+  try {
+    const response = yield call(API.fetchBlockedDrivers);
+    const normalized = normalize(response.data, Schema.customers);
+    const {entities, result} = normalized;
+
+    // const profile = {
+    //   customers: {
+    //     [result]: {
+    //       ...entities.customers[result],
+    //       meta: response.meta,
+    //     },
+    //   },
+    // };
+
+    yield put({
+      type: ACTION_TYPES.FETCH_BLOCKED_DRIVERS_SUCCESS,
+      entities: entities,
+    });
+  } catch (error) {
+    yield put({type: ACTION_TYPES.FETCH_BLOCKED_DRIVERS_FAILURE, error});
+  }
+}
+
+function* fetchDrivers() {
+  try {
+    const response = yield call(API.fetchDrivers);
+    const normalized = normalize(response.data, [Schema.drivers]);
+    const {entities, result} = normalized;
+
+    yield put({
+      type: ACTION_TYPES.FETCH_DRIVERS_SUCCESS,
+      entities: entities,
+    });
+  } catch (error) {
+    yield put({type: ACTION_TYPES.FETCH_DRIVERS_FAILURE, error});
+  }
+}
+
 function* saveProfileMonitor() {
   yield takeLatest(ACTION_TYPES.UPDATE_PROFILE_REQUEST, saveProfile);
 }
@@ -62,4 +101,22 @@ function* fetchProfileMonitor() {
   yield takeLatest(ACTION_TYPES.FETCH_PROFILE_REQUEST, fetchProfile);
 }
 
-export const sagas = all([fork(fetchProfileMonitor), fork(saveProfileMonitor)]);
+function* fetchBlockedDriversMonitor() {
+  yield takeLatest(
+    ACTION_TYPES.FETCH_BLOCKED_DRIVERS_REQUEST,
+    fetchBlockedDrivers,
+  );
+}
+function* fetchDriversMonitor() {
+  yield takeLatest(
+    ACTION_TYPES.FETCH_DRIVERS_REQUEST,
+    fetchDrivers,
+  );
+}
+
+export const sagas = all([
+  fork(fetchProfileMonitor),
+  fork(fetchBlockedDriversMonitor),
+  fork(fetchDriversMonitor),
+  fork(saveProfileMonitor),
+]);

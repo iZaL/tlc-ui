@@ -63,7 +63,6 @@ class LocationAddScene extends Component {
 
     return (
       <View style={{flex: 1}}>
-
         <MapPicker
           updateAddress={this.updateAddressFields}
           address={{...this.state}}

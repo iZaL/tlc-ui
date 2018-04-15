@@ -35,6 +35,14 @@ export const ACTION_TYPES = {
   FETCH_LOAD_ADD_DATA_SUCCESS: '@customer/FETCH_LOAD_ADD_DATA_SUCCESS',
   FETCH_LOAD_ADD_DATA_FAILURE: '@customer/FETCH_LOAD_ADD_DATA_FAILURE',
 
+  FETCH_BLOCKED_DRIVERS_REQUEST: '@customer/FETCH_BLOCKED_DRIVERS_REQUEST',
+  FETCH_BLOCKED_DRIVERS_SUCCESS: '@customer/FETCH_BLOCKED_DRIVERS_SUCCESS',
+  FETCH_BLOCKED_DRIVERS_FAILURE: '@customer/FETCH_BLOCKED_DRIVERS_FAILURE',
+
+  FETCH_DRIVERS_REQUEST: '@customer/FETCH_DRIVERS_REQUEST',
+  FETCH_DRIVERS_SUCCESS: '@customer/FETCH_DRIVERS_SUCCESS',
+  FETCH_DRIVERS_FAILURE: '@customer/FETCH_DRIVERS_FAILURE',
+
   FETCH_LOADS_BY_STATUS_REQUEST: '@customer/FETCH_LOADS_BY_STATUS_REQUEST',
   FETCH_LOADS_BY_STATUS_SUCCESS: '@customer/FETCH_LOADS_BY_STATUS_SUCCESS',
   FETCH_LOADS_BY_STATUS_FAILURE: '@customer/FETCH_LOADS_BY_STATUS_FAILURE',
@@ -42,6 +50,8 @@ export const ACTION_TYPES = {
   LOCATION_RECEIVED: '@customer/LOCATION_RECEIVED',
 
   SUBSCRIBE_TO_TRIP_TRACK_CHANNEL: '@customer/SUBSCRIBE_TO_TRIP_TRACK_CHANNEL',
+
+
 };
 
 function fetchEmployees(params) {
@@ -84,6 +94,19 @@ function fetchLoadsByStatus(params) {
   };
 }
 
+function fetchBlockedDrivers(params) {
+  return {
+    type: ACTION_TYPES.FETCH_BLOCKED_DRIVERS_REQUEST,
+    params,
+  };
+}
+function fetchDrivers(params) {
+  return {
+    type: ACTION_TYPES.FETCH_DRIVERS_REQUEST,
+    params,
+  };
+}
+
 function saveProfile(params) {
   return {
     type: ACTION_TYPES.UPDATE_PROFILE_REQUEST,
@@ -117,6 +140,8 @@ export const ACTIONS = {
   fetchProfile,
   fetchEmployees,
   fetchLocations,
+  fetchDrivers,
+  fetchBlockedDrivers,
   saveEmployee,
   fetchLoadAddData,
   fetchLoadsByStatus,

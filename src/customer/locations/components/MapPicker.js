@@ -54,7 +54,7 @@ export default class MapPicker extends Component {
   componentDidMount() {
     setTimeout(() => {
       this.setState({
-        mapInitialized: true
+        mapInitialized: true,
       });
     }, 1000);
   }
@@ -147,8 +147,7 @@ export default class MapPicker extends Component {
           : address_components[1].long_name,
       };
       updateAddress(params);
-    } catch (e) {
-    }
+    } catch (e) {}
   }
 
   onItemPress = (locationData, locationDetails) => {
@@ -238,9 +237,7 @@ export default class MapPicker extends Component {
 
         <View style={styles.menuContainer}>
           <View style={styles.mapContainer}>
-
-            {
-              this.state.mapInitialized &&
+            {this.state.mapInitialized && (
               <MapView
                 ref={ref => {
                   this.map = ref;
@@ -255,8 +252,7 @@ export default class MapPicker extends Component {
                   draggable
                 />
               </MapView>
-            }
-
+            )}
           </View>
         </View>
       </View>

@@ -24,9 +24,8 @@ class EmployeeListScene extends Component {
   // onEmployeeListItemPress = (employee: object) => {};
 
   onEmployeeListItemPress = (employee: object) => {
-
     let sceneConfig = {
-      ...employee
+      ...employee,
     };
 
     this.props.navigation.navigate('EmployeeAdd', sceneConfig);
@@ -41,7 +40,6 @@ class EmployeeListScene extends Component {
 
     return (
       <ScrollView style={{flex: 1}}>
-
         <EmployeeList
           items={employees}
           onItemPress={this.onEmployeeListItemPress}

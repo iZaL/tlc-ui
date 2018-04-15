@@ -44,6 +44,12 @@ class ProfileHome extends Component {
           type: 'destination',
         };
         break;
+      case 'blocked_drivers':
+        scene = 'DriversBlockList';
+        sceneConfig = {
+          title: I18n.t('blocked_drivers'),
+        };
+        break;
     }
     return this.props.navigation.navigate(scene, sceneConfig);
   };
@@ -83,6 +89,15 @@ class ProfileHome extends Component {
           iconProps={{type: 'MaterialCommunityIcons', name: 'map-marker'}}
           name="location_destination_list"
           title={I18n.t('location_destination_list')}
+        />
+
+        <Divider />
+
+        <ListItem
+          onItemPress={this.onListItemPress}
+          iconProps={{type: 'MaterialCommunityIcons', name: 'truck'}}
+          name="blocked_drivers"
+          title={I18n.t('blocked_drivers')}
         />
 
       </ListSection>

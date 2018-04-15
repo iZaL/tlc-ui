@@ -17,11 +17,12 @@ export default class CheckedListItem extends Component {
   };
 
   render() {
-    let {title, disabled, onPress, checked,style} = this.props;
+    let {title, disabled, onPress, checked, style} = this.props;
     return (
       <Touchable onPress={onPress}>
-        <View style={[styles.itemRowContainer, style, disabled && {opacity: 0.4}]}>
-          <Text style={styles.itemTitle}>{title}</Text>
+        <View
+          style={[styles.itemRowContainer, style, disabled && {opacity: 0.4}]}>
+            <Text style={styles.itemTitle}>{title}</Text>
           <Checkbox checked={checked} color={colors.primary} />
         </View>
       </Touchable>

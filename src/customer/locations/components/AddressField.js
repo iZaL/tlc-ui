@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     margin: 5,
     // marginVertical: 10,
     backgroundColor: 'white',
-    padding:10,
+    padding: 10,
   },
   label: {
     // padding: 5,

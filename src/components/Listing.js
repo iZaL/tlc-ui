@@ -29,13 +29,13 @@ export default class Listing extends Component {
   }
 
   renderItem = ({item}) => {
-    let {onItemPress, activeIDs} = this.props;
+    let {onItemPress, activeIDs,titleProp} = this.props;
     return (
       <CheckedListItem
         onPress={() => onItemPress(item)}
         checked={activeIDs.includes(item.id)}
         disabled={item.disabled}
-        title={item.name}
+        title={titleProp ? titleProp(item) : item.name}
       />
     );
   };

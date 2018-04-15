@@ -9,6 +9,7 @@ const customerLocationsSchema = state => state.entities.customer_locations;
 const loadsSchema = state => state.entities.loads;
 const getIdProp = ({}, itemID) => itemID;
 const getTrackings = state => state.customer.trackings;
+const driversSchema = state => state.entities.drivers;
 
 const getProfile = createSelector(
   [USER_SELECTORS.getAuthUserProfile],
@@ -53,6 +54,29 @@ const getLocationsByType = () => {
   );
 };
 
+const getBlockedDrivers = createSelector(
+  [entities, getProfile],
+  (schema, profile) =>
+    (profile.blocked_drivers &&
+      profile.blocked_drivers.map(driver =>
+        denormalize(driver, Schema.drivers, schema),
+      )) ||
+    [],
+);
+
+const getDrivers = createSelector(
+  [entities, driversSchema],
+  (schema, drivers) => {
+    if(drivers) {
+      return Object.keys(drivers).map(driver => denormalize(driver, Schema.drivers, schema),)
+    }
+    return [];
+  }
+    // Object.keys(drivers).map(driver => denormalize(driver, Schema.drivers, schema),
+    // ) ||
+    // [],
+);
+
 const getLoadByID = () => {
   return createSelector([entities, getIdProp], (schema, id) =>
     denormalize(id, Schema.loads, schema),
@@ -93,4 +117,6 @@ export const SELECTORS = {
   getLocations,
   getLoads,
   getLocationUpdatesForTrip,
+  getBlockedDrivers,
+  getDrivers,
 };

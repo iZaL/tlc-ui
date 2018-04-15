@@ -7,8 +7,8 @@ import {SELECTORS as CUSTOMER_SELECTORS} from 'customer/common/selectors';
 import LocationList from 'customer/locations/components/LocationList';
 import Button from 'components/Button';
 import I18n from 'utils/locale';
-import {FAB} from "react-native-paper";
-import colors from "../../assets/theme/colors";
+import {FAB} from 'react-native-paper';
+import colors from '../../assets/theme/colors';
 
 type Type = 'origin|destination';
 
@@ -58,16 +58,6 @@ class LocationListScene extends Component {
     return (
       <View style={{flex: 1}}>
 
-        {/*<Button*/}
-          {/*title={*/}
-            {/*type === 'origin'*/}
-              {/*? I18n.t('location_origin_add')*/}
-              {/*: I18n.t('location_destination_add')*/}
-          {/*}*/}
-          {/*onPress={this.onLocationCreatePress}*/}
-          {/*style={{marginVertical: 10}}*/}
-        {/*/>*/}
-
         <LocationList
           items={locations}
           onItemPress={this.onLocationListItemPress}
@@ -84,7 +74,6 @@ class LocationListScene extends Component {
             backgroundColor: colors.primary,
           }}
         />
-
       </View>
     );
   }

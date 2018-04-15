@@ -50,7 +50,11 @@ class TruckUpdateScene extends Component {
   render() {
     return (
       <ListSection>
-        <ListItem onItemPress={this.loadTruckModelScene} title={I18n.t('truck_model')} name="truck_model" />
+        <ListItem
+          onItemPress={this.loadTruckModelScene}
+          title={I18n.t('truck_model')}
+          name="truck_model"
+        />
 
         <Divider />
 

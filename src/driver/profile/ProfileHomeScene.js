@@ -54,7 +54,6 @@ class ProfileHome extends Component {
 
     return (
       <ListSection style={{flex: 1}}>
-
         <ListItem
           onItemPress={this.onListItemPress}
           iconProps={{type: 'Ionicons', name: 'md-person'}}

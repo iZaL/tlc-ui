@@ -79,23 +79,43 @@ class ProfileUpdateScene extends Component {
 
         <Divider />
 
-        <ListItem onItemPress={this.onListItemPress} name="nationalities" title={I18n.t('nationalities')} />
+        <ListItem
+          onItemPress={this.onListItemPress}
+          name="nationalities"
+          title={I18n.t('nationalities')}
+        />
 
         <Divider />
 
-        <ListItem onItemPress={this.onListItemPress} name="residencies" title={I18n.t('residencies')} />
+        <ListItem
+          onItemPress={this.onListItemPress}
+          name="residencies"
+          title={I18n.t('residencies')}
+        />
 
         <Divider />
 
-        <ListItem onItemPress={this.onListItemPress} name="visas" title={I18n.t('visas')} />
+        <ListItem
+          onItemPress={this.onListItemPress}
+          name="visas"
+          title={I18n.t('visas')}
+        />
 
         <Divider />
 
-        <ListItem onItemPress={this.onListItemPress} name="licenses" title={I18n.t('licenses')} />
+        <ListItem
+          onItemPress={this.onListItemPress}
+          name="licenses"
+          title={I18n.t('licenses')}
+        />
 
         <Divider />
 
-        <ListItem onItemPress={this.showModal} name="languages" title={I18n.t('languages')} />
+        <ListItem
+          onItemPress={this.showModal}
+          name="languages"
+          title={I18n.t('languages')}
+        />
 
         <List
           items={[

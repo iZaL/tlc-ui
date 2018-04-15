@@ -8,7 +8,7 @@ import Divider from 'components/Divider';
 import {ListSection} from 'react-native-paper';
 import ListItem from 'components/ListItem';
 
-export default class EmployeeList extends PureComponent {
+export default class DriversList extends PureComponent {
   static propTypes = {
     items: PropTypes.array.isRequired,
     onItemPress: PropTypes.func.isRequired,
@@ -21,22 +21,20 @@ export default class EmployeeList extends PureComponent {
   renderRow = ({item}) => {
     let {onItemPress} = this.props;
 
-    return <ListItem onItemPress={() => onItemPress(item)} title={item.name} />;
+    return <ListItem onItemPress={() => onItemPress(item)} title={item.user.name}/>;
   };
 
   render() {
     let {items} = this.props;
     return (
-      <ListSection>
-        <FlatList
-          data={items}
-          style={styles.listContainer}
-          renderItem={this.renderRow}
-          showsVerticalScrollIndicator={false}
-          ItemSeparatorComponent={() => <Divider />}
-          keyExtractor={(item, index) => `${index}`}
-        />
-      </ListSection>
+      <FlatList
+        data={items}
+        style={styles.listContainer}
+        renderItem={this.renderRow}
+        showsVerticalScrollIndicator={false}
+        ItemSeparatorComponent={() => <Divider/>}
+        keyExtractor={(item, index) => `${index}`}
+      />
     );
   }
 }

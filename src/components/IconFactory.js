@@ -16,11 +16,10 @@ const components = {
 };
 
 class IconFactory extends Component {
-
   static propTypes = {
     type: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    size:PropTypes.number,
+    size: PropTypes.number,
   };
 
   shouldComponentUpdate() {
@@ -40,7 +39,7 @@ class IconFactory extends Component {
         name={name}
         color={color}
         size={size}
-        style={[{width:24,height:24}, style]}
+        style={[{width: 24, height: 24}, style]}
       />
     );
   }
