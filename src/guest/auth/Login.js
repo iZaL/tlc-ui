@@ -3,9 +3,10 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {ACTIONS} from 'guest/common/actions';
-import LoginScene from 'guest/auth/scenes/LoginScene';
-import {Alert} from 'react-native';
+import {Alert, View} from 'react-native';
 import I18n from 'utils/locale';
+import Button from "../../components/Button";
+import FormTextInput from "../../components/FormTextInput";
 
 class Login extends Component {
   static propTypes = {
@@ -60,17 +61,47 @@ class Login extends Component {
   };
 
   render() {
-    const {auth} = this.props;
+
+    const {
+      email,
+      password,
+    } = this.state;
+
+    const {busy} = this.props.auth;
 
     return (
-      <LoginScene
-        {...this.state}
-        handleLogin={this.handleLogin}
-        handleRegisterRoute={this.handleRegisterRoute}
-        handleForgotPasswordRoute={this.handleForgotPasswordRoute}
-        onValueChange={this.onValueChange}
-        busy={auth.login.busy}
-      />
+
+      <View style={{flex: 1,padding:10}}>
+
+        <View style={{padding:5,paddingTop:64}}>
+          <FormTextInput
+            label={I18n.t('email')}
+            onValueChange={this.onValueChange}
+            field="email"
+            value={email}
+            maxLength={40}
+            keyboardType="email-address"
+          />
+
+          <FormTextInput
+            label={I18n.t('password')}
+            onValueChange={this.onValueChange}
+            field="password"
+            value={password}
+            maxLength={40}
+            secureTextEntry={true}
+          />
+        </View>
+
+        <Button
+          onPress={this.handleLogin}
+          disabled={busy}
+          title={busy ? I18n.t('logging_in') : I18n.t('login').toUpperCase()}
+          style={{marginTop: 25}}
+        />
+
+      </View>
+
     );
   }
 }

@@ -34,15 +34,16 @@ export default class AddressField extends PureComponent {
 const styles = StyleSheet.create({
   container: {
     margin: 5,
-    marginVertical: 10,
+    // marginVertical: 10,
     backgroundColor: 'white',
+    padding:10,
   },
   label: {
-    padding: 5,
+    // padding: 5,
   },
   textInput: {
-    padding: 10,
-    height: 50,
-    backgroundColor: 'white',
+    // padding: 10,
+    // height: 50,
+    // backgroundColor: 'white',
   },
 });

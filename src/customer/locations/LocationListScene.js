@@ -1,12 +1,14 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {ScrollView} from 'react-native';
+import {ScrollView, View} from 'react-native';
 import PropTypes from 'prop-types';
 import {ACTIONS as CUSTOMER_ACTIONS} from 'customer/common/actions';
 import {SELECTORS as CUSTOMER_SELECTORS} from 'customer/common/selectors';
 import LocationList from 'customer/locations/components/LocationList';
 import Button from 'components/Button';
 import I18n from 'utils/locale';
+import {FAB} from "react-native-paper";
+import colors from "../../assets/theme/colors";
 
 type Type = 'origin|destination';
 
@@ -54,23 +56,36 @@ class LocationListScene extends Component {
     let {locations} = this.props;
     let {type} = this.props.navigation.state.params;
     return (
-      <ScrollView style={{flex: 1}}>
+      <View style={{flex: 1}}>
 
-        <Button
-          title={
-            type === 'origin'
-              ? I18n.t('location_origin_add')
-              : I18n.t('location_destination_add')
-          }
-          onPress={this.onLocationCreatePress}
-          style={{marginVertical: 10}}
-        />
+        {/*<Button*/}
+          {/*title={*/}
+            {/*type === 'origin'*/}
+              {/*? I18n.t('location_origin_add')*/}
+              {/*: I18n.t('location_destination_add')*/}
+          {/*}*/}
+          {/*onPress={this.onLocationCreatePress}*/}
+          {/*style={{marginVertical: 10}}*/}
+        {/*/>*/}
 
         <LocationList
           items={locations}
           onItemPress={this.onLocationListItemPress}
         />
-      </ScrollView>
+
+        <FAB
+          icon="add"
+          dark
+          onPress={this.onLocationCreatePress}
+          medium
+          style={{
+            left: 20,
+            bottom: 20,
+            backgroundColor: colors.primary,
+          }}
+        />
+
+      </View>
     );
   }
 }

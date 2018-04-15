@@ -36,12 +36,12 @@ export default class MapPicker extends Component {
   //     this.props.address.address_en !== nextProps.address.address_en
   //   );
   // }
-
   constructor(props) {
     super(props);
     let {latitude, longitude} = this.props.address;
 
     this.state = {
+      mapInitialized: false,
       region: {
         latitude: latitude,
         longitude: longitude,
@@ -49,6 +49,14 @@ export default class MapPicker extends Component {
         longitudeDelta: LONGITUDE_DELTA,
       },
     };
+  }
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({
+        mapInitialized: true
+      });
+    }, 1000);
   }
 
   jumpToRegion = () => {
@@ -139,7 +147,8 @@ export default class MapPicker extends Component {
           : address_components[1].long_name,
       };
       updateAddress(params);
-    } catch (e) {}
+    } catch (e) {
+    }
   }
 
   onItemPress = (locationData, locationDetails) => {
@@ -229,20 +238,25 @@ export default class MapPicker extends Component {
 
         <View style={styles.menuContainer}>
           <View style={styles.mapContainer}>
-            <MapView
-              ref={ref => {
-                this.map = ref;
-              }}
-              provider={this.props.provider}
-              style={styles.map}
-              initialRegion={this.state.region}
-              onRegionChangeComplete={this.onRegionChange}>
-              <MapView.Marker
-                coordinate={this.mapMarkerRegion()}
-                onDragEnd={e => this.onDragEnd(e)}
-                draggable
-              />
-            </MapView>
+
+            {
+              this.state.mapInitialized &&
+              <MapView
+                ref={ref => {
+                  this.map = ref;
+                }}
+                provider={this.props.provider}
+                style={styles.map}
+                initialRegion={this.state.region}
+                onRegionChangeComplete={this.onRegionChange}>
+                <MapView.Marker
+                  coordinate={this.mapMarkerRegion()}
+                  onDragEnd={e => this.onDragEnd(e)}
+                  draggable
+                />
+              </MapView>
+            }
+
           </View>
         </View>
       </View>
@@ -278,7 +292,7 @@ const autoCompleteStyle = {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.lightGrey,
+    // backgroundColor: colors.lightGrey,
   },
   menuContainer: {
     flex: 5,
