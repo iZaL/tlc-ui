@@ -19,6 +19,8 @@ export default class Listing extends Component {
     items: PropTypes.array.isRequired,
     onItemPress: PropTypes.func.isRequired,
     activeIDs: PropTypes.array,
+    title: PropTypes.oneOfType([PropTypes.string,PropTypes.func]),
+    description: PropTypes.oneOfType([PropTypes.string,PropTypes.func]),
   };
 
   shouldComponentUpdate(nextProps) {

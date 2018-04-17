@@ -10,6 +10,7 @@ import {Checkbox} from 'react-native-paper';
 import ListItem from "./ListItem";
 
 export default class CheckedListItem extends Component {
+
   static propTypes = {
     title: PropTypes.string.isRequired,
     disabled: PropTypes.bool,
@@ -17,8 +18,14 @@ export default class CheckedListItem extends Component {
     onPress: PropTypes.func.isRequired,
   };
 
+  shouldComponentUpdate(nextProps) {
+    return nextProps.checked !== this.props.checked;
+  }
+
   render() {
     let {title, disabled, onPress, checked, style, description} = this.props;
+    console.log('rendered checked list item');
+    console.log('title',title);
     return (
       <Touchable onPress={onPress}>
         <View
@@ -33,8 +40,10 @@ export default class CheckedListItem extends Component {
 
 const styles = StyleSheet.create({
   itemRowContainer: {
-    flex:1,
     flexDirection: 'row',
     alignItems: 'center',
   },
+  itemTitle:{
+    flex:1,
+  }
 });

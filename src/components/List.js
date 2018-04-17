@@ -15,14 +15,13 @@ import ListModal from './ListModal';
 import Listing from './Listing';
 
 export default class List extends Component {
+
   static propTypes = {
     isVisible: PropTypes.bool.isRequired,
     onItemPress: PropTypes.func.isRequired,
     onCancel: PropTypes.func.isRequired,
     items: PropTypes.array.isRequired,
     modalTitle: PropTypes.string,
-    title: PropTypes.func,
-    description: PropTypes.func,
     activeIDs: PropTypes.array,
   };
 
