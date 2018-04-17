@@ -29,24 +29,18 @@ export default class List extends Component {
 
   render() {
     let {
-      isVisible,
-      onCancel,
       onItemPress,
-      modalTitle,
       children,
       items,
       activeIDs,
       header,
       description,
       title,
+      ...rest
     } = this.props;
     return (
       <Modal
-        isVisible={isVisible}
-        transparent={false}
-        onBackdropPress={onCancel}
-        modalTitle={modalTitle}
-        onCancel={onCancel}
+        {...rest}
       >
         {header}
         <Listing
