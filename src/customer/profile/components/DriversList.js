@@ -21,7 +21,9 @@ export default class DriversList extends PureComponent {
   renderRow = ({item}) => {
     let {onItemPress} = this.props;
 
-    return <ListItem onItemPress={() => onItemPress(item)} title={item.user.name}/>;
+    return (
+      <ListItem onItemPress={() => onItemPress(item)} title={item.user.name} />
+    );
   };
 
   render() {
@@ -32,7 +34,7 @@ export default class DriversList extends PureComponent {
         style={styles.listContainer}
         renderItem={this.renderRow}
         showsVerticalScrollIndicator={false}
-        ItemSeparatorComponent={() => <Divider/>}
+        ItemSeparatorComponent={() => <Divider />}
         keyExtractor={(item, index) => `${index}`}
       />
     );

@@ -159,12 +159,12 @@ class TrailerUpdateScene extends Component {
         style={{
           flex: 1,
           backgroundColor: 'white',
-          padding: 10,
           paddingTop: 20,
         }}
         contentContainerStyle={{
           paddingBottom: 30,
         }}>
+        <View style={{padding:10}}>
         <Touchable onPress={this.showMakeModal}>
           <View>
             <FormLabel title={I18n.t('trailer_make')} />
@@ -234,10 +234,12 @@ class TrailerUpdateScene extends Component {
           image={image}
         />
 
-        <Button onPress={this.onSave} />
+        </View>
+
+        <Button onPress={this.onSave} title={I18n.t('save')} />
 
         <List
-          title={I18n.t('trailer_type')}
+          modalTitle={I18n.t('trailer_type')}
           activeIDs={[type_id]}
           isVisible={showTypeModal}
           onItemPress={this.setType}
@@ -246,7 +248,7 @@ class TrailerUpdateScene extends Component {
         />
 
         <List
-          title={I18n.t('trailer_make')}
+          modalTitle={I18n.t('trailer_make')}
           activeIDs={[make_id]}
           isVisible={showMakeModal}
           onItemPress={this.setMake}
@@ -257,7 +259,7 @@ class TrailerUpdateScene extends Component {
         <ListModal
           isVisible={isYearModalVisible}
           onCancel={this.hideYearModal}
-          title={I18n.t('truck_year')}>
+          modalTitle={I18n.t('truck_year')}>
           <Dropdown
             items={['1905', '1906', '2001', '2002', '2003', '2004']}
             selectedValue={year}

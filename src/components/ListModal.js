@@ -13,39 +13,39 @@ export default class ListModal extends Component {
     isVisible: PropTypes.bool.isRequired,
     onCancel: PropTypes.func.isRequired,
     children: PropTypes.any.isRequired,
-    title: PropTypes.string,
+    title: PropTypes.func,
   };
 
   static defaultProps = {
-    title: '',
+    modalTitle: null,
   };
 
   render() {
-    let {isVisible, onCancel, title, children, style} = this.props;
+    let {isVisible, onCancel, modalTitle, children, style} = this.props;
 
     return (
       <Modal
         isVisible={isVisible}
-        transparent={false}
+        transparent={true}
         style={[
-          {
-            backgroundColor: 'white',
-            paddingTop: 30,
-            paddingBottom: 15,
-            paddingHorizontal: 15,
-            justifyContent: 'flex-start',
-          },
+          styles.container,
           style,
         ]}
-        onBackdropPress={onCancel}>
-        <Headline style={styles.headline}>{title}</Headline>
+        onSwipe={onCancel}
+        swipeDirection="down"
+      >
+        {
+          modalTitle &&
+          <Headline style={styles.headline}>{modalTitle}</Headline>
+        }
         {children}
         <Button
           onPress={onCancel}
           raised
           primary
           dark
-          style={{paddingVertical: 10, margin: 0}}>
+          style={{padding: 10}}
+        >
           {I18n.t('save')}
         </Button>
       </Modal>
@@ -55,7 +55,11 @@ export default class ListModal extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'flex-start',
+    margin:0,
+    backgroundColor: 'white',
+    opacity:.95,
+    paddingTop: 40,
+    paddingHorizontal: 0,
     justifyContent: 'flex-start',
   },
   headline: {

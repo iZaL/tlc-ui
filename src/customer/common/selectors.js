@@ -67,14 +67,16 @@ const getBlockedDrivers = createSelector(
 const getDrivers = createSelector(
   [entities, driversSchema],
   (schema, drivers) => {
-    if(drivers) {
-      return Object.keys(drivers).map(driver => denormalize(driver, Schema.drivers, schema),)
+    if (drivers) {
+      return Object.keys(drivers).map(driver =>
+        denormalize(driver, Schema.drivers, schema),
+      );
     }
     return [];
-  }
-    // Object.keys(drivers).map(driver => denormalize(driver, Schema.drivers, schema),
-    // ) ||
-    // [],
+  },
+  // Object.keys(drivers).map(driver => denormalize(driver, Schema.drivers, schema),
+  // ) ||
+  // [],
 );
 
 const getLoadByID = () => {

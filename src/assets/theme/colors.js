@@ -19,4 +19,5 @@ export default {
   white: '#ffffff',
   transparent: 'transparent',
   fadedGreen: '#0c8a41',
+  yellow: 'yellow',
 };

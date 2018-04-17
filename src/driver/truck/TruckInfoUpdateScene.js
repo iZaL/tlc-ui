@@ -34,9 +34,9 @@ class TruckInfoUpdateScene extends Component {
   static navigationOptions = ({navigation}) => {
     return {
       title:
-        (navigation.state.params &&
-          `${navigation.state.params.title} ${navigation.state.params.type}`) ||
-        '',
+      (navigation.state.params &&
+        `${navigation.state.params.title} ${navigation.state.params.type}`) ||
+      '',
     };
   };
 
@@ -72,37 +72,41 @@ class TruckInfoUpdateScene extends Component {
     } = this.state;
 
     return (
-      <View style={{flex: 1, padding: 10, backgroundColor: 'white'}}>
-        <FormTextInput
-          label={I18n.t('plate_number')}
-          value={plate_number}
-          onValueChange={this.onValueChange}
-          field="plate_number"
-        />
+      <View style={{flex: 1, backgroundColor: 'white'}}>
+        <View style={{padding: 10}}>
 
-        <FormTextInput
-          label={I18n.t('max_weight')}
-          value={max_weight}
-          onValueChange={this.onValueChange}
-          field="plate_number"
-        />
+          <FormTextInput
+            label={I18n.t('plate_number')}
+            value={plate_number}
+            onValueChange={this.onValueChange}
+            field="plate_number"
+          />
 
-        <Title>{I18n.t('truck_image')}</Title>
-        <DocumentUpload
-          onPress={image => this.onValueChange('image', image)}
-          image={image}
-        />
+          <FormTextInput
+            label={I18n.t('max_weight')}
+            value={max_weight}
+            onValueChange={this.onValueChange}
+            field="plate_number"
+          />
 
-        <Divider style={{marginVertical: 20}} />
-        <FormLabel title={I18n.t('truck_year')} />
-        <Title onPress={this.showYearModal}>{year || I18n.t('select')}</Title>
+          <Title>{I18n.t('truck_image')}</Title>
+          <DocumentUpload
+            onPress={image => this.onValueChange('image', image)}
+            image={image}
+          />
 
-        <Button onPress={this.onSave} />
+          <Divider style={{marginVertical: 20}}/>
+          <FormLabel title={I18n.t('truck_year')}/>
+          <Title onPress={this.showYearModal}>{year || I18n.t('select')}</Title>
+
+        </View>
+
+        <Button onPress={this.onSave} title={I18n.t('save')}/>
 
         <ListModal
           isVisible={isYearModalVisible}
           onCancel={this.hideYearModal}
-          title={I18n.t('truck_year')}>
+          modalTitle={I18n.t('truck_year')}>
           <Dropdown
             items={['1905', '1906', '2001', '2002', '2003', '2004']}
             selectedValue={year}

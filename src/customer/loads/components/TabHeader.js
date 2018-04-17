@@ -38,23 +38,22 @@ export default class TabHeader extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: colors.mediumGrey,
-    height: 40,
-    width: 40,
-    borderRadius: 20,
+    padding: 10,
+    marginRight: 4,
     alignItems: 'center',
     justifyContent: 'center',
   },
   containerActive: {
     backgroundColor: colors.primary,
+    borderBottomColor: colors.yellow,
+    borderBottomWidth: 2,
   },
   title: {
     fontSize: 16,
-    color: 'white',
-    fontWeight: '600',
+    // color: 'white',
   },
   titleActive: {
-    fontWeight: '700',
+    color: 'white',
     // fontSize:18
   },
 });

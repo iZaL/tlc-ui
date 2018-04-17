@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {ScrollView, View} from 'react-native';
+import {ScrollView, View, Alert} from 'react-native';
 import PropTypes from 'prop-types';
 import {ACTIONS as CUSTOMER_ACTIONS} from 'customer/common/actions';
 import {SELECTORS as CUSTOMER_SELECTORS} from 'customer/common/selectors';
@@ -41,7 +41,21 @@ class LocationListScene extends Component {
   }
 
   onLocationListItemPress = (item: object) => {
-    this.props.navigation.goBack(null);
+    Alert.alert(
+      I18n.t('location_delete'),
+      null,
+      [
+        {
+          text: 'Cancel',
+          onPress: () => console.log('Cancel Pressed'),
+          style: 'cancel',
+        },
+        {text: 'Yes', onPress: () => console.log('OK Pressed')},
+      ],
+      {cancelable: false},
+    );
+
+    // this.props.navigation.goBack(null);
   };
 
   onLocationCreatePress = () => {
@@ -57,7 +71,6 @@ class LocationListScene extends Component {
     let {type} = this.props.navigation.state.params;
     return (
       <View style={{flex: 1}}>
-
         <LocationList
           items={locations}
           onItemPress={this.onLocationListItemPress}

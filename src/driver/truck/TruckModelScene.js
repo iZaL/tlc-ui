@@ -110,36 +110,41 @@ class TruckModelScene extends Component {
     }
 
     return (
-      <View
-        style={{
-          flex: 1,
-          backgroundColor: 'white',
-          paddingTop: 20,
-          padding: 10,
-        }}>
-        <Touchable onPress={this.showMakeModal}>
-          <View>
-            <FormLabel title={I18n.t('truck_make')} />
-            <Title>{make_id ? truck.model.make.name : I18n.t('select')}</Title>
-          </View>
-        </Touchable>
+      <View style={{
+        flex: 1,
+        backgroundColor: 'white',
+        paddingTop: 10,
+      }}>
+        <View
+          style={{
+            padding: 10
+          }}>
 
-        <Divider style={{marginVertical: 20}} />
+          <Touchable onPress={this.showMakeModal}>
+            <View>
+              <FormLabel title={I18n.t('truck_make')}/>
+              <Title>{make_id ? truck.model.make.name : I18n.t('select')}</Title>
+            </View>
+          </Touchable>
 
-        <Touchable onPress={this.showModelModal} disabled={!make_id}>
-          <View>
-            <FormLabel title={I18n.t('truck_model')} />
+          <Divider style={{marginVertical: 20}}/>
 
-            <Title>{model_id ? truck.model.name : I18n.t('select')}</Title>
-          </View>
-        </Touchable>
+          <Touchable onPress={this.showModelModal} disabled={!make_id}>
+            <View>
+              <FormLabel title={I18n.t('truck_model')}/>
 
-        <Divider style={{marginVertical: 20}} />
+              <Title>{model_id ? truck.model.name : I18n.t('select')}</Title>
+            </View>
+          </Touchable>
 
-        <Button onPress={this.onSave} />
+          <Divider style={{marginVertical: 20}}/>
+
+        </View>
+
+        <Button onPress={this.onSave} title={I18n.t('save')}/>
 
         <List
-          title={I18n.t('truck_make')}
+          modalTitle={I18n.t('truck_make')}
           activeIDs={[make_id]}
           isVisible={this.state.showMakeModal}
           onItemPress={this.setMake}
@@ -148,7 +153,7 @@ class TruckModelScene extends Component {
         />
 
         <List
-          title={I18n.t('truck_model')}
+          modalTitle={I18n.t('truck_model')}
           activeIDs={[model_id]}
           isVisible={this.state.showModelModal}
           onItemPress={this.setModel}

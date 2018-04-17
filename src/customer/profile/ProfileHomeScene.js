@@ -99,7 +99,6 @@ class ProfileHome extends Component {
           name="blocked_drivers"
           title={I18n.t('blocked_drivers')}
         />
-
       </ListSection>
     );
   }

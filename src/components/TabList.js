@@ -1,31 +1,54 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {View, StyleSheet} from 'react-native';
+import {View, StyleSheet, ScrollView, Dimensions} from 'react-native';
+import colors from '../assets/theme/colors';
 
 export default class TabList extends Component {
   static propTypes = {};
 
   static defaultProps = {};
 
+  scrollView;
+
   componentDidMount() {}
+
+  onSelect = index => {
+    console.log('index', index);
+    console.log('this', this.scrollView);
+
+    // this.scrollView.scrollTo({x:Dimensions.get('window').width/2});
+    this.props.onSelect(index);
+    // this.scrollView.scrollToIndex(index);
+    // this.scrollView.scrollToIndex({index: 1, animated: true});
+  };
 
   render() {
     const children = React.Children.map(this.props.children, (child, index) => {
       return React.cloneElement(child, {
         isActive: this.props.activeIndex === index,
-        onSelect: () => this.props.onSelect(index),
+        onSelect: () => this.onSelect(index),
       });
     });
 
-    return <View style={styles.container}>{children}</View>;
+    return (
+      <ScrollView
+        ref={c => {
+          this.scrollView = c;
+        }}
+        horizontal={true}
+        style={styles.container}>
+        {children}
+      </ScrollView>
+    );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    backgroundColor: 'white',
-    justifyContent: 'space-around',
-    padding: 10,
+    // padding:10,
+    backgroundColor: colors.white,
+    // justifyContent: 'space-around',
+    // padding: 10,
   },
 });

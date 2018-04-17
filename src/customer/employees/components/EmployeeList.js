@@ -20,7 +20,6 @@ export default class EmployeeList extends PureComponent {
 
   renderRow = ({item}) => {
     let {onItemPress} = this.props;
-
     return <ListItem onItemPress={() => onItemPress(item)} title={item.name} />;
   };
 

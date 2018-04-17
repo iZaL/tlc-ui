@@ -108,10 +108,7 @@ function* fetchBlockedDriversMonitor() {
   );
 }
 function* fetchDriversMonitor() {
-  yield takeLatest(
-    ACTION_TYPES.FETCH_DRIVERS_REQUEST,
-    fetchDrivers,
-  );
+  yield takeLatest(ACTION_TYPES.FETCH_DRIVERS_REQUEST, fetchDrivers);
 }
 
 export const sagas = all([

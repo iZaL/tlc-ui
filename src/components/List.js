@@ -20,12 +20,10 @@ export default class List extends Component {
     onItemPress: PropTypes.func.isRequired,
     onCancel: PropTypes.func.isRequired,
     items: PropTypes.array.isRequired,
-    title: PropTypes.string,
+    modalTitle: PropTypes.string,
+    title: PropTypes.func,
+    description: PropTypes.func,
     activeIDs: PropTypes.array,
-  };
-
-  static defaultProps = {
-    title: I18n.t('select_country'),
   };
 
   shouldComponentUpdate(nextProps) {
@@ -41,27 +39,28 @@ export default class List extends Component {
       isVisible,
       onCancel,
       onItemPress,
-      title,
+      modalTitle,
       children,
       items,
       activeIDs,
       header,
-      titleProp
+      description,
+      title,
     } = this.props;
     return (
       <ListModal
         isVisible={isVisible}
         transparent={false}
         onBackdropPress={onCancel}
-        title={title}
-        onCancel={onCancel}
-      >
+        modalTitle={modalTitle}
+        onCancel={onCancel}>
         {header}
         <Listing
           onItemPress={onItemPress}
           items={items}
           activeIDs={activeIDs}
-          titleProp={titleProp}
+          title={title}
+          description={description}
         />
         {children}
       </ListModal>

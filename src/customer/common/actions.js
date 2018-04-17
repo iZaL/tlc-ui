@@ -50,8 +50,6 @@ export const ACTION_TYPES = {
   LOCATION_RECEIVED: '@customer/LOCATION_RECEIVED',
 
   SUBSCRIBE_TO_TRIP_TRACK_CHANNEL: '@customer/SUBSCRIBE_TO_TRIP_TRACK_CHANNEL',
-
-
 };
 
 function fetchEmployees(params) {

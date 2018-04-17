@@ -19,8 +19,6 @@ import {SELECTORS as CUSTOMER_SELECTORS} from 'customer/common/selectors';
 import PackageDimensions from 'customer/loads/components/PackageDimensions';
 import TrailerQuantity from 'customer/loads/components/TrailerQuantity';
 import moment from 'moment';
-import I18n from 'utils/locale';
-import {ACTIONS as TRUCK_ACTIONS} from 'trucks/common/actions';
 
 class LoadAddScene extends Component {
   static propTypes = {
@@ -60,7 +58,6 @@ class LoadAddScene extends Component {
 
   componentDidMount() {
     this.props.dispatch(CUSTOMER_ACTIONS.fetchLoadAddData());
-    this.props.dispatch(TRUCK_ACTIONS.fetchTrailerTypes());
   }
 
   onValueChange = (field, value) => {
@@ -144,12 +141,12 @@ class LoadAddScene extends Component {
       <ScrollView style={{flex: 1}}>
         <Tabs>
           <TabList>
-            <TabHeader title={I18n.t('load_info')} />
-            <TabHeader title={I18n.t('load_location')} />
-            <TabHeader title={I18n.t('date')} />
-            <TabHeader title={I18n.t('documents')} />
-            <TabHeader title={I18n.t('security_passes')} />
-            <TabHeader title={I18n.t('receiver_information')} />
+            <TabHeader title="1" />
+            <TabHeader title="2" />
+            <TabHeader title="3" />
+            <TabHeader title="4" />
+            <TabHeader title="5" />
+            <TabHeader title="6" />
           </TabList>
 
           <TabPanels>
@@ -242,7 +239,7 @@ class LoadAddScene extends Component {
 
 function mapStateToProps(state) {
   return {
-    trailers: TRUCK_SELECTORS.getTrailerTypes(state),
+    trailers: TRUCK_SELECTORS.getTrailers(state),
     packaging: TRUCK_SELECTORS.getPackaging(state),
     securityPasses: TRUCK_SELECTORS.getSecurityPasses(state),
     locations: CUSTOMER_SELECTORS.getLocations(state),

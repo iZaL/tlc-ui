@@ -355,7 +355,7 @@ class RoutesAddScene extends Component {
         <Button onPress={this.onSave} disabled={!destination_country_id} />
 
         <List
-          title={I18n.t('select_locations')}
+          modalTitle={I18n.t('select_locations')}
           onItemPress={this.onOriginLocationItemPress}
           activeIDs={origin_location_ids}
           items={origin_country.locations || []}
@@ -372,7 +372,7 @@ class RoutesAddScene extends Component {
         />
 
         <List
-          title={I18n.t('destination_country')}
+          modalTitle={I18n.t('destination_country')}
           activeIDs={[destination_country_id]}
           isVisible={isDestinationCountriesModalVisible}
           onSave={this.onDestinationCountrySavePress}
@@ -382,7 +382,7 @@ class RoutesAddScene extends Component {
         />
 
         <List
-          title={I18n.t('select_locations')}
+          modalTitle={I18n.t('select_locations')}
           onItemPress={this.onDestinationLocationItemPress}
           activeIDs={destination_location_ids}
           items={destinationCountry.locations || []}

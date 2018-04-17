@@ -141,7 +141,7 @@ const LoadStack = StackNavigator(
       gesturesEnabled: false,
       headerTintColor: colors.primary,
     },
-    // initialRouteName: 'LoadAdd',
+    initialRouteName: 'LoadAdd',
   },
 );
 
@@ -182,5 +182,5 @@ export const Routes = DrawerNavigator(DrawerRoutes, {
   gesturesEnabled: false,
   contentComponent: props => <Drawer {...props} />,
   drawerWidth: 275,
-  initialRouteName: 'ProfileStack',
+  // initialRouteName: 'LoadStack',
 });

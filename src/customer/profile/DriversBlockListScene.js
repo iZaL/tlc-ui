@@ -7,10 +7,10 @@ import {ScrollView, Text, View} from 'react-native';
 import EmployeeList from 'customer/employees/components/EmployeeList';
 import Button from 'components/Button';
 import I18n from 'utils/locale';
-import DriversList from "customer/profile/components/DriversList";
-import {Caption, FAB} from "react-native-paper";
-import colors from "../../assets/theme/colors";
-import List from "../../components/List";
+import DriversList from 'customer/profile/components/DriversList';
+import {Caption, FAB} from 'react-native-paper';
+import colors from '../../assets/theme/colors';
+import List from '../../components/List';
 
 class DriversBlockListScene extends Component {
   static propTypes = {
@@ -18,7 +18,7 @@ class DriversBlockListScene extends Component {
   };
 
   state = {
-    isDriversModalVisible : false
+    isDriversModalVisible: false,
   };
 
   static defaultProps = {
@@ -36,39 +36,34 @@ class DriversBlockListScene extends Component {
     console.log('@todo:delete driver');
   };
 
-
-  onDriversBlockListItemPress = () => {
-
-  };
+  onDriversBlockListItemPress = () => {};
 
   showDriversModal = () => {
     this.setState({
-      isDriversModalVisible:true
-    })
+      isDriversModalVisible: true,
+    });
   };
 
   hideDriversModal = () => {
     this.setState({
-      isDriversModalVisible:false
-    })
+      isDriversModalVisible: false,
+    });
   };
 
   onBlockedDriversSavePress = () => {
-    console.log('save')
+    console.log('save');
   };
 
   render() {
-    const {drivers,blocked_drivers} = this.props;
+    const {drivers, blocked_drivers} = this.props;
 
-    console.log('drivers',drivers);
-    console.log('blocked_drivers',blocked_drivers);
-
+    console.log('drivers', drivers);
+    console.log('blocked_drivers', blocked_drivers);
 
     let blockedDriverIds = blocked_drivers.map(driver => driver.id);
 
     return (
       <View style={{flex: 1}}>
-
         <DriversList
           items={blocked_drivers}
           onItemPress={this.onDriversListItemPress}
@@ -87,18 +82,17 @@ class DriversBlockListScene extends Component {
         />
 
         <List
-          title={I18n.t('select_drivers')}
+          modalTitle={I18n.t('select_drivers')}
           onItemPress={this.onDriversBlockListItemPress}
-          activeIDs={blocked_drivers.map(driver=>driver.id)}
-          titleProp={(item) => item.user.name}
+          activeIDs={blocked_drivers.map(driver => driver.id)}
+          title={item => item.user.name}
           items={drivers.filter(driver => {
-            return !blockedDriverIds.includes(driver.id)
+            return !blockedDriverIds.includes(driver.id);
           })}
           isVisible={this.state.isDriversModalVisible}
           onCancel={this.hideDriversModal}
           onSave={this.onBlockedDriversSavePress}
         />
-
       </View>
     );
   }
@@ -107,7 +101,7 @@ class DriversBlockListScene extends Component {
 function mapStateToProps(state) {
   return {
     blocked_drivers: CUSTOMER_SELECTORS.getBlockedDrivers(state),
-    drivers:CUSTOMER_SELECTORS.getDrivers(state)
+    drivers: CUSTOMER_SELECTORS.getDrivers(state),
   };
 }
 

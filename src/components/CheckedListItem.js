@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import {StyleSheet, Text, View} from 'react-native';
 import colors from 'assets/theme/colors';
 import {Checkbox} from 'react-native-paper';
+import ListItem from "./ListItem";
 
 export default class CheckedListItem extends Component {
   static propTypes = {
@@ -17,12 +18,12 @@ export default class CheckedListItem extends Component {
   };
 
   render() {
-    let {title, disabled, onPress, checked, style} = this.props;
+    let {title, disabled, onPress, checked, style, description} = this.props;
     return (
       <Touchable onPress={onPress}>
         <View
           style={[styles.itemRowContainer, style, disabled && {opacity: 0.4}]}>
-            <Text style={styles.itemTitle}>{title}</Text>
+          <ListItem style={{flex:1}} onItemPress={onPress} title={title} description={description}/>
           <Checkbox checked={checked} color={colors.primary} />
         </View>
       </Touchable>
@@ -32,10 +33,8 @@ export default class CheckedListItem extends Component {
 
 const styles = StyleSheet.create({
   itemRowContainer: {
+    flex:1,
     flexDirection: 'row',
     alignItems: 'center',
-  },
-  itemTitle: {
-    flex: 1,
   },
 });
