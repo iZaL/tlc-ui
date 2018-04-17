@@ -164,76 +164,75 @@ class TrailerUpdateScene extends Component {
         contentContainerStyle={{
           paddingBottom: 30,
         }}>
-        <View style={{padding:10}}>
-        <Touchable onPress={this.showMakeModal}>
-          <View>
-            <FormLabel title={I18n.t('trailer_make')} />
-            <Title>
-              {trailer.make.id ? trailer.make.name : I18n.t('select')}
-            </Title>
+        <View style={{padding: 10}}>
+          <Touchable onPress={this.showMakeModal}>
+            <View>
+              <FormLabel title={I18n.t('trailer_make')} />
+              <Title>
+                {trailer.make.id ? trailer.make.name : I18n.t('select')}
+              </Title>
+            </View>
+          </Touchable>
+
+          <Divider style={{marginVertical: 15}} />
+
+          <Touchable onPress={this.showTypeModal}>
+            <View>
+              <FormLabel title={I18n.t('trailer_type')} />
+              <Title>
+                {trailer.type.id ? trailer.type.name : I18n.t('select')}
+              </Title>
+            </View>
+          </Touchable>
+
+          <Divider style={{marginTop: 15}} />
+
+          <View style={{flexDirection: 'row'}}>
+            <FormTextInput
+              label={I18n.t('length')}
+              value={length}
+              field="length"
+              onValueChange={this.onValueChange}
+              style={{flex: 1, marginRight: 5}}
+            />
+
+            <FormTextInput
+              label={I18n.t('width')}
+              value={width}
+              field="width"
+              onValueChange={this.onValueChange}
+              style={{flex: 1}}
+            />
           </View>
-        </Touchable>
 
-        <Divider style={{marginVertical: 15}} />
+          <View style={{flexDirection: 'row'}}>
+            <FormTextInput
+              label={I18n.t('height')}
+              value={height}
+              field="height"
+              onValueChange={this.onValueChange}
+              style={{flex: 1, marginRight: 5}}
+            />
 
-        <Touchable onPress={this.showTypeModal}>
-          <View>
-            <FormLabel title={I18n.t('trailer_type')} />
-            <Title>
-              {trailer.type.id ? trailer.type.name : I18n.t('select')}
-            </Title>
+            <FormTextInput
+              label={I18n.t('max_weight')}
+              value={max_weight}
+              onValueChange={this.onValueChange}
+              field="plate_number"
+              style={{flex: 1}}
+            />
           </View>
-        </Touchable>
 
-        <Divider style={{marginTop: 15}} />
+          <FormLabel title={I18n.t('truck_year')} />
+          <Title onPress={this.showYearModal}>{year || I18n.t('select')}</Title>
 
-        <View style={{flexDirection: 'row'}}>
-          <FormTextInput
-            label={I18n.t('length')}
-            value={length}
-            field="length"
-            onValueChange={this.onValueChange}
-            style={{flex: 1, marginRight: 5}}
+          <Divider style={{marginVertical: 10}} />
+
+          <Title>{I18n.t('truck_image')}</Title>
+          <DocumentUpload
+            onPress={image => this.onValueChange('image', image)}
+            image={image}
           />
-
-          <FormTextInput
-            label={I18n.t('width')}
-            value={width}
-            field="width"
-            onValueChange={this.onValueChange}
-            style={{flex: 1}}
-          />
-        </View>
-
-        <View style={{flexDirection: 'row'}}>
-          <FormTextInput
-            label={I18n.t('height')}
-            value={height}
-            field="height"
-            onValueChange={this.onValueChange}
-            style={{flex: 1, marginRight: 5}}
-          />
-
-          <FormTextInput
-            label={I18n.t('max_weight')}
-            value={max_weight}
-            onValueChange={this.onValueChange}
-            field="plate_number"
-            style={{flex: 1}}
-          />
-        </View>
-
-        <FormLabel title={I18n.t('truck_year')} />
-        <Title onPress={this.showYearModal}>{year || I18n.t('select')}</Title>
-
-        <Divider style={{marginVertical: 10}} />
-
-        <Title>{I18n.t('truck_image')}</Title>
-        <DocumentUpload
-          onPress={image => this.onValueChange('image', image)}
-          image={image}
-        />
-
         </View>
 
         <Button onPress={this.onSave} title={I18n.t('save')} />

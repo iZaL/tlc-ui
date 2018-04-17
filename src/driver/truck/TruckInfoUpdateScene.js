@@ -34,9 +34,9 @@ class TruckInfoUpdateScene extends Component {
   static navigationOptions = ({navigation}) => {
     return {
       title:
-      (navigation.state.params &&
-        `${navigation.state.params.title} ${navigation.state.params.type}`) ||
-      '',
+        (navigation.state.params &&
+          `${navigation.state.params.title} ${navigation.state.params.type}`) ||
+        '',
     };
   };
 
@@ -74,7 +74,6 @@ class TruckInfoUpdateScene extends Component {
     return (
       <View style={{flex: 1, backgroundColor: 'white'}}>
         <View style={{padding: 10}}>
-
           <FormTextInput
             label={I18n.t('plate_number')}
             value={plate_number}
@@ -95,13 +94,12 @@ class TruckInfoUpdateScene extends Component {
             image={image}
           />
 
-          <Divider style={{marginVertical: 20}}/>
-          <FormLabel title={I18n.t('truck_year')}/>
+          <Divider style={{marginVertical: 20}} />
+          <FormLabel title={I18n.t('truck_year')} />
           <Title onPress={this.showYearModal}>{year || I18n.t('select')}</Title>
-
         </View>
 
-        <Button onPress={this.onSave} title={I18n.t('save')}/>
+        <Button onPress={this.onSave} title={I18n.t('save')} />
 
         <Modal
           isVisible={isYearModalVisible}

@@ -9,7 +9,6 @@ import Modal from 'components/Modal';
 import Listing from 'components/Listing';
 
 export default class List extends Component {
-
   static propTypes = {
     isVisible: PropTypes.bool.isRequired,
     onItemPress: PropTypes.func.isRequired,
@@ -38,9 +37,7 @@ export default class List extends Component {
       ...rest
     } = this.props;
     return (
-      <Modal
-        {...rest}
-      >
+      <Modal {...rest}>
         <Listing
           onItemPress={onItemPress}
           items={items}

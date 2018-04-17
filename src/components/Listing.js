@@ -13,8 +13,8 @@ export default class Listing extends Component {
     items: PropTypes.array.isRequired,
     onItemPress: PropTypes.func.isRequired,
     activeIDs: PropTypes.array,
-    title: PropTypes.oneOfType([PropTypes.string,PropTypes.func]),
-    description: PropTypes.oneOfType([PropTypes.string,PropTypes.func]),
+    title: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+    description: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
   };
 
   shouldComponentUpdate(nextProps) {
@@ -26,7 +26,7 @@ export default class Listing extends Component {
 
   renderItem = ({item}) => {
     let {onItemPress, activeIDs, title, description} = this.props;
-    console.log('title',title);
+    console.log('title', title);
 
     return (
       <CheckedListItem

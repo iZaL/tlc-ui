@@ -7,8 +7,8 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import LocationList from 'customer/locations/components/LocationList';
 import Touchable from 'react-native-platform-touchable';
 import I18n from 'utils/locale';
-import List from "../../../components/List";
-import ListItem from "../../../components/ListItem";
+import List from '../../../components/List';
+import ListItem from '../../../components/ListItem';
 
 export default class LoadWhat extends Component {
   shouldComponentUpdate(nextProps, nextState) {
@@ -65,15 +65,13 @@ export default class LoadWhat extends Component {
     });
   };
 
-  onSave =() =>{
-
-  };
+  onSave = () => {};
 
   render() {
     let {origin, destination, locations} = this.props;
     let {locationType, locationListModalVisible} = this.state;
 
-    console.log('locations',locations);
+    console.log('locations', locations);
 
     return (
       <View style={styles.container}>
@@ -93,7 +91,9 @@ export default class LoadWhat extends Component {
               <ListItem
                 onItemPress={this.onPickLocationPress}
                 title={origin.address}
-                description={`${origin.city},${origin.state},${origin.country.name}`}
+                description={`${origin.city},${origin.state},${
+                  origin.country.name
+                }`}
               />
             </View>
           </View>
@@ -119,7 +119,9 @@ export default class LoadWhat extends Component {
               <ListItem
                 onItemPress={this.onPickLocationPress}
                 title={destination.address}
-                description={`${destination.city},${destination.state},${destination.country.name}`}
+                description={`${destination.city},${destination.state},${
+                  destination.country.name
+                }`}
               />
             </View>
           </View>
@@ -134,25 +136,25 @@ export default class LoadWhat extends Component {
           onItemPress={this.onLocationListItemPress}
           activeIDs={[]}
           title={item => item.address}
-          description={item => `${item.city},${item.state},${item.country.name}`}
-          items={locations.filter(
-            location => location.type === locationType,
-          )}
+          description={item =>
+            `${item.city},${item.state},${item.country.name}`
+          }
+          items={locations.filter(location => location.type === locationType)}
           isVisible={locationListModalVisible}
           onCancel={this.closeModal}
           onSave={this.onSave}
         />
         {/*<Modal*/}
-          {/*visible={locationListModalVisible}*/}
-          {/*onRequestClose={this.closeModal}>*/}
-          {/*<Touchable style={styles.modalContainer} onPress={this.closeModal}>*/}
-            {/*<LocationList*/}
-              {/*items={locations.filter(*/}
-                {/*location => location.type === locationType,*/}
-              {/*)}*/}
-              {/*onItemPress={this.onLocationListItemPress}*/}
-            {/*/>*/}
-          {/*</Touchable>*/}
+        {/*visible={locationListModalVisible}*/}
+        {/*onRequestClose={this.closeModal}>*/}
+        {/*<Touchable style={styles.modalContainer} onPress={this.closeModal}>*/}
+        {/*<LocationList*/}
+        {/*items={locations.filter(*/}
+        {/*location => location.type === locationType,*/}
+        {/*)}*/}
+        {/*onItemPress={this.onLocationListItemPress}*/}
+        {/*/>*/}
+        {/*</Touchable>*/}
         {/*</Modal>*/}
       </View>
     );
@@ -173,8 +175,8 @@ const styles = StyleSheet.create({
   },
   rightContainer: {
     flex: 1,
-    backgroundColor:'white',
-    marginBottom:2,
+    backgroundColor: 'white',
+    marginBottom: 2,
   },
   label: {
     paddingBottom: 10,

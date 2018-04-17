@@ -20,7 +20,7 @@ export default class ListItem extends Component {
   }
 
   render() {
-    let {onItemPress, name, title, iconProps, description,style} = this.props;
+    let {onItemPress, name, title, iconProps, description, style} = this.props;
     return (
       <PaperListItem
         onPress={name ? () => onItemPress(name) : onItemPress}

@@ -110,38 +110,39 @@ class TruckModelScene extends Component {
     }
 
     return (
-      <View style={{
-        flex: 1,
-        backgroundColor: 'white',
-        paddingTop: 10,
-      }}>
+      <View
+        style={{
+          flex: 1,
+          backgroundColor: 'white',
+          paddingTop: 10,
+        }}>
         <View
           style={{
-            padding: 10
+            padding: 10,
           }}>
-
           <Touchable onPress={this.showMakeModal}>
             <View>
-              <FormLabel title={I18n.t('truck_make')}/>
-              <Title>{make_id ? truck.model.make.name : I18n.t('select')}</Title>
+              <FormLabel title={I18n.t('truck_make')} />
+              <Title>
+                {make_id ? truck.model.make.name : I18n.t('select')}
+              </Title>
             </View>
           </Touchable>
 
-          <Divider style={{marginVertical: 20}}/>
+          <Divider style={{marginVertical: 20}} />
 
           <Touchable onPress={this.showModelModal} disabled={!make_id}>
             <View>
-              <FormLabel title={I18n.t('truck_model')}/>
+              <FormLabel title={I18n.t('truck_model')} />
 
               <Title>{model_id ? truck.model.name : I18n.t('select')}</Title>
             </View>
           </Touchable>
 
-          <Divider style={{marginVertical: 20}}/>
-
+          <Divider style={{marginVertical: 20}} />
         </View>
 
-        <Button onPress={this.onSave} title={I18n.t('save')}/>
+        <Button onPress={this.onSave} title={I18n.t('save')} />
 
         <List
           header={I18n.t('truck_make')}

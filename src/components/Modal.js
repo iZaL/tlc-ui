@@ -27,27 +27,17 @@ export default class AppModal extends Component {
       <Modal
         isVisible={isVisible}
         transparent={true}
-        style={[
-          styles.container,
-          style,
-        ]}
+        style={[styles.container, style]}
         onSwipe={onCancel}
-        swipeDirection="down"
-      >
-        {
-          header && typeof(header) === 'string' ?
-            <Headline style={styles.headline}>{header}</Headline>
-            : header
-        }
+        swipeDirection="down">
+        {header && typeof header === 'string' ? (
+          <Headline style={styles.headline}>{header}</Headline>
+        ) : (
+          header
+        )}
 
         {children}
-        <Button
-          onPress={onCancel}
-          raised
-          primary
-          dark
-          style={{padding: 10}}
-        >
+        <Button onPress={onCancel} raised primary dark style={{padding: 10}}>
           {I18n.t('save')}
         </Button>
       </Modal>
@@ -59,7 +49,7 @@ const styles = StyleSheet.create({
   container: {
     margin: 0,
     backgroundColor: 'white',
-    opacity: .95,
+    opacity: 0.95,
     paddingTop: 40,
     paddingHorizontal: 0,
     justifyContent: 'flex-start',

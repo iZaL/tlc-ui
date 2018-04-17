@@ -47,26 +47,26 @@ class RoutesAddScene extends Component {
         isOriginSelectAllButtonSelected: false,
         destination_country_id: route.destination.id,
         destination_location_ids:
-        (route.destination.locations &&
-          route.destination.locations
-            .filter(location => location.has_added)
-            .map(location => location.id)) ||
-        [],
+          (route.destination.locations &&
+            route.destination.locations
+              .filter(location => location.has_added)
+              .map(location => location.id)) ||
+          [],
         origin_location_ids:
-        (nextProps.origin_country &&
-          nextProps.origin_country.locations
-            .filter(location => location.has_added)
-            .map(location => location.id)) ||
-        [],
+          (nextProps.origin_country &&
+            nextProps.origin_country.locations
+              .filter(location => location.has_added)
+              .map(location => location.id)) ||
+          [],
       };
     } else {
       return {
         origin_location_ids:
-        (nextProps.origin_country &&
-          nextProps.origin_country.locations
-            .filter(location => location.has_added)
-            .map(location => location.id)) ||
-        [],
+          (nextProps.origin_country &&
+            nextProps.origin_country.locations
+              .filter(location => location.has_added)
+              .map(location => location.id)) ||
+          [],
       };
     }
   }
@@ -245,8 +245,7 @@ class RoutesAddScene extends Component {
     );
   };
 
-  onSave = () => {
-  };
+  onSave = () => {};
 
   render() {
     let {
@@ -296,7 +295,7 @@ class RoutesAddScene extends Component {
             }
           />
 
-          <Entypo name="swap" color="white" size={15}/>
+          <Entypo name="swap" color="white" size={15} />
 
           <TextBox
             active={activeType === 'destination'}
@@ -322,7 +321,7 @@ class RoutesAddScene extends Component {
               title={`${I18n.t('anywhere_in')} ${origin_country.name}`}
             />
 
-            <Divider style={{marginVertical: 5}}/>
+            <Divider style={{marginVertical: 5}} />
 
             <CheckedListItem
               onPress={this.onOriginCitiesPress}
@@ -333,30 +332,33 @@ class RoutesAddScene extends Component {
         )}
 
         {activeType === 'destination' &&
-        destination_country_id && (
-          <View style={{flex: 1, padding: 10}}>
+          destination_country_id && (
+            <View style={{flex: 1, padding: 10}}>
+              <Title style={{textAlign: 'center', paddingBottom: 20}}>
+                {I18n.t('select_drop_locations')}
+              </Title>
 
-            <Title style={{textAlign: 'center', paddingBottom: 20}}>
-              {I18n.t('select_drop_locations')}
-            </Title>
+              <CheckedListItem
+                onPress={this.onDestinationAnyPress}
+                checked={destinationAny}
+                title={`${I18n.t('anywhere_in')} ${origin_country.name}`}
+              />
 
-            <CheckedListItem
-              onPress={this.onDestinationAnyPress}
-              checked={destinationAny}
-              title={`${I18n.t('anywhere_in')} ${origin_country.name}`}
-            />
+              <Divider style={{marginVertical: 5}} />
 
-            <Divider style={{marginVertical: 5}}/>
+              <CheckedListItem
+                onPress={this.onDestinationCitiesPress}
+                checked={!destinationAny}
+                title={I18n.t('multiple_locations')}
+              />
+            </View>
+          )}
 
-            <CheckedListItem
-              onPress={this.onDestinationCitiesPress}
-              checked={!destinationAny}
-              title={I18n.t('multiple_locations')}
-            />
-          </View>
-        )}
-
-        <Button onPress={this.onSave} disabled={!destination_country_id} title={I18n.t('save')}/>
+        <Button
+          onPress={this.onSave}
+          disabled={!destination_country_id}
+          title={I18n.t('save')}
+        />
 
         <List
           onItemPress={this.onOriginLocationItemPress}
@@ -367,7 +369,9 @@ class RoutesAddScene extends Component {
           onSave={this.onDestinationLocationsSavePress}
           header={
             <View style={{paddingHorizontal: 15, paddingTop: 15}}>
-              <Headline style={{textAlign: 'center'}}>{I18n.t('select_locations')}</Headline>
+              <Headline style={{textAlign: 'center'}}>
+                {I18n.t('select_locations')}
+              </Headline>
               <Caption onPress={this.toggleOriginSelectAll}>
                 {isOriginSelectAllButtonSelected
                   ? I18n.t('deselect_all')
@@ -396,7 +400,9 @@ class RoutesAddScene extends Component {
           onSave={this.onDestinationLocationsSavePress}
           header={
             <View style={{paddingHorizontal: 15, paddingTop: 15}}>
-              <Headline style={{textAlign: 'center'}}>{I18n.t('select_locations')}</Headline>
+              <Headline style={{textAlign: 'center'}}>
+                {I18n.t('select_locations')}
+              </Headline>
               <Caption onPress={this.toggleDestinationSelectAll}>
                 {isDestinationSelectAllButtonSelected
                   ? I18n.t('deselect_all')
