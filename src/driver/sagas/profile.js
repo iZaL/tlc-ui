@@ -7,7 +7,9 @@ import {ACTIONS as APP_ACTIONS} from 'app/common/actions';
 import I18n from 'utils/locale';
 
 function* saveProfile(action) {
-  const {params: {resolve, reject, ...rest}} = action;
+  const {
+    params: {resolve, reject, ...rest},
+  } = action;
 
   try {
     const response = yield call(API.saveProfile, rest);

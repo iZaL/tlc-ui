@@ -6,11 +6,11 @@ import OTP from 'guest/auth/OTP';
 import Home from 'guest/Home';
 import DrawerIcon from 'components/DrawerIcon';
 import Drawer from 'guest/components/Drawer';
-import {DrawerNavigator, StackNavigator} from 'react-navigation';
+import {createDrawerNavigator, createStackNavigator} from 'react-navigation';
 import colors from 'assets/theme/colors';
 import I18n from 'utils/locale';
 
-export const AuthRoutes = StackNavigator(
+export const AuthRoutes = createStackNavigator(
   {
     LoginScreen: {
       screen: Login,
@@ -42,14 +42,12 @@ export const AuthRoutes = StackNavigator(
   },
 );
 
-const HomeStack = StackNavigator(
+const HomeStack = createStackNavigator(
   {
     Home: {
       screen: Home,
       navigationOptions: ({navigation}) => ({
-        headerLeft: (
-          <DrawerIcon onPress={() => navigation.navigate('DrawerToggle')} />
-        ),
+        headerLeft: <DrawerIcon onPress={() => navigation.openDrawer()} />,
       }),
     },
   },
@@ -66,7 +64,7 @@ const DrawerRoutes = {
   },
 };
 
-export const Routes = DrawerNavigator(DrawerRoutes, {
+export const Routes = createDrawerNavigator(DrawerRoutes, {
   gesturesEnabled: false,
   contentComponent: props => <Drawer {...props} />,
   drawerWidth: 275,

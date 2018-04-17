@@ -8,6 +8,7 @@ import I18n from 'utils/locale';
 import DriversList from 'customer/profile/components/DriversList';
 import {FAB} from 'react-native-paper';
 import colors from 'assets/theme/colors';
+import ListModal from 'components/ListModal';
 
 class DriversBlockListScene extends Component {
   static propTypes = {

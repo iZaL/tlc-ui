@@ -1,28 +1,24 @@
 import React from 'react';
-import {DrawerNavigator, StackNavigator} from 'react-navigation';
+import {createDrawerNavigator, createStackNavigator} from 'react-navigation';
 import Drawer from 'admin/components/Drawer';
 import Home from 'admin/Home';
 import Settings from 'admin/Settings';
 import DrawerIcon from 'components/DrawerIcon';
 
-const HomeStack = StackNavigator({
+const HomeStack = createStackNavigator({
   Home: {
     screen: Home,
     navigationOptions: ({navigation}) => ({
-      headerLeft: (
-        <DrawerIcon onPress={() => navigation.navigate('DrawerToggle')} />
-      ),
+      headerLeft: <DrawerIcon onPress={() => navigation.openDrawer()} />,
     }),
   },
 });
 
-const SettingsStack = StackNavigator({
+const SettingsStack = createStackNavigator({
   Settings: {
     screen: Settings,
     navigationOptions: ({navigation}) => ({
-      headerLeft: (
-        <DrawerIcon onPress={() => navigation.navigate('DrawerToggle')} />
-      ),
+      headerLeft: <DrawerIcon onPress={() => navigation.openDrawer()} />,
     }),
   },
 });
@@ -36,7 +32,7 @@ const DrawerRoutes = {
   },
 };
 
-export const Routes = DrawerNavigator(DrawerRoutes, {
+export const Routes = createDrawerNavigator(DrawerRoutes, {
   gesturesEnabled: false,
   contentComponent: props => <Drawer {...props} />,
   drawerWidth: 275,

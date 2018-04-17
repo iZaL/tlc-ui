@@ -4,7 +4,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import DateTimePicker from 'react-native-modal-datetime-picker';
-import CountryListModal from 'components/Modal';
+import Modal from 'components/Modal';
 
 import I18n from 'utils/locale';
 
@@ -18,6 +18,7 @@ import {
   Title,
 } from 'react-native-paper';
 import {View} from 'react-native';
+import ListModal from './ListModal';
 
 export default class DocumentEdit extends Component {
   static propTypes = {
@@ -110,7 +111,7 @@ export default class DocumentEdit extends Component {
           onCancel={this._hideDateTimePicker}
         />
 
-        <CountryListModal
+        <Modal
           items={countries}
           isVisible={this.state.isCountryModalVisible}
           onItemPress={this._handleCountryPicker}

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StackNavigator} from 'react-navigation';
+import {createSwitchNavigator, createStackNavigator} from 'react-navigation';
 import {Routes as AdminRoutes} from 'admin/components/Router';
 import {Routes as DriverRoutes} from 'driver/components/Router';
 import {Routes as CustomerRoutes} from 'customer/components/Router';
@@ -32,7 +32,7 @@ export default class Navigator extends Component {
     const {isAuthenticated, userType, logout} = this.props;
     const screen = this.resolveScreenForUser(userType);
 
-    // const RootModalStack = StackNavigator(
+    // const RootModalStack = createStackNavigator(
     //   {
     //     main: {screen: RootModal},
     //   },
@@ -51,7 +51,7 @@ export default class Navigator extends Component {
       },
     };
 
-    const AppNavigatorStack = StackNavigator(
+    const AppNavigatorStack = createStackNavigator(
       {
         Admin: {screen: AdminRoutes},
         Driver: {screen: DriverRoutes},
@@ -65,7 +65,7 @@ export default class Navigator extends Component {
       },
     );
 
-    const RootNavigator = StackNavigator(
+    const RootNavigator = createSwitchNavigator(
       {
         RootModal: RootModalStack,
         App: {screen: AppNavigatorStack},

@@ -1,5 +1,5 @@
 import React from 'react';
-import {DrawerNavigator, StackNavigator} from 'react-navigation';
+import {createDrawerNavigator, createStackNavigator} from 'react-navigation';
 import Drawer from 'customer/components/Drawer';
 import Home from 'customer/Home';
 import Settings from 'customer/Settings';
@@ -22,13 +22,11 @@ import DriversBlockListScene from 'customer/profile/DriversBlockListScene';
 
 const getDrawerIcon = navigation => {
   return {
-    headerLeft: (
-      <DrawerIcon onPress={() => navigation.navigate('DrawerToggle')} />
-    ),
+    headerLeft: <DrawerIcon onPress={() => navigation.openDrawer()} />,
   };
 };
 
-const HomeStack = StackNavigator(
+const HomeStack = createStackNavigator(
   {
     Home: {
       screen: Home,
@@ -46,15 +44,13 @@ const HomeStack = StackNavigator(
   },
 );
 
-const ProfileStack = StackNavigator(
+const ProfileStack = createStackNavigator(
   {
     ProfileStackHome: {
       screen: ProfileHomeScene,
       navigationOptions: ({navigation}) => ({
         gesturesEnabled: false,
-        headerLeft: (
-          <DrawerIcon onPress={() => navigation.navigate('DrawerToggle')} />
-        ),
+        headerLeft: <DrawerIcon onPress={() => navigation.openDrawer()} />,
         title: I18n.t('profile'),
       }),
     },
@@ -96,15 +92,13 @@ const ProfileStack = StackNavigator(
     },
   },
 );
-const LoadStack = StackNavigator(
+const LoadStack = createStackNavigator(
   {
     LoadStackHome: {
       screen: LoadHomeScene,
       navigationOptions: ({navigation}) => ({
         gesturesEnabled: false,
-        headerLeft: (
-          <DrawerIcon onPress={() => navigation.navigate('DrawerToggle')} />
-        ),
+        headerLeft: <DrawerIcon onPress={() => navigation.openDrawer()} />,
         title: I18n.t('loads'),
       }),
     },
@@ -141,11 +135,11 @@ const LoadStack = StackNavigator(
       gesturesEnabled: false,
       headerTintColor: colors.primary,
     },
-    initialRouteName: 'LoadAdd',
+    // initialRouteName: 'LoadAdd',
   },
 );
 
-const SettingStack = StackNavigator(
+const SettingStack = createStackNavigator(
   {
     Settings: {
       screen: Settings,
@@ -178,7 +172,7 @@ const DrawerRoutes = {
   },
 };
 
-export const Routes = DrawerNavigator(DrawerRoutes, {
+export const Routes = createDrawerNavigator(DrawerRoutes, {
   gesturesEnabled: false,
   contentComponent: props => <Drawer {...props} />,
   drawerWidth: 275,

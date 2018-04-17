@@ -1,5 +1,5 @@
 import React from 'react';
-import {DrawerNavigator, StackNavigator} from 'react-navigation';
+import {createDrawerNavigator, createStackNavigator} from 'react-navigation';
 import Drawer from 'driver/components/Drawer';
 import DrawerIcon from 'components/DrawerIcon';
 import Home from 'driver/Home';
@@ -29,13 +29,11 @@ import RoutesAddScene from 'driver/routes/RoutesAddScene';
 
 const getDrawerIcon = navigation => {
   return {
-    headerLeft: (
-      <DrawerIcon onPress={() => navigation.navigate('DrawerToggle')} />
-    ),
+    headerLeft: <DrawerIcon onPress={() => navigation.openDrawer()} />,
   };
 };
 
-const HomeStack = StackNavigator({
+const HomeStack = createStackNavigator({
   Home: {
     screen: Home,
     navigationOptions: ({navigation}) => ({
@@ -48,7 +46,7 @@ const HomeStack = StackNavigator({
   },
 });
 
-const SettingsStack = StackNavigator({
+const SettingsStack = createStackNavigator({
   Settings: {
     screen: Settings,
     navigationOptions: ({navigation}) => ({
@@ -58,7 +56,7 @@ const SettingsStack = StackNavigator({
   },
 });
 
-const ProfileStack = StackNavigator(
+const ProfileStack = createStackNavigator(
   {
     ProfileHome: {
       screen: ProfileHomeScene,
@@ -167,7 +165,7 @@ const ProfileStack = StackNavigator(
   },
 );
 
-const LoadStack = StackNavigator(
+const LoadStack = createStackNavigator(
   {
     LoadStackHome: {
       screen: LoadHomeScene,
@@ -209,7 +207,7 @@ const DrawerRoutes = {
   },
 };
 
-export const Routes = DrawerNavigator(DrawerRoutes, {
+export const Routes = createDrawerNavigator(DrawerRoutes, {
   gesturesEnabled: false,
   contentComponent: props => <Drawer {...props} />,
   drawerWidth: 275,

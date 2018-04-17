@@ -7,7 +7,9 @@ import {ACTIONS as APP_ACTIONS} from 'app/common/actions';
 import I18n from 'utils/locale';
 
 function* saveLoad(action) {
-  const {payload: {params, resolve}} = action;
+  const {
+    payload: {params, resolve},
+  } = action;
 
   try {
     const response = yield call(API.saveLoad, params);
