@@ -29,7 +29,7 @@ export default class CheckedListItem extends Component {
           style={[styles.itemRowContainer, style, disabled && {opacity: 0.4}]}>
           <ListItem
             style={{flex: 1}}
-            onItemPress={onPress}
+            // onItemPress={onPress}
             title={title}
             description={description}
           />
