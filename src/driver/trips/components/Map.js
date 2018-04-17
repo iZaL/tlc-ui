@@ -81,9 +81,7 @@ export default class Map extends Component {
   }
 
   onLocation = location => {
-    // console.log('location',location);
     this.map.fitToElements(true);
-    // console.log('[event] location: ', location);
     const lastPosition = this.state.origin;
     const currentLocation = {
       latitude: location.coords.latitude,
@@ -106,7 +104,6 @@ export default class Map extends Component {
   };
   //
   // onMotionChange(event) {
-  //   // console.log('[event] motionchange: ', event.isMoving, event.location);
   //   this.setState({
   //     isMoving: event.isMoving,
   //   });

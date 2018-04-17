@@ -55,9 +55,6 @@ class DriversBlockListScene extends Component {
   render() {
     const {drivers, blocked_drivers} = this.props;
 
-    console.log('drivers', drivers);
-    console.log('blocked_drivers', blocked_drivers);
-
     let blockedDriverIds = blocked_drivers.map(driver => driver.id);
 
     return (

@@ -13,13 +13,7 @@ export default class TabList extends Component {
   componentDidMount() {}
 
   onSelect = index => {
-    console.log('index', index);
-    console.log('this', this.scrollView);
-
-    // this.scrollView.scrollTo({x:Dimensions.get('window').width/2});
     this.props.onSelect(index);
-    // this.scrollView.scrollToIndex(index);
-    // this.scrollView.scrollToIndex({index: 1, animated: true});
   };
 
   render() {

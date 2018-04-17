@@ -38,7 +38,6 @@ class RoutesUpdateScene extends Component {
   };
 
   onRoutesListItemPress = item => {
-    console.log('item', item);
     this.props.navigation.navigate('RoutesAdd', {
       route: item,
       mode: 'edit',

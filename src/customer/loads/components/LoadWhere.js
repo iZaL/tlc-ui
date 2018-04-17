@@ -68,8 +68,6 @@ export default class LoadWhat extends Component {
     let {origin, destination, locations} = this.props;
     let {locationType, locationListModalVisible} = this.state;
 
-    console.log('locations', locations);
-
     return (
       <View style={styles.container}>
         {origin.id ? (

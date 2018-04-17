@@ -37,10 +37,6 @@ export default class Map extends Component {
     const {heading} = origin;
 
     const rotate = typeof heading === 'number' && heading >= 0 ? heading : 0;
-    //
-    // if(rotate) {
-    //   console.log('rotated',rotate);
-    // }
 
     return (
       <View style={styles.container}>

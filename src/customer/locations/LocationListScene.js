@@ -50,7 +50,7 @@ class LocationListScene extends Component {
           onPress: () => console.log('Cancel Pressed'),
           style: 'cancel',
         },
-        {text: 'Yes', onPress: () => console.log('OK Pressed')},
+        {text: 'Yes', onPress: () => console.log('@todo')},
       ],
       {cancelable: false},
     );

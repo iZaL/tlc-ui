@@ -254,8 +254,6 @@ class RoutesAddScene extends Component {
       destinationCountry,
     } = this.props;
 
-    console.log('rendered route add scene');
-
     let {
       origin_location_ids,
       destination_country_id,

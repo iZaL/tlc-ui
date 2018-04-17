@@ -23,8 +23,6 @@ export default class CheckedListItem extends Component {
 
   render() {
     let {title, disabled, onPress, checked, style, description} = this.props;
-    console.log('rendered checked list item');
-    console.log('title', title);
     return (
       <Touchable onPress={onPress}>
         <View

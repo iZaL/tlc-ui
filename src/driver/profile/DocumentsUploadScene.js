@@ -60,7 +60,7 @@ class DocumentsUpload extends Component {
 
   save = payload => {
     //@todo:save
-    console.log('saving', payload);
+    console.log('save', payload);
   };
 
   hideModal = () => {

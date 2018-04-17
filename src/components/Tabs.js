@@ -16,7 +16,6 @@ export default class Tabs extends Component {
   }
 
   // componentDidMount(nextProps) {
-  //   console.log('nex',nextProps);
   //   if (nextProps.activeIndex !== this.state.activeIndex) {
   //     this.setState({
   //       activeIndex:nextProps.activeIndex

@@ -26,7 +26,6 @@ export default class Listing extends Component {
 
   renderItem = ({item}) => {
     let {onItemPress, activeIDs, title, description} = this.props;
-    console.log('title', title);
 
     return (
       <CheckedListItem

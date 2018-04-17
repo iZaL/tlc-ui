@@ -19,8 +19,6 @@ export default class GridList extends Component {
   }
 
   renderItem = ({item}) => {
-    console.log('item', item);
-
     const {onItemPress, activeItemID} = this.props;
     return (
       <Touchable onPress={() => onItemPress(item)} key={item.id}>
