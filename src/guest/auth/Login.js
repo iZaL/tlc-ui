@@ -5,8 +5,8 @@ import {bindActionCreators} from 'redux';
 import {ACTIONS} from 'guest/common/actions';
 import {Alert, View} from 'react-native';
 import I18n from 'utils/locale';
-import Button from '../../components/Button';
-import FormTextInput from '../../components/FormTextInput';
+import Button from 'components/Button';
+import FormTextInput from 'components/FormTextInput';
 
 class Login extends Component {
   static propTypes = {

@@ -9,7 +9,7 @@ import Touchable from 'react-native-platform-touchable';
 import Divider from 'components/Divider';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import LocationListItem from 'customer/locations/components/LocationListItem';
-import ListItem from '../../../components/ListItem';
+import ListItem from 'components/ListItem';
 
 export default class LocationList extends PureComponent {
   static propTypes = {

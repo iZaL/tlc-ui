@@ -8,7 +8,7 @@ import LocationList from 'customer/locations/components/LocationList';
 import Button from 'components/Button';
 import I18n from 'utils/locale';
 import {FAB} from 'react-native-paper';
-import colors from '../../assets/theme/colors';
+import colors from 'assets/theme/colors';
 
 type Type = 'origin|destination';
 
