@@ -8,7 +8,7 @@ import colors from 'assets/theme/colors';
 import Modal from 'components/Modal';
 import Listing from 'components/Listing';
 
-export default class List extends Component {
+export default class ListModal extends Component {
   static propTypes = {
     isVisible: PropTypes.bool.isRequired,
     onItemPress: PropTypes.func.isRequired,

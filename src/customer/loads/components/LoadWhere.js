@@ -1,14 +1,10 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {Modal, StyleSheet, Text, View} from 'react-native';
-import LocationListItem from 'customer/locations/components/LocationListItem';
+import {StyleSheet, Text, View} from 'react-native';
 import colors from 'assets/theme/colors';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import LocationList from 'customer/locations/components/LocationList';
-import Touchable from 'react-native-platform-touchable';
 import I18n from 'utils/locale';
-import List from '../../../components/List';
-import ListItem from '../../../components/ListItem';
+import ListItem from 'components/ListItem';
 
 export default class LoadWhat extends Component {
   shouldComponentUpdate(nextProps, nextState) {
@@ -131,7 +127,7 @@ export default class LoadWhat extends Component {
           </Text>
         )}
 
-        <List
+        <ListModal
           header={I18n.t('select_drivers')}
           onItemPress={this.onLocationListItemPress}
           activeIDs={[]}

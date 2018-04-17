@@ -9,7 +9,7 @@ import {View} from 'react-native';
 import I18n from 'utils/locale';
 import Touchable from 'react-native-platform-touchable';
 import FormLabel from 'components/FormLabel';
-import List from 'components/List';
+import ListModal from 'components/ListModal';
 import Divider from 'components/Divider';
 import {Title} from 'react-native-paper';
 import Button from 'components/Button';
@@ -144,7 +144,7 @@ class TruckModelScene extends Component {
 
         <Button onPress={this.onSave} title={I18n.t('save')} />
 
-        <List
+        <ListModal
           header={I18n.t('truck_make')}
           activeIDs={[make_id]}
           isVisible={this.state.showMakeModal}
@@ -153,7 +153,7 @@ class TruckModelScene extends Component {
           items={makes}
         />
 
-        <List
+        <ListModal
           header={I18n.t('truck_model')}
           activeIDs={[model_id]}
           isVisible={this.state.showModelModal}

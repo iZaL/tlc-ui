@@ -6,7 +6,7 @@ import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
 import TextBox from 'components/TextBox';
 import I18n from 'utils/locale';
 import colors from 'assets/theme/colors';
-import List from 'components/List';
+import ListModal from 'components/ListModal';
 import {ACTIONS as APP_ACTIONS} from 'app/common/actions';
 import {Caption, Headline, Title} from 'react-native-paper';
 import Button from 'components/Button';
@@ -360,7 +360,7 @@ class RoutesAddScene extends Component {
           title={I18n.t('save')}
         />
 
-        <List
+        <ListModal
           onItemPress={this.onOriginLocationItemPress}
           activeIDs={origin_location_ids}
           items={origin_country.locations || []}
@@ -381,7 +381,7 @@ class RoutesAddScene extends Component {
           }
         />
 
-        <List
+        <ListModal
           header={I18n.t('destination_country')}
           activeIDs={[destination_country_id]}
           isVisible={isDestinationCountriesModalVisible}
@@ -391,7 +391,7 @@ class RoutesAddScene extends Component {
           items={destination_countries || []}
         />
 
-        <List
+        <ListModal
           onItemPress={this.onDestinationLocationItemPress}
           activeIDs={destination_location_ids}
           items={destinationCountry.locations || []}

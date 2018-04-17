@@ -3,14 +3,11 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {ACTIONS as CUSTOMER_ACTIONS} from 'customer/common/actions';
 import {SELECTORS as CUSTOMER_SELECTORS} from 'customer/common/selectors';
-import {ScrollView, Text, View} from 'react-native';
-import EmployeeList from 'customer/employees/components/EmployeeList';
-import Button from 'components/Button';
+import {View} from 'react-native';
 import I18n from 'utils/locale';
 import DriversList from 'customer/profile/components/DriversList';
-import {Caption, FAB} from 'react-native-paper';
-import colors from '../../assets/theme/colors';
-import List from '../../components/List';
+import {FAB} from 'react-native-paper';
+import colors from 'assets/theme/colors';
 
 class DriversBlockListScene extends Component {
   static propTypes = {
@@ -81,7 +78,7 @@ class DriversBlockListScene extends Component {
           }}
         />
 
-        <List
+        <ListModal
           header={I18n.t('select_drivers')}
           onItemPress={this.onDriversBlockListItemPress}
           activeIDs={blocked_drivers.map(driver => driver.id)}

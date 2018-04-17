@@ -13,7 +13,7 @@ import FormLabel from 'components/FormLabel';
 import {Title} from 'react-native-paper';
 import I18n from 'utils/locale';
 import Button from 'components/Button';
-import List from 'components/List';
+import ListModal from 'components/ListModal';
 import Modal from 'components/Modal';
 import Dropdown from 'components/Dropdown';
 import DocumentUpload from 'components/DocumentUpload';
@@ -237,7 +237,7 @@ class TrailerUpdateScene extends Component {
 
         <Button onPress={this.onSave} title={I18n.t('save')} />
 
-        <List
+        <ListModal
           header={I18n.t('trailer_type')}
           activeIDs={[type_id]}
           isVisible={showTypeModal}
@@ -246,7 +246,7 @@ class TrailerUpdateScene extends Component {
           items={trailer_types}
         />
 
-        <List
+        <ListModal
           header={I18n.t('trailer_make')}
           activeIDs={[make_id]}
           isVisible={showMakeModal}

@@ -15,7 +15,7 @@ import {
 import {View} from 'react-native';
 import moment from 'moment';
 import DocumentUpload from 'components/DocumentUpload';
-import List from 'components/List';
+import ListModal from 'components/ListModal';
 import Touchable from 'react-native-platform-touchable';
 import FormLabel from 'components/FormLabel';
 
@@ -143,7 +143,7 @@ export default class SecurityPassAdd extends PureComponent {
           date={expiry_date}
         />
 
-        <List
+        <ListModal
           items={countries}
           isVisible={this.state.isCountryModalVisible}
           onItemPress={this._handleCountryPicker}
@@ -152,7 +152,7 @@ export default class SecurityPassAdd extends PureComponent {
           activeIDs={[countryID]}
         />
 
-        <List
+        <ListModal
           header={I18n.t('security_passes')}
           activeIDs={[security_pass_id]}
           isVisible={this.state.isSecurityPassModalVisible}

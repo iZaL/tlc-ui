@@ -9,7 +9,7 @@ import {Button, Card, CardActions, CardContent} from 'react-native-paper';
 import {View} from 'react-native';
 import moment from 'moment';
 import DocumentUpload from 'components/DocumentUpload';
-import List from 'components/List';
+import ListModal from 'components/ListModal';
 import FormTextInput from 'components/FormTextInput';
 
 export default class DocumentAdd extends PureComponent {
@@ -122,7 +122,7 @@ export default class DocumentAdd extends PureComponent {
           date={expiry_date}
         />
 
-        <List
+        <ListModal
           items={countries}
           isVisible={this.state.isCountryModalVisible}
           onItemPress={this._handleCountryPicker}
