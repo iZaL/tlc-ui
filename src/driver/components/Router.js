@@ -44,6 +44,10 @@ const HomeStack = createStackNavigator({
   LoadDetail: {
     screen: LoadDetailScene,
   },
+},{
+  cardStyle:{
+    backgroundColor:colors.fadedWhite
+  }
 });
 
 const SettingsStack = createStackNavigator({
@@ -54,6 +58,10 @@ const SettingsStack = createStackNavigator({
       ...getDrawerIcon(navigation),
     }),
   },
+},{
+  cardStyle:{
+    backgroundColor:colors.fadedWhite
+  }
 });
 
 const ProfileStack = createStackNavigator(
@@ -161,6 +169,9 @@ const ProfileStack = createStackNavigator(
       gesturesEnabled: false,
       headerTintColor: colors.primary,
     },
+    cardStyle:{
+      backgroundColor:colors.fadedWhite
+    }
     // initialRouteName: 'RoutesAdd',
   },
 );
@@ -189,6 +200,9 @@ const LoadStack = createStackNavigator(
       gesturesEnabled: false,
       headerTintColor: colors.primary,
     },
+    cardStyle:{
+      backgroundColor:colors.fadedWhite
+    }
   },
 );
 
