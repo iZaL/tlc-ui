@@ -15,7 +15,7 @@ export default class List extends Component {
     onItemPress: PropTypes.func.isRequired,
     onCancel: PropTypes.func.isRequired,
     items: PropTypes.array.isRequired,
-    modalTitle: PropTypes.string,
+    header: PropTypes.any,
     activeIDs: PropTypes.array,
   };
 
@@ -33,7 +33,6 @@ export default class List extends Component {
       children,
       items,
       activeIDs,
-      header,
       description,
       title,
       ...rest
@@ -42,7 +41,6 @@ export default class List extends Component {
       <Modal
         {...rest}
       >
-        {header}
         <Listing
           onItemPress={onItemPress}
           items={items}

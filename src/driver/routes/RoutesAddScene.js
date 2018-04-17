@@ -8,7 +8,7 @@ import I18n from 'utils/locale';
 import colors from 'assets/theme/colors';
 import List from 'components/List';
 import {ACTIONS as APP_ACTIONS} from 'app/common/actions';
-import {Caption, Title} from 'react-native-paper';
+import {Caption, Headline, Title} from 'react-native-paper';
 import Button from 'components/Button';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Divider from 'components/Divider';
@@ -359,7 +359,6 @@ class RoutesAddScene extends Component {
         <Button onPress={this.onSave} disabled={!destination_country_id} title={I18n.t('save')}/>
 
         <List
-          modalTitle={I18n.t('select_locations')}
           onItemPress={this.onOriginLocationItemPress}
           activeIDs={origin_location_ids}
           items={origin_country.locations || []}
@@ -367,7 +366,8 @@ class RoutesAddScene extends Component {
           onCancel={this.hideOriginLocationsModal}
           onSave={this.onDestinationLocationsSavePress}
           header={
-            <View style={{paddingHorizontal:15,paddingTop:15}}>
+            <View style={{paddingHorizontal: 15, paddingTop: 15}}>
+              <Headline style={{textAlign: 'center'}}>{I18n.t('select_locations')}</Headline>
               <Caption onPress={this.toggleOriginSelectAll}>
                 {isOriginSelectAllButtonSelected
                   ? I18n.t('deselect_all')
@@ -378,7 +378,7 @@ class RoutesAddScene extends Component {
         />
 
         <List
-          modalTitle={I18n.t('destination_country')}
+          header={I18n.t('destination_country')}
           activeIDs={[destination_country_id]}
           isVisible={isDestinationCountriesModalVisible}
           onSave={this.onDestinationCountrySavePress}
@@ -388,7 +388,6 @@ class RoutesAddScene extends Component {
         />
 
         <List
-          modalTitle={I18n.t('select_locations')}
           onItemPress={this.onDestinationLocationItemPress}
           activeIDs={destination_location_ids}
           items={destinationCountry.locations || []}
@@ -396,11 +395,14 @@ class RoutesAddScene extends Component {
           onCancel={this.hideDestinationLocationsModal}
           onSave={this.onDestinationLocationsSavePress}
           header={
-            <Caption onPress={this.toggleDestinationSelectAll}>
-              {isDestinationSelectAllButtonSelected
-                ? I18n.t('deselect_all')
-                : I18n.t('select_all')}
-            </Caption>
+            <View style={{paddingHorizontal: 15, paddingTop: 15}}>
+              <Headline style={{textAlign: 'center'}}>{I18n.t('select_locations')}</Headline>
+              <Caption onPress={this.toggleDestinationSelectAll}>
+                {isDestinationSelectAllButtonSelected
+                  ? I18n.t('deselect_all')
+                  : I18n.t('select_all')}
+              </Caption>
+            </View>
           }
         />
       </View>

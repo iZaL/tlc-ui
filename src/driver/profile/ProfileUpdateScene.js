@@ -129,7 +129,7 @@ class ProfileUpdateScene extends Component {
           isVisible={languageModalVisible}
           onItemPress={this.handleLanguagePress}
           onCancel={this.hideModal}
-          modalTitle={I18n.t('select_languages')}
+          header={I18n.t('select_languages')}
           activeIDs={activeLanguages}
         />
       </ListSection>

@@ -106,7 +106,7 @@ class TruckInfoUpdateScene extends Component {
         <Modal
           isVisible={isYearModalVisible}
           onCancel={this.hideYearModal}
-          modalTitle={I18n.t('truck_year')}>
+          header={I18n.t('truck_year')}>
           <Dropdown
             items={['1905', '1906', '2001', '2002', '2003', '2004']}
             selectedValue={year}

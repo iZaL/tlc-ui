@@ -82,7 +82,7 @@ class DriversBlockListScene extends Component {
         />
 
         <List
-          modalTitle={I18n.t('select_drivers')}
+          header={I18n.t('select_drivers')}
           onItemPress={this.onDriversBlockListItemPress}
           activeIDs={blocked_drivers.map(driver => driver.id)}
           title={item => item.user.name}

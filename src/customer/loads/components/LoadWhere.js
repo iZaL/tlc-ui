@@ -130,7 +130,7 @@ export default class LoadWhat extends Component {
         )}
 
         <List
-          modalTitle={I18n.t('select_drivers')}
+          header={I18n.t('select_drivers')}
           onItemPress={this.onLocationListItemPress}
           activeIDs={[]}
           title={item => item.address}

@@ -239,7 +239,7 @@ class TrailerUpdateScene extends Component {
         <Button onPress={this.onSave} title={I18n.t('save')} />
 
         <List
-          modalTitle={I18n.t('trailer_type')}
+          header={I18n.t('trailer_type')}
           activeIDs={[type_id]}
           isVisible={showTypeModal}
           onItemPress={this.setType}
@@ -248,7 +248,7 @@ class TrailerUpdateScene extends Component {
         />
 
         <List
-          modalTitle={I18n.t('trailer_make')}
+          header={I18n.t('trailer_make')}
           activeIDs={[make_id]}
           isVisible={showMakeModal}
           onItemPress={this.setMake}
@@ -259,7 +259,7 @@ class TrailerUpdateScene extends Component {
         <Modal
           isVisible={isYearModalVisible}
           onCancel={this.hideYearModal}
-          modalTitle={I18n.t('truck_year')}>
+          header={I18n.t('truck_year')}>
           <Dropdown
             items={['1905', '1906', '2001', '2002', '2003', '2004']}
             selectedValue={year}

@@ -148,12 +148,12 @@ export default class SecurityPassAdd extends PureComponent {
           isVisible={this.state.isCountryModalVisible}
           onItemPress={this._handleCountryPicker}
           onCancel={this._hideCountryModal}
-          modalTitle={I18n.t('select_country')}
+          header={I18n.t('select_country')}
           activeIDs={[countryID]}
         />
 
         <List
-          modalTitle={I18n.t('security_passes')}
+          header={I18n.t('security_passes')}
           activeIDs={[security_pass_id]}
           isVisible={this.state.isSecurityPassModalVisible}
           onItemPress={this._handleSecurityPassPicker}

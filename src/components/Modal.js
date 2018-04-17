@@ -17,11 +17,11 @@ export default class AppModal extends Component {
   };
 
   static defaultProps = {
-    modalTitle: null,
+    header: null,
   };
 
   render() {
-    let {isVisible, onCancel, modalTitle, children, style} = this.props;
+    let {isVisible, onCancel, header, children, style} = this.props;
 
     return (
       <Modal
@@ -35,9 +35,11 @@ export default class AppModal extends Component {
         swipeDirection="down"
       >
         {
-          modalTitle &&
-          <Headline style={styles.headline}>{modalTitle}</Headline>
+          header && typeof(header) === 'string' ?
+            <Headline style={styles.headline}>{header}</Headline>
+            : header
         }
+
         {children}
         <Button
           onPress={onCancel}
@@ -55,9 +57,9 @@ export default class AppModal extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    margin:0,
+    margin: 0,
     backgroundColor: 'white',
-    opacity:.95,
+    opacity: .95,
     paddingTop: 40,
     paddingHorizontal: 0,
     justifyContent: 'flex-start',

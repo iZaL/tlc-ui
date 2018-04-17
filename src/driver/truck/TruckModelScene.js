@@ -144,7 +144,7 @@ class TruckModelScene extends Component {
         <Button onPress={this.onSave} title={I18n.t('save')}/>
 
         <List
-          modalTitle={I18n.t('truck_make')}
+          header={I18n.t('truck_make')}
           activeIDs={[make_id]}
           isVisible={this.state.showMakeModal}
           onItemPress={this.setMake}
@@ -153,7 +153,7 @@ class TruckModelScene extends Component {
         />
 
         <List
-          modalTitle={I18n.t('truck_model')}
+          header={I18n.t('truck_model')}
           activeIDs={[model_id]}
           isVisible={this.state.showModelModal}
           onItemPress={this.setModel}
