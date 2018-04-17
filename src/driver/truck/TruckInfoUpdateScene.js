@@ -7,7 +7,7 @@ import FormTextInput from '/components/FormTextInput';
 import I18n from 'utils/locale';
 import Dropdown from 'components/Dropdown';
 import FormLabel from 'components/FormLabel';
-import ListModal from 'components/ListModal';
+import Modal from 'components/Modal';
 import Divider from 'components/Divider';
 import Button from 'components/Button';
 
@@ -103,7 +103,7 @@ class TruckInfoUpdateScene extends Component {
 
         <Button onPress={this.onSave} title={I18n.t('save')}/>
 
-        <ListModal
+        <Modal
           isVisible={isYearModalVisible}
           onCancel={this.hideYearModal}
           modalTitle={I18n.t('truck_year')}>
@@ -113,7 +113,7 @@ class TruckInfoUpdateScene extends Component {
             onItemPress={this.onValueChange}
             field="year"
           />
-        </ListModal>
+        </Modal>
       </View>
     );
   }

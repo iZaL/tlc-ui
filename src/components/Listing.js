@@ -2,16 +2,10 @@
  * @flow
  */
 import React, {Component} from 'react';
-import Touchable from 'react-native-platform-touchable';
 import PropTypes from 'prop-types';
-import {FlatList, Text, View, StyleSheet} from 'react-native';
-
-import Modal from 'react-native-modal';
+import {FlatList, StyleSheet} from 'react-native';
 import Divider from 'components/Divider';
 import colors from 'assets/theme/colors';
-import {Button, Checkbox, Headline} from 'react-native-paper';
-import I18n from 'utils/locale';
-import ListModal from './ListModal';
 import CheckedListItem from './CheckedListItem';
 
 export default class Listing extends Component {

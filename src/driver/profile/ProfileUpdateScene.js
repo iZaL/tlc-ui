@@ -8,7 +8,7 @@ import Divider from 'components/Divider';
 import I18n from 'utils/locale';
 import ListItem from 'components/ListItem';
 import List from 'components/List';
-import ListModal from 'components/ListModal';
+import Modal from 'components/Modal';
 import FormTextInput from 'components/FormTextInput';
 import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
 import {ListSection} from 'react-native-paper';

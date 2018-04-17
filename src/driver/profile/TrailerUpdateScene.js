@@ -14,7 +14,7 @@ import {Title} from 'react-native-paper';
 import I18n from 'utils/locale';
 import Button from 'components/Button';
 import List from 'components/List';
-import ListModal from 'components/ListModal';
+import Modal from 'components/Modal';
 import Dropdown from 'components/Dropdown';
 import DocumentUpload from 'components/DocumentUpload';
 import FormTextInput from 'components/FormTextInput';
@@ -256,7 +256,7 @@ class TrailerUpdateScene extends Component {
           items={trailer_makes}
         />
 
-        <ListModal
+        <Modal
           isVisible={isYearModalVisible}
           onCancel={this.hideYearModal}
           modalTitle={I18n.t('truck_year')}>
@@ -266,7 +266,7 @@ class TrailerUpdateScene extends Component {
             onItemPress={this.onValueChange}
             field="year"
           />
-        </ListModal>
+        </Modal>
       </ScrollView>
     );
   }

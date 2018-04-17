@@ -2,17 +2,11 @@
  * @flow
  */
 import React, {Component} from 'react';
-import Touchable from 'react-native-platform-touchable';
 import PropTypes from 'prop-types';
-import {FlatList, Text, View, StyleSheet} from 'react-native';
-
-import Modal from 'react-native-modal';
-import Divider from 'components/Divider';
+import {StyleSheet} from 'react-native';
 import colors from 'assets/theme/colors';
-import {Button, Checkbox, Headline} from 'react-native-paper';
-import I18n from 'utils/locale';
-import ListModal from './ListModal';
-import Listing from './Listing';
+import Modal from 'components/Modal';
+import Listing from 'components/Listing';
 
 export default class List extends Component {
 
@@ -47,12 +41,13 @@ export default class List extends Component {
       title,
     } = this.props;
     return (
-      <ListModal
+      <Modal
         isVisible={isVisible}
         transparent={false}
         onBackdropPress={onCancel}
         modalTitle={modalTitle}
-        onCancel={onCancel}>
+        onCancel={onCancel}
+      >
         {header}
         <Listing
           onItemPress={onItemPress}
@@ -62,7 +57,7 @@ export default class List extends Component {
           description={description}
         />
         {children}
-      </ListModal>
+      </Modal>
     );
   }
 }

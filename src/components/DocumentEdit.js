@@ -4,7 +4,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import DateTimePicker from 'react-native-modal-datetime-picker';
-import CountryListModal from 'components/ListModal';
+import CountryListModal from 'components/Modal';
 
 import I18n from 'utils/locale';
 

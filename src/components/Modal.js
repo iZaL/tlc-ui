@@ -8,7 +8,7 @@ import Modal from 'react-native-modal';
 import {Button, Headline} from 'react-native-paper';
 import I18n from 'utils/locale';
 
-export default class ListModal extends Component {
+export default class AppModal extends Component {
   static propTypes = {
     isVisible: PropTypes.bool.isRequired,
     onCancel: PropTypes.func.isRequired,
