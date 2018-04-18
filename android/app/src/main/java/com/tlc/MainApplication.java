@@ -15,6 +15,7 @@ import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
 import com.airbnb.android.react.maps.MapsPackage;
 import com.transistorsoft.rnbackgroundgeolocation.*;
+import com.transistorsoft.rnbackgroundfetch.RNBackgroundFetchPackage;
 
 import java.util.Arrays;
 import java.util.List;
@@ -44,7 +45,8 @@ public class MainApplication extends Application implements ReactApplication {
             new RNI18nPackage(),
             new CodePush(null, getApplicationContext(), BuildConfig.DEBUG),
             new MapsPackage(),
-            new RNBackgroundGeolocation()
+            new RNBackgroundGeolocation(),
+            new RNBackgroundFetchPackage()
       );
     }
 

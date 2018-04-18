@@ -1,9 +1,9 @@
 PODS:
-  - CocoaLumberjack (3.4.1):
-    - CocoaLumberjack/Default (= 3.4.1)
-    - CocoaLumberjack/Extensions (= 3.4.1)
-  - CocoaLumberjack/Default (3.4.1)
-  - CocoaLumberjack/Extensions (3.4.1):
+  - CocoaLumberjack (3.4.2):
+    - CocoaLumberjack/Default (= 3.4.2)
+    - CocoaLumberjack/Extensions (= 3.4.2)
+  - CocoaLumberjack/Default (3.4.2)
+  - CocoaLumberjack/Extensions (3.4.2):
     - CocoaLumberjack/Default
   - Google-Maps-iOS-Utils (2.1.0):
     - Google-Maps-iOS-Utils/Clustering (= 2.1.0)
@@ -28,11 +28,11 @@ PODS:
     - GoogleMaps/Base
   - React (0.55.2):
     - React/Core (= 0.55.2)
-  - react-native-google-maps (0.20.1):
+  - react-native-google-maps (0.21.0):
     - Google-Maps-iOS-Utils (= 2.1.0)
     - GoogleMaps (= 2.5.0)
     - React
-  - react-native-maps (0.20.1):
+  - react-native-maps (0.21.0):
     - React
   - React/Core (0.55.2):
     - yoga (= 0.55.2.React)
@@ -104,7 +104,7 @@ EXTERNAL SOURCES:
     :path: ../node_modules/react-native/ReactCommon/yoga/yoga.podspec
 
 SPEC CHECKSUMS:
-  CocoaLumberjack: 2e258a064cacc8eb9a2aca318e24d02a0a7fd56d
+  CocoaLumberjack: db7cc9e464771f12054c22ff6947c5a58d43a0fd
   Google-Maps-iOS-Utils: c32891ff472eaaa1fca032beedafa1a013af7875
   GoogleMaps: c087b8e5dfe87ca6ebf59adb9b4894a4146bec4f
   React: 35618ff86985ccc5a8a17d3ca0dd76fd47e0c690
