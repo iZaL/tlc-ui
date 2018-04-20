@@ -36,30 +36,6 @@ class LoadAddScene extends Component {
     isSuccessDialogVisible:false,
     showPackageDimsSelectionModal: false,
     showTrailerQuantitySelectionModal: false,
-
-    load_date: null,
-    load_time: moment(),
-    trailer_id: null,
-    trailer_quantity: 1,
-    packaging_id: null,
-    packaging_dimension: {
-      length: null,
-      width: null,
-      height: null,
-      weight: null,
-      quantity: null,
-    },
-    origin_location_id: null,
-    destination_location_id: null,
-    weight: null,
-    request_documents: true,
-    use_own_truck: false,
-    receiver_name: 'ABCD',
-    receiver_email: 'abcd@test.com',
-    receiver_mobile: '00966989382332',
-    receiver_phone: '00966989382332',
-    security_passes: [],
-
   };
 
   componentDidMount() {
@@ -68,7 +44,10 @@ class LoadAddScene extends Component {
   }
 
   onValueChange = (field, value) => {
-    this.setState({[field]: value});
+
+    // this.setState({[field]: value});
+
+    this.props.dispatch(CUSTOMER_ACTIONS.setAddData(field,value));
 
     if (field == 'packaging_id') {
       this.showModal('showPackageDimsSelectionModal');
@@ -130,6 +109,14 @@ class LoadAddScene extends Component {
 
   render() {
     let {
+
+      showPackageDimsSelectionModal,
+      showTrailerQuantitySelectionModal,
+
+
+    } = this.state;
+
+    let {
       load_time,
       packaging_id,
       trailer_id,
@@ -143,11 +130,11 @@ class LoadAddScene extends Component {
       receiver_name,
       origin_location_id,
       destination_location_id,
-      showPackageDimsSelectionModal,
-      showTrailerQuantitySelectionModal,
       trailer_quantity,
       packaging_dimension,
-    } = this.state;
+    } = this.props.loadData.attributes;
+
+    console.log('loadData',this.props.loadData);
 
     let {trailers, packaging, securityPasses, locations} = this.props;
 
@@ -253,6 +240,7 @@ class LoadAddScene extends Component {
 
 function mapStateToProps(state) {
   return {
+    loadData:CUSTOMER_SELECTORS.getAddData(state),
     trailers: TRUCK_SELECTORS.getTrailerTypes(state),
     packaging: TRUCK_SELECTORS.getPackaging(state),
     securityPasses: TRUCK_SELECTORS.getSecurityPasses(state),

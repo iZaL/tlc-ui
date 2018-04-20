@@ -47,6 +47,10 @@ export const ACTION_TYPES = {
   FETCH_LOADS_BY_STATUS_SUCCESS: '@customer/FETCH_LOADS_BY_STATUS_SUCCESS',
   FETCH_LOADS_BY_STATUS_FAILURE: '@customer/FETCH_LOADS_BY_STATUS_FAILURE',
 
+  SET_LOAD_ADD_DATA_REQUEST: '@customer/SET_LOAD_ADD_DATA_REQUEST',
+  SET_LOAD_ADD_DATA_SUCCESS: '@customer/SET_LOAD_ADD_DATA_SUCCESS',
+  SET_LOAD_ADD_DATA_FAILURE: '@customer/SET_LOAD_ADD_DATA_FAILURE',
+
   LOCATION_RECEIVED: '@customer/LOCATION_RECEIVED',
 
   SUBSCRIBE_TO_TRIP_TRACK_CHANNEL: '@customer/SUBSCRIBE_TO_TRIP_TRACK_CHANNEL',
@@ -58,6 +62,7 @@ function fetchEmployees(params) {
     params,
   };
 }
+
 function fetchProfile(params) {
   return {
     type: ACTION_TYPES.FETCH_PROFILE_REQUEST,
@@ -98,6 +103,7 @@ function fetchBlockedDrivers(params) {
     params,
   };
 }
+
 function fetchDrivers(params) {
   return {
     type: ACTION_TYPES.FETCH_DRIVERS_REQUEST,
@@ -133,6 +139,14 @@ function subscribeToTripTrack(params) {
   };
 }
 
+function setAddData(field, value) {
+  return {
+    type: ACTION_TYPES.SET_LOAD_ADD_DATA_REQUEST,
+    field: field,
+    value: value
+  }
+}
+
 export const ACTIONS = {
   saveProfile,
   fetchProfile,
@@ -145,4 +159,6 @@ export const ACTIONS = {
   fetchLoadsByStatus,
   saveLoad,
   subscribeToTripTrack,
+
+  setAddData
 };
