@@ -32,6 +32,11 @@ class LoadAddScene extends Component {
   };
 
   state = {
+    // component level dialogs
+    isSuccessDialogVisible:false,
+    showPackageDimsSelectionModal: false,
+    showTrailerQuantitySelectionModal: false,
+
     load_date: null,
     load_time: moment(),
     trailer_id: null,
@@ -54,8 +59,7 @@ class LoadAddScene extends Component {
     receiver_mobile: '00966989382332',
     receiver_phone: '00966989382332',
     security_passes: [],
-    showPackageDimsSelectionModal: false,
-    showTrailerQuantitySelectionModal: false,
+
   };
 
   componentDidMount() {
@@ -86,14 +90,21 @@ class LoadAddScene extends Component {
   onLoadPassSearch = searchTerm => {};
 
   onSaveButtonPress = () => {
+    // console.log('saving');
+
     let params = {
       ...this.state,
     };
 
-    return new Promise((resolve, reject) => {
-      this.props.dispatch(CUSTOMER_ACTIONS.saveLoad({params, resolve}));
-      // dispatch(someActionCreator({ values, resolve, reject }))
-    }).then(() => {});
+    // return new Promise((resolve, reject) => {
+    //   this.props.dispatch(CUSTOMER_ACTIONS.saveLoad({params, resolve}));
+    //   // dispatch(someActionCreator({ values, resolve, reject }))
+    // }).then(() => {});
+
+
+    // on Success
+
+
   };
 
   showModal = name => {
@@ -142,8 +153,8 @@ class LoadAddScene extends Component {
 
     return (
       <ScrollView style={{flex: 1}}>
-        <Tabs>
-          <TabList>
+        <Tabs activeIndex={5}>
+          <TabList >
             <TabHeader title={I18n.t('load_info')} />
             <TabHeader title={I18n.t('load_location')} />
             <TabHeader title={I18n.t('date')} />
@@ -152,7 +163,7 @@ class LoadAddScene extends Component {
             <TabHeader title={I18n.t('receiver_information')} />
           </TabList>
 
-          <TabPanels>
+          <TabPanels >
             <TabPanel>
               <LoadWhat
                 trailers={trailers}

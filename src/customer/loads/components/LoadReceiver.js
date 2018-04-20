@@ -39,7 +39,7 @@ export default class LoadWhat extends Component {
           <FormTextInput
             onValueChange={onValueChange}
             value={receiver_email}
-            vafieldlue={receiver_email}
+            field="receiver_email"
             label={I18n.t('receiver_email')}
             maxLength={40}
             keyboardType="email-address"

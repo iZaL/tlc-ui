@@ -143,8 +143,8 @@ const LoadStack = createStackNavigator(
     },
     cardStyle:{
       backgroundColor:colors.fadedWhite
-    }
-    // initialRouteName: 'LoadAdd',
+    },
+    initialRouteName: 'LoadAdd',
   },
 );
 
@@ -188,5 +188,5 @@ export const Routes = createDrawerNavigator(DrawerRoutes, {
   gesturesEnabled: false,
   contentComponent: props => <Drawer {...props} />,
   drawerWidth: 275,
-  // initialRouteName: 'LoadStack',
+  initialRouteName: 'LoadStack',
 });
