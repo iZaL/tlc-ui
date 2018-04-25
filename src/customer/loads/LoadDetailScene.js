@@ -1,16 +1,18 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {ScrollView, Text, View} from 'react-native';
-import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
+import {Text, View} from 'react-native';
 import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
-import LoadLocationMapView from 'driver/loads/components/LoadLocationMapView';
-import LoadPickDropLocation from 'driver/loads/components/LoadPickDropLocation';
-import Divider from 'components/Divider';
-import LoadInfo from 'driver/loads/components/LoadInfo';
-import Button from 'components/Button';
 import I18n from 'utils/locale';
 import colors from 'assets/theme/colors';
+import {ACTIONS as CUSTOMER_ACTIONS} from "customer/common/actions";
+import LoadLocationMapView from "driver/loads/components/LoadLocationMapView";
+import LoadPickDropLocation from "driver/loads/components/LoadPickDropLocation";
+import LoadInfo from "driver/loads/components/LoadInfo";
+import Divider from "components/Divider";
+import TripList from "customer/trips/components/TripList";
+import {SELECTORS as CUSTOMER_SELECTORS} from "customer/common/selectors";
+import {Title} from "react-native-paper";
 
 class LoadDetailScene extends Component {
   shouldComponentUpdate(nextProps) {
@@ -18,10 +20,11 @@ class LoadDetailScene extends Component {
   }
 
   componentDidMount() {
-    const {loadID} = this.props.navigation.state.params;
+    // const {loadID} = this.props.navigation.state.params;
     this.props.dispatch(
-      DRIVER_ACTIONS.fetchLoadDetails({
-        load_id: loadID,
+      CUSTOMER_ACTIONS.fetchLoadDetails({
+        // load_id: loadID,
+        load_id: 1,
       }),
     );
   }
@@ -52,7 +55,8 @@ class LoadDetailScene extends Component {
     };
   };
 
-  acceptBooking = () => {};
+  acceptBooking = () => {
+  };
 
   loadTripMapScene = () => {
     this.props.navigation.navigate('TripTrack', {
@@ -60,34 +64,53 @@ class LoadDetailScene extends Component {
     });
   };
 
+  onTripListItemPress = () => {
+
+  };
+
   render() {
     let {load} = this.props;
 
     let {origin, destination} = load;
 
+    console.log('props', this.props.load);
+
     return (
       <View style={{flex: 1, backgroundColor: 'white'}}>
-        <View style={{height: 200, backgroundColor: colors.lightGrey}}>
-          {origin.latitude &&
-            destination.latitude && (
-              <LoadLocationMapView origin={origin} destination={destination} />
-            )}
-        </View>
 
-        <View style={{padding: 5}}>
-          <LoadPickDropLocation origin={origin} destination={destination} />
-          <LoadInfo load={load} />
+        {origin && destination &&
+
+        <View style={{flex: 1}}>
+
+          <View style={{height: 200, backgroundColor: colors.lightGrey}}>
+            <LoadLocationMapView origin={origin} destination={destination}/>
+          </View>
+
+          <LoadPickDropLocation origin={origin} destination={destination} style={{padding: 5}}/>
+
+          <Divider style={{marginVertical: 10}}/>
+
+          <LoadInfo load={load} style={{padding: 5}}/>
+
+          <Divider/>
+
+          <Title style={{paddingTop: 10}}> Trip Drivers </Title>
+
+          <TripList items={load.trips || []} onItemPress={this.onTripListItemPress}/>
+
         </View>
+        }
       </View>
     );
   }
 }
 
 const makeMapStateToProps = () => {
-  const getLoadByID = DRIVER_SELECTORS.getLoadByID();
+  const getLoadByID = CUSTOMER_SELECTORS.getLoadByID();
   const mapStateToProps = (state, props) => {
     return {
-      load: getLoadByID(state, props.navigation.state.params.loadID),
+      // load: getLoadByID(state, props.navigation.state.params.loadID),
+      load: getLoadByID(state, 1),
     };
   };
   return mapStateToProps;

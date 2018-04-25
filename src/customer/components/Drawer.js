@@ -2,11 +2,8 @@
  * @flow
  */
 import React, {Component} from 'react';
-import {StyleSheet, View} from 'react-native';
-import colors from 'assets/theme/colors';
 import I18n from 'utils/locale';
 import DrawerItem from 'components/DrawerItem';
-import Divider from 'components/Divider';
 import {DrawerSection} from 'react-native-paper';
 
 export default class Drawer extends Component {
@@ -60,16 +57,7 @@ export default class Drawer extends Component {
           active={activeRoute === 'LoadStack'}
         />
 
-        <DrawerItem
-          label={I18n.t('logout')}
-          routeName="Logout"
-          onItemPress={logout}
-          iconProps={{
-            name: 'logout',
-            type: 'MaterialCommunityIcons',
-          }}
-          active={activeRoute === 'Logout'}
-        />
+
       </DrawerSection>
     );
   }

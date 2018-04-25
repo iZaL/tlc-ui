@@ -5,6 +5,7 @@ import React, {Component, PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {StyleSheet, Text, View} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import IconFactory from "../../../components/IconFactory";
 
 export default class LoadPickDropLocation extends PureComponent {
   static propTypes = {
@@ -18,26 +19,18 @@ export default class LoadPickDropLocation extends PureComponent {
   };
 
   render() {
-    let {origin, destination} = this.props;
+    let {origin, destination,style} = this.props;
 
     return (
-      <View style={styles.container}>
+      <View style={[styles.container,style]}>
         <View style={styles.itemRowContainer}>
-          <MaterialCommunityIcons
-            name="arrow-up-box"
-            size={30}
-            style={styles.locationIcon}
-          />
+          <IconFactory type="MaterialCommunityIcons" name="arrow-up-box" size={30}/>
           <Text style={styles.locationName}>
             {origin.city}, {origin.country.name}
           </Text>
         </View>
         <View style={styles.itemRowContainer}>
-          <MaterialCommunityIcons
-            name="arrow-down-box"
-            size={30}
-            style={styles.locationIcon}
-          />
+          <IconFactory type="MaterialCommunityIcons" name="arrow-down-box" size={30}/>
           <Text style={styles.locationName}>
             {destination.city}, {destination.country.name}
           </Text>
@@ -49,7 +42,6 @@ export default class LoadPickDropLocation extends PureComponent {
 
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: 5,
   },
   itemRowContainer: {
     flexDirection: 'row',

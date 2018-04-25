@@ -18,6 +18,7 @@ import TripTrackScene from 'customer/trips/TripTrackScene';
 import colors from 'assets/theme/colors';
 import I18n from 'utils/locale';
 import LoadDetailOptionsListScene from 'customer/loads/LoadDetailOptionsListScene';
+import DriversListScene from 'customer/loads/DriversListScene';
 import DriversBlockListScene from 'customer/profile/DriversBlockListScene';
 
 const getDrawerIcon = navigation => {
@@ -135,6 +136,9 @@ const LoadStack = createStackNavigator(
         title: I18n.t('trip_track'),
       }),
     },
+    DriversList: {
+      screen: DriversListScene,
+    }
   },
   {
     navigationOptions: {
@@ -144,7 +148,7 @@ const LoadStack = createStackNavigator(
     cardStyle:{
       backgroundColor:colors.fadedWhite
     },
-    // initialRouteName: 'LoadAdd',
+    initialRouteName: 'LoadDetail',
   },
 );
 

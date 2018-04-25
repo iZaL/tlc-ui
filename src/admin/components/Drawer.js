@@ -2,11 +2,9 @@
  * @flow
  */
 import React, {Component} from 'react';
-import {StyleSheet, View} from 'react-native';
-import colors from 'assets/theme/colors';
 import I18n from 'utils/locale';
 import DrawerItem from 'components/DrawerItem';
-import Divider from 'components/Divider';
+import {DrawerSection} from "react-native-paper";
 
 export default class Drawer extends Component {
   onItemPress = (routeName: string) => {
@@ -22,44 +20,45 @@ export default class Drawer extends Component {
 
   render() {
     let {logout} = this.props.screenProps;
+    let {activeRoute} = this.state;
 
     return (
-      <View style={styles.container}>
+
+      <DrawerSection style={{paddingTop: 30}}>
         <DrawerItem
-          title={I18n.t('home')}
+          label={I18n.t('home')}
           routeName="HomeStack"
           onItemPress={this.onItemPress}
-          icon="ios-paper-plane"
-          active={this.state.activeRoute === 'HomeStack'}
+          iconProps={{
+            name: 'home-outline',
+            type: 'MaterialCommunityIcons',
+          }}
+          active={activeRoute === 'HomeStack'}
         />
 
-        <Divider />
-
         <DrawerItem
-          title={I18n.t('settings')}
+          label={I18n.t('settings')}
           routeName="SettingsStack"
           onItemPress={this.onItemPress}
-          icon="ios-paper-plane"
-          active={this.state.activeRoute === 'SettingsStack'}
+          iconProps={{
+            name: 'person-outline',
+            type: 'MaterialIcons',
+          }}
+          active={activeRoute === 'ProfileStack'}
         />
 
         <DrawerItem
-          title={I18n.t('logout')}
+          label={I18n.t('logout')}
           routeName="Logout"
           onItemPress={logout}
-          icon="ios-paper-plane"
-          active={this.state.activeRoute === 'Logout'}
+          iconProps={{
+            name: 'logout',
+            type: 'MaterialCommunityIcons',
+          }}
+          active={activeRoute === 'Logout'}
         />
-      </View>
+
+      </DrawerSection>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.fadedWhite,
-    paddingHorizontal: 10,
-    paddingTop: 30,
-  },
-});

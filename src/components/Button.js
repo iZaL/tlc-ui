@@ -32,7 +32,7 @@ export default class Button extends Component {
 
 const styles = StyleSheet.create({
   button: {
-    paddingVertical: 10,
+    // paddingVertical: 10,
   },
   buttonText: {},
 });

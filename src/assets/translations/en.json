@@ -249,4 +249,9 @@
   "blocked_drivers" : "Blocked Drivers",
   "select_drivers" : "Select Drivers",
 
+  "load_create_success" : "Load has been successfully created.",
+  "view_matching_drivers" : "View Matching Drivers",
+
+  "success" : "Success"
+
 }

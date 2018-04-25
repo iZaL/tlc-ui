@@ -36,7 +36,7 @@ driversSchema.define({
   loads: [loadsSchema],
   upcoming_trips: [tripsSchema],
   security_passes: [{security_pass: securityPassesSchema}],
-  user: usersSchema,
+  // user: usersSchema, //@note:loops the relation. do not uncomment unless you know what you're doing
 });
 
 customersSchema.define({
@@ -49,7 +49,7 @@ customerLocationsSchema.define({
 });
 
 usersSchema.define({
-  profile: profileSchema,
+  profile: profileSchema, //only for authenticated user
 });
 
 trucksSchema.define({
@@ -75,12 +75,12 @@ loadsSchema.define({
   destination: {
     country: countriesSchema,
   },
-  trailer: trailersSchema,
+  trailer_type: trailerTypesSchema,
   customer: customersSchema,
+  trips:[tripsSchema]
 });
 
 tripsSchema.define({
-  load: loadsSchema,
   driver: driversSchema,
 });
 
@@ -95,6 +95,10 @@ truckMakesSchema.define({
 trailersSchema.define({
   type: trailerTypesSchema,
   make: trailerMakesSchema,
+});
+
+trailerTypesSchema.define({
+  trailer:trailersSchema
 });
 
 export const Schema = {

@@ -10,6 +10,7 @@ const truckMakesSchema = state => state.entities.truck_makes;
 const truckModelsSchema = state => state.entities.truck_models;
 const driversSchema = state => state.entities.drivers;
 const trailersSchema = state => state.entities.trailers;
+const trailerTypesSchema = state => state.entities.trailer_types;
 const routesSchema = state => state.entities.routes;
 const trucksSchema = state => state.entities.trucks;
 const countriesSchema = state => state.entities.countries;
@@ -24,41 +25,41 @@ const getProfile = createSelector(
     return {
       ...driver,
       nationalities:
-        (driver.nationalities &&
-          driver.nationalities.map(record => {
-            return {
-              ...record,
-              country: countries[record.country],
-            };
-          })) ||
-        [],
+      (driver.nationalities &&
+        driver.nationalities.map(record => {
+          return {
+            ...record,
+            country: countries[record.country],
+          };
+        })) ||
+      [],
       residencies:
-        (driver.residencies &&
-          driver.residencies.map(record => {
-            return {
-              ...record,
-              country: countries[record.country],
-            };
-          })) ||
-        [],
+      (driver.residencies &&
+        driver.residencies.map(record => {
+          return {
+            ...record,
+            country: countries[record.country],
+          };
+        })) ||
+      [],
       visas:
-        (driver.visas &&
-          driver.visas.map(record => {
-            return {
-              ...record,
-              country: countries[record.country],
-            };
-          })) ||
-        [],
+      (driver.visas &&
+        driver.visas.map(record => {
+          return {
+            ...record,
+            country: countries[record.country],
+          };
+        })) ||
+      [],
       licenses:
-        (driver.licenses &&
-          driver.licenses.map(record => {
-            return {
-              ...record,
-              country: countries[record.country],
-            };
-          })) ||
-        [],
+      (driver.licenses &&
+        driver.licenses.map(record => {
+          return {
+            ...record,
+            country: countries[record.country],
+          };
+        })) ||
+      [],
     };
   },
 );
@@ -108,30 +109,56 @@ const getTrailer = createSelector(
 
 const getLoadByID = () => {
   return createSelector(
-    [loadsSchema, countriesSchema, trailersSchema, getIdProp],
-    (loads, countries, trailers, loadID) => {
+    [loadsSchema, countriesSchema, trailerTypesSchema, tripsSchema, driversSchema, getIdProp],
+    (loads, countries, trailerTypes, trips, drivers, loadID) => {
       let load = loads[loadID];
 
-      let loadOrigin = load.origin || {};
-      let origin = {
-        ...loadOrigin,
-        country: loadOrigin.country ? countries[loadOrigin.country] : {},
-      };
+      if (load) {
+        let loadOrigin = load.origin || {};
+        let origin = {
+          ...loadOrigin,
+          country: loadOrigin.country ? countries[loadOrigin.country] : {},
+        };
 
-      let loadDestination = load.destination || {};
-      let destination = {
-        ...loadDestination,
-        country: loadDestination.country
-          ? countries[loadDestination.country]
-          : {},
-      };
+        let loadDestination = load.destination || {};
+        let destination = {
+          ...loadDestination,
+          country: loadDestination.country
+            ? countries[loadDestination.country]
+            : {},
+        };
 
-      return {
-        ...load,
-        origin: origin,
-        destination: destination,
-        trailer: trailers[load.trailer] || {},
-      };
+        // if(load.trips.length) {
+        //   load.trips.map(tripID => trips[tripID])
+        // }
+        //
+        // licenses:
+        //   (driver.licenses &&
+        //     driver.licenses.map(record => {
+        //       return {
+        //         ...record,
+        //         country: countries[record.country],
+        //       };
+        //     })) ||
+        //   [],
+        return {
+          ...load,
+          origin: origin,
+          destination: destination,
+          trailer: trailerTypes[load.trailer_type] || {},
+          trips: (load.trips &&
+            load.trips.map(record => {
+              return {
+                ...record,
+                driver: drivers[record.driver] || {},
+              };
+            })) ||
+          [],
+        };
+      }
+
+      return {}
+
     },
   );
 };

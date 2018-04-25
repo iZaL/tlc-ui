@@ -2,6 +2,7 @@ import {ACTION_TYPES} from 'customer/common/actions';
 import moment from 'moment';
 
 const initialState = {
+  loadDrivers:{},
   add:{
     index:1,
     attributes:{
@@ -45,6 +46,15 @@ export function reducer(state = initialState, action = {}) {
             ...state.add.attributes,
             [action.field] : action.value
           }
+        }
+      };
+      break;
+    case ACTION_TYPES.FETCH_LOAD_DRIVERS_SUCCESS:
+      return {
+        ...state,
+        loadDrivers:{
+          ...state.loadDrivers,
+          [action.loadID] : action.result
         }
       };
       break;

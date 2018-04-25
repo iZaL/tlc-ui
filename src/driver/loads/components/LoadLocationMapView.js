@@ -36,11 +36,11 @@ export default class LoadLocationMapView extends Component {
   };
 
   render() {
-    let {origin, destination} = this.props;
+    let {origin, destination,style} = this.props;
     let markers = [origin, destination];
 
     return (
-      <View style={styles.container}>
+      <View style={[styles.container,style]}>
         <MapView
           ref={ref => {
             this.map = ref;

@@ -55,6 +55,16 @@ function saveLocation(body) {
   return fetchAPI(url, 'POST', body);
 }
 
+function fetchLoadDrivers(params) {
+  const url = `customer/loads/${params.load_id}/drivers/search`;
+  return fetchAPI(url);
+}
+
+function fetchLoadDetails(params) {
+  const url = `customer/loads/${params.load_id}/details`;
+  return fetchAPI(url);
+}
+
 export const API = {
   saveProfile,
   saveEmployee,
@@ -67,4 +77,6 @@ export const API = {
   fetchLocations,
   fetchLoadAdd,
   fetchLoadsByStatus,
+  fetchLoadDrivers,
+  fetchLoadDetails
 };

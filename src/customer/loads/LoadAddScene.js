@@ -21,6 +21,7 @@ import TrailerQuantity from 'customer/loads/components/TrailerQuantity';
 import moment from 'moment';
 import I18n from 'utils/locale';
 import {ACTIONS as TRUCK_ACTIONS} from 'trucks/common/actions';
+import SuccessDialog from "./components/SuccessDialog";
 
 class LoadAddScene extends Component {
   static propTypes = {
@@ -34,8 +35,8 @@ class LoadAddScene extends Component {
   state = {
     // component level dialogs
     isSuccessDialogVisible:false,
-    showPackageDimsSelectionModal: false,
-    showTrailerQuantitySelectionModal: false,
+    isPackageDimensionDialogVisible: false,
+    isTrailerQuantityDialogVisible: false,
   };
 
   componentDidMount() {
@@ -43,18 +44,52 @@ class LoadAddScene extends Component {
     this.props.dispatch(TRUCK_ACTIONS.fetchTrailerTypes());
   }
 
+
+  showSuccessModalDialog = () => {
+    this.setState({
+      isSuccessDialogVisible:true
+    });
+  };
+
+  hideSuccessModalDialog = () => {
+    this.setState({
+      isSuccessDialogVisible:false
+    });
+  };
+
+  showPackageDimensionDialog = () => {
+    this.setState({
+      isPackageDimensionDialogVisible:true
+    });
+  };
+
+  hidePackageDimensionDialog = () => {
+    this.setState({
+      isPackageDimensionDialogVisible:false
+    });
+  };
+
+  showTrailerQuantityDialog = () => {
+    this.setState({
+      isTrailerQuantityDialogVisible:true
+    });
+  };
+
+  hideTrailerQuantityDialog = () => {
+    this.setState({
+      isTrailerQuantityDialogVisible:false
+    });
+  };
+
   onValueChange = (field, value) => {
-
-    // this.setState({[field]: value});
-
     this.props.dispatch(CUSTOMER_ACTIONS.setAddData(field,value));
 
     if (field == 'packaging_id') {
-      this.showModal('showPackageDimsSelectionModal');
+      this.showPackageDimensionDialog();
     }
 
     if (field == 'trailer_id') {
-      this.showModal('showTrailerQuantitySelectionModal');
+      this.showTrailerQuantityDialog();
     }
   };
 
@@ -80,22 +115,8 @@ class LoadAddScene extends Component {
     //   // dispatch(someActionCreator({ values, resolve, reject }))
     // }).then(() => {});
 
-
     // on Success
-
-
-  };
-
-  showModal = name => {
-    this.setState({
-      [name]: true,
-    });
-  };
-
-  hideModal = name => {
-    this.setState({
-      [name]: false,
-    });
+    this.showSuccessModalDialog();
   };
 
   onPackagingDimensionsFieldChange = (field, name) => {
@@ -107,13 +128,18 @@ class LoadAddScene extends Component {
     });
   };
 
+  showMatchingDrivers = () => {
+    this.hideSuccessModalDialog();
+    this.props.navigation.navigate('LoadDetail',{
+      loadID:1
+    });
+  };
+
   render() {
     let {
-
-      showPackageDimsSelectionModal,
-      showTrailerQuantitySelectionModal,
-
-
+      isPackageDimensionDialogVisible,
+      isTrailerQuantityDialogVisible,
+      isSuccessDialogVisible
     } = this.state;
 
     let {
@@ -162,26 +188,20 @@ class LoadAddScene extends Component {
               />
 
               <PackageDimensions
-                visible={showPackageDimsSelectionModal}
+                visible={isPackageDimensionDialogVisible}
                 onValueChange={this.onPackagingDimensionsFieldChange}
-                onCancel={() => this.hideModal('showPackageDimsSelectionModal')}
-                onConfirm={() =>
-                  this.hideModal('showPackageDimsSelectionModal')
-                }
+                onCancel={this.hidePackageDimensionDialog}
+                onConfirm={this.hidePackageDimensionDialog}
                 {...packaging_dimension}
               />
 
               <TrailerQuantity
-                visible={showTrailerQuantitySelectionModal}
+                visible={isTrailerQuantityDialogVisible}
                 onValueChange={quantity =>
                   this.onValueChange('trailer_quantity', quantity)
                 }
-                onCancel={() =>
-                  this.hideModal('showTrailerQuantitySelectionModal')
-                }
-                onConfirm={() =>
-                  this.hideModal('showTrailerQuantitySelectionModal')
-                }
+                onCancel={this.hideTrailerQuantityDialog}
+                onConfirm={this.hideTrailerQuantityDialog}
                 selected={trailer_quantity}
               />
             </TabPanel>
@@ -233,6 +253,12 @@ class LoadAddScene extends Component {
             />
           </TabPanels>
         </Tabs>
+
+        <SuccessDialog
+          visible={isSuccessDialogVisible}
+          onPress={this.showMatchingDrivers}
+        />
+
       </ScrollView>
     );
   }

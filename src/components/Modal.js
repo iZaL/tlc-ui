@@ -37,7 +37,7 @@ export default class AppModal extends Component {
         )}
 
         {children}
-        <Button onPress={onCancel} raised primary dark style={{padding: 10}}>
+        <Button onPress={onCancel} raised primary dark>
           {I18n.t('save')}
         </Button>
       </Modal>

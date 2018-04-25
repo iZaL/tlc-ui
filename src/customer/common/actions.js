@@ -54,6 +54,15 @@ export const ACTION_TYPES = {
   LOCATION_RECEIVED: '@customer/LOCATION_RECEIVED',
 
   SUBSCRIBE_TO_TRIP_TRACK_CHANNEL: '@customer/SUBSCRIBE_TO_TRIP_TRACK_CHANNEL',
+
+  FETCH_LOAD_DETAILS_REQUEST: '@customer/FETCH_LOAD_DETAILS_REQUEST',
+  FETCH_LOAD_DETAILS_SUCCESS: '@customer/FETCH_LOAD_DETAILS_SUCCESS',
+  FETCH_LOAD_DETAILS_FAILURE: '@customer/FETCH_LOAD_DETAILS_FAILURE',
+
+  FETCH_LOAD_DRIVERS_REQUEST: '@customer/FETCH_LOAD_DRIVERS_REQUEST',
+  FETCH_LOAD_DRIVERS_SUCCESS: '@customer/FETCH_LOAD_DRIVERS_SUCCESS',
+  FETCH_LOAD_DRIVERS_FAILURE: '@customer/FETCH_LOAD_DRIVERS_FAILURE',
+
 };
 
 function fetchEmployees(params) {
@@ -147,6 +156,20 @@ function setAddData(field, value) {
   }
 }
 
+function fetchLoadDetails(params) {
+  return {
+    type: ACTION_TYPES.FETCH_LOAD_DETAILS_REQUEST,
+    params,
+  };
+}
+
+function fetchLoadDrivers(params) {
+  return {
+    type: ACTION_TYPES.FETCH_LOAD_DRIVERS_REQUEST,
+    params,
+  };
+}
+
 export const ACTIONS = {
   saveProfile,
   fetchProfile,
@@ -157,8 +180,9 @@ export const ACTIONS = {
   saveEmployee,
   fetchLoadAddData,
   fetchLoadsByStatus,
+  fetchLoadDetails,
+  fetchLoadDrivers,
   saveLoad,
   subscribeToTripTrack,
-
   setAddData
 };

@@ -12,6 +12,7 @@ const getTrackings = state => state.customer.trackings;
 const driversSchema = state => state.entities.drivers;
 const addData = state => state.customer.loads.add;
 const editData = state => state.customer.loads.edit;
+const getLoadDrivers = state => state.customer.loads.loadDrivers;
 
 const getProfile = createSelector(
   [USER_SELECTORS.getAuthUserProfile],
@@ -76,9 +77,6 @@ const getDrivers = createSelector(
     }
     return [];
   },
-  // Object.keys(drivers).map(driver => denormalize(driver, Schema.drivers, schema),
-  // ) ||
-  // [],
 );
 
 const getLoadByID = () => {
@@ -115,6 +113,18 @@ const getLocationUpdatesForTrip = () => {
 
 const getAddData = createSelector(addData, data => data);
 
+const getDriversForLoad = () => {
+  return createSelector([entities,getLoadDrivers, getIdProp], (schema,loadDrivers, loadID) => {
+      let drivers = loadDrivers[loadID];
+      if (drivers) {
+        return drivers.map(driver =>
+          denormalize(driver, Schema.drivers, schema),
+        );
+      }
+      return [];
+    }
+  );
+};
 export const SELECTORS = {
   getProfile,
   getEmployees,
@@ -125,5 +135,7 @@ export const SELECTORS = {
   getLocationUpdatesForTrip,
   getBlockedDrivers,
   getDrivers,
-  getAddData
+  getAddData,
+  getDriversForLoad,
+  getLoadByID
 };

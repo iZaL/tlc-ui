@@ -14,7 +14,7 @@ class ProfileHome extends Component {
   static propTypes = {};
 
   componentDidMount() {
-    this.props.dispatch(DRIVER_ACTIONS.fetchProfile());
+    // this.props.dispatch(DRIVER_ACTIONS.fetchProfile());
   }
 
   onListItemPress = route => {

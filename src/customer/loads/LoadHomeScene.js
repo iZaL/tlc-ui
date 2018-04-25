@@ -1,15 +1,12 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {ScrollView} from 'react-native';
 import ListItem from 'components/ListItem';
-import IconFactory from 'components/IconFactory';
-import {SELECTORS as CUSTOMER_SELECTORS} from 'customer/common/selectors';
 import {ACTIONS as CUSTOMER_ACTIONS} from 'customer/common/actions';
 import Divider from 'components/Divider';
 import I18n from 'utils/locale';
 import {ListSection} from 'react-native-paper';
 
-class ProfileHome extends Component {
+class LoadHomeScene extends Component {
   static propTypes = {};
 
   componentDidMount() {
@@ -99,4 +96,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(ProfileHome);
+export default connect(mapStateToProps)(LoadHomeScene);

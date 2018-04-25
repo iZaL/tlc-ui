@@ -7,7 +7,7 @@ import Divider from 'components/Divider';
 import I18n from 'utils/locale';
 import {ListSection} from 'react-native-paper';
 
-class ProfileHome extends Component {
+class LoadHomeScene extends Component {
   static propTypes = {};
 
   onListItemPress = route => {
@@ -77,4 +77,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(ProfileHome);
+export default connect(mapStateToProps)(LoadHomeScene);

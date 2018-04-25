@@ -92,6 +92,34 @@ function* fetchLoadsByStatus(action: object) {
   }
 }
 
+function* fetchLoadDrivers(action) {
+  try {
+    const response = yield call(API.fetchLoadDrivers, action.params);
+    const normalized = normalize(response.data, [Schema.drivers]);
+    yield put({
+      type: ACTION_TYPES.FETCH_LOAD_DRIVERS_SUCCESS,
+      entities: normalized.entities,
+      result:normalized.result,
+      loadID:action.params.load_id
+    });
+  } catch (error) {
+    yield put({type: ACTION_TYPES.FETCH_LOAD_DRIVERS_FAILURE, error});
+  }
+}
+
+function* fetchLoadDetails(action) {
+  try {
+    const response = yield call(API.fetchLoadDetails, action.params);
+    const normalized = normalize(response.data, Schema.loads);
+    yield put({
+      type: ACTION_TYPES.FETCH_LOAD_DETAILS_SUCCESS,
+      entities: normalized.entities,
+    });
+  } catch (error) {
+    yield put({type: ACTION_TYPES.FETCH_LOAD_DETAILS_FAILURE, error});
+  }
+}
+
 function* saveLoadMonitor() {
   yield takeLatest(ACTION_TYPES.SAVE_LOAD_REQUEST, saveLoad);
 }
@@ -107,8 +135,19 @@ function* fetchLoadsByStatusMonitor() {
   );
 }
 
+
+function* fetchLoadDriversMonitor() {
+  yield takeLatest(ACTION_TYPES.FETCH_LOAD_DRIVERS_REQUEST, fetchLoadDrivers);
+}
+
+function* fetchLoadDetailsMonitor() {
+  yield takeLatest(ACTION_TYPES.FETCH_LOAD_DETAILS_REQUEST, fetchLoadDetails);
+}
+
 export const sagas = all([
   fork(fetchLoadAddDataMonitor),
   fork(fetchLoadsByStatusMonitor),
   fork(saveLoadMonitor),
+  fork(fetchLoadDriversMonitor),
+  fork(fetchLoadDetailsMonitor),
 ]);
