@@ -15,8 +15,8 @@ import {
 } from 'react-native';
 import I18n from 'utils/locale';
 import colors from 'assets/theme/colors';
-import FormLabel from 'components/FormLabel';
-import FormTextInput from '/components/FormTextInput';
+import Label from 'components/Label';
+import TextInput from '/components/TextInput';
 import Button from 'components/Button';
 import Touchable from 'react-native-platform-touchable';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
@@ -162,8 +162,8 @@ export default class VisaLicenseForm extends PureComponent {
     return (
       <View>
         <View style={[styles.contentContainer]}>
-          <FormLabel title={I18n.t('license_expiry_date')} />
-          <FormTextInput
+          <Label title={I18n.t('license_expiry_date')} />
+          <TextInput
             onValueChange={this.onValueChange}
             field="license_expiry_date"
             value={license_expiry_date}
@@ -171,7 +171,7 @@ export default class VisaLicenseForm extends PureComponent {
             label={I18n.t('license_expiry_date')}
           />
 
-          <FormLabel title={I18n.t('license_image')} />
+          <Label title={I18n.t('license_image')} />
 
           <Touchable
             style={styles.imageContainer}
@@ -188,9 +188,9 @@ export default class VisaLicenseForm extends PureComponent {
           </Touchable>
         </View>
         <View style={[styles.contentContainer]}>
-          <FormLabel title={I18n.t('visa_expiry_date')} />
+          <Label title={I18n.t('visa_expiry_date')} />
 
-          <FormTextInput
+          <TextInput
             onValueChange={this.onValueChange}
             field="visa_expiry_date"
             value={visa_expiry_date}
@@ -198,7 +198,7 @@ export default class VisaLicenseForm extends PureComponent {
             label={I18n.t('visa_expiry_date')}
           />
 
-          <FormLabel title={I18n.t('visa_image')} />
+          <Label title={I18n.t('visa_image')} />
           <Touchable
             style={styles.imageContainer}
             onPress={() => this.openImagePicker('visa')}>

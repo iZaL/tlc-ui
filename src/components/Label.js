@@ -3,7 +3,7 @@ import {StyleSheet, Text} from 'react-native';
 import PropTypes from 'prop-types';
 import colors from 'assets/theme/colors';
 
-export default class FormLabel extends Component {
+export default class Label extends Component {
   static propTypes = {
     title: PropTypes.string.isRequired,
     // style:PropTypes.object

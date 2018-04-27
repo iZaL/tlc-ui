@@ -26,7 +26,6 @@ export default class extends PureComponent {
 
   render() {
     let {items} = this.props;
-    console.log('trips', items);
     return (
       <ListSection>
         <FlatList

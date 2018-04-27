@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import {StyleSheet} from 'react-native';
-import {TextInput} from 'react-native-paper';
+import {TextInput as PaperTextInput} from 'react-native-paper';
 import PropTypes from 'prop-types';
 import colors from 'assets/theme/colors';
 
-export default class FormTextInput extends Component {
+export default class TextInput extends Component {
   shouldComponentUpdate(nextProps) {
     return (
       nextProps.value !== this.props.value ||
@@ -26,7 +26,7 @@ export default class FormTextInput extends Component {
   render() {
     const {style, label, placeholder, ...rest} = this.props;
     return (
-      <TextInput
+      <PaperTextInput
         onChangeText={this.onValueChange}
         label={label}
         placeholder={placeholder ? placeholder : label}

@@ -6,8 +6,8 @@ import PropTypes from 'prop-types';
 import {Image, StyleSheet, View} from 'react-native';
 import I18n from 'utils/locale';
 import colors from 'assets/theme/colors';
-import FormLabel from 'components/FormLabel';
-import FormTextInput from '/components/FormTextInput';
+import Label from 'components/Label';
+import TextInput from '/components/TextInput';
 import Touchable from 'react-native-platform-touchable';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import ImagePicker from 'react-native-image-picker';
@@ -94,7 +94,7 @@ export default class VisaLicenseForm extends PureComponent {
     return (
       <View style={styles.container}>
         <View style={[styles.contentContainer]}>
-          <FormLabel title={I18n.t('expiry_date')} style={{marginBottom: 10}} />
+          <Label title={I18n.t('expiry_date')} style={{marginBottom: 10}} />
 
           <DateTimePicker
             date={expiry_date || model.expiry_date}
@@ -107,7 +107,7 @@ export default class VisaLicenseForm extends PureComponent {
           />
 
           <Divider style={{marginTop: 30, marginBottom: 10}} />
-          <FormLabel title={I18n.t('image')} />
+          <Label title={I18n.t('image')} />
 
           <Touchable
             style={styles.imageContainer}

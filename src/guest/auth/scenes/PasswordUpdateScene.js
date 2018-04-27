@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import React, {Component} from 'react';
 import {StyleSheet, View} from 'react-native';
-import FormLabel from 'components/FormLabel';
+import Label from 'components/Label';
 import I18n from 'utils/locale';
-import FormTextInput from 'components/FormTextInput';
+import TextInput from 'components/TextInput';
 import Button from 'components/Button';
 
 export default class PasswordUpdateScene extends Component {
@@ -26,9 +26,9 @@ export default class PasswordUpdateScene extends Component {
 
     return (
       <View style={styles.container}>
-        <FormLabel title={I18n.t('new_password')} />
+        <Label title={I18n.t('new_password')} />
 
-        <FormTextInput
+        <TextInput
           onValueChange={onValueChange}
           field="password"
           value={password}
@@ -37,8 +37,8 @@ export default class PasswordUpdateScene extends Component {
           secureTextEntry={true}
         />
 
-        <FormLabel title={I18n.t('confirm_new_password')} />
-        <FormTextInput
+        <Label title={I18n.t('confirm_new_password')} />
+        <TextInput
           onValueChange={onValueChange}
           field="password_confirmation"
           value={confirmedPassword}

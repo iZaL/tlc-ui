@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Text, View, StyleSheet, ScrollView, FlatList} from 'react-native';
 import Touchable from 'react-native-platform-touchable';
-import FormLabel from 'components/FormLabel';
-import FormTextInput from 'components/FormTextInput';
+import Label from 'components/Label';
+import TextInput from 'components/TextInput';
 import Divider from 'components/Divider';
 import colors from 'assets/theme/colors';
 import I18n from 'utils/locale';
@@ -20,7 +20,7 @@ export default class LoadWhat extends Component {
     let {onValueChange, security_passes} = this.props;
     return (
       <View style={styles.row}>
-        <FormLabel
+        <Label
           title={`${item.name} - ${item.country.name}`}
           style={{flex: 1}}
         />
@@ -36,7 +36,7 @@ export default class LoadWhat extends Component {
     let {items, security_passes} = this.props;
     return (
       <View>
-        <FormLabel
+        <Label
           title={I18n.t('load_security_passes')}
           style={{marginBottom: 10}}
         />

@@ -3,10 +3,12 @@
  */
 import React, {Component, PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import {TouchableRipple} from 'react-native-paper';
-import ListItem from 'components/ListItem';
 import {TripProp} from 'app/common/proptypes';
+import Label from "components/Label";
+import I18n from 'utils/locale';
+import UserInfo from "components/UserInfo";
 
 export default class extends PureComponent {
   static propTypes = {
@@ -20,24 +22,19 @@ export default class extends PureComponent {
 
   render() {
     let {item, onItemPress} = this.props;
-    console.log('item',item);
+    let {driver} = item;
     return (
-      <TouchableRipple onItemPress={onItemPress}>
+      <TouchableRipple onPress={onItemPress}>
         <View style={styles.container}>
-          <ListItem
-            onItemPress={onItemPress}
-            title={item.driver.user.name}
-            description={item.driver.nationalities.map(nationality => nationality.country.name).join(',')}
-            avatar={
-              <Image
-                source={{uri: 'https://cdn.iconscout.com/public/images/icon/free/png-512/avatar-user-coder-3579ca3abc3fd60f-512x512.png'}}
-                style={styles.avatar}
-              />
-            }
-            style={{flex: 1}}
-          />
+
+          <UserInfo style={{padding:10}} image={driver.user.image} name={driver.user.name} onAvatarPress={this.onPress}/>
+
+          <View style={styles.rightContainer}>
+            <Label title={I18n.t('status')}/>
           <Text style={styles.status}>{item.status}</Text>
+          </View>
         </View>
+
       </TouchableRipple>
     );
   }
@@ -54,6 +51,9 @@ const styles = StyleSheet.create({
     width: 40,
   },
   status: {
+  },
+  rightContainer:{
+    alignItems:'center',
     paddingHorizontal: 10
   }
 });

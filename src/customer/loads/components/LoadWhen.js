@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Text, View, StyleSheet, ScrollView} from 'react-native';
 import Touchable from 'react-native-platform-touchable';
-import FormLabel from 'components/FormLabel';
+import Label from 'components/Label';
 import I18n from 'utils/locale';
 import DatePicker from 'components/DatePicker';
 import Divider from 'components/Divider';
@@ -46,7 +46,7 @@ export default class LoadWhat extends Component {
 
     return (
       <ScrollView>
-        <FormLabel title={I18n.t('load_date')} />
+        <Label title={I18n.t('load_date')} />
 
         <DatePicker onDateChange={date => onValueChange('load_date', date)} />
 

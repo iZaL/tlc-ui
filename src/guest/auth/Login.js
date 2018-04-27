@@ -6,7 +6,7 @@ import {ACTIONS} from 'guest/common/actions';
 import {Alert, View} from 'react-native';
 import I18n from 'utils/locale';
 import Button from 'components/Button';
-import FormTextInput from 'components/FormTextInput';
+import TextInput from 'components/TextInput';
 
 class Login extends Component {
   static propTypes = {
@@ -68,7 +68,7 @@ class Login extends Component {
     return (
       <View style={{flex: 1, padding: 10}}>
         <View style={{padding: 5, paddingTop: 64}}>
-          <FormTextInput
+          <TextInput
             label={I18n.t('email')}
             onValueChange={this.onValueChange}
             field="email"
@@ -77,7 +77,7 @@ class Login extends Component {
             keyboardType="email-address"
           />
 
-          <FormTextInput
+          <TextInput
             label={I18n.t('password')}
             onValueChange={this.onValueChange}
             field="password"

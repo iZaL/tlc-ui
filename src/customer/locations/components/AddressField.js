@@ -1,7 +1,7 @@
 import React, {Component, PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {StyleSheet, Text, View} from 'react-native';
-import FormTextInput from 'components/FormTextInput';
+import TextInput from 'components/TextInput';
 import I18n from 'utils/locale';
 
 export default class AddressField extends PureComponent {
@@ -15,7 +15,7 @@ export default class AddressField extends PureComponent {
     return (
       <View style={styles.container}>
         {/*<Text style={styles.label}>{I18n.t('address')}</Text>*/}
-        <FormTextInput
+        <TextInput
           onValueChange={onValueChange}
           field="address_en"
           value={address_en}

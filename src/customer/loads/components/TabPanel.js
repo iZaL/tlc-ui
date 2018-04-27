@@ -21,10 +21,10 @@ export default class TabPanel extends Component {
   };
 
   render() {
-    let {buttonTitle, hideNextButton} = this.props;
+    let {buttonTitle, hideNextButton,style} = this.props;
 
     return (
-      <View>
+      <View style={style}>
         {this.props.children}
 
         {

@@ -253,6 +253,10 @@
   "load_create_success" : "Load has been successfully created.",
   "view_matching_drivers" : "View Matching Drivers",
 
-  "success" : "Success"
+  "success" : "Success",
+  "type" : "Type",
+  "trips": "Trips",
+  "status" : "Status",
+  "trip_drivers" : "Trip Drivers",
 
 }

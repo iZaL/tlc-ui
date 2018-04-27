@@ -10,7 +10,7 @@ import {View} from 'react-native';
 import moment from 'moment';
 import DocumentUpload from 'components/DocumentUpload';
 import ListModal from 'components/ListModal';
-import FormTextInput from 'components/FormTextInput';
+import TextInput from 'components/TextInput';
 
 export default class DocumentAdd extends PureComponent {
   static propTypes = {
@@ -78,7 +78,7 @@ export default class DocumentAdd extends PureComponent {
               {(country && country.name) || I18n.t('select_country')}
             </Button>
 
-            <FormTextInput
+            <TextInput
               label={I18n.t('registration_number')}
               value={number}
               onValueChange={onValueChange}

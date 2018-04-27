@@ -9,7 +9,7 @@ import {ACTIONS as TRUCK_ACTIONS} from 'trucks/common/actions';
 import Divider from 'components/Divider';
 import ListItem from 'components/ListItem';
 import Touchable from 'react-native-platform-touchable';
-import FormLabel from 'components/FormLabel';
+import Label from 'components/Label';
 import {Title} from 'react-native-paper';
 import I18n from 'utils/locale';
 import Button from 'components/Button';
@@ -17,7 +17,7 @@ import ListModal from 'components/ListModal';
 import Modal from 'components/Modal';
 import Dropdown from 'components/Dropdown';
 import DocumentUpload from 'components/DocumentUpload';
-import FormTextInput from 'components/FormTextInput';
+import TextInput from 'components/TextInput';
 
 class TrailerUpdateScene extends Component {
   static propTypes = {
@@ -167,7 +167,7 @@ class TrailerUpdateScene extends Component {
         <View style={{padding: 10}}>
           <Touchable onPress={this.showMakeModal}>
             <View>
-              <FormLabel title={I18n.t('trailer_make')} />
+              <Label title={I18n.t('trailer_make')} />
               <Title>
                 {trailer.make.id ? trailer.make.name : I18n.t('select')}
               </Title>
@@ -178,7 +178,7 @@ class TrailerUpdateScene extends Component {
 
           <Touchable onPress={this.showTypeModal}>
             <View>
-              <FormLabel title={I18n.t('trailer_type')} />
+              <Label title={I18n.t('trailer_type')} />
               <Title>
                 {trailer.type.id ? trailer.type.name : I18n.t('select')}
               </Title>
@@ -188,7 +188,7 @@ class TrailerUpdateScene extends Component {
           <Divider style={{marginTop: 15}} />
 
           <View style={{flexDirection: 'row'}}>
-            <FormTextInput
+            <TextInput
               label={I18n.t('length')}
               value={length}
               field="length"
@@ -196,7 +196,7 @@ class TrailerUpdateScene extends Component {
               style={{flex: 1, marginRight: 5}}
             />
 
-            <FormTextInput
+            <TextInput
               label={I18n.t('width')}
               value={width}
               field="width"
@@ -206,7 +206,7 @@ class TrailerUpdateScene extends Component {
           </View>
 
           <View style={{flexDirection: 'row'}}>
-            <FormTextInput
+            <TextInput
               label={I18n.t('height')}
               value={height}
               field="height"
@@ -214,7 +214,7 @@ class TrailerUpdateScene extends Component {
               style={{flex: 1, marginRight: 5}}
             />
 
-            <FormTextInput
+            <TextInput
               label={I18n.t('max_weight')}
               value={max_weight}
               onValueChange={this.onValueChange}
@@ -223,7 +223,7 @@ class TrailerUpdateScene extends Component {
             />
           </View>
 
-          <FormLabel title={I18n.t('truck_year')} />
+          <Label title={I18n.t('truck_year')} />
           <Title onPress={this.showYearModal}>{year || I18n.t('select')}</Title>
 
           <Divider style={{marginVertical: 10}} />

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import Modal from 'react-native-modal';
-import FormTextInput from 'components/FormTextInput';
+import TextInput from 'components/TextInput';
 import I18n from 'utils/locale';
 import {Button} from 'react-native-paper';
 
@@ -41,7 +41,7 @@ export default class PackageDimensions extends Component {
           onBackdropPress={onCancel}>
           <View style={styles.addressContainer}>
             <View style={{flexDirection: 'row'}}>
-              <FormTextInput
+              <TextInput
                 onValueChange={onValueChange}
                 value={length}
                 field="length"
@@ -52,7 +52,7 @@ export default class PackageDimensions extends Component {
                 label={`${I18n.t('length')} ${I18n.t('cm')}`}
               />
 
-              <FormTextInput
+              <TextInput
                 onValueChange={onValueChange}
                 field="width"
                 value={width}
@@ -63,7 +63,7 @@ export default class PackageDimensions extends Component {
                 label={`${I18n.t('width')} ${I18n.t('cm')}`}
               />
 
-              <FormTextInput
+              <TextInput
                 onValueChange={onValueChange}
                 field="height"
                 value={height}
@@ -76,7 +76,7 @@ export default class PackageDimensions extends Component {
             </View>
 
             <View style={{flexDirection: 'row'}}>
-              <FormTextInput
+              <TextInput
                 onValueChange={onValueChange}
                 field="weight"
                 value={weight}
@@ -87,7 +87,7 @@ export default class PackageDimensions extends Component {
                 label={`${I18n.t('weight')} ${I18n.t('kg')}`}
               />
 
-              <FormTextInput
+              <TextInput
                 onValueChange={onValueChange}
                 field="quantity"
                 value={quantity}

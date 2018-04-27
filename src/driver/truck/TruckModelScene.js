@@ -8,7 +8,7 @@ import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
 import {View} from 'react-native';
 import I18n from 'utils/locale';
 import Touchable from 'react-native-platform-touchable';
-import FormLabel from 'components/FormLabel';
+import Label from 'components/Label';
 import ListModal from 'components/ListModal';
 import Divider from 'components/Divider';
 import {Title} from 'react-native-paper';
@@ -122,7 +122,7 @@ class TruckModelScene extends Component {
           }}>
           <Touchable onPress={this.showMakeModal}>
             <View>
-              <FormLabel title={I18n.t('truck_make')} />
+              <Label title={I18n.t('truck_make')} />
               <Title>
                 {make_id ? truck.model.make.name : I18n.t('select')}
               </Title>
@@ -133,7 +133,7 @@ class TruckModelScene extends Component {
 
           <Touchable onPress={this.showModelModal} disabled={!make_id}>
             <View>
-              <FormLabel title={I18n.t('truck_model')} />
+              <Label title={I18n.t('truck_model')} />
 
               <Title>{model_id ? truck.model.name : I18n.t('select')}</Title>
             </View>

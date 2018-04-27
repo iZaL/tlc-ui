@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {ACTIONS as CUSTOMER_ACTIONS} from 'customer/common/actions';
 import {SELECTORS as CUSTOMER_SELECTORS} from 'customer/common/selectors';
 import {View} from 'react-native';
-import FormTextInput from 'components/FormTextInput';
+import TextInput from 'components/TextInput';
 import Button from 'components/Button';
 import I18n from 'utils/locale';
 import CheckedListItem from 'components/CheckedListItem';
@@ -59,7 +59,7 @@ class EmployeeAddScene extends Component {
     return (
       <View>
         <View style={{paddingTop: 0, padding: 10}}>
-          <FormTextInput
+          <TextInput
             onValueChange={this.onValueChange}
             field="name"
             value={name_en}
@@ -67,7 +67,7 @@ class EmployeeAddScene extends Component {
             label={I18n.t('name')}
           />
 
-          <FormTextInput
+          <TextInput
             onValueChange={this.onValueChange}
             field="mobile"
             value={mobile}
@@ -76,7 +76,7 @@ class EmployeeAddScene extends Component {
             keyboardType="phone-pad"
           />
 
-          <FormTextInput
+          <TextInput
             onValueChange={this.onValueChange}
             field="phone"
             value={phone}
@@ -85,7 +85,7 @@ class EmployeeAddScene extends Component {
             keyboardType="phone-pad"
           />
 
-          <FormTextInput
+          <TextInput
             onValueChange={this.onValueChange}
             value={email}
             field="email"

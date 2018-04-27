@@ -152,7 +152,7 @@ const LoadStack = createStackNavigator(
     cardStyle:{
       backgroundColor:colors.fadedWhite
     },
-    // initialRouteName: 'TripDetail',
+    initialRouteName: 'LoadDetail',
   },
 );
 

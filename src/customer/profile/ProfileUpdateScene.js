@@ -4,8 +4,8 @@ import {connect} from 'react-redux';
 import {ACTIONS as PROFILE_ACTIONS} from 'customer/common/actions';
 import {SELECTORS as CUSTOMER_SELECTORS} from 'customer/common/selectors';
 import {ScrollView} from 'react-native';
-import FormLabel from 'components/FormLabel';
-import FormTextInput from 'components/FormTextInput';
+import Label from 'components/Label';
+import TextInput from 'components/TextInput';
 import Button from 'components/Button';
 import I18n from 'utils/locale';
 import {SELECTORS as USER_SELECTORS} from 'guest/common/selectors';
@@ -130,7 +130,7 @@ class ProfileUpdateScene extends Component {
         }}
         contentContainerStyle={{paddingBottom: 30}}
       >
-        <FormTextInput
+        <TextInput
           onValueChange={this.onUserFieldChange}
           value={name_en}
           field="name_en"
@@ -138,7 +138,7 @@ class ProfileUpdateScene extends Component {
           label={I18n.t('company_name_en')}
         />
 
-        <FormTextInput
+        <TextInput
           onValueChange={this.onUserFieldChange}
           value={name_ar}
           field="name_ar"
@@ -146,7 +146,7 @@ class ProfileUpdateScene extends Component {
           label={I18n.t('company_name_ar')}
         />
 
-        <FormTextInput
+        <TextInput
           onValueChange={this.onValueChange}
           value={mobile}
           field="mobile"
@@ -155,7 +155,7 @@ class ProfileUpdateScene extends Component {
           keyboardType="phone-pad"
         />
 
-        <FormTextInput
+        <TextInput
           onValueChange={this.onValueChange}
           value={phone}
           field="phone"
@@ -164,7 +164,7 @@ class ProfileUpdateScene extends Component {
           keyboardType="phone-pad"
         />
 
-        <FormTextInput
+        <TextInput
           onValueChange={this.onValueChange}
           value={email}
           field="email"
@@ -172,7 +172,7 @@ class ProfileUpdateScene extends Component {
           label={I18n.t('company_email')}
         />
 
-        <FormTextInput
+        <TextInput
           onValueChange={this.onValueChange}
           value={address_en}
           field="address_en"
@@ -180,7 +180,7 @@ class ProfileUpdateScene extends Component {
           multiline={true}
         />
 
-        <FormTextInput
+        <TextInput
           onValueChange={this.onValueChange}
           value={address_ar}
           field="address_ar"

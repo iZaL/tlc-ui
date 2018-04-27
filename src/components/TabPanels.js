@@ -8,6 +8,7 @@ export default class Tabs extends Component {
   static defaultProps = {};
 
   render() {
+    let {style} = this.props;
     const children = React.cloneElement(
       this.props.children[this.props.activeIndex],
       {
@@ -15,13 +16,12 @@ export default class Tabs extends Component {
         activeIndex: this.props.activeIndex,
       },
     );
-    return <View style={styles.container}>{children}</View>;
+    return <View style={[styles.container,style]}>{children}</View>;
   }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 10,
   },
 });

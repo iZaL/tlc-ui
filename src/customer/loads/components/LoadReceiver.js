@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Text, View, StyleSheet, ScrollView} from 'react-native';
 import Touchable from 'react-native-platform-touchable';
-import FormLabel from 'components/FormLabel';
-import FormTextInput from 'components/FormTextInput';
+import Label from 'components/Label';
+import TextInput from 'components/TextInput';
 import I18n from 'utils/locale';
 import Button from 'components/Button';
 export default class LoadWhat extends Component {
@@ -28,7 +28,7 @@ export default class LoadWhat extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.formContainer}>
-          <FormTextInput
+          <TextInput
             onValueChange={onValueChange}
             value={receiver_name}
             field="receiver_name"
@@ -36,7 +36,7 @@ export default class LoadWhat extends Component {
             maxLength={40}
           />
 
-          <FormTextInput
+          <TextInput
             onValueChange={onValueChange}
             value={receiver_email}
             field="receiver_email"
@@ -45,7 +45,7 @@ export default class LoadWhat extends Component {
             keyboardType="email-address"
           />
 
-          <FormTextInput
+          <TextInput
             onValueChange={onValueChange}
             value={receiver_mobile}
             field="receiver_mobile"
@@ -54,7 +54,7 @@ export default class LoadWhat extends Component {
             keyboardType="phone-pad"
           />
 
-          <FormTextInput
+          <TextInput
             onValueChange={onValueChange}
             value={receiver_phone}
             field="receiver_phone"

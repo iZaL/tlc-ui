@@ -3,10 +3,10 @@ import {connect} from 'react-redux';
 import {Title} from 'react-native-paper';
 import DocumentUpload from 'components/DocumentUpload';
 import {View} from 'react-native';
-import FormTextInput from '/components/FormTextInput';
+import TextInput from '/components/TextInput';
 import I18n from 'utils/locale';
 import Dropdown from 'components/Dropdown';
-import FormLabel from 'components/FormLabel';
+import Label from 'components/Label';
 import Modal from 'components/Modal';
 import Divider from 'components/Divider';
 import Button from 'components/Button';
@@ -74,14 +74,14 @@ class TruckInfoUpdateScene extends Component {
     return (
       <View style={{flex: 1, backgroundColor: 'white'}}>
         <View style={{padding: 10}}>
-          <FormTextInput
+          <TextInput
             label={I18n.t('plate_number')}
             value={plate_number}
             onValueChange={this.onValueChange}
             field="plate_number"
           />
 
-          <FormTextInput
+          <TextInput
             label={I18n.t('max_weight')}
             value={max_weight}
             onValueChange={this.onValueChange}
@@ -95,7 +95,7 @@ class TruckInfoUpdateScene extends Component {
           />
 
           <Divider style={{marginVertical: 20}} />
-          <FormLabel title={I18n.t('truck_year')} />
+          <Label title={I18n.t('truck_year')} />
           <Title onPress={this.showYearModal}>{year || I18n.t('select')}</Title>
         </View>
 

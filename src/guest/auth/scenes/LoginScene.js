@@ -3,8 +3,8 @@ import React, {Component} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import colors from 'assets/theme/colors';
 import I18n from 'utils/locale';
-import FormLabel from 'components/FormLabel';
-import FormTextInput from 'components/FormTextInput';
+import Label from 'components/Label';
+import TextInput from 'components/TextInput';
 import Divider from 'components/Divider';
 import Touchable from 'react-native-platform-touchable';
 import Button from 'components/Button';
@@ -33,7 +33,7 @@ export default class LoginScene extends Component {
 
     return (
       <View style={styles.container}>
-        <FormTextInput
+        <TextInput
           label={I18n.t('email')}
           onValueChange={onValueChange}
           field="email"
@@ -42,7 +42,7 @@ export default class LoginScene extends Component {
           keyboardType="email-address"
         />
 
-        <FormTextInput
+        <TextInput
           label={I18n.t('password')}
           onValueChange={onValueChange}
           field="password"

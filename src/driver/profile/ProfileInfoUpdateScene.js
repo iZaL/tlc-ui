@@ -4,7 +4,7 @@ import {ScrollView} from 'react-native';
 import {SELECTORS as USER_SELECTORS} from 'guest/common/selectors';
 import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
 import I18n from 'utils/locale';
-import FormTextInput from 'components/FormTextInput';
+import TextInput from 'components/TextInput';
 import {Button} from 'react-native-paper';
 import DocumentUpload from 'components/DocumentUpload';
 
@@ -104,7 +104,7 @@ class ProfileInfoUpdateScene extends Component {
           imageStyle={{borderRadius: 50}}
         />
 
-        <FormTextInput
+        <TextInput
           onValueChange={this.onValueChange}
           field="name"
           value={name}
@@ -112,7 +112,7 @@ class ProfileInfoUpdateScene extends Component {
           label={I18n.t('name')}
         />
 
-        <FormTextInput
+        <TextInput
           onValueChange={this.onValueChange}
           field="email"
           value={email}
@@ -121,7 +121,7 @@ class ProfileInfoUpdateScene extends Component {
           keyboardType="email-address"
         />
 
-        <FormTextInput
+        <TextInput
           onValueChange={this.onValueChange}
           field="mobile"
           value={mobile}
@@ -130,7 +130,7 @@ class ProfileInfoUpdateScene extends Component {
           keyboardType="phone-pad"
         />
 
-        <FormTextInput
+        <TextInput
           onValueChange={this.onDriverFieldChange}
           field="mobile"
           value={profile ? profile.mobile : ''}
@@ -139,7 +139,7 @@ class ProfileInfoUpdateScene extends Component {
           keyboardType="phone-pad"
         />
 
-        <FormTextInput
+        <TextInput
           onValueChange={this.onDriverFieldChange}
           field="phone"
           value={profile ? profile.phone : ''}

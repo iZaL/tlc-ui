@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import {Text, View, StyleSheet, ScrollView} from 'react-native';
 import Touchable from 'react-native-platform-touchable';
 import GridList from 'components/GridList';
-import FormLabel from 'components/FormLabel';
+import Label from 'components/Label';
 import I18n from 'utils/locale';
 import colors from 'assets/theme/colors';
 import Divider from 'components/Divider';
-import FormTextInput from 'components/FormTextInput';
+import TextInput from 'components/TextInput';
 export default class LoadWhat extends Component {
   static propTypes = {
     trailers: PropTypes.array.isRequired,
@@ -29,7 +29,7 @@ export default class LoadWhat extends Component {
     } = this.props;
     return (
       <View style={styles.container}>
-        <FormLabel
+        <Label
           title={I18n.t('packaging_select')}
           style={{marginBottom: 5}}
         />
@@ -44,7 +44,7 @@ export default class LoadWhat extends Component {
           style={{backgroundColor: colors.mediumGrey, marginVertical: 20}}
         />
 
-        <FormLabel title={I18n.t('trailer_select')} style={{marginBottom: 5}} />
+        <Label title={I18n.t('trailer_select')} style={{marginBottom: 5}} />
         <GridList
           items={trailers}
           onItemPress={item => onValueChange('trailer_id', item.id)}
@@ -56,7 +56,7 @@ export default class LoadWhat extends Component {
         />
 
         <View style={{padding: 5, backgroundColor: 'white'}}>
-          <FormTextInput
+          <TextInput
             onValueChange={onValueChange}
             field="weight"
             value={weight}

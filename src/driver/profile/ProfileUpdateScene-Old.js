@@ -181,7 +181,7 @@ class ProfileUpdateScene extends Component {
 
         <Divider style={{marginVertical: 10}} />
 
-        {/*<FormLabel title={I18n.t('residence_country')} />*/}
+        {/*<Label title={I18n.t('residence_country')} />*/}
         {/*{showDropDown && dropDownField === 'residence' ? (*/}
         {/*<Dropdown*/}
         {/*onClose={this.showDropDown}*/}

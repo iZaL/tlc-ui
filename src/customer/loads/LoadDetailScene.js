@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {Text, View} from 'react-native';
+import {ScrollView, Text, View} from 'react-native';
 import I18n from 'utils/locale';
 import colors from 'assets/theme/colors';
 import {ACTIONS as CUSTOMER_ACTIONS} from "customer/common/actions";
@@ -12,6 +12,11 @@ import Divider from "components/Divider";
 import TripList from "customer/trips/components/TripList";
 import {SELECTORS as CUSTOMER_SELECTORS} from "customer/common/selectors";
 import {Title} from "react-native-paper";
+import Tabs from 'components/Tabs';
+import TabList from 'components/TabList';
+import TabPanels from 'components/TabPanels';
+import TabHeader from 'customer/loads/components/TabHeader';
+import TabPanel from 'customer/loads/components/TabPanel';
 
 class LoadDetailScene extends Component {
   shouldComponentUpdate(nextProps) {
@@ -64,6 +69,7 @@ class LoadDetailScene extends Component {
   };
 
   onTripListItemPress = (trip : object) => {
+    alert('wa');
     this.props.navigation.navigate('TripDetail', {
       tripID: trip.id,
     });
@@ -77,32 +83,80 @@ class LoadDetailScene extends Component {
     console.log('props', this.props.load);
 
     return (
-      <View style={{flex: 1, backgroundColor: 'white'}}>
+      <ScrollView style={{flex: 1,backgroundColor: 'white'}}>
+        <Tabs>
 
-        {origin && destination &&
+          <TabList>
+            <TabHeader title={I18n.t('load_info')} />
+            <TabHeader title={I18n.t('trip_drivers')} />
+            <TabHeader title={I18n.t('trailer')} />
+          </TabList>
 
-        <View style={{flex: 1}}>
+          <TabPanels >
+            <TabPanel hideNextButton={true}>
+              <View style={{flex: 1, backgroundColor: 'white'}}>
+                {origin && destination &&
 
-          <View style={{height: 200, backgroundColor: colors.lightGrey}}>
-            <LoadLocationMapView origin={origin} destination={destination}/>
-          </View>
+                <View style={{flex: 1}}>
 
-          <LoadPickDropLocation origin={origin} destination={destination} style={{padding: 5}}/>
+                  <View style={{height: 200, backgroundColor: colors.lightGrey}}>
+                    <LoadLocationMapView origin={origin} destination={destination}/>
+                  </View>
 
-          <Divider style={{marginVertical: 10}}/>
+                  <LoadPickDropLocation origin={origin} destination={destination} style={{padding: 5}}/>
 
-          <LoadInfo load={load} style={{padding: 5}}/>
+                  <Divider style={{marginVertical: 10}}/>
 
-          <Divider/>
+                  <LoadInfo load={load} style={{padding: 5}}/>
 
-          <Title style={{paddingTop: 10}}> Trip Drivers </Title>
+                  <Divider/>
 
-          <TripList items={load.trips || []} onItemPress={this.onTripListItemPress}/>
 
-        </View>
-        }
-      </View>
+                </View>
+                }
+              </View>
+            </TabPanel>
+
+            <TabPanel hideNextButton={true}>
+              <TripList items={load.trips || []} onItemPress={this.onTripListItemPress}/>
+            </TabPanel>
+
+            <TabPanel hideNextButton={true}>
+              <View/>
+            </TabPanel>
+          </TabPanels>
+        </Tabs>
+
+      </ScrollView>
     );
+
+    // return (
+    //   <View style={{flex: 1, backgroundColor: 'white'}}>
+    //
+    //     {origin && destination &&
+    //
+    //     <View style={{flex: 1}}>
+    //
+    //       <View style={{height: 200, backgroundColor: colors.lightGrey}}>
+    //         <LoadLocationMapView origin={origin} destination={destination}/>
+    //       </View>
+    //
+    //       <LoadPickDropLocation origin={origin} destination={destination} style={{padding: 5}}/>
+    //
+    //       <Divider style={{marginVertical: 10}}/>
+    //
+    //       <LoadInfo load={load} style={{padding: 5}}/>
+    //
+    //       <Divider/>
+    //
+    //       <Title style={{paddingTop: 10}}> Trip Drivers </Title>
+    //
+    //       <TripList items={load.trips || []} onItemPress={this.onTripListItemPress}/>
+    //
+    //     </View>
+    //     }
+    //   </View>
+    // );
   }
 }
 

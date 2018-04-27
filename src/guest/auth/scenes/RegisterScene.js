@@ -2,8 +2,8 @@ import PropTypes from 'prop-types';
 import React, {Component} from 'react';
 import {ScrollView, StyleSheet, View} from 'react-native';
 import I18n from 'utils/locale';
-import FormLabel from 'components/FormLabel';
-import FormTextInput from 'components/FormTextInput';
+import Label from 'components/Label';
+import TextInput from 'components/TextInput';
 import Button from 'components/Button';
 import colors from 'assets/theme/colors';
 
@@ -40,7 +40,7 @@ export default class RegisterScene extends Component {
       <ScrollView style={styles.container} contentInset={{bottom: 50}}>
         {isCustomer ? (
           <View>
-            <FormTextInput
+            <TextInput
               onValueChange={onValueChange}
               field="name_en"
               value={name_en}
@@ -48,7 +48,7 @@ export default class RegisterScene extends Component {
               label={I18n.t('company_name_en')}
             />
 
-            <FormTextInput
+            <TextInput
               onValueChange={onValueChange}
               field="name_ar"
               value={name_ar}
@@ -58,7 +58,7 @@ export default class RegisterScene extends Component {
           </View>
         ) : (
           <View>
-            <FormTextInput
+            <TextInput
               onValueChange={onValueChange}
               field="name_en"
               value={name_en}
@@ -68,7 +68,7 @@ export default class RegisterScene extends Component {
           </View>
         )}
 
-        <FormTextInput
+        <TextInput
           onValueChange={onValueChange}
           field="name_en"
           value={name_en}
@@ -76,7 +76,7 @@ export default class RegisterScene extends Component {
           label={I18n.t('name')}
         />
 
-        <FormTextInput
+        <TextInput
           onValueChange={onValueChange}
           field="email"
           value={email}
@@ -85,7 +85,7 @@ export default class RegisterScene extends Component {
           keyboardType="email-address"
         />
 
-        <FormTextInput
+        <TextInput
           onValueChange={onValueChange}
           field="mobile"
           value={mobile}
@@ -94,7 +94,7 @@ export default class RegisterScene extends Component {
           keyboardType="phone-pad"
         />
 
-        <FormTextInput
+        <TextInput
           onValueChange={onValueChange}
           field="password"
           value={password}
@@ -103,7 +103,7 @@ export default class RegisterScene extends Component {
           secureTextEntry={true}
         />
 
-        <FormTextInput
+        <TextInput
           onValueChange={onValueChange}
           field="password_confirmation"
           value={password_confirmation}

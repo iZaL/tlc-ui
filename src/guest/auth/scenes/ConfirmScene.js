@@ -3,8 +3,8 @@ import React, {Component} from 'react';
 import {StyleSheet, Text, TouchableHighlight, View} from 'react-native';
 import colors from 'assets/theme/colors';
 import I18n, {isRTL} from 'utils/locale';
-import FormLabel from 'components/FormLabel';
-import FormTextInput from 'components/FormTextInput';
+import Label from 'components/Label';
+import TextInput from 'components/TextInput';
 import Button from 'components/Button';
 
 export default class ConfirmScene extends Component {
@@ -27,9 +27,9 @@ export default class ConfirmScene extends Component {
 
     return (
       <View style={styles.container}>
-        <FormLabel title={I18n.t('confirmation_code')} />
+        <Label title={I18n.t('confirmation_code')} />
 
-        <FormTextInput
+        <TextInput
           onValueChange={onValueChange}
           field="confirmationCode"
           value={confirmationCode}

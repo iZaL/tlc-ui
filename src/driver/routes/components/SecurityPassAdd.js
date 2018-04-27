@@ -17,7 +17,7 @@ import moment from 'moment';
 import DocumentUpload from 'components/DocumentUpload';
 import ListModal from 'components/ListModal';
 import Touchable from 'react-native-platform-touchable';
-import FormLabel from 'components/FormLabel';
+import Label from 'components/Label';
 
 export default class SecurityPassAdd extends PureComponent {
   static propTypes = {
@@ -99,7 +99,7 @@ export default class SecurityPassAdd extends PureComponent {
 
             <Touchable onPress={this._showSecurityPassModalPicker}>
               <View>
-                <FormLabel title={I18n.t('security_pass')} />
+                <Label title={I18n.t('security_pass')} />
                 <Title>
                   {security_pass_id ? securityPass.name : I18n.t('select')}
                 </Title>

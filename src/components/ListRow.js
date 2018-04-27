@@ -7,7 +7,7 @@ import {ListItem as PaperListItem, Title} from 'react-native-paper';
 import I18n from 'utils/locale';
 import IconFactory from 'components/IconFactory';
 import {Text, View,StyleSheet} from "react-native";
-import FormLabel from "./FormLabel";
+import Label from "./Label";
 
 export default class ListIRow extends Component {
   static propTypes = {
@@ -27,7 +27,7 @@ export default class ListIRow extends Component {
     let {left,right} = this.props;
     return (
       <View style={styles.container}>
-        <FormLabel title={left}/>
+        <Label title={left}/>
         <Title>{right}</Title>
       </View>
     );
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     flexDirection:'row',
     justifyContent:'space-between',
     alignItems:'center',
-    paddingVertical:10
+    padding:10
   },
   left:{
 

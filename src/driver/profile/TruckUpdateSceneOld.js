@@ -6,8 +6,8 @@ import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
 import {SELECTORS as TRUCK_SELECTORS} from 'trucks/common/selectors';
 import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
 import {ScrollView, Text} from 'react-native';
-import FormLabel from 'components/FormLabel';
-import FormTextInput from 'components/FormTextInput';
+import Label from 'components/Label';
+import TextInput from 'components/TextInput';
 import Dropdown from 'components/Dropdown';
 import Divider from 'components/Divider';
 import Button from 'components/Button';
@@ -158,7 +158,7 @@ class TruckUpdateScene extends Component {
           padding: 10,
           paddingTop: 20,
         }}>
-        {/*<FormLabel title={I18n.t('make')} />*/}
+        {/*<Label title={I18n.t('make')} />*/}
 
         {/*{showDropDown && dropDownField === 'make' ? (*/}
         {/*<Dropdown*/}
@@ -184,7 +184,7 @@ class TruckUpdateScene extends Component {
 
         {/*<Divider style={{marginVertical: 10}} />*/}
 
-        <FormLabel title={I18n.t('model')} />
+        <Label title={I18n.t('model')} />
 
         {showDropDown && dropDownField === 'model' ? (
           <Dropdown
@@ -210,9 +210,9 @@ class TruckUpdateScene extends Component {
 
         <Divider style={{marginVertical: 10}} />
 
-        {/*<FormLabel title={I18n.t('plate_number')} />*/}
+        {/*<Label title={I18n.t('plate_number')} />*/}
 
-        <FormTextInput
+        <TextInput
           onValueChange={this.onValueChange}
           field="plate_number"
           value={plate_number}
@@ -220,7 +220,7 @@ class TruckUpdateScene extends Component {
           label={I18n.t('plate_number')}
         />
 
-        <FormLabel title={I18n.t('registration_country')} />
+        <Label title={I18n.t('registration_country')} />
 
         {showDropDown && dropDownField === 'registration_country' ? (
           <Dropdown
@@ -248,9 +248,9 @@ class TruckUpdateScene extends Component {
 
         <Divider style={{marginVertical: 10}} />
 
-        {/*<FormLabel title={I18n.t('registration_number')} />*/}
+        {/*<Label title={I18n.t('registration_number')} />*/}
 
-        <FormTextInput
+        <TextInput
           onValueChange={this.onValueChange}
           field="registration_number"
           value={registration_number}
@@ -258,7 +258,7 @@ class TruckUpdateScene extends Component {
           label={I18n.t('registration_number')}
         />
 
-        <FormLabel title={I18n.t('registration_expiry')} />
+        <Label title={I18n.t('registration_expiry')} />
 
         <DateTimePicker
           date={registration_expiry}
@@ -272,9 +272,9 @@ class TruckUpdateScene extends Component {
           onDateChange={date => this.onValueChange('registration_expiry', date)}
         />
 
-        {/*<FormLabel title={I18n.t('max_weight')} />*/}
+        {/*<Label title={I18n.t('max_weight')} />*/}
 
-        <FormTextInput
+        <TextInput
           onValueChange={this.onValueChange}
           field="max_weight"
           value={max_weight}
@@ -282,7 +282,7 @@ class TruckUpdateScene extends Component {
           label={I18n.t('max_weight')}
         />
 
-        <FormLabel title={I18n.t('year')} />
+        <Label title={I18n.t('year')} />
 
         {showDropDown && dropDownField === 'year' ? (
           <Dropdown
