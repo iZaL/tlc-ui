@@ -26,17 +26,17 @@ function fetchUpcomingTrips() {
 }
 
 function fetchRouteTransits(params) {
-  const url = `driver/routes/${params.route_id}/transits`;
+  const url = `driver/routes/${params.routeID}/transits`;
   return fetchAPI(url);
 }
 
 function fetchLoadDetails(params) {
-  const url = `driver/loads/${params.load_id}/details`;
+  const url = `driver/loads/${params.loadID}/details`;
   return fetchAPI(url);
 }
 
-function fetchTripDetails(id, params = {}) {
-  const url = `driver/trips/${id}/details`;
+function fetchTripDetails(params = {}) {
+  const url = `driver/trips/${params.tripID}/details`;
   return fetchAPI(url);
 }
 

@@ -7,29 +7,35 @@ import I18n from 'utils/locale';
 export default class TabPanel extends Component {
   static propTypes = {
     buttonTitle: PropTypes.string.isRequired,
+    hideNextButton: PropTypes.bool.isRequired
   };
 
   static defaultProps = {
     buttonTitle: I18n.t('next'),
+    hideNextButton: false
   };
 
   onButtonPress = () => {
     let {activeIndex, onSelect} = this.props;
-
     return onSelect(activeIndex + 1);
   };
 
   render() {
-    let {buttonTitle} = this.props;
+    let {buttonTitle, hideNextButton} = this.props;
 
     return (
       <View>
         {this.props.children}
-        <Button
-          title={buttonTitle}
-          onPress={this.onButtonPress}
-          style={{marginVertical: 10}}
-        />
+
+        {
+          !hideNextButton &&
+          <Button
+            title={buttonTitle}
+            onPress={this.onButtonPress}
+            style={{marginVertical: 10}}
+          />
+        }
+
       </View>
     );
   }

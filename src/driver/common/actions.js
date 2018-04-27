@@ -87,10 +87,9 @@ function fetchLoadDetails(params) {
   };
 }
 
-function fetchTripDetails(id, params) {
+function fetchTripDetails(params) {
   return {
     type: ACTION_TYPES.FETCH_TRIP_DETAILS_REQUEST,
-    id: id,
     params,
   };
 }

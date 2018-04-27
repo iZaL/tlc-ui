@@ -22,8 +22,8 @@ class LoadDetailScene extends Component {
     // const {loadID} = this.props.navigation.state.params;
     this.props.dispatch(
       CUSTOMER_ACTIONS.fetchLoadDetails({
-        // load_id: loadID,
-        load_id: 1,
+        // loadID: loadID,
+        loadID: 1,
       }),
     );
   }
@@ -63,8 +63,10 @@ class LoadDetailScene extends Component {
     });
   };
 
-  onTripListItemPress = () => {
-
+  onTripListItemPress = (trip : object) => {
+    this.props.navigation.navigate('TripDetail', {
+      tripID: trip.id,
+    });
   };
 
   render() {

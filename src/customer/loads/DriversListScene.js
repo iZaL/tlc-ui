@@ -28,7 +28,7 @@ class DriversListScene extends Component {
     console.log('loadID',loadID);
 
     this.props.dispatch(CUSTOMER_ACTIONS.fetchLoadDrivers({
-      load_id:loadID
+      loadID:loadID
     }))
   }
 

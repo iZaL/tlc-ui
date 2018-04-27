@@ -44,7 +44,7 @@ class RoutesDetailScene extends Component {
     const {routeID} = this.props.navigation.state.params;
     this.props.dispatch(
       DRIVER_ACTIONS.fetchRouteTransits({
-        route_id: routeID,
+        routeID: routeID,
       }),
     );
   }

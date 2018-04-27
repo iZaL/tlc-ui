@@ -100,7 +100,7 @@ function* fetchLoadDrivers(action) {
       type: ACTION_TYPES.FETCH_LOAD_DRIVERS_SUCCESS,
       entities: normalized.entities,
       result:normalized.result,
-      loadID:action.params.load_id
+      loadID:action.params.loadID
     });
   } catch (error) {
     yield put({type: ACTION_TYPES.FETCH_LOAD_DRIVERS_FAILURE, error});

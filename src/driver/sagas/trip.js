@@ -19,8 +19,9 @@ function* fetchUpcomingTrips() {
 
 function* fetchTripDetails(action) {
   try {
-    const response = yield call(API.fetchTripDetails, action.id);
+    const response = yield call(API.fetchTripDetails, action.params);
     const normalized = normalize(response.data, Schema.trips);
+
     yield put({
       type: ACTION_TYPES.FETCH_TRIP_DETAILS_SUCCESS,
       entities: normalized.entities,
@@ -36,8 +37,9 @@ function* fetchUpcomingTripsMonitor() {
     fetchUpcomingTrips,
   );
 }
+
 function* fetchTripDetailsMonitor() {
-  yield takeLatest(ACTION_TYPES.FETCH_UPCOMING_TRIPS_REQUEST, fetchTripDetails);
+  yield takeLatest(ACTION_TYPES.FETCH_TRIP_DETAILS_REQUEST, fetchTripDetails);
 }
 
 export const sagas = all([

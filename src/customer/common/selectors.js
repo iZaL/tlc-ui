@@ -10,6 +10,7 @@ const loadsSchema = state => state.entities.loads;
 const getIdProp = ({}, itemID) => itemID;
 const getTrackings = state => state.customer.trackings;
 const driversSchema = state => state.entities.drivers;
+const tripSchema = state => state.entities.drivers;
 const addData = state => state.customer.loads.add;
 const editData = state => state.customer.loads.edit;
 const getLoadDrivers = state => state.customer.loads.loadDrivers;
@@ -125,6 +126,14 @@ const getDriversForLoad = () => {
     }
   );
 };
+
+const getTripByID = () => {
+  return createSelector([entities, getIdProp], (schema, id) =>
+    denormalize(id, Schema.trips, schema),
+  );
+};
+
+
 export const SELECTORS = {
   getProfile,
   getEmployees,
@@ -137,5 +146,6 @@ export const SELECTORS = {
   getDrivers,
   getAddData,
   getDriversForLoad,
-  getLoadByID
+  getLoadByID,
+  getTripByID
 };

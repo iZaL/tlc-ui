@@ -1,29 +1,30 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {Text, View} from 'react-native';
+import {ScrollView, View} from 'react-native';
+import Tabs from 'components/Tabs';
+import TabList from 'components/TabList';
+import TabPanels from 'components/TabPanels';
+import TabHeader from 'customer/loads/components/TabHeader';
+import {ACTIONS as CUSTOMER_ACTIONS} from 'customer/common/actions';
+import TabPanel from 'customer/loads/components/TabPanel';
+import {SELECTORS as CUSTOMER_SELECTORS} from 'customer/common/selectors';
 import I18n from 'utils/locale';
-import colors from 'assets/theme/colors';
-import {ACTIONS as CUSTOMER_ACTIONS} from "customer/common/actions";
-import LoadLocationMapView from "driver/loads/components/LoadLocationMapView";
-import LoadPickDropLocation from "driver/loads/components/LoadPickDropLocation";
-import LoadInfo from "driver/loads/components/LoadInfo";
-import Divider from "components/Divider";
-import TripList from "customer/trips/components/TripList";
-import {SELECTORS as CUSTOMER_SELECTORS} from "customer/common/selectors";
-import {Title} from "react-native-paper";
+import DriverInfo from "driver/components/DriverInfo";
 
 class TripDetailScene extends Component {
-  shouldComponentUpdate(nextProps) {
-    return nextProps.load !== this.props.load;
-  }
+
+  // shouldComponentUpdate(nextProps) {
+  //   return nextProps.load !== this.props.load;
+  // }
 
   componentDidMount() {
-    // const {loadID} = this.props.navigation.state.params;
+
+    // let {tripID} = this.props.navigation.state.params;
+
     this.props.dispatch(
-      CUSTOMER_ACTIONS.fetchLoadDetails({
-        // load_id: loadID,
-        load_id: 1,
+      CUSTOMER_ACTIONS.fetchTripDetails({
+        tripID: 1,
       }),
     );
   }
@@ -32,7 +33,7 @@ class TripDetailScene extends Component {
     navigation: PropTypes.shape({
       state: PropTypes.shape({
         params: PropTypes.shape({
-          loadID: PropTypes.number.isRequired,
+          tripID: PropTypes.number.isRequired,
         }),
       }),
     }),
@@ -40,76 +41,59 @@ class TripDetailScene extends Component {
 
   static defaultProps = {
     navigation: {state: {params: {loadID: 0}}},
-    load: {},
+    trip: {},
   };
 
-  static navigationOptions = ({navigation}) => {
-    return {
-      headerRight: (
-        <Text
-          style={{paddingRight: 10, color: colors.primary, fontWeight: 'bold'}}>
-          {I18n.t('edit')}
-        </Text>
-      ),
-    };
-  };
-
-  acceptBooking = () => {
-  };
-
-  loadTripMapScene = () => {
-    this.props.navigation.navigate('TripTrack', {
-      tripID: 1,
-    });
-  };
-
-  onTripListItemPress = () => {
-
-  };
 
   render() {
-    let {load} = this.props;
+    let {trip} = this.props;
 
-    let {origin, destination} = load;
+    console.log('props', trip);
 
-    console.log('props', this.props.load);
 
-    return (
-      <View style={{flex: 1, backgroundColor: 'white'}}>
+    if(trip.id) {
+      return (
+        <ScrollView style={{flex: 1}}>
+          <Tabs>
 
-        {origin && destination &&
+            <TabList>
+              <TabHeader title={I18n.t('driver')} />
+              <TabHeader title={I18n.t('truck')} />
+              <TabHeader title={I18n.t('trailer')} />
+            </TabList>
 
-        <View style={{flex: 1}}>
+            <TabPanels >
+              <TabPanel hideNextButton={true}>
 
-          <View style={{height: 200, backgroundColor: colors.lightGrey}}>
-            <LoadLocationMapView origin={origin} destination={destination}/>
-          </View>
+                <DriverInfo driver={trip.driver} />
 
-          <LoadPickDropLocation origin={origin} destination={destination} style={{padding: 5}}/>
+              </TabPanel>
 
-          <Divider style={{marginVertical: 10}}/>
+              <TabPanel hideNextButton={true}>
+                <View/>
+              </TabPanel>
 
-          <LoadInfo load={load} style={{padding: 5}}/>
+              <TabPanel hideNextButton={true}>
+                <View/>
+              </TabPanel>
+            </TabPanels>
+          </Tabs>
 
-          <Divider/>
+        </ScrollView>
+      );
+    }
 
-          <Title style={{paddingTop: 10}}> Trip Drivers </Title>
+    return null;
 
-          <TripList items={load.trips || []} onItemPress={this.onTripListItemPress}/>
 
-        </View>
-        }
-      </View>
-    );
   }
 }
 
 const makeMapStateToProps = () => {
-  const getLoadByID = CUSTOMER_SELECTORS.getLoadByID();
+  const getTripByID = CUSTOMER_SELECTORS.getTripByID();
   const mapStateToProps = (state, props) => {
     return {
-      // load: getLoadByID(state, props.navigation.state.params.loadID),
-      load: getLoadByID(state, 1),
+      trip: getTripByID(state, 1),
     };
   };
   return mapStateToProps;

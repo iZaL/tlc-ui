@@ -21,7 +21,7 @@ class LoadDetailScene extends Component {
     const {loadID} = this.props.navigation.state.params;
     this.props.dispatch(
       DRIVER_ACTIONS.fetchLoadDetails({
-        load_id: loadID,
+        loadID: loadID,
       }),
     );
   }

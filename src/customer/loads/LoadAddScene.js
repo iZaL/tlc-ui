@@ -18,10 +18,9 @@ import TabPanel from 'customer/loads/components/TabPanel';
 import {SELECTORS as CUSTOMER_SELECTORS} from 'customer/common/selectors';
 import PackageDimensions from 'customer/loads/components/PackageDimensions';
 import TrailerQuantity from 'customer/loads/components/TrailerQuantity';
-import moment from 'moment';
 import I18n from 'utils/locale';
 import {ACTIONS as TRUCK_ACTIONS} from 'trucks/common/actions';
-import SuccessDialog from "./components/SuccessDialog";
+import SuccessDialog from "customer/loads/components/SuccessDialog";
 
 class LoadAddScene extends Component {
   static propTypes = {

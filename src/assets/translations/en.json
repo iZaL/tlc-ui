@@ -70,6 +70,7 @@
   "select" : "Select",
   "select_expiry_date" : "Select Expiry Date",
   "select_country" : "Select Country",
+  "truck" : "Truck",
   "truck_update" : "Update Truck",
   "truck_add" : "Add Truck",
   "truck_registration" : "Truck Registration",

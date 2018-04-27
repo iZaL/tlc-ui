@@ -35,7 +35,7 @@ class DocumentsUpload extends Component {
   toggleItem = (item: object) => {
     this.props.dispatch(
       DRIVER_ACTIONS.saveRoute({
-        route_id: item.id,
+        routeID: item.id,
       }),
     );
   };

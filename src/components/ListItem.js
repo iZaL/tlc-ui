@@ -9,7 +9,7 @@ import IconFactory from 'components/IconFactory';
 
 export default class ListItem extends Component {
   static propTypes = {
-    onItemPress: PropTypes.func.isRequired,
+    onItemPress: PropTypes.func,
     name: PropTypes.string,
     title: PropTypes.string.isRequired,
     iconProps: PropTypes.object,

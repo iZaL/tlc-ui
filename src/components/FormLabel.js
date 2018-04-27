@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text} from 'react-native';
 import PropTypes from 'prop-types';
-import colors from 'theme/colors';
-import I18n from 'utils/locale';
+import colors from 'assets/theme/colors';
 
 export default class FormLabel extends Component {
   static propTypes = {
@@ -23,11 +22,8 @@ export default class FormLabel extends Component {
 const styles = StyleSheet.create({
   label: {
     textAlign: 'left',
-    writingDirection: I18n.locale === 'ar' ? 'rtl' : 'ltr',
-    fontSize: 15,
-    color: colors.darkGrey,
-    fontWeight: '300',
-    textShadowColor: colors.fadedWhite,
-    textShadowOffset: {width: 0.1, height: 0.1},
+    fontSize: 13,
+    color: colors.mediumGrey,
+    fontWeight: '700',
   },
 });
