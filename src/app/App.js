@@ -75,8 +75,7 @@ class App extends Component {
       return <LanguageSelectScene onItemPress={this.onLanguageSelect} />;
     }
 
-    console.log('userType',userType);
-
+    console.log('userType', userType);
 
     return (
       <View style={{flex: 1}}>

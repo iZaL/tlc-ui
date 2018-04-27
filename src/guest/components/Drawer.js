@@ -7,7 +7,7 @@ import colors from 'assets/theme/colors';
 import I18n from 'utils/locale';
 import DrawerItem from 'components/DrawerItem';
 import Divider from 'components/Divider';
-import {DrawerSection} from "react-native-paper";
+import {DrawerSection} from 'react-native-paper';
 
 export default class Drawer extends Component {
   onItemPress = (routeName: string) => {
@@ -48,7 +48,6 @@ export default class Drawer extends Component {
           }}
           active={activeRoute === 'Logout'}
         />
-
       </DrawerSection>
     );
   }

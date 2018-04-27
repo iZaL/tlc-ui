@@ -20,7 +20,7 @@ import PackageDimensions from 'customer/loads/components/PackageDimensions';
 import TrailerQuantity from 'customer/loads/components/TrailerQuantity';
 import I18n from 'utils/locale';
 import {ACTIONS as TRUCK_ACTIONS} from 'trucks/common/actions';
-import SuccessDialog from "customer/loads/components/SuccessDialog";
+import SuccessDialog from 'customer/loads/components/SuccessDialog';
 
 class LoadAddScene extends Component {
   static propTypes = {
@@ -33,7 +33,7 @@ class LoadAddScene extends Component {
 
   state = {
     // component level dialogs
-    isSuccessDialogVisible:false,
+    isSuccessDialogVisible: false,
     isPackageDimensionDialogVisible: false,
     isTrailerQuantityDialogVisible: false,
   };
@@ -43,45 +43,44 @@ class LoadAddScene extends Component {
     this.props.dispatch(TRUCK_ACTIONS.fetchTrailerTypes());
   }
 
-
   showSuccessModalDialog = () => {
     this.setState({
-      isSuccessDialogVisible:true
+      isSuccessDialogVisible: true,
     });
   };
 
   hideSuccessModalDialog = () => {
     this.setState({
-      isSuccessDialogVisible:false
+      isSuccessDialogVisible: false,
     });
   };
 
   showPackageDimensionDialog = () => {
     this.setState({
-      isPackageDimensionDialogVisible:true
+      isPackageDimensionDialogVisible: true,
     });
   };
 
   hidePackageDimensionDialog = () => {
     this.setState({
-      isPackageDimensionDialogVisible:false
+      isPackageDimensionDialogVisible: false,
     });
   };
 
   showTrailerQuantityDialog = () => {
     this.setState({
-      isTrailerQuantityDialogVisible:true
+      isTrailerQuantityDialogVisible: true,
     });
   };
 
   hideTrailerQuantityDialog = () => {
     this.setState({
-      isTrailerQuantityDialogVisible:false
+      isTrailerQuantityDialogVisible: false,
     });
   };
 
   onValueChange = (field, value) => {
-    this.props.dispatch(CUSTOMER_ACTIONS.setAddData(field,value));
+    this.props.dispatch(CUSTOMER_ACTIONS.setAddData(field, value));
 
     if (field == 'packaging_id') {
       this.showPackageDimensionDialog();
@@ -129,8 +128,8 @@ class LoadAddScene extends Component {
 
   showMatchingDrivers = () => {
     this.hideSuccessModalDialog();
-    this.props.navigation.navigate('LoadDetail',{
-      loadID:1
+    this.props.navigation.navigate('LoadDetail', {
+      loadID: 1,
     });
   };
 
@@ -138,7 +137,7 @@ class LoadAddScene extends Component {
     let {
       isPackageDimensionDialogVisible,
       isTrailerQuantityDialogVisible,
-      isSuccessDialogVisible
+      isSuccessDialogVisible,
     } = this.state;
 
     let {
@@ -159,14 +158,14 @@ class LoadAddScene extends Component {
       packaging_dimension,
     } = this.props.loadData.attributes;
 
-    console.log('loadData',this.props.loadData);
+    console.log('loadData', this.props.loadData);
 
     let {trailers, packaging, securityPasses, locations} = this.props;
 
     return (
       <ScrollView style={{flex: 1}}>
         <Tabs activeIndex={5}>
-          <TabList >
+          <TabList>
             <TabHeader title={I18n.t('load_info')} />
             <TabHeader title={I18n.t('load_location')} />
             <TabHeader title={I18n.t('date')} />
@@ -175,7 +174,7 @@ class LoadAddScene extends Component {
             <TabHeader title={I18n.t('receiver_information')} />
           </TabList>
 
-          <TabPanels >
+          <TabPanels>
             <TabPanel>
               <LoadWhat
                 trailers={trailers}
@@ -257,7 +256,6 @@ class LoadAddScene extends Component {
           visible={isSuccessDialogVisible}
           onPress={this.showMatchingDrivers}
         />
-
       </ScrollView>
     );
   }
@@ -265,7 +263,7 @@ class LoadAddScene extends Component {
 
 function mapStateToProps(state) {
   return {
-    loadData:CUSTOMER_SELECTORS.getAddData(state),
+    loadData: CUSTOMER_SELECTORS.getAddData(state),
     trailers: TRUCK_SELECTORS.getTrailerTypes(state),
     packaging: TRUCK_SELECTORS.getPackaging(state),
     securityPasses: TRUCK_SELECTORS.getSecurityPasses(state),

@@ -3,12 +3,11 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {SELECTORS as CUSTOMER_SELECTORS} from 'customer/common/selectors';
 import {ACTIONS as CUSTOMER_ACTIONS} from 'customer/common/actions';
-import DriversList from "customer/loads/components/DriversList";
+import DriversList from 'customer/loads/components/DriversList';
 
 type STATUS = 'working|confirmed|completed';
 
 class DriversListScene extends Component {
-
   static propTypes = {
     navigation: PropTypes.shape({
       state: PropTypes.shape({
@@ -20,16 +19,17 @@ class DriversListScene extends Component {
     drivers: PropTypes.array,
   };
 
-  static defaultProps = {
-  };
+  static defaultProps = {};
 
   componentDidMount() {
     let {loadID} = this.props.navigation.state.params;
-    console.log('loadID',loadID);
+    console.log('loadID', loadID);
 
-    this.props.dispatch(CUSTOMER_ACTIONS.fetchLoadDrivers({
-      loadID:loadID
-    }))
+    this.props.dispatch(
+      CUSTOMER_ACTIONS.fetchLoadDrivers({
+        loadID: loadID,
+      }),
+    );
   }
 
   onLoadsListItemPress = (load: object) => {
@@ -40,8 +40,10 @@ class DriversListScene extends Component {
 
   render() {
     let {drivers} = this.props;
-    console.log('drivers',drivers);
-    return <DriversList items={drivers} onItemPress={this.onLoadsListItemPress}/>;
+    console.log('drivers', drivers);
+    return (
+      <DriversList items={drivers} onItemPress={this.onLoadsListItemPress} />
+    );
   }
 }
 
@@ -50,7 +52,7 @@ const makeMapStateToProps = () => {
   const mapStateToProps = (state, props) => {
     return {
       drivers:
-      getDriversForLoad(state, props.navigation.state.params.loadID) || [],
+        getDriversForLoad(state, props.navigation.state.params.loadID) || [],
     };
   };
   return mapStateToProps;

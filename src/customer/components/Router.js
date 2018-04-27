@@ -20,7 +20,7 @@ import I18n from 'utils/locale';
 import LoadDetailOptionsListScene from 'customer/loads/LoadDetailOptionsListScene';
 import DriversListScene from 'customer/loads/DriversListScene';
 import DriversBlockListScene from 'customer/profile/DriversBlockListScene';
-import TripDetailScene from "customer/trips/TripDetailScene";
+import TripDetailScene from 'customer/trips/TripDetailScene';
 
 const getDrawerIcon = navigation => {
   return {
@@ -43,9 +43,9 @@ const HomeStack = createStackNavigator(
       gesturesEnabled: false,
       headerTintColor: colors.primary,
     },
-    cardStyle:{
-      backgroundColor:colors.fadedWhite
-    }
+    cardStyle: {
+      backgroundColor: colors.fadedWhite,
+    },
   },
 );
 
@@ -95,9 +95,9 @@ const ProfileStack = createStackNavigator(
       gesturesEnabled: false,
       headerTintColor: colors.primary,
     },
-    cardStyle:{
-      backgroundColor:colors.fadedWhite
-    }
+    cardStyle: {
+      backgroundColor: colors.fadedWhite,
+    },
   },
 );
 const LoadStack = createStackNavigator(
@@ -131,8 +131,8 @@ const LoadStack = createStackNavigator(
         title: I18n.t('load_detail'),
       }),
     },
-    TripDetail:{
-      screen:TripDetailScene,
+    TripDetail: {
+      screen: TripDetailScene,
     },
     TripTrack: {
       screen: TripTrackScene,
@@ -142,15 +142,15 @@ const LoadStack = createStackNavigator(
     },
     DriversList: {
       screen: DriversListScene,
-    }
+    },
   },
   {
     navigationOptions: {
       gesturesEnabled: false,
       headerTintColor: colors.primary,
     },
-    cardStyle:{
-      backgroundColor:colors.fadedWhite
+    cardStyle: {
+      backgroundColor: colors.fadedWhite,
     },
     initialRouteName: 'LoadDetail',
   },
@@ -171,9 +171,9 @@ const SettingStack = createStackNavigator(
       gesturesEnabled: false,
       headerTintColor: colors.primary,
     },
-    cardStyle:{
-      backgroundColor:colors.fadedWhite
-    }
+    cardStyle: {
+      backgroundColor: colors.fadedWhite,
+    },
   },
 );
 

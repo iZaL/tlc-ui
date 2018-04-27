@@ -56,8 +56,6 @@ export default class Drawer extends Component {
           }}
           active={activeRoute === 'LoadStack'}
         />
-
-
       </DrawerSection>
     );
   }

@@ -24,7 +24,7 @@ function* fetchTripDetails(action) {
 
     const data = {
       ...response.load,
-      trips: [response.trip]
+      trips: [response.trip],
     };
 
     const normalized = normalize(data, Schema.loads);

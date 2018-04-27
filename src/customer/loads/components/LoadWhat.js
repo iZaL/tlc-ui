@@ -29,10 +29,7 @@ export default class LoadWhat extends Component {
     } = this.props;
     return (
       <View style={styles.container}>
-        <Label
-          title={I18n.t('packaging_select')}
-          style={{marginBottom: 5}}
-        />
+        <Label title={I18n.t('packaging_select')} style={{marginBottom: 5}} />
 
         <GridList
           items={packaging}

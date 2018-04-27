@@ -33,36 +33,42 @@ const getDrawerIcon = navigation => {
   };
 };
 
-const HomeStack = createStackNavigator({
-  Home: {
-    screen: Home,
-    navigationOptions: ({navigation}) => ({
-      title: I18n.t('home'),
-      ...getDrawerIcon(navigation),
-    }),
+const HomeStack = createStackNavigator(
+  {
+    Home: {
+      screen: Home,
+      navigationOptions: ({navigation}) => ({
+        title: I18n.t('home'),
+        ...getDrawerIcon(navigation),
+      }),
+    },
+    LoadDetail: {
+      screen: LoadDetailScene,
+    },
   },
-  LoadDetail: {
-    screen: LoadDetailScene,
+  {
+    cardStyle: {
+      backgroundColor: colors.fadedWhite,
+    },
   },
-},{
-  cardStyle:{
-    backgroundColor:colors.fadedWhite
-  }
-});
+);
 
-const SettingsStack = createStackNavigator({
-  Settings: {
-    screen: Settings,
-    navigationOptions: ({navigation}) => ({
-      title: I18n.t('settings'),
-      ...getDrawerIcon(navigation),
-    }),
+const SettingsStack = createStackNavigator(
+  {
+    Settings: {
+      screen: Settings,
+      navigationOptions: ({navigation}) => ({
+        title: I18n.t('settings'),
+        ...getDrawerIcon(navigation),
+      }),
+    },
   },
-},{
-  cardStyle:{
-    backgroundColor:colors.fadedWhite
-  }
-});
+  {
+    cardStyle: {
+      backgroundColor: colors.fadedWhite,
+    },
+  },
+);
 
 const ProfileStack = createStackNavigator(
   {
@@ -169,9 +175,9 @@ const ProfileStack = createStackNavigator(
       gesturesEnabled: false,
       headerTintColor: colors.primary,
     },
-    cardStyle:{
-      backgroundColor:colors.fadedWhite
-    }
+    cardStyle: {
+      backgroundColor: colors.fadedWhite,
+    },
     // initialRouteName: 'RoutesAdd',
   },
 );
@@ -200,9 +206,9 @@ const LoadStack = createStackNavigator(
       gesturesEnabled: false,
       headerTintColor: colors.primary,
     },
-    cardStyle:{
-      backgroundColor:colors.fadedWhite
-    }
+    cardStyle: {
+      backgroundColor: colors.fadedWhite,
+    },
   },
 );
 

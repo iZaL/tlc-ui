@@ -66,7 +66,6 @@ export const ACTION_TYPES = {
   FETCH_TRIP_DETAILS_REQUEST: '@customer/FETCH_TRIP_DETAILS_REQUEST',
   FETCH_TRIP_DETAILS_SUCCESS: '@customer/FETCH_TRIP_DETAILS_SUCCESS',
   FETCH_TRIP_DETAILS_FAILURE: '@customer/FETCH_TRIP_DETAILS_FAILURE',
-
 };
 
 function fetchEmployees(params) {
@@ -156,8 +155,8 @@ function setAddData(field, value) {
   return {
     type: ACTION_TYPES.SET_LOAD_ADD_DATA_REQUEST,
     field: field,
-    value: value
-  }
+    value: value,
+  };
 }
 
 function fetchLoadDetails(params) {
@@ -174,14 +173,12 @@ function fetchLoadDrivers(params) {
   };
 }
 
-
 function fetchTripDetails(params) {
   return {
     type: ACTION_TYPES.FETCH_TRIP_DETAILS_REQUEST,
     params,
   };
 }
-
 
 export const ACTIONS = {
   saveProfile,
@@ -198,5 +195,5 @@ export const ACTIONS = {
   fetchTripDetails,
   saveLoad,
   subscribeToTripTrack,
-  setAddData
+  setAddData,
 };

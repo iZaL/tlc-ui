@@ -8,7 +8,7 @@ export function reducer(state = initialState, action = {}) {
     case ACTION_TYPES.FETCH_LOAD_DRIVERS_SUCCESS:
       return {
         ...state,
-        [action.loadID] : action.result
+        [action.loadID]: action.result,
       };
       break;
     default:

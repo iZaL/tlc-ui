@@ -128,8 +128,7 @@ class ProfileUpdateScene extends Component {
         style={{
           padding: 10,
         }}
-        contentContainerStyle={{paddingBottom: 30}}
-      >
+        contentContainerStyle={{paddingBottom: 30}}>
         <TextInput
           onValueChange={this.onUserFieldChange}
           value={name_en}

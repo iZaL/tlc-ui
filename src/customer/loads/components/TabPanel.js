@@ -7,12 +7,12 @@ import I18n from 'utils/locale';
 export default class TabPanel extends Component {
   static propTypes = {
     buttonTitle: PropTypes.string.isRequired,
-    hideNextButton: PropTypes.bool.isRequired
+    hideNextButton: PropTypes.bool.isRequired,
   };
 
   static defaultProps = {
     buttonTitle: I18n.t('next'),
-    hideNextButton: false
+    hideNextButton: false,
   };
 
   onButtonPress = () => {
@@ -21,21 +21,19 @@ export default class TabPanel extends Component {
   };
 
   render() {
-    let {buttonTitle, hideNextButton,style} = this.props;
+    let {buttonTitle, hideNextButton, style} = this.props;
 
     return (
       <View style={style}>
         {this.props.children}
 
-        {
-          !hideNextButton &&
+        {!hideNextButton && (
           <Button
             title={buttonTitle}
             onPress={this.onButtonPress}
             style={{marginVertical: 10}}
           />
-        }
-
+        )}
       </View>
     );
   }

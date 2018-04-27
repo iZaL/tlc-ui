@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import {FlatList, StyleSheet, View} from 'react-native';
 import Divider from 'components/Divider';
 import {ListSection, TouchableRipple} from 'react-native-paper';
-import TripListItem from "customer/trips/components/TripListItem";
+import TripListItem from 'customer/trips/components/TripListItem';
 
 export default class extends PureComponent {
   static propTypes = {
@@ -19,9 +19,7 @@ export default class extends PureComponent {
 
   renderRow = ({item}) => {
     let {onItemPress} = this.props;
-    return (
-        <TripListItem item={item} onItemPress={onItemPress}/>
-    );
+    return <TripListItem item={item} onItemPress={onItemPress} />;
   };
 
   render() {
@@ -33,7 +31,7 @@ export default class extends PureComponent {
           style={styles.listContainer}
           renderItem={this.renderRow}
           showsVerticalScrollIndicator={false}
-          ItemSeparatorComponent={() => <Divider/>}
+          ItemSeparatorComponent={() => <Divider />}
           keyExtractor={(item, index) => `${index}`}
         />
       </ListSection>

@@ -84,5 +84,5 @@ export const API = {
   fetchLoadsByStatus,
   fetchLoadDrivers,
   fetchLoadDetails,
-  fetchTripDetails
+  fetchTripDetails,
 };

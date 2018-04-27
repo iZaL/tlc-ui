@@ -18,12 +18,9 @@ export default class extends PureComponent {
     item: [],
   };
 
-
   render() {
     let {item} = this.props;
-    return (
-      <Text>{item.user.name}</Text>
-    );
+    return <Text>{item.user.name}</Text>;
   }
 }
 

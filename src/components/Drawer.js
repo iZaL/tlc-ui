@@ -25,11 +25,11 @@ export class Drawer extends Component {
     return (
       <View style={styles.container}>
         {/*<DrawerItem*/}
-          {/*title={I18n.t('home')}*/}
-          {/*routeName="HomeStack"*/}
-          {/*onItemPress={this.onItemPress}*/}
-          {/*icon="ios-paper-plane"*/}
-          {/*active={this.state.activeRoute === 'HomeStack'}*/}
+        {/*title={I18n.t('home')}*/}
+        {/*routeName="HomeStack"*/}
+        {/*onItemPress={this.onItemPress}*/}
+        {/*icon="ios-paper-plane"*/}
+        {/*active={this.state.activeRoute === 'HomeStack'}*/}
         {/*/>*/}
       </View>
     );

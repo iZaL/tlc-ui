@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import {FlatList, StyleSheet} from 'react-native';
 import Divider from 'components/Divider';
 import {ListSection} from 'react-native-paper';
-import DriverListItem from "customer/loads/components/DriverListItem";
+import DriverListItem from 'customer/loads/components/DriverListItem';
 
 export default class EmployeeList extends PureComponent {
   static propTypes = {

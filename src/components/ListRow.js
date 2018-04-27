@@ -6,8 +6,8 @@ import PropTypes from 'prop-types';
 import {ListItem as PaperListItem, Title} from 'react-native-paper';
 import I18n from 'utils/locale';
 import IconFactory from 'components/IconFactory';
-import {Text, View,StyleSheet} from "react-native";
-import Label from "./Label";
+import {Text, View, StyleSheet} from 'react-native';
+import Label from './Label';
 
 export default class ListIRow extends Component {
   static propTypes = {
@@ -20,14 +20,14 @@ export default class ListIRow extends Component {
   }
 
   static defaultProps = {
-    icon:null
+    icon: null,
   };
 
   render() {
-    let {left,right} = this.props;
+    let {left, right} = this.props;
     return (
       <View style={styles.container}>
-        <Label title={left}/>
+        <Label title={left} />
         <Title>{right}</Title>
       </View>
     );
@@ -35,13 +35,11 @@ export default class ListIRow extends Component {
 }
 
 const styles = StyleSheet.create({
-  container:{
-    flexDirection:'row',
-    justifyContent:'space-between',
-    alignItems:'center',
-    padding:10
+  container: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: 10,
   },
-  left:{
-
-  }
+  left: {},
 });

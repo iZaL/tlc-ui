@@ -99,8 +99,8 @@ function* fetchLoadDrivers(action) {
     yield put({
       type: ACTION_TYPES.FETCH_LOAD_DRIVERS_SUCCESS,
       entities: normalized.entities,
-      result:normalized.result,
-      loadID:action.params.loadID
+      result: normalized.result,
+      loadID: action.params.loadID,
     });
   } catch (error) {
     yield put({type: ACTION_TYPES.FETCH_LOAD_DRIVERS_FAILURE, error});
@@ -134,7 +134,6 @@ function* fetchLoadsByStatusMonitor() {
     fetchLoadsByStatus,
   );
 }
-
 
 function* fetchLoadDriversMonitor() {
   yield takeLatest(ACTION_TYPES.FETCH_LOAD_DRIVERS_REQUEST, fetchLoadDrivers);

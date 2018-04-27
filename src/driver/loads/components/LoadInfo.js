@@ -21,17 +21,21 @@ export default class LoadInfo extends PureComponent {
   };
 
   render() {
-    let {load,style} = this.props;
+    let {load, style} = this.props;
     return (
-      <View style={[styles.container,style]}>
+      <View style={[styles.container, style]}>
         <View style={[styles.itemRowContainer]}>
           <View style={{flex: 1}}>
             <Text style={styles.label}>{I18n.t('trailer')}</Text>
-            <Text style={styles.trailerName}>{load.trailer_type ? load.trailer_type.name : ''}</Text>
+            <Text style={styles.trailerName}>
+              {load.trailer_type ? load.trailer_type.name : ''}
+            </Text>
           </View>
           <View style={{flex: 1}}>
             <Text style={styles.label}>{I18n.t('packaging')}</Text>
-            <Text style={styles.packageName}>{load.packaging ? load.packaging.name: '' }</Text>
+            <Text style={styles.packageName}>
+              {load.packaging ? load.packaging.name : ''}
+            </Text>
           </View>
           <View style={{flex: 1}}>
             <Text style={styles.label}>{I18n.t('weight')}</Text>
@@ -59,8 +63,7 @@ export default class LoadInfo extends PureComponent {
 }
 
 const styles = StyleSheet.create({
-  container: {
-  },
+  container: {},
   itemRowContainer: {
     flexDirection: 'row',
     alignItems: 'center',

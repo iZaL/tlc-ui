@@ -25,41 +25,41 @@ const getProfile = createSelector(
     return {
       ...driver,
       nationalities:
-      (driver.nationalities &&
-        driver.nationalities.map(record => {
-          return {
-            ...record,
-            country: countries[record.country],
-          };
-        })) ||
-      [],
+        (driver.nationalities &&
+          driver.nationalities.map(record => {
+            return {
+              ...record,
+              country: countries[record.country],
+            };
+          })) ||
+        [],
       residencies:
-      (driver.residencies &&
-        driver.residencies.map(record => {
-          return {
-            ...record,
-            country: countries[record.country],
-          };
-        })) ||
-      [],
+        (driver.residencies &&
+          driver.residencies.map(record => {
+            return {
+              ...record,
+              country: countries[record.country],
+            };
+          })) ||
+        [],
       visas:
-      (driver.visas &&
-        driver.visas.map(record => {
-          return {
-            ...record,
-            country: countries[record.country],
-          };
-        })) ||
-      [],
+        (driver.visas &&
+          driver.visas.map(record => {
+            return {
+              ...record,
+              country: countries[record.country],
+            };
+          })) ||
+        [],
       licenses:
-      (driver.licenses &&
-        driver.licenses.map(record => {
-          return {
-            ...record,
-            country: countries[record.country],
-          };
-        })) ||
-      [],
+        (driver.licenses &&
+          driver.licenses.map(record => {
+            return {
+              ...record,
+              country: countries[record.country],
+            };
+          })) ||
+        [],
     };
   },
 );
@@ -109,7 +109,14 @@ const getTrailer = createSelector(
 
 const getLoadByID = () => {
   return createSelector(
-    [loadsSchema, countriesSchema, trailerTypesSchema, tripsSchema, driversSchema, getIdProp],
+    [
+      loadsSchema,
+      countriesSchema,
+      trailerTypesSchema,
+      tripsSchema,
+      driversSchema,
+      getIdProp,
+    ],
     (loads, countries, trailerTypes, trips, drivers, loadID) => {
       let load = loads[loadID];
 
@@ -146,19 +153,19 @@ const getLoadByID = () => {
           origin: origin,
           destination: destination,
           trailer: trailerTypes[load.trailer_type] || {},
-          trips: (load.trips &&
-            load.trips.map(record => {
-              return {
-                ...record,
-                driver: drivers[record.driver] || {},
-              };
-            })) ||
-          [],
+          trips:
+            (load.trips &&
+              load.trips.map(record => {
+                return {
+                  ...record,
+                  driver: drivers[record.driver] || {},
+                };
+              })) ||
+            [],
         };
       }
 
-      return {}
-
+      return {};
     },
   );
 };

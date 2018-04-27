@@ -10,12 +10,11 @@ import TabPanel from 'customer/loads/components/TabPanel';
 import {ACTIONS as CUSTOMER_ACTIONS} from 'customer/common/actions';
 import {SELECTORS as CUSTOMER_SELECTORS} from 'customer/common/selectors';
 import I18n from 'utils/locale';
-import DriverInfo from "driver/components/DriverInfo";
-import TruckInfo from "trucks/components/TruckInfo";
-import TrailerInfo from "trucks/components/TrailerInfo";
+import DriverInfo from 'driver/components/DriverInfo';
+import TruckInfo from 'trucks/components/TruckInfo';
+import TrailerInfo from 'trucks/components/TrailerInfo';
 
 class TripDetailScene extends Component {
-
   // shouldComponentUpdate(nextProps) {
   //   return nextProps.load !== this.props.load;
   // }
@@ -44,62 +43,50 @@ class TripDetailScene extends Component {
     trip: {},
   };
 
-
   render() {
     let {trip} = this.props;
 
     console.log('props', trip);
 
     if (trip.id) {
-
       return (
         <ScrollView style={{flex: 1}}>
           <Tabs>
-
             <TabList>
-              <TabHeader title={I18n.t('driver')}/>
-              <TabHeader title={I18n.t('truck')}/>
-              <TabHeader title={I18n.t('trailer')}/>
+              <TabHeader title={I18n.t('driver')} />
+              <TabHeader title={I18n.t('truck')} />
+              <TabHeader title={I18n.t('trailer')} />
             </TabList>
 
-            <TabPanels >
+            <TabPanels>
               <TabPanel hideNextButton={true}>
-                {
-                  trip.driver ?
-                    <DriverInfo driver={trip.driver}/>
-                    :
-                    <View/>
-                }
+                {trip.driver ? <DriverInfo driver={trip.driver} /> : <View />}
               </TabPanel>
 
               <TabPanel hideNextButton={true}>
-                {
-                  trip.driver && trip.driver.truck ?
-                    <TruckInfo truck={trip.driver.truck}/>
-                    :
-                    <View/>
-                }
+                {trip.driver && trip.driver.truck ? (
+                  <TruckInfo truck={trip.driver.truck} />
+                ) : (
+                  <View />
+                )}
               </TabPanel>
 
               <TabPanel hideNextButton={true}>
-
-                {
-                  trip.driver && trip.driver.truck && trip.driver.truck.trailer?
-                    <TrailerInfo trailer={trip.driver.truck.trailer}/>
-                    :
-                    <View/>
-                }
+                {trip.driver &&
+                trip.driver.truck &&
+                trip.driver.truck.trailer ? (
+                  <TrailerInfo trailer={trip.driver.truck.trailer} />
+                ) : (
+                  <View />
+                )}
               </TabPanel>
             </TabPanels>
           </Tabs>
-
         </ScrollView>
       );
     }
 
     return null;
-
-
   }
 }
 

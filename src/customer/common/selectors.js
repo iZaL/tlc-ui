@@ -115,7 +115,9 @@ const getLocationUpdatesForTrip = () => {
 const getAddData = createSelector(addData, data => data);
 
 const getDriversForLoad = () => {
-  return createSelector([entities,getLoadDrivers, getIdProp], (schema,loadDrivers, loadID) => {
+  return createSelector(
+    [entities, getLoadDrivers, getIdProp],
+    (schema, loadDrivers, loadID) => {
       let drivers = loadDrivers[loadID];
       if (drivers) {
         return drivers.map(driver =>
@@ -123,7 +125,7 @@ const getDriversForLoad = () => {
         );
       }
       return [];
-    }
+    },
   );
 };
 
@@ -132,7 +134,6 @@ const getTripByID = () => {
     denormalize(id, Schema.trips, schema),
   );
 };
-
 
 export const SELECTORS = {
   getProfile,
@@ -147,5 +148,5 @@ export const SELECTORS = {
   getAddData,
   getDriversForLoad,
   getLoadByID,
-  getTripByID
+  getTripByID,
 };

@@ -22,9 +22,11 @@ class TripTrackScene extends Component {
 
   componentDidMount() {
     let {tripID} = this.props.navigation.state.params;
-    this.props.dispatch(DRIVER_ACTIONS.fetchTripDetails({
-      tripID:tripID
-    }));
+    this.props.dispatch(
+      DRIVER_ACTIONS.fetchTripDetails({
+        tripID: tripID,
+      }),
+    );
   }
 
   constructor(props) {

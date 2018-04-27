@@ -16,7 +16,7 @@ export default class Tabs extends Component {
         activeIndex: this.props.activeIndex,
       },
     );
-    return <View style={[styles.container,style]}>{children}</View>;
+    return <View style={[styles.container, style]}>{children}</View>;
   }
 }
 

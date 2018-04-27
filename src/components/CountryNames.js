@@ -8,18 +8,18 @@ export default class CountryNames extends Component {
   };
 
   static defaultProps = {
-    items: []
+    items: [],
   };
 
   shouldComponentUpdate() {
-    return false
+    return false;
   }
 
   render() {
     const {items} = this.props;
 
     if (items.length) {
-      return items.join(',')
+      return items.join(',');
     }
 
     return null;

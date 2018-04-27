@@ -77,7 +77,7 @@ loadsSchema.define({
   },
   trailer_type: trailerTypesSchema,
   customer: customersSchema,
-  trips:[tripsSchema]
+  trips: [tripsSchema],
 });
 
 tripsSchema.define({
@@ -98,7 +98,7 @@ trailersSchema.define({
 });
 
 trailerTypesSchema.define({
-  trailer:trailersSchema
+  trailer: trailersSchema,
 });
 
 export const Schema = {
