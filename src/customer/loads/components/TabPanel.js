@@ -6,8 +6,8 @@ import I18n from 'utils/locale';
 
 export default class TabPanel extends Component {
   static propTypes = {
-    buttonTitle: PropTypes.string.isRequired,
-    hideNextButton: PropTypes.bool.isRequired,
+    buttonTitle: PropTypes.string,
+    hideNextButton: PropTypes.bool,
   };
 
   static defaultProps = {

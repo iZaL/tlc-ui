@@ -51,11 +51,13 @@ class TripDetailScene extends Component {
     if (trip.id) {
       return (
         <ScrollView style={{flex: 1}}>
+
           <Tabs>
             <TabList>
               <TabHeader title={I18n.t('driver')} />
               <TabHeader title={I18n.t('truck')} />
               <TabHeader title={I18n.t('trailer')} />
+              <TabHeader title={I18n.t('track')} />
             </TabList>
 
             <TabPanels>
@@ -80,6 +82,9 @@ class TripDetailScene extends Component {
                   <View />
                 )}
               </TabPanel>
+
+              <TabPanel hideNextButton={true}/>
+
             </TabPanels>
           </Tabs>
         </ScrollView>

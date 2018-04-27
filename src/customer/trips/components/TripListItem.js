@@ -24,7 +24,7 @@ export default class extends PureComponent {
     let {item, onItemPress} = this.props;
     let {driver} = item;
     return (
-      <TouchableRipple onPress={onItemPress}>
+      <TouchableRipple onPress={()=>onItemPress(item)}>
         <View style={styles.container}>
           <UserInfo
             style={{padding: 10}}

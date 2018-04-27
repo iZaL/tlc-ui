@@ -10,7 +10,7 @@ import Label from 'components/Label';
 export default class ListIRow extends Component {
   static propTypes = {
     left: PropTypes.string.isRequired,
-    right: PropTypes.string.isRequired,
+    right: PropTypes.oneOfType([PropTypes.string,PropTypes.number]),
   };
 
   shouldComponentUpdate() {

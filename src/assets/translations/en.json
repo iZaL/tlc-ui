@@ -258,5 +258,8 @@
   "trips": "Trips",
   "status" : "Status",
   "trip_drivers" : "Trip Drivers",
+  "track_fleets": "Track Fleets",
+  "track": "Track",
+  "trip_detail" : "Trip Detail",
 
 }

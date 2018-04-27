@@ -133,6 +133,9 @@ const LoadStack = createStackNavigator(
     },
     TripDetail: {
       screen: TripDetailScene,
+      navigationOptions: () => ({
+        title: I18n.t('trip_detail'),
+      }),
     },
     TripTrack: {
       screen: TripTrackScene,
