@@ -19,12 +19,16 @@ export default class ListItem extends Component {
     return false;
   }
 
+  static defaultProps = {
+    icon:null
+  };
+
   render() {
     let {onItemPress, name, title, icon, iconProps, description, style, ...rest} = this.props;
     return (
       <PaperListItem
         onPress={name ? () => onItemPress(name) : onItemPress}
-        icon={iconProps ? <IconFactory {...iconProps} /> : null}
+        icon={iconProps ? <IconFactory {...iconProps} /> : icon}
         title={title}
         description={description}
         inset={true}

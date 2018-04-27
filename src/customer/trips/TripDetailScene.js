@@ -13,7 +13,7 @@ import TripList from "customer/trips/components/TripList";
 import {SELECTORS as CUSTOMER_SELECTORS} from "customer/common/selectors";
 import {Title} from "react-native-paper";
 
-class LoadDetailScene extends Component {
+class TripDetailScene extends Component {
   shouldComponentUpdate(nextProps) {
     return nextProps.load !== this.props.load;
   }
@@ -115,4 +115,4 @@ const makeMapStateToProps = () => {
   return mapStateToProps;
 };
 
-export default connect(makeMapStateToProps)(LoadDetailScene);
+export default connect(makeMapStateToProps)(TripDetailScene);

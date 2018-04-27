@@ -3,9 +3,8 @@
  */
 import React, {Component, PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import {FlatList, Image, StyleSheet, Text, View} from 'react-native';
-import Divider from 'components/Divider';
-import {ListSection, TouchableRipple} from 'react-native-paper';
+import {Image, StyleSheet, Text, View} from 'react-native';
+import {TouchableRipple} from 'react-native-paper';
 import ListItem from 'components/ListItem';
 import {TripProp} from 'app/common/proptypes';
 
@@ -21,12 +20,14 @@ export default class extends PureComponent {
 
   render() {
     let {item, onItemPress} = this.props;
+    console.log('item',item);
     return (
       <TouchableRipple onItemPress={onItemPress}>
         <View style={styles.container}>
           <ListItem
             onItemPress={onItemPress}
             title={item.driver.user.name}
+            description={item.driver.nationalities.map(nationality => nationality.country.name).join(',')}
             avatar={
               <Image
                 source={{uri: 'https://cdn.iconscout.com/public/images/icon/free/png-512/avatar-user-coder-3579ca3abc3fd60f-512x512.png'}}
@@ -35,11 +36,10 @@ export default class extends PureComponent {
             }
             style={{flex: 1}}
           />
-          <Text style={styles.status}>confirmed</Text>
+          <Text style={styles.status}>{item.status}</Text>
         </View>
       </TouchableRipple>
-    )
-      ;
+    );
   }
 }
 
