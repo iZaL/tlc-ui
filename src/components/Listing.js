@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import {FlatList, StyleSheet} from 'react-native';
 import Divider from 'components/Divider';
 import colors from 'assets/theme/colors';
-import CheckedListItem from './CheckedListItem';
+import CheckedListItem from 'components/CheckedListItem';
 
 export default class Listing extends Component {
   static propTypes = {

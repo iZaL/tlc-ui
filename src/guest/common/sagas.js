@@ -1,7 +1,7 @@
 import NavigatorService from 'components/NavigatorService';
 import {all, call, fork, put, takeLatest} from 'redux-saga/effects';
 import {NavigationActions} from 'react-navigation';
-import {API} from './api';
+import {API} from 'guest/common/api';
 import {ACTIONS as APP_ACTIONS} from 'app/common/actions';
 import {
   forgetStorageItem,

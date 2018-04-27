@@ -4,8 +4,7 @@ import {connect} from 'react-redux';
 import {ScrollView} from 'react-native';
 import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
 import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
-import RouteTransitsList from './components/RouteTransitsList';
-import VisaLicenseForm from './components/VisaLicenseForm';
+import RouteTransitsList from 'driver/routes/components/RouteTransitsList';
 
 type State = {
   activeCountry: undefined,

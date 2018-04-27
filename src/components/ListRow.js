@@ -3,11 +3,9 @@
  */
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {ListItem as PaperListItem, Title} from 'react-native-paper';
-import I18n from 'utils/locale';
-import IconFactory from 'components/IconFactory';
-import {Text, View, StyleSheet} from 'react-native';
-import Label from './Label';
+import {Title} from 'react-native-paper';
+import {StyleSheet, View} from 'react-native';
+import Label from 'components/Label';
 
 export default class ListIRow extends Component {
   static propTypes = {

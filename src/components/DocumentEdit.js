@@ -18,7 +18,6 @@ import {
   Title,
 } from 'react-native-paper';
 import {View} from 'react-native';
-import ListModal from './ListModal';
 
 export default class DocumentEdit extends Component {
   static propTypes = {
