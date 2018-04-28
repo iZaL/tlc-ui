@@ -1,4 +1,4 @@
-import {fetchAPI} from 'utils/api';
+import {fetchAPI} from 'utils/network';
 
 function login(params) {
   // if (isNull(token) && isNull(params)) return;

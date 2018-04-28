@@ -1,4 +1,4 @@
-import {fetchAPI} from 'utils/api';
+import {fetchAPI} from 'utils/network';
 
 function fetchTruckMakesModels() {
   const url = `trucks/makes`;

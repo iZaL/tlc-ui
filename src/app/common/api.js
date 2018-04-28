@@ -1,4 +1,4 @@
-import {fetchAPI} from 'utils/api';
+import {fetchAPI} from 'utils/network';
 
 function storePushToken(urlParams, body) {
   const url = `push_token/register${urlParams}`;

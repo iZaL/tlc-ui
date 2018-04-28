@@ -1,4 +1,4 @@
-import {fetchAPI} from 'utils/api';
+import {fetchAPI} from 'utils/network';
 
 function saveProfile(body) {
   const url = `driver/profile/update`;
