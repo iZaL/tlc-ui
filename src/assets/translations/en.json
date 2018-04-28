@@ -248,7 +248,8 @@
   "multiple_locations" : "Multiple Locations",
 
   "blocked_drivers" : "Blocked Drivers",
-  "select_drivers" : "Select Drivers",
+  "drivers_select" : "Select Drivers",
+  "driver_select" : "Select Driver",
 
   "load_create_success" : "Load has been successfully created.",
   "view_matching_drivers" : "View Matching Drivers",

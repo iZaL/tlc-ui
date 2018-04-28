@@ -8,7 +8,7 @@ import Divider from 'components/Divider';
 import {ListSection} from 'react-native-paper';
 import DriverListItem from 'customer/loads/components/DriverListItem';
 
-export default class EmployeeList extends PureComponent {
+export default class extends PureComponent {
   static propTypes = {
     items: PropTypes.array.isRequired,
   };

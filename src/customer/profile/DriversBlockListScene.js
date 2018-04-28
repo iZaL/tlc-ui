@@ -5,7 +5,7 @@ import {ACTIONS as CUSTOMER_ACTIONS} from 'customer/common/actions';
 import {SELECTORS as CUSTOMER_SELECTORS} from 'customer/common/selectors';
 import {View} from 'react-native';
 import I18n from 'utils/locale';
-import DriversList from 'customer/profile/components/DriversList';
+import DriversList from 'customer/loads/components/DriversList';
 import {FAB} from 'react-native-paper';
 import colors from 'assets/theme/colors';
 import ListModal from 'components/ListModal';
@@ -77,7 +77,7 @@ class DriversBlockListScene extends Component {
         />
 
         <ListModal
-          header={I18n.t('select_drivers')}
+          header={I18n.t('drivers_select')}
           onItemPress={this.onDriversBlockListItemPress}
           activeIDs={blocked_drivers.map(driver => driver.id)}
           title={item => item.user.name}

@@ -11,28 +11,15 @@ import LoadInfo from 'driver/loads/components/LoadInfo';
 import Divider from 'components/Divider';
 import TripList from 'customer/trips/components/TripList';
 import {SELECTORS as CUSTOMER_SELECTORS} from 'customer/common/selectors';
-import {Title} from 'react-native-paper';
 import Tabs from 'components/Tabs';
 import TabList from 'components/TabList';
 import TabPanels from 'components/TabPanels';
 import TabHeader from 'customer/loads/components/TabHeader';
 import TabPanel from 'customer/loads/components/TabPanel';
 import ReceiverInfo from "../../loads/components/ReceiverInfo";
+import PendingFleetsList from "../trips/components/PendingFleetsList";
 
 class LoadDetailScene extends Component {
-  shouldComponentUpdate(nextProps) {
-    return nextProps.load !== this.props.load;
-  }
-
-  componentDidMount() {
-    // const {loadID} = this.props.navigation.state.params;
-    this.props.dispatch(
-      CUSTOMER_ACTIONS.fetchLoadDetails({
-        // loadID: loadID,
-        loadID: 1,
-      }),
-    );
-  }
 
   static propTypes = {
     navigation: PropTypes.shape({
@@ -48,6 +35,16 @@ class LoadDetailScene extends Component {
     navigation: {state: {params: {loadID: 0}}},
     load: {},
   };
+
+  componentDidMount() {
+    // const {loadID} = this.props.navigation.state.params;
+    this.props.dispatch(
+      CUSTOMER_ACTIONS.fetchLoadDetails({
+        // loadID: loadID,
+        loadID: 1,
+      }),
+    );
+  }
 
   static navigationOptions = ({navigation}) => {
     return {
@@ -66,10 +63,16 @@ class LoadDetailScene extends Component {
     });
   };
 
+  onPendingFleetsListItemPress = () => {
+    this.props.navigation.navigate('TripCreate', {
+      loadID: this.props.load.id,
+    });
+  };
+
   render() {
     let {load} = this.props;
 
-    let {origin, destination, receiver} = load;
+    let {origin, destination, receiver, pending_fleets} = load;
 
     console.log('props', this.props.load);
 
@@ -117,10 +120,19 @@ class LoadDetailScene extends Component {
             </TabPanel>
 
             <TabPanel hideNextButton={true}>
+
               <TripList
                 items={load.trips || []}
                 onItemPress={this.onTripListItemPress}
               />
+
+              <Divider/>
+
+              <PendingFleetsList
+                count={pending_fleets}
+                onItemPress={this.onPendingFleetsListItemPress}
+              />
+
             </TabPanel>
 
             <TabPanel hideNextButton={true}>
@@ -149,33 +161,6 @@ class LoadDetailScene extends Component {
       </ScrollView>
     );
 
-    // return (
-    //   <View style={{flex: 1, backgroundColor: 'white'}}>
-    //
-    //     {origin && destination &&
-    //
-    //     <View style={{flex: 1}}>
-    //
-    //       <View style={{height: 200, backgroundColor: colors.lightGrey}}>
-    //         <LoadLocationMapView origin={origin} destination={destination}/>
-    //       </View>
-    //
-    //       <LoadPickDropLocation origin={origin} destination={destination} style={{padding: 5}}/>
-    //
-    //       <Divider style={{marginVertical: 10}}/>
-    //
-    //       <LoadInfo load={load} style={{padding: 5}}/>
-    //
-    //       <Divider/>
-    //
-    //       <Title style={{paddingTop: 10}}> Trip Drivers </Title>
-    //
-    //       <TripList items={load.trips || []} onItemPress={this.onTripListItemPress}/>
-    //
-    //     </View>
-    //     }
-    //   </View>
-    // );
   }
 }
 

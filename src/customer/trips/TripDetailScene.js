@@ -15,18 +15,6 @@ import TruckInfo from 'trucks/components/TruckInfo';
 import TrailerInfo from 'trucks/components/TrailerInfo';
 
 class TripDetailScene extends Component {
-  // shouldComponentUpdate(nextProps) {
-  //   return nextProps.load !== this.props.load;
-  // }
-
-  componentDidMount() {
-    // let {tripID} = this.props.navigation.state.params;
-    this.props.dispatch(
-      CUSTOMER_ACTIONS.fetchTripDetails({
-        tripID: 1,
-      }),
-    );
-  }
 
   static propTypes = {
     navigation: PropTypes.shape({
@@ -42,6 +30,15 @@ class TripDetailScene extends Component {
     navigation: {state: {params: {loadID: 0}}},
     trip: {},
   };
+
+  componentDidMount() {
+    // let {tripID} = this.props.navigation.state.params;
+    this.props.dispatch(
+      CUSTOMER_ACTIONS.fetchTripDetails({
+        tripID: 1,
+      }),
+    );
+  }
 
   render() {
     let {trip} = this.props;

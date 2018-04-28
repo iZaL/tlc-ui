@@ -127,7 +127,7 @@ export default class LoadWhat extends Component {
         )}
 
         <ListModal
-          header={I18n.t('select_drivers')}
+          header={I18n.t('drivers_select')}
           onItemPress={this.onLocationListItemPress}
           activeIDs={[]}
           title={item => item.address}

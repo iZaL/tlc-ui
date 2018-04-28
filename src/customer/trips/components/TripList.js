@@ -3,14 +3,15 @@
  */
 import React, {Component, PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import {FlatList, StyleSheet, View} from 'react-native';
+import {FlatList, StyleSheet} from 'react-native';
 import Divider from 'components/Divider';
-import {ListSection, TouchableRipple} from 'react-native-paper';
+import {ListSection} from 'react-native-paper';
 import TripListItem from 'customer/trips/components/TripListItem';
 
 export default class extends PureComponent {
   static propTypes = {
     items: PropTypes.array.isRequired,
+    onItemPress:PropTypes.func.isRequired,
   };
 
   static defaultProps = {

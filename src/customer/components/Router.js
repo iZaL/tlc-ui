@@ -21,6 +21,7 @@ import LoadDetailOptionsListScene from 'customer/loads/LoadDetailOptionsListScen
 import DriversListScene from 'customer/loads/DriversListScene';
 import DriversBlockListScene from 'customer/profile/DriversBlockListScene';
 import TripDetailScene from 'customer/trips/TripDetailScene';
+import TripCreateScene from 'customer/trips/TripCreateScene';
 
 const getDrawerIcon = navigation => {
   return {
@@ -143,6 +144,12 @@ const LoadStack = createStackNavigator(
         title: I18n.t('trip_track'),
       }),
     },
+    TripCreate: {
+      screen: TripCreateScene,
+      navigationOptions: () => ({
+        title: I18n.t('driver_select'),
+      }),
+    },
     DriversList: {
       screen: DriversListScene,
     },
@@ -155,7 +162,7 @@ const LoadStack = createStackNavigator(
     cardStyle: {
       backgroundColor: colors.fadedWhite,
     },
-    initialRouteName: 'LoadDetail',
+    initialRouteName: 'TripCreate',
   },
 );
 

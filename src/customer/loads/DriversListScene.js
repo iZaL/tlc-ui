@@ -32,7 +32,7 @@ class DriversListScene extends Component {
     );
   }
 
-  onLoadsListItemPress = (load: object) => {
+  onDriversListItemPress = (load: object) => {
     this.props.navigation.navigate('LoadDetailOptionsList', {
       loadID: load.id,
     });
@@ -42,7 +42,7 @@ class DriversListScene extends Component {
     let {drivers} = this.props;
     console.log('drivers', drivers);
     return (
-      <DriversList items={drivers} onItemPress={this.onLoadsListItemPress} />
+      <DriversList items={drivers} onItemPress={this.onDriversListItemPress} />
     );
   }
 }

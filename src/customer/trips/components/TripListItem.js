@@ -24,21 +24,25 @@ export default class extends PureComponent {
     let {item, onItemPress} = this.props;
     let {driver} = item;
     return (
-      <TouchableRipple onPress={()=>onItemPress(item)}>
-        <View style={styles.container}>
+      <View style={styles.container}>
+
+        <TouchableRipple onPress={() => onItemPress(item)}>
           <UserInfo
             style={{padding: 10}}
             image={driver.user.image}
             name={driver.user.name}
             onAvatarPress={this.onPress}
           />
+        </TouchableRipple>
 
+        <TouchableRipple onPress={() => onItemPress(item)} underlayColor="transparent">
           <View style={styles.rightContainer}>
-            <Label title={I18n.t('status')} />
+            <Label title={I18n.t('status')}/>
             <Text style={styles.status}>{item.status}</Text>
           </View>
-        </View>
-      </TouchableRipple>
+        </TouchableRipple>
+
+      </View>
     );
   }
 }
