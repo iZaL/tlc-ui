@@ -50,7 +50,7 @@ class TripCreateScene extends Component {
 }
 
 const makeMapStateToProps = () => {
-  const getLoadByID = CUSTOMER_SELECTORS.getLoadDrivers();
+  const getLoadByID = CUSTOMER_SELECTORS.getLoadByID();
   const mapStateToProps = (state, props) => {
     return {
       load: getLoadByID(state, 1),

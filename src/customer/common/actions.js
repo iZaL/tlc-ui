@@ -63,6 +63,10 @@ export const ACTION_TYPES = {
   FETCH_LOAD_DRIVERS_SUCCESS: '@customer/FETCH_LOAD_DRIVERS_SUCCESS',
   FETCH_LOAD_DRIVERS_FAILURE: '@customer/FETCH_LOAD_DRIVERS_FAILURE',
 
+  FETCH_LOAD_BOOKABLE_DRIVERS_REQUEST: '@customer/FETCH_LOAD_BOOKABLE_DRIVERS_REQUEST',
+  FETCH_LOAD_BOOKABLE_DRIVERS_SUCCESS: '@customer/FETCH_LOAD_BOOKABLE_DRIVERS_SUCCESS',
+  FETCH_LOAD_BOOKABLE_DRIVERS_FAILURE: '@customer/FETCH_LOAD_BOOKABLE_DRIVERS_FAILURE',
+
   FETCH_TRIP_DETAILS_REQUEST: '@customer/FETCH_TRIP_DETAILS_REQUEST',
   FETCH_TRIP_DETAILS_SUCCESS: '@customer/FETCH_TRIP_DETAILS_SUCCESS',
   FETCH_TRIP_DETAILS_FAILURE: '@customer/FETCH_TRIP_DETAILS_FAILURE',
@@ -173,6 +177,13 @@ function fetchLoadDrivers(params) {
   };
 }
 
+function fetchLoadBookableDrivers(params) {
+  return {
+    type: ACTION_TYPES.FETCH_LOAD_BOOKABLE_DRIVERS_REQUEST,
+    params,
+  };
+}
+
 function fetchTripDetails(params) {
   return {
     type: ACTION_TYPES.FETCH_TRIP_DETAILS_REQUEST,
@@ -192,6 +203,7 @@ export const ACTIONS = {
   fetchLoadsByStatus,
   fetchLoadDetails,
   fetchLoadDrivers,
+  fetchLoadBookableDrivers,
   fetchTripDetails,
   saveLoad,
   subscribeToTripTrack,

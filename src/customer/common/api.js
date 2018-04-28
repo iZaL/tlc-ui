@@ -55,10 +55,6 @@ function saveLocation(body) {
   return fetchAPI(url, 'POST', body);
 }
 
-function fetchLoadDrivers(params) {
-  const url = `customer/loads/${params.loadID}/drivers/search`;
-  return fetchAPI(url);
-}
 
 function fetchLoadDetails(params) {
   const url = `customer/loads/${params.loadID}/details`;
@@ -67,6 +63,16 @@ function fetchLoadDetails(params) {
 
 function fetchTripDetails(params = {}) {
   const url = `customer/trips/${params.tripID}/details`;
+  return fetchAPI(url);
+}
+
+function fetchLoadDrivers(params) {
+  const url = `customer/loads/${params.loadID}/drivers/search`;
+  return fetchAPI(url);
+}
+
+function fetchLoadBookableDrivers(params) {
+  const url = `customer/loads/${params.loadID}/drivers/bookable`;
   return fetchAPI(url);
 }
 
@@ -83,6 +89,7 @@ export const API = {
   fetchLoadAdd,
   fetchLoadsByStatus,
   fetchLoadDrivers,
+  fetchLoadBookableDrivers,
   fetchLoadDetails,
   fetchTripDetails,
 };
