@@ -29,7 +29,7 @@ export default class Drawer extends Component {
     let {activeRoute} = this.state;
 
     return (
-      <DrawerSection style={{paddingTop: 30}}>
+      <DrawerSection>
         <DrawerHeader user={user} />
 
         <DrawerItem

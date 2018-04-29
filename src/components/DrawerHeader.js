@@ -35,7 +35,7 @@ export default class DrawerHeader extends Component {
 const styles = StyleSheet.create({
   container: {
     height: 100,
-    backgroundColor: colors.secondary,
+    backgroundColor: colors.primary,
     alignItems: 'center',
     paddingTop: 30,
   },
