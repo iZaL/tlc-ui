@@ -8,7 +8,7 @@ import I18n from 'utils/locale';
 import colors from 'assets/theme/colors';
 import Divider from 'components/Divider';
 import TextInput from 'components/TextInput';
-import {Caption, Paragraph, Title} from "react-native-paper";
+import {Caption, Paragraph, Title} from 'react-native-paper';
 export default class LoadWhat extends Component {
   static propTypes = {
     trailers: PropTypes.array.isRequired,
@@ -72,6 +72,6 @@ export default class LoadWhat extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding:10
+    padding: 10,
   },
 });

@@ -6,7 +6,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import I18n from 'utils/locale';
 import ListItem from 'components/ListItem';
 import ListModal from 'components/ListModal';
-import {Title} from "react-native-paper";
+import {Title} from 'react-native-paper';
 
 export default class LoadWhat extends Component {
   shouldComponentUpdate(nextProps, nextState) {
@@ -94,7 +94,6 @@ export default class LoadWhat extends Component {
             </View>
           </View>
         ) : (
-
           <Title onPress={this.onPickLocationPress} style={styles.label}>
             {I18n.t('location_origin_select')}
           </Title>
@@ -161,7 +160,7 @@ export default class LoadWhat extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding:10
+    padding: 10,
   },
   rowContainer: {
     flex: 1,

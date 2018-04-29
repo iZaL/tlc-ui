@@ -45,9 +45,8 @@ export default class LoadWhat extends Component {
     let {showTimePicker} = this.state;
 
     return (
-      <View style={{padding:10}}>
-
-        <Title >{I18n.t('load_date')}</Title>
+      <View style={{padding: 10}}>
+        <Title>{I18n.t('load_date')}</Title>
 
         <DatePicker onDateChange={date => onValueChange('load_date', date)} />
 

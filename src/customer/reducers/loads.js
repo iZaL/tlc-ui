@@ -42,11 +42,11 @@ export function reducer(state = initialState, action = {}) {
           ...state.add,
           attributes: {
             ...state.add.attributes,
-            [action.field]: action.value
-              // typeof (action.value) === 'string' ? action.value : {
-              //   ...state.add.attributes[action.field],
-              //   ...action.value
-              // },
+            [action.field]: action.value,
+            // typeof (action.value) === 'string' ? action.value : {
+            //   ...state.add.attributes[action.field],
+            //   ...action.value
+            // },
           },
         },
       };

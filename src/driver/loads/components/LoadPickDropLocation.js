@@ -4,8 +4,7 @@
 import React, {Component, PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {StyleSheet, Text, View} from 'react-native';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import IconFactory from '../../../components/IconFactory';
+import IconFactory from 'components/IconFactory';
 
 export default class LoadPickDropLocation extends PureComponent {
   static propTypes = {

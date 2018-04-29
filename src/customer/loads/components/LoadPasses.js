@@ -1,14 +1,8 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {Text, View, StyleSheet, ScrollView, FlatList} from 'react-native';
-import Touchable from 'react-native-platform-touchable';
-import Label from 'components/Label';
-import TextInput from 'components/TextInput';
+import {FlatList, StyleSheet} from 'react-native';
 import Divider from 'components/Divider';
-import colors from 'assets/theme/colors';
-import I18n from 'utils/locale';
-import FormCheck from 'components/FormCheck';
-import CheckedListItem from "../../../components/CheckedListItem";
+import CheckedListItem from 'components/CheckedListItem';
 
 export default class LoadWhat extends Component {
   static propTypes = {
@@ -22,7 +16,9 @@ export default class LoadWhat extends Component {
     return (
       <CheckedListItem
         checked={activeIDs.includes(item.id)}
-        title={`${item.name} - ${item.country.name}`} onPress={() => onValueChange(item.id)}/>
+        title={`${item.name} - ${item.country.name}`}
+        onPress={() => onValueChange(item.id)}
+      />
     );
   };
 
@@ -34,7 +30,7 @@ export default class LoadWhat extends Component {
         style={styles.listContainer}
         renderItem={this.renderRow}
         showsVerticalScrollIndicator={false}
-        ItemSeparatorComponent={() => <Divider style={{marginVertical: 5}}/>}
+        ItemSeparatorComponent={() => <Divider style={{marginVertical: 5}} />}
         keyExtractor={(item, index) => `${index}`}
         extraData={activeIDs}
       />

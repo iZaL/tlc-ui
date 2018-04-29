@@ -16,8 +16,8 @@ import TabList from 'components/TabList';
 import TabPanels from 'components/TabPanels';
 import TabHeader from 'customer/loads/components/TabHeader';
 import TabPanel from 'customer/loads/components/TabPanel';
-import ReceiverInfo from '../../loads/components/ReceiverInfo';
-import PendingFleetsList from '../trips/components/PendingFleetsList';
+import ReceiverInfo from 'loads/components/ReceiverInfo';
+import PendingFleetsList from 'customer/trips/components/PendingFleetsList';
 
 class LoadDetailScene extends Component {
   static propTypes = {

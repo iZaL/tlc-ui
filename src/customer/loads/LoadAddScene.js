@@ -93,18 +93,20 @@ class LoadAddScene extends Component {
   updatePasses = id => {
     let {security_passes} = this.props.loadData.attributes;
     let passes = security_passes.includes(id)
-        ? security_passes.filter(value => value !== id)
-        : security_passes.concat(id);
+      ? security_passes.filter(value => value !== id)
+      : security_passes.concat(id);
     this.props.dispatch(CUSTOMER_ACTIONS.setAddData('security_passes', passes));
   };
 
   onPackagingDimensionsFieldChange = (field, name) => {
     let {packaging_dimension} = this.props.loadData.attributes;
-     let packagingDimension = {
-        ...packaging_dimension,
-        [field]: name,
-      };
-    this.props.dispatch(CUSTOMER_ACTIONS.setAddData('packaging_dimension', packagingDimension));
+    let packagingDimension = {
+      ...packaging_dimension,
+      [field]: name,
+    };
+    this.props.dispatch(
+      CUSTOMER_ACTIONS.setAddData('packaging_dimension', packagingDimension),
+    );
   };
 
   onLoadPassSearch = searchTerm => {};
@@ -120,7 +122,6 @@ class LoadAddScene extends Component {
     // on Success
     this.showSuccessModalDialog();
   };
-
 
   showMatchingDrivers = () => {
     this.hideSuccessModalDialog();
