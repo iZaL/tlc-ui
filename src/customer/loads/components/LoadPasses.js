@@ -8,49 +8,36 @@ import Divider from 'components/Divider';
 import colors from 'assets/theme/colors';
 import I18n from 'utils/locale';
 import FormCheck from 'components/FormCheck';
+import CheckedListItem from "../../../components/CheckedListItem";
 
 export default class LoadWhat extends Component {
   static propTypes = {
     onSearch: PropTypes.func.isRequired,
     items: PropTypes.array.isRequired,
-    security_passes: PropTypes.array.isRequired,
+    activeIDs: PropTypes.array.isRequired,
   };
 
   renderRow = ({item}) => {
-    let {onValueChange, security_passes} = this.props;
+    let {onValueChange, activeIDs} = this.props;
     return (
-      <View style={styles.row}>
-        <Label
-          title={`${item.name} - ${item.country.name}`}
-          style={{flex: 1}}
-        />
-        <FormCheck
-          checked={security_passes.includes(item.id)}
-          onPress={() => onValueChange(item.id)}
-        />
-      </View>
+      <CheckedListItem
+        checked={activeIDs.includes(item.id)}
+        title={`${item.name} - ${item.country.name}`} onPress={() => onValueChange(item.id)}/>
     );
   };
 
   render() {
-    let {items, security_passes} = this.props;
+    let {items, activeIDs} = this.props;
     return (
-      <View>
-        <Label
-          title={I18n.t('load_security_passes')}
-          style={{marginBottom: 10}}
-        />
-
-        <FlatList
-          data={items}
-          style={styles.listContainer}
-          renderItem={this.renderRow}
-          showsVerticalScrollIndicator={false}
-          ItemSeparatorComponent={() => <Divider style={{marginVertical: 5}} />}
-          keyExtractor={(item, index) => `${index}`}
-          extraData={security_passes}
-        />
-      </View>
+      <FlatList
+        data={items}
+        style={styles.listContainer}
+        renderItem={this.renderRow}
+        showsVerticalScrollIndicator={false}
+        ItemSeparatorComponent={() => <Divider style={{marginVertical: 5}}/>}
+        keyExtractor={(item, index) => `${index}`}
+        extraData={activeIDs}
+      />
     );
   }
 }

@@ -46,6 +46,7 @@ export default class LoadWhat extends Component {
 
     return (
       <ScrollView>
+
         <Label title={I18n.t('load_date')} />
 
         <DatePicker onDateChange={date => onValueChange('load_date', date)} />

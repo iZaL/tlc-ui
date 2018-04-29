@@ -32,7 +32,6 @@ class LoadAddScene extends Component {
   };
 
   state = {
-    // component level dialogs
     isSuccessDialogVisible: false,
     isPackageDimensionDialogVisible: false,
     isTrailerQuantityDialogVisible: false,
@@ -92,21 +91,26 @@ class LoadAddScene extends Component {
   };
 
   updatePasses = id => {
-    this.setState({
-      security_passes: this.state.security_passes.includes(id)
-        ? this.state.security_passes.filter(value => value !== id)
-        : this.state.security_passes.concat(id),
-    });
+    let {security_passes} = this.props.loadData.attributes;
+    let passes = security_passes.includes(id)
+        ? security_passes.filter(value => value !== id)
+        : security_passes.concat(id);
+    this.props.dispatch(CUSTOMER_ACTIONS.setAddData('security_passes', passes));
+  };
+
+  onPackagingDimensionsFieldChange = (field, name) => {
+    let {packaging_dimension} = this.props.loadData.attributes;
+     let packagingDimension = {
+        ...packaging_dimension,
+        [field]: name,
+      };
+    this.props.dispatch(CUSTOMER_ACTIONS.setAddData('packaging_dimension', packagingDimension));
   };
 
   onLoadPassSearch = searchTerm => {};
 
   onSaveButtonPress = () => {
-    // console.log('saving');
-
-    let params = {
-      ...this.state,
-    };
+    console.log('@todo save');
 
     // return new Promise((resolve, reject) => {
     //   this.props.dispatch(CUSTOMER_ACTIONS.saveLoad({params, resolve}));
@@ -117,14 +121,6 @@ class LoadAddScene extends Component {
     this.showSuccessModalDialog();
   };
 
-  onPackagingDimensionsFieldChange = (field, name) => {
-    this.setState({
-      packaging_dimension: {
-        ...this.state.packaging_dimension,
-        [field]: name,
-      },
-    });
-  };
 
   showMatchingDrivers = () => {
     this.hideSuccessModalDialog();
@@ -235,7 +231,7 @@ class LoadAddScene extends Component {
             <TabPanel>
               <LoadPasses
                 items={securityPasses}
-                security_passes={security_passes}
+                activeIDs={security_passes}
                 onSearch={this.onLoadPassSearch}
                 onValueChange={this.updatePasses}
               />
