@@ -4,21 +4,29 @@
 import React, {Component, PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {StyleSheet} from 'react-native';
-import ListItem from 'components/ListItem';
+import UserInfo from "components/UserInfo";
 
 export default class extends PureComponent {
   static propTypes = {
-    item: PropTypes.object.isRequired,
+    driver: PropTypes.object.isRequired,
     onItemPress: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
-    item: [],
+    driver: {},
   };
 
   render() {
-    let {item,onItemPress} = this.props;
-    return <ListItem onItemPress={() => onItemPress(item)} title={item.user.name} />
+    let {driver,onItemPress} = this.props;
+    let {user} = driver;
+    return (
+      <UserInfo
+        style={{padding: 10}}
+        image={user.image}
+        name={user.name}
+        onPress={()=>onItemPress(driver)}
+      />
+    )
   }
 }
 

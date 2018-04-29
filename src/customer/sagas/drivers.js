@@ -22,7 +22,13 @@ function* fetchLoadDrivers(action) {
 function* fetchLoadBookableDrivers(action) {
   try {
     const response = yield call(API.fetchLoadBookableDrivers, action.params);
-    const normalized = normalize(response.data, [Schema.drivers]);
+
+    const data = {
+      ...response.load,
+      bookable_drivers: response.drivers,
+    };
+
+    const normalized = normalize(data, Schema.loads);
     yield put({
       type: ACTION_TYPES.FETCH_LOAD_BOOKABLE_DRIVERS_SUCCESS,
       entities: normalized.entities,

@@ -20,7 +20,7 @@ import PackageDimensions from 'customer/loads/components/PackageDimensions';
 import TrailerQuantity from 'customer/loads/components/TrailerQuantity';
 import I18n from 'utils/locale';
 import {ACTIONS as TRUCK_ACTIONS} from 'trucks/common/actions';
-import SuccessDialog from 'customer/loads/components/SuccessDialog';
+import Dialog from "components/Dialog";
 
 class LoadAddScene extends Component {
   static propTypes = {
@@ -252,10 +252,14 @@ class LoadAddScene extends Component {
           </TabPanels>
         </Tabs>
 
-        <SuccessDialog
+        <Dialog
           visible={isSuccessDialogVisible}
-          onPress={this.showMatchingDrivers}
+          rightPress={this.showMatchingDrivers}
+          title={I18n.t('success')}
+          description={I18n.t('load_create_success')}
+          rightText={I18n.t('view_matching_drivers')}
         />
+
       </ScrollView>
     );
   }

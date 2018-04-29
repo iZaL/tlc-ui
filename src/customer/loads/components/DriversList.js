@@ -19,7 +19,7 @@ export default class extends PureComponent {
 
   renderRow = ({item}) => {
     let {onItemPress} = this.props;
-    return <DriverListItem onItemPress={onItemPress} item={item} />;
+    return <DriverListItem onItemPress={onItemPress} driver={item} />;
   };
 
   render() {

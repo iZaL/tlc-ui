@@ -6,12 +6,13 @@ import PropTypes from 'prop-types';
 import {StyleSheet, View} from 'react-native';
 import Avatar from 'components/Avatar';
 import Label from 'components/Label';
-import {Title} from 'react-native-paper';
+import {Title, TouchableRipple} from 'react-native-paper';
 import I18n from 'utils/locale';
 
 export default class UserInfo extends Component {
   static propTypes = {
     image: PropTypes.string.isRequired,
+    onPress: PropTypes.func,
     onAvatarPress: PropTypes.func,
   };
 
@@ -25,16 +26,21 @@ export default class UserInfo extends Component {
   };
 
   render() {
-    let {image, name, nameLabel, avatarSize, onAvatarPress, style} = this.props;
+    let {image, name, nameLabel, avatarSize, onAvatarPress, style, onPress} = this.props;
     return (
-      <View style={[styles.container, style]}>
-        <Avatar image={image} size={avatarSize} onPress={onAvatarPress} />
+      <TouchableRipple onPress={onPress}>
 
-        <View style={styles.contentContainer}>
-          <Label title={nameLabel} />
-          <Title>{name}</Title>
+        <View style={[styles.container, style]}>
+          <Avatar image={image} size={avatarSize} onPress={onAvatarPress}/>
+
+          <View style={styles.contentContainer}>
+            <Label title={nameLabel}/>
+            <Title>{name}</Title>
+          </View>
+
         </View>
-      </View>
+
+      </TouchableRipple>
     );
   }
 }
