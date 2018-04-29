@@ -12,7 +12,14 @@ function* saveProfile(action) {
   } = action;
 
   try {
-    const response = yield call(API.saveProfile, rest);
+
+    let params = {
+      body:{
+        ...rest
+      }
+    };
+
+    const response = yield call(API.saveProfile, params);
     const normalized = normalize(response.data, Schema.drivers);
 
     yield put({
@@ -55,13 +62,15 @@ function* fetchProfile() {
   }
 }
 
-function* saveTruckMonitor() {
-  yield takeLatest(ACTION_TYPES.SAVE_TRUCK_REQUEST, saveTruck);
-}
-
 function* saveTruck(action) {
   try {
-    const response = yield call(API.saveTruck, action.params);
+    let params = {
+      body:{
+        ...action.params
+      }
+    };
+
+    const response = yield call(API.saveTruck, params);
     const normalized = normalize(response.data, Schema.drivers);
     yield put({
       type: ACTION_TYPES.SAVE_TRUCK_SUCCESS,
@@ -75,9 +84,12 @@ function* saveTruck(action) {
       }),
     );
   } catch (error) {
-    // yield put(APP_ACTIONS.setNotification({      message:error,      type:'error'    }));
     yield put({type: ACTION_TYPES.SAVE_TRUCK_FAILURE, error});
   }
+}
+
+function* saveTruckMonitor() {
+  yield takeLatest(ACTION_TYPES.SAVE_TRUCK_REQUEST, saveTruck);
 }
 
 function* saveProfileMonitor() {

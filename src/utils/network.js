@@ -3,7 +3,7 @@ import I18n from 'utils/locale';
 import {getStorageItem} from 'utils/functions';
 import NavigatorService from 'components/NavigatorService';
 
-export async function request({
+export async function fetchAPI({
   path,
   protocol = 'http://',
   domain = null, //http://wwww.waa.com

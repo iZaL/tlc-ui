@@ -3,8 +3,6 @@ import {API} from 'customer/common/api';
 import {ACTION_TYPES} from 'customer/common/actions';
 import {Schema} from 'utils/schema';
 import {normalize} from 'normalizr';
-import {ACTIONS as APP_ACTIONS} from 'app/common/actions';
-import I18n from 'utils/locale';
 
 function* fetchLoadDrivers(action) {
   try {

@@ -1,70 +1,86 @@
-import {fetchAPI} from 'utils/api';
-
-function saveProfile(body) {
-  const url = `driver/profile/update`;
-  return fetchAPI(url, 'POST', body);
-}
-
-function saveRoute(body) {
-  const url = `driver/routes`;
-  return fetchAPI(url, 'POST', body);
-}
+import {fetchAPI} from 'utils/network';
 
 function fetchProfile() {
-  const url = `driver/profile`;
-  return fetchAPI(url);
+  const path = `driver/profile`;
+  return fetchAPI({path});
 }
 
 function fetchRoutes() {
-  const url = `driver/routes`;
-  return fetchAPI(url);
+  const path = `driver/routes`;
+  return fetchAPI({path});
 }
 
 function fetchUpcomingTrips() {
-  const url = `driver/trips/upcoming`;
-  return fetchAPI(url);
+  const path = `driver/trips/upcoming`;
+  return fetchAPI({path});
 }
 
 function fetchRouteTransits(params) {
-  const url = `driver/routes/${params.routeID}/transits`;
-  return fetchAPI(url);
+  const path = `driver/routes/${params.routeID}/transits`;
+  return fetchAPI({path});
 }
 
 function fetchLoadDetails(params) {
-  const url = `driver/loads/${params.loadID}/details`;
-  return fetchAPI(url);
+  const path = `driver/loads/${params.loadID}/details`;
+  return fetchAPI({path});
 }
 
 function fetchTripDetails(params = {}) {
-  const url = `driver/trips/${params.tripID}/details`;
-  return fetchAPI(url);
-}
-
-function saveTruck(body) {
-  const url = `driver/trucks`;
-  return fetchAPI(url, 'POST', body);
+  const path = `driver/trips/${params.tripID}/details`;
+  return fetchAPI({path});
 }
 
 function fetchLoadsByStatus(status) {
-  const url = `driver/loads/status/${status}`;
-  return fetchAPI(url);
+  const path = `driver/loads/status/${status}`;
+  return fetchAPI({path});
 }
 
-function fetchSecurityPasses(params) {
-  const url = `driver/security_passes`;
-  return fetchAPI(url);
+function fetchSecurityPasses() {
+  const path = `driver/security_passes`;
+  return fetchAPI({path});
+}
+
+function saveTruck(params) {
+  const path = `driver/trucks`;
+
+  let requestParams = {
+    path,
+    params,
+    method: 'POST',
+  };
+  return fetchAPI(requestParams);
+}
+
+function saveProfile(params) {
+  const path = `driver/profile/update`;
+  let requestParams = {
+    path,
+    params,
+    method: 'POST',
+  };
+  return fetchAPI(requestParams);
+}
+
+function saveRoute(params) {
+  const path = `driver/routes`;
+  let requestParams = {
+    path,
+    params,
+    method: 'POST',
+  };
+  return fetchAPI(requestParams);
 }
 
 export const API = {
-  saveProfile,
   fetchProfile,
   fetchRoutes,
-  saveRoute,
-  saveTruck,
   fetchRouteTransits,
   fetchSecurityPasses,
   fetchUpcomingTrips,
   fetchTripDetails,
   fetchLoadDetails,
   fetchLoadsByStatus,
+  saveProfile,
+  saveRoute,
+  saveTruck,
 };

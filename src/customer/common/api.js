@@ -1,86 +1,102 @@
-import {fetchAPI} from 'utils/api';
-
-function saveProfile(body) {
-  const url = `customer/profile/update`;
-  return fetchAPI(url, 'POST', body);
-}
+import {fetchAPI} from 'utils/network';
 
 function fetchProfile() {
-  const url = `customer/profile`;
-  return fetchAPI(url);
+  const path = `customer/profile`;
+  return fetchAPI({path});
 }
 
 function fetchBlockedDrivers() {
-  const url = `customer/drivers/blocked`;
-  return fetchAPI(url);
+  const path = `customer/drivers/blocked`;
+  return fetchAPI({path});
 }
 
 function fetchDrivers() {
-  const url = `customer/drivers`;
-  return fetchAPI(url);
+  const path = `customer/drivers`;
+  return fetchAPI({path});
 }
 
 function fetchLocations() {
-  const url = `customer/locations`;
-  return fetchAPI(url);
+  const path = `customer/locations`;
+  return fetchAPI({path});
 }
 
 function fetchEmployees() {
-  const url = `customer/employees`;
-  return fetchAPI(url);
+  const path = `customer/employees`;
+  return fetchAPI({path});
 }
 
 function fetchLoadAdd() {
-  const url = `customer/loads/add/data`;
-  return fetchAPI(url);
+  const path = `customer/loads/add/data`;
+  return fetchAPI({path});
 }
 
 function fetchLoadsByStatus(status) {
-  const url = `customer/loads/status/${status}`;
-  return fetchAPI(url);
+  const path = `customer/loads/status/${status}`;
+  return fetchAPI({path});
 }
-
-function saveLoad(body) {
-  const url = `customer/loads`;
-  return fetchAPI(url, 'POST', body);
-}
-
-function saveEmployee(body) {
-  const url = `customer/employees`;
-  return fetchAPI(url, 'POST', body);
-}
-
-function saveLocation(body) {
-  const url = `customer/locations`;
-  return fetchAPI(url, 'POST', body);
-}
-
 
 function fetchLoadDetails(params) {
-  const url = `customer/loads/${params.loadID}/details`;
-  return fetchAPI(url);
+  const path = `customer/loads/${params.loadID}/details`;
+  return fetchAPI({path});
 }
 
-function fetchTripDetails(params = {}) {
-  const url = `customer/trips/${params.tripID}/details`;
-  return fetchAPI(url);
+function fetchTripDetails(params) {
+  const path = `customer/trips/${params.tripID}/details`;
+  return fetchAPI({path});
 }
 
 function fetchLoadDrivers(params) {
-  const url = `customer/loads/${params.loadID}/drivers/search`;
-  return fetchAPI(url);
+  const path = `customer/loads/${params.loadID}/drivers/search`;
+  return fetchAPI({path});
 }
 
 function fetchLoadBookableDrivers(params) {
-  const url = `customer/loads/${params.loadID}/drivers/bookable`;
-  return fetchAPI(url);
+  const path = `customer/loads/${params.loadID}/drivers/bookable`;
+  return fetchAPI({path});
+}
+
+function saveProfile(params) {
+  const path = `customer/profile/update`;
+  let requestParams = {
+    path,
+    params,
+    method: 'POST',
+  };
+  return fetchAPI(requestParams);
+}
+
+function saveLoad(params) {
+  const path = `customer/loads`;
+  let requestParams = {
+    path,
+    params,
+    method: 'POST',
+  };
+  return fetchAPI(requestParams);
+}
+
+function saveEmployee(params) {
+  const path = `customer/employees`;
+  let requestParams = {
+    path,
+    params,
+    method: 'POST',
+  };
+  return fetchAPI(requestParams);
+}
+
+function saveLocation(params) {
+  const path = `customer/locations`;
+
+  let requestParams = {
+    path,
+    params,
+    method: 'POST',
+  };
+  return fetchAPI(requestParams);
 }
 
 export const API = {
-  saveProfile,
-  saveEmployee,
-  saveLocation,
-  saveLoad,
   fetchProfile,
   fetchBlockedDrivers,
   fetchDrivers,
@@ -92,4 +108,8 @@ export const API = {
   fetchLoadBookableDrivers,
   fetchLoadDetails,
   fetchTripDetails,
+  saveProfile,
+  saveEmployee,
+  saveLocation,
+  saveLoad,
 };
