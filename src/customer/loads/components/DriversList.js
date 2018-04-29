@@ -19,26 +19,26 @@ export default class extends PureComponent {
 
   renderRow = ({item}) => {
     let {onItemPress} = this.props;
-    return <DriverListItem onItemPress={onItemPress} driver={item} />;
+    return <DriverListItem onItemPress={onItemPress} driver={item}/>;
   };
 
   render() {
     let {items} = this.props;
     return (
-      <ListSection>
-        <FlatList
-          data={items}
-          style={styles.listContainer}
-          renderItem={this.renderRow}
-          showsVerticalScrollIndicator={false}
-          ItemSeparatorComponent={() => <Divider />}
-          keyExtractor={(item, index) => `${index}`}
-        />
-      </ListSection>
+      <FlatList
+        data={items}
+        style={styles.listContainer}
+        renderItem={this.renderRow}
+        showsVerticalScrollIndicator={false}
+        ItemSeparatorComponent={() => <Divider/>}
+        keyExtractor={(item, index) => `${index}`}
+      />
     );
   }
 }
 
 const styles = StyleSheet.create({
-  listContainer: {},
+  listContainer: {
+    flex: 1,
+  },
 });
