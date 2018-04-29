@@ -1,23 +1,23 @@
 import {fetchAPI} from 'utils/network';
 
 function fetchTruckMakesModels() {
-  const url = `trucks/makes`;
-  return fetchAPI(url);
+  const path = `trucks/makes`;
+  return fetchAPI({path});
 }
 
 function fetchTrailerMakes() {
-  const url = `trailers/makes`;
-  return fetchAPI(url);
+  const path = `trailers/makes`;
+  return fetchAPI({path});
 }
 
 function fetchTrailerTypes() {
-  const url = `trailers/types`;
-  return fetchAPI(url);
+  const path = `trailers/types`;
+  return fetchAPI({path});
 }
 
 function fetchTrailers() {
-  const url = `trailers`;
-  return fetchAPI(url);
+  const path = `trailers`;
+  return fetchAPI({path});
 }
 
 export const API = {

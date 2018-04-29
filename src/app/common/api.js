@@ -1,18 +1,18 @@
 import {fetchAPI} from 'utils/network';
 
-function storePushToken(urlParams, body) {
-  const url = `push_token/register${urlParams}`;
-  return fetchAPI(url, 'POST', body);
+function storePushToken(params) {
+  const path = `push_token/register`;
+  return fetchAPI({path, method: 'POST', params});
 }
 
-function fetchCountries(params = '') {
-  const url = `countries${params}`;
-  return fetchAPI(url);
+function fetchCountries() {
+  const path = `countries`;
+  return fetchAPI({path});
 }
 
-function fetchSecurityPasses(params) {
-  const url = `security_passes`;
-  return fetchAPI(url);
+function fetchSecurityPasses() {
+  const path = `security_passes`;
+  return fetchAPI({path});
 }
 
 export const API = {

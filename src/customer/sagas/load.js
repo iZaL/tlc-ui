@@ -12,7 +12,14 @@ function* saveLoad(action) {
   } = action;
 
   try {
-    const response = yield call(API.saveLoad, params);
+
+    let requestParams = {
+      body:{
+        ...params
+      }
+    };
+
+    const response = yield call(API.saveLoad, requestParams);
     const normalized = normalize(response.data, Schema.customers);
     const {entities, result} = normalized;
 

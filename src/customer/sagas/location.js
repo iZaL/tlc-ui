@@ -22,7 +22,14 @@ function* fetchLocations() {
 
 function* saveLocation(action) {
   try {
-    const response = yield call(API.saveLocation, action.params);
+
+    let params = {
+      body:{
+        ...action.params
+      }
+    };
+
+    const response = yield call(API.saveLocation, params);
     const normalized = normalize(response.data, Schema.customers);
     const {entities} = normalized;
 

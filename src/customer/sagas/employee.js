@@ -22,7 +22,14 @@ function* fetchEmployees() {
 
 function* saveEmployee(action) {
   try {
-    const response = yield call(API.saveEmployee, action.params);
+
+    let params = {
+      body:{
+        ...action.params
+      }
+    };
+
+    const response = yield call(API.saveEmployee, params);
     const normalized = normalize(response.data, Schema.customers);
     const {entities} = normalized;
 

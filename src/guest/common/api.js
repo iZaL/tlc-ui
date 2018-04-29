@@ -1,34 +1,66 @@
+import isNull from 'lodash/isNull';
 import {fetchAPI} from 'utils/network';
 
-function login(params) {
-  // if (isNull(token) && isNull(params)) return;
-  const url = `auth/login`;
-  return fetchAPI(url, 'POST', params);
+function login(params, token) {
+  if (isNull(token) && isNull(params)) return;
+  const path = `auth/login`;
+
+  let fetchAPIParams = {
+    path,
+    params,
+    method: 'POST',
+  };
+  return fetchAPI(fetchAPIParams);
 }
 
 function register(params) {
-  const url = `auth/register`;
-  return fetchAPI(url, 'POST', params);
+  const path = `auth/register`;
+  let fetchAPIParams = {
+    path,
+    params,
+    method: 'POST',
+  };
+  return fetchAPI(fetchAPIParams);
 }
 
 function forgotPassword(params) {
-  const url = `auth/password/forgot`;
-  return fetchAPI(url, 'POST', params);
+  const path = `auth/password/forgot`;
+  let fetchAPIParams = {
+    path,
+    params,
+    method: 'POST',
+  };
+  return fetchAPI(fetchAPIParams);
 }
 
 function recoverPassword(params) {
-  const url = `auth/password/recover`;
-  return fetchAPI(url, 'POST', params);
+  const path = `auth/password/recover`;
+  let fetchAPIParams = {
+    path,
+    params,
+    method: 'POST',
+  };
+  return fetchAPI(fetchAPIParams);
 }
 
 function updatePassword(params) {
-  const url = `auth/password/update`;
-  return fetchAPI(url, 'POST', params);
+  const path = `auth/password/update`;
+  let fetchAPIParams = {
+    path,
+    params,
+    method: 'POST',
+  };
+  return fetchAPI(fetchAPIParams);
 }
 
 function confirmOTP(params) {
-  const url = `auth/otp/confirm`;
-  return fetchAPI(url, 'POST', params);
+  const path = `auth/otp/confirm`;
+  let fetchAPIParams = {
+    path,
+    params,
+    method: 'POST',
+  };
+  return fetchAPI(fetchAPIParams);
 }
 
 export const API = {

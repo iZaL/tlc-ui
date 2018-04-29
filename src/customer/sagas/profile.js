@@ -7,7 +7,14 @@ import {ACTIONS as APP_ACTIONS} from 'app/common/actions';
 
 function* saveProfile(action) {
   try {
-    const response = yield call(API.saveProfile, action.params);
+
+    let params = {
+      body:{
+        ...action.params
+      }
+    };
+
+    const response = yield call(API.saveProfile, params);
     const normalized = normalize(response.data, Schema.customers);
     const {entities, result} = normalized;
 
