@@ -67,7 +67,7 @@ class App extends Component {
   };
 
   render() {
-    const {app, isAuthenticated, userType, notifications,user} = this.props;
+    const {app, isAuthenticated, userType, notifications, user} = this.props;
 
     if (!app.booted) return null;
 

@@ -11,7 +11,7 @@ import TripListItem from 'customer/trips/components/TripListItem';
 export default class extends PureComponent {
   static propTypes = {
     items: PropTypes.array.isRequired,
-    onItemPress:PropTypes.func.isRequired,
+    onItemPress: PropTypes.func.isRequired,
   };
 
   static defaultProps = {

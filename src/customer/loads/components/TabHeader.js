@@ -38,7 +38,7 @@ export default class TabHeader extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    padding:15,
+    padding: 15,
     alignItems: 'center',
     justifyContent: 'center',
   },

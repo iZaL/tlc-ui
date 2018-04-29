@@ -45,7 +45,10 @@ function* fetchLoadDriversMonitor() {
 }
 
 function* fetchLoadBookableDriversMonitor() {
-  yield takeLatest(ACTION_TYPES.FETCH_LOAD_BOOKABLE_DRIVERS_REQUEST, fetchLoadBookableDrivers);
+  yield takeLatest(
+    ACTION_TYPES.FETCH_LOAD_BOOKABLE_DRIVERS_REQUEST,
+    fetchLoadBookableDrivers,
+  );
 }
 
 export const sagas = all([

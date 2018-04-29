@@ -16,11 +16,10 @@ import TabList from 'components/TabList';
 import TabPanels from 'components/TabPanels';
 import TabHeader from 'customer/loads/components/TabHeader';
 import TabPanel from 'customer/loads/components/TabPanel';
-import ReceiverInfo from "../../loads/components/ReceiverInfo";
-import PendingFleetsList from "../trips/components/PendingFleetsList";
+import ReceiverInfo from '../../loads/components/ReceiverInfo';
+import PendingFleetsList from '../trips/components/PendingFleetsList';
 
 class LoadDetailScene extends Component {
-
   static propTypes = {
     navigation: PropTypes.shape({
       state: PropTypes.shape({
@@ -80,87 +79,81 @@ class LoadDetailScene extends Component {
       <ScrollView style={{flex: 1, backgroundColor: 'white'}}>
         <Tabs>
           <TabList>
-            <TabHeader title={I18n.t('load_info')}/>
-            <TabHeader title={I18n.t('trip_drivers')}/>
-            <TabHeader title={I18n.t('track_fleets')}/>
-            <TabHeader title={I18n.t('receiver_information')}/>
+            <TabHeader title={I18n.t('load_info')} />
+            <TabHeader title={I18n.t('trip_drivers')} />
+            <TabHeader title={I18n.t('track_fleets')} />
+            <TabHeader title={I18n.t('receiver_information')} />
           </TabList>
 
           <TabPanels>
             <TabPanel hideNextButton={true}>
               <View style={{flex: 1, backgroundColor: 'white'}}>
                 {origin &&
-                destination && (
-                  <View style={{flex: 1}}>
-                    <View
-                      style={{
-                        height: 200,
-                        backgroundColor: colors.lightGrey,
-                      }}>
-                      <LoadLocationMapView
+                  destination && (
+                    <View style={{flex: 1}}>
+                      <View
+                        style={{
+                          height: 200,
+                          backgroundColor: colors.lightGrey,
+                        }}>
+                        <LoadLocationMapView
+                          origin={origin}
+                          destination={destination}
+                        />
+                      </View>
+
+                      <LoadPickDropLocation
                         origin={origin}
                         destination={destination}
+                        style={{padding: 5}}
                       />
+
+                      <Divider style={{marginVertical: 10}} />
+
+                      <LoadInfo load={load} style={{padding: 5}} />
+
+                      <Divider />
                     </View>
-
-                    <LoadPickDropLocation
-                      origin={origin}
-                      destination={destination}
-                      style={{padding: 5}}
-                    />
-
-                    <Divider style={{marginVertical: 10}}/>
-
-                    <LoadInfo load={load} style={{padding: 5}}/>
-
-                    <Divider/>
-                  </View>
-                )}
+                  )}
               </View>
             </TabPanel>
 
             <TabPanel hideNextButton={true}>
-
               <TripList
                 items={load.trips || []}
                 onItemPress={this.onTripListItemPress}
               />
 
-              <Divider/>
+              <Divider />
 
               <PendingFleetsList
                 count={pending_fleets}
                 onItemPress={this.onPendingFleetsListItemPress}
               />
-
             </TabPanel>
 
             <TabPanel hideNextButton={true}>
-              <View/>
+              <View />
             </TabPanel>
 
             <TabPanel hideNextButton={true}>
+              {receiver ? (
+                <ReceiverInfo
+                  name={receiver.name}
+                  email={receiver.email}
+                  phone={receiver.phone}
+                  mobile={receiver.mobile}
+                />
+              ) : (
+                <View />
+              )}
 
-              {
-                receiver ?
-                  <ReceiverInfo
-                    name={receiver.name}
-                    email={receiver.email}
-                    phone={receiver.phone}
-                    mobile={receiver.mobile}
-                  />
-                  : <View/>
-              }
-
-              <View/>
-
+              <View />
             </TabPanel>
-
           </TabPanels>
         </Tabs>
       </ScrollView>
     );
-
   }
 }
 

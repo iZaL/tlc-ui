@@ -105,7 +105,6 @@ function* setLanguage(action) {
 
 function* setPushToken(action) {
   try {
-
     const params = {
       body: {
         token: action.params.token,

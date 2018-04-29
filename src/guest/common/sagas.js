@@ -54,7 +54,6 @@ function* login(action) {
 
 function* register(action) {
   try {
-
     const params = {
       body: {
         ...action.params,

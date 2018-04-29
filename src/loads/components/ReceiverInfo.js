@@ -24,16 +24,15 @@ export default class ReceiverInfo extends Component {
   render() {
     let {name, email, mobile, phone} = this.props;
 
-
     return (
       <View style={styles.container}>
-        <ListRow left={I18n.t('name')} right={name}/>
-        <Divider/>
-        <ListRow left={I18n.t('email')} right={email}/>
-        <Divider/>
-        <ListRow left={I18n.t('mobile')} right={mobile}/>
-        <Divider/>
-        <ListRow left={I18n.t('phone')} right={phone}/>
+        <ListRow left={I18n.t('name')} right={name} />
+        <Divider />
+        <ListRow left={I18n.t('email')} right={email} />
+        <Divider />
+        <ListRow left={I18n.t('mobile')} right={mobile} />
+        <Divider />
+        <ListRow left={I18n.t('phone')} right={phone} />
       </View>
     );
   }

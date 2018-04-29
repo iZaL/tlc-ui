@@ -4,7 +4,7 @@
 import React, {Component, PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {StyleSheet} from 'react-native';
-import UserInfo from "components/UserInfo";
+import UserInfo from 'components/UserInfo';
 
 export default class extends PureComponent {
   static propTypes = {
@@ -17,16 +17,16 @@ export default class extends PureComponent {
   };
 
   render() {
-    let {driver,onItemPress} = this.props;
+    let {driver, onItemPress} = this.props;
     let {user} = driver;
     return (
       <UserInfo
         style={{padding: 10}}
         image={user.image}
         name={user.name}
-        onPress={()=>onItemPress(driver)}
+        onPress={() => onItemPress(driver)}
       />
-    )
+    );
   }
 }
 

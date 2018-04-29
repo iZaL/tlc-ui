@@ -25,7 +25,6 @@ export default class extends PureComponent {
     let {driver} = item;
     return (
       <View style={styles.container}>
-
         <TouchableRipple onPress={() => onItemPress(item)}>
           <UserInfo
             style={{padding: 10}}
@@ -35,13 +34,14 @@ export default class extends PureComponent {
           />
         </TouchableRipple>
 
-        <TouchableRipple onPress={() => onItemPress(item)} underlayColor="transparent">
+        <TouchableRipple
+          onPress={() => onItemPress(item)}
+          underlayColor="transparent">
           <View style={styles.rightContainer}>
-            <Label title={I18n.t('status')}/>
+            <Label title={I18n.t('status')} />
             <Text style={styles.status}>{item.status}</Text>
           </View>
         </TouchableRipple>
-
       </View>
     );
   }

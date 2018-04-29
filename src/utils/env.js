@@ -5,10 +5,7 @@ import {Platform} from 'react-native';
 if (__DEV__) {
   module.exports = {
     ...defaults,
-    API_URL:
-      Platform.OS === 'ios'
-        ? 'tlc.test/api'
-        : '10.0.2.2:9000/api',
+    API_URL: Platform.OS === 'ios' ? 'tlc.test/api' : '10.0.2.2:9000/api',
     SOCKET_SERVER: 'http://10.0.2.2:3000',
     GOOGLE_MAPS_KEY: 'AIzaSyCpQX4H0QPxVgKuNMZ0ELG_ymgT8RHcKh4',
     GOOGLE_MAPS_IOS_KEY: 'AIzaSyDPCgdWqrkBe4v3uSuU-MZGJIZ0AQxfbCo',

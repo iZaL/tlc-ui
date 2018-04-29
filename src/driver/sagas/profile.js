@@ -12,11 +12,10 @@ function* saveProfile(action) {
   } = action;
 
   try {
-
     let params = {
-      body:{
-        ...rest
-      }
+      body: {
+        ...rest,
+      },
     };
 
     const response = yield call(API.saveProfile, params);
@@ -65,9 +64,9 @@ function* fetchProfile() {
 function* saveTruck(action) {
   try {
     let params = {
-      body:{
-        ...action.params
-      }
+      body: {
+        ...action.params,
+      },
     };
 
     const response = yield call(API.saveTruck, params);

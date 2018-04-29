@@ -26,20 +26,25 @@ export default class UserInfo extends Component {
   };
 
   render() {
-    let {image, name, nameLabel, avatarSize, onAvatarPress, style, onPress} = this.props;
+    let {
+      image,
+      name,
+      nameLabel,
+      avatarSize,
+      onAvatarPress,
+      style,
+      onPress,
+    } = this.props;
     return (
       <TouchableRipple onPress={onPress}>
-
         <View style={[styles.container, style]}>
-          <Avatar image={image} size={avatarSize} onPress={onAvatarPress}/>
+          <Avatar image={image} size={avatarSize} onPress={onAvatarPress} />
 
           <View style={styles.contentContainer}>
-            <Label title={nameLabel}/>
+            <Label title={nameLabel} />
             <Title>{name}</Title>
           </View>
-
         </View>
-
       </TouchableRipple>
     );
   }

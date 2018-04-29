@@ -15,7 +15,6 @@ import TruckInfo from 'trucks/components/TruckInfo';
 import TrailerInfo from 'trucks/components/TrailerInfo';
 
 class TripDetailScene extends Component {
-
   static propTypes = {
     navigation: PropTypes.shape({
       state: PropTypes.shape({
@@ -48,7 +47,6 @@ class TripDetailScene extends Component {
     if (trip.id) {
       return (
         <ScrollView style={{flex: 1}}>
-
           <Tabs>
             <TabList>
               <TabHeader title={I18n.t('driver')} />
@@ -80,8 +78,7 @@ class TripDetailScene extends Component {
                 )}
               </TabPanel>
 
-              <TabPanel hideNextButton={true}/>
-
+              <TabPanel hideNextButton={true} />
             </TabPanels>
           </Tabs>
         </ScrollView>

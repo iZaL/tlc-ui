@@ -4,12 +4,11 @@ import {connect} from 'react-redux';
 import {ScrollView} from 'react-native';
 import {ACTIONS as CUSTOMER_ACTIONS} from 'customer/common/actions';
 import {SELECTORS as CUSTOMER_SELECTORS} from 'customer/common/selectors';
-import DriversList from "customer/loads/components/DriversList";
-import Dialog from "components/Dialog";
+import DriversList from 'customer/loads/components/DriversList';
+import Dialog from 'components/Dialog';
 import I18n from 'utils/locale';
 
 class TripCreateScene extends Component {
-
   static propTypes = {
     navigation: PropTypes.shape({
       state: PropTypes.shape({
@@ -26,9 +25,9 @@ class TripCreateScene extends Component {
   };
 
   state = {
-    selectedDriverID:null,
-    dialogVisible:false,
-    dialogTitle:null
+    selectedDriverID: null,
+    dialogVisible: false,
+    dialogTitle: null,
   };
 
   componentDidMount() {
@@ -41,30 +40,33 @@ class TripCreateScene extends Component {
     );
   }
 
-  onDriverListItemPress = (item : object) => {
+  onDriverListItemPress = (item: object) => {
     this.setState({
-      selectedDriverID:item.id,
+      selectedDriverID: item.id,
     });
-    this.showDialog({title:`${I18n.t('confirm')} ${item.user.name}`});
+    this.showDialog({title: `${I18n.t('confirm')} ${item.user.name}`});
   };
 
   showDialog = ({title}) => {
-    this.setState({
-      dialogTitle:title,
-      dialogVisible:true,
-    },()=>{
-      // this.setState({
-      //   dialogVisible:true
-      // })
-    })
+    this.setState(
+      {
+        dialogTitle: title,
+        dialogVisible: true,
+      },
+      () => {
+        // this.setState({
+        //   dialogVisible:true
+        // })
+      },
+    );
   };
 
   hideDialog = () => {
     this.setState({
-      dialogVisible:false,
-      dialogTitle:null,
-      selectedDriverID:null
-    })
+      dialogVisible: false,
+      dialogTitle: null,
+      selectedDriverID: null,
+    });
   };
 
   onDriverConfirm = () => {
@@ -78,12 +80,15 @@ class TripCreateScene extends Component {
     if (load.id) {
       return (
         <ScrollView style={{flex: 1}}>
-          <DriversList onItemPress={this.onDriverListItemPress} items={load.bookable_drivers || []} />
-          <Dialog leftPress={this.hideDialog}
-                  rightPress={this.onDriverConfirm}
-                  visible={this.state.dialogVisible}
-                  title={this.state.dialogTitle}
-
+          <DriversList
+            onItemPress={this.onDriverListItemPress}
+            items={load.bookable_drivers || []}
+          />
+          <Dialog
+            leftPress={this.hideDialog}
+            rightPress={this.onDriverConfirm}
+            visible={this.state.dialogVisible}
+            title={this.state.dialogTitle}
           />
         </ScrollView>
       );

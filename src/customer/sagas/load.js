@@ -12,11 +12,10 @@ function* saveLoad(action) {
   } = action;
 
   try {
-
     let requestParams = {
-      body:{
-        ...params
-      }
+      body: {
+        ...params,
+      },
     };
 
     const response = yield call(API.saveLoad, requestParams);

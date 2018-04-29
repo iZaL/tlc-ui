@@ -7,11 +7,10 @@ import {ACTIONS as APP_ACTIONS} from 'app/common/actions';
 
 function* saveProfile(action) {
   try {
-
     let params = {
-      body:{
-        ...action.params
-      }
+      body: {
+        ...action.params,
+      },
     };
 
     const response = yield call(API.saveProfile, params);

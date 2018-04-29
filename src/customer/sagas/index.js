@@ -6,4 +6,4 @@ import {sagas as trip} from 'customer/sagas/trip';
 import {sagas as drivers} from 'customer/sagas/drivers';
 import {all} from 'redux-saga/effects';
 
-export const sagas = all([profile, employee, location, load, trip,drivers]);
+export const sagas = all([profile, employee, location, load, trip, drivers]);
