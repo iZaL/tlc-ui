@@ -8,7 +8,7 @@ import DatePicker from 'components/DatePicker';
 import Divider from 'components/Divider';
 import colors from 'assets/theme/colors';
 import DateTimePicker from 'react-native-modal-datetime-picker';
-import {Button} from 'react-native-paper';
+import {Button, Title} from 'react-native-paper';
 import moment from 'moment';
 
 export default class LoadWhat extends Component {
@@ -45,9 +45,9 @@ export default class LoadWhat extends Component {
     let {showTimePicker} = this.state;
 
     return (
-      <ScrollView>
+      <View style={{padding:10}}>
 
-        <Label title={I18n.t('load_date')} />
+        <Title >{I18n.t('load_date')}</Title>
 
         <DatePicker onDateChange={date => onValueChange('load_date', date)} />
 
@@ -75,7 +75,7 @@ export default class LoadWhat extends Component {
             placeholderText: styles.placeholderText,
           }}
         />
-      </ScrollView>
+      </View>
     );
   }
 }

@@ -8,6 +8,7 @@ import I18n from 'utils/locale';
 import colors from 'assets/theme/colors';
 import Divider from 'components/Divider';
 import TextInput from 'components/TextInput';
+import {Caption, Paragraph, Title} from "react-native-paper";
 export default class LoadWhat extends Component {
   static propTypes = {
     trailers: PropTypes.array.isRequired,
@@ -29,7 +30,7 @@ export default class LoadWhat extends Component {
     } = this.props;
     return (
       <View style={styles.container}>
-        <Label title={I18n.t('packaging_select')} style={{marginBottom: 5}} />
+        <Title>{I18n.t('packaging_select')}</Title>
 
         <GridList
           items={packaging}
@@ -41,7 +42,8 @@ export default class LoadWhat extends Component {
           style={{backgroundColor: colors.mediumGrey, marginVertical: 20}}
         />
 
-        <Label title={I18n.t('trailer_select')} style={{marginBottom: 5}} />
+        <Title>{I18n.t('trailer_select')}</Title>
+
         <GridList
           items={trailers}
           onItemPress={item => onValueChange('trailer_id', item.id)}
@@ -70,5 +72,6 @@ export default class LoadWhat extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    padding:10
   },
 });
