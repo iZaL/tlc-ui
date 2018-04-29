@@ -67,7 +67,7 @@ class App extends Component {
   };
 
   render() {
-    const {app, isAuthenticated, userType, notifications} = this.props;
+    const {app, isAuthenticated, userType, notifications,user} = this.props;
 
     if (!app.booted) return null;
 
@@ -92,6 +92,7 @@ class App extends Component {
         <Navigator
           isAuthenticated={isAuthenticated}
           userType={userType}
+          user={user}
           logout={this.logout}
         />
       </View>
@@ -105,6 +106,7 @@ function mapStateToProps(state) {
     notifications: state.notifications,
     isAuthenticated: USER_SELECTOR.isAuthenticated(state),
     userType: USER_SELECTOR.getAuthUserType(state),
+    user: USER_SELECTOR.getAuthUser(state),
   };
 }
 

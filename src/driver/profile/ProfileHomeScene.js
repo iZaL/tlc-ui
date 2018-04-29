@@ -1,11 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {ScrollView, Text} from 'react-native';
 import ListItem from 'components/ListItem';
-import IconFactory from 'components/IconFactory';
-import {SELECTORS as USER_SELECTORS} from 'guest/common/selectors';
 import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
-import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
 import Divider from 'components/Divider';
 import I18n from 'utils/locale';
 import {ListSection} from 'react-native-paper';

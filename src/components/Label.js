@@ -22,8 +22,8 @@ export default class Label extends Component {
 const styles = StyleSheet.create({
   label: {
     textAlign: 'left',
-    fontSize: 13,
+    fontSize: 12,
     color: colors.mediumGrey,
-    fontWeight: '700',
+    fontWeight: '100',
   },
 });

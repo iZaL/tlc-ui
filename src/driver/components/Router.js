@@ -1,7 +1,9 @@
 import React from 'react';
 import {createDrawerNavigator, createStackNavigator} from 'react-navigation';
-import Drawer from 'driver/components/Drawer';
+import I18n from 'utils/locale';
+import colors from 'assets/theme/colors';
 import DrawerIcon from 'components/DrawerIcon';
+import Drawer from 'driver/components/Drawer';
 import Home from 'driver/Home';
 import Settings from 'driver/Settings';
 import ProfileHomeScene from 'driver/profile/ProfileHomeScene';
@@ -15,8 +17,6 @@ import LoadDetailScene from 'driver/loads/LoadDetailScene';
 import LoadListScene from 'driver/loads/LoadListScene';
 import LoadHomeScene from 'driver/loads/LoadHomeScene';
 import TripTrackScene from 'driver/trips/TripTrackScene';
-import I18n from 'utils/locale';
-import colors from 'assets/theme/colors';
 import NationalityListScene from 'driver/nationality/NationalityListScene';
 import NationalityAddScene from 'driver/nationality/NationalityAddScene';
 import ProfileInfoUpdateScene from 'driver/profile/ProfileInfoUpdateScene';
@@ -231,5 +231,5 @@ export const Routes = createDrawerNavigator(DrawerRoutes, {
   gesturesEnabled: false,
   contentComponent: props => <Drawer {...props} />,
   drawerWidth: 275,
-  initialRouteName: 'ProfileStack',
+  // initialRouteName: 'ProfileStack',
 });

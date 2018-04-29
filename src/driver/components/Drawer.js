@@ -2,13 +2,10 @@
  * @flow
  */
 import React, {Component} from 'react';
-import {StyleSheet, View} from 'react-native';
-import colors from 'assets/theme/colors';
 import I18n from 'utils/locale';
 import DrawerItem from 'components/DrawerItem';
-import Divider from 'components/Divider';
-import IconFactory from 'components/IconFactory';
 import {DrawerSection} from 'react-native-paper';
+import DrawerHeader from "components/DrawerHeader";
 
 export default class Drawer extends Component {
   state = {
@@ -27,12 +24,14 @@ export default class Drawer extends Component {
   };
 
   render() {
-    let {logout} = this.props.screenProps;
+    let {logout,user} = this.props.screenProps;
 
     let {activeRoute} = this.state;
 
     return (
       <DrawerSection style={{paddingTop: 30}}>
+        <DrawerHeader user={user} />
+
         <DrawerItem
           label={I18n.t('home')}
           routeName="HomeStack"

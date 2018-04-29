@@ -29,7 +29,7 @@ export default class Navigator extends Component {
   };
 
   render() {
-    const {isAuthenticated, userType, logout} = this.props;
+    const {isAuthenticated, userType, user, logout} = this.props;
     const screen = this.resolveScreenForUser(userType);
 
     // const RootModalStack = createStackNavigator(
@@ -85,7 +85,7 @@ export default class Navigator extends Component {
         ref={navigatorRef => {
           NavigatorService.setContainer(navigatorRef);
         }}
-        screenProps={{isAuthenticated, logout}}
+        screenProps={{isAuthenticated, logout, user}}
       />
     );
   }
