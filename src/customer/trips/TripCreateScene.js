@@ -87,6 +87,7 @@ class TripCreateScene extends Component {
           <Dialog
             leftPress={this.hideDialog}
             rightPress={this.onDriverConfirm}
+            leftText={I18n.t('cancel')}
             visible={this.state.dialogVisible}
             title={this.state.dialogTitle}
           />

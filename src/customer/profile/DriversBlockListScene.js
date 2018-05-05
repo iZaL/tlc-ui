@@ -59,7 +59,6 @@ class DriversBlockListScene extends Component {
 
     return (
       <View style={{flex: 1}}>
-
         <DriversList
           items={blocked_drivers}
           onItemPress={this.onDriversListItemPress}
@@ -89,7 +88,6 @@ class DriversBlockListScene extends Component {
           onCancel={this.hideDriversModal}
           onSave={this.onBlockedDriversSavePress}
         />
-
       </View>
     );
   }

@@ -17,6 +17,7 @@ const countriesSchema = state => state.entities.countries;
 const loadsSchema = state => state.entities.loads;
 const tripsSchema = state => state.entities.trips;
 const securityPassesSchema = state => state.entities.security_passes;
+const schema = state => state.entites;
 const getIdProp = ({}, itemID) => itemID;
 
 const getProfile = createSelector(
@@ -108,67 +109,60 @@ const getTrailer = createSelector(
 );
 
 const getLoadByID = () => {
-  return createSelector(
-    [
-      loadsSchema,
-      countriesSchema,
-      trailerTypesSchema,
-      tripsSchema,
-      driversSchema,
-      getIdProp,
-    ],
-    (loads, countries, trailerTypes, trips, drivers, loadID) => {
-      let load = loads[loadID];
-
-      if (load) {
-        let loadOrigin = load.origin || {};
-        let origin = {
-          ...loadOrigin,
-          country: loadOrigin.country ? countries[loadOrigin.country] : {},
-        };
-
-        let loadDestination = load.destination || {};
-        let destination = {
-          ...loadDestination,
-          country: loadDestination.country
-            ? countries[loadDestination.country]
-            : {},
-        };
-
-        // if(load.trips.length) {
-        //   load.trips.map(tripID => trips[tripID])
-        // }
-        //
-        // licenses:
-        //   (driver.licenses &&
-        //     driver.licenses.map(record => {
-        //       return {
-        //         ...record,
-        //         country: countries[record.country],
-        //       };
-        //     })) ||
-        //   [],
-        return {
-          ...load,
-          origin: origin,
-          destination: destination,
-          trailer: trailerTypes[load.trailer_type] || {},
-          trips:
-            (load.trips &&
-              load.trips.map(record => {
-                return {
-                  ...record,
-                  driver: drivers[record.driver] || {},
-                };
-              })) ||
-            [],
-        };
-      }
-
-      return {};
-    },
-  );
+  return createSelector([entities, getIdProp], (schema, loadID) => {
+    return denormalize(loadID, Schema.loads, schema);
+  });
 };
+// const getLoadByID = () => {
+//   return createSelector(
+//     [
+//       loadsSchema,
+//       countriesSchema,
+//       trailerTypesSchema,
+//       tripsSchema,
+//       driversSchema,
+//       getIdProp,
+//     ],
+//     (loads, countries, trailerTypes, trips, drivers, loadID) => {
+//       let load = loads[loadID];
+//
+//       if (load) {
+//         let loadOrigin = load.origin || {};
+//         let origin = {
+//           ...loadOrigin,
+//           country: loadOrigin.country ? countries[loadOrigin.country] : {},
+//         };
+//
+//         let loadDestination = load.destination || {};
+//         let destination = {
+//           ...loadDestination,
+//           country: loadDestination.country
+//             ? countries[loadDestination.country]
+//             : {},
+//         };
+//
+// return {
+//   ...load,
+//   origin: origin,
+//   destination: destination,
+//   trailer: trailerTypes[load.trailer_type] || {},
+//   trips:
+//   (load.trips &&
+//     load.trips.map(record => {
+//       return {
+//         ...record,
+//         driver: drivers[record.driver] || {},
+//       };
+//     })) ||
+//   [],
+// };
+//
+//       }
+//
+//       return {};
+//     },
+//   );
+// };
 
 const getRouteByID = () => {
   return createSelector(
@@ -271,9 +265,17 @@ const getLoadRequests = createSelector(
     const loadByID = getLoadByID();
     return (
       driverLoads.map(loadID => {
-        return loadByID({entities: {loads, countries, trailers}}, loadID);
+        return denormalize(loadID, Schema.loads, schema);
+        // return loadByID({entities: {loads, countries, trailers}}, loadID);
       }) || []
     );
+  },
+);
+
+const getCurrentLoad = createSelector(
+  [getProfile, entities],
+  (driver, schema) => {
+    return denormalize(driver.current_load, Schema.loads, schema);
   },
 );
 
@@ -415,6 +417,7 @@ export const SELECTORS = {
   getLoadRequests,
   getLoadByID,
   getUpcomingTrips,
+  getCurrentLoad,
   getLoadsByStatus,
   getDocumentsByType,
   getSecurityPasses,

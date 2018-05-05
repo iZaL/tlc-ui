@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Dimensions, StyleSheet, View} from 'react-native';
 import MapView from 'react-native-maps';
+
 const {width, height} = Dimensions.get('window');
 const ASPECT_RATIO = width / height;
 const LATITUDE_DELTA = 0.0922;
@@ -29,24 +30,45 @@ export default class LoadLocationMapView extends Component {
 
   onMapLayout = () => {
     let {origin, destination} = this.props;
-    this.map.fitToCoordinates([origin, destination], {
-      edgePadding: DEFAULT_PADDING,
-      animated: true,
-    });
+    this.map.fitToCoordinates(
+      [
+        {
+          latitude: origin.latitude,
+          longitude: origin.longitude,
+        },
+        {
+          latitude: destination.latitude,
+          longitude: destination.longitude,
+        },
+      ],
+      {
+        edgePadding: DEFAULT_PADDING,
+        animated: true,
+      },
+    );
   };
 
   render() {
     let {origin, destination, style} = this.props;
-    let markers = [origin, destination];
+    let markers = [
+      {
+        latitude: origin.latitude,
+        longitude: origin.longitude,
+      },
+      {
+        latitude: destination.latitude,
+        longitude: destination.longitude,
+      },
+    ];
+
+    console.log('markers', markers);
 
     return (
       <View style={[styles.container, style]}>
         <MapView
-          ref={ref => {
-            this.map = ref;
-          }}
           style={styles.map}
-          initialRegion={{
+          ref={ref => (this.map = ref)}
+          region={{
             latitude: origin.latitude,
             longitude: origin.longitude,
             latitudeDelta: LATITUDE_DELTA,
@@ -73,7 +95,7 @@ const styles = StyleSheet.create({
     ...StyleSheet.absoluteFillObject,
   },
   bubble: {
-    backgroundColor: 'rgba(255,255,255,0.7)',
+    // backgroundColor: 'rgba(255,255,255,0.7)',
     paddingHorizontal: 18,
     paddingVertical: 12,
     borderRadius: 20,

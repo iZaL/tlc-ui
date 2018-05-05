@@ -17,7 +17,7 @@ class Home extends Component {
   };
 
   componentDidMount() {
-    this.props.dispatch(DRIVER_ACTIONS.fetchUpcomingTrips());
+    this.props.dispatch(DRIVER_ACTIONS.fetchCurrentLoad());
     this.props.dispatch(APP_ACTIONS.fetchCountries());
   }
 
@@ -28,13 +28,16 @@ class Home extends Component {
   };
 
   render() {
-    let {trips} = this.props;
+    let {current_load} = this.props;
     return (
       <View style={{flex: 1}}>
-        <LoadsList
-          items={trips.map(trip => trip.load)}
-          onItemPress={this.onLoadsListItemPress}
-        />
+        {current_load &&
+          current_load.id && (
+            <LoadsList
+              items={[current_load]}
+              onItemPress={this.onLoadsListItemPress}
+            />
+          )}
       </View>
     );
   }
@@ -42,7 +45,7 @@ class Home extends Component {
 
 function mapStateToProps(state) {
   return {
-    trips: DRIVER_SELECTORS.getUpcomingTrips(state),
+    current_load: DRIVER_SELECTORS.getCurrentLoad(state),
   };
 }
 

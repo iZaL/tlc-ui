@@ -55,6 +55,7 @@ class LoadDetailScene extends Component {
 
   render() {
     let {load} = this.props;
+    console.log('load', load);
 
     let {origin, destination} = load;
 
@@ -72,19 +73,19 @@ class LoadDetailScene extends Component {
           <LoadInfo load={load} />
         </View>
 
-        <Divider style={{marginTop: 10, marginBottom: 50}} />
+        {/*<Divider style={{marginTop: 10, marginBottom: 50}} />*/}
 
-        <Button
-          title={I18n.t('load_accept').toUpperCase()}
-          onPress={this.acceptBooking}
-          style={{marginVertical: 10}}
-        />
+        {/*<Button*/}
+        {/*title={I18n.t('load_accept').toUpperCase()}*/}
+        {/*onPress={this.acceptBooking}*/}
+        {/*style={{marginVertical: 10}}*/}
+        {/*/>*/}
 
-        <Button
-          title={I18n.t('map').toUpperCase()}
-          onPress={this.loadTripMapScene}
-          style={{marginVertical: 10}}
-        />
+        {/*<Button*/}
+        {/*title={I18n.t('map').toUpperCase()}*/}
+        {/*onPress={this.loadTripMapScene}*/}
+        {/*style={{marginVertical: 10}}*/}
+        {/*/>*/}
       </ScrollView>
     );
   }

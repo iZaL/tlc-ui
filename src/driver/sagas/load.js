@@ -31,6 +31,26 @@ function* fetchLoadsByStatus(action: object) {
   }
 }
 
+function* fetchCurrentLoad() {
+  try {
+    const response = yield call(API.fetchCurrentLoad);
+
+    const formattedResponse = {
+      ...response.driver,
+      current_load: response.load,
+    };
+
+    const normalized = normalize(formattedResponse, Schema.drivers);
+    yield put({
+      type: ACTION_TYPES.FETCH_CURRENT_LOAD_SUCCESS,
+      entities: normalized.entities,
+      result: normalized.result,
+    });
+  } catch (error) {
+    yield put({type: ACTION_TYPES.FETCH_CURRENT_LOAD_FAILURE, error});
+  }
+}
+
 function* fetchLoadDetailsMonitor() {
   yield takeLatest(ACTION_TYPES.FETCH_LOAD_DETAILS_REQUEST, fetchLoadDetails);
 }
@@ -42,7 +62,12 @@ function* fetchLoadsByStatusMonitor() {
   );
 }
 
+function* fetchCurrentLoadMonitor() {
+  yield takeLatest(ACTION_TYPES.FETCH_CURRENT_LOAD_REQUEST, fetchCurrentLoad);
+}
+
 export const sagas = all([
   fork(fetchLoadDetailsMonitor),
   fork(fetchLoadsByStatusMonitor),
+  fork(fetchCurrentLoadMonitor),
 ]);

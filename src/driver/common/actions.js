@@ -19,6 +19,10 @@ export const ACTION_TYPES = {
   FETCH_UPCOMING_TRIPS_SUCCESS: '@driver/FETCH_UPCOMING_TRIPS_SUCCESS',
   FETCH_UPCOMING_TRIPS_FAILURE: '@driver/FETCH_UPCOMING_TRIPS_FAILURE',
 
+  FETCH_CURRENT_LOAD_REQUEST: '@driver/FETCH_CURRENT_LOAD_REQUEST',
+  FETCH_CURRENT_LOAD_SUCCESS: '@driver/FETCH_CURRENT_LOAD_SUCCESS',
+  FETCH_CURRENT_LOAD_FAILURE: '@driver/FETCH_CURRENT_LOAD_FAILURE',
+
   FETCH_LOAD_DETAILS_REQUEST: '@driver/FETCH_LOAD_DETAILS_REQUEST',
   FETCH_LOAD_DETAILS_SUCCESS: '@driver/FETCH_LOAD_DETAILS_SUCCESS',
   FETCH_LOAD_DETAILS_FAILURE: '@driver/FETCH_LOAD_DETAILS_FAILURE',
@@ -69,6 +73,13 @@ function fetchRoutes(params) {
 function fetchUpcomingTrips(params) {
   return {
     type: ACTION_TYPES.FETCH_UPCOMING_TRIPS_REQUEST,
+    params,
+  };
+}
+
+function fetchCurrentLoad(params) {
+  return {
+    type: ACTION_TYPES.FETCH_CURRENT_LOAD_REQUEST,
     params,
   };
 }
@@ -137,6 +148,7 @@ export const ACTIONS = {
   saveRoute,
   fetchRouteTransits,
   fetchUpcomingTrips,
+  fetchCurrentLoad,
   fetchLoadDetails,
   fetchLoadsByStatus,
   fetchTripDetails,
