@@ -21,11 +21,22 @@ export default class LoadLocationMapView extends Component {
     }).isRequired,
   };
 
-  shouldComponentUpdate(nextProps) {
+  state = {
+    initialized:false
+  };
+
+  shouldComponentUpdate(nextProps,prevstate) {
     return (
       nextProps.origin !== this.props.origin ||
-      nextProps.destination !== this.props.destination
+      nextProps.destination !== this.props.destination ||
+      this.state.initialized !== prevstate.initialized
     );
+  }
+
+  componentDidUpdate() {
+    setTimeout(()=>this.setState({
+      initialized:true
+    }),1000)
   }
 
   onMapLayout = () => {
@@ -62,6 +73,10 @@ export default class LoadLocationMapView extends Component {
     ];
 
     console.log('markers', markers);
+
+    if(!this.state.initialized) {
+      return null
+    }
 
     return (
       <View style={[styles.container, style]}>
