@@ -1,31 +1,26 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {Modal, ScrollView, View} from 'react-native';
+import {ScrollView, View} from 'react-native';
 import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
 import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
-import LoadLocationMapView from 'driver/loads/components/LoadLocationMapView';
 import LoadPickDropLocation from 'driver/loads/components/LoadPickDropLocation';
 import Divider from 'components/Divider';
 import LoadInfo from 'driver/loads/components/LoadInfo';
-import Button from 'components/Button';
 import I18n from 'utils/locale';
-import colors from 'assets/theme/colors';
 import Tabs from 'components/Tabs';
 import TabList from 'components/TabList';
 import TabPanels from 'components/TabPanels';
 import TabHeader from 'customer/loads/components/TabHeader';
 import TabPanel from 'customer/loads/components/TabPanel';
 import ReceiverInfo from 'loads/components/ReceiverInfo';
-import PendingFleetsList from 'customer/trips/components/PendingFleetsList';
-import TripList from 'customer/trips/components/TripList';
-import UserInfo from "../../components/UserInfo";
-import ListRow from "../../components/ListRow";
+import UserInfo from "components/UserInfo";
+import ListRow from "components/ListRow";
 import {FAB, Headline} from "react-native-paper";
-import EmployeeList from "../../customer/employees/components/EmployeeList";
-import Dialog from "../../components/Dialog";
-import DocumentTypesList from "../../components/DocumentTypesList";
-import ImageViewer from 'react-native-image-zoom-viewer';
+import EmployeeList from "customer/employees/components/EmployeeList";
+import Dialog from "components/Dialog";
+import DocumentTypesList from "components/DocumentTypesList";
+import ImageViewer from 'components/ImageViewer';
 
 class LoadDetailScene extends Component {
 
@@ -245,11 +240,6 @@ class LoadDetailScene extends Component {
                 items={trip && trip.documents || []}
                 onItemPress={this.onDocumentTypeListItemPress}
               />
-
-              <Modal visible={imageModalVisible} transparent={true} onRequestClose={this.hideImageModal}>
-                <ImageViewer imageUrls={images} onSwipeDown={this.hideImageModal}/>
-              </Modal>
-
               <View style={{flex:1}}>
                 <FAB
                   small
@@ -273,9 +263,11 @@ class LoadDetailScene extends Component {
               <View />
             </TabPanel>
 
-
           </TabPanels>
         </Tabs>
+
+        <ImageViewer visible={imageModalVisible} images={images} onClose={this.hideImageModal}/>
+
       </ScrollView>
 
     );
