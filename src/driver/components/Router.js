@@ -12,6 +12,7 @@ import TruckUpdateScene from 'driver/profile/TruckUpdateScene';
 import TrailerUpdateScene from 'driver/profile/TrailerUpdateScene';
 import RoutesUpdateScene from 'driver/profile/RoutesUpdateScene';
 import DocumentsUploadScene from 'driver/profile/DocumentsUploadScene';
+import DocumentAddScene from 'driver/trips/DocumentAddScene';
 import RoutesDetailScene from 'driver/routes/RoutesDetailScene';
 import LoadDetailScene from 'driver/loads/LoadDetailScene';
 import LoadListScene from 'driver/loads/LoadListScene';
@@ -45,11 +46,15 @@ const HomeStack = createStackNavigator(
     LoadDetail: {
       screen: LoadDetailScene,
     },
+    DocumentAdd: {
+      screen: DocumentAddScene
+    }
   },
   {
     cardStyle: {
       backgroundColor: colors.fadedWhite,
     },
+    // initialRouteName:'DocumentAdd'
   },
 );
 
@@ -231,5 +236,5 @@ export const Routes = createDrawerNavigator(DrawerRoutes, {
   gesturesEnabled: false,
   contentComponent: props => <Drawer {...props} />,
   drawerWidth: 275,
-  // initialRouteName: 'ProfileStack',
+  initialRouteName: 'HomeStack',
 });

@@ -6,6 +6,7 @@ const trucksSchema = new schema.Entity('trucks');
 const truckMakesSchema = new schema.Entity('truck_makes');
 const trailerMakesSchema = new schema.Entity('trailer_makes');
 const trailerTypesSchema = new schema.Entity('trailer_types');
+const documentTypesSchema = new schema.Entity('document_types');
 const trailersSchema = new schema.Entity('trailers');
 const truckModelsSchema = new schema.Entity('truck_models');
 const customersSchema = new schema.Entity('customers');
@@ -112,6 +113,7 @@ export const Schema = {
   truck_makes: truckMakesSchema,
   trailer_makes: trailerMakesSchema,
   trailer_types: trailerTypesSchema,
+  document_types: documentTypesSchema,
   trailers: trailersSchema,
   drivers: driversSchema,
   customers: customersSchema,

@@ -31,6 +31,20 @@ function* fetchTripDetails(action) {
   }
 }
 
+function* fetchDocumentTypes(action) {
+  try {
+    const response = yield call(API.fetchDocumentTypes, action.params);
+    const normalized = normalize(response.data, [Schema.document_types]);
+
+    yield put({
+      type: ACTION_TYPES.FETCH_DOCUMENT_TYPES_SUCCESS,
+      entities: normalized.entities,
+    });
+  } catch (error) {
+    yield put({type: ACTION_TYPES.FETCH_DOCUMENT_TYPES_FAILURE, error});
+  }
+}
+
 function* fetchUpcomingTripsMonitor() {
   yield takeLatest(
     ACTION_TYPES.FETCH_UPCOMING_TRIPS_REQUEST,
@@ -42,7 +56,12 @@ function* fetchTripDetailsMonitor() {
   yield takeLatest(ACTION_TYPES.FETCH_TRIP_DETAILS_REQUEST, fetchTripDetails);
 }
 
+function* fetchDocumentTypesMonitor() {
+  yield takeLatest(ACTION_TYPES.FETCH_DOCUMENT_TYPES_REQUEST, fetchDocumentTypes);
+}
+
 export const sagas = all([
   fork(fetchUpcomingTripsMonitor),
   fork(fetchTripDetailsMonitor),
+  fork(fetchDocumentTypesMonitor),
 ]);

@@ -10,6 +10,7 @@ import {
   Colors,
 } from 'react-native-paper';
 import I18n from 'utils/locale';
+import {View} from "react-native";
 
 export default class Dialog extends Component {
   static propTypes = {
@@ -50,7 +51,10 @@ export default class Dialog extends Component {
         onDismiss={onDismiss}>
         <DialogTitle>{title}</DialogTitle>
         <DialogContent>
-          <Paragraph>{description}</Paragraph>
+          <View>
+            <Paragraph>{description}</Paragraph>
+            {this.props.children}
+          </View>
         </DialogContent>
         <DialogActions>
           {leftText && (

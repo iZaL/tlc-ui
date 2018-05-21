@@ -3,7 +3,7 @@
  */
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {Title} from 'react-native-paper';
+import {Title, TouchableRipple} from 'react-native-paper';
 import {StyleSheet, View} from 'react-native';
 import Label from 'components/Label';
 
@@ -22,12 +22,14 @@ export default class ListIRow extends Component {
   };
 
   render() {
-    let {left, right} = this.props;
+    let {left, right,onPress} = this.props;
     return (
-      <View style={styles.container}>
-        <Label title={left} />
-        <Title>{right}</Title>
-      </View>
+      <TouchableRipple onPress={onPress}>
+        <View style={styles.container}>
+          <Label title={left} />
+          <Title>{right}</Title>
+        </View>
+      </TouchableRipple>
     );
   }
 }

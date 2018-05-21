@@ -34,6 +34,7 @@
   "skip" : "Skip",
   "account_select_type" : "Register As",
   "customer" : "Customer",
+  "customer_information" : "Customer Info",
   "registration_success" : "Registration Success",
   "account_confirm" : "Confirm Account",
   "profile" : "Profile",
@@ -124,6 +125,7 @@
   "company_email" : "Company Email",
   "address_en" : "Address in English",
   "address_ar" : "Address in Arabic",
+  "employees" : "Contacts",
   "employee_list" : "List Contacts",
   "employee_add" : "Add Contact",
   "employee_edit" : "Edit Contact",
@@ -157,6 +159,7 @@
   "load_location" : "Location",
   "data" : "Date",
   "documents" : "Documents",
+  "document_type" : "Document Type",
 
   "trip_start" : "Start Job",
   "trip_end" : "End Job",
@@ -262,5 +265,14 @@
   "track_fleets": "Track Fleets",
   "track": "Track",
   "trip_detail" : "Trip Detail",
+  "contact" : "Contact",
+
+
+  "fleets_information" : "Fleets Info",
+
+  "take_picture" : "Take Picture",
+  "choose_from_album" : "Choose from album",
+  "upload_file" : "Upload file",
+  "files" : "Files"
 
 }

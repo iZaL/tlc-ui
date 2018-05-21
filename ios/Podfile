@@ -27,7 +27,8 @@ target 'tlc' do
 
     pod 'RNBackgroundGeolocation', :path => '../node_modules/react-native-background-geolocation'
     pod 'RNBackgroundFetch', :path => '../node_modules/react-native-background-fetch'
-
+    pod 'RNImageCropPicker', :path =>  '../node_modules/react-native-image-crop-picker'
+    pod 'react-native-document-picker', :path => '../node_modules/react-native-document-picker'
 end
 
 post_install do |installer|

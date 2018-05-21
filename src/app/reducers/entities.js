@@ -10,6 +10,7 @@ export function reducer(
     customers: {},
     trailer_makes: {},
     trailer_types: {},
+    document_types: {},
     trailers: {},
     routes: {},
     loads: {},

@@ -17,6 +17,7 @@ const countriesSchema = state => state.entities.countries;
 const loadsSchema = state => state.entities.loads;
 const tripsSchema = state => state.entities.trips;
 const securityPassesSchema = state => state.entities.security_passes;
+const documentTypes = state => state.entities.document_types;
 const schema = state => state.entites;
 const getIdProp = ({}, itemID) => itemID;
 
@@ -402,6 +403,15 @@ const getDocumentsByType = () => {
   );
 };
 
+const getDocumentTypes = createSelector(
+  [documentTypes],
+  (types) => {
+    return types && Object.keys(types).map(typeID => {
+      return types[typeID];
+    }) || [];
+  },
+);
+
 export const SELECTORS = {
   getProfile,
   getResidencies,
@@ -423,4 +433,5 @@ export const SELECTORS = {
   getSecurityPasses,
   getRouteDestinationCountries,
   getTruckRegistrationCountry,
+  getDocumentTypes,
 };

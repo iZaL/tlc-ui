@@ -47,7 +47,7 @@ export default class DocumentCard extends Component {
     return (
       <Card>
         <CardContent>
-          <Title>{country && country.name}</Title>
+          <Title>{country.name}</Title>
           <Paragraph>{number}</Paragraph>
         </CardContent>
 

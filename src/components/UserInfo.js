@@ -11,7 +11,7 @@ import I18n from 'utils/locale';
 
 export default class UserInfo extends Component {
   static propTypes = {
-    image: PropTypes.string.isRequired,
+    image: PropTypes.string,
     onPress: PropTypes.func,
     onAvatarPress: PropTypes.func,
   };
@@ -38,13 +38,18 @@ export default class UserInfo extends Component {
     return (
       <TouchableRipple onPress={onPress}>
         <View style={[styles.container, style]}>
-          <Avatar image={image} size={avatarSize} onPress={onAvatarPress} />
+          {
+            image &&
+            <Avatar image={image} size={avatarSize} onPress={onAvatarPress}/>
+          }
 
           <View style={styles.contentContainer}>
-            <Label title={nameLabel} />
+            <Label title={nameLabel}/>
+
             <Title>{name}</Title>
           </View>
         </View>
+
       </TouchableRipple>
     );
   }

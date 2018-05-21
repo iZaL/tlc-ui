@@ -30,6 +30,11 @@ function fetchTripDetails(params = {}) {
   return fetchAPI({path});
 }
 
+function fetchDocumentTypes(params = {}) {
+  const path = `driver/documents/types`;
+  return fetchAPI({path});
+}
+
 function fetchLoadsByStatus(status) {
   const path = `driver/loads/status/${status}`;
   return fetchAPI({path});
@@ -83,6 +88,7 @@ export const API = {
   fetchSecurityPasses,
   fetchUpcomingTrips,
   fetchTripDetails,
+  fetchDocumentTypes,
   fetchLoadDetails,
   fetchLoadsByStatus,
   fetchCurrentLoad,

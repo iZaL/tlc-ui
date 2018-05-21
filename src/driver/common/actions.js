@@ -51,6 +51,10 @@ export const ACTION_TYPES = {
   FETCH_SECURITY_PASSES_SUCCESS: '@driver/FETCH_SECURITY_PASSES_SUCCESS',
   FETCH_SECURITY_PASSES_FAILURE: '@driver/FETCH_SECURITY_PASSES_FAILURE',
 
+  FETCH_DOCUMENT_TYPES_REQUEST: '@driver/FETCH_DOCUMENT_TYPES_REQUEST',
+  FETCH_DOCUMENT_TYPES_SUCCESS: '@driver/FETCH_DOCUMENT_TYPES_SUCCESS',
+  FETCH_DOCUMENT_TYPES_FAILURE: '@driver/FETCH_DOCUMENT_TYPES_FAILURE',
+
   FETCH_TRIP_DETAILS_REQUEST: '@driver/FETCH_TRIP_DETAILS_REQUEST',
   FETCH_TRIP_DETAILS_SUCCESS: '@driver/FETCH_TRIP_DETAILS_SUCCESS',
   FETCH_TRIP_DETAILS_FAILURE: '@driver/FETCH_TRIP_DETAILS_FAILURE',
@@ -87,6 +91,13 @@ function fetchCurrentLoad(params) {
 function fetchSecurityPasses(params) {
   return {
     type: ACTION_TYPES.FETCH_SECURITY_PASSES_REQUEST,
+    params,
+  };
+}
+
+function fetchDocumentTypes(params) {
+  return {
+    type: ACTION_TYPES.FETCH_DOCUMENT_TYPES_REQUEST,
     params,
   };
 }
@@ -153,4 +164,5 @@ export const ACTIONS = {
   fetchLoadsByStatus,
   fetchTripDetails,
   fetchSecurityPasses,
+  fetchDocumentTypes
 };
