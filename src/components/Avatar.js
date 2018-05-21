@@ -8,6 +8,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import colors from 'assets/theme/colors';
 import {View, StyleSheet, Image} from 'react-native';
 import {TouchableRipple} from 'react-native-paper';
+import ImageViewer from "components/ImageViewer";
 
 export default class DrawerIcon extends Component {
   static propTypes = {
@@ -15,24 +16,50 @@ export default class DrawerIcon extends Component {
     onPress: PropTypes.func,
   };
 
-  shouldComponentUpdate() {
-    return false;
+  state = {
+    imageModalVisible:false,
+    images:[]
+  };
+
+  shouldComponentUpdate(nextProps,nextState) {
+    return nextProps.image !== this.props.image || nextState.imageModalVisible !== this.state.imageModalVisible
   }
 
   static defaultProps = {
     size: 100,
   };
 
+  onPress = (image) => {
+    this.setState({
+      imageModalVisible:true,
+      images:[{url:image}]
+    })
+  };
+
+  hideImageModal = () => {
+    this.setState({
+      imageModalVisible:false,
+      images:[]
+    })
+  };
+
   render() {
-    let {image, size, style, onPress} = this.props;
+    let {images,imageModalVisible} = this.state;
+    let {image, size, style} = this.props;
     return (
-      <TouchableRipple onPress={onPress} underlayColor="transparent">
-        <Image
-          source={{uri: image}}
-          style={[{width: size, height: size, borderRadius: size / 2}, style]}
-          resizeMode="contain"
-        />
-      </TouchableRipple>
+      <View>
+        <TouchableRipple onPress={()=>this.onPress(image)} underlayColor="transparent">
+
+          <Image
+            source={{uri: image}}
+            style={[{width: size, height: size, borderRadius: size / 2}, style]}
+            resizeMode="contain"
+          />
+
+        </TouchableRipple>
+        <ImageViewer visible={imageModalVisible} images={images} onClose={this.hideImageModal}/>
+
+      </View>
     );
   }
 }
