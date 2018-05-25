@@ -13,6 +13,7 @@ import Touchable from 'react-native-platform-touchable';
 import LoadPickDropLocation from 'driver/loads/components/LoadPickDropLocation';
 import LoadInfo from 'driver/loads/components/LoadInfo';
 import I18n from 'utils/locale';
+import Heading from "../../../components/Heading";
 
 export default class LoadsList extends PureComponent {
   static propTypes = {
@@ -30,18 +31,18 @@ export default class LoadsList extends PureComponent {
             destination={item.destination}
           />
           <LoadInfo load={item} />
-          <Divider style={{marginVertical: 10}} />
-          <View style={styles.itemRowContainer}>
-            <Text style={styles.viewDetails}>{I18n.t('view_details')}</Text>
-            <CallButton onPress={() => {}} />
-          </View>
+          {/*<Divider style={{marginVertical: 10}} />*/}
+          {/*<View style={styles.itemRowContainer}>*/}
+            {/*<Text style={styles.viewDetails}>{I18n.t('view_details')}</Text>*/}
+            {/*<CallButton onPress={() => {}} />*/}
+          {/*</View>*/}
         </View>
       </Touchable>
     );
   };
 
   render() {
-    let {items} = this.props;
+    let {items,header} = this.props;
     return (
       <FlatList
         data={items}
@@ -50,6 +51,7 @@ export default class LoadsList extends PureComponent {
         showsVerticalScrollIndicator={false}
         ItemSeparatorComponent={() => <Divider style={{marginVertical: 10}} />}
         keyExtractor={(item, index) => `${index}`}
+        ListHeaderComponent={header}
       />
     );
   }
@@ -59,16 +61,14 @@ const styles = StyleSheet.create({
   listContainer: {
     flex: 1,
     margin: 5,
+    backgroundColor: 'white',
   },
   itemContainer: {
-    backgroundColor: 'white',
-    padding: 5,
     marginBottom: 5,
   },
   itemRowContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    padding: 5,
   },
   viewDetails: {
     flex: 1,

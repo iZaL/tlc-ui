@@ -48,7 +48,9 @@ export default class LoadPickDropLocation extends PureComponent {
 }
 
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    paddingBottom:10,
+  },
   itemRowContainer: {
     flexDirection: 'row',
     alignItems: 'center',

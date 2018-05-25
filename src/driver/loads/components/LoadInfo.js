@@ -7,6 +7,8 @@ import {StyleSheet, Text, View} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import colors from 'assets/theme/colors';
 import I18n from 'utils/locale';
+import {Caption} from "react-native-paper";
+import Label from "../../../components/Label";
 
 export default class LoadInfo extends PureComponent {
   static propTypes = {
@@ -26,34 +28,34 @@ export default class LoadInfo extends PureComponent {
       <View style={[styles.container, style]}>
         <View style={[styles.itemRowContainer]}>
           <View style={{flex: 1}}>
-            <Text style={styles.label}>{I18n.t('trailer')}</Text>
+            <Label title={I18n.t('trailer')}/>
             <Text style={styles.trailerName}>
               {load.trailer_type ? load.trailer_type.name : ''}
             </Text>
           </View>
           <View style={{flex: 1}}>
-            <Text style={styles.label}>{I18n.t('packaging')}</Text>
+            <Label title={I18n.t('packaging')}/>
             <Text style={styles.packageName}>
               {load.packaging ? load.packaging.name : ''}
             </Text>
           </View>
           <View style={{flex: 1}}>
-            <Text style={styles.label}>{I18n.t('weight')}</Text>
+            <Label title={I18n.t('weight')}/>
             <Text style={styles.weight}>48,000 lbs</Text>
           </View>
         </View>
 
         <View style={[styles.itemRowContainer, styles.rowVerticalPadding]}>
           <View style={{flex: 1}}>
-            <Text style={styles.label}>{I18n.t('pick_up')}</Text>
-            <Text style={styles.value}>Jan 4</Text>
+            <Label title={I18n.t('pick_up')}/>
+            <Text style={styles.value}>Jan 4 <Caption>(10-11am)</Caption></Text>
           </View>
           <View style={{flex: 1}}>
-            <Text style={styles.label}>{I18n.t('distance')}</Text>
-            <Text style={styles.value}>350 KM</Text>
+            <Label title={I18n.t('drop_off')}/>
+            <Text style={styles.value}>Jan 7 <Caption>(11-14am)</Caption></Text>
           </View>
           <View style={{flex: 1}}>
-            <Text style={styles.label}>{I18n.t('price')}</Text>
+            <Label title={I18n.t('price')}/>
             <Text style={styles.value}>3000 kwd</Text>
           </View>
         </View>
@@ -63,7 +65,9 @@ export default class LoadInfo extends PureComponent {
 }
 
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    paddingHorizontal:5
+  },
   itemRowContainer: {
     flexDirection: 'row',
     alignItems: 'center',

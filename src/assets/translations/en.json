@@ -110,6 +110,7 @@
   "view_details" : "View Details",
   "packaging" : "Packaging",
   "pick_up" : "Pick up",
+  "drop_off" : "Drop off",
   "distance" : "Distance",
   "price" : "Price",
   "call" : "CALL",
@@ -265,6 +266,9 @@
   "track_fleets": "Track Fleets",
   "track": "Track",
   "trip_detail" : "Trip Detail",
+  "trip_requests" : "Trip Requests",
+  "trip_current" : "Current Trip",
+
   "contact" : "Contact",
 
 
