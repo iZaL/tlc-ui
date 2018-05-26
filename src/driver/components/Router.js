@@ -47,8 +47,8 @@ const HomeStack = createStackNavigator(
       screen: LoadDetailScene,
     },
     DocumentAdd: {
-      screen: DocumentAddScene
-    }
+      screen: DocumentAddScene,
+    },
   },
   {
     cardStyle: {

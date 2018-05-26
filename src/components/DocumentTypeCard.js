@@ -34,17 +34,15 @@ export default class DocumentTypeCard extends Component {
     return nextProps.item !== this.props.item;
   }
 
-  static defaultProps = {
-  };
+  static defaultProps = {};
 
   render() {
-    let {item,onPress} = this.props;
+    let {item, onPress} = this.props;
 
-    let {type, url, expiry_date, } = item;
+    let {type, url, expiry_date} = item;
 
     return (
-      <Card onPress={()=>onPress(item)}>
-
+      <Card onPress={() => onPress(item)}>
         <CardContent>
           <Title>{type.name}</Title>
         </CardContent>
@@ -60,10 +58,9 @@ export default class DocumentTypeCard extends Component {
               flex: 1,
               justifyContent: 'flex-end',
               alignItems: 'flex-end',
-            }}>
-          </CardActions>
+            }}
+          />
         </View>
-
       </Card>
     );
   }

@@ -14,19 +14,18 @@ import TabPanels from 'components/TabPanels';
 import TabHeader from 'customer/loads/components/TabHeader';
 import TabPanel from 'customer/loads/components/TabPanel';
 import ReceiverInfo from 'loads/components/ReceiverInfo';
-import UserInfo from "components/UserInfo";
-import ListRow from "components/ListRow";
-import {FAB, Headline} from "react-native-paper";
-import EmployeeList from "customer/employees/components/EmployeeList";
-import Dialog from "components/Dialog";
-import DocumentTypesList from "components/DocumentTypesList";
+import UserInfo from 'components/UserInfo';
+import ListRow from 'components/ListRow';
+import {FAB, Headline} from 'react-native-paper';
+import EmployeeList from 'customer/employees/components/EmployeeList';
+import Dialog from 'components/Dialog';
+import DocumentTypesList from 'components/DocumentTypesList';
 import ImageViewer from 'components/ImageViewer';
-import LoadStatusButton from "driver/loads/components/LoadStatusButton";
-import LoadLocationMapView from "driver/loads/components/LoadLocationMapView";
-import colors from "assets/theme/colors";
+import LoadStatusButton from 'driver/loads/components/LoadStatusButton';
+import LoadLocationMapView from 'driver/loads/components/LoadLocationMapView';
+import colors from 'assets/theme/colors';
 
 class LoadDetailScene extends Component {
-
   static propTypes = {
     navigation: PropTypes.shape({
       state: PropTypes.shape({
@@ -47,12 +46,11 @@ class LoadDetailScene extends Component {
   };
 
   state = {
-    employeeDetail:{},
-    employeeDetailVisible:false,
-    imageModalVisible:false,
-    images:[]
+    employeeDetail: {},
+    employeeDetailVisible: false,
+    imageModalVisible: false,
+    images: [],
   };
-
 
   componentDidMount() {
     this.props.dispatch(
@@ -63,7 +61,6 @@ class LoadDetailScene extends Component {
     );
   }
 
-
   acceptBooking = () => {};
 
   loadTripMapScene = () => {
@@ -72,18 +69,15 @@ class LoadDetailScene extends Component {
     });
   };
 
-  onUserInfoPress = () => {
+  onUserInfoPress = () => {};
 
-  };
-
-  onEmployeeListItemPress = (item) => {
-    console.log('item',item);
+  onEmployeeListItemPress = item => {
+    console.log('item', item);
     this.setState({
-      employeeDetailVisible:true,
-      employeeDetail:item
+      employeeDetailVisible: true,
+      employeeDetail: item,
     });
   };
-
 
   hideEmployeeDetail = () => {
     this.setState({
@@ -100,46 +94,65 @@ class LoadDetailScene extends Component {
   };
 
   onDocumentAddPress = () => {
-    this.props.navigation.navigate('DocumentAdd',{
-      loadID:this.props.load.id
-    })
+    this.props.navigation.navigate('DocumentAdd', {
+      loadID: this.props.load.id,
+    });
   };
 
-  onDocumentTypeListItemPress = (item:object) => {
-    console.log('ite',item);
+  onDocumentTypeListItemPress = (item: object) => {
+    console.log('ite', item);
     this.setState({
-      imageModalVisible:true,
-      images:[{url:item.url}]
+      imageModalVisible: true,
+      images: [{url: item.url}],
     });
   };
 
   hideImageModal = () => {
     this.setState({
-      imageModalVisible:false,
-      images:[]
+      imageModalVisible: false,
+      images: [],
     });
   };
 
   render() {
-    let {load,navigation} = this.props;
+    let {load, navigation} = this.props;
 
     let hiddenTabs = navigation.getParam('hiddenTabs') || [];
 
-    let {employeeDetailVisible,employeeDetail,imageModalVisible,images} = this.state;
+    let {
+      employeeDetailVisible,
+      employeeDetail,
+      imageModalVisible,
+      images,
+    } = this.state;
     console.log('load', load);
 
-    let {origin, destination, receiver, pending_fleets,customer,trips,trip} = load;
+    let {
+      origin,
+      destination,
+      receiver,
+      pending_fleets,
+      customer,
+      trips,
+      trip,
+    } = load;
 
     return (
       <ScrollView style={{flex: 1, backgroundColor: 'white'}}>
-        <Tabs >
+        <Tabs>
           <TabList>
             <TabHeader title={I18n.t('load_info')} />
             <TabHeader title={I18n.t('route_detail')} />
             <TabHeader title={I18n.t('customer_information')} />
             <TabHeader title={I18n.t('receiver_information')} />
-            <TabHeader title={I18n.t('documents')} hidden={hiddenTabs.includes('documents')} />
-            <TabHeader title={I18n.t('fleets_information')} hidden={hiddenTabs.includes('fleets')}/>
+            <TabHeader
+              title={I18n.t('documents')}
+              hidden={hiddenTabs.includes('documents')}
+            />
+            <TabHeader
+              title={I18n.t('fleets_information')}
+              hidden={hiddenTabs.includes('fleets')}
+            />
             <TabHeader title={I18n.t('contact')} />
           </TabList>
 
@@ -147,42 +160,42 @@ class LoadDetailScene extends Component {
             <TabPanel hideNextButton={true}>
               <View style={{flex: 1, backgroundColor: 'white'}}>
                 {origin &&
-                destination && (
-                  <View style={{flex: 1}}>
+                  destination && (
+                    <View style={{flex: 1}}>
+                      <LoadPickDropLocation
+                        origin={origin}
+                        destination={destination}
+                        style={{padding: 5}}
+                      />
 
-                    <LoadPickDropLocation
-                      origin={origin}
-                      destination={destination}
-                      style={{padding: 5}}
-                    />
+                      <Divider style={{marginVertical: 10}} />
 
-                    <Divider style={{marginVertical: 10}} />
+                      <LoadInfo
+                        load={load}
+                        style={{paddingHorizontal: 10}}
+                        showDetail={true}
+                      />
 
-                    <LoadInfo load={load} style={{paddingHorizontal: 10}} showDetail={true} />
+                      <Divider />
 
-                    <Divider />
-
-                    <LoadStatusButton />
-
-                  </View>
-                )}
+                      <LoadStatusButton />
+                    </View>
+                  )}
               </View>
             </TabPanel>
 
             <TabPanel hideNextButton={true}>
-
               <View style={{height: 200, backgroundColor: colors.lightGrey}}>
-                <LoadLocationMapView origin={load.origin} destination={load.destination} />
+                <LoadLocationMapView
+                  origin={load.origin}
+                  destination={load.destination}
+                />
               </View>
-
             </TabPanel>
 
-
             <TabPanel hideNextButton={true}>
-
               {/*customer details*/}
-              {
-                customer &&
+              {customer && (
                 <View>
                   <UserInfo
                     style={{padding: 10}}
@@ -192,18 +205,29 @@ class LoadDetailScene extends Component {
                     onPress={this.onUserInfoPress}
                   />
                   <Divider />
-                  <ListRow left={I18n.t('mobile')} right={customer.mobile} onItemPress={this.onCustomerMobileNumberPress} />
+                  <ListRow
+                    left={I18n.t('mobile')}
+                    right={customer.mobile}
+                    onItemPress={this.onCustomerMobileNumberPress}
+                  />
                   <Divider />
                   <ListRow left={I18n.t('email')} right={customer.email} />
-                  <Divider/>
+                  <Divider />
 
-                  <View style={{paddingTop:20}}>
-                    <Headline style={{padding:5}}>{I18n.t('employees')}</Headline>
+                  <View style={{paddingTop: 20}}>
+                    <Headline style={{padding: 5}}>
+                      {I18n.t('employees')}
+                    </Headline>
                     <Divider />
-                    <EmployeeList items={customer.employees} onItemPress={this.onEmployeeListItemPress} />
+                    <EmployeeList
+                      items={customer.employees}
+                      onItemPress={this.onEmployeeListItemPress}
+                    />
                   </View>
 
-                  <Dialog rightPress={this.hideEmployeeDetail} visible={employeeDetailVisible}>
+                  <Dialog
+                    rightPress={this.hideEmployeeDetail}
+                    visible={employeeDetailVisible}>
                     <View>
                       <UserInfo
                         style={{padding: 10}}
@@ -213,17 +237,21 @@ class LoadDetailScene extends Component {
                         onPress={this.onUserInfoPress}
                       />
                       <Divider />
-                      <ListRow left={I18n.t('mobile')} right={employeeDetail.mobile} onPress={this.onEmployeeMobileNumberPress} />
+                      <ListRow
+                        left={I18n.t('mobile')}
+                        right={employeeDetail.mobile}
+                        onPress={this.onEmployeeMobileNumberPress}
+                      />
                       <Divider />
-                      <ListRow left={I18n.t('email')} right={employeeDetail.email} />
-                      <Divider/>
+                      <ListRow
+                        left={I18n.t('email')}
+                        right={employeeDetail.email}
+                      />
+                      <Divider />
                     </View>
                   </Dialog>
-
                 </View>
-              }
-
-
+              )}
             </TabPanel>
 
             <TabPanel hideNextButton={true}>
@@ -242,13 +270,12 @@ class LoadDetailScene extends Component {
             </TabPanel>
 
             <TabPanel hideNextButton={true}>
-
               {/*upload documents*/}
               <DocumentTypesList
-                items={trip && trip.documents || []}
+                items={(trip && trip.documents) || []}
                 onItemPress={this.onDocumentTypeListItemPress}
               />
-              <View style={{flex:1}}>
+              <View style={{flex: 1}}>
                 <FAB
                   small
                   primary
@@ -256,7 +283,6 @@ class LoadDetailScene extends Component {
                   onPress={this.onDocumentAddPress}
                 />
               </View>
-
             </TabPanel>
 
             <TabPanel hideNextButton={true}>
@@ -264,7 +290,6 @@ class LoadDetailScene extends Component {
 
               <View />
             </TabPanel>
-
 
             <TabPanel hideNextButton={true}>
               {/*contact tlc*/}
@@ -279,14 +304,15 @@ class LoadDetailScene extends Component {
                 <View />
               )}
             </TabPanel>
-
           </TabPanels>
         </Tabs>
 
-        <ImageViewer visible={imageModalVisible} images={images} onClose={this.hideImageModal}/>
-
+        <ImageViewer
+          visible={imageModalVisible}
+          images={images}
+          onClose={this.hideImageModal}
+        />
       </ScrollView>
-
     );
   }
 }

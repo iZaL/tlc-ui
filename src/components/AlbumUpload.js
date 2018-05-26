@@ -22,11 +22,10 @@ export default class AlbumUpload extends Component {
   }
 
   static defaultProps = {
-    max:5
+    max: 5,
   };
 
   uploadImages = () => {
-
     const uploadedImages = this.props.images;
     const maxImages = this.props.max;
 
@@ -50,7 +49,6 @@ export default class AlbumUpload extends Component {
       })
       .then(pendingImages => this.props.onUpload(pendingImages))
       .catch(e => {});
-
   };
 
   render() {

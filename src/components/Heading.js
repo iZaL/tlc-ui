@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {StyleSheet, Text} from 'react-native';
 import PropTypes from 'prop-types';
 import colors from 'assets/theme/colors';
-import {Title} from "react-native-paper";
+import {Title} from 'react-native-paper';
 
 export default class Heading extends Component {
   static propTypes = {
@@ -21,6 +21,5 @@ export default class Heading extends Component {
 }
 
 const styles = StyleSheet.create({
-  title: {
-  },
+  title: {},
 });

@@ -7,17 +7,17 @@ import AddressField from 'customer/locations/components/AddressField';
 import Button from 'components/Button';
 import I18n from 'utils/locale';
 import MapPicker from 'customer/locations/components/MapPicker';
-import {SELECTORS as DRIVER_SELECTORS} from "driver/common/selectors";
-import {ACTIONS as DRIVER_ACTIONS} from "driver/common/actions";
+import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
+import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
 import Touchable from 'react-native-platform-touchable';
 import Label from 'components/Label';
 import {Title} from 'react-native-paper';
-import Divider from "../../components/Divider";
-import ListModal from "../../components/ListModal";
-import ListItem from "../../components/ListItem";
-import CameraUpload from "../../components/CameraUpload";
-import AlbumUpload from "../../components/AlbumUpload";
-import FileUpload from "../../components/FileUpload";
+import Divider from '../../components/Divider';
+import ListModal from '../../components/ListModal';
+import ListItem from '../../components/ListItem';
+import CameraUpload from '../../components/CameraUpload';
+import AlbumUpload from '../../components/AlbumUpload';
+import FileUpload from '../../components/FileUpload';
 class DocumentAddScene extends Component {
   static propTypes = {
     navigation: PropTypes.shape({
@@ -31,10 +31,10 @@ class DocumentAddScene extends Component {
 
   state: State = {
     document_type_id: null,
-    typeModalVisible:false,
-    camera_uploads:[],
-    album_uploads:[],
-    file_uploads:[],
+    typeModalVisible: false,
+    camera_uploads: [],
+    album_uploads: [],
+    file_uploads: [],
   };
 
   componentDidMount() {
@@ -69,35 +69,35 @@ class DocumentAddScene extends Component {
     });
   };
 
-  onCameraUpload = (image) => {
-    console.log('image',image);
+  onCameraUpload = image => {
+    console.log('image', image);
   };
 
-  onAlbumUpload = (images) => {
-    console.log('images',images);
+  onAlbumUpload = images => {
+    console.log('images', images);
   };
 
-  onFileUpload = (file) => {
-    console.log('file',file);
+  onFileUpload = file => {
+    console.log('file', file);
   };
 
   render() {
-
     let {document_types} = this.props;
-    let {document_type_id,typeModalVisible} = this.state;
+    let {document_type_id, typeModalVisible} = this.state;
 
     let documentType = {};
 
-    if(document_type_id) {
-      documentType = document_types.find(document => document.id === document_type_id);
+    if (document_type_id) {
+      documentType = document_types.find(
+        document => document.id === document_type_id,
+      );
     }
 
-    console.log('document_types',document_types);
+    console.log('document_types', document_types);
 
     return (
-      <ScrollView >
+      <ScrollView>
         <View style={{padding: 10}}>
-
           <Touchable onPress={this.showTypeModal}>
             <View>
               <Label title={I18n.t('document_type')} />
@@ -107,31 +107,23 @@ class DocumentAddScene extends Component {
             </View>
           </Touchable>
 
-          <Divider style={{marginVertical:10}}/>
+          <Divider style={{marginVertical: 10}} />
 
           <Title>{I18n.t('files')}</Title>
 
-          <CameraUpload
-            onUpload={this.onCameraUpload}
-          >
-            <ListItem title={I18n.t('take_picture')}/>
+          <CameraUpload onUpload={this.onCameraUpload}>
+            <ListItem title={I18n.t('take_picture')} />
           </CameraUpload>
 
           <AlbumUpload
             onUpload={this.onAlbumUpload}
-            images={this.state.album_uploads}
-
-          >
-            <ListItem title={I18n.t('choose_from_album')}/>
+            images={this.state.album_uploads}>
+            <ListItem title={I18n.t('choose_from_album')} />
           </AlbumUpload>
 
-          <FileUpload
-            onUpload={this.onFileUpload}
-          >
-            <ListItem title={I18n.t('upload_file')}/>
+          <FileUpload onUpload={this.onFileUpload}>
+            <ListItem title={I18n.t('upload_file')} />
           </FileUpload>
-
-
         </View>
 
         <Button
@@ -148,7 +140,6 @@ class DocumentAddScene extends Component {
           onCancel={this.hideTypeModal}
           items={document_types}
         />
-
       </ScrollView>
     );
   }
@@ -159,7 +150,7 @@ const makeMapStateToProps = () => {
   const mapStateToProps = (state, props) => {
     return {
       load: getLoadByID(state, 1),
-      document_types:DRIVER_SELECTORS.getDocumentTypes(state)
+      document_types: DRIVER_SELECTORS.getDocumentTypes(state),
       // load: getLoadByID(state, props.navigation.getParam('loadID')),
     };
   };

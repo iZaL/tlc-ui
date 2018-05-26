@@ -10,7 +10,7 @@ import {
   Colors,
 } from 'react-native-paper';
 import I18n from 'utils/locale';
-import {View} from "react-native";
+import {View} from 'react-native';
 
 export default class Dialog extends Component {
   static propTypes = {

@@ -261,7 +261,7 @@ const getProfileCountries = createSelector(
 
 const getLoadRequests = createSelector(
   [getProfile, entities],
-  (driver,schema) => {
+  (driver, schema) => {
     let driverLoads = driver.requested_loads || [];
     return (
       driverLoads.map(loadID => {
@@ -401,14 +401,15 @@ const getDocumentsByType = () => {
   );
 };
 
-const getDocumentTypes = createSelector(
-  [documentTypes],
-  (types) => {
-    return types && Object.keys(types).map(typeID => {
-      return types[typeID];
-    }) || [];
-  },
-);
+const getDocumentTypes = createSelector([documentTypes], types => {
+  return (
+    (types &&
+      Object.keys(types).map(typeID => {
+        return types[typeID];
+      })) ||
+    []
+  );
+});
 
 export const SELECTORS = {
   getProfile,

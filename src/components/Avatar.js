@@ -8,7 +8,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import colors from 'assets/theme/colors';
 import {View, StyleSheet, Image} from 'react-native';
 import {TouchableRipple} from 'react-native-paper';
-import ImageViewer from "components/ImageViewer";
+import ImageViewer from 'components/ImageViewer';
 
 export default class DrawerIcon extends Component {
   static propTypes = {
@@ -17,48 +17,54 @@ export default class DrawerIcon extends Component {
   };
 
   state = {
-    imageModalVisible:false,
-    images:[]
+    imageModalVisible: false,
+    images: [],
   };
 
-  shouldComponentUpdate(nextProps,nextState) {
-    return nextProps.image !== this.props.image || nextState.imageModalVisible !== this.state.imageModalVisible
+  shouldComponentUpdate(nextProps, nextState) {
+    return (
+      nextProps.image !== this.props.image ||
+      nextState.imageModalVisible !== this.state.imageModalVisible
+    );
   }
 
   static defaultProps = {
     size: 100,
   };
 
-  onPress = (image) => {
+  onPress = image => {
     this.setState({
-      imageModalVisible:true,
-      images:[{url:image}]
-    })
+      imageModalVisible: true,
+      images: [{url: image}],
+    });
   };
 
   hideImageModal = () => {
     this.setState({
-      imageModalVisible:false,
-      images:[]
-    })
+      imageModalVisible: false,
+      images: [],
+    });
   };
 
   render() {
-    let {images,imageModalVisible} = this.state;
+    let {images, imageModalVisible} = this.state;
     let {image, size, style} = this.props;
     return (
       <View>
-        <TouchableRipple onPress={()=>this.onPress(image)} underlayColor="transparent">
-
+        <TouchableRipple
+          onPress={() => this.onPress(image)}
+          underlayColor="transparent">
           <Image
             source={{uri: image}}
             style={[{width: size, height: size, borderRadius: size / 2}, style]}
             resizeMode="contain"
           />
-
         </TouchableRipple>
-        <ImageViewer visible={imageModalVisible} images={images} onClose={this.hideImageModal}/>
-
+        <ImageViewer
+          visible={imageModalVisible}
+          images={images}
+          onClose={this.hideImageModal}
+        />
       </View>
     );
   }

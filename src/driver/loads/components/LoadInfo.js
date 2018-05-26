@@ -5,33 +5,30 @@ import React, {Component, PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {StyleSheet, View} from 'react-native';
 import I18n from 'utils/locale';
-import LoadInfoItem from "driver/loads/components/LoadInfoItem";
+import LoadInfoItem from 'driver/loads/components/LoadInfoItem';
 
 export default class LoadInfo extends Component {
-
   static propTypes = {
     load: PropTypes.object.isRequired,
-    showDetail:PropTypes.bool,
+    showDetail: PropTypes.bool,
   };
 
   static defaultProps = {
     load: {
       trailer: {},
-      showDetail:false
+      showDetail: false,
     },
   };
 
-  shouldComponentUpdate(nextProps){
+  shouldComponentUpdate(nextProps) {
     return nextProps.load !== this.props.load;
   }
 
   render() {
     let {load, style, showDetail} = this.props;
     return (
-      <View style={[styles.container,style]}>
-
+      <View style={[styles.container, style]}>
         <View style={[styles.itemRowContainer]}>
-
           <LoadInfoItem
             title={I18n.t('load_identifier')}
             description={load.track_id}
@@ -60,17 +57,11 @@ export default class LoadInfo extends Component {
             caption={load.unload_time_formatted}
           />
 
-          <LoadInfoItem
-            title={I18n.t('price')}
-            description='3000 kwd'
-          />
-
+          <LoadInfoItem title={I18n.t('price')} description="3000 kwd" />
         </View>
 
-        {
-          showDetail &&
-          <View style={[styles.itemRowContainer,{marginTop:10}]}>
-
+        {showDetail && (
+          <View style={[styles.itemRowContainer, {marginTop: 10}]}>
             <LoadInfoItem
               title={I18n.t('commodity')}
               description={load.packaging ? load.packaging.name : '-'}
@@ -85,10 +76,8 @@ export default class LoadInfo extends Component {
               title={I18n.t('status')}
               description={load.status_formatted}
             />
-
           </View>
-        }
-
+        )}
       </View>
     );
   }
@@ -96,7 +85,7 @@ export default class LoadInfo extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal:5
+    paddingHorizontal: 5,
   },
   itemRowContainer: {
     flexDirection: 'row',

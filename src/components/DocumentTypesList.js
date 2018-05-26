@@ -9,19 +9,13 @@ import {FlatList, StyleSheet} from 'react-native';
 import Divider from 'components/Divider';
 
 export default class DocumentTypesList extends Component {
-
   shouldComponentUpdate(nextProps) {
     return nextProps.items !== this.props.items;
   }
 
   renderItem = ({item}) => {
     const {onItemPress} = this.props;
-    return (
-      <DocumentTypeCard
-        item={item}
-        onPress={onItemPress}
-      />
-    );
+    return <DocumentTypeCard item={item} onPress={onItemPress} />;
   };
 
   render() {

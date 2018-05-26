@@ -22,7 +22,7 @@ export default class ListIRow extends Component {
   };
 
   render() {
-    let {left, right,onPress} = this.props;
+    let {left, right, onPress} = this.props;
     return (
       <TouchableRipple onPress={onPress}>
         <View style={styles.container}>

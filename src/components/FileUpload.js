@@ -10,7 +10,7 @@ import {View, StyleSheet, Image} from 'react-native';
 import {TouchableRipple} from 'react-native-paper';
 import ImagePicker from 'react-native-image-crop-picker';
 import map from 'lodash/map';
-import { DocumentPicker, DocumentPickerUtil } from 'react-native-document-picker';
+import {DocumentPicker, DocumentPickerUtil} from 'react-native-document-picker';
 export default class FileUpload extends Component {
   static propTypes = {
     onUpload: PropTypes.func,
@@ -20,23 +20,25 @@ export default class FileUpload extends Component {
     return false;
   }
 
-  static defaultProps = {
-  };
+  static defaultProps = {};
 
   uploadFile = () => {
-    DocumentPicker.show({
-      filetype: [DocumentPickerUtil.images()],
-    },(error,res) => {
-      // Android
-      console.log(
-        res.uri,
-        res.type, // mime type
-        res.fileName,
-        res.fileSize
-      );
+    DocumentPicker.show(
+      {
+        filetype: [DocumentPickerUtil.images()],
+      },
+      (error, res) => {
+        // Android
+        console.log(
+          res.uri,
+          res.type, // mime type
+          res.fileName,
+          res.fileSize,
+        );
 
-      this.props.onUpload(res);
-    });
+        this.props.onUpload(res);
+      },
+    );
   };
 
   render() {

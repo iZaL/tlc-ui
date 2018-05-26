@@ -94,5 +94,4 @@ export const sagas = all([
   fork(fetchLoadsByStatusMonitor),
   fork(fetchCurrentLoadMonitor),
   fork(fetchLoadRequestsMonitor),
-
 ]);

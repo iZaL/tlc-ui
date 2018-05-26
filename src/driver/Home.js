@@ -6,11 +6,10 @@ import {connect} from 'react-redux';
 import LoadsList from 'driver/loads/components/LoadsList';
 import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
 import {ACTIONS as APP_ACTIONS} from 'app/common/actions';
-import Heading from "components/Heading";
+import Heading from 'components/Heading';
 import I18n from 'utils/locale';
 
 class Home extends Component {
-
   static propTypes = {
     loads: PropTypes.array.isRequired,
   };
@@ -19,8 +18,7 @@ class Home extends Component {
     loads: [],
   };
 
-  state = {
-  };
+  state = {};
 
   componentDidMount() {
     this.props.dispatch(DRIVER_ACTIONS.fetchCurrentLoad());
@@ -34,36 +32,38 @@ class Home extends Component {
     });
   };
 
-  onLoadRequestsListItemPress = (load :object) => {
+  onLoadRequestsListItemPress = (load: object) => {
     this.props.navigation.navigate('LoadDetail', {
       loadID: load.id,
-      hiddenTabs:['documents','fleets']
+      hiddenTabs: ['documents', 'fleets'],
     });
   };
 
   render() {
-    let {current_load,load_requests} = this.props;
+    let {current_load, load_requests} = this.props;
     let {loadRequestDialogVisible} = this.state;
 
-    console.log('load_requests',load_requests);
+    console.log('load_requests', load_requests);
     return (
       <ScrollView style={{flex: 1}}>
-
         {current_load &&
-        current_load.id && (
-          <LoadsList
-            items={[current_load]}
-            onItemPress={this.onLoadsListItemPress}
-            header={<Heading title={I18n.t('trip_current')} style={{padding:5}}/>}
-          />
-        )}
+          current_load.id && (
+            <LoadsList
+              items={[current_load]}
+              onItemPress={this.onLoadsListItemPress}
+              header={
+                <Heading title={I18n.t('trip_current')} style={{padding: 5}} />
+              }
+            />
+          )}
 
-          <LoadsList
-            items={load_requests}
-            onItemPress={this.onLoadRequestsListItemPress}
-            header={<Heading title={I18n.t('trip_requests')} style={{padding:5}}/>}
-          />
-
+        <LoadsList
+          items={load_requests}
+          onItemPress={this.onLoadRequestsListItemPress}
+          header={
+            <Heading title={I18n.t('trip_requests')} style={{padding: 5}} />
+          }
+        />
       </ScrollView>
     );
   }
@@ -73,7 +73,7 @@ function mapStateToProps(state) {
   return {
     current_load: DRIVER_SELECTORS.getCurrentLoad(state),
     // load_requests:[]
-    load_requests: DRIVER_SELECTORS.getLoadRequests(state)
+    load_requests: DRIVER_SELECTORS.getLoadRequests(state),
   };
 }
 

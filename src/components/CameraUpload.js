@@ -20,17 +20,16 @@ export default class CameraUpload extends Component {
     return false;
   }
 
-  static defaultProps = {
-  };
+  static defaultProps = {};
 
   takePicture = () => {
     ImagePicker.openCamera({
       width: 300,
       height: 400,
-      cropping: true
+      cropping: true,
     })
       .then(image => this.props.onUpload(image))
-      .catch(e => console.log('e',e));
+      .catch(e => console.log('e', e));
   };
 
   render() {

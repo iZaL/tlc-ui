@@ -10,7 +10,6 @@ const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 const DEFAULT_PADDING = {top: 50, right: 50, bottom: 50, left: 50};
 
 export default class LoadLocationMapView extends Component {
-
   static propTypes = {
     origin: PropTypes.shape({
       latitude: PropTypes.number.isRequired,
@@ -23,10 +22,10 @@ export default class LoadLocationMapView extends Component {
   };
 
   state = {
-    initialized:false
+    initialized: false,
   };
 
-  shouldComponentUpdate(nextProps,prevState) {
+  shouldComponentUpdate(nextProps, prevState) {
     return (
       nextProps.origin !== this.props.origin ||
       this.state.initialized !== prevState.initialized
@@ -34,17 +33,17 @@ export default class LoadLocationMapView extends Component {
   }
 
   componentDidMount() {
-    setTimeout(()=>{
+    setTimeout(() => {
       this.setState({
-        initialized:true
-      })
-    },1000);
+        initialized: true,
+      });
+    }, 1000);
   }
 
   onMapLayout = () => {
     let {origin, destination} = this.props;
-    console.log('origin',origin);
-    console.log('destination',destination);
+    console.log('origin', origin);
+    console.log('destination', destination);
 
     this.map.fitToCoordinates(
       [
@@ -79,21 +78,20 @@ export default class LoadLocationMapView extends Component {
     ];
 
     return (
-        <MapView
-          style={styles.container}
-          ref={ref => (this.map = ref)}
-          initialRegion={{
-            latitude: origin.latitude,
-            longitude: origin.longitude,
-            latitudeDelta: LATITUDE_DELTA,
-            longitudeDelta: LONGITUDE_DELTA,
-          }}
-          onLayout={this.onMapLayout}
-        >
-          {markers.map((marker, i) => (
-            <MapView.Marker key={i} coordinate={marker} />
-          ))}
-        </MapView>
+      <MapView
+        style={styles.container}
+        ref={ref => (this.map = ref)}
+        initialRegion={{
+          latitude: origin.latitude,
+          longitude: origin.longitude,
+          latitudeDelta: LATITUDE_DELTA,
+          longitudeDelta: LONGITUDE_DELTA,
+        }}
+        onLayout={this.onMapLayout}>
+        {markers.map((marker, i) => (
+          <MapView.Marker key={i} coordinate={marker} />
+        ))}
+      </MapView>
     );
   }
 }

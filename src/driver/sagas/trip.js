@@ -62,7 +62,10 @@ function* fetchTripDetailsMonitor() {
 }
 
 function* fetchDocumentTypesMonitor() {
-  yield takeLatest(ACTION_TYPES.FETCH_DOCUMENT_TYPES_REQUEST, fetchDocumentTypes);
+  yield takeLatest(
+    ACTION_TYPES.FETCH_DOCUMENT_TYPES_REQUEST,
+    fetchDocumentTypes,
+  );
 }
 
 export const sagas = all([

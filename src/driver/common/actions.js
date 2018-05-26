@@ -62,7 +62,6 @@ export const ACTION_TYPES = {
   FETCH_LOAD_REQUESTS_REQUEST: '@driver/FETCH_LOAD_REQUESTS_REQUEST',
   FETCH_LOAD_REQUESTS_SUCCESS: '@driver/FETCH_LOAD_REQUESTS_SUCCESS',
   FETCH_LOAD_REQUESTS_FAILURE: '@driver/FETCH_LOAD_REQUESTS_FAILURE',
-
 };
 
 function fetchProfile(params) {
@@ -177,5 +176,5 @@ export const ACTIONS = {
   fetchLoadsByStatus,
   fetchTripDetails,
   fetchSecurityPasses,
-  fetchDocumentTypes
+  fetchDocumentTypes,
 };
