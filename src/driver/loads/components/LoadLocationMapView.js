@@ -10,6 +10,7 @@ const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 const DEFAULT_PADDING = {top: 50, right: 50, bottom: 50, left: 50};
 
 export default class LoadLocationMapView extends Component {
+
   static propTypes = {
     origin: PropTypes.shape({
       latitude: PropTypes.number.isRequired,
@@ -25,31 +26,36 @@ export default class LoadLocationMapView extends Component {
     initialized:false
   };
 
-  shouldComponentUpdate(nextProps,prevstate) {
+  shouldComponentUpdate(nextProps,prevState) {
     return (
       nextProps.origin !== this.props.origin ||
-      nextProps.destination !== this.props.destination ||
-      this.state.initialized !== prevstate.initialized
+      this.state.initialized !== prevState.initialized
     );
   }
 
-  componentDidUpdate() {
-    setTimeout(()=>this.setState({
-      initialized:true
-    }),1000)
+  componentDidMount() {
+    setTimeout(()=>{
+      this.setState({
+        initialized:true
+      })
+    },1000);
   }
 
   onMapLayout = () => {
     let {origin, destination} = this.props;
+    console.log('origin',origin);
+    console.log('destination',destination);
+
     this.map.fitToCoordinates(
       [
         {
-          latitude: origin.latitude,
-          longitude: origin.longitude,
-        },
-        {
           latitude: destination.latitude,
           longitude: destination.longitude,
+        },
+
+        {
+          latitude: origin.latitude,
+          longitude: origin.longitude,
         },
       ],
       {
@@ -72,30 +78,22 @@ export default class LoadLocationMapView extends Component {
       },
     ];
 
-    console.log('markers', markers);
-
-    if(!this.state.initialized) {
-      return null
-    }
-
     return (
-      <View style={[styles.container, style]}>
         <MapView
-          style={styles.map}
+          style={styles.container}
           ref={ref => (this.map = ref)}
-          region={{
+          initialRegion={{
             latitude: origin.latitude,
             longitude: origin.longitude,
             latitudeDelta: LATITUDE_DELTA,
             longitudeDelta: LONGITUDE_DELTA,
           }}
-          cacheEnabled
-          onLayout={this.onMapLayout}>
+          onLayout={this.onMapLayout}
+        >
           {markers.map((marker, i) => (
             <MapView.Marker key={i} coordinate={marker} />
           ))}
         </MapView>
-      </View>
     );
   }
 }
@@ -103,14 +101,8 @@ export default class LoadLocationMapView extends Component {
 const styles = StyleSheet.create({
   container: {
     ...StyleSheet.absoluteFillObject,
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-  },
-  map: {
-    ...StyleSheet.absoluteFillObject,
   },
   bubble: {
-    // backgroundColor: 'rgba(255,255,255,0.7)',
     paddingHorizontal: 18,
     paddingVertical: 12,
     borderRadius: 20,

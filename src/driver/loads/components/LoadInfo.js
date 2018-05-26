@@ -3,62 +3,92 @@
  */
 import React, {Component, PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import {StyleSheet, Text, View} from 'react-native';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import colors from 'assets/theme/colors';
+import {StyleSheet, View} from 'react-native';
 import I18n from 'utils/locale';
-import {Caption} from "react-native-paper";
-import Label from "../../../components/Label";
+import LoadInfoItem from "driver/loads/components/LoadInfoItem";
 
-export default class LoadInfo extends PureComponent {
+export default class LoadInfo extends Component {
+
   static propTypes = {
     load: PropTypes.object.isRequired,
-    // onItemPress: PropTypes.func.isRequired
+    showDetail:PropTypes.bool,
   };
 
   static defaultProps = {
     load: {
       trailer: {},
+      showDetail:false
     },
   };
 
+  shouldComponentUpdate(nextProps){
+    return nextProps.load !== this.props.load;
+  }
+
   render() {
-    let {load, style} = this.props;
+    let {load, style, showDetail} = this.props;
     return (
-      <View style={[styles.container, style]}>
+      <View style={[styles.container,style]}>
+
         <View style={[styles.itemRowContainer]}>
-          <View style={{flex: 1}}>
-            <Label title={I18n.t('trailer')}/>
-            <Text style={styles.trailerName}>
-              {load.trailer_type ? load.trailer_type.name : ''}
-            </Text>
-          </View>
-          <View style={{flex: 1}}>
-            <Label title={I18n.t('packaging')}/>
-            <Text style={styles.packageName}>
-              {load.packaging ? load.packaging.name : ''}
-            </Text>
-          </View>
-          <View style={{flex: 1}}>
-            <Label title={I18n.t('weight')}/>
-            <Text style={styles.weight}>48,000 lbs</Text>
-          </View>
+
+          <LoadInfoItem
+            title={I18n.t('load_identifier')}
+            description={load.track_id}
+          />
+
+          <LoadInfoItem
+            title={I18n.t('trailer')}
+            description={load.trailer_type ? load.trailer_type.name : ''}
+          />
+
+          <LoadInfoItem
+            title={I18n.t('weight')}
+            description={load.weight_formatted}
+          />
         </View>
 
-        <View style={[styles.itemRowContainer, styles.rowVerticalPadding]}>
-          <View style={{flex: 1}}>
-            <Label title={I18n.t('pick_up')}/>
-            <Text style={styles.value}>Jan 4 <Caption>(10-11am)</Caption></Text>
-          </View>
-          <View style={{flex: 1}}>
-            <Label title={I18n.t('drop_off')}/>
-            <Text style={styles.value}>Jan 7 <Caption>(11-14am)</Caption></Text>
-          </View>
-          <View style={{flex: 1}}>
-            <Label title={I18n.t('price')}/>
-            <Text style={styles.value}>3000 kwd</Text>
-          </View>
+        <View style={[styles.itemRowContainer]}>
+          <LoadInfoItem
+            title={I18n.t('pick_up')}
+            description={load.load_date_formatted}
+            caption={load.load_time_formatted}
+          />
+          <LoadInfoItem
+            title={I18n.t('drop_off')}
+            description={load.unload_date_formatted}
+            caption={load.unload_time_formatted}
+          />
+
+          <LoadInfoItem
+            title={I18n.t('price')}
+            description='3000 kwd'
+          />
+
         </View>
+
+        {
+          showDetail &&
+          <View style={[styles.itemRowContainer,{marginTop:10}]}>
+
+            <LoadInfoItem
+              title={I18n.t('commodity')}
+              description={load.packaging ? load.packaging.name : '-'}
+            />
+
+            <LoadInfoItem
+              title={I18n.t('packaging')}
+              description={load.packaging ? load.packaging.name : '-'}
+            />
+
+            <LoadInfoItem
+              title={I18n.t('status')}
+              description={load.status_formatted}
+            />
+
+          </View>
+        }
+
       </View>
     );
   }
@@ -71,38 +101,5 @@ const styles = StyleSheet.create({
   itemRowContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingBottom: 5,
-  },
-  locationName: {
-    textAlign: 'left',
-    fontSize: 18,
-    paddingHorizontal: 5,
-    fontWeight: '500',
-  },
-  locationIcon: {
-    height: 30,
-  },
-  infoText: {
-    fontSize: 16,
-  },
-  trailerName: {
-    fontSize: 16,
-    paddingRight: 50,
-  },
-  packageName: {
-    fontSize: 16,
-    paddingRight: 50,
-  },
-  weight: {
-    fontSize: 16,
-  },
-  rowVerticalPadding: {
-    paddingVertical: 5,
-  },
-  label: {
-    color: colors.mediumGrey,
-  },
-  value: {
-    fontSize: 16,
   },
 });

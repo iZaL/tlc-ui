@@ -158,6 +158,7 @@
   "load_track" : "Track Load on Map",
   "load_info" : "Load Info",
   "load_location" : "Location",
+  "load_identifier" : "Load ID",
   "data" : "Date",
   "documents" : "Documents",
   "document_type" : "Document Type",
@@ -277,6 +278,8 @@
   "take_picture" : "Take Picture",
   "choose_from_album" : "Choose from album",
   "upload_file" : "Upload file",
-  "files" : "Files"
+  "files" : "Files",
+
+  "commodity" : "Commodity"
 
 }

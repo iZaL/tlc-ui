@@ -17,6 +17,25 @@ function* fetchLoadDetails(action) {
   }
 }
 
+function* fetchLoadRequests(action) {
+  try {
+    const response = yield call(API.fetchLoadRequests, action.params);
+
+    const formattedResponse = {
+      ...response.driver,
+      requested_loads: response.loads,
+    };
+
+    const normalized = normalize(formattedResponse, Schema.drivers);
+    yield put({
+      type: ACTION_TYPES.FETCH_LOAD_REQUESTS_SUCCESS,
+      entities: normalized.entities,
+    });
+  } catch (error) {
+    yield put({type: ACTION_TYPES.FETCH_LOAD_REQUESTS_FAILURE, error});
+  }
+}
+
 function* fetchLoadsByStatus(action: object) {
   try {
     const response = yield call(API.fetchLoadsByStatus, action.params.status);
@@ -66,8 +85,14 @@ function* fetchCurrentLoadMonitor() {
   yield takeLatest(ACTION_TYPES.FETCH_CURRENT_LOAD_REQUEST, fetchCurrentLoad);
 }
 
+function* fetchLoadRequestsMonitor() {
+  yield takeLatest(ACTION_TYPES.FETCH_LOAD_REQUESTS_REQUEST, fetchLoadRequests);
+}
+
 export const sagas = all([
   fork(fetchLoadDetailsMonitor),
   fork(fetchLoadsByStatusMonitor),
   fork(fetchCurrentLoadMonitor),
+  fork(fetchLoadRequestsMonitor),
+
 ]);

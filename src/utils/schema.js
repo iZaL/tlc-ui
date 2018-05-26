@@ -34,11 +34,10 @@ driversSchema.define({
   truck: trucksSchema,
   customer: customersSchema,
   routes: [routesSchema],
-  loads: [loadsSchema],
+  upcoming_loads: [loadsSchema],
+  requested_loads: [loadsSchema],
   current_load: loadsSchema,
-  // upcoming_trips: [tripsSchema],
   security_passes: [{security_pass: securityPassesSchema}],
-  // user: usersSchema, //@note:loops the relation. do not uncomment unless you know what you're doing
 });
 
 customersSchema.define({

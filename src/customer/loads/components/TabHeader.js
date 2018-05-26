@@ -14,6 +14,7 @@ export default class TabHeader extends Component {
   static defaultProps = {
     isActive: false,
     onSelect: () => {},
+    hidden:false
   };
 
   shouldComponentUpdate(nextProps) {
@@ -23,7 +24,12 @@ export default class TabHeader extends Component {
   componentDidMount() {}
 
   render() {
-    let {title, isActive, onSelect} = this.props;
+    let {title, isActive, onSelect,hidden} = this.props;
+
+    if(hidden) {
+      return null;
+    }
+
     return (
       <Touchable onPress={onSelect}>
         <View style={[styles.container, isActive && styles.containerActive]}>
@@ -41,6 +47,8 @@ const styles = StyleSheet.create({
     padding: 15,
     alignItems: 'center',
     justifyContent: 'center',
+    borderBottomColor:colors.darkGrey,
+    borderBottomWidth:.2
   },
   containerActive: {
     backgroundColor: colors.primary,

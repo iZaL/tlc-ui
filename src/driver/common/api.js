@@ -25,6 +25,11 @@ function fetchLoadDetails(params) {
   return fetchAPI({path});
 }
 
+function fetchLoadRequests(params) {
+  const path = `driver/loads/requests`;
+  return fetchAPI({path});
+}
+
 function fetchTripDetails(params = {}) {
   const path = `driver/trips/${params.tripID}/details`;
   return fetchAPI({path});
@@ -90,6 +95,7 @@ export const API = {
   fetchTripDetails,
   fetchDocumentTypes,
   fetchLoadDetails,
+  fetchLoadRequests,
   fetchLoadsByStatus,
   fetchCurrentLoad,
   saveProfile,

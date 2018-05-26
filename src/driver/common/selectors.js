@@ -260,14 +260,12 @@ const getProfileCountries = createSelector(
 );
 
 const getLoadRequests = createSelector(
-  [getProfile, loadsSchema, countriesSchema, trailersSchema],
-  (driver, loads, countries, trailers) => {
-    let driverLoads = driver.loads || [];
-    const loadByID = getLoadByID();
+  [getProfile, entities],
+  (driver,schema) => {
+    let driverLoads = driver.requested_loads || [];
     return (
       driverLoads.map(loadID => {
         return denormalize(loadID, Schema.loads, schema);
-        // return loadByID({entities: {loads, countries, trailers}}, loadID);
       }) || []
     );
   },

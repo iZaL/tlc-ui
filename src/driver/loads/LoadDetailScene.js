@@ -21,6 +21,9 @@ import EmployeeList from "customer/employees/components/EmployeeList";
 import Dialog from "components/Dialog";
 import DocumentTypesList from "components/DocumentTypesList";
 import ImageViewer from 'components/ImageViewer';
+import LoadStatusButton from "driver/loads/components/LoadStatusButton";
+import LoadLocationMapView from "driver/loads/components/LoadLocationMapView";
+import colors from "assets/theme/colors";
 
 class LoadDetailScene extends Component {
 
@@ -118,23 +121,25 @@ class LoadDetailScene extends Component {
   };
 
   render() {
-    let {load} = this.props;
+    let {load,navigation} = this.props;
+
+    let hiddenTabs = navigation.getParam('hiddenTabs') || [];
+
     let {employeeDetailVisible,employeeDetail,imageModalVisible,images} = this.state;
     console.log('load', load);
-    console.log('this.state',this.state);
 
     let {origin, destination, receiver, pending_fleets,customer,trips,trip} = load;
 
     return (
       <ScrollView style={{flex: 1, backgroundColor: 'white'}}>
-        <Tabs activeIndex={4}>
+        <Tabs >
           <TabList>
             <TabHeader title={I18n.t('load_info')} />
             <TabHeader title={I18n.t('route_detail')} />
             <TabHeader title={I18n.t('customer_information')} />
             <TabHeader title={I18n.t('receiver_information')} />
-            <TabHeader title={I18n.t('documents')} />
-            <TabHeader title={I18n.t('fleets_information')} />
+            <TabHeader title={I18n.t('documents')} hidden={hiddenTabs.includes('documents')} />
+            <TabHeader title={I18n.t('fleets_information')} hidden={hiddenTabs.includes('fleets')}/>
             <TabHeader title={I18n.t('contact')} />
           </TabList>
 
@@ -153,9 +158,12 @@ class LoadDetailScene extends Component {
 
                     <Divider style={{marginVertical: 10}} />
 
-                    <LoadInfo load={load} style={{padding: 5}} />
+                    <LoadInfo load={load} style={{paddingHorizontal: 10}} showDetail={true} />
 
                     <Divider />
+
+                    <LoadStatusButton />
+
                   </View>
                 )}
               </View>
@@ -163,9 +171,9 @@ class LoadDetailScene extends Component {
 
             <TabPanel hideNextButton={true}>
 
-              {/*route detail*/}
-
-              <Divider/>
+              <View style={{height: 200, backgroundColor: colors.lightGrey}}>
+                <LoadLocationMapView origin={load.origin} destination={load.destination} />
+              </View>
 
             </TabPanel>
 
@@ -260,7 +268,16 @@ class LoadDetailScene extends Component {
 
             <TabPanel hideNextButton={true}>
               {/*contact tlc*/}
-              <View />
+              {receiver ? (
+                <ReceiverInfo
+                  name={receiver.name}
+                  email={receiver.email}
+                  phone={receiver.phone}
+                  mobile={receiver.mobile}
+                />
+              ) : (
+                <View />
+              )}
             </TabPanel>
 
           </TabPanels>
