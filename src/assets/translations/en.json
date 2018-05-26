@@ -113,6 +113,7 @@
   "drop_off" : "Drop off",
   "distance" : "Distance",
   "price" : "Price",
+  "rate" : "Rate",
   "call" : "CALL",
   "name_en" : "Name in English",
   "name_ar" : "Name in Arabic",
@@ -280,6 +281,9 @@
   "upload_file" : "Upload file",
   "files" : "Files",
 
-  "commodity" : "Commodity"
+  "commodity" : "Commodity",
+
+  "accept" :"Accept",
+  "reject" : "Reject",
 
 }

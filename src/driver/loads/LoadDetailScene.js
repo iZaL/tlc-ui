@@ -72,7 +72,6 @@ class LoadDetailScene extends Component {
   onUserInfoPress = () => {};
 
   onEmployeeListItemPress = item => {
-    console.log('item', item);
     this.setState({
       employeeDetailVisible: true,
       employeeDetail: item,
@@ -179,6 +178,7 @@ class LoadDetailScene extends Component {
                       <Divider />
 
                       <LoadStatusButton />
+
                     </View>
                   )}
               </View>

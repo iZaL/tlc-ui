@@ -9,26 +9,24 @@ import Label from 'components/Label';
 
 export default class LoadInfoItem extends Component {
   static propTypes = {
-    load: PropTypes.object.isRequired,
-    showDetail: PropTypes.bool,
-    // onItemPress: PropTypes.func.isRequired
+    description: PropTypes.string,
+    title: PropTypes.string,
+    caption: PropTypes.string,
+    onPress:PropTypes.func
   };
 
   static defaultProps = {
-    load: {
-      trailer: {},
-      showDetail: false,
-    },
   };
 
-  shouldComponentUpdate() {
-    return false;
+  shouldComponentUpdate(nextProps) {
+    return nextProps.description !== this.props.description;
   }
 
   render() {
     console.log('rendering loadinfoitem');
     let {title, description, caption} = this.props;
     return (
+
       <View style={styles.col}>
         <Label title={title} />
         <Text style={styles.value}>{description}</Text>

@@ -28,7 +28,9 @@ export default class LoadInfo extends Component {
     let {load, style, showDetail} = this.props;
     return (
       <View style={[styles.container, style]}>
+
         <View style={[styles.itemRowContainer]}>
+
           <LoadInfoItem
             title={I18n.t('load_identifier')}
             description={load.track_id}
@@ -43,25 +45,30 @@ export default class LoadInfo extends Component {
             title={I18n.t('weight')}
             description={load.weight_formatted}
           />
+
         </View>
 
         <View style={[styles.itemRowContainer]}>
+
           <LoadInfoItem
             title={I18n.t('pick_up')}
             description={load.load_date_formatted}
             caption={load.load_time_formatted}
           />
+
           <LoadInfoItem
             title={I18n.t('drop_off')}
             description={load.unload_date_formatted}
             caption={load.unload_time_formatted}
           />
 
-          <LoadInfoItem title={I18n.t('price')} description="3000 kwd" />
+          <LoadInfoItem title={I18n.t('rate')} description={load.trip ? load.trip.rate_formatted : '-'} />
+
         </View>
 
         {showDetail && (
           <View style={[styles.itemRowContainer, {marginTop: 10}]}>
+
             <LoadInfoItem
               title={I18n.t('commodity')}
               description={load.packaging ? load.packaging.name : '-'}
@@ -74,7 +81,7 @@ export default class LoadInfo extends Component {
 
             <LoadInfoItem
               title={I18n.t('status')}
-              description={load.status_formatted}
+              description={load.trip ? load.trip.status_formatted : '-'}
             />
           </View>
         )}
