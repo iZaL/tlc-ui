@@ -2,13 +2,11 @@ import PropTypes from 'prop-types';
 import React, {Component} from 'react';
 import CodePush from 'react-native-code-push';
 import BackgroundGeolocation from 'react-native-background-geolocation';
-
 import PushNotificationManager from 'app/components/PushNotificationManager';
 import Notification from 'app/components/Notification';
 import LanguageSelectScene from 'app/scenes/LanguageSelectScene';
 import Navigator from 'components/Navigator';
-
-import {SafeAreaView, AppState, View} from 'react-native';
+import {AppState, View} from 'react-native';
 import {connect} from 'react-redux';
 import {ACTIONS} from 'app/common/actions';
 import {ACTIONS as USER_ACTIONS} from 'guest/common/actions';
@@ -74,8 +72,6 @@ class App extends Component {
     if (!app.installed) {
       return <LanguageSelectScene onItemPress={this.onLanguageSelect} />;
     }
-
-    console.log('userType', userType);
 
     return (
       <View style={{flex: 1}}>

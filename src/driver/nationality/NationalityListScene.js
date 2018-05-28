@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {ScrollView, View} from 'react-native';
+import {View} from 'react-native';
 import {connect} from 'react-redux';
 import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
-import {SELECTORS as COUNTRY_SELECTORS} from 'app/selectors/country';
 import DocumentList from 'components/DocumentList';
 import {FAB} from 'react-native-paper';
 import colors from 'assets/theme/colors';
