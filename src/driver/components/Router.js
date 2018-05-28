@@ -244,5 +244,5 @@ export const Routes = createDrawerNavigator(DrawerRoutes, {
   gesturesEnabled: false,
   contentComponent: props => <Drawer {...props} />,
   drawerWidth: 275,
-  initialRouteName: 'HomeStack',
+  initialRouteName: 'LoadStack',
 });

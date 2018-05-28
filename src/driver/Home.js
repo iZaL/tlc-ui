@@ -22,7 +22,9 @@ class Home extends Component {
 
   componentDidMount() {
     this.props.dispatch(DRIVER_ACTIONS.fetchCurrentLoad());
-    this.props.dispatch(DRIVER_ACTIONS.fetchLoadRequests());
+    this.props.dispatch(DRIVER_ACTIONS.fetchLoadsByStatus({
+      status:'pending'
+    }));
     this.props.dispatch(APP_ACTIONS.fetchCountries());
   }
 
@@ -39,25 +41,25 @@ class Home extends Component {
   };
 
   render() {
-    let {current_load, load_requests} = this.props;
+    let {current_load, loads_pending} = this.props;
+    console.log('loads_pending',loads_pending);
     let {loadRequestDialogVisible} = this.state;
 
-    console.log('load_requests', load_requests);
     return (
       <ScrollView style={{flex: 1}}>
         {current_load &&
-          current_load.id && (
-            <LoadsList
-              items={[current_load]}
-              onItemPress={this.onLoadsListItemPress}
-              header={
-                <Heading title={I18n.t('trip_current')} style={{padding: 5}} />
-              }
-            />
-          )}
+        current_load.id && (
+          <LoadsList
+            items={[current_load]}
+            onItemPress={this.onLoadsListItemPress}
+            header={
+              <Heading title={I18n.t('trip_current')} style={{padding: 5}} />
+            }
+          />
+        )}
 
         <LoadsList
-          items={load_requests}
+          items={loads_pending}
           onItemPress={this.onLoadRequestsListItemPress}
           header={
             <Heading title={I18n.t('trip_requests')} style={{padding: 5}} />
@@ -68,12 +70,16 @@ class Home extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    current_load: DRIVER_SELECTORS.getCurrentLoad(state),
-    // load_requests:[]
-    load_requests: DRIVER_SELECTORS.getLoadRequests(state),
+const makeMapStateToProps = () => {
+  const getLoadsByStatus = DRIVER_SELECTORS.getLoadsByStatus();
+  const mapStateToProps = (state,props) => {
+    return {
+      current_load: DRIVER_SELECTORS.getCurrentLoad(state),
+      loads_pending: getLoadsByStatus(state,'pending'),
+    };
   };
-}
+  return mapStateToProps;
+};
 
-export default connect(mapStateToProps)(Home);
+export default connect(makeMapStateToProps)(Home);
+

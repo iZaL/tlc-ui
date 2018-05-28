@@ -14,25 +14,25 @@ class LoadHomeScene extends Component {
     let scene;
     let sceneConfig = {};
     switch (route) {
-      case 'load_working_list':
+      case 'trip_requests':
         scene = 'LoadList';
         sceneConfig = {
-          title: I18n.t('load_working_list'),
-          status: 'working',
+          title: I18n.t('trip_requests'),
+          status: 'pending',
         };
         break;
-      case 'load_completed_list':
+      case 'trip_upcoming':
         scene = 'LoadList';
         sceneConfig = {
-          title: I18n.t('load_completed_list'),
+          title: I18n.t('trip_upcoming'),
+          status: 'confirmed',
+        };
+        break;
+      case 'trip_history':
+        scene = 'LoadList';
+        sceneConfig = {
+          title: I18n.t('trip_history'),
           status: 'completed',
-        };
-        break;
-      case 'load_approved_list':
-        scene = 'LoadList';
-        sceneConfig = {
-          title: I18n.t('load_approved_list'),
-          status: 'approved',
         };
         break;
     }
@@ -45,7 +45,7 @@ class LoadHomeScene extends Component {
         <ListItem
           onItemPress={this.onListItemPress}
           iconProps={{type: 'MaterialCommunityIcons', name: 'truck-delivery'}}
-          name="load_working_list"
+          name="trip_requests"
           title={I18n.t('trip_requests')}
         />
 
@@ -54,7 +54,7 @@ class LoadHomeScene extends Component {
         <ListItem
           onItemPress={this.onListItemPress}
           iconProps={{type: 'Entypo', name: 'back-in-time'}}
-          name="load_approved_list"
+          name="trip_upcoming"
           title={I18n.t('trip_upcoming')}
         />
 
@@ -63,7 +63,7 @@ class LoadHomeScene extends Component {
         <ListItem
           onItemPress={this.onListItemPress}
           iconProps={{type: 'MaterialIcons', name: 'timelapse'}}
-          name="load_completed_list"
+          name="trip_history"
           title={I18n.t('trip_history')}
         />
       </ListSection>

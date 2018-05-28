@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import colors from 'assets/theme/colors';
 import I18n from 'utils/locale';
-
+import ImageViewer from "components/ImageViewer";
 import {
   Button,
   Card,
@@ -30,17 +30,41 @@ export default class DocumentCard extends Component {
     number: PropTypes.string,
   };
 
-  shouldComponentUpdate() {
-    return false;
+  shouldComponentUpdate(nextProps, nextState) {
+    return (
+      nextProps.image !== this.props.image ||
+      nextState.imageModalVisible !== this.state.imageModalVisible
+    );
   }
+
+  state = {
+    imageModalVisible: false,
+    images: [],
+  };
 
   static defaultProps = {
     onEditPress: () => {},
     onDeletePress: () => {},
   };
 
+  onCardCoverPress = (image) => {
+    this.setState({
+      imageModalVisible: true,
+      images: [{url: image}],
+    });
+  };
+
+
+  hideImageModal = () => {
+    this.setState({
+      imageModalVisible: false,
+      images: [],
+    });
+  };
+
   render() {
     let {onEditPress, onDeletePress, item} = this.props;
+    let {images, imageModalVisible} = this.state;
 
     let {country, image, expiry_date, number} = item;
 
@@ -51,7 +75,13 @@ export default class DocumentCard extends Component {
           <Paragraph>{number}</Paragraph>
         </CardContent>
 
-        {image ? <CardCover source={{uri: image}} /> : <View />}
+        {image ?
+          <Touchable onPress={()=>this.onCardCoverPress(image)} style={{flex:1}}>
+            <CardCover source={{uri: image}}  />
+          </Touchable>
+          :
+          <View />
+        }
 
         <View style={{flexDirection: 'row'}}>
           <CardActions>
@@ -68,6 +98,12 @@ export default class DocumentCard extends Component {
             </Button>
           </CardActions>
         </View>
+        <ImageViewer
+          visible={imageModalVisible}
+          images={images}
+          onClose={this.hideImageModal}
+        />
+
       </Card>
     );
   }

@@ -7,7 +7,7 @@ import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
 import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
 import I18n from 'utils/locale';
 
-type STATUS = 'working|confirmed|completed';
+type STATUS = 'pending|working|confirmed|completed';
 
 class LoadListScene extends Component {
   static propTypes = {
@@ -22,21 +22,17 @@ class LoadListScene extends Component {
   };
 
   static defaultProps = {
-    // status: 'working',
     loads: [],
   };
 
   static navigationOptions = ({navigation}) => {
-    const {params} = navigation.state;
-    const status = (params && params.status) || null;
-    let title = status ? `load_${status}_list` : 'loads';
     return {
-      title: I18n.t(title),
+      headerTitle: navigation.getParam('title',I18n.t('trips')),
     };
   };
 
   componentDidMount() {
-    let {status} = this.props.navigation.state.params;
+    let status = this.props.navigation.getParam('status','pending');
     this.props.dispatch(DRIVER_ACTIONS.fetchLoadsByStatus({status: status}));
   }
 
@@ -55,9 +51,11 @@ class LoadListScene extends Component {
 const makeMapStateToProps = () => {
   const getLoadsByStatus = DRIVER_SELECTORS.getLoadsByStatus();
   const mapStateToProps = (state, props) => {
+    let status = props.navigation.getParam('status');
+    console.log('status',status);
     return {
       loads:
-        getLoadsByStatus(state, props.navigation.state.params.status) || [],
+        getLoadsByStatus(state, status) || [],
     };
   };
   return mapStateToProps;

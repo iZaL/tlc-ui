@@ -60,7 +60,7 @@ export default class LoadInfo extends Component {
 
           <LoadInfoItem
             title={I18n.t('status')}
-            description={load.status_formatted}
+            description={load.trip && load.trip.status_formatted}
           />
         </View>
 

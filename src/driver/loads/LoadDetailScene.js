@@ -117,9 +117,10 @@ class LoadDetailScene extends Component {
   };
 
   render() {
-    let {load} = this.props;
+    let {load, navigation} = this.props;
 
-    console.log('load',load);
+    let hiddenTabs = navigation.getParam('hiddenTabs') || [];
+
     let {
       employeeDetailVisible,
       employeeDetail,
@@ -137,8 +138,14 @@ class LoadDetailScene extends Component {
             <TabHeader title={I18n.t('route_detail')} />
             <TabHeader title={I18n.t('customer_information')} />
             <TabHeader title={I18n.t('receiver_information')} />
-            <TabHeader title={I18n.t('documents')} hidden={true} />
-            <TabHeader title={I18n.t('fleets_information')} hidden={true} />
+            <TabHeader
+              title={I18n.t('documents')}
+              hidden={hiddenTabs.includes('documents')}
+            />
+            <TabHeader
+              title={I18n.t('fleets_information')}
+              hidden={hiddenTabs.includes('fleets')}
+            />
             <TabHeader title={I18n.t('contact')} />
           </TabList>
 

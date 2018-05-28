@@ -34,10 +34,13 @@ driversSchema.define({
   truck: trucksSchema,
   customer: customersSchema,
   routes: [routesSchema],
-  upcoming_loads: [loadsSchema],
-  requested_loads: [loadsSchema],
-  current_load: loadsSchema,
   security_passes: [{security_pass: securityPassesSchema}],
+  loads:{
+    enroute:[loadsSchema],
+    pending:[loadsSchema],
+    confirmed:[loadsSchema],
+    completed:[loadsSchema]
+  }
 });
 
 customersSchema.define({
