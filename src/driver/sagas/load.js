@@ -42,9 +42,9 @@ function* fetchLoadsByStatus(action: object) {
 
     const formattedResponse = {
       ...response.driver,
-      loads:{
+      loads: {
         [response.load_status]: response.loads,
-      }
+      },
     };
 
     const normalized = normalize(formattedResponse, Schema.drivers);

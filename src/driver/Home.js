@@ -22,9 +22,11 @@ class Home extends Component {
 
   componentDidMount() {
     this.props.dispatch(DRIVER_ACTIONS.fetchCurrentLoad());
-    this.props.dispatch(DRIVER_ACTIONS.fetchLoadsByStatus({
-      status:'pending'
-    }));
+    this.props.dispatch(
+      DRIVER_ACTIONS.fetchLoadsByStatus({
+        status: 'pending',
+      }),
+    );
     this.props.dispatch(APP_ACTIONS.fetchCountries());
   }
 
@@ -42,21 +44,21 @@ class Home extends Component {
 
   render() {
     let {current_load, loads_pending} = this.props;
-    console.log('loads_pending',loads_pending);
+    console.log('loads_pending', loads_pending);
     let {loadRequestDialogVisible} = this.state;
 
     return (
       <ScrollView style={{flex: 1}}>
         {current_load &&
-        current_load.id && (
-          <LoadsList
-            items={[current_load]}
-            onItemPress={this.onLoadsListItemPress}
-            header={
-              <Heading title={I18n.t('trip_current')} style={{padding: 5}} />
-            }
-          />
-        )}
+          current_load.id && (
+            <LoadsList
+              items={[current_load]}
+              onItemPress={this.onLoadsListItemPress}
+              header={
+                <Heading title={I18n.t('trip_current')} style={{padding: 5}} />
+              }
+            />
+          )}
 
         <LoadsList
           items={loads_pending}
@@ -72,14 +74,13 @@ class Home extends Component {
 
 const makeMapStateToProps = () => {
   const getLoadsByStatus = DRIVER_SELECTORS.getLoadsByStatus();
-  const mapStateToProps = (state,props) => {
+  const mapStateToProps = (state, props) => {
     return {
       current_load: DRIVER_SELECTORS.getCurrentLoad(state),
-      loads_pending: getLoadsByStatus(state,'pending'),
+      loads_pending: getLoadsByStatus(state, 'pending'),
     };
   };
   return mapStateToProps;
 };
 
 export default connect(makeMapStateToProps)(Home);
-

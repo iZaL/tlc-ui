@@ -27,12 +27,12 @@ class LoadListScene extends Component {
 
   static navigationOptions = ({navigation}) => {
     return {
-      headerTitle: navigation.getParam('title',I18n.t('trips')),
+      headerTitle: navigation.getParam('title', I18n.t('trips')),
     };
   };
 
   componentDidMount() {
-    let status = this.props.navigation.getParam('status','pending');
+    let status = this.props.navigation.getParam('status', 'pending');
     this.props.dispatch(DRIVER_ACTIONS.fetchLoadsByStatus({status: status}));
   }
 
@@ -52,10 +52,9 @@ const makeMapStateToProps = () => {
   const getLoadsByStatus = DRIVER_SELECTORS.getLoadsByStatus();
   const mapStateToProps = (state, props) => {
     let status = props.navigation.getParam('status');
-    console.log('status',status);
+    console.log('status', status);
     return {
-      loads:
-        getLoadsByStatus(state, status) || [],
+      loads: getLoadsByStatus(state, status) || [],
     };
   };
   return mapStateToProps;

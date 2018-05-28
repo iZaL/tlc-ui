@@ -27,41 +27,41 @@ const getProfile = createSelector(
     return {
       ...driver,
       nationalities:
-      (driver.nationalities &&
-        driver.nationalities.map(record => {
-          return {
-            ...record,
-            country: countries[record.country],
-          };
-        })) ||
-      [],
+        (driver.nationalities &&
+          driver.nationalities.map(record => {
+            return {
+              ...record,
+              country: countries[record.country],
+            };
+          })) ||
+        [],
       residencies:
-      (driver.residencies &&
-        driver.residencies.map(record => {
-          return {
-            ...record,
-            country: countries[record.country],
-          };
-        })) ||
-      [],
+        (driver.residencies &&
+          driver.residencies.map(record => {
+            return {
+              ...record,
+              country: countries[record.country],
+            };
+          })) ||
+        [],
       visas:
-      (driver.visas &&
-        driver.visas.map(record => {
-          return {
-            ...record,
-            country: countries[record.country],
-          };
-        })) ||
-      [],
+        (driver.visas &&
+          driver.visas.map(record => {
+            return {
+              ...record,
+              country: countries[record.country],
+            };
+          })) ||
+        [],
       licenses:
-      (driver.licenses &&
-        driver.licenses.map(record => {
-          return {
-            ...record,
-            country: countries[record.country],
-          };
-        })) ||
-      [],
+        (driver.licenses &&
+          driver.licenses.map(record => {
+            return {
+              ...record,
+              country: countries[record.country],
+            };
+          })) ||
+        [],
     };
   },
 );
@@ -333,11 +333,13 @@ const getLoads = createSelector(
 );
 
 const getLoadsByStatus = () => {
-  return createSelector([getProfile,driversSchema, entities, getIdProp], (profile,driversEntity, schema, status) => {
+  return createSelector(
+    [getProfile, driversSchema, entities, getIdProp],
+    (profile, driversEntity, schema, status) => {
       let driver = driversEntity[profile.id];
-      let loads = driver.loads && driver.loads[status] || [];
+      let loads = (driver.loads && driver.loads[status]) || [];
       return loads.map(load => denormalize(load, Schema.loads, schema));
-    }
+    },
   );
 };
 

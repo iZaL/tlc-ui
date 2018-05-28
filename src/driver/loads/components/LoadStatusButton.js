@@ -47,8 +47,8 @@ export default class LoadStatusButton extends PureComponent {
   };
 
   render() {
-    let {can_accept,can_cancel,can_confirm} = this.props.trip;
-    let {showAcceptDialog,showCancelDialog,showConfirmDialog} = this.state;
+    let {can_accept, can_cancel, can_confirm} = this.props.trip;
+    let {showAcceptDialog, showCancelDialog, showConfirmDialog} = this.state;
 
     if (can_accept) {
       return (
@@ -72,11 +72,11 @@ export default class LoadStatusButton extends PureComponent {
     if (can_cancel) {
       return (
         <View style={styles.row}>
-          <View style={{flex:1}}>
+          <View style={{flex: 1}}>
             <Button
               title={I18n.t('cancel').toUpperCase()}
               onPress={() => this.setState({showCancelDialog: true})}
-              style={{marginVertical: 10,backgroundColor:Colors.teal200}}
+              style={{marginVertical: 10, backgroundColor: Colors.teal200}}
             />
             <Dialog
               title={I18n.t('cancel_trip?')}
@@ -87,9 +87,8 @@ export default class LoadStatusButton extends PureComponent {
             />
           </View>
 
-          {
-            can_confirm &&
-            <View style={{flex:1}}>
+          {can_confirm && (
+            <View style={{flex: 1}}>
               <Button
                 title={I18n.t('confirm').toUpperCase()}
                 onPress={() => this.setState({showConfirmDialog: true})}
@@ -103,12 +102,10 @@ export default class LoadStatusButton extends PureComponent {
                 visible={showConfirmDialog}
               />
             </View>
-          }
-
+          )}
         </View>
       );
     }
-
 
     return null;
   }
@@ -121,8 +118,8 @@ const styles = StyleSheet.create({
   col: {
     flex: 1,
   },
-  row:{
-    flexDirection:'row',
-    alignItems:'center'
-  }
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
 });

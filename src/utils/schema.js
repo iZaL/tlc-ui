@@ -35,12 +35,12 @@ driversSchema.define({
   customer: customersSchema,
   routes: [routesSchema],
   security_passes: [{security_pass: securityPassesSchema}],
-  loads:{
-    enroute:[loadsSchema],
-    pending:[loadsSchema],
-    confirmed:[loadsSchema],
-    completed:[loadsSchema]
-  }
+  loads: {
+    enroute: [loadsSchema],
+    pending: [loadsSchema],
+    confirmed: [loadsSchema],
+    completed: [loadsSchema],
+  },
 });
 
 customersSchema.define({

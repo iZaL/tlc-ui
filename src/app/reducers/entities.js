@@ -18,7 +18,7 @@ export function reducer(
     trips: {},
     packaging: {},
     security_passes: {},
-    drivers:{},
+    drivers: {},
   },
   action = {},
 ) {

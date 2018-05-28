@@ -4,18 +4,16 @@
 import React, {Component} from 'react';
 import Touchable from 'react-native-platform-touchable';
 import PropTypes from 'prop-types';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import colors from 'assets/theme/colors';
 import I18n from 'utils/locale';
-import ImageViewer from "components/ImageViewer";
+import ImageViewer from 'components/ImageViewer';
 import {
   Button,
   Card,
   CardActions,
   CardContent,
   CardCover,
-  Title,
   Paragraph,
+  Title,
 } from 'react-native-paper';
 import {View} from 'react-native';
 
@@ -47,13 +45,12 @@ export default class DocumentCard extends Component {
     onDeletePress: () => {},
   };
 
-  onCardCoverPress = (image) => {
+  onCardCoverPress = image => {
     this.setState({
       imageModalVisible: true,
       images: [{url: image}],
     });
   };
-
 
   hideImageModal = () => {
     this.setState({
@@ -75,13 +72,15 @@ export default class DocumentCard extends Component {
           <Paragraph>{number}</Paragraph>
         </CardContent>
 
-        {image ?
-          <Touchable onPress={()=>this.onCardCoverPress(image)} style={{flex:1}}>
-            <CardCover source={{uri: image}}  />
+        {image ? (
+          <Touchable
+            onPress={() => this.onCardCoverPress(image)}
+            style={{flex: 1}}>
+            <CardCover source={{uri: image}} />
           </Touchable>
-          :
+        ) : (
           <View />
-        }
+        )}
 
         <View style={{flexDirection: 'row'}}>
           <CardActions>
@@ -103,7 +102,6 @@ export default class DocumentCard extends Component {
           images={images}
           onClose={this.hideImageModal}
         />
-
       </Card>
     );
   }
