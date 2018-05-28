@@ -285,5 +285,6 @@
 
   "accept" :"Accept",
   "reject" : "Reject",
+  "accept_trip?" : "Are you sure you want to accept this Trip?"
 
 }

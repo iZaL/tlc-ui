@@ -61,7 +61,9 @@ class LoadDetailScene extends Component {
     );
   }
 
-  acceptTrip = () => {};
+  acceptTrip = () => {
+
+  };
 
   loadTripMapScene = () => {
     this.props.navigation.navigate('TripTrack', {
@@ -151,30 +153,31 @@ class LoadDetailScene extends Component {
             <TabPanel hideNextButton={true}>
               <View style={{flex: 1, backgroundColor: 'white'}}>
                 {origin &&
-                  destination && (
-                    <View style={{flex: 1}}>
-                      <LoadPickDropLocation
-                        origin={origin}
-                        destination={destination}
-                        style={{padding: 5}}
-                      />
+                destination && (
+                  <View style={{flex: 1}}>
+                    <LoadPickDropLocation
+                      origin={origin}
+                      destination={destination}
+                      style={{padding: 5}}
+                    />
 
-                      <Divider style={{marginVertical: 10}} />
+                    <Divider style={{marginVertical: 10}} />
 
-                      <LoadInfo
-                        load={load}
-                        style={{paddingHorizontal: 10}}
-                        showDetail={true}
-                      />
+                    <LoadInfo
+                      load={load}
+                      style={{paddingHorizontal: 10}}
+                      showDetail={true}
+                    />
 
-                      <Divider />
+                    <Divider />
 
-                      {load.trip &&
-                        load.trip.can_accept && (
-                          <LoadStatusButton onPress={this.acceptTrip} />
-                        )}
-                    </View>
-                  )}
+                    <LoadStatusButton
+                      onAccept={this.acceptTrip}
+                      trip={load.trip || {}}
+                    />
+
+                  </View>
+                )}
               </View>
             </TabPanel>
 

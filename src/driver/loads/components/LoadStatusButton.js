@@ -3,31 +3,54 @@
  */
 import React, {Component, PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import {StyleSheet, Text, View} from 'react-native';
-import colors from 'assets/theme/colors';
-import {Caption} from 'react-native-paper';
-import Label from 'components/Label';
-import Button from '../../../components/Button';
+import {StyleSheet, View} from 'react-native';
+import Button from 'components/Button';
 import I18n from 'utils/locale';
+import Dialog from "components/Dialog";
 
 export default class LoadStatusButton extends PureComponent {
   static propTypes = {
-    load: PropTypes.object.isRequired,
-    showDetail: PropTypes.bool,
-    // onItemPress: PropTypes.func.isRequired
+    trip: PropTypes.object.isRequired,
+    onAccept: PropTypes.func,
+  };
+
+  state = {
+    showAcceptConfirmDialog:false,
   };
 
   static defaultProps = {};
 
+  onAccept = () => {
+    this.setState({
+      showAcceptConfirmDialog:false
+    });
+    this.props.onAccept();
+  };
+
   render() {
-    let {onPress} = this.props;
-    return (
-      <Button
-        title={I18n.t('accept').toUpperCase()}
-        onPress={onPress}
-        style={{marginVertical: 10}}
-      />
-    );
+    let {trip} = this.props;
+    let {showAcceptConfirmDialog}=this.state;
+
+    if(trip.can_accept) {
+      return (
+        <View>
+          <Button
+            title={I18n.t('accept').toUpperCase()}
+            onPress={()=>this.setState({showAcceptConfirmDialog:true})}
+            style={{marginVertical: 10}}
+          />
+          <Dialog
+            title={I18n.t('accept_trip?')}
+            rightPress={this.onAccept}
+            leftPress={()=>this.setState({showAcceptConfirmDialog:false})}
+            leftText={I18n.t('cancel')}
+            visible={showAcceptConfirmDialog}/>
+        </View>
+      );
+    }
+
+    return null;
+
   }
 }
 
