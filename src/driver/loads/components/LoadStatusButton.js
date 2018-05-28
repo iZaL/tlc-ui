@@ -7,7 +7,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import colors from 'assets/theme/colors';
 import {Caption} from 'react-native-paper';
 import Label from 'components/Label';
-import Button from "../../../components/Button";
+import Button from '../../../components/Button';
 import I18n from 'utils/locale';
 
 export default class LoadStatusButton extends PureComponent {
@@ -20,14 +20,14 @@ export default class LoadStatusButton extends PureComponent {
   static defaultProps = {};
 
   render() {
-    let {} = this.props;
+    let {onPress} = this.props;
     return (
       <Button
         title={I18n.t('accept').toUpperCase()}
-        onPress={this.loadTripMapScene}
+        onPress={onPress}
         style={{marginVertical: 10}}
       />
-    )
+    );
   }
 }
 

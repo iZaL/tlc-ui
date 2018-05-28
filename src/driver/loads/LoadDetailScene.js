@@ -55,13 +55,13 @@ class LoadDetailScene extends Component {
   componentDidMount() {
     this.props.dispatch(
       DRIVER_ACTIONS.fetchLoadDetails({
-        // loadID: this.props.navigation.getParam('loadID');,
-        loadID: 1,
+        loadID: this.props.navigation.getParam('loadID'),
+        // loadID: 1,
       }),
     );
   }
 
-  acceptBooking = () => {};
+  acceptTrip = () => {};
 
   loadTripMapScene = () => {
     this.props.navigation.navigate('TripTrack', {
@@ -126,15 +126,7 @@ class LoadDetailScene extends Component {
     } = this.state;
     console.log('load', load);
 
-    let {
-      origin,
-      destination,
-      receiver,
-      pending_fleets,
-      customer,
-      trips,
-      trip,
-    } = load;
+    let {origin, destination, receiver, pending_fleets, customer, trip} = load;
 
     return (
       <ScrollView style={{flex: 1, backgroundColor: 'white'}}>
@@ -177,8 +169,10 @@ class LoadDetailScene extends Component {
 
                       <Divider />
 
-                      <LoadStatusButton />
-
+                      {load.trip &&
+                        load.trip.can_accept && (
+                          <LoadStatusButton onPress={this.acceptTrip} />
+                        )}
                     </View>
                   )}
               </View>
@@ -321,8 +315,8 @@ const makeMapStateToProps = () => {
   const getLoadByID = DRIVER_SELECTORS.getLoadByID();
   const mapStateToProps = (state, props) => {
     return {
-      load: getLoadByID(state, 1),
-      // load: getLoadByID(state, props.navigation.getParam('loadID')),
+      // load: getLoadByID(state, 1),
+      load: getLoadByID(state, props.navigation.getParam('loadID')),
     };
   };
   return mapStateToProps;

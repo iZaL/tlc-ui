@@ -12,11 +12,10 @@ export default class LoadInfoItem extends Component {
     description: PropTypes.string,
     title: PropTypes.string,
     caption: PropTypes.string,
-    onPress:PropTypes.func
+    onPress: PropTypes.func,
   };
 
-  static defaultProps = {
-  };
+  static defaultProps = {};
 
   shouldComponentUpdate(nextProps) {
     return nextProps.description !== this.props.description;
@@ -26,7 +25,6 @@ export default class LoadInfoItem extends Component {
     console.log('rendering loadinfoitem');
     let {title, description, caption} = this.props;
     return (
-
       <View style={styles.col}>
         <Label title={title} />
         <Text style={styles.value}>{description}</Text>
