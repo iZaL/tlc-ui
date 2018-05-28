@@ -55,7 +55,7 @@ export default class Drawer extends Component {
         />
 
         <DrawerItem
-          label={I18n.t('loads')}
+          label={I18n.t('trips')}
           routeName="LoadStack"
           onItemPress={this.onItemPress}
           iconProps={{

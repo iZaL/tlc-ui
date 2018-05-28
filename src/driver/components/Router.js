@@ -51,6 +51,10 @@ const HomeStack = createStackNavigator(
     },
   },
   {
+    navigationOptions: {
+      gesturesEnabled: false,
+      headerTintColor: colors.primary,
+    },
     cardStyle: {
       backgroundColor: colors.fadedWhite,
     },
@@ -69,6 +73,10 @@ const SettingsStack = createStackNavigator(
     },
   },
   {
+    navigationOptions: {
+      gesturesEnabled: false,
+      headerTintColor: colors.primary,
+    },
     cardStyle: {
       backgroundColor: colors.fadedWhite,
     },
@@ -192,7 +200,7 @@ const LoadStack = createStackNavigator(
     LoadStackHome: {
       screen: LoadHomeScene,
       navigationOptions: ({navigation}) => ({
-        title: I18n.t('loads'),
+        title: I18n.t('trips'),
         ...getDrawerIcon(navigation),
       }),
     },

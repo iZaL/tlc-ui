@@ -40,7 +40,6 @@ class DriversListScene extends Component {
 
   render() {
     let {drivers} = this.props;
-    console.log('drivers', drivers);
     return (
       <DriversList items={drivers} onItemPress={this.onDriversListItemPress} />
     );

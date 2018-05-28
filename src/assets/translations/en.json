@@ -270,6 +270,8 @@
   "trip_detail" : "Trip Detail",
   "trip_requests" : "Trip Requests",
   "trip_current" : "Current Trip",
+  "trip_upcoming" : "Upcoming Trips",
+  "trip_history" : "Past Trips",
 
   "contact" : "Contact",
 

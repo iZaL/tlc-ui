@@ -46,7 +46,7 @@ class LoadHomeScene extends Component {
           onItemPress={this.onListItemPress}
           iconProps={{type: 'MaterialCommunityIcons', name: 'truck-delivery'}}
           name="load_working_list"
-          title={I18n.t('load_working_list')}
+          title={I18n.t('trip_requests')}
         />
 
         <Divider />
@@ -55,7 +55,7 @@ class LoadHomeScene extends Component {
           onItemPress={this.onListItemPress}
           iconProps={{type: 'Entypo', name: 'back-in-time'}}
           name="load_approved_list"
-          title={I18n.t('load_approved_list')}
+          title={I18n.t('trip_upcoming')}
         />
 
         <Divider />
@@ -64,7 +64,7 @@ class LoadHomeScene extends Component {
           onItemPress={this.onListItemPress}
           iconProps={{type: 'MaterialIcons', name: 'timelapse'}}
           name="load_completed_list"
-          title={I18n.t('load_completed_list')}
+          title={I18n.t('trip_history')}
         />
       </ListSection>
     );
