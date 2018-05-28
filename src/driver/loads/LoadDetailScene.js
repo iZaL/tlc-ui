@@ -62,16 +62,18 @@ class LoadDetailScene extends Component {
   }
 
   acceptTrip = () => {
-
+    console.log('@todo');
+  };
+  cancelTrip = () => {
+    console.log('@todo');
+  };
+  confirmTrip = () => {
+    console.log('@todo');
   };
 
-  loadTripMapScene = () => {
-    this.props.navigation.navigate('TripTrack', {
-      tripID: 1,
-    });
+  onUserInfoPress = () => {
+    console.log('@todo');
   };
-
-  onUserInfoPress = () => {};
 
   onEmployeeListItemPress = item => {
     this.setState({
@@ -87,11 +89,11 @@ class LoadDetailScene extends Component {
   };
 
   onCustomerMobileNumberPress = () => {
-    console.log('calling');
+    console.log('@todo');
   };
 
   onEmployeeMobileNumberPress = () => {
-    console.log('calling');
+    console.log('@todo');
   };
 
   onDocumentAddPress = () => {
@@ -101,7 +103,6 @@ class LoadDetailScene extends Component {
   };
 
   onDocumentTypeListItemPress = (item: object) => {
-    console.log('ite', item);
     this.setState({
       imageModalVisible: true,
       images: [{url: item.url}],
@@ -116,9 +117,7 @@ class LoadDetailScene extends Component {
   };
 
   render() {
-    let {load, navigation} = this.props;
-
-    let hiddenTabs = navigation.getParam('hiddenTabs') || [];
+    let {load} = this.props;
 
     let {
       employeeDetailVisible,
@@ -126,9 +125,8 @@ class LoadDetailScene extends Component {
       imageModalVisible,
       images,
     } = this.state;
-    console.log('load', load);
 
-    let {origin, destination, receiver, pending_fleets, customer, trip} = load;
+    let {origin, destination, receiver, customer, trip} = load;
 
     return (
       <ScrollView style={{flex: 1, backgroundColor: 'white'}}>
@@ -138,14 +136,8 @@ class LoadDetailScene extends Component {
             <TabHeader title={I18n.t('route_detail')} />
             <TabHeader title={I18n.t('customer_information')} />
             <TabHeader title={I18n.t('receiver_information')} />
-            <TabHeader
-              title={I18n.t('documents')}
-              hidden={hiddenTabs.includes('documents')}
-            />
-            <TabHeader
-              title={I18n.t('fleets_information')}
-              hidden={hiddenTabs.includes('fleets')}
-            />
+            <TabHeader title={I18n.t('documents')} hidden={true} />
+            <TabHeader title={I18n.t('fleets_information')} hidden={true} />
             <TabHeader title={I18n.t('contact')} />
           </TabList>
 
@@ -153,31 +145,32 @@ class LoadDetailScene extends Component {
             <TabPanel hideNextButton={true}>
               <View style={{flex: 1, backgroundColor: 'white'}}>
                 {origin &&
-                destination && (
-                  <View style={{flex: 1}}>
-                    <LoadPickDropLocation
-                      origin={origin}
-                      destination={destination}
-                      style={{padding: 5}}
-                    />
+                  destination && (
+                    <View style={{flex: 1}}>
+                      <LoadPickDropLocation
+                        origin={origin}
+                        destination={destination}
+                        style={{padding: 5}}
+                      />
 
-                    <Divider style={{marginVertical: 10}} />
+                      <Divider style={{marginVertical: 10}} />
 
-                    <LoadInfo
-                      load={load}
-                      style={{paddingHorizontal: 10}}
-                      showDetail={true}
-                    />
+                      <LoadInfo
+                        load={load}
+                        style={{paddingHorizontal: 10}}
+                        showDetail={true}
+                      />
 
-                    <Divider />
+                      <Divider />
 
-                    <LoadStatusButton
-                      onAccept={this.acceptTrip}
-                      trip={load.trip || {}}
-                    />
-
-                  </View>
-                )}
+                      <LoadStatusButton
+                        onAccept={this.acceptTrip}
+                        onCancel={this.cancelTrip}
+                        onConfirm={this.confirmTrip}
+                        trip={load.trip || {}}
+                      />
+                    </View>
+                  )}
               </View>
             </TabPanel>
 

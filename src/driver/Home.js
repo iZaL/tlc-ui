@@ -35,7 +35,6 @@ class Home extends Component {
   onLoadRequestsListItemPress = (load: object) => {
     this.props.navigation.navigate('LoadDetail', {
       loadID: load.id,
-      hiddenTabs: ['documents', 'fleets'],
     });
   };
 
