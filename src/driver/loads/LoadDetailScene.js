@@ -119,6 +119,7 @@ class LoadDetailScene extends Component {
   render() {
     let {load} = this.props;
 
+    console.log('load',load);
     let {
       employeeDetailVisible,
       employeeDetail,

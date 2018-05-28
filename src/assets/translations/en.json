@@ -273,7 +273,6 @@
 
   "contact" : "Contact",
 
-
   "fleets_information" : "Fleets Info",
 
   "take_picture" : "Take Picture",
@@ -285,6 +284,8 @@
 
   "accept" :"Accept",
   "reject" : "Reject",
-  "accept_trip?" : "Are you sure you want to accept this Trip?"
+  "accept_trip?" : "Are you sure you want to accept this Trip?",
+  "cancel_trip?" : "Are you sure you want to cancel this Trip?",
+  "confirm_trip?" : "Are you sure you want to confirm this Trip?",
 
 }
