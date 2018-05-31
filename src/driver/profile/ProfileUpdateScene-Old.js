@@ -161,23 +161,23 @@ class ProfileUpdateScene extends Component {
           padding: 10,
           paddingTop: 20,
         }}>
-        <ListItem onItemPress={this.onListItemPress} name="nationality" />
+        <ListItem onPress={this.onListItemPress} name="nationality" />
 
         <Divider style={{marginVertical: 10}} />
 
-        <ListItem onItemPress={this.onListItemPress} name="residencies" />
+        <ListItem onPress={this.onListItemPress} name="residencies" />
 
         <Divider style={{marginVertical: 10}} />
 
-        <ListItem onItemPress={this.onListItemPress} name="visas" />
+        <ListItem onPress={this.onListItemPress} name="visas" />
 
         <Divider style={{marginVertical: 10}} />
 
-        <ListItem onItemPress={this.onListItemPress} name="licenses" />
+        <ListItem onPress={this.onListItemPress} name="licenses" />
 
         <Divider style={{marginVertical: 10}} />
 
-        <ListItem onItemPress={this.onListItemPress} name="languages" />
+        <ListItem onPress={this.onListItemPress} name="languages" />
 
         <Divider style={{marginVertical: 10}} />
 

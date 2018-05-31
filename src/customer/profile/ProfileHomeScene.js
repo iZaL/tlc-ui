@@ -58,7 +58,7 @@ class ProfileHome extends Component {
     return (
       <ListSection>
         <ListItem
-          onItemPress={this.onListItemPress}
+          onPress={this.onListItemPress}
           iconProps={{type: 'Ionicons', name: 'md-person'}}
           name="company_information"
           title={I18n.t('company_information')}
@@ -67,7 +67,7 @@ class ProfileHome extends Component {
         <Divider />
 
         <ListItem
-          onItemPress={this.onListItemPress}
+          onPress={this.onListItemPress}
           iconProps={{type: 'MaterialCommunityIcons', name: 'contacts'}}
           name="employee_list"
           title={I18n.t('employee_list')}
@@ -76,7 +76,7 @@ class ProfileHome extends Component {
         <Divider />
 
         <ListItem
-          onItemPress={this.onListItemPress}
+          onPress={this.onListItemPress}
           iconProps={{type: 'MaterialCommunityIcons', name: 'adjust'}}
           name="location_origin_list"
           title={I18n.t('location_origin_list')}
@@ -85,7 +85,7 @@ class ProfileHome extends Component {
         <Divider />
 
         <ListItem
-          onItemPress={this.onListItemPress}
+          onPress={this.onListItemPress}
           iconProps={{type: 'MaterialCommunityIcons', name: 'map-marker'}}
           name="location_destination_list"
           title={I18n.t('location_destination_list')}
@@ -94,7 +94,7 @@ class ProfileHome extends Component {
         <Divider />
 
         <ListItem
-          onItemPress={this.onListItemPress}
+          onPress={this.onListItemPress}
           iconProps={{type: 'MaterialCommunityIcons', name: 'truck'}}
           name="blocked_drivers"
           title={I18n.t('blocked_drivers')}

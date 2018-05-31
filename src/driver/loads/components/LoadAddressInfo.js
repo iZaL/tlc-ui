@@ -34,7 +34,7 @@ export default class LoadAddressInfo extends Component {
         <View style={styles.itemRowContainer}>
 
           <ListItem
-            onItemPress={this.onListItemPress}
+            onPress={this.onListItemPress}
             title={origin.address}
             description={`${origin.city},${origin.state},${origin.country.name}`}
           />

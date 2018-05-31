@@ -51,7 +51,7 @@ class TruckUpdateScene extends Component {
     return (
       <ListSection>
         <ListItem
-          onItemPress={this.loadTruckModelScene}
+          onPress={this.loadTruckModelScene}
           title={I18n.t('truck_model')}
           name="truck_model"
         />
@@ -59,7 +59,7 @@ class TruckUpdateScene extends Component {
         <Divider />
 
         <ListItem
-          onItemPress={this.loadTruckRegistrationScene}
+          onPress={this.loadTruckRegistrationScene}
           name="truck_registration"
           title={I18n.t('truck_registration')}
         />
@@ -67,7 +67,7 @@ class TruckUpdateScene extends Component {
         <Divider />
 
         <ListItem
-          onItemPress={this.loadTruckInfoUpdateScene}
+          onPress={this.loadTruckInfoUpdateScene}
           name="truck_details"
           title={I18n.t('truck_details')}
         />
@@ -75,7 +75,7 @@ class TruckUpdateScene extends Component {
         <Divider />
 
         <ListItem
-          onItemPress={this.loadTrailerUpdateScene}
+          onPress={this.loadTrailerUpdateScene}
           name="trailer_details"
           title={I18n.t('trailer_details')}
         />

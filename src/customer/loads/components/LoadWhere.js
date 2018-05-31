@@ -85,7 +85,7 @@ export default class LoadWhat extends Component {
 
             <View style={styles.rightContainer}>
               <ListItem
-                onItemPress={this.onPickLocationPress}
+                onPress={this.onPickLocationPress}
                 title={origin.address}
                 description={`${origin.city},${origin.state},${
                   origin.country.name
@@ -113,7 +113,7 @@ export default class LoadWhat extends Component {
             </View>
             <View style={styles.rightContainer}>
               <ListItem
-                onItemPress={this.onPickLocationPress}
+                onPress={this.onPickLocationPress}
                 title={destination.address}
                 description={`${destination.city},${destination.state},${
                   destination.country.name

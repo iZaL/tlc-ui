@@ -69,7 +69,7 @@ class ProfileUpdateScene extends Component {
     return (
       <ListSection>
         <ListItem
-          onItemPress={this.onProfileInfoPress}
+          onPress={this.onProfileInfoPress}
           name="personal_information"
           title={I18n.t('personal_information')}
         />
@@ -77,7 +77,7 @@ class ProfileUpdateScene extends Component {
         <Divider />
 
         <ListItem
-          onItemPress={this.onListItemPress}
+          onPress={this.onListItemPress}
           name="nationalities"
           title={I18n.t('nationalities')}
         />
@@ -85,7 +85,7 @@ class ProfileUpdateScene extends Component {
         <Divider />
 
         <ListItem
-          onItemPress={this.onListItemPress}
+          onPress={this.onListItemPress}
           name="residencies"
           title={I18n.t('residencies')}
         />
@@ -93,7 +93,7 @@ class ProfileUpdateScene extends Component {
         <Divider />
 
         <ListItem
-          onItemPress={this.onListItemPress}
+          onPress={this.onListItemPress}
           name="visas"
           title={I18n.t('visas')}
         />
@@ -101,7 +101,7 @@ class ProfileUpdateScene extends Component {
         <Divider />
 
         <ListItem
-          onItemPress={this.onListItemPress}
+          onPress={this.onListItemPress}
           name="licenses"
           title={I18n.t('licenses')}
         />
@@ -109,7 +109,7 @@ class ProfileUpdateScene extends Component {
         <Divider />
 
         <ListItem
-          onItemPress={this.showModal}
+          onPress={this.showModal}
           name="languages"
           title={I18n.t('languages')}
         />

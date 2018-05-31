@@ -43,7 +43,7 @@ class LoadHomeScene extends Component {
     return (
       <ListSection>
         <ListItem
-          onItemPress={this.onListItemPress}
+          onPress={this.onListItemPress}
           iconProps={{type: 'MaterialCommunityIcons', name: 'truck-delivery'}}
           name="trip_requests"
           title={I18n.t('trip_requests')}
@@ -52,7 +52,7 @@ class LoadHomeScene extends Component {
         <Divider />
 
         <ListItem
-          onItemPress={this.onListItemPress}
+          onPress={this.onListItemPress}
           iconProps={{type: 'Entypo', name: 'back-in-time'}}
           name="trip_upcoming"
           title={I18n.t('trip_upcoming')}
@@ -61,7 +61,7 @@ class LoadHomeScene extends Component {
         <Divider />
 
         <ListItem
-          onItemPress={this.onListItemPress}
+          onPress={this.onListItemPress}
           iconProps={{type: 'MaterialIcons', name: 'timelapse'}}
           name="trip_history"
           title={I18n.t('trip_history')}

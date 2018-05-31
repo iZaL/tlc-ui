@@ -58,7 +58,7 @@ class LoadDetailOptionsListScene extends Component {
         <Divider style={{marginVertical: 10}} />
 
         <ListItem
-          onItemPress={this.onListItemPress}
+          onPress={this.onListItemPress}
           iconProps={{
             type: 'MaterialCommunityIcons',
             name: 'truck-delivery',
@@ -69,7 +69,7 @@ class LoadDetailOptionsListScene extends Component {
         <Divider style={{marginVertical: 10}} />
 
         <ListItem
-          onItemPress={this.onListItemPress}
+          onPress={this.onListItemPress}
           iconProps={{
             type: 'MaterialCommunityIcons',
             name: 'pin',
@@ -80,7 +80,7 @@ class LoadDetailOptionsListScene extends Component {
         <Divider style={{marginVertical: 10}} />
 
         <ListItem
-          onItemPress={this.onListItemPress}
+          onPress={this.onListItemPress}
           iconProps={{
             type: 'MaterialCommunityIcons',
             name: 'account-location',
@@ -91,7 +91,7 @@ class LoadDetailOptionsListScene extends Component {
         <Divider style={{marginVertical: 10}} />
 
         <ListItem
-          onItemPress={this.onListItemPress}
+          onPress={this.onListItemPress}
           iconProps={{
             type: 'MaterialCommunityIcons',
             name: 'truck-delivery',
