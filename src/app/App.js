@@ -28,8 +28,6 @@ class App extends Component {
 
   componentDidMount() {
     this.props.dispatch(ACTIONS.boot());
-    BackgroundGeolocation.stop();
-    BackgroundGeolocation.removeListeners();
     AppState.addEventListener('change', this.handleAppStateChange);
 
     if (CODE_PUSH_ENABLED) {

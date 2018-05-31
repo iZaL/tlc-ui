@@ -16,7 +16,6 @@
   "create_account": "Create Account",
   "forgot_password": "Forgot Password ?",
   "logout":"Logout",
-  "confirm": "Confirm",
   "new_password":"New Password",
   "confirm_new_password":"Confirm New Password",
   "language_select":"Change Language",
@@ -286,8 +285,13 @@
 
   "accept" :"Accept",
   "reject" : "Reject",
+  "start" : "Start",
+  "stop":"Stop",
+  "confirm": "Confirm",
   "accept_trip?" : "Are you sure you want to accept this Trip?",
   "cancel_trip?" : "Are you sure you want to cancel this Trip?",
   "confirm_trip?" : "Are you sure you want to confirm this Trip?",
+  "start_trip?" : "Are you sure you want to start this Trip?",
+  "stop_trip?" : "Are you sure you want to stop this Trip?",
 
 }

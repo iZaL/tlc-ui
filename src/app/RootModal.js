@@ -29,18 +29,6 @@ export default class RootModal extends Component {
     this.props.navigation.goBack(null);
   };
 
-  // componentDidMount() {
-  //   this.setState({
-  //     visible:true
-  //   });
-  // }
-
-  // componentWillUnmount() {
-  //   this.setState({
-  //     visible:false
-  //   })
-  // }
-
   render() {
     return (
       <View style={styles.container}>

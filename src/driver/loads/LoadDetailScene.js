@@ -55,8 +55,8 @@ class LoadDetailScene extends Component {
   componentDidMount() {
     this.props.dispatch(
       DRIVER_ACTIONS.fetchLoadDetails({
-        loadID: this.props.navigation.getParam('loadID'),
-        // loadID: 1,
+        // loadID: this.props.navigation.getParam('loadID'),
+        loadID: 1,
       }),
     );
   }
@@ -64,10 +64,20 @@ class LoadDetailScene extends Component {
   acceptTrip = () => {
     console.log('@todo');
   };
+
   cancelTrip = () => {
     console.log('@todo');
   };
+
   confirmTrip = () => {
+    console.log('@todo');
+  };
+
+  startTrip = () => {
+    console.log('@todo');
+  };
+
+  stopTrip = () => {
     console.log('@todo');
   };
 
@@ -175,6 +185,8 @@ class LoadDetailScene extends Component {
                         onAccept={this.acceptTrip}
                         onCancel={this.cancelTrip}
                         onConfirm={this.confirmTrip}
+                        onStart={this.startTrip}
+                        onStop={this.stopTrip}
                         trip={load.trip || {}}
                       />
                     </View>
@@ -319,8 +331,8 @@ const makeMapStateToProps = () => {
   const getLoadByID = DRIVER_SELECTORS.getLoadByID();
   const mapStateToProps = (state, props) => {
     return {
-      // load: getLoadByID(state, 1),
-      load: getLoadByID(state, props.navigation.getParam('loadID')),
+      load: getLoadByID(state, 1),
+      // load: getLoadByID(state, props.navigation.getParam('loadID')),
     };
   };
   return mapStateToProps;

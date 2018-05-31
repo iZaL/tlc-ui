@@ -21,6 +21,8 @@ export default class LoadStatusButton extends PureComponent {
     showAcceptDialog: false,
     showCancelDialog: false,
     showConfirmDialog: false,
+    showStartDialog: false,
+    showStopDialog: false,
   };
 
   static defaultProps = {};
@@ -32,7 +34,7 @@ export default class LoadStatusButton extends PureComponent {
     this.props.onAccept();
   };
 
-  onAccept = () => {
+  onCancel = () => {
     this.setState({
       showCancelDialog: false,
     });
@@ -46,9 +48,23 @@ export default class LoadStatusButton extends PureComponent {
     this.props.onConfirm();
   };
 
+  onStart = () => {
+    this.setState({
+      showStartDialog: false,
+    });
+    this.props.onStart();
+  };
+
+  onStop = () => {
+    this.setState({
+      showStopDialog: false,
+    });
+    this.props.onStart();
+  };
+
   render() {
-    let {can_accept, can_cancel, can_confirm} = this.props.trip;
-    let {showAcceptDialog, showCancelDialog, showConfirmDialog} = this.state;
+    let {can_accept, can_cancel, can_confirm, can_start, can_stop} = this.props.trip;
+    let {showAcceptDialog, showCancelDialog, showConfirmDialog, showStartDialog, showStopDialog} = this.state;
 
     if (can_accept) {
       return (
@@ -80,7 +96,7 @@ export default class LoadStatusButton extends PureComponent {
             />
             <Dialog
               title={I18n.t('cancel_trip?')}
-              rightPress={this.onAccept}
+              rightPress={this.onCancel}
               leftPress={() => this.setState({showCancelDialog: false})}
               leftText={I18n.t('cancel')}
               visible={showCancelDialog}
@@ -106,6 +122,49 @@ export default class LoadStatusButton extends PureComponent {
         </View>
       );
     }
+
+    if (can_start) {
+      return (
+        <View style={styles.row}>
+          <View style={{flex: 1}}>
+            <Button
+              title={I18n.t('start').toUpperCase()}
+              onPress={() => this.setState({showStartDialog: true})}
+              style={{marginVertical: 10}}
+            />
+            <Dialog
+              title={I18n.t('start_trip?')}
+              rightPress={this.onStart}
+              leftPress={() => this.setState({showStartDialog: false})}
+              leftText={I18n.t('cancel')}
+              visible={showStartDialog}
+            />
+          </View>
+        </View>
+      );
+    }
+
+    if (can_stop) {
+      return (
+        <View style={styles.row}>
+          <View style={{flex: 1}}>
+            <Button
+              title={I18n.t('stop').toUpperCase()}
+              onPress={() => this.setState({showStopDialog: true})}
+              style={{marginVertical: 10, backgroundColor: Colors.teal200}}
+            />
+            <Dialog
+              title={I18n.t('stop_trip?')}
+              rightPress={this.onStop}
+              leftPress={() => this.setState({showStopDialog: false})}
+              leftText={I18n.t('cancel')}
+              visible={showStopDialog}
+            />
+          </View>
+        </View>
+      );
+    }
+
 
     return null;
   }
