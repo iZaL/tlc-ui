@@ -42,8 +42,6 @@ export default class LoadLocationMapView extends Component {
 
   onMapLayout = () => {
     let {origin, destination} = this.props;
-    console.log('origin', origin);
-    console.log('destination', destination);
 
     this.map.fitToCoordinates(
       [

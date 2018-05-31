@@ -140,18 +140,7 @@ export default class LoadWhat extends Component {
           onCancel={this.closeModal}
           onSave={this.onSave}
         />
-        {/*<Modal*/}
-        {/*visible={locationListModalVisible}*/}
-        {/*onRequestClose={this.closeModal}>*/}
-        {/*<Touchable style={styles.modalContainer} onPress={this.closeModal}>*/}
-        {/*<LocationList*/}
-        {/*items={locations.filter(*/}
-        {/*location => location.type === locationType,*/}
-        {/*)}*/}
-        {/*onItemPress={this.onLocationListItemPress}*/}
-        {/*/>*/}
-        {/*</Touchable>*/}
-        {/*</Modal>*/}
+
       </View>
     );
   }
