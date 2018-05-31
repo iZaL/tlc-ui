@@ -1,8 +1,11 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {StyleSheet, Text, View} from 'react-native';
-import IconFactory from 'components/IconFactory';
+import {StyleSheet, Text, View, Linking} from 'react-native';
 import ListItem from "components/ListItem";
+import {Title} from "react-native-paper";
+import I18n from 'utils/locale';
+import Divider from "components/Divider";
+import GoogleMapDirection from "../../../components/GoogleMapDirection";
 
 export default class LoadAddressInfo extends Component {
 
@@ -16,33 +19,51 @@ export default class LoadAddressInfo extends Component {
     destination: {country: {}},
   };
 
-  // shouldComponentUpdate(nextProps) {
-  //   return false;
-  // }
+  shouldComponentUpdate(nextProps) {
+    return false;
+  }
 
   onListItemPress = () => {
 
   };
 
-  render() {
-    let {origin, destination, style} = this.props;
+  openInMaps = (address:object) => {
+    let {latitude, longitude} = address;
 
-    console.log('origin',origin);
+    const nativeGoogleUrl = `comgooglemaps://?daddr=${latitude},${longitude}&center=${latitude},${longitude}&zoom=14&views=traffic&directionsmode=driving`;
+    Linking.canOpenURL(nativeGoogleUrl).then(supported => {
+      const url = supported
+        ? nativeGoogleUrl
+        : `http://maps.google.com/?q=loc:${latitude}+${longitude}`;
+      Linking.openURL(url);
+    });
+  };
+
+  render() {
+    let {origin, destination} = this.props;
 
     return (
-      <View style={[styles.container, style]}>
-        <View style={styles.itemRowContainer}>
+      <View style={[styles.container]}>
+        <Title style={{paddingHorizontal:15}}>{I18n.t('pick_up')}</Title>
 
+        <GoogleMapDirection address={origin}>
           <ListItem
-            onPress={this.onListItemPress}
             title={origin.address}
             description={`${origin.city},${origin.state},${origin.country.name}`}
           />
+        </GoogleMapDirection>
 
-        </View>
-        <View style={styles.itemRowContainer}>
+        <Divider/>
 
-        </View>
+        <Title style={{paddingHorizontal:15}}>{I18n.t('drop_off')}</Title>
+
+        <GoogleMapDirection address={destination}>
+          <ListItem
+            title={destination.address}
+            description={`${destination.city},${destination.state},${destination.country.name}`}
+          />
+        </GoogleMapDirection>
+
       </View>
     );
   }
@@ -50,8 +71,6 @@ export default class LoadAddressInfo extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex:1,
-    paddingBottom: 10,
   },
   itemRowContainer: {
     flexDirection: 'row',

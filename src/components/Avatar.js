@@ -2,15 +2,12 @@
  * @flow
  */
 import React, {Component} from 'react';
-import Touchable from 'react-native-platform-touchable';
 import PropTypes from 'prop-types';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import colors from 'assets/theme/colors';
-import {View, StyleSheet, Image} from 'react-native';
+import {Image, View} from 'react-native';
 import {TouchableRipple} from 'react-native-paper';
 import ImageViewer from 'components/ImageViewer';
 
-export default class DrawerIcon extends Component {
+export default class Avatar extends Component {
   static propTypes = {
     image: PropTypes.string.isRequired,
     onPress: PropTypes.func,

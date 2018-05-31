@@ -162,53 +162,45 @@ class LoadDetailScene extends Component {
 
           <TabPanels>
             <TabPanel hideNextButton={true}>
-              <View style={{flex: 1, backgroundColor: 'white'}}>
-                {origin &&
-                  destination && (
-                    <View style={{flex: 1}}>
-                      <LoadPickDropLocation
-                        origin={origin}
-                        destination={destination}
-                        style={{padding: 5}}
-                      />
+              <LoadPickDropLocation
+                origin={origin}
+                destination={destination}
+                style={{padding: 5}}
+              />
 
-                      <Divider style={{marginVertical: 10}} />
+              <Divider style={{marginVertical: 10}} />
 
-                      <LoadInfo
-                        load={load}
-                        style={{paddingHorizontal: 10}}
-                        showDetail={true}
-                      />
+              <LoadInfo
+                load={load}
+                style={{paddingHorizontal: 10}}
+                showDetail={true}
+              />
 
-                      <Divider />
+              <Divider />
 
-                      <LoadStatusButton
-                        onAccept={this.acceptTrip}
-                        onCancel={this.cancelTrip}
-                        onConfirm={this.confirmTrip}
-                        onStart={this.startTrip}
-                        onStop={this.stopTrip}
-                        trip={load.trip || {}}
-                      />
-                    </View>
-                  )}
-              </View>
+              <LoadStatusButton
+                onAccept={this.acceptTrip}
+                onCancel={this.cancelTrip}
+                onConfirm={this.confirmTrip}
+                onStart={this.startTrip}
+                onStop={this.stopTrip}
+                trip={load.trip || {}}
+              />
             </TabPanel>
 
             <TabPanel hideNextButton={true}>
               <View style={{height: 200, backgroundColor: colors.lightGrey}}>
-
                 <LoadLocationMapView
                   origin={load.origin}
                   destination={load.destination}
                 />
-
-                <LoadAddressInfo
-                  origin={load.origin}
-                  destination={load.destination}
-                />
-
               </View>
+
+              <LoadAddressInfo
+                origin={load.origin}
+                destination={load.destination}
+              />
+
             </TabPanel>
 
             <TabPanel hideNextButton={true}>
