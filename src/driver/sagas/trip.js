@@ -75,9 +75,6 @@ function* setTripStatus(action) {
     yield put(
       APP_ACTIONS.setNotification({
         message: I18n.t('success'),
-        type: 'success',
-        position: 'center',
-        backdropDismiss: false,
       }),
     );
     yield resolve(response.data);

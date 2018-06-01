@@ -10,27 +10,33 @@ import I18n from 'utils/locale';
 export default class Notification extends Component {
   static propTypes = PropTypes.shape({
     message: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired,
-    position: PropTypes.string.isRequired,
-    backdropDismiss: PropTypes.bool.isRequired,
+    type: PropTypes.string,
+    position: PropTypes.string,
+    backdropDismiss: PropTypes.bool,
   }).isRequired;
 
   state = {
     visible: false,
   };
 
-  shouldComponentUpdate(nextProps, nextState) {
-    return nextState.visible !== this.state.visible;
-  }
+
+  static defaultProps = {
+    position:'bottom',
+    backdropDismiss:false,
+    type:'success'
+  };
 
   static getDerivedStateFromProps(nextProps, prevState) {
     if (!isEmpty(nextProps.message)) {
       return {
         visible: true,
       };
-    } else {
-      return null;
     }
+    return null;
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return nextState.visible !== this.state.visible;
   }
 
   closeModal = () => {
@@ -38,21 +44,6 @@ export default class Notification extends Component {
       visible: false,
     });
     this.props.dismissNotification();
-  };
-
-  resolvePosition = position => {
-    let modalPosition;
-    switch (position) {
-      case 'top':
-        modalPosition = styles.topModal;
-        break;
-      case 'bottom':
-        modalPosition = styles.bottomModal;
-        break;
-      default:
-        modalPosition = styles.centerModal;
-        break;
-    }
   };
 
   render() {
@@ -72,9 +63,6 @@ export default class Notification extends Component {
             <View
               style={[
                 styles.centerModal,
-                // {
-                //   backgroundColor: colors[type],
-                // },
               ]}>
               <Text style={[styles.text, styles.centerText]}>{message}</Text>
               <Button
