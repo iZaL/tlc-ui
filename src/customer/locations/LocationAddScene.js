@@ -59,7 +59,6 @@ class LocationAddScene extends Component {
   };
 
   render() {
-
     let type = this.props.navigation.getParam('type');
 
     return (

@@ -88,7 +88,6 @@ class App extends Component {
 
     return (
       <View style={{flex: 1}}>
-
         <PushNotificationManager
           setPushToken={this.setPushToken}
           onReceiveNotifications={this.onReceivePushNotifications}

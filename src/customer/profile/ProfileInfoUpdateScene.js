@@ -1,7 +1,10 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {ACTIONS as PROFILE_ACTIONS, ACTIONS as CUSTOMER_ACTIONS} from 'customer/common/actions';
+import {
+  ACTIONS as PROFILE_ACTIONS,
+  ACTIONS as CUSTOMER_ACTIONS,
+} from 'customer/common/actions';
 import {SELECTORS as CUSTOMER_SELECTORS} from 'customer/common/selectors';
 import {ScrollView} from 'react-native';
 import TextInput from 'components/TextInput';
@@ -128,7 +131,6 @@ class ProfileUpdateScene extends Component {
           paddingTop: 20,
         }}
         contentContainerStyle={{paddingBottom: 100}}>
-
         <TextInput
           onValueChange={this.onUserFieldChange}
           value={name_en}

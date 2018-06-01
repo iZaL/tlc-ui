@@ -36,8 +36,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     padding: 10,
   },
-  label: {
-  },
-  textInput: {
-  },
+  label: {},
+  textInput: {},
 });

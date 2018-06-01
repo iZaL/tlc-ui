@@ -3,7 +3,7 @@
  */
 import PropTypes from 'prop-types';
 import React, {Component} from 'react';
-import {Dimensions, StyleSheet, TouchableHighlight, View,} from 'react-native';
+import {Dimensions, StyleSheet, TouchableHighlight, View} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import colors from 'assets/theme/colors';
 import MapView from 'react-native-maps';
