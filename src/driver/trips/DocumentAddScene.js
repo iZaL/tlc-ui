@@ -2,22 +2,20 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {ScrollView, View} from 'react-native';
 import PropTypes from 'prop-types';
-import {ACTIONS as CUSTOMER_ACTIONS} from 'customer/common/actions';
-import AddressField from 'customer/locations/components/AddressField';
 import Button from 'components/Button';
 import I18n from 'utils/locale';
-import MapPicker from 'customer/locations/components/MapPicker';
 import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
 import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
 import Touchable from 'react-native-platform-touchable';
 import Label from 'components/Label';
 import {Title} from 'react-native-paper';
-import Divider from '../../components/Divider';
-import ListModal from '../../components/ListModal';
-import ListItem from '../../components/ListItem';
-import CameraUpload from '../../components/CameraUpload';
-import AlbumUpload from '../../components/AlbumUpload';
-import FileUpload from '../../components/FileUpload';
+import Divider from 'components/Divider';
+import ListModal from 'components/ListModal';
+import ListItem from 'components/ListItem';
+import CameraUpload from 'components/CameraUpload';
+import AlbumUpload from 'components/AlbumUpload';
+import FileUpload from 'components/FileUpload';
+
 class DocumentAddScene extends Component {
   static propTypes = {
     navigation: PropTypes.shape({
