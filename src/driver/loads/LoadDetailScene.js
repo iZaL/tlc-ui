@@ -16,7 +16,6 @@ import TabPanel from 'customer/loads/components/TabPanel';
 import ReceiverInfo from 'loads/components/ReceiverInfo';
 import UserInfo from 'components/UserInfo';
 import ListRow from 'components/ListRow';
-import {FAB, Headline} from 'react-native-paper';
 import EmployeeList from 'customer/employees/components/EmployeeList';
 import Dialog from 'components/Dialog';
 import DocumentTypesList from 'components/DocumentTypesList';
@@ -25,6 +24,7 @@ import LoadStatusButton from 'driver/loads/components/LoadStatusButton';
 import LoadLocationMapView from 'driver/loads/components/LoadLocationMapView';
 import colors from 'assets/theme/colors';
 import LoadAddressInfo from './components/LoadAddressInfo';
+import {FAB, Headline} from 'react-native-paper';
 
 class LoadDetailScene extends Component {
   static propTypes = {
@@ -167,17 +167,13 @@ class LoadDetailScene extends Component {
                 destination={destination}
                 style={{padding: 5}}
               />
-
               <Divider style={{marginVertical: 10}} />
-
               <LoadInfo
                 load={load}
                 style={{paddingHorizontal: 10}}
                 showDetail={true}
               />
-
               <Divider />
-
               <LoadStatusButton
                 onAccept={this.acceptTrip}
                 onCancel={this.cancelTrip}
@@ -195,7 +191,6 @@ class LoadDetailScene extends Component {
                   destination={load.destination}
                 />
               </View>
-
               <LoadAddressInfo
                 origin={load.origin}
                 destination={load.destination}
@@ -264,22 +259,12 @@ class LoadDetailScene extends Component {
             </TabPanel>
 
             <TabPanel hideNextButton={true}>
-              {receiver ? (
-                <ReceiverInfo
-                  name={receiver.name}
-                  email={receiver.email}
-                  phone={receiver.phone}
-                  mobile={receiver.mobile}
-                />
-              ) : (
-                <View />
-              )}
-
-              <View />
+              <ReceiverInfo
+                receiver={receiver}
+              />
             </TabPanel>
 
             <TabPanel hideNextButton={true}>
-              {/*upload documents*/}
               <DocumentTypesList
                 items={(trip && trip.documents) || []}
                 onItemPress={this.onDocumentTypeListItemPress}
@@ -296,22 +281,13 @@ class LoadDetailScene extends Component {
 
             <TabPanel hideNextButton={true}>
               {/*fleets info*/}
-
               <View />
             </TabPanel>
 
             <TabPanel hideNextButton={true}>
-              {/*contact tlc*/}
-              {receiver ? (
-                <ReceiverInfo
-                  name={receiver.name}
-                  email={receiver.email}
-                  phone={receiver.phone}
-                  mobile={receiver.mobile}
-                />
-              ) : (
-                <View />
-              )}
+              <ReceiverInfo
+                receiver={receiver}
+              />
             </TabPanel>
           </TabPanels>
         </Tabs>

@@ -6,11 +6,11 @@ import {StyleSheet, View} from 'react-native';
 import I18n from 'utils/locale';
 import Divider from 'components/Divider';
 import ListRow from 'components/ListRow';
-import UserInfo from 'components/UserInfo';
+import PropTypes from 'prop-types';
 
 export default class ReceiverInfo extends Component {
   static propTypes = {
-    // onPress: PropTypes.func.isRequired,
+    receiver:PropTypes.object
   };
 
   shouldComponentUpdate() {
@@ -21,8 +21,12 @@ export default class ReceiverInfo extends Component {
     console.log('@todo:load bigger image');
   };
 
+  static defaultProps = {
+    receiver:{}
+  };
+
   render() {
-    let {name, email, mobile, phone} = this.props;
+    let {name, email, mobile, phone} = this.props.receiver;
 
     return (
       <View style={styles.container}>
