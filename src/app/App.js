@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import React, {Component} from 'react';
 import CodePush from 'react-native-code-push';
-import BackgroundGeolocation from 'react-native-background-geolocation';
 import PushNotificationManager from 'app/components/PushNotificationManager';
 import Notification from 'app/components/Notification';
 import LanguageSelectScene from 'app/scenes/LanguageSelectScene';
@@ -12,6 +11,7 @@ import {ACTIONS} from 'app/common/actions';
 import {ACTIONS as USER_ACTIONS} from 'guest/common/actions';
 import {SELECTORS as USER_SELECTOR} from 'guest/common/selectors';
 import {CODE_PUSH_ENABLED} from 'utils/env';
+import NavigatorService from 'components/NavigatorService';
 
 class App extends Component {
   static propTypes = {
@@ -29,7 +29,6 @@ class App extends Component {
   componentDidMount() {
     this.props.dispatch(ACTIONS.boot());
     AppState.addEventListener('change', this.handleAppStateChange);
-
     if (CODE_PUSH_ENABLED) {
       CodePush.sync();
     }
@@ -54,12 +53,28 @@ class App extends Component {
     this.props.dispatch(ACTIONS.dismissNotification());
   };
 
-  navigateToScene = (scene, params) => {
-    // this.props.dispatch(ACTIONS.navigateToScene(scene, params));
-  };
-
   logout = () => {
     this.props.dispatch(USER_ACTIONS.logout());
+  };
+
+  onReceivePushNotifications = (notification: object) => {
+    let {foreground, data} = notification;
+    let navigation = NavigatorService;
+
+    if (!foreground) {
+      let {type} = data;
+      switch (type) {
+        case 'started.working':
+        case 'stopped.working':
+        case 'started.driving':
+        case 'stopped.driving':
+          let {order_id} = data;
+          return navigation.navigate('OrderDetail', {
+            orderID: order_id,
+          });
+          break;
+      }
+    }
   };
 
   render() {
@@ -73,9 +88,10 @@ class App extends Component {
 
     return (
       <View style={{flex: 1}}>
+
         <PushNotificationManager
           setPushToken={this.setPushToken}
-          navigateToScene={this.navigateToScene}
+          onReceiveNotifications={this.onReceivePushNotifications}
         />
 
         <Notification

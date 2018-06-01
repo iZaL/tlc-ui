@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import PushNotification from 'react-native-push-notification';
+import {PushNotificationIOS} from 'react-native';
 
 export default class PushNotificationManager extends Component {
   static propTypes = {
     setPushToken: PropTypes.func.isRequired,
+    onReceiveNotifications: PropTypes.func.isRequired,
   };
 
   shouldComponentUpdate() {
@@ -14,13 +16,15 @@ export default class PushNotificationManager extends Component {
   constructor(props) {
     super(props);
 
-    let {navigateToScene} = this.props;
-
     PushNotification.configure({
       onRegister: token => {
         this.props.setPushToken(token);
       },
-      onNotification: function(notification) {},
+
+      onNotification: notification => {
+        this.props.onReceiveNotifications(notification);
+        notification.finish(PushNotificationIOS.FetchResult.NoData);
+      },
 
       permissions: {
         alert: true,
