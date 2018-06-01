@@ -62,6 +62,11 @@ export const ACTION_TYPES = {
   FETCH_LOAD_REQUESTS_REQUEST: '@driver/FETCH_LOAD_REQUESTS_REQUEST',
   FETCH_LOAD_REQUESTS_SUCCESS: '@driver/FETCH_LOAD_REQUESTS_SUCCESS',
   FETCH_LOAD_REQUESTS_FAILURE: '@driver/FETCH_LOAD_REQUESTS_FAILURE',
+
+  SET_TRIP_STATUS_REQUEST: '@driver/SET_TRIP_STATUS_REQUEST',
+  SET_TRIP_STATUS_FAILURE: '@driver/SET_TRIP_STATUS_FAILURE',
+  SET_TRIP_STATUS_SUCCESS: '@driver/SET_TRIP_STATUS_SUCCESS',
+
 };
 
 function fetchProfile(params) {
@@ -155,6 +160,13 @@ function saveRoute(params) {
   };
 }
 
+function setTripStatus(params) {
+  return {
+    type: ACTION_TYPES.SET_TRIP_STATUS_REQUEST,
+    params,
+  };
+}
+
 function fetchLoadsByStatus(params) {
   return {
     type: ACTION_TYPES.FETCH_LOADS_BY_STATUS_REQUEST,
@@ -170,11 +182,16 @@ export const ACTIONS = {
   saveRoute,
   fetchRouteTransits,
   fetchUpcomingTrips,
-  fetchLoadRequests,
   fetchCurrentLoad,
   fetchLoadDetails,
   fetchLoadsByStatus,
   fetchTripDetails,
   fetchSecurityPasses,
   fetchDocumentTypes,
+  // acceptTrip,
+  // cancelTrip,
+  // confirmTrip,
+  // stopTrip,
+  // starTrip,
+  setTripStatus
 };

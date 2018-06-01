@@ -282,6 +282,7 @@
   "files" : "Files",
 
   "commodity" : "Commodity",
+  "ok" : "OK",
 
   "accept" :"Accept",
   "reject" : "Reject",

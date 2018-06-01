@@ -3,6 +3,8 @@ import {API} from 'driver/common/api';
 import {ACTION_TYPES} from 'driver/common/actions';
 import {Schema} from 'utils/schema';
 import {normalize} from 'normalizr';
+import {ACTIONS as APP_ACTIONS} from "app/common/actions";
+import I18n from 'utils/locale';
 
 function* fetchUpcomingTrips() {
   try {
@@ -50,6 +52,47 @@ function* fetchDocumentTypes(action) {
   }
 }
 
+function* setTripStatus(action) {
+  const {
+    params: {resolve, reject, ...rest},
+  } = action;
+
+  try {
+    let params = {
+      body: {
+        ...rest,
+      },
+    };
+
+    const response = yield call(API.setTripStatus, params);
+    const normalized = normalize(response.data, Schema.trips);
+
+    yield put({
+      type: ACTION_TYPES.SET_TRIP_STATUS_SUCCESS,
+      entities: normalized.entities,
+    });
+
+    yield put(
+      APP_ACTIONS.setNotification({
+        message: I18n.t('success'),
+        type: 'success',
+        position: 'center',
+        backdropDismiss: false,
+      }),
+    );
+    yield resolve(response.data);
+  } catch (error) {
+    yield put(
+      APP_ACTIONS.setNotification({
+        message: error,
+        type: 'error',
+      }),
+    );
+    yield put({type: ACTION_TYPES.SET_TRIP_STATUS_FAILURE, error});
+    yield reject(error);
+  }
+}
+
 function* fetchUpcomingTripsMonitor() {
   yield takeLatest(
     ACTION_TYPES.FETCH_UPCOMING_TRIPS_REQUEST,
@@ -68,8 +111,16 @@ function* fetchDocumentTypesMonitor() {
   );
 }
 
+function* setTripStatusMonitor() {
+  yield takeLatest(
+    ACTION_TYPES.SET_TRIP_STATUS_REQUEST,
+    setTripStatus,
+  );
+}
+
 export const sagas = all([
   fork(fetchUpcomingTripsMonitor),
   fork(fetchTripDetailsMonitor),
   fork(fetchDocumentTypesMonitor),
+  fork(setTripStatusMonitor),
 ]);

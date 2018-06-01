@@ -51,6 +51,7 @@ class LoadDetailScene extends Component {
     employeeDetailVisible: false,
     imageModalVisible: false,
     images: [],
+    isFetching:false
   };
 
   componentDidMount() {
@@ -62,24 +63,55 @@ class LoadDetailScene extends Component {
     );
   }
 
+  makeRequest = (status) => {
+
+    this.setState({
+      isFetching:true
+    });
+
+    return new Promise((resolve, reject) => {
+
+      let params = {
+        trip_id:this.props.load.trip.id,
+        status:status,
+        resolve,
+        reject,
+      };
+
+      this.props.dispatch(DRIVER_ACTIONS.setTripStatus(params));
+
+    }).then((data) => {
+      console.log('data',data);
+      this.setState({
+        isFetching:false
+      });
+    })
+      .catch(e => {
+        this.setState({
+          isFetching:false
+        });
+      });
+
+  };
+
   acceptTrip = () => {
-    console.log('@todo');
+    this.makeRequest('accept');
   };
 
   cancelTrip = () => {
-    console.log('@todo');
+    this.makeRequest('cancel');
   };
 
   confirmTrip = () => {
-    console.log('@todo');
+    this.makeRequest('confirm');
   };
 
   startTrip = () => {
-    console.log('@todo');
+    this.makeRequest('start');
   };
 
   stopTrip = () => {
-    console.log('@todo');
+    this.makeRequest('stop');
   };
 
   onUserInfoPress = () => {

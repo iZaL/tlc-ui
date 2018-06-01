@@ -1,5 +1,3 @@
-import {ACTION_TYPES} from 'driver/common/actions';
-
 const initialState = {};
 
 export function reducer(state = initialState, action = {}) {

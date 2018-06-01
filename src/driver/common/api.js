@@ -55,6 +55,18 @@ function fetchSecurityPasses() {
   return fetchAPI({path});
 }
 
+function setTripStatus(params) {
+  const path = `driver/trips/${params.body.trip_id}/status/update`;
+
+  let requestParams = {
+    path,
+    params,
+    method: 'POST',
+  };
+  return fetchAPI(requestParams);
+}
+
+
 function saveTruck(params) {
   const path = `driver/trucks`;
 
@@ -101,4 +113,5 @@ export const API = {
   saveProfile,
   saveRoute,
   saveTruck,
+  setTripStatus,
 };
