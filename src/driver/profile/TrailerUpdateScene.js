@@ -240,7 +240,7 @@ class TrailerUpdateScene extends Component {
         <ListModal
           header={I18n.t('trailer_type')}
           activeIDs={[type_id]}
-          isVisible={showTypeModal}
+          visible={showTypeModal}
           onItemPress={this.setType}
           onCancel={this.hideTypeModal}
           items={trailer_types}
@@ -249,14 +249,14 @@ class TrailerUpdateScene extends Component {
         <ListModal
           header={I18n.t('trailer_make')}
           activeIDs={[make_id]}
-          isVisible={showMakeModal}
+          visible={showMakeModal}
           onItemPress={this.setMake}
           onCancel={this.hideMakeModal}
           items={trailer_makes}
         />
 
         <Modal
-          isVisible={isYearModalVisible}
+          visible={isYearModalVisible}
           onCancel={this.hideYearModal}
           header={I18n.t('truck_year')}>
           <Dropdown

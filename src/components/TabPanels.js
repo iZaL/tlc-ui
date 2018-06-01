@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
-import {View, StyleSheet} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 
 export default class Tabs extends Component {
   static propTypes = {};

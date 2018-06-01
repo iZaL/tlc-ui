@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {StyleSheet, View} from 'react-native';
-import colors from 'theme/colors';
+import {StyleSheet} from 'react-native';
 import {Divider as PaperDivider} from 'react-native-paper';
 
 class Divider extends Component {

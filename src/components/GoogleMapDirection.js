@@ -56,7 +56,7 @@ export default class GoogleMapDirection extends Component {
     return (
       <View>
         <TouchableRipple
-          onPress={() => this.setState({dialogVisible:true})}
+          onPress={() => this.setState({dialogVisible: true})}
           underlayColor="transparent">
           {children}
         </TouchableRipple>

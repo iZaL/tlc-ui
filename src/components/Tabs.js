@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
-import {View, StyleSheet} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 
 export default class Tabs extends Component {
   static propTypes = {};
@@ -14,14 +13,6 @@ export default class Tabs extends Component {
       activeIndex: this.props.activeIndex || 0,
     };
   }
-
-  // componentDidMount(nextProps) {
-  //   if (nextProps.activeIndex !== this.state.activeIndex) {
-  //     this.setState({
-  //       activeIndex:nextProps.activeIndex
-  //     });
-  //   }
-  // }
 
   onSelect = index => {
     this.setState({

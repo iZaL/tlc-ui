@@ -6,8 +6,11 @@ import colors from 'assets/theme/colors';
 export default class Label extends Component {
   static propTypes = {
     title: PropTypes.string.isRequired,
-    // style:PropTypes.object
   };
+
+  shouldComponentUpdate(nextProps) {
+    return false;
+  }
 
   render() {
     const {title, style} = this.props;

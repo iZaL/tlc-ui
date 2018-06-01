@@ -362,7 +362,7 @@ class RoutesAddScene extends Component {
           onItemPress={this.onOriginLocationItemPress}
           activeIDs={origin_location_ids}
           items={origin_country.locations || []}
-          isVisible={isOriginLocationsModalVisible}
+          visible={isOriginLocationsModalVisible}
           onCancel={this.hideOriginLocationsModal}
           onSave={this.onDestinationLocationsSavePress}
           header={
@@ -382,7 +382,7 @@ class RoutesAddScene extends Component {
         <ListModal
           header={I18n.t('destination_country')}
           activeIDs={[destination_country_id]}
-          isVisible={isDestinationCountriesModalVisible}
+          visible={isDestinationCountriesModalVisible}
           onSave={this.onDestinationCountrySavePress}
           onItemPress={this.onDestinationCountryItemPress}
           onCancel={this.hideDestinationCountriesModal}
@@ -393,7 +393,7 @@ class RoutesAddScene extends Component {
           onItemPress={this.onDestinationLocationItemPress}
           activeIDs={destination_location_ids}
           items={destinationCountry.locations || []}
-          isVisible={isDestinationLocationsModalVisible}
+          visible={isDestinationLocationsModalVisible}
           onCancel={this.hideDestinationLocationsModal}
           onSave={this.onDestinationLocationsSavePress}
           header={

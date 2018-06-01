@@ -8,6 +8,7 @@ import {Text, View, StyleSheet} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import colors from 'assets/theme/colors';
 import I18n from 'utils/locale';
+
 const CallButton = ({onPress}) => {
   return (
     <Touchable onPress={() => {}} style={[styles.callButtonContainer]}>

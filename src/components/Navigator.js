@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
-import {createSwitchNavigator, createStackNavigator} from 'react-navigation';
+import {createStackNavigator} from 'react-navigation';
 import {Routes as AdminRoutes} from 'admin/components/Router';
 import {Routes as DriverRoutes} from 'driver/components/Router';
 import {Routes as CustomerRoutes} from 'customer/components/Router';
 import {AuthRoutes, Routes as DefaultRoutes} from 'guest/components/Router';
 import NavigatorService from 'components/NavigatorService';
-import RootModal from 'app/RootModal';
 
 export default class Navigator extends Component {
   shouldComponentUpdate(nextProps) {
@@ -32,25 +31,6 @@ export default class Navigator extends Component {
     const {isAuthenticated, userType, user, logout} = this.props;
     const screen = this.resolveScreenForUser(userType);
 
-    // const RootModalStack = createStackNavigator(
-    //   {
-    //     main: {screen: RootModal},
-    //   },
-    //   {
-    //     cardStyle: {
-    //       backgroundColor: 'transparent',
-    //     },
-    //     headerMode: 'none',
-    //   },
-    // );
-
-    const RootModalStack = {
-      screen: RootModal,
-      navigationOptions: {
-        gesturesEnabled: false,
-      },
-    };
-
     const AppNavigatorStack = createStackNavigator(
       {
         Admin: {screen: AdminRoutes},
@@ -65,23 +45,8 @@ export default class Navigator extends Component {
       },
     );
 
-    const RootNavigator = createSwitchNavigator(
-      {
-        RootModal: RootModalStack,
-        App: {screen: AppNavigatorStack},
-      },
-      {
-        headerMode: 'none',
-        mode: 'modal',
-        initialRouteName: 'App',
-        // cardStyle: {
-        //   backgroundColor: 'transparent',
-        // },
-      },
-    );
-
     return (
-      <RootNavigator
+      <AppNavigatorStack
         ref={navigatorRef => {
           NavigatorService.setContainer(navigatorRef);
         }}

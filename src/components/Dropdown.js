@@ -46,8 +46,5 @@ export default class Dropdown extends PureComponent {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // backgroundColor: colors.fadedWhite,
-    // paddingHorizontal: 10,
-    // paddingTop: 30,
   },
 });

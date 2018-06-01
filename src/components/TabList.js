@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
-import {View, StyleSheet, ScrollView, Dimensions} from 'react-native';
+import {ScrollView, StyleSheet} from 'react-native';
 import colors from 'assets/theme/colors';
 
 export default class TabList extends Component {

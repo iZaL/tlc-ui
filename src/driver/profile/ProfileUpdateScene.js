@@ -123,7 +123,7 @@ class ProfileUpdateScene extends Component {
               name: I18n.t('hindi'),
             },
           ]}
-          isVisible={languageModalVisible}
+          visible={languageModalVisible}
           onItemPress={this.handleLanguagePress}
           onCancel={this.hideModal}
           header={I18n.t('select_languages')}

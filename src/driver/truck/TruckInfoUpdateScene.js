@@ -102,7 +102,7 @@ class TruckInfoUpdateScene extends Component {
         <Button onPress={this.onSave} title={I18n.t('save')} />
 
         <Modal
-          isVisible={isYearModalVisible}
+          visible={isYearModalVisible}
           onCancel={this.hideYearModal}
           header={I18n.t('truck_year')}>
           <Dropdown

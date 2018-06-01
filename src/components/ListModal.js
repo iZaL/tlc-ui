@@ -3,14 +3,12 @@
  */
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {StyleSheet} from 'react-native';
-import colors from 'assets/theme/colors';
 import Modal from 'components/Modal';
 import Listing from 'components/Listing';
 
 export default class ListModal extends Component {
   static propTypes = {
-    isVisible: PropTypes.bool.isRequired,
+    visible: PropTypes.bool.isRequired,
     onItemPress: PropTypes.func.isRequired,
     onCancel: PropTypes.func.isRequired,
     items: PropTypes.array.isRequired,
@@ -20,7 +18,7 @@ export default class ListModal extends Component {
 
   shouldComponentUpdate(nextProps) {
     return (
-      this.props.isVisible !== nextProps.isVisible ||
+      this.props.visible !== nextProps.visible ||
       this.props.activeIDs !== nextProps.activeIDs ||
       this.props.items !== nextProps.items
     );
@@ -50,26 +48,3 @@ export default class ListModal extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  listContainer: {
-    // backgroundColor:'blue',
-    paddingTop: 10,
-  },
-  itemRowContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  viewDetails: {
-    flex: 1,
-    fontSize: 18,
-    color: colors.darkBlue,
-    fontWeight: '500',
-  },
-  headline: {
-    textAlign: 'center',
-  },
-  itemTitle: {
-    flex: 1,
-  },
-});

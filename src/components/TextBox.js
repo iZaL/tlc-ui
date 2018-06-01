@@ -62,11 +62,9 @@ const styles = StyleSheet.create({
     fontWeight: '100',
   },
   active: {
-    // opacity:.,
     borderBottomWidth: 2,
     borderBottomColor: 'yellow',
     borderBottomRightRadius: 0,
     borderBottomLeftRadius: 0,
-    // backgroundColor:'yellow'
   },
 });

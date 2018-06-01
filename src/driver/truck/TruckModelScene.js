@@ -147,7 +147,7 @@ class TruckModelScene extends Component {
         <ListModal
           header={I18n.t('truck_make')}
           activeIDs={[make_id]}
-          isVisible={this.state.showMakeModal}
+          visible={this.state.showMakeModal}
           onItemPress={this.setMake}
           onCancel={this.hideMakeModal}
           items={makes}
@@ -156,7 +156,7 @@ class TruckModelScene extends Component {
         <ListModal
           header={I18n.t('truck_model')}
           activeIDs={[model_id]}
-          isVisible={this.state.showModelModal}
+          visible={this.state.showModelModal}
           onItemPress={this.setModel}
           onCancel={this.hideModelModal}
           items={models}

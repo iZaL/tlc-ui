@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text} from 'react-native';
+import {StyleSheet} from 'react-native';
 import PropTypes from 'prop-types';
-import colors from 'theme/colors';
-import I18n from 'utils/locale';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Touchable from 'react-native-platform-touchable';
 
@@ -10,7 +8,6 @@ export default class FormCheck extends Component {
   static propTypes = {
     checked: PropTypes.bool.isRequired,
     onPress: PropTypes.func,
-    // style:PropTypes.object
   };
 
   render() {

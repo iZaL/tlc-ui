@@ -136,11 +136,10 @@ export default class LoadWhat extends Component {
             `${item.city},${item.state},${item.country.name}`
           }
           items={locations.filter(location => location.type === locationType)}
-          isVisible={locationListModalVisible}
+          visible={locationListModalVisible}
           onCancel={this.closeModal}
           onSave={this.onSave}
         />
-
       </View>
     );
   }

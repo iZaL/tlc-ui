@@ -24,7 +24,7 @@ import ImageViewer from 'components/ImageViewer';
 import LoadStatusButton from 'driver/loads/components/LoadStatusButton';
 import LoadLocationMapView from 'driver/loads/components/LoadLocationMapView';
 import colors from 'assets/theme/colors';
-import LoadAddressInfo from "./components/LoadAddressInfo";
+import LoadAddressInfo from './components/LoadAddressInfo';
 
 class LoadDetailScene extends Component {
   static propTypes = {
@@ -200,7 +200,6 @@ class LoadDetailScene extends Component {
                 origin={load.origin}
                 destination={load.destination}
               />
-
             </TabPanel>
 
             <TabPanel hideNextButton={true}>

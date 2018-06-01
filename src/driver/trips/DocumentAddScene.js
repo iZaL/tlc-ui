@@ -133,7 +133,7 @@ class DocumentAddScene extends Component {
         <ListModal
           header={I18n.t('document_type')}
           activeIDs={[document_type_id]}
-          isVisible={typeModalVisible}
+          visible={typeModalVisible}
           onItemPress={this.setType}
           onCancel={this.hideTypeModal}
           items={document_types}

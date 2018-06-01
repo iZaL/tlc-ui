@@ -5,9 +5,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import Modal from 'components/Modal';
-
 import I18n from 'utils/locale';
-
 import {
   Button,
   Card,
@@ -112,7 +110,7 @@ export default class DocumentEdit extends Component {
 
         <Modal
           items={countries}
-          isVisible={this.state.isCountryModalVisible}
+          visible={this.state.isCountryModalVisible}
           onItemPress={this._handleCountryPicker}
         />
       </View>

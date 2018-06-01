@@ -84,7 +84,7 @@ class DriversBlockListScene extends Component {
           items={drivers.filter(driver => {
             return !blockedDriverIds.includes(driver.id);
           })}
-          isVisible={this.state.isDriversModalVisible}
+          visible={this.state.isDriversModalVisible}
           onCancel={this.hideDriversModal}
           onSave={this.onBlockedDriversSavePress}
         />

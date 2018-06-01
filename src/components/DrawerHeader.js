@@ -2,11 +2,9 @@
  * @flow
  */
 import React, {Component} from 'react';
-import Touchable from 'react-native-platform-touchable';
 import PropTypes from 'prop-types';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import colors from 'assets/theme/colors';
-import {View, StyleSheet} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import {Paragraph, Title} from 'react-native-paper';
 
 export default class DrawerHeader extends Component {

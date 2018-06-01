@@ -36,7 +36,7 @@ export default class PackageDimensions extends Component {
       <View style={{flex: 1, margin: 20, backgroundColor: 'white'}}>
         <Modal
           animationType="slide"
-          isVisible={visible}
+          visible={visible}
           transparent={true}
           onBackdropPress={onCancel}>
           <View style={styles.addressContainer}>

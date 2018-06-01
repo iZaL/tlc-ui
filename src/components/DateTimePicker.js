@@ -1,18 +1,17 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {
-  View,
-  Text,
-  Image,
-  Modal,
-  TouchableHighlight,
-  DatePickerAndroid,
-  TimePickerAndroid,
-  DatePickerIOS,
-  Platform,
   Animated,
+  DatePickerAndroid,
+  DatePickerIOS,
   Keyboard,
+  Modal,
+  Platform,
   StyleSheet,
+  Text,
+  TimePickerAndroid,
+  TouchableHighlight,
+  View,
 } from 'react-native';
 
 import Moment from 'moment';

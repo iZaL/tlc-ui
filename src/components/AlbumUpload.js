@@ -2,11 +2,7 @@
  * @flow
  */
 import React, {Component} from 'react';
-import Touchable from 'react-native-platform-touchable';
 import PropTypes from 'prop-types';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import colors from 'assets/theme/colors';
-import {View, StyleSheet, Image} from 'react-native';
 import {TouchableRipple} from 'react-native-paper';
 import ImagePicker from 'react-native-image-crop-picker';
 import map from 'lodash/map';

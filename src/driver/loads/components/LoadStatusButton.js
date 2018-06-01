@@ -63,8 +63,20 @@ export default class LoadStatusButton extends PureComponent {
   };
 
   render() {
-    let {can_accept, can_cancel, can_confirm, can_start, can_stop} = this.props.trip;
-    let {showAcceptDialog, showCancelDialog, showConfirmDialog, showStartDialog, showStopDialog} = this.state;
+    let {
+      can_accept,
+      can_cancel,
+      can_confirm,
+      can_start,
+      can_stop,
+    } = this.props.trip;
+    let {
+      showAcceptDialog,
+      showCancelDialog,
+      showConfirmDialog,
+      showStartDialog,
+      showStopDialog,
+    } = this.state;
 
     if (can_accept) {
       return (
@@ -164,7 +176,6 @@ export default class LoadStatusButton extends PureComponent {
         </View>
       );
     }
-
 
     return null;
   }

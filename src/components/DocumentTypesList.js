@@ -2,8 +2,6 @@
  * @flow
  */
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
-
 import DocumentTypeCard from 'components/DocumentTypeCard';
 import {FlatList, StyleSheet} from 'react-native';
 import Divider from 'components/Divider';

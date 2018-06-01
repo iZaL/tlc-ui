@@ -4,8 +4,7 @@
 import React, {Component} from 'react';
 import Touchable from 'react-native-platform-touchable';
 import PropTypes from 'prop-types';
-
-import {View, StyleSheet, Image} from 'react-native';
+import {Image, StyleSheet, View} from 'react-native';
 import colors from 'assets/theme/colors';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import ImagePicker from 'react-native-image-picker';
@@ -82,13 +81,5 @@ const styles = StyleSheet.create({
   image: {
     width: '100%',
     height: '100%',
-    // position: 'absolute',
-    // top: 0,
-    // left: 0,
-    // bottom: 0,
-    // right: 0,
-    // flex:1,
-    // width: null,
-    // height: null
   },
 });

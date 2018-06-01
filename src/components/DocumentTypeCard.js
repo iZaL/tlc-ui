@@ -2,11 +2,7 @@
  * @flow
  */
 import React, {Component} from 'react';
-import Touchable from 'react-native-platform-touchable';
 import PropTypes from 'prop-types';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import colors from 'assets/theme/colors';
-import I18n from 'utils/locale';
 
 import {
   Button,
@@ -15,7 +11,6 @@ import {
   CardContent,
   CardCover,
   Title,
-  Paragraph,
 } from 'react-native-paper';
 import {View} from 'react-native';
 

@@ -8,7 +8,7 @@ import Modal from 'react-native-modal';
 import {Button, Headline} from 'react-native-paper';
 import I18n from 'utils/locale';
 
-export default class AppModal extends Component {
+export default class extends Component {
   static propTypes = {
     isVisible: PropTypes.bool.isRequired,
     onCancel: PropTypes.func.isRequired,
@@ -25,7 +25,7 @@ export default class AppModal extends Component {
 
     return (
       <Modal
-        isVisible={isVisible}
+        visible={isVisible}
         transparent={true}
         style={[styles.container, style]}
         onSwipe={onCancel}
