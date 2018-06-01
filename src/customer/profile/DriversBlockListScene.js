@@ -28,8 +28,6 @@ class DriversBlockListScene extends Component {
     this.props.dispatch(CUSTOMER_ACTIONS.fetchBlockedDrivers());
   }
 
-  // onEmployeeListItemPress = (employee: object) => {};
-
   onDriversListItemPress = (driver: object) => {
     console.log('@todo:delete driver');
   };

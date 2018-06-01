@@ -3,12 +3,8 @@
  */
 import React, {Component, PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import {FlatList, StyleSheet, Text, View} from 'react-native';
-import colors from 'assets/theme/colors';
-import Touchable from 'react-native-platform-touchable';
+import {FlatList, StyleSheet} from 'react-native';
 import Divider from 'components/Divider';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import LocationListItem from 'customer/locations/components/LocationListItem';
 import ListItem from 'components/ListItem';
 
 export default class LocationList extends PureComponent {
@@ -23,7 +19,6 @@ export default class LocationList extends PureComponent {
 
   renderRow = ({item}) => {
     let {onItemPress} = this.props;
-    // return <LocationListItem onPress={onItemPress} item={item} />;
 
     let {city, state, address, country} = item;
 

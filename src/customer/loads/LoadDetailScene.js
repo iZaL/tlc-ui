@@ -5,12 +5,12 @@ import {ScrollView, Text, View} from 'react-native';
 import I18n from 'utils/locale';
 import colors from 'assets/theme/colors';
 import {ACTIONS as CUSTOMER_ACTIONS} from 'customer/common/actions';
+import {SELECTORS as CUSTOMER_SELECTORS} from 'customer/common/selectors';
 import LoadLocationMapView from 'driver/loads/components/LoadLocationMapView';
 import LoadPickDropLocation from 'driver/loads/components/LoadPickDropLocation';
 import LoadInfo from 'driver/loads/components/LoadInfo';
 import Divider from 'components/Divider';
 import TripList from 'customer/trips/components/TripList';
-import {SELECTORS as CUSTOMER_SELECTORS} from 'customer/common/selectors';
 import Tabs from 'components/Tabs';
 import TabList from 'components/TabList';
 import TabPanels from 'components/TabPanels';
@@ -36,11 +36,11 @@ class LoadDetailScene extends Component {
   };
 
   componentDidMount() {
-    // const {loadID} = this.props.navigation.state.params;
+    const loadID = this.props.navigation.getParam('loadID');
     this.props.dispatch(
       CUSTOMER_ACTIONS.fetchLoadDetails({
-        // loadID: loadID,
-        loadID: 1,
+        loadID: loadID,
+        // loadID: 1,
       }),
     );
   }
@@ -161,8 +161,8 @@ const makeMapStateToProps = () => {
   const getLoadByID = CUSTOMER_SELECTORS.getLoadByID();
   const mapStateToProps = (state, props) => {
     return {
-      // load: getLoadByID(state, props.navigation.state.params.loadID),
-      load: getLoadByID(state, 1),
+      load: getLoadByID(state, props.navigation.getParam('loadID')),
+      // load: getLoadByID(state, 1),
     };
   };
   return mapStateToProps;

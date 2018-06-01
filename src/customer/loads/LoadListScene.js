@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {View} from 'react-native';
 import {connect} from 'react-redux';
 import LoadsList from 'driver/loads/components/LoadsList';
 import {SELECTORS as CUSTOMER_SELECTORS} from 'customer/common/selectors';

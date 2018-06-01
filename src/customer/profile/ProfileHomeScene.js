@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import ListItem from 'components/ListItem';
-import IconFactory from 'components/IconFactory';
 import {ACTIONS as CUSTOMER_ACTIONS} from 'customer/common/actions';
 import Divider from 'components/Divider';
 import I18n from 'utils/locale';

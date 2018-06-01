@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {ScrollView, View, Alert} from 'react-native';
+import {Alert, View} from 'react-native';
 import PropTypes from 'prop-types';
 import {ACTIONS as CUSTOMER_ACTIONS} from 'customer/common/actions';
 import {SELECTORS as CUSTOMER_SELECTORS} from 'customer/common/selectors';
 import LocationList from 'customer/locations/components/LocationList';
-import Button from 'components/Button';
 import I18n from 'utils/locale';
 import {FAB} from 'react-native-paper';
 import colors from 'assets/theme/colors';
@@ -54,8 +53,6 @@ class LocationListScene extends Component {
       ],
       {cancelable: false},
     );
-
-    // this.props.navigation.goBack(null);
   };
 
   onLocationCreatePress = () => {
@@ -67,7 +64,7 @@ class LocationListScene extends Component {
 
   render() {
     let {locations} = this.props;
-    let {type} = this.props.navigation.state.params;
+    let type = this.props.navigation.getParam('type');
     return (
       <View style={{flex: 1}}>
         <LocationList

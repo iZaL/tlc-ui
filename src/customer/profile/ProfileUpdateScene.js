@@ -1,16 +1,12 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {ACTIONS as PROFILE_ACTIONS} from 'customer/common/actions';
+import {ACTIONS as PROFILE_ACTIONS, ACTIONS as CUSTOMER_ACTIONS} from 'customer/common/actions';
 import {SELECTORS as CUSTOMER_SELECTORS} from 'customer/common/selectors';
 import {ScrollView} from 'react-native';
-import Label from 'components/Label';
 import TextInput from 'components/TextInput';
 import Button from 'components/Button';
 import I18n from 'utils/locale';
-import {SELECTORS as USER_SELECTORS} from 'guest/common/selectors';
-import {ACTIONS as CUSTOMER_ACTIONS} from 'customer/common/actions';
-import {ListItem} from 'react-native-paper';
 
 type State = {
   mobile: string,

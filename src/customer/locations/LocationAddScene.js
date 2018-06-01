@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {ScrollView, View} from 'react-native';
+import {View} from 'react-native';
 import PropTypes from 'prop-types';
 import {ACTIONS as CUSTOMER_ACTIONS} from 'customer/common/actions';
 import AddressField from 'customer/locations/components/AddressField';
@@ -59,7 +59,8 @@ class LocationAddScene extends Component {
   };
 
   render() {
-    let {type} = this.props.navigation.state.params;
+
+    let type = this.props.navigation.getParam('type');
 
     return (
       <View style={{flex: 1}}>

@@ -1,5 +1,7 @@
 import React from 'react';
 import {createDrawerNavigator, createStackNavigator} from 'react-navigation';
+import colors from 'assets/theme/colors';
+import I18n from 'utils/locale';
 import Drawer from 'customer/components/Drawer';
 import Home from 'customer/Home';
 import Settings from 'customer/Settings';
@@ -15,8 +17,6 @@ import LoadListScene from 'customer/loads/LoadListScene';
 import LoadHomeScene from 'customer/loads/LoadHomeScene';
 import LoadDetailScene from 'customer/loads/LoadDetailScene';
 import TripTrackScene from 'customer/trips/TripTrackScene';
-import colors from 'assets/theme/colors';
-import I18n from 'utils/locale';
 import LoadDetailOptionsListScene from 'customer/loads/LoadDetailOptionsListScene';
 import DriversListScene from 'customer/loads/DriversListScene';
 import DriversBlockListScene from 'customer/profile/DriversBlockListScene';

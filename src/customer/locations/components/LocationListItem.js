@@ -3,11 +3,9 @@
  */
 import React, {Component, PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import {FlatList, StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import colors from 'assets/theme/colors';
 import Touchable from 'react-native-platform-touchable';
-import Divider from 'components/Divider';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 export default class LocationListItem extends PureComponent {
   static propTypes = {

@@ -1,15 +1,12 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {ACTIONS as PROFILE_ACTIONS} from 'customer/common/actions';
+import {ACTIONS as PROFILE_ACTIONS, ACTIONS as CUSTOMER_ACTIONS} from 'customer/common/actions';
 import {SELECTORS as CUSTOMER_SELECTORS} from 'customer/common/selectors';
 import {ScrollView} from 'react-native';
-import Label from 'components/Label';
 import TextInput from 'components/TextInput';
 import Button from 'components/Button';
 import I18n from 'utils/locale';
-import {SELECTORS as USER_SELECTORS} from 'guest/common/selectors';
-import {ACTIONS as CUSTOMER_ACTIONS} from 'customer/common/actions';
 
 type State = {
   mobile: string,
@@ -131,7 +128,7 @@ class ProfileUpdateScene extends Component {
           paddingTop: 20,
         }}
         contentContainerStyle={{paddingBottom: 100}}>
-        {/*<Label title={I18n.t('company_name_en')} />*/}
+
         <TextInput
           onValueChange={this.onUserFieldChange}
           value={name_en}
@@ -140,7 +137,6 @@ class ProfileUpdateScene extends Component {
           label={I18n.t('company_name_en')}
         />
 
-        {/*<Label title={I18n.t('company_name_ar')} />*/}
         <TextInput
           onValueChange={this.onUserFieldChange}
           value={name_ar}
@@ -148,8 +144,6 @@ class ProfileUpdateScene extends Component {
           maxLength={40}
           label={I18n.t('company_name_ar')}
         />
-
-        {/*<Label title={I18n.t('mobile')} />*/}
 
         <TextInput
           onValueChange={this.onValueChange}
@@ -160,8 +154,6 @@ class ProfileUpdateScene extends Component {
           keyboardType="phone-pad"
         />
 
-        {/*<Label title={I18n.t('office_number')} />*/}
-
         <TextInput
           onValueChange={this.onValueChange}
           value={phone}
@@ -171,8 +163,6 @@ class ProfileUpdateScene extends Component {
           keyboardType="phone-pad"
         />
 
-        {/*<Label title={I18n.t('company_email')} />*/}
-
         <TextInput
           onValueChange={this.onValueChange}
           value={email}
@@ -181,16 +171,12 @@ class ProfileUpdateScene extends Component {
           label={I18n.t('company_email')}
         />
 
-        {/*<Label title={I18n.t('address_en')} />*/}
-
         <TextInput
           onValueChange={this.onValueChange}
           value={address_en}
           field="address_en"
           label={I18n.t('address_en')}
         />
-
-        {/*<Label title={I18n.t('address_ar')} />*/}
 
         <TextInput
           onValueChange={this.onValueChange}

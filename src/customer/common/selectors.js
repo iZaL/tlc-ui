@@ -10,9 +10,7 @@ const loadsSchema = state => state.entities.loads;
 const getIdProp = ({}, itemID) => itemID;
 const getTrackings = state => state.customer.trackings;
 const driversSchema = state => state.entities.drivers;
-const tripSchema = state => state.entities.drivers;
 const addData = state => state.customer.loads.add;
-const editData = state => state.customer.loads.edit;
 const getLoadDrivers = state => state.customer.loads.loadDrivers;
 
 const getProfile = createSelector(

@@ -3,13 +3,7 @@
  */
 import PropTypes from 'prop-types';
 import React, {Component} from 'react';
-import {
-  Alert,
-  Dimensions,
-  StyleSheet,
-  TouchableHighlight,
-  View,
-} from 'react-native';
+import {Dimensions, StyleSheet, TouchableHighlight, View,} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import colors from 'assets/theme/colors';
 import MapView from 'react-native-maps';
@@ -29,13 +23,7 @@ export default class MapPicker extends Component {
     updateAddress: PropTypes.func.isRequired,
     address: PropTypes.object.isRequired,
   };
-  // shouldComponentUpdate(nextProps) {
-  //   return (
-  //     this.props.address.latitude !== nextProps.address.latitude ||
-  //     this.props.address.longitude !== nextProps.address.longitude ||
-  //     this.props.address.address_en !== nextProps.address.address_en
-  //   );
-  // }
+
   constructor(props) {
     super(props);
     let {latitude, longitude} = this.props.address;
