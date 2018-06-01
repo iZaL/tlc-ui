@@ -23,7 +23,8 @@ export default class Button extends Component {
         disabled={disabled}
         style={[styles.button, style, disabled && {opacity: 0.4}]}
         raised
-        primary>
+        primary
+      >
         <Text style={[styles.buttonText, titleStyle]}>{title}</Text>
       </PaperButton>
     );

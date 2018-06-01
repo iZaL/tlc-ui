@@ -9,7 +9,8 @@ import I18n from 'utils/locale';
 import Dialog from 'components/Dialog';
 import {Colors} from 'react-native-paper';
 
-export default class LoadStatusButton extends PureComponent {
+export default class LoadStatusButton extends Component {
+
   static propTypes = {
     trip: PropTypes.object.isRequired,
     onAccept: PropTypes.func,
@@ -26,6 +27,10 @@ export default class LoadStatusButton extends PureComponent {
   };
 
   static defaultProps = {};
+
+  shouldComponentUpdate(nextProps,prevState) {
+    return nextProps.trip !== this.props.trip || prevState !== this.state;
+  }
 
   onAccept = () => {
     this.setState({
@@ -59,7 +64,7 @@ export default class LoadStatusButton extends PureComponent {
     this.setState({
       showStopDialog: false,
     });
-    this.props.onStart();
+    this.props.onStop();
   };
 
   render() {
@@ -70,6 +75,9 @@ export default class LoadStatusButton extends PureComponent {
       can_start,
       can_stop,
     } = this.props.trip;
+
+    console.log('trip',this.props.trip);
+
     let {
       showAcceptDialog,
       showCancelDialog,

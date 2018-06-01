@@ -4,7 +4,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import Modal from 'react-native-modal';
 import isEmpty from 'lodash/isEmpty';
 import colors from 'assets/theme/colors';
-import Button from 'components/Button';
+import {Button} from 'react-native-paper';
 import I18n from 'utils/locale';
 
 export default class Notification extends Component {
@@ -17,13 +17,6 @@ export default class Notification extends Component {
 
   state = {
     visible: false,
-  };
-
-
-  static defaultProps = {
-    position:'bottom',
-    backdropDismiss:false,
-    type:'success'
   };
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -67,9 +60,10 @@ export default class Notification extends Component {
               <Text style={[styles.text, styles.centerText]}>{message}</Text>
               <Button
                 style={styles.centerButton}
-                title={I18n.t('continue').toUpperCase()}
                 onPress={this.closeModal}
-              />
+              >
+                {I18n.t('continue').toUpperCase()}
+              </Button>
             </View>
           ) : (
             <View
@@ -113,7 +107,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     alignItems: 'center',
     paddingVertical: 50,
-    // padding:30,
   },
   text: {
     color: 'white',

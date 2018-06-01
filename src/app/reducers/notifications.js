@@ -12,7 +12,7 @@ type State = {
 };
 
 const initialState: State = {
-  message: '',
+  message: null,
   type: 'success',
   position: 'bottom',
   backdropDismiss: true,
