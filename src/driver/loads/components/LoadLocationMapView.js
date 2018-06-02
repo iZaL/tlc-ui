@@ -10,16 +10,16 @@ const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 const DEFAULT_PADDING = {top: 50, right: 50, bottom: 50, left: 50};
 
 export default class LoadLocationMapView extends Component {
-  static propTypes = {
-    origin: PropTypes.shape({
-      latitude: PropTypes.number.isRequired,
-      longitude: PropTypes.number.isRequired,
-    }).isRequired,
-    destination: PropTypes.shape({
-      latitude: PropTypes.number.isRequired,
-      longitude: PropTypes.number.isRequired,
-    }).isRequired,
-  };
+  // static propTypes = {
+  //   origin: PropTypes.shape({
+  //     latitude: PropTypes.number.isRequired,
+  //     longitude: PropTypes.number.isRequired,
+  //   }).isRequired,
+  //   destination: PropTypes.shape({
+  //     latitude: PropTypes.number.isRequired,
+  //     longitude: PropTypes.number.isRequired,
+  //   }).isRequired,
+  // };
 
   state = {
     initialized: false,

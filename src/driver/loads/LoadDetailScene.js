@@ -22,9 +22,12 @@ import DocumentTypesList from 'components/DocumentTypesList';
 import ImageViewer from 'components/ImageViewer';
 import LoadStatusButton from 'driver/loads/components/LoadStatusButton';
 import LoadLocationMapView from 'driver/loads/components/LoadLocationMapView';
+import LoadAddressInfo from 'driver/loads/components/LoadAddressInfo';
 import colors from 'assets/theme/colors';
-import LoadAddressInfo from './components/LoadAddressInfo';
 import {FAB, Headline} from 'react-native-paper';
+import BackgroundGeolocation from 'react-native-background-geolocation';
+import {API_URL, GEOLOCATION_SOUNDS_ENABLED} from 'utils/env';
+import TRACKING_CONFIG from 'utils/tracking';
 
 class LoadDetailScene extends Component {
   static propTypes = {
@@ -36,8 +39,8 @@ class LoadDetailScene extends Component {
       }),
     }),
     load: PropTypes.shape({
-      origin: PropTypes.object.isRequired,
-      destination: PropTypes.object.isRequired,
+      // origin: PropTypes.object.isRequired,
+      // destination: PropTypes.object.isRequired,
     }).isRequired,
   };
 
@@ -51,10 +54,12 @@ class LoadDetailScene extends Component {
     employeeDetailVisible: false,
     imageModalVisible: false,
     images: [],
-    isFetching:false
+    isFetching:false,
+    tracking_enabled: false,
   };
 
   componentDidMount() {
+    // BackgroundGeolocation.stop();
     this.props.dispatch(
       DRIVER_ACTIONS.fetchLoadDetails({
         // loadID: this.props.navigation.getParam('loadID'),
@@ -64,22 +69,17 @@ class LoadDetailScene extends Component {
   }
 
   makeRequest = (status) => {
-
     this.setState({
       isFetching:true
     });
-
     return new Promise((resolve, reject) => {
-
       let params = {
         trip_id:this.props.load.trip.id,
         status:status,
         resolve,
         reject,
       };
-
       this.props.dispatch(DRIVER_ACTIONS.setTripStatus(params));
-
     }).then((data) => {
       console.log('data',data);
       this.setState({
@@ -91,7 +91,6 @@ class LoadDetailScene extends Component {
           isFetching:false
         });
       });
-
   };
 
   acceptTrip = () => {
@@ -107,11 +106,37 @@ class LoadDetailScene extends Component {
   };
 
   startTrip = () => {
+    // console.log('TRACKING_CONFI',{
+    //   ...TRACKING_CONFIG,
+    //   url: `http://${API_URL}/trips/${this.props.load.trip.id}/location/update`,
+    // });
     this.makeRequest('start');
+    BackgroundGeolocation.on('location', this.onLocation);
+    BackgroundGeolocation.on('http', this.onHttp);
+    BackgroundGeolocation.configure({
+        ...TRACKING_CONFIG,
+        url: `http://${API_URL}/trips/${this.props.load.trip.id}/location/update`
+      },
+      state => {
+        // this.setState({
+        //   tracking_enabled: job.status === 'driving',
+        // });
+      },
+    );
+    BackgroundGeolocation.start();
+  };
+
+  onLocation = location => {
+    console.log('location',location);
+  };
+
+  onHttp = response => {
+    console.log('[event] http: ',response);
   };
 
   stopTrip = () => {
     this.makeRequest('stop');
+    BackgroundGeolocation.start();
   };
 
   onUserInfoPress = () => {
@@ -161,20 +186,18 @@ class LoadDetailScene extends Component {
 
   render() {
     let {load, navigation} = this.props;
-
     let hiddenTabs = navigation.getParam('hiddenTabs') || [];
-
     let {
       employeeDetailVisible,
       employeeDetail,
       imageModalVisible,
       images,
     } = this.state;
-
     let {origin, destination, receiver, customer, trip} = load;
 
     return (
       <ScrollView style={{flex: 1, backgroundColor: 'white'}}>
+
         <Tabs>
           <TabList>
             <TabHeader title={I18n.t('load_info')} />

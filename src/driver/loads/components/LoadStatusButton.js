@@ -28,9 +28,9 @@ export default class LoadStatusButton extends Component {
 
   static defaultProps = {};
 
-  shouldComponentUpdate(nextProps,prevState) {
-    return nextProps.trip !== this.props.trip || prevState !== this.state;
-  }
+  // shouldComponentUpdate(nextProps,prevState) {
+  //   return nextProps.trip !== this.props.trip || prevState !== this.state;
+  // }
 
   onAccept = () => {
     this.setState({
@@ -76,8 +76,6 @@ export default class LoadStatusButton extends Component {
       can_stop,
     } = this.props.trip;
 
-    console.log('trip',this.props.trip);
-
     let {
       showAcceptDialog,
       showCancelDialog,
@@ -122,23 +120,22 @@ export default class LoadStatusButton extends Component {
               visible={showCancelDialog}
             />
           </View>
-
-          {can_confirm && (
-            <View style={{flex: 1}}>
-              <Button
-                title={I18n.t('confirm').toUpperCase()}
-                onPress={() => this.setState({showConfirmDialog: true})}
-                style={{marginVertical: 10}}
-              />
-              <Dialog
-                title={I18n.t('confirm_trip?')}
-                rightPress={this.onConfirm}
-                leftPress={() => this.setState({showConfirmDialog: false})}
-                leftText={I18n.t('cancel')}
-                visible={showConfirmDialog}
-              />
-            </View>
-          )}
+          {/*{can_confirm && (*/}
+            {/*<View style={{flex: 1}}>*/}
+              {/*<Button*/}
+                {/*title={I18n.t('confirm').toUpperCase()}*/}
+                {/*onPress={() => this.setState({showConfirmDialog: true})}*/}
+                {/*style={{marginVertical: 10}}*/}
+              {/*/>*/}
+              {/*<Dialog*/}
+                {/*title={I18n.t('confirm_trip?')}*/}
+                {/*rightPress={this.onConfirm}*/}
+                {/*leftPress={() => this.setState({showConfirmDialog: false})}*/}
+                {/*leftText={I18n.t('cancel')}*/}
+                {/*visible={showConfirmDialog}*/}
+              {/*/>*/}
+            {/*</View>*/}
+          {/*)}*/}
         </View>
       );
     }

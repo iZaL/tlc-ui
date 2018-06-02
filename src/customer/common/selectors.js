@@ -12,6 +12,7 @@ const getTrackings = state => state.customer.trackings;
 const driversSchema = state => state.entities.drivers;
 const addData = state => state.customer.loads.add;
 const getLoadDrivers = state => state.customer.loads.loadDrivers;
+const customersSchema = state => state.entities.customers;
 
 const getProfile = createSelector(
   [USER_SELECTORS.getAuthUserProfile],
@@ -98,8 +99,13 @@ const getLoads = createSelector(
 );
 
 const getLoadsByStatus = () => {
-  return createSelector([getLoads, getIdProp], (loads, status) =>
-    loads.filter(load => load.status === status),
+  return createSelector(
+    [getProfile, customersSchema, entities, getIdProp],
+    (profile, customersEntity, schema, status) => {
+      let customer = customersEntity[profile.id];
+      let loads = (customer.loads && customer.loads[status]) || [];
+      return loads.map(load => denormalize(load, Schema.loads, schema));
+    },
   );
 };
 
@@ -133,6 +139,13 @@ const getTripByID = () => {
   );
 };
 
+const getCurrentLoad = createSelector(
+  [getProfile, entities],
+  (customer, schema) => {
+    return denormalize(customer.current_load, Schema.loads, schema);
+  },
+);
+
 export const SELECTORS = {
   getProfile,
   getEmployees,
@@ -147,4 +160,5 @@ export const SELECTORS = {
   getDriversForLoad,
   getLoadByID,
   getTripByID,
+  getCurrentLoad
 };

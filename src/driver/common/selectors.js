@@ -111,24 +111,7 @@ const getTrailer = createSelector(
 
 const getLoadByID = () => {
   return createSelector([entities, getIdProp], (schema, loadID) => {
-    console.log('schema', schema);
-    let schemaFormatted = Object.assign(schema, {
-      trips: {},
-      // loads: Object.keys(schema.loads).map(loadID => {
-      //   let load = schema.loads[loadID];
-      //   return {
-      //     ...load,
-      //     destination: {
-      //       ...load.destination,
-      //       country: {
-      //         loading_routes: {},
-      //         locations: {},
-      //       },
-      //     },
-      //   };
-      // }),
-    });
-    return denormalize(loadID, Schema.loads, schemaFormatted);
+    return denormalize(loadID, Schema.loads, schema);
   });
 };
 

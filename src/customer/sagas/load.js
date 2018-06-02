@@ -84,15 +84,47 @@ function* fetchLoadAdd() {
   }
 }
 
+// function* fetchLoadsByStatus(action: object) {
+//   try {
+//     const response = yield call(API.fetchLoadsByStatus, action.params.status);
+//
+//     const formattedResponse = {
+//       ...response.driver,
+//       loads: {
+//         [response.load_status]: response.loads,
+//       },
+//     };
+//
+//     const normalized = normalize(formattedResponse, Schema.drivers);
+//     yield put({
+//       type: ACTION_TYPES.FETCH_LOADS_BY_STATUS_SUCCESS,
+//       entities: normalized.entities,
+//       result: normalized.result,
+//     });
+//   } catch (error) {
+//     yield put({type: ACTION_TYPES.FETCH_LOADS_BY_STATUS_FAILURE, error});
+//   }
+// }
+
 function* fetchLoadsByStatus(action: object) {
   try {
     const response = yield call(API.fetchLoadsByStatus, action.params.status);
-    const normalized = normalize(response.data, [Schema.loads]);
+    const formattedResponse = {
+      ...response.customer,
+      loads: {
+        [response.load_status]: response.loads,
+      },
+    };
+
+    console.log('formattdeResponse',formattedResponse);
+
+    const normalized = normalize(formattedResponse, Schema.customers);
     yield put({
       type: ACTION_TYPES.FETCH_LOADS_BY_STATUS_SUCCESS,
       entities: normalized.entities,
       result: normalized.result,
     });
+
   } catch (error) {
     yield put({type: ACTION_TYPES.FETCH_LOADS_BY_STATUS_FAILURE, error});
   }

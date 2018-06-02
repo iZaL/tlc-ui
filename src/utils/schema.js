@@ -36,7 +36,7 @@ driversSchema.define({
   routes: [routesSchema],
   security_passes: [{security_pass: securityPassesSchema}],
   loads: {
-    enroute: [loadsSchema],
+    dispatched: [loadsSchema],
     pending: [loadsSchema],
     confirmed: [loadsSchema],
     completed: [loadsSchema],
@@ -46,6 +46,12 @@ driversSchema.define({
 customersSchema.define({
   locations: [customerLocationsSchema],
   blocked_drivers: [driversSchema],
+  loads: {
+    // dispatched: [loadsSchema],
+    pending: [loadsSchema],
+    confirmed: [loadsSchema],
+    completed: [loadsSchema],
+  },
 });
 
 customerLocationsSchema.define({
@@ -82,6 +88,7 @@ loadsSchema.define({
   trailer_type: trailerTypesSchema,
   customer: customersSchema,
   trips: [tripsSchema],
+  trip:tripsSchema,
   bookable_drivers: [driversSchema],
   matching_drivers: [driversSchema],
   confirmed_drivers: [driversSchema],

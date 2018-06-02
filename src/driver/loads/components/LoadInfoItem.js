@@ -22,7 +22,7 @@ export default class LoadInfoItem extends Component {
   }
 
   render() {
-    console.log('rendering loadinfoitem');
+    // console.log('rendering loadinfoitem');
     let {title, description, caption} = this.props;
     return (
       <View style={styles.col}>

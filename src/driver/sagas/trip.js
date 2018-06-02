@@ -23,11 +23,11 @@ function* fetchTripDetails(action) {
   try {
     const response = yield call(API.fetchTripDetails, action.params);
 
-    const data = {
-      ...response.load,
-      trips: [response.trip],
-    };
-    const normalized = normalize(data, Schema.loads);
+    // const data = {
+    //   ...response.load,
+    //   trips: [response.trip],
+    // };
+    const normalized = normalize(response.data, Schema.loads);
 
     yield put({
       type: ACTION_TYPES.FETCH_TRIP_DETAILS_SUCCESS,
@@ -65,7 +65,9 @@ function* setTripStatus(action) {
     };
 
     const response = yield call(API.setTripStatus, params);
-    const normalized = normalize(response.data, Schema.trips);
+    const normalized = normalize(response.data, Schema.loads);
+
+    console.log('normalized',normalized);
 
     yield put({
       type: ACTION_TYPES.SET_TRIP_STATUS_SUCCESS,
