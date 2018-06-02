@@ -60,6 +60,18 @@ class LoadDetailScene extends Component {
 
   componentDidMount() {
     // BackgroundGeolocation.stop();
+
+    BackgroundGeolocation.ready({
+      // desiredAccuracy: BackgroundGeolocation.DESIRED_ACCURACY_HIGH,
+      // distanceFilter: 50,
+    }, function(state) {
+      console.log('state',state);
+      // console.log('- BackgroundGeolocation configured and ready');
+      // if (!state.enabled) {  // <-- current state provided to callback
+      //   BackgroundGeolocation.start();
+      // }
+    });
+
     this.props.dispatch(
       DRIVER_ACTIONS.fetchLoadDetails({
         // loadID: this.props.navigation.getParam('loadID'),
@@ -80,13 +92,13 @@ class LoadDetailScene extends Component {
         reject,
       };
       this.props.dispatch(DRIVER_ACTIONS.setTripStatus(params));
-    }).then((data) => {
-      console.log('data',data);
+    }).then(() => {
       this.setState({
         isFetching:false
       });
     })
       .catch(e => {
+        console.log('e',e);
         this.setState({
           isFetching:false
         });
@@ -106,24 +118,22 @@ class LoadDetailScene extends Component {
   };
 
   startTrip = () => {
-    // console.log('TRACKING_CONFI',{
-    //   ...TRACKING_CONFIG,
-    //   url: `http://${API_URL}/trips/${this.props.load.trip.id}/location/update`,
-    // });
-    this.makeRequest('start');
-    BackgroundGeolocation.on('location', this.onLocation);
-    BackgroundGeolocation.on('http', this.onHttp);
-    BackgroundGeolocation.configure({
-        ...TRACKING_CONFIG,
-        url: `http://${API_URL}/trips/${this.props.load.trip.id}/location/update`
-      },
-      state => {
-        // this.setState({
-        //   tracking_enabled: job.status === 'driving',
-        // });
-      },
-    );
-    BackgroundGeolocation.start();
+    this.makeRequest('start').then(()=> {
+      BackgroundGeolocation.on('location', this.onLocation);
+      BackgroundGeolocation.on('http', this.onHttp);
+      BackgroundGeolocation.configure({
+          ...TRACKING_CONFIG,
+          url: `http://${API_URL}/trips/${this.props.load.trip.id}/location/update`
+        },
+        state => {
+          // this.setState({
+          //   tracking_enabled: job.status === 'driving',
+          // });
+        },
+      );
+      BackgroundGeolocation.start();
+    });
+
   };
 
   onLocation = location => {
@@ -135,8 +145,9 @@ class LoadDetailScene extends Component {
   };
 
   stopTrip = () => {
-    this.makeRequest('stop');
-    BackgroundGeolocation.start();
+    this.makeRequest('stop').then(()=>{
+      BackgroundGeolocation.stop();
+    });
   };
 
   onUserInfoPress = () => {
