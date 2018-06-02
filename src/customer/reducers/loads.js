@@ -7,8 +7,12 @@ const initialState = {
     index: 1,
     attributes: {
       load_date: null,
-      load_time: moment(),
-      trailer_id: null,
+      unload_date: null,
+      load_time_from: moment(),
+      load_time_to: moment(),
+      unload_time_from:moment(),
+      unload_time_to: moment(),
+      trailer_type_id: null,
       trailer_quantity: 1,
       packaging_id: null,
       packaging_dimension: {

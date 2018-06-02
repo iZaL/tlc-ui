@@ -14,7 +14,8 @@ import moment from 'moment';
 export default class LoadWhat extends Component {
   static propTypes = {
     onValueChange: PropTypes.func.isRequired,
-    load_time: PropTypes.object,
+    load_time_from: PropTypes.object,
+    load_time_to: PropTypes.object,
     // onCancel:PropTypes.func.isRequired,
     // visible:PropTypes.bool.isRequired
   };
@@ -37,11 +38,11 @@ export default class LoadWhat extends Component {
 
   onTimeChange = time => {
     let selectedTime = moment(time);
-    this.props.onValueChange('load_time', selectedTime);
+    this.props.onValueChange('load_time_from', selectedTime);
   };
 
   render() {
-    let {load_time, onValueChange} = this.props;
+    let {load_time_from, onValueChange} = this.props;
     let {showTimePicker} = this.state;
 
     return (
@@ -55,12 +56,12 @@ export default class LoadWhat extends Component {
         />
 
         <Button raised onPress={this.showTimePicker}>
-          <Text style={{fontSize: 20}}>{load_time.format('h:mm a')}</Text>
+          <Text style={{fontSize: 20}}>{load_time_from.format('h:mm a')}</Text>
         </Button>
 
         <DateTimePicker
           isVisible={showTimePicker}
-          date={load_time.toDate()}
+          date={load_time_from.toDate()}
           mode="time"
           titleIOS={I18n.t('select_time')}
           confirmBtnText={I18n.t('confirm')}

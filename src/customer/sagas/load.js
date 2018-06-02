@@ -19,21 +19,20 @@ function* saveLoad(action) {
     };
 
     const response = yield call(API.saveLoad, requestParams);
-    const normalized = normalize(response.data, Schema.customers);
-    const {entities, result} = normalized;
+    const formattedResponse = {
+      ...response.customer,
+      loads: {
+        [response.load_status]: [response.load],
+      },
+    };
 
-    // const profile = {
-    //   customers: {
-    //     [result]: {
-    //       ...entities.customers[result],
-    //       meta: response.meta,
-    //     },
-    //   },
-    // };
+    console.log('formattedResponse  '+response.load_status,formattedResponse);
+
+    const normalized = normalize(formattedResponse, Schema.customers);
 
     yield put({
       type: ACTION_TYPES.SAVE_LOAD_SUCCESS,
-      // entities: profile,
+      entities: normalized.entities,
     });
 
     yield put(

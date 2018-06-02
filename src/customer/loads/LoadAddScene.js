@@ -35,6 +35,7 @@ class LoadAddScene extends Component {
     isSuccessDialogVisible: false,
     isPackageDimensionDialogVisible: false,
     isTrailerQuantityDialogVisible: false,
+    isSaving:false
   };
 
   componentDidMount() {
@@ -85,7 +86,7 @@ class LoadAddScene extends Component {
       this.showPackageDimensionDialog();
     }
 
-    if (field == 'trailer_id') {
+    if (field == 'trailer_type_id') {
       this.showTrailerQuantityDialog();
     }
   };
@@ -112,15 +113,22 @@ class LoadAddScene extends Component {
   onLoadPassSearch = searchTerm => {};
 
   onSaveButtonPress = () => {
-    console.log('@todo save');
+    // console.log('@todo save');
 
-    // return new Promise((resolve, reject) => {
-    //   this.props.dispatch(CUSTOMER_ACTIONS.saveLoad({params, resolve}));
-    //   // dispatch(someActionCreator({ values, resolve, reject }))
-    // }).then(() => {});
+    let params = {
+      ...this.props.loadData.attributes
+    };
 
+    console.log('params',params);
+    return new Promise((resolve, reject) => {
+      this.props.dispatch(CUSTOMER_ACTIONS.saveLoad({params, resolve,reject}));
+      // dispatch(someActionCreator({ values, resolve, reject }))
+    }).then(() => {
+      this.showSuccessModalDialog();
+    }).catch(e => {
+      console.log('e',e);
+    });
     // on Success
-    this.showSuccessModalDialog();
   };
 
   showMatchingDrivers = () => {
@@ -138,9 +146,9 @@ class LoadAddScene extends Component {
     } = this.state;
 
     let {
-      load_time,
+      load_time_from,
       packaging_id,
-      trailer_id,
+      trailer_type_id,
       weight,
       request_documents,
       use_own_truck,
@@ -177,7 +185,7 @@ class LoadAddScene extends Component {
                 trailers={trailers}
                 packaging={packaging}
                 packaging_id={packaging_id}
-                trailer_id={trailer_id}
+                trailer_type_id={trailer_type_id}
                 weight={weight}
                 onValueChange={this.onValueChange}
               />
@@ -216,7 +224,7 @@ class LoadAddScene extends Component {
 
             <TabPanel>
               <LoadWhen
-                load_time={load_time}
+                load_time_from={load_time_from}
                 onValueChange={this.onValueChange}
               />
             </TabPanel>

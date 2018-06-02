@@ -14,7 +14,7 @@ export default class LoadWhat extends Component {
     trailers: PropTypes.array.isRequired,
     packaging: PropTypes.array.isRequired,
     packaging_id: PropTypes.number,
-    trailer_id: PropTypes.number,
+    trailer_type_id: PropTypes.number,
     onValueChange: PropTypes.func.isRequired,
     weight: PropTypes.string,
   };
@@ -24,7 +24,7 @@ export default class LoadWhat extends Component {
       trailers,
       packaging,
       packaging_id,
-      trailer_id,
+      trailer_type_id,
       weight,
       onValueChange,
     } = this.props;
@@ -46,8 +46,8 @@ export default class LoadWhat extends Component {
 
         <GridList
           items={trailers}
-          onItemPress={item => onValueChange('trailer_id', item.id)}
-          activeItemID={trailer_id}
+          onItemPress={item => onValueChange('trailer_type_id', item.id)}
+          activeItemID={trailer_type_id}
         />
 
         <Divider
