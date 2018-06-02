@@ -40,7 +40,7 @@ class LoadListScene extends Component {
   }
 
   onLoadsListItemPress = (load: object) => {
-    this.props.navigation.navigate('LoadDetailOptionsList', {
+    this.props.navigation.navigate('LoadDetail', {
       loadID: load.id,
     });
   };

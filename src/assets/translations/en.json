@@ -295,6 +295,9 @@
   "confirm_trip?" : "Are you sure you want to confirm this Trip?",
   "start_trip?" : "Are you sure you want to start this Trip?",
   "stop_trip?" : "Are you sure you want to stop this Trip?",
-  "open_in_google_maps?" : "Do you want to open the address in Google Maps?"
+  "open_in_google_maps?" : "Do you want to open the address in Google Maps?",
+
+
+  "options" : "Options"
 
 }

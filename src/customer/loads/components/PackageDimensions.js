@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
-import Modal from 'react-native-modal';
+import Modal from 'components/Modal';
 import TextInput from 'components/TextInput';
 import I18n from 'utils/locale';
 import {Button} from 'react-native-paper';
@@ -49,7 +49,7 @@ export default class PackageDimensions extends Component {
                 keyboardType="numeric"
                 autoFocus={false}
                 style={styles.textInput}
-                label={`${I18n.t('length')} ${I18n.t('cm')}`}
+                label={`${I18n.t('length')} ${I18n.t('m')}`}
               />
 
               <TextInput
@@ -60,7 +60,7 @@ export default class PackageDimensions extends Component {
                 keyboardType="numeric"
                 autoFocus={false}
                 style={styles.textInput}
-                label={`${I18n.t('width')} ${I18n.t('cm')}`}
+                label={`${I18n.t('width')} ${I18n.t('m')}`}
               />
 
               <TextInput
@@ -71,7 +71,7 @@ export default class PackageDimensions extends Component {
                 keyboardType="numeric"
                 autoFocus={false}
                 style={styles.textInput}
-                label={`${I18n.t('height')} ${I18n.t('cm')}`}
+                label={`${I18n.t('height')} ${I18n.t('m')}`}
               />
             </View>
 
@@ -84,7 +84,7 @@ export default class PackageDimensions extends Component {
                 keyboardType="numeric"
                 autoFocus={false}
                 style={styles.textInput}
-                label={`${I18n.t('weight')} ${I18n.t('kg')}`}
+                label={`${I18n.t('weight')} ${I18n.t('tons')}`}
               />
 
               <TextInput

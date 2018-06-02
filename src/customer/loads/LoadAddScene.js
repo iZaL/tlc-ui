@@ -166,7 +166,7 @@ class LoadAddScene extends Component {
             <TabHeader title={I18n.t('load_info')} />
             <TabHeader title={I18n.t('load_location')} />
             <TabHeader title={I18n.t('date')} />
-            <TabHeader title={I18n.t('documents')} />
+            <TabHeader title={I18n.t('options')} />
             <TabHeader title={I18n.t('security_passes')} />
             <TabHeader title={I18n.t('receiver_information')} />
           </TabList>

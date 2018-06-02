@@ -58,8 +58,9 @@ export default class LoadWhat extends Component {
           <TextInput
             onValueChange={onValueChange}
             field="weight"
+            placeholder={`${I18n.t('weight')} (${I18n.t('tons').toLowerCase()})`}
             value={weight}
-            maxLength={40}
+            maxLength={10}
             label={I18n.t('weight')}
             keyboardType="phone-pad"
           />

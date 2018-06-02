@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {ScrollView, StyleSheet, Text, View, Picker} from 'react-native';
-import Modal from 'react-native-modal';
-import TextInput from 'components/TextInput';
+import Modal from 'components/Modal';
 import I18n from 'utils/locale';
 import {Button} from 'react-native-paper';
 
