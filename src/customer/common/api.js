@@ -5,6 +5,11 @@ function fetchProfile() {
   return fetchAPI({path});
 }
 
+function fetchCurrentLoad() {
+  const path = `customer/loads/current`;
+  return fetchAPI({path});
+}
+
 function fetchBlockedDrivers() {
   const path = `customer/drivers/blocked`;
   return fetchAPI({path});
@@ -108,6 +113,7 @@ export const API = {
   fetchLoadBookableDrivers,
   fetchLoadDetails,
   fetchTripDetails,
+  fetchCurrentLoad,
   saveProfile,
   saveEmployee,
   saveLocation,

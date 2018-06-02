@@ -55,6 +55,10 @@ export const ACTION_TYPES = {
 
   SUBSCRIBE_TO_TRIP_TRACK_CHANNEL: '@customer/SUBSCRIBE_TO_TRIP_TRACK_CHANNEL',
 
+  FETCH_CURRENT_LOAD_REQUEST: '@customer/FETCH_CURRENT_LOAD_REQUEST',
+  FETCH_CURRENT_LOAD_SUCCESS: '@customer/FETCH_CURRENT_LOAD_SUCCESS',
+  FETCH_CURRENT_LOAD_FAILURE: '@customer/FETCH_CURRENT_LOAD_FAILURE',
+
   FETCH_LOAD_DETAILS_REQUEST: '@customer/FETCH_LOAD_DETAILS_REQUEST',
   FETCH_LOAD_DETAILS_SUCCESS: '@customer/FETCH_LOAD_DETAILS_SUCCESS',
   FETCH_LOAD_DETAILS_FAILURE: '@customer/FETCH_LOAD_DETAILS_FAILURE',
@@ -194,6 +198,14 @@ function fetchTripDetails(params) {
   };
 }
 
+
+function fetchCurrentLoad(params) {
+  return {
+    type: ACTION_TYPES.FETCH_CURRENT_LOAD_REQUEST,
+    params,
+  };
+}
+
 export const ACTIONS = {
   saveProfile,
   fetchProfile,
@@ -208,6 +220,7 @@ export const ACTIONS = {
   fetchLoadDrivers,
   fetchLoadBookableDrivers,
   fetchTripDetails,
+  fetchCurrentLoad,
   saveLoad,
   subscribeToTripTrack,
   setAddData,

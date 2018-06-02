@@ -1,4 +1,4 @@
-import {all, call, fork, put, takeLatest} from 'redux-saga/effects';
+import {all, call, fork, put, takeLatest,takeEvery} from 'redux-saga/effects';
 import {API} from 'customer/common/api';
 import {ACTION_TYPES} from 'customer/common/actions';
 import {Schema} from 'utils/schema';
@@ -84,28 +84,6 @@ function* fetchLoadAdd() {
   }
 }
 
-// function* fetchLoadsByStatus(action: object) {
-//   try {
-//     const response = yield call(API.fetchLoadsByStatus, action.params.status);
-//
-//     const formattedResponse = {
-//       ...response.driver,
-//       loads: {
-//         [response.load_status]: response.loads,
-//       },
-//     };
-//
-//     const normalized = normalize(formattedResponse, Schema.drivers);
-//     yield put({
-//       type: ACTION_TYPES.FETCH_LOADS_BY_STATUS_SUCCESS,
-//       entities: normalized.entities,
-//       result: normalized.result,
-//     });
-//   } catch (error) {
-//     yield put({type: ACTION_TYPES.FETCH_LOADS_BY_STATUS_FAILURE, error});
-//   }
-// }
-
 function* fetchLoadsByStatus(action: object) {
   try {
     const response = yield call(API.fetchLoadsByStatus, action.params.status);
@@ -116,7 +94,7 @@ function* fetchLoadsByStatus(action: object) {
       },
     };
 
-    console.log('formattdeResponse',formattedResponse);
+    console.log('formattedResponse  '+response.load_status,formattedResponse);
 
     const normalized = normalize(formattedResponse, Schema.customers);
     yield put({
@@ -143,6 +121,26 @@ function* fetchLoadDetails(action) {
   }
 }
 
+function* fetchCurrentLoad() {
+  try {
+    const response = yield call(API.fetchCurrentLoad);
+
+    const formattedResponse = {
+      ...response.customer,
+      current_loads: response.loads,
+    };
+
+    const normalized = normalize(formattedResponse, Schema.customers);
+    yield put({
+      type: ACTION_TYPES.FETCH_CURRENT_LOAD_SUCCESS,
+      entities: normalized.entities,
+      result: normalized.result,
+    });
+  } catch (error) {
+    yield put({type: ACTION_TYPES.FETCH_CURRENT_LOAD_FAILURE, error});
+  }
+}
+
 function* saveLoadMonitor() {
   yield takeLatest(ACTION_TYPES.SAVE_LOAD_REQUEST, saveLoad);
 }
@@ -152,7 +150,7 @@ function* fetchLoadAddDataMonitor() {
 }
 
 function* fetchLoadsByStatusMonitor() {
-  yield takeLatest(
+  yield takeEvery(
     ACTION_TYPES.FETCH_LOADS_BY_STATUS_REQUEST,
     fetchLoadsByStatus,
   );
@@ -162,9 +160,15 @@ function* fetchLoadDetailsMonitor() {
   yield takeLatest(ACTION_TYPES.FETCH_LOAD_DETAILS_REQUEST, fetchLoadDetails);
 }
 
+function* fetchCurrentLoadMonitor() {
+  yield takeLatest(ACTION_TYPES.FETCH_CURRENT_LOAD_REQUEST, fetchCurrentLoad);
+}
+
+
 export const sagas = all([
   fork(fetchLoadAddDataMonitor),
   fork(fetchLoadsByStatusMonitor),
   fork(saveLoadMonitor),
   fork(fetchLoadDetailsMonitor),
+  fork(fetchCurrentLoadMonitor),
 ]);

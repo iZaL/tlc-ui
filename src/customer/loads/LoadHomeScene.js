@@ -23,25 +23,25 @@ class LoadHomeScene extends Component {
           title: I18n.t('load_add'),
         };
         break;
-      case 'load_working_list':
+      case 'loads_dispatched':
         scene = 'LoadList';
         sceneConfig = {
-          title: I18n.t('load_working_list'),
+          title: I18n.t('loads_dispatched'),
           status: 'completed',
         };
 
-      case 'load_completed_list':
+      case 'loads_completed':
         scene = 'LoadList';
         sceneConfig = {
-          title: I18n.t('load_completed_list'),
+          title: I18n.t('loads_completed'),
           status: 'completed',
         };
         break;
 
-      case 'load_approved_list':
+      case 'loads_upcoming':
         scene = 'LoadList';
         sceneConfig = {
-          title: I18n.t('load_approved_list'),
+          title: I18n.t('loads_upcoming'),
           status: 'approved',
         };
         break;
@@ -64,8 +64,8 @@ class LoadHomeScene extends Component {
         <ListItem
           onPress={this.onListItemPress}
           iconProps={{type: 'MaterialCommunityIcons', name: 'truck-delivery'}}
-          name="load_working_list"
-          title={I18n.t('load_working_list')}
+          name="loads_dispatched"
+          title={I18n.t('loads_dispatched')}
         />
 
         <Divider />
@@ -73,8 +73,8 @@ class LoadHomeScene extends Component {
         <ListItem
           onPress={this.onListItemPress}
           iconProps={{type: 'Entypo', name: 'back-in-time'}}
-          name="load_approved_list"
-          title={I18n.t('load_approved_list')}
+          name="loads_upcoming"
+          title={I18n.t('loads_upcoming')}
         />
 
         <Divider />
@@ -82,8 +82,8 @@ class LoadHomeScene extends Component {
         <ListItem
           onPress={this.onListItemPress}
           iconProps={{type: 'MaterialIcons', name: 'timelapse'}}
-          name="load_completed_list"
-          title={I18n.t('load_completed_list')}
+          name="loads_completed"
+          title={I18n.t('loads_completed')}
         />
       </ListSection>
     );

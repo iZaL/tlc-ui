@@ -24,6 +24,11 @@ class Home extends Component {
     // this.props.dispatch(CUSTOMER_ACTIONS.fetchCurrentLoad());
     this.props.dispatch(
       CUSTOMER_ACTIONS.fetchLoadsByStatus({
+        status: 'confirmed',
+      }),
+    );
+    this.props.dispatch(
+      CUSTOMER_ACTIONS.fetchLoadsByStatus({
         status: 'pending',
       }),
     );
@@ -43,27 +48,25 @@ class Home extends Component {
   };
 
   render() {
-    let {current_load, loads_pending} = this.props;
-    console.log('loads_pending', loads_pending);
+    let {loads_confirmed, loads_pending} = this.props;
+    // console.log('loads_confirmed', loads_confirmed);
+    // console.log('loads_pending', loads_pending);
 
     return (
       <ScrollView style={{flex: 1}}>
-        {current_load &&
-        current_load.id && (
-          <LoadsList
-            items={[current_load]}
-            onItemPress={this.onLoadsListItemPress}
-            header={
-              <Heading title={I18n.t('trip_current')} style={{padding: 5}} />
-            }
-          />
-        )}
+        <LoadsList
+          items={loads_confirmed}
+          onItemPress={this.onLoadsListItemPress}
+          header={
+            <Heading title={I18n.t('loads_upcoming')} style={{padding: 5}} />
+          }
+        />
 
         <LoadsList
           items={loads_pending}
           onItemPress={this.onLoadRequestsListItemPress}
           header={
-            <Heading title={I18n.t('trip_requests')} style={{padding: 5}} />
+            <Heading title={I18n.t('loads_pending')} style={{padding: 5}} />
           }
         />
       </ScrollView>
@@ -75,8 +78,8 @@ const makeMapStateToProps = () => {
   const getLoadsByStatus = CUSTOMER_SELECTORS.getLoadsByStatus();
   const mapStateToProps = (state, props) => {
     return {
-      current_load: CUSTOMER_SELECTORS.getCurrentLoad(state),
       loads_pending: getLoadsByStatus(state, 'pending'),
+      loads_confirmed: getLoadsByStatus(state, 'confirmed'),
     };
   };
   return mapStateToProps;
