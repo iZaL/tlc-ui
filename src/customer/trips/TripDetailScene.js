@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {ScrollView, View} from 'react-native';
+import {ScrollView, Text, View} from 'react-native';
 import Tabs from 'components/Tabs';
 import TabList from 'components/TabList';
 import TabPanels from 'components/TabPanels';
@@ -33,6 +33,13 @@ class TripDetailScene extends Component {
 
   componentDidMount() {
     // let {tripID} = this.props.navigation.state.params;
+
+    this.props.dispatch(
+      CUSTOMER_ACTIONS.subscribeToTripTrack({
+        trip_id: 1,
+      }),
+    );
+
     this.props.dispatch(
       CUSTOMER_ACTIONS.fetchTripDetails({
         tripID: 1,
@@ -57,11 +64,21 @@ class TripDetailScene extends Component {
       };
     }
 
+    console.log('tracking',tracking);
+
     let address = {
       latitude: 37.37166518,
       longitude: -122.217832462,
     };
-
+    // return (
+    //   <Map
+    //     origin={origin}
+    //     destination={{
+    //       latitude: address.latitude,
+    //       longitude: address.longitude,
+    //     }}
+    //   />
+    // );
     if (trip.id) {
       return (
         <ScrollView style={{flex: 1}}>
@@ -102,6 +119,9 @@ class TripDetailScene extends Component {
                   destination={{
                     latitude: address.latitude,
                     longitude: address.longitude,
+                  }}
+                  style={{
+                    height:500
                   }}
                 />
               </TabPanel>
