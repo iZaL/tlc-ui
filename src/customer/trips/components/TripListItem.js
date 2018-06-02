@@ -39,7 +39,7 @@ export default class extends PureComponent {
           underlayColor="transparent">
           <View style={styles.rightContainer}>
             <Label title={I18n.t('status')} />
-            <Text style={styles.status}>{item.status}</Text>
+            <Text style={styles.status}>{item.status_formatted}</Text>
           </View>
         </TouchableRipple>
       </View>

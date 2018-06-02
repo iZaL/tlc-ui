@@ -13,6 +13,7 @@ import I18n from 'utils/locale';
 import DriverInfo from 'driver/components/DriverInfo';
 import TruckInfo from 'trucks/components/TruckInfo';
 import TrailerInfo from 'trucks/components/TrailerInfo';
+import Map from 'customer/trips/components/Map';
 
 class TripDetailScene extends Component {
   static propTypes = {
@@ -40,9 +41,26 @@ class TripDetailScene extends Component {
   }
 
   render() {
-    let {trip} = this.props;
+    let {trip,tracking} = this.props;
 
-    console.log('props', trip);
+    let origin;
+
+    if (tracking.latitude) {
+      origin = tracking;
+    } else {
+      origin = {
+        latitude: 37.78825,
+        longitude: -122.4324,
+        // latitude: 29.3772392006689,
+        // longitude: 47.98511826155676,
+        heading: 0,
+      };
+    }
+
+    let address = {
+      latitude: 37.37166518,
+      longitude: -122.217832462,
+    };
 
     if (trip.id) {
       return (
@@ -78,7 +96,16 @@ class TripDetailScene extends Component {
                 )}
               </TabPanel>
 
-              <TabPanel hideNextButton={true} />
+              <TabPanel hideNextButton={true} >
+                <Map
+                  origin={origin}
+                  destination={{
+                    latitude: address.latitude,
+                    longitude: address.longitude,
+                  }}
+                />
+              </TabPanel>
+
             </TabPanels>
           </Tabs>
         </ScrollView>
@@ -91,9 +118,12 @@ class TripDetailScene extends Component {
 
 const makeMapStateToProps = () => {
   const getTripByID = CUSTOMER_SELECTORS.getTripByID();
+  const getLocationUpdatesForJob = CUSTOMER_SELECTORS.getLocationUpdatesForTrip();
   const mapStateToProps = (state, props) => {
+    const tripID = props.navigation.getParam('tripID');
     return {
       trip: getTripByID(state, 1),
+      tracking: getLocationUpdatesForJob(state, 1),
     };
   };
   return mapStateToProps;

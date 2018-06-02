@@ -27,9 +27,8 @@ class LoadHomeScene extends Component {
         scene = 'LoadList';
         sceneConfig = {
           title: I18n.t('loads_dispatched'),
-          status: 'completed',
+          status: 'pending',
         };
-
       case 'loads_completed':
         scene = 'LoadList';
         sceneConfig = {
@@ -37,12 +36,11 @@ class LoadHomeScene extends Component {
           status: 'completed',
         };
         break;
-
       case 'loads_upcoming':
         scene = 'LoadList';
         sceneConfig = {
           title: I18n.t('loads_upcoming'),
-          status: 'approved',
+          status: 'confirmed',
         };
         break;
     }
