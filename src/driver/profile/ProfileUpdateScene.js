@@ -17,7 +17,7 @@ class ProfileUpdateScene extends Component {
 
   state = {
     languageModalVisible: false,
-    personalInformationModalVisible: true,
+    personalInformationModalVisible: false,
     activeLanguages: ['english', 'arabic'],
     mobile: '',
   };

@@ -80,7 +80,7 @@ class LoadDetailScene extends Component {
     );
   }
 
-  makeRequest = (status) => {
+  setTripStatus = (status) => {
     this.setState({
       isFetching:true
     });
@@ -106,46 +106,30 @@ class LoadDetailScene extends Component {
   };
 
   acceptTrip = () => {
-    this.makeRequest('accept');
+    this.setTripStatus('accept');
   };
 
   cancelTrip = () => {
-    this.makeRequest('cancel');
+    this.setTripStatus('cancel');
   };
 
   confirmTrip = () => {
-    this.makeRequest('confirm');
+    this.setTripStatus('confirm');
   };
 
   startTrip = () => {
-    this.makeRequest('start').then(()=> {
-      BackgroundGeolocation.on('location', this.onLocation);
-      BackgroundGeolocation.on('http', this.onHttp);
+    this.setTripStatus('start').then(()=> {
       BackgroundGeolocation.configure({
           ...TRACKING_CONFIG,
           url: `http://${API_URL}/trips/${this.props.load.trip.id}/location/update`
         },
-        state => {
-          // this.setState({
-          //   tracking_enabled: job.status === 'driving',
-          // });
-        },
       );
       BackgroundGeolocation.start();
     });
-
-  };
-
-  onLocation = location => {
-    console.log('location',location);
-  };
-
-  onHttp = response => {
-    console.log('[event] http: ',response);
   };
 
   stopTrip = () => {
-    this.makeRequest('stop').then(()=>{
+    this.setTripStatus('stop').then(()=>{
       BackgroundGeolocation.stop();
     });
   };

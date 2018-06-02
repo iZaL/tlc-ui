@@ -10,7 +10,7 @@ import I18n from 'utils/locale';
 
 export default class extends Component {
   static propTypes = {
-    isVisible: PropTypes.bool.isRequired,
+    visible: PropTypes.bool.isRequired,
     onCancel: PropTypes.func.isRequired,
     children: PropTypes.any.isRequired,
     title: PropTypes.func,
@@ -21,11 +21,11 @@ export default class extends Component {
   };
 
   render() {
-    let {isVisible, onCancel, header, children, style} = this.props;
+    let {visible, onCancel, header, children, style} = this.props;
 
     return (
       <Modal
-        visible={isVisible}
+        isVisible={visible}
         transparent={true}
         style={[styles.container, style]}
         onSwipe={onCancel}
