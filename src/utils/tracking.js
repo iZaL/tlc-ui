@@ -1,7 +1,7 @@
 import {API_URL, GEOLOCATION_SOUNDS_ENABLED} from 'utils/env';
 import BackgroundGeolocation from 'react-native-background-geolocation';
 export default {
-  distanceFilter: 100,
+  distanceFilter: 10,
   stopOnTerminate: false,
   preventSuspend: false,
   startOnBoot: true,

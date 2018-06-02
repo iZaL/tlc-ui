@@ -6,7 +6,7 @@ if (__DEV__) {
   module.exports = {
     ...defaults,
     API_URL: Platform.OS === 'ios' ? 'tlc.test/api' : '10.0.2.2:9000/api',
-    SOCKET_SERVER: 'http://10.0.2.2:3000',
+    SOCKET_SERVER: Platform.OS === 'ios' ? 'tlc.test:3000' : '10.0.2.2:9000/api',
     GOOGLE_MAPS_KEY: 'AIzaSyCpQX4H0QPxVgKuNMZ0ELG_ymgT8RHcKh4',
     GOOGLE_MAPS_IOS_KEY: 'AIzaSyDPCgdWqrkBe4v3uSuU-MZGJIZ0AQxfbCo',
     GOOGLE_MAPS_ANDROID_KEY: 'AIzaSyCpQX4H0QPxVgKuNMZ0ELG_ymgT8RHcKh4',
