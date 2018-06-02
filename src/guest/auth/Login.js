@@ -93,6 +93,15 @@ class Login extends Component {
           title={busy ? I18n.t('logging_in') : I18n.t('login').toUpperCase()}
           style={{marginTop: 25}}
         />
+
+        <Button
+          onPress={this.handleRegisterRoute}
+          title={I18n.t('register').toUpperCase()}
+          style={{marginTop: 25}}
+          raised={false}
+          primary={false}
+        />
+
       </View>
     );
   }

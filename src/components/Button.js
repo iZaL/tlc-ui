@@ -13,17 +13,24 @@ export default class Button extends Component {
 
   static propTypes = {
     title: PropTypes.string.isRequired,
+    raised:PropTypes.bool,
+    primary:PropTypes.bool
+  };
+
+  static defaultProps = {
+    raised:true,
+    primary:true
   };
 
   render() {
-    const {style, title, titleStyle, disabled, ...rest} = this.props;
+    const {style, title, titleStyle, disabled, raised,primary, ...rest} = this.props;
     return (
       <PaperButton
         {...rest}
         disabled={disabled}
         style={[styles.button, style, disabled && {opacity: 0.4}]}
-        raised
-        primary
+        raised={raised}
+        primary={primary}
       >
         <Text style={[styles.buttonText, titleStyle]}>{title}</Text>
       </PaperButton>
