@@ -58,7 +58,7 @@ class Home extends Component {
           items={loads_confirmed}
           onItemPress={this.onLoadsListItemPress}
           header={
-            <Heading title={I18n.t('loads_upcoming')} style={{padding: 5}} />
+            <Heading title={I18n.t('loads_confirmed')} style={{padding: 5}} />
           }
         />
 

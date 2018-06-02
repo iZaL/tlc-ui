@@ -149,7 +149,7 @@
   "load_time" : "Load Time",
   "loads_completed" : "Past Loads",
   "loads_dispatched" : "Loads on progress",
-  "loads_upcoming" : "Upcoming Loads",
+  "loads_confirmed" : "Upcoming Loads",
   "loads_pending" : "Pending Loads",
   "load_accept" : "Accept Booking",
   "load_detail" : "Load Detail",

@@ -10,14 +10,12 @@ function* saveLoad(action) {
   const {
     payload: {params, resolve},
   } = action;
-
   try {
     let requestParams = {
       body: {
         ...params,
       },
     };
-
     const response = yield call(API.saveLoad, requestParams);
     const formattedResponse = {
       ...response.customer,
@@ -25,16 +23,11 @@ function* saveLoad(action) {
         [response.load_status]: [response.load],
       },
     };
-
-    console.log('formattedResponse  '+response.load_status,formattedResponse);
-
     const normalized = normalize(formattedResponse, Schema.customers);
-
     yield put({
       type: ACTION_TYPES.SAVE_LOAD_SUCCESS,
       entities: normalized.entities,
     });
-
     yield put(
       APP_ACTIONS.setNotification({
         message: I18n.t('load_add_success'),

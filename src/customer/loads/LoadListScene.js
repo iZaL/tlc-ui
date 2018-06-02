@@ -10,9 +10,7 @@ type STATUS = 'working|confirmed|completed';
 
 class LoadListScene extends Component {
   static navigationOptions = ({navigation}) => {
-    const {params} = navigation.state;
-    const status = (params && params.status) || null;
-    let title = status ? `load_${status}_list` : 'loads';
+    let title = `loads_${navigation.getParam('status')}`;
     return {
       title: I18n.t(title),
     };
@@ -35,7 +33,7 @@ class LoadListScene extends Component {
   };
 
   componentDidMount() {
-    let {status} = this.props.navigation.state.params;
+    let status = this.props.navigation.getParam('status');
     this.props.dispatch(CUSTOMER_ACTIONS.fetchLoadsByStatus({status: status}));
   }
 
@@ -54,9 +52,10 @@ class LoadListScene extends Component {
 const makeMapStateToProps = () => {
   const getLoadsByStatus = CUSTOMER_SELECTORS.getLoadsByStatus();
   const mapStateToProps = (state, props) => {
+    console.log('status',props.navigation.getParam('status'));
     return {
       loads:
-        getLoadsByStatus(state, props.navigation.state.params.status) || [],
+        getLoadsByStatus(state, props.navigation.getParam('status')) || [],
     };
   };
   return mapStateToProps;

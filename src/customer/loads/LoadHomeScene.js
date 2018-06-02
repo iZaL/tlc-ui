@@ -27,8 +27,9 @@ class LoadHomeScene extends Component {
         scene = 'LoadList';
         sceneConfig = {
           title: I18n.t('loads_dispatched'),
-          status: 'pending',
+          status: 'dispatched',
         };
+        break;
       case 'loads_completed':
         scene = 'LoadList';
         sceneConfig = {
@@ -36,10 +37,10 @@ class LoadHomeScene extends Component {
           status: 'completed',
         };
         break;
-      case 'loads_upcoming':
+      case 'loads_confirmed':
         scene = 'LoadList';
         sceneConfig = {
-          title: I18n.t('loads_upcoming'),
+          title: I18n.t('loads_confirmed'),
           status: 'confirmed',
         };
         break;
@@ -71,8 +72,8 @@ class LoadHomeScene extends Component {
         <ListItem
           onPress={this.onListItemPress}
           iconProps={{type: 'Entypo', name: 'back-in-time'}}
-          name="loads_upcoming"
-          title={I18n.t('loads_upcoming')}
+          name="loads_confirmed"
+          title={I18n.t('loads_confirmed')}
         />
 
         <Divider />
