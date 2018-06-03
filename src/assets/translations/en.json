@@ -301,6 +301,7 @@
   "open_in_google_maps?" : "Do you want to open the address in Google Maps?",
 
 
-  "options" : "Options"
+  "options" : "Options",
+  "language_change": "Change Language"
 
 }

@@ -61,6 +61,17 @@ export default class Drawer extends Component {
         />
 
         <DrawerItem
+          label={I18n.t('language_change')}
+          routeName="LanguageSelect"
+          onItemPress={this.onItemPress}
+          iconProps={{
+            name: 'md-globe',
+            type: 'Ionicons',
+          }}
+          active={this.state.activeRoute === 'LanguageSelect'}
+        />
+
+        <DrawerItem
           label={I18n.t('logout')}
           routeName="Logout"
           onItemPress={logout}

@@ -22,6 +22,7 @@ import DriversListScene from 'customer/loads/DriversListScene';
 import DriversBlockListScene from 'customer/profile/DriversBlockListScene';
 import TripDetailScene from 'customer/trips/TripDetailScene';
 import TripCreateScene from 'customer/trips/TripCreateScene';
+import LanguageSelect from 'app/LanguageSelect';
 
 const getDrawerIcon = navigation => {
   return {
@@ -37,6 +38,9 @@ const HomeStack = createStackNavigator(
         ...getDrawerIcon(navigation),
         title: 'Home',
       }),
+    },
+    LanguageSelect: {
+      screen: LanguageSelect,
     },
   },
   {
