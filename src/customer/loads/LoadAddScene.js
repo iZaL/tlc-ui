@@ -147,6 +147,11 @@ class LoadAddScene extends Component {
 
     let {
       load_time_from,
+      load_time_to,
+      unload_time_from,
+      unload_time_to,
+      load_date,
+      unload_date,
       packaging_id,
       trailer_type_id,
       weight,
@@ -225,6 +230,11 @@ class LoadAddScene extends Component {
             <TabPanel>
               <LoadWhen
                 load_time_from={load_time_from}
+                load_time_to={load_time_to}
+                unload_time_from={unload_time_from}
+                unload_time_to={unload_time_to}
+                load_date={load_date}
+                unload_date={unload_date}
                 onValueChange={this.onValueChange}
               />
             </TabPanel>

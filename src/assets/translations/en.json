@@ -146,6 +146,7 @@
   "loads" : "Loads",
   "load_add" : "Post a Load",
   "load_date" : "Load Date",
+  "unload_date" : "Unload Date",
   "load_time" : "Load Time",
   "loads_completed" : "Past Loads",
   "loads_dispatched" : "Loads on progress",
@@ -221,6 +222,8 @@
   "inch" : "inch",
 
   "select_time" : "Select Loading Time",
+  "time_from" : "Time From",
+  "time_to" : "Time To",
 
   "english" : "English",
   "arabic" : "Arabic",

@@ -22,11 +22,13 @@ export default class LoadWhat extends Component {
 
   state = {
     showTimePicker: false,
+    activeTime:'load_date_from'
   };
 
-  showTimePicker = () => {
+  showTimePicker = (activeTime) => {
     this.setState({
       showTimePicker: true,
+      activeTime:activeTime
     });
   };
 
@@ -38,12 +40,28 @@ export default class LoadWhat extends Component {
 
   onTimeChange = time => {
     let selectedTime = moment(time);
-    this.props.onValueChange('load_time_from', selectedTime);
+    this.props.onValueChange([this.state.activeTime], selectedTime);
+  };
+
+  getTime = () => {
+    let {activeTime} = this.state;
+    let {load_time_from,load_time_to,unload_time_from,unload_time_to, onValueChange} = this.props;
+    switch (activeTime) {
+      case 'load_time_from':
+        return load_time_from.toDate();
+      case 'load_time_to':
+        return load_time_to.toDate();
+      case 'unload_time_from':
+        return unload_time_from.toDate();
+      case 'unload_time_to':
+        return unload_time_to.toDate();
+    }
   };
 
   render() {
-    let {load_time_from, onValueChange} = this.props;
-    let {showTimePicker} = this.state;
+    let {load_time_from,load_time_to,unload_time_from,unload_time_to, onValueChange} = this.props;
+    let {showTimePicker,activeTime} = this.state;
+
 
     return (
       <View style={{padding: 10}}>
@@ -51,17 +69,48 @@ export default class LoadWhat extends Component {
 
         <DatePicker onDateChange={date => onValueChange('load_date', date)} />
 
+        <View style={{flexDirection:'row'}}>
+          <Button raised onPress={()=>this.showTimePicker('load_time_from')} style={{flex:1}}>
+            <View>
+              <Title>{I18n.t('time_from')}</Title>
+              <Text style={{fontSize: 20}}>{load_time_from.format('h:mm a')}</Text>
+            </View>
+          </Button>
+          <Button raised onPress={()=>this.showTimePicker('load_time_to')} style={{flex:1}}>
+            <View>
+              <Title>{I18n.t('time_from')}</Title>
+              <Text style={{fontSize: 20}}>{load_time_to.format('h:mm a')}</Text>
+            </View>
+          </Button>
+        </View>
+
+        <Divider style={{marginVertical:20}}/>
+        <Title>{I18n.t('unload_date')}</Title>
+
+        <DatePicker onDateChange={date => onValueChange('unload_date', date)} />
+
+        <View style={{flexDirection:'row'}}>
+          <Button raised onPress={()=>this.showTimePicker('unload_time_from')} style={{flex:1}}>
+            <View>
+              <Title>{I18n.t('time_from')}</Title>
+              <Text style={{fontSize: 20}}>{unload_time_from.format('h:mm a')}</Text>
+            </View>
+          </Button>
+          <Button raised onPress={()=>this.showTimePicker('unload_time_to')} style={{flex:1}}>
+            <View>
+              <Title>{I18n.t('time_from')}</Title>
+              <Text style={{fontSize: 20}}>{unload_time_to.format('h:mm a')}</Text>
+            </View>
+          </Button>
+        </View>
+
         <Divider
           style={{marginVertical: 10, backgroundColor: colors.mediumGrey}}
         />
 
-        <Button raised onPress={this.showTimePicker}>
-          <Text style={{fontSize: 20}}>{load_time_from.format('h:mm a')}</Text>
-        </Button>
-
         <DateTimePicker
           isVisible={showTimePicker}
-          date={load_time_from.toDate()}
+          date={this.getTime()}
           mode="time"
           titleIOS={I18n.t('select_time')}
           confirmBtnText={I18n.t('confirm')}
