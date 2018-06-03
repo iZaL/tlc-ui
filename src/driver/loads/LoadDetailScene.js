@@ -281,6 +281,7 @@ class LoadDetailScene extends Component {
 
                   <Dialog
                     rightPress={this.hideEmployeeDetail}
+                    rightText={I18n.t('close')}
                     visible={employeeDetailVisible}>
                     <View>
                       <UserInfo
