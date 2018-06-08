@@ -62,17 +62,17 @@ class DriversBlockListScene extends Component {
           onItemPress={this.onDriversListItemPress}
         />
 
-        <FAB
-          icon="add"
-          dark
-          onPress={this.showDriversModal}
-          medium
-          style={{
-            left: 20,
-            bottom: 20,
-            backgroundColor: colors.primary,
-          }}
-        />
+        <View style={{alignItems:'flex-end',padding:20}}>
+          <FAB
+            icon="add"
+            dark
+            onPress={this.showDriversModal}
+            medium
+            style={{
+              backgroundColor: colors.primary,
+            }}
+          />
+        </View>
 
         <ListModal
           header={I18n.t('drivers_select')}

@@ -4,7 +4,7 @@ import {ACTION_TYPES} from 'customer/common/actions';
 import {Schema} from 'utils/schema';
 import {normalize} from 'normalizr';
 import {ACTIONS as APP_ACTIONS} from 'app/common/actions';
-
+import I18n from 'utils/locale';
 function* saveProfile(action) {
   try {
     let params = {
@@ -30,6 +30,9 @@ function* saveProfile(action) {
       type: ACTION_TYPES.UPDATE_PROFILE_SUCCESS,
       entities: profile,
     });
+
+    yield put(APP_ACTIONS.setNotification({message: I18n.t('success'), type: 'success'}));
+
   } catch (error) {
     yield put(APP_ACTIONS.setNotification({message: error, type: 'error'}));
     yield put({type: ACTION_TYPES.UPDATE_PROFILE_FAILURE, error});

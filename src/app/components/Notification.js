@@ -1,25 +1,21 @@
 import PropTypes from 'prop-types';
 import React, {Component} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import Modal from 'react-native-modal';
 import isEmpty from 'lodash/isEmpty';
 import colors from 'assets/theme/colors';
-import {Button} from 'react-native-paper';
 import I18n from 'utils/locale';
+import { Snackbar } from 'react-native-paper';
 
 export default class Notification extends Component {
   static propTypes = PropTypes.shape({
     message: PropTypes.string.isRequired,
     type: PropTypes.string,
-    position: PropTypes.string,
-    backdropDismiss: PropTypes.bool,
   }).isRequired;
 
   state = {
     visible: false,
   };
 
-  static getDerivedStateFromProps(nextProps, prevState) {
+  static getDerivedStateFromProps(nextProps) {
     if (!isEmpty(nextProps.message)) {
       return {
         visible: true,
@@ -40,84 +36,30 @@ export default class Notification extends Component {
   };
 
   render() {
-    const {type, message, backdropDismiss, position} = this.props;
+    const {type, message} = this.props;
 
     const {visible} = this.state;
 
     return (
-      <View style={styles.container}>
-        <Modal
-          isVisible={visible}
-          style={[styles[position]]}
-          onBackdropPress={() => (backdropDismiss ? this.closeModal() : null)}
-          ref="root-modal"
-          useNativeDriver={true}>
-          {position === 'center' ? (
-            <View
-              style={[
-                styles.centerModal,
-              ]}>
-              <Text style={[styles.text, styles.centerText]}>{message}</Text>
-              <Button
-                style={styles.centerButton}
-                onPress={this.closeModal}
-              >
-                {I18n.t('continue').toUpperCase()}
-              </Button>
-            </View>
-          ) : (
-            <View
-              style={[
-                styles.modalContent,
-                {
-                  backgroundColor: colors[type],
-                },
-              ]}>
-              <Text style={styles.text}>{message}</Text>
-            </View>
-          )}
-        </Modal>
-      </View>
+      <Snackbar
+        visible={visible}
+        onDismiss={() => this.closeModal()}
+        duration={3500}
+        primary
+        raised
+        style={{
+          backgroundColor:type === 'error' ? colors.error : colors.primary
+        }}
+        action={{
+          label: I18n.t('ok'),
+          onPress: () => {
+            this.closeModal()
+          },
+        }}
+      >
+        {message}
+      </Snackbar>
     );
+
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: 'white',
-  },
-  modalContent: {
-    backgroundColor: colors.primary,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 22,
-  },
-  top: {
-    justifyContent: 'flex-start',
-    margin: 0,
-  },
-  bottom: {
-    justifyContent: 'flex-end',
-    margin: 0,
-  },
-  center: {
-    padding: 10,
-  },
-  centerModal: {
-    backgroundColor: 'white',
-    alignItems: 'center',
-    paddingVertical: 50,
-  },
-  text: {
-    color: 'white',
-    fontSize: 25,
-  },
-  centerText: {
-    fontSize: 18,
-    paddingVertical: 30,
-    color: colors.black,
-  },
-  centerButton: {
-    width: 200,
-  },
-});

@@ -23,8 +23,7 @@ class LocationListScene extends Component {
   };
 
   static navigationOptions = ({navigation}) => {
-    const {params} = navigation.state;
-    const type = (params && params.type) || null;
+    const type = navigation.getParam('type');
     let title = type ? `location_${type}_select` : 'location_list';
     return {
       title: I18n.t(title),
@@ -64,25 +63,25 @@ class LocationListScene extends Component {
 
   render() {
     let {locations} = this.props;
-    let type = this.props.navigation.getParam('type');
     return (
       <View style={{flex: 1}}>
+
         <LocationList
           items={locations}
           onItemPress={this.onLocationListItemPress}
         />
 
-        <FAB
-          icon="add"
-          dark
-          onPress={this.onLocationCreatePress}
-          medium
-          style={{
-            left: 20,
-            bottom: 20,
-            backgroundColor: colors.primary,
-          }}
-        />
+        <View style={{alignItems:'flex-end',padding:20}}>
+          <FAB
+            icon="add"
+            dark
+            onPress={this.onLocationCreatePress}
+            medium
+            style={{
+              backgroundColor: colors.primary,
+            }}
+          />
+        </View>
       </View>
     );
   }
@@ -92,7 +91,7 @@ const makeMapStateToProps = () => {
   const getLocationsByType = CUSTOMER_SELECTORS.getLocationsByType();
   const mapStateToProps = (state, props) => {
     return {
-      locations: getLocationsByType(state, props.navigation.state.params.type),
+      locations: getLocationsByType(state, props.navigation.getParam('type')),
     };
   };
   return mapStateToProps;
