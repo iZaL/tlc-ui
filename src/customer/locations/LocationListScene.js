@@ -6,7 +6,7 @@ import {ACTIONS as CUSTOMER_ACTIONS} from 'customer/common/actions';
 import {SELECTORS as CUSTOMER_SELECTORS} from 'customer/common/selectors';
 import LocationList from 'customer/locations/components/LocationList';
 import I18n from 'utils/locale';
-import {FAB} from 'react-native-paper';
+import FAB from 'components/FAB';
 import colors from 'assets/theme/colors';
 
 type Type = 'origin|destination';

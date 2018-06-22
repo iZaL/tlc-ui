@@ -4,7 +4,7 @@ import {View} from 'react-native';
 import {connect} from 'react-redux';
 import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
 import DocumentList from 'components/DocumentList';
-import {FAB} from 'react-native-paper';
+import FAB from 'components/FAB';
 import colors from 'assets/theme/colors';
 import I18n from 'utils/locale';
 

@@ -5,7 +5,7 @@ import {View} from 'react-native';
 import RoutesList from 'driver/routes/components/RoutesList';
 import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
 import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
-import {FAB} from 'react-native-paper';
+import FAB from 'components/FAB';
 import colors from 'assets/theme/colors';
 import {ACTIONS as APP_ACTIONS} from 'app/common/actions';
 

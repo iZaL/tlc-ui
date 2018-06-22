@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {View} from 'react-native';
 import {connect} from 'react-redux';
-import {FAB} from 'react-native-paper';
+import FAB from 'components/FAB';
 import I18n from 'utils/locale';
 import DocumentList from 'components/DocumentList';
 import colors from 'assets/theme/colors';

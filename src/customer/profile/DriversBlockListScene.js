@@ -6,7 +6,7 @@ import {SELECTORS as CUSTOMER_SELECTORS} from 'customer/common/selectors';
 import {View} from 'react-native';
 import I18n from 'utils/locale';
 import DriversList from 'customer/loads/components/DriversList';
-import {FAB} from 'react-native-paper';
+import FAB from 'components/FAB';
 import colors from 'assets/theme/colors';
 import ListModal from 'components/ListModal';
 
