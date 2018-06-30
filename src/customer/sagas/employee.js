@@ -4,6 +4,7 @@ import {ACTION_TYPES} from 'customer/common/actions';
 import {Schema} from 'utils/schema';
 import {normalize} from 'normalizr';
 import {ACTIONS as APP_ACTIONS} from 'app/common/actions';
+import I18n from 'utils/locale';
 
 function* fetchEmployees() {
   try {
@@ -36,6 +37,7 @@ function* saveEmployee(action) {
       type: ACTION_TYPES.SAVE_EMPLOYEE_SUCCESS,
       entities: entities,
     });
+    yield put(APP_ACTIONS.setNotification({message: I18n.t('saved'), type: 'success'}));
   } catch (error) {
     yield put(APP_ACTIONS.setNotification({message: error, type: 'error'}));
     yield put({type: ACTION_TYPES.SAVE_EMPLOYEE_SUCCESS, error});
