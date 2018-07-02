@@ -66,7 +66,6 @@ function setTripStatus(params) {
   return fetchAPI(requestParams);
 }
 
-
 function saveTruck(params) {
   const path = `driver/trucks`;
 

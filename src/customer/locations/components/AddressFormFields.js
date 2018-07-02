@@ -6,55 +6,41 @@ import I18n from 'utils/locale';
 
 export default class AddressFormFields extends PureComponent {
   static propTypes = {
-    block: PropTypes.string,
-    street: PropTypes.string,
-    avenue: PropTypes.string,
-    building: PropTypes.string,
+    address: PropTypes.string,
+    city: PropTypes.string,
+    state: PropTypes.string,
     updateFields: PropTypes.func.isRequired,
   };
 
   render() {
     console.log('rendering address');
-    const {block, street, avenue, building, updateFields, label} = this.props;
+    const {address, city, state, updateFields} = this.props;
 
     return (
       <View style={styles.addressContainer}>
         <View style={styles.addressField}>
           <TextInput
             onValueChange={updateFields}
-            value={label}
-            field="label"
+            value={address}
+            field="address"
             maxLength={40}
             keyboardType="numeric"
             autoFocus={false}
             style={styles.textInput}
-            label={I18n.t('label')}
-          />
-        </View>
-
-        <View style={styles.addressField}>
-          <TextInput
-            onValueChange={updateFields}
-            value={block}
-            field="block"
-            maxLength={40}
-            keyboardType="numeric"
-            autoFocus={false}
-            style={styles.textInput}
-            label={I18n.t('block')}
+            label={I18n.t('address')}
           />
         </View>
 
         <View style={[styles.addressField]}>
           <TextInput
             onValueChange={updateFields}
-            value={street}
-            field="street"
+            value={city}
+            field="city"
             maxLength={40}
             keyboardType="numeric"
             autoFocus={false}
             style={styles.textInput}
-            label={I18n.t('street')}
+            label={I18n.t('city')}
             multiline
           />
         </View>
@@ -62,26 +48,13 @@ export default class AddressFormFields extends PureComponent {
         <View style={styles.addressField}>
           <TextInput
             onValueChange={updateFields}
-            value={avenue}
-            field="avenue"
+            value={state}
+            field="state"
             maxLength={40}
             keyboardType="numeric"
             autoFocus={false}
             style={styles.textInput}
-            label={I18n.t('avenue')}
-          />
-        </View>
-
-        <View style={styles.addressField}>
-          <TextInput
-            onValueChange={updateFields}
-            value={building}
-            field="building"
-            maxLength={40}
-            keyboardType="numeric"
-            autoFocus={false}
-            style={styles.textInput}
-            label={I18n.t('building')}
+            label={I18n.t('state')}
           />
         </View>
       </View>

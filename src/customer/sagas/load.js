@@ -1,4 +1,4 @@
-import {all, call, fork, put, takeLatest,takeEvery} from 'redux-saga/effects';
+import {all, call, fork, put, takeLatest, takeEvery} from 'redux-saga/effects';
 import {API} from 'customer/common/api';
 import {ACTION_TYPES} from 'customer/common/actions';
 import {Schema} from 'utils/schema';
@@ -86,7 +86,10 @@ function* fetchLoadsByStatus(action: object) {
       },
     };
 
-    console.log('formattedResponse  '+response.load_status,formattedResponse);
+    console.log(
+      'formattedResponse  ' + response.load_status,
+      formattedResponse,
+    );
 
     const normalized = normalize(formattedResponse, Schema.customers);
     yield put({
@@ -94,7 +97,6 @@ function* fetchLoadsByStatus(action: object) {
       entities: normalized.entities,
       result: normalized.result,
     });
-
   } catch (error) {
     yield put({type: ACTION_TYPES.FETCH_LOADS_BY_STATUS_FAILURE, error});
   }
@@ -155,7 +157,6 @@ function* fetchLoadDetailsMonitor() {
 function* fetchCurrentLoadMonitor() {
   yield takeLatest(ACTION_TYPES.FETCH_CURRENT_LOAD_REQUEST, fetchCurrentLoad);
 }
-
 
 export const sagas = all([
   fork(fetchLoadAddDataMonitor),

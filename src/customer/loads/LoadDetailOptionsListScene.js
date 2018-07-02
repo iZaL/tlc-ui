@@ -94,7 +94,6 @@ class LoadDetailOptionsListScene extends Component {
           }}
           name="driver_rate"
         />
-
       </ScrollView>
     );
   }

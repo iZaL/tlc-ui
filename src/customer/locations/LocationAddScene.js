@@ -8,8 +8,8 @@ import I18n from 'utils/locale';
 import MapPicker from 'customer/locations/components/MapPicker';
 import {SELECTORS as CUSTOMER_SELECTORS} from 'customer/common/selectors';
 import Modal from 'react-native-modal';
-import CreateAddressFields from "customer/locations/components/CreateAddressFields";
-import GooglePlaces from "./components/GooglePlaces";
+import CreateAddressFields from 'customer/locations/components/CreateAddressFields';
+import GooglePlaces from 'customer/locations/components/GooglePlaces';
 
 type Type = 'pick|drop';
 
@@ -26,18 +26,14 @@ class LocationAddScene extends Component {
 
   state: State = {
     address: {
-      label: null,
-      city_en: '',
-      city_ar: '',
-      address_en: '',
-      address_ar: '',
-      state_en: '',
-      state_ar: '',
+      city: '',
+      address: '',
+      state: '',
       country: 'KW',
       latitude: 29.3759,
       longitude: 47.9774,
     },
-    addressCreateFieldsModalVisible:false
+    addressCreateFieldsModalVisible: false,
   };
 
   static defaultProps = {
@@ -72,23 +68,20 @@ class LocationAddScene extends Component {
 
   updateAddressFields = (address: object) => {
     this.setState({
-      address:{
+      address: {
         ...this.state.address,
         ...address,
-      }
+      },
     });
   };
 
   updateAddress = () => {
-
     let {address} = this.state;
 
     return new Promise((resolve, reject) => {
       this.props.actions.updateAddress({address, resolve, reject});
     })
       .then(address => {
-        console.log('address', address);
-
         this.setState(
           {
             address: {
@@ -111,7 +104,6 @@ class LocationAddScene extends Component {
     });
   };
 
-
   hideAddressCreateFieldsModal = () => {
     this.setState({
       addressCreateFieldsModalVisible: false,
@@ -119,12 +111,11 @@ class LocationAddScene extends Component {
   };
 
   render() {
-    let {address,addressCreateFieldsModalVisible}  = this.state;
-    let {latitude,longitude}  = address;
+    let {address, addressCreateFieldsModalVisible} = this.state;
+    let {latitude, longitude} = address;
 
     return (
       <View style={{flex: 1}}>
-
         <GooglePlaces
           updateAddress={this.updateAddressFields}
           address={address}
@@ -155,9 +146,14 @@ class LocationAddScene extends Component {
         <Button
           title={I18n.t('save')}
           onPress={this.saveAddress}
-          style={{position:'absolute',right:0,left:0,bottom:10,marginVertical: 10}}
+          style={{
+            position: 'absolute',
+            right: 0,
+            left: 0,
+            bottom: 10,
+            marginVertical: 10,
+          }}
         />
-
       </View>
     );
   }
@@ -167,7 +163,10 @@ const mapStateToProps = () => {
   const getLocationsByType = CUSTOMER_SELECTORS.getLocationsByType();
   const mapStateToProps = (state, props) => {
     return {
-      locations: getLocationsByType(state, props.navigation.getParam('type','origin')),
+      locations: getLocationsByType(
+        state,
+        props.navigation.getParam('type', 'origin'),
+      ),
     };
   };
   return mapStateToProps;

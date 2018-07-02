@@ -25,8 +25,8 @@ import LoadLocationMapView from 'driver/loads/components/LoadLocationMapView';
 import LoadAddressInfo from 'driver/loads/components/LoadAddressInfo';
 import colors from 'assets/theme/colors';
 import {FAB, Headline} from 'react-native-paper';
-import TripList from "../trips/components/TripList";
-import PendingFleetsList from "../trips/components/PendingFleetsList";
+import TripList from '../trips/components/TripList';
+import PendingFleetsList from '../trips/components/PendingFleetsList';
 
 class LoadDetailScene extends Component {
   static propTypes = {
@@ -50,7 +50,7 @@ class LoadDetailScene extends Component {
     employeeDetailVisible: false,
     imageModalVisible: false,
     images: [],
-    isFetching:false,
+    isFetching: false,
   };
 
   componentDidMount() {
@@ -61,27 +61,28 @@ class LoadDetailScene extends Component {
     );
   }
 
-  setTripStatus = (status) => {
+  setTripStatus = status => {
     this.setState({
-      isFetching:true
+      isFetching: true,
     });
     return new Promise((resolve, reject) => {
       let params = {
-        trip_id:this.props.load.trip.id,
-        status:status,
+        trip_id: this.props.load.trip.id,
+        status: status,
         resolve,
         reject,
       };
       this.props.dispatch(CUSTOMER_ACTIONS.setTripStatus(params));
-    }).then(() => {
-      this.setState({
-        isFetching:false
-      });
     })
-      .catch(e => {
-        console.log('e',e);
+      .then(() => {
         this.setState({
-          isFetching:false
+          isFetching: false,
+        });
+      })
+      .catch(e => {
+        console.log('e', e);
+        this.setState({
+          isFetching: false,
         });
       });
   };
@@ -160,7 +161,6 @@ class LoadDetailScene extends Component {
 
     return (
       <ScrollView style={{flex: 1, backgroundColor: 'white'}}>
-
         <Tabs>
           <TabList>
             <TabHeader title={I18n.t('load_info')} />
@@ -277,17 +277,12 @@ class LoadDetailScene extends Component {
             </TabPanel>
 
             <TabPanel hideNextButton={true}>
-              <ReceiverInfo
-                receiver={receiver}
-              />
+              <ReceiverInfo receiver={receiver} />
             </TabPanel>
 
             <TabPanel hideNextButton={true}>
-              <ReceiverInfo
-                receiver={receiver}
-              />
+              <ReceiverInfo receiver={receiver} />
             </TabPanel>
-
           </TabPanels>
         </Tabs>
 

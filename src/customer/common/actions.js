@@ -198,7 +198,6 @@ function fetchTripDetails(params) {
   };
 }
 
-
 function fetchCurrentLoad(params) {
   return {
     type: ACTION_TYPES.FETCH_CURRENT_LOAD_REQUEST,

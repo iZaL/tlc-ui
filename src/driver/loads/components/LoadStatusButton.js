@@ -10,7 +10,6 @@ import Dialog from 'components/Dialog';
 import {Colors} from 'react-native-paper';
 
 export default class LoadStatusButton extends Component {
-
   static propTypes = {
     trip: PropTypes.object.isRequired,
     onAccept: PropTypes.func,
@@ -121,20 +120,20 @@ export default class LoadStatusButton extends Component {
             />
           </View>
           {/*{can_confirm && (*/}
-            {/*<View style={{flex: 1}}>*/}
-              {/*<Button*/}
-                {/*title={I18n.t('confirm').toUpperCase()}*/}
-                {/*onPress={() => this.setState({showConfirmDialog: true})}*/}
-                {/*style={{marginVertical: 10}}*/}
-              {/*/>*/}
-              {/*<Dialog*/}
-                {/*title={I18n.t('confirm_trip?')}*/}
-                {/*rightPress={this.onConfirm}*/}
-                {/*leftPress={() => this.setState({showConfirmDialog: false})}*/}
-                {/*leftText={I18n.t('cancel')}*/}
-                {/*visible={showConfirmDialog}*/}
-              {/*/>*/}
-            {/*</View>*/}
+          {/*<View style={{flex: 1}}>*/}
+          {/*<Button*/}
+          {/*title={I18n.t('confirm').toUpperCase()}*/}
+          {/*onPress={() => this.setState({showConfirmDialog: true})}*/}
+          {/*style={{marginVertical: 10}}*/}
+          {/*/>*/}
+          {/*<Dialog*/}
+          {/*title={I18n.t('confirm_trip?')}*/}
+          {/*rightPress={this.onConfirm}*/}
+          {/*leftPress={() => this.setState({showConfirmDialog: false})}*/}
+          {/*leftText={I18n.t('cancel')}*/}
+          {/*visible={showConfirmDialog}*/}
+          {/*/>*/}
+          {/*</View>*/}
           {/*)}*/}
         </View>
       );

@@ -54,4 +54,7 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(OTP);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(OTP);

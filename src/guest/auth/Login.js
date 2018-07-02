@@ -101,7 +101,6 @@ class Login extends Component {
           raised={false}
           primary={false}
         />
-
       </View>
     );
   }
@@ -117,4 +116,7 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Login);

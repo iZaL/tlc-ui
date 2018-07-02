@@ -307,4 +307,12 @@
 
   "location_confirm" : "Confirm Location",
   "location_confirmation_confirm" : "Are you sure that this is the right location ?",
+
+  "label" : "Label",
+  "block" : "Block",
+  "street":"Street",
+  "avenue":"Avenue",
+  "building" : "Building",
+  "city" : "City",
+  "state" : "State"
 }

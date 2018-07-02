@@ -20,7 +20,7 @@ function connect() {
 function subscribe(socket) {
   return eventChannel(emit => {
     socket.on('location.updated', data => {
-      console.log('location.updated',data);
+      console.log('location.updated', data);
       emit({
         type: CUSTOMER_ACTIONS.LOCATION_RECEIVED,
         payload: data,

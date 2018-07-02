@@ -26,8 +26,8 @@ export default class MapPicker extends Component {
     super(props);
     this.state = {
       mapInitialized: false,
-    }
-  };
+    };
+  }
 
   componentDidMount() {
     setTimeout(() => {
@@ -36,7 +36,6 @@ export default class MapPicker extends Component {
       });
     }, 1000);
   }
-
 
   componentDidUpdate(nextProps) {
     if (nextProps.address.area_id !== this.props.address.area_id) {
@@ -59,8 +58,7 @@ export default class MapPicker extends Component {
 
   render() {
     const {latitude, longitude} = this.props.address;
-    if(this.state.mapInitialized) {
-
+    if (this.state.mapInitialized) {
       return (
         <MapView
           ref={ref => {
@@ -87,9 +85,7 @@ export default class MapPicker extends Component {
     }
 
     return null;
-
   }
-
 }
 
 const styles = StyleSheet.create({

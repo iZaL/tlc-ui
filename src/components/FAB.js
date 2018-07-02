@@ -3,7 +3,6 @@ import {View} from 'react-native';
 import {FAB as PaperFAB} from 'react-native-paper';
 
 export default class FAB extends Component {
-
   shouldComponentUpdate() {
     return false;
   }
@@ -13,10 +12,9 @@ export default class FAB extends Component {
   };
 
   render() {
-
     return (
-      <View style={{alignItems:'flex-end',right:30}}>
-        <PaperFAB {...this.props}/>
+      <View style={{alignItems: 'flex-end', right: 30}}>
+        <PaperFAB {...this.props} />
       </View>
     );
   }

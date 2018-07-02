@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 
 export default class ReceiverInfo extends Component {
   static propTypes = {
-    receiver:PropTypes.object
+    receiver: PropTypes.object,
   };
 
   shouldComponentUpdate() {
@@ -22,7 +22,7 @@ export default class ReceiverInfo extends Component {
   };
 
   static defaultProps = {
-    receiver:{}
+    receiver: {},
   };
 
   render() {

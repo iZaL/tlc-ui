@@ -103,7 +103,7 @@ const ProfileStack = createStackNavigator(
     cardStyle: {
       backgroundColor: colors.fadedWhite,
     },
-    initialRouteName:'LocationList'
+    initialRouteName: 'LocationList',
   },
 );
 const LoadStack = createStackNavigator(

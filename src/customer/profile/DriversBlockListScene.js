@@ -62,7 +62,7 @@ class DriversBlockListScene extends Component {
           onItemPress={this.onDriversListItemPress}
         />
 
-        <View style={{alignItems:'flex-end',padding:20}}>
+        <View style={{alignItems: 'flex-end', padding: 20}}>
           <FAB
             icon="add"
             dark

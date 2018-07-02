@@ -10,7 +10,6 @@ const LATITUDE_DELTA = 0.0922;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
 export default class Map extends Component {
-
   static propTypes = {
     origin: PropTypes.shape({
       latitude: PropTypes.number.isRequired,
@@ -33,16 +32,16 @@ export default class Map extends Component {
   };
 
   render() {
-    const {destination,style} = this.props;
+    const {destination, style} = this.props;
     const {origin} = this.props;
     const {heading} = origin;
 
-    console.log('this.props',this.props);
+    console.log('this.props', this.props);
 
     const rotate = typeof heading === 'number' && heading >= 0 ? heading : 0;
 
     return (
-      <View style={[styles.container,style]}>
+      <View style={[styles.container, style]}>
         <MapView
           ref={ref => {
             this.map = ref;

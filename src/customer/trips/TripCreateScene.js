@@ -16,7 +16,7 @@ import DriverInfo from 'driver/components/DriverInfo';
 import TruckInfo from 'trucks/components/TruckInfo';
 import TrailerInfo from 'trucks/components/TrailerInfo';
 import Map from 'customer/trips/components/Map';
-import Modal from "../../components/Modal";
+import Modal from '../../components/Modal';
 
 class TripCreateScene extends Component {
   static propTypes = {
@@ -38,7 +38,7 @@ class TripCreateScene extends Component {
     selectedDriverID: null,
     dialogVisible: false,
     dialogTitle: null,
-    driverDetailModalVisible:false
+    driverDetailModalVisible: false,
   };
 
   componentDidMount() {
@@ -54,7 +54,7 @@ class TripCreateScene extends Component {
   onDriverListItemPress = (item: object) => {
     this.setState({
       selectedDriverID: item.id,
-      driverDetailModalVisible:true
+      driverDetailModalVisible: true,
     });
     // this.showDialog({title: `${I18n.t('confirm')} ${item.user.name}`});
   };
@@ -83,9 +83,9 @@ class TripCreateScene extends Component {
 
   hideDriverDetailDialog = () => {
     this.setState({
-      driverDetailModalVisible:false
-    })
-  }
+      driverDetailModalVisible: false,
+    });
+  };
 
   onDriverConfirm = () => {
     console.log('@todo: save');
@@ -94,15 +94,15 @@ class TripCreateScene extends Component {
 
   render() {
     let {load} = this.props;
-    let {driverDetailModalVisible,selectedDriverID} = this.state;
-    
+    let {driverDetailModalVisible, selectedDriverID} = this.state;
+
     let driver = {};
-    
-    if(selectedDriverID) {
+
+    if (selectedDriverID) {
       driver = load.bookable_drivers.find(id => selectedDriverID);
     }
 
-    console.log('driver',driver);
+    console.log('driver', driver);
     if (load.id) {
       return (
         <ScrollView style={{flex: 1}}>
@@ -117,13 +117,12 @@ class TripCreateScene extends Component {
             visible={this.state.dialogVisible}
             title={this.state.dialogTitle}
           />
-          
+
           <Modal
             visible={driverDetailModalVisible}
             onCancel={this.hideDriverDetailDialog}
             buttonText={I18n.t('select')}
-            onSave={this.hideDriverDetailDialog}
-          >
+            onSave={this.hideDriverDetailDialog}>
             <ScrollView style={{flex: 1}}>
               <Tabs>
                 <TabList>
@@ -147,9 +146,7 @@ class TripCreateScene extends Component {
                   </TabPanel>
 
                   <TabPanel hideNextButton={true}>
-                    {driver &&
-                    driver.truck &&
-                    driver.truck.trailer ? (
+                    {driver && driver.truck && driver.truck.trailer ? (
                       <TrailerInfo trailer={driver.truck.trailer} />
                     ) : (
                       <View />
@@ -168,16 +165,11 @@ class TripCreateScene extends Component {
                   {/*}}*/}
                   {/*/>*/}
                   {/*</TabPanel>*/}
-
                 </TabPanels>
               </Tabs>
             </ScrollView>
-
           </Modal>
-
         </ScrollView>
-
-
       );
     }
 

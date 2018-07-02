@@ -37,7 +37,9 @@ function* saveEmployee(action) {
       type: ACTION_TYPES.SAVE_EMPLOYEE_SUCCESS,
       entities: entities,
     });
-    yield put(APP_ACTIONS.setNotification({message: I18n.t('saved'), type: 'success'}));
+    yield put(
+      APP_ACTIONS.setNotification({message: I18n.t('saved'), type: 'success'}),
+    );
   } catch (error) {
     yield put(APP_ACTIONS.setNotification({message: error, type: 'error'}));
     yield put({type: ACTION_TYPES.SAVE_EMPLOYEE_SUCCESS, error});

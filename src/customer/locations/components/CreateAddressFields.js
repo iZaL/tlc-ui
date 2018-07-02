@@ -21,21 +21,18 @@ export default class extends PureComponent {
   };
 
   static defaultProps = {
-    address:{}
+    address: {},
   };
 
   constructor(props) {
     super(props);
 
-    let {block, street, avenue, building} = this.props.address;
+    let {state, city, address} = this.props.address;
 
     this.state = {
-      label: 'Home',
-      block: block,
-      street: street,
-      avenue: avenue,
-      building: building,
-      initialized: false,
+      address: address,
+      city: city,
+      state: state,
     };
   }
 
@@ -52,7 +49,7 @@ export default class extends PureComponent {
   };
 
   saveAddress = () => {
-    if(!this.props.address.area) {
+    if (!this.props.address.area) {
       return Alert.alert(
         `${I18n.t('error')}`,
         `${I18n.t('could_not_save_location')}`,
@@ -72,8 +69,6 @@ export default class extends PureComponent {
         area_id: this.props.address.area ? this.props.address.area.id : null,
       });
     }
-
-
   };
 
   updateFormFields = (key, value) => {
@@ -83,7 +78,7 @@ export default class extends PureComponent {
   };
 
   render() {
-    const {block, street, avenue, building, label, initialized} = this.state;
+    const {city, address, state, initialized} = this.state;
     let {latitude, longitude, area} = this.props.address;
     return (
       <ScrollView
@@ -123,11 +118,9 @@ export default class extends PureComponent {
 
         <Divider style={{marginVertical: 10}} />
         <AddressFormFields
-          block={block}
-          avenue={avenue}
-          street={street}
-          building={building}
-          label={label}
+          city={city}
+          state={state}
+          address={address}
           updateFields={this.updateFormFields}
         />
         <MapButtons save={this.saveAddress} close={this.hideScreen} />

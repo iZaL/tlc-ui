@@ -10,7 +10,7 @@ const initialState = {
       unload_date: null,
       load_time_from: moment(),
       load_time_to: moment(),
-      unload_time_from:moment(),
+      unload_time_from: moment(),
       unload_time_to: moment(),
       trailer_type_id: null,
       trailer_quantity: 1,

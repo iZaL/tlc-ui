@@ -66,7 +66,6 @@ export const ACTION_TYPES = {
   SET_TRIP_STATUS_REQUEST: '@driver/SET_TRIP_STATUS_REQUEST',
   SET_TRIP_STATUS_FAILURE: '@driver/SET_TRIP_STATUS_FAILURE',
   SET_TRIP_STATUS_SUCCESS: '@driver/SET_TRIP_STATUS_SUCCESS',
-
 };
 
 function fetchProfile(params) {
@@ -193,5 +192,5 @@ export const ACTIONS = {
   // confirmTrip,
   // stopTrip,
   // starTrip,
-  setTripStatus
+  setTripStatus,
 };

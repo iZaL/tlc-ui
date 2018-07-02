@@ -2,10 +2,9 @@ import PropTypes from 'prop-types';
 import React, {Component} from 'react';
 import isEmpty from 'lodash/isEmpty';
 import I18n from 'utils/locale';
-import Dialog from "components/Dialog";
+import Dialog from 'components/Dialog';
 
 export default class Notification extends Component {
-
   static propTypes = PropTypes.shape({
     message: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,

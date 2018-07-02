@@ -3,19 +3,12 @@
  */
 import PropTypes from 'prop-types';
 import React, {Component} from 'react';
-import {Dimensions, StyleSheet, TouchableHighlight, View} from 'react-native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import {StyleSheet, View} from 'react-native';
 import colors from 'assets/theme/colors';
 import {GooglePlacesAutocomplete} from 'react-native-google-places-autocomplete';
 import {GOOGLE_MAPS_KEY} from 'utils/env.js';
 import I18n, {isRTL} from 'utils/locale';
 import Qs from 'qs';
-
-const {width, height} = Dimensions.get('window');
-const ASPECT_RATIO = width / height;
-
-const LATITUDE_DELTA = 0.01;
-const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
 export default class GooglePlaces extends Component {
   static propTypes = {
@@ -23,18 +16,17 @@ export default class GooglePlaces extends Component {
     address: PropTypes.object.isRequired,
   };
 
-  constructor(props) {
-    super(props);
-    let {latitude, longitude} = this.props.address;
+  static defaultProps = {
+    address:{
+      address:null,
+      city:null,
+      state:null,
+      country:'KW'
+    }
+  };
 
-    this.state = {
-      region: {
-        latitude: latitude,
-        longitude: longitude,
-        latitudeDelta: LATITUDE_DELTA,
-        longitudeDelta: LONGITUDE_DELTA,
-      },
-    };
+  shouldComponentUpdate(nextProps) {
+    return nextProps.address.address !== this.props.address.address;
   }
 
   async geoCode(locationData, lang) {
@@ -49,9 +41,9 @@ export default class GooglePlaces extends Component {
       language: lang,
     });
     let params;
-    let city = `city_${lang}`;
-    let state = `state_${lang}`;
-    let neighborhood = `address_${lang}`;
+    let city = `city`;
+    let state = `state`;
+
     try {
       let request = await fetch(
         `https://maps.googleapis.com/maps/api/place/details/json?${urlParams}`,
@@ -59,9 +51,6 @@ export default class GooglePlaces extends Component {
       let response = await request.json();
       let {address_components, formatted_address} = response.result;
       params = {
-        [neighborhood]: isNeighbourhood
-          ? formatted_address
-          : address_components[0].long_name,
         [city]: isNeighbourhood
           ? address_components[1].long_name
           : address_components[0].long_name,
@@ -72,9 +61,6 @@ export default class GooglePlaces extends Component {
       updateAddress(params);
     } catch (e) {
       params = {
-        [neighborhood]: isNeighbourhood
-          ? locationData.description
-          : locationData.terms[0].value,
         [city]: isNeighbourhood
           ? locationData.terms[1].value
           : locationData.terms[2].value,
@@ -86,88 +72,47 @@ export default class GooglePlaces extends Component {
     }
   }
 
-  async reverseGeoCode(coordinates, lang) {
-    const {updateAddress} = this.props;
-    let {latitude, longitude} = coordinates;
-
-    let isNeighbourhood = false;
-
-    let urlParams = Qs.stringify({
-      key: GOOGLE_MAPS_KEY,
-      language: lang,
-    });
-    let city = `city_${lang}`;
-    let state = `state_${lang}`;
-    let neighborhood = `address_${lang}`;
-    try {
-      let request = await fetch(
-        `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&${urlParams}`,
-      );
-      let response = await request.json();
-      let {address_components, formatted_address} = response.results[0];
-      if (address_components[3]) {
-        isNeighbourhood = true;
-      }
-      let params = {
-        [neighborhood]: isNeighbourhood
-          ? formatted_address
-          : address_components[0].long_name,
-        [city]: isNeighbourhood
-          ? address_components[1].long_name
-          : address_components[0].long_name,
-        [state]: isNeighbourhood
-          ? address_components[2].long_name
-          : address_components[1].long_name,
-      };
-      updateAddress(params);
-    } catch (e) {}
-  }
-
   onItemPress = (locationData, locationDetails) => {
     let params = {
       latitude: locationDetails.geometry.location.lat,
       longitude: locationDetails.geometry.location.lng,
       country: 'KW',
+      address: locationData.description,
     };
     this.props.updateAddress(params);
     this.geoCode(locationData, 'en');
-    this.geoCode(locationData, 'ar');
   };
 
   render() {
     const {address} = this.props;
 
-    console.log('address',address);
-
     return (
-        <View style={styles.searchInputContainer}>
-          <GooglePlacesAutocomplete
-            label={I18n.t('area_select')}
-            minLength={1}
-            autoFocus={false}
-            fetchDetails={true}
-            listViewDisplayed={false}
-            enablePoweredByContainer={false}
-            renderDescription={row => row.description}
-            onPress={(data, details = null) => {
-              this.onItemPress(data, details);
-            }}
-            query={{
-              key: GOOGLE_MAPS_KEY,
-              language: 'en',
-              components: `country:${address.country}`,
-            }}
-            styles={autoCompleteStyle}
-            placeholderTextColor={colors.lightGrey}
-            // getDefaultValue={() => (isRTL ? address.address_ar : address.address_en)}
-            text={isRTL ? address.address_ar : address.address_en}
-            textInputProps={{
-              autoCapitalize: 'none',
-              autoCorrect: false,
-            }}
-          />
-
-        </View>
+      <View style={styles.searchInputContainer}>
+        <GooglePlacesAutocomplete
+          label={I18n.t('area_select')}
+          minLength={1}
+          autoFocus={false}
+          fetchDetails={true}
+          listViewDisplayed={false}
+          enablePoweredByContainer={false}
+          renderDescription={row => row.description}
+          onPress={(data, details = null) => {
+            this.onItemPress(data, details);
+          }}
+          query={{
+            key: GOOGLE_MAPS_KEY,
+            language: 'en',
+            components: `country:${address.country}`,
+          }}
+          styles={autoCompleteStyle}
+          placeholderTextColor={colors.lightGrey}
+          text={address.address}
+          textInputProps={{
+            autoCapitalize: 'none',
+            autoCorrect: false,
+          }}
+        />
+      </View>
     );
   }
 }
@@ -198,8 +143,7 @@ const autoCompleteStyle = {
 };
 
 const styles = StyleSheet.create({
-  container: {
-  },
+  container: {},
   searchInputContainer: {
     position: 'absolute',
     top: 20,
@@ -218,5 +162,4 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     zIndex: 1000,
   },
-
 });

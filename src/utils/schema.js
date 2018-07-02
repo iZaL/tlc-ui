@@ -88,7 +88,7 @@ loadsSchema.define({
   trailer_type: trailerTypesSchema,
   customer: customersSchema,
   trips: [tripsSchema],
-  trip:tripsSchema,
+  trip: tripsSchema,
   bookable_drivers: [driversSchema],
   matching_drivers: [driversSchema],
   confirmed_drivers: [driversSchema],

@@ -35,7 +35,7 @@ class LoadAddScene extends Component {
     isSuccessDialogVisible: false,
     isPackageDimensionDialogVisible: false,
     isTrailerQuantityDialogVisible: false,
-    isSaving:false
+    isSaving: false,
   };
 
   componentDidMount() {
@@ -116,18 +116,20 @@ class LoadAddScene extends Component {
     // console.log('@todo save');
 
     let params = {
-      ...this.props.loadData.attributes
+      ...this.props.loadData.attributes,
     };
 
-    console.log('params',params);
+    console.log('params', params);
     return new Promise((resolve, reject) => {
-      this.props.dispatch(CUSTOMER_ACTIONS.saveLoad({params, resolve,reject}));
+      this.props.dispatch(CUSTOMER_ACTIONS.saveLoad({params, resolve, reject}));
       // dispatch(someActionCreator({ values, resolve, reject }))
-    }).then(() => {
-      this.showSuccessModalDialog();
-    }).catch(e => {
-      console.log('e',e);
-    });
+    })
+      .then(() => {
+        this.showSuccessModalDialog();
+      })
+      .catch(e => {
+        console.log('e', e);
+      });
     // on Success
   };
 

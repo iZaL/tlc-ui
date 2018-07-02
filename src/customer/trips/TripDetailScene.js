@@ -48,7 +48,7 @@ class TripDetailScene extends Component {
   }
 
   render() {
-    let {trip,tracking} = this.props;
+    let {trip, tracking} = this.props;
 
     let origin;
 
@@ -64,7 +64,7 @@ class TripDetailScene extends Component {
       };
     }
 
-    console.log('tracking',tracking);
+    console.log('tracking', tracking);
 
     let address = {
       latitude: 37.37166518,
@@ -113,7 +113,7 @@ class TripDetailScene extends Component {
                 )}
               </TabPanel>
 
-              <TabPanel hideNextButton={true} >
+              <TabPanel hideNextButton={true}>
                 <Map
                   origin={origin}
                   destination={{
@@ -121,11 +121,10 @@ class TripDetailScene extends Component {
                     longitude: address.longitude,
                   }}
                   style={{
-                    height:500
+                    height: 500,
                   }}
                 />
               </TabPanel>
-
             </TabPanels>
           </Tabs>
         </ScrollView>

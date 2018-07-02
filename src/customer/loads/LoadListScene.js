@@ -52,10 +52,9 @@ class LoadListScene extends Component {
 const makeMapStateToProps = () => {
   const getLoadsByStatus = CUSTOMER_SELECTORS.getLoadsByStatus();
   const mapStateToProps = (state, props) => {
-    console.log('status',props.navigation.getParam('status'));
+    console.log('status', props.navigation.getParam('status'));
     return {
-      loads:
-        getLoadsByStatus(state, props.navigation.getParam('status')) || [],
+      loads: getLoadsByStatus(state, props.navigation.getParam('status')) || [],
     };
   };
   return mapStateToProps;

@@ -22,13 +22,13 @@ export default class LoadWhat extends Component {
 
   state = {
     showTimePicker: false,
-    activeTime:'load_date_from'
+    activeTime: 'load_date_from',
   };
 
-  showTimePicker = (activeTime) => {
+  showTimePicker = activeTime => {
     this.setState({
       showTimePicker: true,
-      activeTime:activeTime
+      activeTime: activeTime,
     });
   };
 
@@ -45,7 +45,13 @@ export default class LoadWhat extends Component {
 
   getTime = () => {
     let {activeTime} = this.state;
-    let {load_time_from,load_time_to,unload_time_from,unload_time_to, onValueChange} = this.props;
+    let {
+      load_time_from,
+      load_time_to,
+      unload_time_from,
+      unload_time_to,
+      onValueChange,
+    } = this.props;
     switch (activeTime) {
       case 'load_time_from':
         return load_time_from.toDate();
@@ -59,9 +65,14 @@ export default class LoadWhat extends Component {
   };
 
   render() {
-    let {load_time_from,load_time_to,unload_time_from,unload_time_to, onValueChange} = this.props;
-    let {showTimePicker,activeTime} = this.state;
-
+    let {
+      load_time_from,
+      load_time_to,
+      unload_time_from,
+      unload_time_to,
+      onValueChange,
+    } = this.props;
+    let {showTimePicker, activeTime} = this.state;
 
     return (
       <View style={{padding: 10}}>
@@ -69,37 +80,57 @@ export default class LoadWhat extends Component {
 
         <DatePicker onDateChange={date => onValueChange('load_date', date)} />
 
-        <View style={{flexDirection:'row'}}>
-          <Button raised onPress={()=>this.showTimePicker('load_time_from')} style={{flex:1}}>
+        <View style={{flexDirection: 'row'}}>
+          <Button
+            raised
+            onPress={() => this.showTimePicker('load_time_from')}
+            style={{flex: 1}}>
             <View>
               <Title>{I18n.t('time_from')}</Title>
-              <Text style={{fontSize: 20}}>{load_time_from.format('h:mm a')}</Text>
+              <Text style={{fontSize: 20}}>
+                {load_time_from.format('h:mm a')}
+              </Text>
             </View>
           </Button>
-          <Button raised onPress={()=>this.showTimePicker('load_time_to')} style={{flex:1}}>
+          <Button
+            raised
+            onPress={() => this.showTimePicker('load_time_to')}
+            style={{flex: 1}}>
             <View>
               <Title>{I18n.t('time_from')}</Title>
-              <Text style={{fontSize: 20}}>{load_time_to.format('h:mm a')}</Text>
+              <Text style={{fontSize: 20}}>
+                {load_time_to.format('h:mm a')}
+              </Text>
             </View>
           </Button>
         </View>
 
-        <Divider style={{marginVertical:20}}/>
+        <Divider style={{marginVertical: 20}} />
         <Title>{I18n.t('unload_date')}</Title>
 
         <DatePicker onDateChange={date => onValueChange('unload_date', date)} />
 
-        <View style={{flexDirection:'row'}}>
-          <Button raised onPress={()=>this.showTimePicker('unload_time_from')} style={{flex:1}}>
+        <View style={{flexDirection: 'row'}}>
+          <Button
+            raised
+            onPress={() => this.showTimePicker('unload_time_from')}
+            style={{flex: 1}}>
             <View>
               <Title>{I18n.t('time_from')}</Title>
-              <Text style={{fontSize: 20}}>{unload_time_from.format('h:mm a')}</Text>
+              <Text style={{fontSize: 20}}>
+                {unload_time_from.format('h:mm a')}
+              </Text>
             </View>
           </Button>
-          <Button raised onPress={()=>this.showTimePicker('unload_time_to')} style={{flex:1}}>
+          <Button
+            raised
+            onPress={() => this.showTimePicker('unload_time_to')}
+            style={{flex: 1}}>
             <View>
               <Title>{I18n.t('time_from')}</Title>
-              <Text style={{fontSize: 20}}>{unload_time_to.format('h:mm a')}</Text>
+              <Text style={{fontSize: 20}}>
+                {unload_time_to.format('h:mm a')}
+              </Text>
             </View>
           </Button>
         </View>

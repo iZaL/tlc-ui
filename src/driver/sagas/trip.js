@@ -3,7 +3,7 @@ import {API} from 'driver/common/api';
 import {ACTION_TYPES} from 'driver/common/actions';
 import {Schema} from 'utils/schema';
 import {normalize} from 'normalizr';
-import {ACTIONS as APP_ACTIONS} from "app/common/actions";
+import {ACTIONS as APP_ACTIONS} from 'app/common/actions';
 import I18n from 'utils/locale';
 
 function* fetchUpcomingTrips() {
@@ -67,7 +67,7 @@ function* setTripStatus(action) {
     const response = yield call(API.setTripStatus, params);
     const normalized = normalize(response.data, Schema.loads);
 
-    console.log('normalized',normalized);
+    console.log('normalized', normalized);
 
     yield put({
       type: ACTION_TYPES.SET_TRIP_STATUS_SUCCESS,
@@ -111,10 +111,7 @@ function* fetchDocumentTypesMonitor() {
 }
 
 function* setTripStatusMonitor() {
-  yield takeLatest(
-    ACTION_TYPES.SET_TRIP_STATUS_REQUEST,
-    setTripStatus,
-  );
+  yield takeLatest(ACTION_TYPES.SET_TRIP_STATUS_REQUEST, setTripStatus);
 }
 
 export const sagas = all([

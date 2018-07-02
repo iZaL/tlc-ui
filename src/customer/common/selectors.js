@@ -160,5 +160,5 @@ export const SELECTORS = {
   getDriversForLoad,
   getLoadByID,
   getTripByID,
-  getCurrentLoad
+  getCurrentLoad,
 };
