@@ -7,7 +7,7 @@ import Button from 'components/Button';
 export default class MapButtons extends Component {
   static propTypes = {
     save: PropTypes.func.isRequired,
-    close: PropTypes.func.isRequired,
+    close: PropTypes.func,
   };
 
   shouldComponentUpdate(nextProps, prevState) {
@@ -15,16 +15,20 @@ export default class MapButtons extends Component {
   }
 
   render() {
-    let {close, save, style} = this.props;
+    let {close, save, style,hideCancelButton} = this.props;
 
     return (
       <View style={[styles.container, style]}>
-        <Button
-          onPress={close}
-          style={styles.button}
-          raised
-          title={I18n.t('cancel')}
-        />
+        {
+          !hideCancelButton &&
+          <Button
+            onPress={close}
+            style={styles.button}
+            raised
+            title={I18n.t('cancel')}
+          />
+        }
+
         <Button
           onPress={save}
           style={styles.button}

@@ -39,20 +39,26 @@ class LocationListScene extends Component {
   }
 
   onLocationListItemPress = (item: object) => {
-    Alert.alert(
-      I18n.t('location_delete'),
-      null,
-      [
-        {
-          text: 'Cancel',
-          onPress: () => console.log('Cancel Pressed'),
-          style: 'cancel',
-        },
-        {text: 'Yes', onPress: () => console.log('@todo')},
-      ],
-      {cancelable: false},
-    );
+    console.log('item',item);
+    this.props.navigation.navigate('LocationEdit',{
+      address:item
+    })
   };
+  // onLocationListItemPress = (item: object) => {
+  //   Alert.alert(
+  //     I18n.t('location_delete'),
+  //     null,
+  //     [
+  //       {
+  //         text: 'Cancel',
+  //         onPress: () => console.log('Cancel Pressed'),
+  //         style: 'cancel',
+  //       },
+  //       {text: 'Yes', onPress: () => console.log('@todo')},
+  //     ],
+  //     {cancelable: false},
+  //   );
+  // };
 
   onLocationCreatePress = () => {
     this.props.navigation.navigate('LocationAdd', {

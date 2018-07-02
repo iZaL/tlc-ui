@@ -6,7 +6,6 @@ import colors from 'assets/theme/colors';
 import AddressFormFields from 'customer/locations/components/AddressFormFields';
 import Divider from 'components/Divider';
 import MapButtons from 'customer/locations/components/MapButtons';
-import {Title} from 'react-native-paper';
 import MapView from 'react-native-maps';
 
 const {width, height} = Dimensions.get('window');
@@ -16,16 +15,18 @@ const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
 export default class extends PureComponent {
   static propTypes = {
-    onCancel: PropTypes.func.isRequired,
+    onCancel: PropTypes.func,
     onSave: PropTypes.func.isRequired,
+    hideCancelButton:PropTypes.bool
   };
 
   static defaultProps = {
     address: {},
+    hideCancelButton:false
   };
 
   state = {
-    initialized: true,
+    initialized: false,
   };
 
   componentDidMount() {
@@ -56,14 +57,23 @@ export default class extends PureComponent {
     );
   };
 
-  updateFormFields = (key, value) => {
+  onRegionChangeComplete = region => {
+    let {latitude, longitude} = region;
+    let params = {
+      latitude: latitude,
+      longitude: longitude,
+    };
+    this.props.updateAddress(params);
+  };
 
+  updateFormFields = (key, value) => {
     this.props.updateAddress({
       [key]:value
     });
   };
 
   render() {
+    const {hideCancelButton,} = this.props;
     const {city, address, state,latitude, longitude } = this.props.address;
     const {initialized} = this.state;
 
@@ -84,7 +94,8 @@ export default class extends PureComponent {
                 latitudeDelta: LATITUDE_DELTA,
                 longitudeDelta: LONGITUDE_DELTA,
               }}
-              cacheEnabled={true}>
+              onRegionChangeComplete={this.onRegionChangeComplete}
+            >
               <MapView.Marker
                 coordinate={{
                   latitude: latitude,
@@ -102,7 +113,7 @@ export default class extends PureComponent {
           address={address}
           updateFields={this.updateFormFields}
         />
-        <MapButtons save={this.saveAddress} close={this.hideScreen} />
+        <MapButtons hideCancelButton={hideCancelButton} save={this.saveAddress} close={this.hideScreen} />
       </ScrollView>
     );
   }

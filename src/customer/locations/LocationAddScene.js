@@ -69,12 +69,6 @@ class LocationAddScene extends Component {
     );
   };
 
-  onValueChange = (key, value) => {
-    this.setState({
-      [key]: value,
-    });
-  };
-
   updateAddressFields = (address: object) => {
     this.setState({
       address: {
@@ -112,8 +106,6 @@ class LocationAddScene extends Component {
   render() {
     let {address, addressCreateFieldsModalVisible} = this.state;
     let {latitude, longitude} = address;
-
-    console.log('address',address);
 
     return (
       <View style={{flex: 1}}>

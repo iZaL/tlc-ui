@@ -24,7 +24,7 @@ export default class LocationList extends PureComponent {
 
     return (
       <ListItem
-        onPress={onItemPress}
+        onPress={()=>onItemPress(item)}
         title={address}
         description={`${city},${state},${country.name}`}
       />

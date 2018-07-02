@@ -23,6 +23,7 @@ import DriversBlockListScene from 'customer/profile/DriversBlockListScene';
 import TripDetailScene from 'customer/trips/TripDetailScene';
 import TripCreateScene from 'customer/trips/TripCreateScene';
 import LanguageSelect from 'app/LanguageSelect';
+import LocationEditScene from "customer/locations/LocationEditScene";
 
 const getDrawerIcon = navigation => {
   return {
@@ -87,6 +88,9 @@ const ProfileStack = createStackNavigator(
       navigationOptions: () => ({
         title: I18n.t('location_add'),
       }),
+    },
+    LocationEdit: {
+      screen: LocationEditScene,
     },
     DriversBlockList: {
       screen: DriversBlockListScene,
