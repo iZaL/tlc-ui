@@ -55,7 +55,7 @@ class LocationListScene extends Component {
   };
 
   onLocationCreatePress = () => {
-    let {type} = this.props.navigation.state.params;
+    let {type} = this.props.navigation.getParam('type','origin');
     this.props.navigation.navigate('LocationAdd', {
       type: type,
     });
@@ -71,7 +71,7 @@ class LocationListScene extends Component {
           onItemPress={this.onLocationListItemPress}
         />
 
-        <View style={{alignItems:'flex-end',padding:20}}>
+        <View style={{alignItems:'flex-end',paddingBottom:20}}>
           <FAB
             icon="add"
             dark
@@ -81,6 +81,7 @@ class LocationListScene extends Component {
               backgroundColor: colors.primary,
             }}
           />
+
         </View>
       </View>
     );
@@ -91,7 +92,7 @@ const makeMapStateToProps = () => {
   const getLocationsByType = CUSTOMER_SELECTORS.getLocationsByType();
   const mapStateToProps = (state, props) => {
     return {
-      locations: getLocationsByType(state, props.navigation.getParam('type')),
+      locations: getLocationsByType(state, props.navigation.getParam('type','origin')),
     };
   };
   return mapStateToProps;

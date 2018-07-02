@@ -303,6 +303,8 @@
 
 
   "options" : "Options",
-  "language_change": "Change Language"
+  "language_change": "Change Language",
 
+  "location_confirm" : "Confirm Location",
+  "location_confirmation_confirm" : "Are you sure that this is the right location ?",
 }

@@ -103,6 +103,7 @@ const ProfileStack = createStackNavigator(
     cardStyle: {
       backgroundColor: colors.fadedWhite,
     },
+    initialRouteName:'LocationList'
   },
 );
 const LoadStack = createStackNavigator(
@@ -210,5 +211,5 @@ export const Routes = createDrawerNavigator(DrawerRoutes, {
   gesturesEnabled: false,
   contentComponent: props => <Drawer {...props} />,
   drawerWidth: 275,
-  // initialRouteName: 'LoadStack',
+  initialRouteName: 'ProfileStack',
 });
