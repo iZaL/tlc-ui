@@ -55,9 +55,8 @@ class LocationListScene extends Component {
   };
 
   onLocationCreatePress = () => {
-    let {type} = this.props.navigation.getParam('type', 'origin');
     this.props.navigation.navigate('LocationAdd', {
-      type: type,
+      type: this.props.navigation.getParam('type'),
     });
   };
 

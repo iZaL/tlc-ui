@@ -24,17 +24,9 @@ export default class extends PureComponent {
     address: {},
   };
 
-  constructor(props) {
-    super(props);
-
-    let {state, city, address} = this.props.address;
-
-    this.state = {
-      address: address,
-      city: city,
-      state: state,
-    };
-  }
+  state = {
+    initialized: true,
+  };
 
   componentDidMount() {
     setTimeout(() => {
@@ -49,37 +41,32 @@ export default class extends PureComponent {
   };
 
   saveAddress = () => {
-    if (!this.props.address.area) {
-      return Alert.alert(
-        `${I18n.t('error')}`,
-        `${I18n.t('could_not_save_location')}`,
-        [
-          {
-            text: I18n.t('ok'),
-            onPress: () => {
-              this.hideScreen();
-            },
+    return Alert.alert(
+      `${I18n.t('location_confirm')}`,
+      `${I18n.t('location_confirmation_confirm')}`,
+      [
+        {text: I18n.t('cancel')},
+        {
+          text: I18n.t('ok'),
+          onPress: () => {
+            this.props.onSave();
           },
-        ],
-      );
-    } else {
-      this.props.onSave({
-        ...this.state,
-        id: this.props.address.id,
-        area_id: this.props.address.area ? this.props.address.area.id : null,
-      });
-    }
+        },
+      ],
+    );
   };
 
   updateFormFields = (key, value) => {
-    this.setState({
-      [key]: value,
+
+    this.props.updateAddress({
+      [key]:value
     });
   };
 
   render() {
-    const {city, address, state, initialized} = this.state;
-    let {latitude, longitude, area} = this.props.address;
+    const {city, address, state,latitude, longitude } = this.props.address;
+    const {initialized} = this.state;
+
     return (
       <ScrollView
         style={styles.container}
@@ -103,18 +90,10 @@ export default class extends PureComponent {
                   latitude: latitude,
                   longitude: longitude,
                 }}
-                // centerOffset={{x: -18, y: -60}}
-                // anchor={{x: 0.69, y: 1}}
               />
             </MapView>
           )}
         </View>
-
-        {area && (
-          <Title style={{textAlign: 'center', marginTop: 10}}>
-            {area.name}
-          </Title>
-        )}
 
         <Divider style={{marginVertical: 10}} />
         <AddressFormFields

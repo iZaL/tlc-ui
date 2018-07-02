@@ -53,7 +53,16 @@ class LocationAddScene extends Component {
         {
           text: I18n.t('yes'),
           onPress: () => {
-            this.showAddressCreateFieldsModal();
+            let {address} = this.state;
+            return new Promise((resolve, reject) => {
+              this.props.dispatch(CUSTOMER_ACTIONS.saveAddress({address, resolve, reject}));
+            })
+              .then(addressID => {
+                console.log('addressID',addressID);
+                this.setState({address:{...address,address_id:addressID}},this.showAddressCreateFieldsModal());
+              })
+              .catch(e => {
+              });
           },
         },
       ],
@@ -71,30 +80,20 @@ class LocationAddScene extends Component {
       address: {
         ...this.state.address,
         ...address,
+        type:this.props.navigation.getParam('type')
       },
     });
   };
 
   updateAddress = () => {
     let {address} = this.state;
-
     return new Promise((resolve, reject) => {
-      this.props.actions.updateAddress({address, resolve, reject});
+      this.props.dispatch(CUSTOMER_ACTIONS.saveAddress({address, resolve, reject}));
     })
-      .then(address => {
-        this.setState(
-          {
-            address: {
-              ...address,
-            },
-          },
-          () => {
-            this.hideAddressCreateFieldsModal();
-          },
-        );
+      .then(addressID => {
+        this.hideAddressCreateFieldsModal();
       })
       .catch(e => {
-        console.log('error', e);
       });
   };
 
@@ -113,6 +112,8 @@ class LocationAddScene extends Component {
   render() {
     let {address, addressCreateFieldsModalVisible} = this.state;
     let {latitude, longitude} = address;
+
+    console.log('address',address);
 
     return (
       <View style={{flex: 1}}>
@@ -135,10 +136,13 @@ class LocationAddScene extends Component {
           style={{margin: 0, padding: 0, backgroundColor: 'white'}}
           presentationStyle="fullScreen"
           transparent={false}
-          useNativeDriver={true}>
+          useNativeDriver={true}
+          updateAddress={this.updateAddressFields}
+        >
           <CreateAddressFields
             onCancel={this.hideAddressCreateFieldsModal}
             onSave={this.updateAddress}
+            updateAddress={this.updateAddressFields}
             address={{...address}}
           />
         </Modal>

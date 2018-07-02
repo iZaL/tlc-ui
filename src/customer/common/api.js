@@ -90,8 +90,8 @@ function saveEmployee(params) {
   return fetchAPI(requestParams);
 }
 
-function saveLocation(params) {
-  const path = `customer/locations`;
+function saveAddress(params) {
+  const path = `customer/addresses`;
 
   let requestParams = {
     path,
@@ -116,6 +116,6 @@ export const API = {
   fetchCurrentLoad,
   saveProfile,
   saveEmployee,
-  saveLocation,
+  saveAddress,
   saveLoad,
 };

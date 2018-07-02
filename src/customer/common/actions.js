@@ -77,6 +77,11 @@ export const ACTION_TYPES = {
   FETCH_TRIP_DETAILS_REQUEST: '@customer/FETCH_TRIP_DETAILS_REQUEST',
   FETCH_TRIP_DETAILS_SUCCESS: '@customer/FETCH_TRIP_DETAILS_SUCCESS',
   FETCH_TRIP_DETAILS_FAILURE: '@customer/FETCH_TRIP_DETAILS_FAILURE',
+
+  SAVE_ADDRESS_REQUEST: '@customer/SAVE_ADDRESS_REQUEST',
+  SAVE_ADDRESS_SUCCESS: '@customer/SAVE_ADDRESS_SUCCESS',
+  SAVE_ADDRESS_FAILURE: '@customer/SAVE_ADDRESS_FAILURE',
+
 };
 
 function fetchEmployees(params) {
@@ -205,6 +210,15 @@ function fetchCurrentLoad(params) {
   };
 }
 
+
+function saveAddress(payload: object) {
+  return {
+    type: ACTION_TYPES.SAVE_ADDRESS_REQUEST,
+    payload,
+  };
+}
+
+
 export const ACTIONS = {
   saveProfile,
   fetchProfile,
@@ -223,4 +237,5 @@ export const ACTIONS = {
   saveLoad,
   subscribeToTripTrack,
   setAddData,
+  saveAddress,
 };
