@@ -36,6 +36,7 @@ class LoadAddScene extends Component {
     isPackageDimensionDialogVisible: false,
     isTrailerQuantityDialogVisible: false,
     isSaving: false,
+    current_saved_id:null
   };
 
   componentDidMount() {
@@ -114,8 +115,8 @@ class LoadAddScene extends Component {
 
   showMatchingDrivers = () => {
     this.hideSuccessModalDialog();
-    this.props.navigation.navigate('LoadDetail', {
-      loadID: 1,
+    this.props.navigation.replace('LoadDetail', {
+      loadID: this.state.current_saved_id,
     });
   };
 
@@ -127,7 +128,12 @@ class LoadAddScene extends Component {
     return new Promise((resolve, reject) => {
       this.props.dispatch(CUSTOMER_ACTIONS.saveLoad({params, resolve, reject}));
     })
-      .then(() => {
+      .then((load) => {
+
+        this.setState({
+          current_saved_id:load.id
+        });
+
         this.showSuccessModalDialog();
       })
       .catch(e => {
@@ -165,8 +171,6 @@ class LoadAddScene extends Component {
       trailer_quantity,
       packaging_dimension,
     } = this.props.loadData.attributes;
-
-    console.log('loadData', this.props.loadData);
 
     let {trailers, packaging, securityPasses, locations} = this.props;
 

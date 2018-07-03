@@ -56,7 +56,7 @@ class LoadDetailScene extends Component {
   componentDidMount() {
     this.props.dispatch(
       CUSTOMER_ACTIONS.fetchLoadDetails({
-        loadID: 1,
+        loadID: this.props.navigation.getParam('loadID'),
       }),
     );
   }
@@ -80,7 +80,6 @@ class LoadDetailScene extends Component {
         });
       })
       .catch(e => {
-        console.log('e', e);
         this.setState({
           isFetching: false,
         });
@@ -300,8 +299,7 @@ const makeMapStateToProps = () => {
   const getLoadByID = CUSTOMER_SELECTORS.getLoadByID();
   const mapStateToProps = (state, props) => {
     return {
-      load: getLoadByID(state, 1),
-      // load: getLoadByID(state, props.navigation.getParam('loadID')),
+      load: getLoadByID(state, props.navigation.getParam('loadID')),
     };
   };
   return mapStateToProps;

@@ -34,7 +34,7 @@ function* saveLoad(action) {
         position: 'center',
       }),
     );
-    yield resolve();
+    yield resolve(response.load);
   } catch (error) {
     yield put(APP_ACTIONS.setNotification({message: error, type: 'error'}));
     yield put({type: ACTION_TYPES.SAVE_LOAD_FAILURE, error});
