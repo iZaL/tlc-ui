@@ -171,7 +171,7 @@ const LoadStack = createStackNavigator(
     cardStyle: {
       backgroundColor: colors.fadedWhite,
     },
-    initialRouteName: 'LoadAdd',
+    initialRouteName: 'LoadDetail',
   },
 );
 
