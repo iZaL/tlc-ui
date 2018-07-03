@@ -14,12 +14,14 @@ export default class extends Component {
     onCancel: PropTypes.func.isRequired,
     children: PropTypes.any.isRequired,
     onSave: PropTypes.func.isRequired,
+    hideButton:PropTypes.bool,
     title: PropTypes.func,
   };
 
   static defaultProps = {
     header: null,
     buttonText: I18n.t('save'),
+    hideButton:false
   };
 
   render() {
@@ -31,6 +33,7 @@ export default class extends Component {
       style,
       buttonText,
       onSave,
+      hideButton
     } = this.props;
 
     return (
@@ -46,9 +49,13 @@ export default class extends Component {
           header
         )}
         {children}
+
+        {!hideButton &&
         <Button onPress={onSave} raised primary dark>
           {buttonText}
         </Button>
+        }
+
       </Modal>
     );
   }

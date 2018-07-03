@@ -301,7 +301,6 @@
   "stop_trip?" : "Are you sure you want to stop this Trip?",
   "open_in_google_maps?" : "Do you want to open the address in Google Maps?",
 
-
   "options" : "Options",
   "language_change": "Change Language",
 
@@ -314,5 +313,8 @@
   "avenue":"Avenue",
   "building" : "Building",
   "city" : "City",
-  "state" : "State"
+  "state" : "State",
+  "upload_images" : "Upload Images",
+  "view_info" : "View Info",
+  "packaging_info" : "Packaging Info"
 }

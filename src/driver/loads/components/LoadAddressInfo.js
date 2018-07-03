@@ -47,7 +47,7 @@ export default class LoadAddressInfo extends Component {
           <ListItem
             title={origin.address}
             description={`${origin.city},${origin.state},${
-              origin.country.name
+              origin.country ? origin.country.name : ''
             }`}
           />
         </GoogleMapDirection>
@@ -60,7 +60,7 @@ export default class LoadAddressInfo extends Component {
           <ListItem
             title={destination.address}
             description={`${destination.city},${destination.state},${
-              destination.country.name
+              destination.country ? destination.country.name : ''
             }`}
           />
         </GoogleMapDirection>

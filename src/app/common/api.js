@@ -15,8 +15,14 @@ function fetchSecurityPasses() {
   return fetchAPI({path});
 }
 
+function uploadImages(params) {
+  const path = `upload/images`;
+  return fetchAPI({path, method: 'POST', params});
+}
+
 export const API = {
   storePushToken,
+  uploadImages,
   fetchCountries,
   fetchSecurityPasses,
 };

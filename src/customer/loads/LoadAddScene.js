@@ -13,6 +13,7 @@ import LoadHow from 'customer/loads/components/LoadHow';
 import LoadPasses from 'customer/loads/components/LoadPasses';
 import LoadReceiver from 'customer/loads/components/LoadReceiver';
 import {ACTIONS as CUSTOMER_ACTIONS} from 'customer/common/actions';
+import {ACTIONS as APP_ACTIONS} from 'app/common/actions';
 import {SELECTORS as TRUCK_SELECTORS} from 'trucks/common/selectors';
 import TabPanel from 'customer/loads/components/TabPanel';
 import {SELECTORS as CUSTOMER_SELECTORS} from 'customer/common/selectors';
@@ -120,6 +121,26 @@ class LoadAddScene extends Component {
     });
   };
 
+  uploadPackagingImages = (images) => {
+    return new Promise((resolve, reject) => {
+      this.props.dispatch(APP_ACTIONS.uploadImages({
+        images,
+        resolve,
+        reject
+      }));
+    })
+      .then((images) => {
+        let {packaging_images} = this.props.loadData.attributes;
+        let uploadImages = packaging_images.concat(images);
+        this.props.dispatch(
+          CUSTOMER_ACTIONS.setAddData('packaging_images', uploadImages),
+        );
+      })
+      .catch(e => {
+        console.log('e', e);
+      });
+  };
+
   onSaveButtonPress = () => {
     let params = {
       ...this.props.loadData.attributes,
@@ -170,13 +191,14 @@ class LoadAddScene extends Component {
       destination_location_id,
       trailer_quantity,
       packaging_dimension,
+      packaging_images
     } = this.props.loadData.attributes;
 
     let {trailers, packaging, securityPasses, locations} = this.props;
 
     return (
       <ScrollView style={{flex: 1}}>
-        <Tabs activeIndex={5}>
+        <Tabs activeIndex={0}>
           <TabList>
             <TabHeader title={I18n.t('load_info')} />
             <TabHeader title={I18n.t('load_location')} />
@@ -202,6 +224,8 @@ class LoadAddScene extends Component {
                 onValueChange={this.onPackagingDimensionsFieldChange}
                 onCancel={this.hidePackageDimensionDialog}
                 onConfirm={this.hidePackageDimensionDialog}
+                uploadPackagingImages={this.uploadPackagingImages}
+                packaging_images={packaging_images}
                 {...packaging_dimension}
               />
 

@@ -4,7 +4,8 @@ import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import Modal from 'components/Modal';
 import TextInput from 'components/TextInput';
 import I18n from 'utils/locale';
-import {Button} from 'react-native-paper';
+import {Button, Title} from 'react-native-paper';
+import AlbumUpload from "../../../components/AlbumUpload";
 
 export default class PackageDimensions extends Component {
   static propTypes = {
@@ -12,6 +13,7 @@ export default class PackageDimensions extends Component {
     visible: PropTypes.bool.isRequired,
     onConfirm: PropTypes.func.isRequired,
     onCancel: PropTypes.func.isRequired,
+    uploadPackagingImages:PropTypes.func.isRequired
     // length:PropTypes.oneOfType(PropTypes.number,PropTypes.string),
     // width:PropTypes.oneOfType(PropTypes.number,PropTypes.string),
     // height:PropTypes.oneOfType(PropTypes.number,PropTypes.string),
@@ -30,6 +32,8 @@ export default class PackageDimensions extends Component {
       length,
       quantity,
       width,
+      uploadPackagingImages,
+      packaging_images
     } = this.props;
 
     return (
@@ -38,7 +42,9 @@ export default class PackageDimensions extends Component {
           animationType="slide"
           visible={visible}
           transparent={true}
-          onBackdropPress={onCancel}>
+          onBackdropPress={onCancel}
+          hideButton={true}
+        >
           <View style={styles.addressContainer}>
             <View style={{flexDirection: 'row'}}>
               <TextInput
@@ -99,6 +105,10 @@ export default class PackageDimensions extends Component {
               />
             </View>
 
+            <AlbumUpload images={packaging_images} onUpload={uploadPackagingImages}>
+              <Title>{I18n.t('upload_images')}</Title>
+            </AlbumUpload>
+
             <View style={{flexDirection: 'row', justifyContent: 'center'}}>
               <Button raised onPress={onCancel}>
                 {I18n.t('close')}
@@ -122,6 +132,7 @@ const styles = StyleSheet.create({
   addressContainer: {
     flex: 1,
     backgroundColor: 'white',
+    padding:10
   },
   addressField: {
     flex: 1,

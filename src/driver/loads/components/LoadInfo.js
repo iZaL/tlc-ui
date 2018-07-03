@@ -3,14 +3,21 @@
  */
 import React, {Component, PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import I18n from 'utils/locale';
 import LoadInfoItem from 'driver/loads/components/LoadInfoItem';
+import {Caption, TouchableRipple} from "react-native-paper";
+import Modal from "components/Modal";
+import Gallery from "components/Gallery";
 
 export default class LoadInfo extends Component {
   static propTypes = {
     load: PropTypes.object.isRequired,
     showDetail: PropTypes.bool,
+  };
+
+  state = {
+    packagingDetailVisible:false
   };
 
   static defaultProps = {
@@ -20,12 +27,22 @@ export default class LoadInfo extends Component {
     },
   };
 
-  shouldComponentUpdate(nextProps) {
-    return nextProps.load !== this.props.load;
+  shouldComponentUpdate(nextProps,prevState) {
+    return nextProps.load !== this.props.load || prevState !== this.state;
   }
 
   render() {
     let {load, style, showDetail} = this.props;
+    let {packaging,packaging_dimensions,packaging_images} = load;
+
+    if(!packaging_dimensions) {
+      packaging_dimensions = {}
+    }
+
+    if(!packaging_images) {
+      packaging_images = []
+    }
+
     return (
       <View style={[styles.container, style]}>
         <View style={[styles.itemRowContainer]}>
@@ -78,8 +95,56 @@ export default class LoadInfo extends Component {
 
             <LoadInfoItem
               title={I18n.t('packaging')}
-              description={load.packaging ? load.packaging.name : '-'}
+              description={packaging ? packaging.name : '-'}
+              caption={packaging ?
+                <TouchableRipple onPress={() => this.setState({packagingDetailVisible:true})}>
+                  <Caption>{I18n.t('view_info')}</Caption>
+                </TouchableRipple>
+                :
+                ''
+              }
             />
+
+            <Modal
+              visible={this.state.packagingDetailVisible}
+              onCancel={() => this.setState({packagingDetailVisible:false})}
+              onSave={() => this.setState({packagingDetailVisible:false})}
+              header={I18n.t('packaging_info')}
+              buttonText={I18n.t('close')}
+            >
+              <View style={[styles.container]}>
+                <View style={[styles.itemRowContainer,{marginTop:10}]}>
+                  <LoadInfoItem
+                    title={I18n.t('length')}
+                    description={packaging_dimensions.length_formatted}
+                  />
+                  <LoadInfoItem
+                    title={I18n.t('width')}
+                    description={packaging_dimensions.width_formatted}
+                  />
+                  <LoadInfoItem
+                    title={I18n.t('height')}
+                    description={packaging_dimensions.height_formatted}
+                  />
+                  <LoadInfoItem
+                    title={I18n.t('weight')}
+                    description={packaging_dimensions.weight}
+                    caption={I18n.t('tons').toLowerCase()}
+                  />
+                  <LoadInfoItem
+                    title={I18n.t('quantity')}
+                    description={packaging_dimensions.quantity}
+                  />
+                </View>
+              </View>
+
+              <Gallery
+                images={packaging_images}
+                imageName={(item) => item.url}
+              />
+
+            </Modal>
+
           </View>
         )}
       </View>
@@ -94,5 +159,7 @@ const styles = StyleSheet.create({
   itemRowContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent:'center',
+    flexWrap:'wrap'
   },
 });

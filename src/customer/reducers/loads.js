@@ -32,6 +32,7 @@ const initialState = {
       receiver_mobile: '00966989382332',
       receiver_phone: '00966989382332',
       security_passes: [1,4],
+      packaging_images:[]
     },
   },
   edit: {},

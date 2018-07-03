@@ -29,6 +29,11 @@ export const ACTION_TYPES = {
   FETCH_SECURITY_PASSES_FAILURE: '@app/FETCH_SECURITY_PASSES_FAILURE',
 
   MAKE_NETWORK_REQUEST: '@app/MAKE_NETWORK_REQUEST',
+
+  UPLOAD_IMAGES_REQUEST : '@app/UPLOAD_IMAGES_REQUEST',
+  UPLOAD_IMAGES_SUCCESS : '@app/UPLOAD_IMAGES_SUCCESS',
+  UPLOAD_IMAGES_FAILURE : '@app/UPLOAD_IMAGES_FAILURE',
+
 };
 
 function boot() {
@@ -89,6 +94,13 @@ function fetchSecurityPasses(params) {
   };
 }
 
+function uploadImages(params) {
+  return {
+    type: ACTION_TYPES.UPLOAD_IMAGES_REQUEST,
+    params,
+  };
+}
+
 export const ACTIONS = {
   boot,
   setCountry,
@@ -99,4 +111,5 @@ export const ACTIONS = {
   setPushToken,
   fetchCountries,
   fetchSecurityPasses,
+  uploadImages
 };
