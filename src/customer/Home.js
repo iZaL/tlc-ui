@@ -18,10 +18,7 @@ class Home extends Component {
     loads: [],
   };
 
-  state = {};
-
   componentDidMount() {
-    // this.props.dispatch(CUSTOMER_ACTIONS.fetchCurrentLoad());
     this.props.dispatch(
       CUSTOMER_ACTIONS.fetchLoadsByStatus({
         status: 'confirmed',
@@ -49,8 +46,6 @@ class Home extends Component {
 
   render() {
     let {loads_confirmed, loads_pending} = this.props;
-    // console.log('loads_confirmed', loads_confirmed);
-    // console.log('loads_pending', loads_pending);
 
     return (
       <ScrollView style={{flex: 1}}>
@@ -76,7 +71,7 @@ class Home extends Component {
 
 const makeMapStateToProps = () => {
   const getLoadsByStatus = CUSTOMER_SELECTORS.getLoadsByStatus();
-  const mapStateToProps = (state, props) => {
+  const mapStateToProps = (state) => {
     return {
       loads_pending: getLoadsByStatus(state, 'pending'),
       loads_confirmed: getLoadsByStatus(state, 'confirmed'),

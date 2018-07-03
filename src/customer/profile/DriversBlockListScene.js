@@ -29,7 +29,7 @@ class DriversBlockListScene extends Component {
   }
 
   onDriversListItemPress = (driver: object) => {
-    console.log('@todo:delete driver');
+
   };
 
   onDriversBlockListItemPress = () => {};

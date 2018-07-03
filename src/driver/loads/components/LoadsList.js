@@ -26,10 +26,13 @@ export default class LoadsList extends PureComponent {
     return (
       <Touchable onPress={() => onItemPress(item)}>
         <View style={[styles.itemContainer]}>
-          <LoadPickDropLocation
-            origin={item.origin}
-            destination={item.destination}
-          />
+          {
+            item.origin && item.destination &&
+            <LoadPickDropLocation
+              origin={item.origin}
+              destination={item.destination}
+            />
+          }
           <LoadInfo load={item} />
           {/*<Divider style={{marginVertical: 10}} />*/}
           {/*<View style={styles.itemRowContainer}>*/}

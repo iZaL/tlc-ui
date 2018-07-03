@@ -1,16 +1,15 @@
 import React, {Component} from 'react';
-import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {ACTIONS as APP_ACTIONS} from 'app/common/actions';
 import LanguageSelectScene from 'app/scenes/LanguageSelectScene';
 
 class LanguageSelect extends Component {
+
   onLanguageSelect = name => {
     if (this.props.app.language === name) {
       return this.props.navigation.goBack();
     }
-
-    this.props.actions.setLanguage(name);
+    this.props.dispatch(APP_ACTIONS.setLanguage(name));
   };
 
   render() {
@@ -31,11 +30,6 @@ function mapStateToProps(state) {
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return {actions: bindActionCreators({...APP_ACTIONS}, dispatch)};
-}
-
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
 )(LanguageSelect);
