@@ -112,17 +112,20 @@ class LoadAddScene extends Component {
 
   onLoadPassSearch = searchTerm => {};
 
-  onSaveButtonPress = () => {
-    // console.log('@todo save');
+  showMatchingDrivers = () => {
+    this.hideSuccessModalDialog();
+    this.props.navigation.navigate('LoadDetail', {
+      loadID: 1,
+    });
+  };
 
+  onSaveButtonPress = () => {
     let params = {
       ...this.props.loadData.attributes,
     };
-
     console.log('params', params);
     return new Promise((resolve, reject) => {
       this.props.dispatch(CUSTOMER_ACTIONS.saveLoad({params, resolve, reject}));
-      // dispatch(someActionCreator({ values, resolve, reject }))
     })
       .then(() => {
         this.showSuccessModalDialog();
@@ -131,13 +134,6 @@ class LoadAddScene extends Component {
         console.log('e', e);
       });
     // on Success
-  };
-
-  showMatchingDrivers = () => {
-    this.hideSuccessModalDialog();
-    this.props.navigation.navigate('LoadDetail', {
-      loadID: 1,
-    });
   };
 
   render() {
