@@ -17,12 +17,12 @@ export default class GooglePlaces extends Component {
   };
 
   static defaultProps = {
-    address:{
-      address:null,
-      city:null,
-      state:null,
-      country:'KW'
-    }
+    address: {
+      address: null,
+      city: null,
+      state: null,
+      country: 'KW',
+    },
   };
 
   shouldComponentUpdate(nextProps) {

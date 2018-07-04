@@ -15,19 +15,18 @@ export default class MapButtons extends Component {
   }
 
   render() {
-    let {close, save, style,hideCancelButton} = this.props;
+    let {close, save, style, hideCancelButton} = this.props;
 
     return (
       <View style={[styles.container, style]}>
-        {
-          !hideCancelButton &&
+        {!hideCancelButton && (
           <Button
             onPress={close}
             style={styles.button}
             raised
             title={I18n.t('cancel')}
           />
-        }
+        )}
 
         <Button
           onPress={save}

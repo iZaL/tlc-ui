@@ -56,7 +56,7 @@ class LoadDetailScene extends Component {
   componentDidMount() {
     this.props.dispatch(
       CUSTOMER_ACTIONS.fetchLoadDetails({
-        loadID: this.props.navigation.getParam('loadID',3),
+        loadID: this.props.navigation.getParam('loadID', 3),
       }),
     );
   }
@@ -159,7 +159,7 @@ class LoadDetailScene extends Component {
 
     let {origin, destination, receiver, customer, pending_fleets} = load;
 
-    console.log('load',load);
+    console.log('load', load);
     return (
       <ScrollView style={{flex: 1, backgroundColor: 'white'}}>
         <Tabs>
@@ -301,7 +301,7 @@ const makeMapStateToProps = () => {
   const getLoadByID = CUSTOMER_SELECTORS.getLoadByID();
   const mapStateToProps = (state, props) => {
     return {
-      load: getLoadByID(state, props.navigation.getParam('loadID',3)),
+      load: getLoadByID(state, props.navigation.getParam('loadID', 3)),
     };
   };
   return mapStateToProps;

@@ -5,7 +5,10 @@ import Modal from 'components/Modal';
 import TextInput from 'components/TextInput';
 import I18n from 'utils/locale';
 import {Button, Title} from 'react-native-paper';
-import AlbumUpload from "../../../components/AlbumUpload";
+import AlbumUpload from '../../../components/AlbumUpload';
+import IconFactory from '../../../components/IconFactory';
+import colors from '../../../assets/theme/colors';
+import Divider from '../../../components/Divider';
 
 export default class PackageDimensions extends Component {
   static propTypes = {
@@ -13,7 +16,7 @@ export default class PackageDimensions extends Component {
     visible: PropTypes.bool.isRequired,
     onConfirm: PropTypes.func.isRequired,
     onCancel: PropTypes.func.isRequired,
-    uploadPackagingImages:PropTypes.func.isRequired
+    uploadPackagingImages: PropTypes.func.isRequired,
     // length:PropTypes.oneOfType(PropTypes.number,PropTypes.string),
     // width:PropTypes.oneOfType(PropTypes.number,PropTypes.string),
     // height:PropTypes.oneOfType(PropTypes.number,PropTypes.string),
@@ -33,7 +36,7 @@ export default class PackageDimensions extends Component {
       quantity,
       width,
       uploadPackagingImages,
-      packaging_images
+      packaging_images,
     } = this.props;
 
     return (
@@ -43,8 +46,7 @@ export default class PackageDimensions extends Component {
           visible={visible}
           transparent={true}
           onBackdropPress={onCancel}
-          hideButton={true}
-        >
+          hideButton={true}>
           <View style={styles.addressContainer}>
             <View style={{flexDirection: 'row'}}>
               <TextInput
@@ -105,9 +107,30 @@ export default class PackageDimensions extends Component {
               />
             </View>
 
-            <AlbumUpload images={packaging_images} onUpload={uploadPackagingImages}>
-              <Title>{I18n.t('upload_images')}</Title>
+            <Divider style={{marginVertical: 20}} />
+
+            <AlbumUpload
+              images={packaging_images}
+              onUpload={uploadPackagingImages}>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}>
+                <Title style={{textAlign: 'center'}}>
+                  {I18n.t('upload_images')}
+                </Title>
+                <IconFactory
+                  type="MaterialIcons"
+                  name="add-a-photo"
+                  size={40}
+                  color={colors.darkGrey}
+                />
+              </View>
             </AlbumUpload>
+
+            <Divider style={{marginVertical: 20}} />
 
             <View style={{flexDirection: 'row', justifyContent: 'center'}}>
               <Button raised onPress={onCancel}>
@@ -132,7 +155,7 @@ const styles = StyleSheet.create({
   addressContainer: {
     flex: 1,
     backgroundColor: 'white',
-    padding:10
+    padding: 10,
   },
   addressField: {
     flex: 1,

@@ -4,7 +4,6 @@ import {ACTIONS as APP_ACTIONS} from 'app/common/actions';
 import LanguageSelectScene from 'app/scenes/LanguageSelectScene';
 
 class LanguageSelect extends Component {
-
   onLanguageSelect = name => {
     if (this.props.app.language === name) {
       return this.props.navigation.goBack();
@@ -30,6 +29,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(
-  mapStateToProps,
-)(LanguageSelect);
+export default connect(mapStateToProps)(LanguageSelect);

@@ -17,12 +17,12 @@ export default class extends PureComponent {
   static propTypes = {
     onCancel: PropTypes.func,
     onSave: PropTypes.func.isRequired,
-    hideCancelButton:PropTypes.bool
+    hideCancelButton: PropTypes.bool,
   };
 
   static defaultProps = {
     address: {},
-    hideCancelButton:false
+    hideCancelButton: false,
   };
 
   state = {
@@ -68,13 +68,13 @@ export default class extends PureComponent {
 
   updateFormFields = (key, value) => {
     this.props.updateAddress({
-      [key]:value
+      [key]: value,
     });
   };
 
   render() {
-    const {hideCancelButton,} = this.props;
-    const {city, address, state,latitude, longitude } = this.props.address;
+    const {hideCancelButton} = this.props;
+    const {city, address, state, latitude, longitude} = this.props.address;
     const {initialized} = this.state;
 
     return (
@@ -94,8 +94,7 @@ export default class extends PureComponent {
                 latitudeDelta: LATITUDE_DELTA,
                 longitudeDelta: LONGITUDE_DELTA,
               }}
-              onRegionChangeComplete={this.onRegionChangeComplete}
-            >
+              onRegionChangeComplete={this.onRegionChangeComplete}>
               <MapView.Marker
                 coordinate={{
                   latitude: latitude,
@@ -113,7 +112,11 @@ export default class extends PureComponent {
           address={address}
           updateFields={this.updateFormFields}
         />
-        <MapButtons hideCancelButton={hideCancelButton} save={this.saveAddress} close={this.hideScreen} />
+        <MapButtons
+          hideCancelButton={hideCancelButton}
+          save={this.saveAddress}
+          close={this.hideScreen}
+        />
       </ScrollView>
     );
   }

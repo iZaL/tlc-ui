@@ -22,7 +22,7 @@ export default class LoadInfoItem extends Component {
   }
 
   render() {
-    let {title, description, caption,children} = this.props;
+    let {title, description, caption, children} = this.props;
     return (
       <View style={styles.col}>
         <Label title={title} />

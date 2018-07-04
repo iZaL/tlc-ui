@@ -6,4 +6,4 @@ import {sagas as image} from 'app/sagas/image';
 
 import {all} from 'redux-saga/effects';
 
-export const sagas = all([app, countries, socket, routes,image]);
+export const sagas = all([app, countries, socket, routes, image]);

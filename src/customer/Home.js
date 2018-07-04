@@ -71,7 +71,7 @@ class Home extends Component {
 
 const makeMapStateToProps = () => {
   const getLoadsByStatus = CUSTOMER_SELECTORS.getLoadsByStatus();
-  const mapStateToProps = (state) => {
+  const mapStateToProps = state => {
     return {
       loads_pending: getLoadsByStatus(state, 'pending'),
       loads_confirmed: getLoadsByStatus(state, 'confirmed'),

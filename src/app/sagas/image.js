@@ -4,9 +4,8 @@ import {ACTION_TYPES} from 'app/common/actions';
 import {getFileExtension, getFileName} from 'utils/functions';
 
 function* uploadImages(action) {
-  const {images,reject,resolve} = action.params;
+  const {images, reject, resolve} = action.params;
   try {
-
     const formData = new FormData();
 
     images.map(img => {
@@ -31,13 +30,10 @@ function* uploadImages(action) {
     yield reject(error);
     yield put({type: ACTION_TYPES.UPLOAD_IMAGES_FAILURE, error});
   }
-
 }
 
 function* uploadImageMonitor() {
   yield takeLatest(ACTION_TYPES.UPLOAD_IMAGES_REQUEST, uploadImages);
 }
 
-export const sagas = all([
-  fork(uploadImageMonitor),
-]);
+export const sagas = all([fork(uploadImageMonitor)]);

@@ -39,7 +39,8 @@ export default class LoadPickDropLocation extends PureComponent {
             size={30}
           />
           <Text style={styles.locationName}>
-            {destination.city}, {destination.country && destination.country.name}
+            {destination.city},{' '}
+            {destination.country && destination.country.name}
           </Text>
         </View>
       </View>

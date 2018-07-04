@@ -6,9 +6,9 @@ import PropTypes from 'prop-types';
 import {StyleSheet, Text, View} from 'react-native';
 import I18n from 'utils/locale';
 import LoadInfoItem from 'driver/loads/components/LoadInfoItem';
-import {Caption, TouchableRipple} from "react-native-paper";
-import Modal from "components/Modal";
-import Gallery from "components/Gallery";
+import {Caption, TouchableRipple} from 'react-native-paper';
+import Modal from 'components/Modal';
+import Gallery from 'components/Gallery';
 
 export default class LoadInfo extends Component {
   static propTypes = {
@@ -17,7 +17,7 @@ export default class LoadInfo extends Component {
   };
 
   state = {
-    packagingDetailVisible:false
+    packagingDetailVisible: false,
   };
 
   static defaultProps = {
@@ -27,20 +27,20 @@ export default class LoadInfo extends Component {
     },
   };
 
-  shouldComponentUpdate(nextProps,prevState) {
+  shouldComponentUpdate(nextProps, prevState) {
     return nextProps.load !== this.props.load || prevState !== this.state;
   }
 
   render() {
     let {load, style, showDetail} = this.props;
-    let {packaging,packaging_dimensions,packaging_images} = load;
+    let {packaging, packaging_dimensions, packaging_images} = load;
 
-    if(!packaging_dimensions) {
-      packaging_dimensions = {}
+    if (!packaging_dimensions) {
+      packaging_dimensions = {};
     }
 
-    if(!packaging_images) {
-      packaging_images = []
+    if (!packaging_images) {
+      packaging_images = [];
     }
 
     return (
@@ -77,7 +77,9 @@ export default class LoadInfo extends Component {
 
           <LoadInfoItem
             title={I18n.t('status')}
-            description={load.trip ? load.trip.status_formatted : load.status_formatted}
+            description={
+              load.trip ? load.trip.status_formatted : load.status_formatted
+            }
           />
         </View>
 
@@ -96,24 +98,28 @@ export default class LoadInfo extends Component {
             <LoadInfoItem
               title={I18n.t('packaging')}
               description={packaging ? packaging.name : '-'}
-              caption={packaging ?
-                <TouchableRipple onPress={() => this.setState({packagingDetailVisible:true})}>
-                  <Caption>{I18n.t('view_info')}</Caption>
-                </TouchableRipple>
-                :
-                ''
+              caption={
+                packaging ? (
+                  <TouchableRipple
+                    onPress={() =>
+                      this.setState({packagingDetailVisible: true})
+                    }>
+                    <Caption>{I18n.t('view_info')}</Caption>
+                  </TouchableRipple>
+                ) : (
+                  ''
+                )
               }
             />
 
             <Modal
               visible={this.state.packagingDetailVisible}
-              onCancel={() => this.setState({packagingDetailVisible:false})}
-              onSave={() => this.setState({packagingDetailVisible:false})}
+              onCancel={() => this.setState({packagingDetailVisible: false})}
+              onSave={() => this.setState({packagingDetailVisible: false})}
               header={I18n.t('packaging_info')}
-              buttonText={I18n.t('close')}
-            >
+              buttonText={I18n.t('close')}>
               <View style={[styles.container]}>
-                <View style={[styles.itemRowContainer,{marginTop:10}]}>
+                <View style={[styles.itemRowContainer, {marginTop: 10}]}>
                   <LoadInfoItem
                     title={I18n.t('length')}
                     description={packaging_dimensions.length_formatted}
@@ -138,13 +144,8 @@ export default class LoadInfo extends Component {
                 </View>
               </View>
 
-              <Gallery
-                images={packaging_images}
-                imageName={(item) => item.url}
-              />
-
+              <Gallery images={packaging_images} imageName={item => item.url} />
             </Modal>
-
           </View>
         )}
       </View>
@@ -159,7 +160,7 @@ const styles = StyleSheet.create({
   itemRowContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent:'center',
-    flexWrap:'wrap'
+    justifyContent: 'center',
+    flexWrap: 'wrap',
   },
 });

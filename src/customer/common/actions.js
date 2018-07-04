@@ -81,7 +81,6 @@ export const ACTION_TYPES = {
   SAVE_ADDRESS_REQUEST: '@customer/SAVE_ADDRESS_REQUEST',
   SAVE_ADDRESS_SUCCESS: '@customer/SAVE_ADDRESS_SUCCESS',
   SAVE_ADDRESS_FAILURE: '@customer/SAVE_ADDRESS_FAILURE',
-
 };
 
 function fetchEmployees(params) {
@@ -210,14 +209,12 @@ function fetchCurrentLoad(params) {
   };
 }
 
-
 function saveAddress(payload: object) {
   return {
     type: ACTION_TYPES.SAVE_ADDRESS_REQUEST,
     payload,
   };
 }
-
 
 export const ACTIONS = {
   saveProfile,

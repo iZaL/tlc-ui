@@ -28,9 +28,7 @@ class DriversBlockListScene extends Component {
     this.props.dispatch(CUSTOMER_ACTIONS.fetchBlockedDrivers());
   }
 
-  onDriversListItemPress = (driver: object) => {
-
-  };
+  onDriversListItemPress = (driver: object) => {};
 
   onDriversBlockListItemPress = () => {};
 

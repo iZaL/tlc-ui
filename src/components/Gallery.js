@@ -4,41 +4,46 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {TouchableRipple} from 'react-native-paper';
-import {View, StyleSheet, Image} from "react-native";
-import ImageViewer from "components/ImageViewer";
+import {View, StyleSheet, Image} from 'react-native';
+import ImageViewer from 'components/ImageViewer';
 
 export default class Gallery extends Component {
-
   static propTypes = {
     images: PropTypes.array,
   };
 
   state = {
-    slider_visible:false,
-    slider_index:0
+    slider_visible: false,
+    slider_index: 0,
   };
 
-  static defaultProps= {
-    images:[],
+  static defaultProps = {
+    images: [],
   };
 
-  shouldComponentUpdate(nextProps,nextState) {
+  shouldComponentUpdate(nextProps, nextState) {
     return nextProps.images !== this.props.images || nextState !== this.state;
   }
 
-  openSlider = (index) => {
+  openSlider = index => {
     this.setState({
-      slider_index:index,
-      slider_visible:true,
-    })
+      slider_index: index,
+      slider_visible: true,
+    });
   };
 
-  renderImage = (image,index) => {
-    let {itemStyle,imageStyle,imageName} = this.props;
+  renderImage = (image, index) => {
+    let {itemStyle, imageStyle, imageName} = this.props;
     return (
-      <TouchableRipple onPress={()=>this.openSlider(index)} style={[styles.itemContainer,itemStyle]} key={`${index}`}>
+      <TouchableRipple
+        onPress={() => this.openSlider(index)}
+        style={[styles.itemContainer, itemStyle]}
+        key={`${index}`}>
         <Image
-          source={{uri:imageName ? imageName(image) : image}} style={[styles.image,imageStyle]} resizeMode="contain" />
+          source={{uri: imageName ? imageName(image) : image}}
+          style={[styles.image, imageStyle]}
+          resizeMode="contain"
+        />
       </TouchableRipple>
     );
   };
@@ -46,13 +51,13 @@ export default class Gallery extends Component {
   render() {
     let {style, images} = this.props;
     return (
-      <View style={[styles.container,style]}>
-        {images.map((image,i) => this.renderImage(image,i))}
+      <View style={[styles.container, style]}>
+        {images.map((image, i) => this.renderImage(image, i))}
         <ImageViewer
           index={this.state.slider_index}
           visible={this.state.slider_visible}
           images={images}
-          onClose={()=>this.setState({slider_visible:false})}
+          onClose={() => this.setState({slider_visible: false})}
         />
       </View>
     );
@@ -61,15 +66,15 @@ export default class Gallery extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection:'row',
-    flexWrap:'wrap',
-    justifyContent:'center',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
   },
-  itemContainer:{
-    padding:5
+  itemContainer: {
+    padding: 5,
   },
-  image:{
-    width:100,
-    height:100
-  }
+  image: {
+    width: 100,
+    height: 100,
+  },
 });

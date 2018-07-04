@@ -37,7 +37,7 @@ class LoadAddScene extends Component {
     isPackageDimensionDialogVisible: false,
     isTrailerQuantityDialogVisible: false,
     isSaving: false,
-    current_saved_id:null
+    current_saved_id: null,
   };
 
   componentDidMount() {
@@ -121,15 +121,17 @@ class LoadAddScene extends Component {
     });
   };
 
-  uploadPackagingImages = (images) => {
+  uploadPackagingImages = images => {
     return new Promise((resolve, reject) => {
-      this.props.dispatch(APP_ACTIONS.uploadImages({
-        images,
-        resolve,
-        reject
-      }));
+      this.props.dispatch(
+        APP_ACTIONS.uploadImages({
+          images,
+          resolve,
+          reject,
+        }),
+      );
     })
-      .then((images) => {
+      .then(images => {
         let {packaging_images} = this.props.loadData.attributes;
         let uploadImages = packaging_images.concat(images);
         this.props.dispatch(
@@ -149,10 +151,9 @@ class LoadAddScene extends Component {
     return new Promise((resolve, reject) => {
       this.props.dispatch(CUSTOMER_ACTIONS.saveLoad({params, resolve, reject}));
     })
-      .then((load) => {
-
+      .then(load => {
         this.setState({
-          current_saved_id:load.id
+          current_saved_id: load.id,
         });
 
         this.showSuccessModalDialog();
@@ -191,7 +192,7 @@ class LoadAddScene extends Component {
       destination_location_id,
       trailer_quantity,
       packaging_dimension,
-      packaging_images
+      packaging_images,
     } = this.props.loadData.attributes;
 
     let {trailers, packaging, securityPasses, locations} = this.props;

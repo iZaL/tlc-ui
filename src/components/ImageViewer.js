@@ -18,7 +18,7 @@ export default class extends Component {
   }
 
   render() {
-    let {visible, images, onClose,...rest} = this.props;
+    let {visible, images, onClose, ...rest} = this.props;
     return (
       <Modal visible={visible} transparent={true} onRequestClose={onClose}>
         <ImageViewer imageUrls={images} onSwipeDown={onClose} {...rest} />

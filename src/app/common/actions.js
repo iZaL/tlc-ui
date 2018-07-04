@@ -30,10 +30,9 @@ export const ACTION_TYPES = {
 
   MAKE_NETWORK_REQUEST: '@app/MAKE_NETWORK_REQUEST',
 
-  UPLOAD_IMAGES_REQUEST : '@app/UPLOAD_IMAGES_REQUEST',
-  UPLOAD_IMAGES_SUCCESS : '@app/UPLOAD_IMAGES_SUCCESS',
-  UPLOAD_IMAGES_FAILURE : '@app/UPLOAD_IMAGES_FAILURE',
-
+  UPLOAD_IMAGES_REQUEST: '@app/UPLOAD_IMAGES_REQUEST',
+  UPLOAD_IMAGES_SUCCESS: '@app/UPLOAD_IMAGES_SUCCESS',
+  UPLOAD_IMAGES_FAILURE: '@app/UPLOAD_IMAGES_FAILURE',
 };
 
 function boot() {
@@ -111,5 +110,5 @@ export const ACTIONS = {
   setPushToken,
   fetchCountries,
   fetchSecurityPasses,
-  uploadImages
+  uploadImages,
 };
