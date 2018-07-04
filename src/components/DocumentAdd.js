@@ -127,6 +127,7 @@ export default class DocumentAdd extends PureComponent {
           visible={this.state.isCountryModalVisible}
           onItemPress={this._handleCountryPicker}
           onCancel={this._hideCountryModal}
+          onSave={this._hideCountryModal}
           header={countryModalTitle}
           activeIDs={[countryID]}
         />

@@ -13,7 +13,7 @@ export default class FAB extends Component {
 
   render() {
     return (
-      <View style={{alignItems: 'flex-end', right: 30}}>
+      <View style={{alignItems: 'flex-end',right: 30}}>
         <PaperFAB {...this.props} />
       </View>
     );

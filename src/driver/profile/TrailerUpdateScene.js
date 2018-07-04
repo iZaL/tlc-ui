@@ -243,6 +243,7 @@ class TrailerUpdateScene extends Component {
           visible={showTypeModal}
           onItemPress={this.setType}
           onCancel={this.hideTypeModal}
+          onSave={this.hideTypeModal}
           items={trailer_types}
         />
 
@@ -252,6 +253,7 @@ class TrailerUpdateScene extends Component {
           visible={showMakeModal}
           onItemPress={this.setMake}
           onCancel={this.hideMakeModal}
+          onSave={this.hideMakeModal}
           items={trailer_makes}
         />
 

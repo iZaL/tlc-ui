@@ -150,6 +150,7 @@ class TruckModelScene extends Component {
           visible={this.state.showMakeModal}
           onItemPress={this.setMake}
           onCancel={this.hideMakeModal}
+          onSave={this.hideMakeModal}
           items={makes}
         />
 
@@ -159,6 +160,7 @@ class TruckModelScene extends Component {
           visible={this.state.showModelModal}
           onItemPress={this.setModel}
           onCancel={this.hideModelModal}
+          onSave={this.hideModelModal}
           items={models}
         />
       </View>

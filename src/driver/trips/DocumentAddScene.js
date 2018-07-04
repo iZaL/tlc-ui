@@ -91,8 +91,6 @@ class DocumentAddScene extends Component {
       );
     }
 
-    console.log('document_types', document_types);
-
     return (
       <ScrollView>
         <View style={{padding: 10}}>
@@ -122,11 +120,12 @@ class DocumentAddScene extends Component {
           <FileUpload onUpload={this.onFileUpload}>
             <ListItem title={I18n.t('upload_file')} />
           </FileUpload>
+
         </View>
 
         <Button
           title={I18n.t('save')}
-          onPress={this.saveAddress}
+          onPress={this.onSave}
           style={{marginVertical: 10}}
         />
 
@@ -136,8 +135,10 @@ class DocumentAddScene extends Component {
           visible={typeModalVisible}
           onItemPress={this.setType}
           onCancel={this.hideTypeModal}
+          onSave={this.hideTypeModal}
           items={document_types}
         />
+
       </ScrollView>
     );
   }

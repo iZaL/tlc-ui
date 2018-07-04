@@ -24,10 +24,11 @@ import LoadStatusButton from 'driver/loads/components/LoadStatusButton';
 import LoadLocationMapView from 'driver/loads/components/LoadLocationMapView';
 import LoadAddressInfo from 'driver/loads/components/LoadAddressInfo';
 import colors from 'assets/theme/colors';
-import {FAB, Headline} from 'react-native-paper';
+import {Headline} from 'react-native-paper';
 import BackgroundGeolocation from 'react-native-background-geolocation';
 import {API_URL, GEOLOCATION_SOUNDS_ENABLED} from 'utils/env';
 import TRACKING_CONFIG from 'utils/tracking';
+import FAB from 'components/FAB';
 
 class LoadDetailScene extends Component {
   static propTypes = {
@@ -77,8 +78,7 @@ class LoadDetailScene extends Component {
 
     this.props.dispatch(
       DRIVER_ACTIONS.fetchLoadDetails({
-        // loadID: this.props.navigation.getParam('loadID'),
-        loadID: 1,
+        loadID: this.props.navigation.getParam('loadID'),
       }),
     );
   }
@@ -127,7 +127,7 @@ class LoadDetailScene extends Component {
         ...TRACKING_CONFIG,
         url: `http://${API_URL}/trips/${
           this.props.load.trip.id
-        }/location/update`,
+          }/location/update`,
       });
       BackgroundGeolocation.start();
     });
@@ -322,14 +322,12 @@ class LoadDetailScene extends Component {
                 items={(trip && trip.documents) || []}
                 onItemPress={this.onDocumentTypeListItemPress}
               />
-              <View style={{flex: 1}}>
-                <FAB
-                  small
-                  primary
-                  icon="add"
-                  onPress={this.onDocumentAddPress}
-                />
-              </View>
+              <FAB
+                small
+                primary
+                icon="add"
+                onPress={this.onDocumentAddPress}
+              />
             </TabPanel>
 
             <TabPanel hideNextButton={true}>
@@ -348,6 +346,7 @@ class LoadDetailScene extends Component {
           images={images}
           onClose={this.hideImageModal}
         />
+
       </ScrollView>
     );
   }
@@ -357,8 +356,8 @@ const makeMapStateToProps = () => {
   const getLoadByID = DRIVER_SELECTORS.getLoadByID();
   const mapStateToProps = (state, props) => {
     return {
-      load: getLoadByID(state, 1),
-      // load: getLoadByID(state, props.navigation.getParam('loadID')),
+      // load: getLoadByID(state, 1),
+      load: getLoadByID(state, props.navigation.getParam('loadID')),
     };
   };
   return mapStateToProps;

@@ -11,6 +11,7 @@ export default class ListModal extends Component {
     visible: PropTypes.bool.isRequired,
     onItemPress: PropTypes.func.isRequired,
     onCancel: PropTypes.func.isRequired,
+    onSave: PropTypes.func.isRequired,
     items: PropTypes.array.isRequired,
     header: PropTypes.any,
     activeIDs: PropTypes.array,
@@ -34,6 +35,7 @@ export default class ListModal extends Component {
       title,
       ...rest
     } = this.props;
+
     return (
       <Modal {...rest}>
         <Listing

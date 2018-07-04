@@ -25,8 +25,8 @@ import LoadLocationMapView from 'driver/loads/components/LoadLocationMapView';
 import LoadAddressInfo from 'driver/loads/components/LoadAddressInfo';
 import colors from 'assets/theme/colors';
 import {FAB, Headline} from 'react-native-paper';
-import TripList from '../trips/components/TripList';
-import PendingFleetsList from '../trips/components/PendingFleetsList';
+import TripList from 'customer/trips/components/TripList';
+import PendingFleetsList from 'customer/trips/components/PendingFleetsList';
 
 class LoadDetailScene extends Component {
   static propTypes = {
@@ -48,8 +48,6 @@ class LoadDetailScene extends Component {
   state = {
     employeeDetail: {},
     employeeDetailVisible: false,
-    imageModalVisible: false,
-    images: [],
     isFetching: false,
   };
 
@@ -128,13 +126,6 @@ class LoadDetailScene extends Component {
     });
   };
 
-  hideImageModal = () => {
-    this.setState({
-      imageModalVisible: false,
-      images: [],
-    });
-  };
-
   onTripListItemPress = (trip: object) => {
     this.props.navigation.navigate('TripDetail', {
       tripID: trip.id,
@@ -150,6 +141,7 @@ class LoadDetailScene extends Component {
   render() {
     let {load, navigation} = this.props;
     let hiddenTabs = navigation.getParam('hiddenTabs') || [''];
+
     let {
       employeeDetailVisible,
       employeeDetail,
@@ -290,11 +282,6 @@ class LoadDetailScene extends Component {
           </TabPanels>
         </Tabs>
 
-        <ImageViewer
-          visible={imageModalVisible}
-          images={images}
-          onClose={this.hideImageModal}
-        />
       </ScrollView>
     );
   }

@@ -158,6 +158,7 @@ export default class SecurityPassAdd extends PureComponent {
           visible={this.state.isSecurityPassModalVisible}
           onItemPress={this._handleSecurityPassPicker}
           onCancel={this._hideSecurityPassModalPicker}
+          onSave={this._hideSecurityPassModalPicker}
           items={security_passes}
         />
       </View>
