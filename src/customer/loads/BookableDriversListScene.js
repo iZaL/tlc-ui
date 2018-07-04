@@ -51,7 +51,7 @@ class BookableDriversListScene extends Component {
   }
 
   onDriverListItemPress = (item: object) => {
-    this.props.navigation.navigate('TripCreate', {
+    this.props.navigation.navigate('DriverSelect', {
       loadID: this.props.load.id,
       driverID:item.id
     });

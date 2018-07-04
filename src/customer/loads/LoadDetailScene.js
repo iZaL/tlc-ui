@@ -136,10 +136,6 @@ class LoadDetailScene extends Component {
     this.props.navigation.navigate('BookableDrivers', {
       loadID: this.props.load.id,
     });
-
-    // this.props.navigation.navigate('TripCreate', {
-    //   loadID: this.props.load.id,
-    // });
   };
 
   render() {

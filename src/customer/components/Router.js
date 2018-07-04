@@ -21,10 +21,10 @@ import LoadDetailOptionsListScene from 'customer/loads/LoadDetailOptionsListScen
 import DriversListScene from 'customer/loads/DriversListScene';
 import DriversBlockListScene from 'customer/profile/DriversBlockListScene';
 import TripDetailScene from 'customer/trips/TripDetailScene';
-import TripCreateScene from 'customer/trips/TripCreateScene';
 import LanguageSelect from 'app/LanguageSelect';
 import LocationEditScene from 'customer/locations/LocationEditScene';
-import BookableDriversListScene from "../loads/BookableDriversListScene";
+import BookableDriversListScene from "customer/loads/BookableDriversListScene";
+import DriverSelect from "customer/trips/DriverSelect";
 
 const getDrawerIcon = navigation => {
   return {
@@ -154,8 +154,8 @@ const LoadStack = createStackNavigator(
         title: I18n.t('trip_track'),
       }),
     },
-    TripCreate: {
-      screen: TripCreateScene,
+    DriverSelect: {
+      screen: DriverSelect,
       navigationOptions: () => ({
         title: I18n.t('driver_select'),
       }),
@@ -175,7 +175,7 @@ const LoadStack = createStackNavigator(
     cardStyle: {
       backgroundColor: colors.fadedWhite,
     },
-    initialRouteName: 'TripCreate',
+    initialRouteName: 'DriverSelect',
   },
 );
 
@@ -219,5 +219,5 @@ export const Routes = createDrawerNavigator(DrawerRoutes, {
   gesturesEnabled: false,
   contentComponent: props => <Drawer {...props} />,
   drawerWidth: 275,
-  // initialRouteName: 'LoadStack',
+  initialRouteName: 'LoadStack',
 });

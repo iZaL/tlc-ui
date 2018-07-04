@@ -85,6 +85,16 @@ function saveLoad(params) {
   return fetchAPI(requestParams);
 }
 
+function selectDriver(params) {
+  const path = `customer/loads/${params.body.load_id}/drivers/select`;
+  let requestParams = {
+    path,
+    params,
+    method: 'POST',
+  };
+  return fetchAPI(requestParams);
+}
+
 function saveEmployee(params) {
   const path = `customer/employees`;
   let requestParams = {
@@ -124,4 +134,5 @@ export const API = {
   saveEmployee,
   saveAddress,
   saveLoad,
+  selectDriver,
 };

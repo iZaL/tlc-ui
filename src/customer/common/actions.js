@@ -231,10 +231,10 @@ function saveAddress(payload: object) {
   };
 }
 
-function selectDriver(params: object) {
+function selectDriver(payload: object) {
   return {
     type: ACTION_TYPES.SELECT_DRIVER_REQUEST,
-    params,
+    payload,
   };
 }
 

@@ -17,7 +17,7 @@ import TruckInfo from 'trucks/components/TruckInfo';
 import TrailerInfo from 'trucks/components/TrailerInfo';
 import ConfirmedButton from "components/ConfirmedButton";
 
-class TripCreateScene extends Component {
+class DriverSelect extends Component {
 
   static propTypes = {
     navigation: PropTypes.shape({
@@ -49,14 +49,9 @@ class TripCreateScene extends Component {
     );
   }
 
-  onDriverConfirm = () => {
-    console.log('@todo: save');
-    this.hideDialog();
-  };
-
   onDriverSelect = () => {
     let params = {
-      driver_id:this.state.selectedDriverID,
+      driver_id:this.props.driver.id,
       load_id:this.props.load.id
     };
 
@@ -67,8 +62,6 @@ class TripCreateScene extends Component {
 
         console.log('load',load);
 
-        this.setState({
-        });
 
       })
       .catch(e => {
@@ -112,24 +105,12 @@ class TripCreateScene extends Component {
                 )}
               </TabPanel>
 
-              {/*<TabPanel hideNextButton={true} >*/}
-              {/*<Map*/}
-              {/*origin={origin}*/}
-              {/*destination={{*/}
-              {/*latitude: address.latitude,*/}
-              {/*longitude: address.longitude,*/}
-              {/*}}*/}
-              {/*style={{*/}
-              {/*height:500*/}
-              {/*}}*/}
-              {/*/>*/}
-              {/*</TabPanel>*/}
             </TabPanels>
           </Tabs>
 
           <ConfirmedButton
             onPress={this.onDriverSelect}
-            title={I18n.t('confirm')}
+            title={I18n.t('select')}
             description={I18n.t('driver_select_confirmation')}
           />
 
@@ -153,4 +134,4 @@ const makeMapStateToProps = () => {
   return mapStateToProps;
 };
 
-export default connect(makeMapStateToProps)(TripCreateScene);
+export default connect(makeMapStateToProps)(DriverSelect);

@@ -4,6 +4,7 @@ import {ACTION_TYPES} from 'customer/common/actions';
 import {Schema} from 'utils/schema';
 import {normalize} from 'normalizr';
 import {ACTIONS as APP_ACTIONS} from "app/common/actions";
+import I18n from 'utils/locale';
 
 function* fetchLoadDrivers(action) {
   try {
@@ -71,36 +72,32 @@ function* fetchDriver(action) {
   }
 }
 
-
 function* selectDriver(action) {
   const {
     payload: {params, resolve},
   } = action;
+
   try {
     let requestParams = {
       body: {
         ...params,
       },
     };
-    const response = yield call(API.saveLoad, requestParams);
-    const formattedResponse = {
-      ...response.customer,
-      loads: {
-        [response.load_status]: [response.load],
-      },
-    };
-    const normalized = normalize(formattedResponse, Schema.customers);
+    const response = yield call(API.selectDriver, requestParams);
+    const normalized = normalize(response.load, Schema.loads);
     yield put({
       type: ACTION_TYPES.SAVE_LOAD_SUCCESS,
       entities: normalized.entities,
     });
+
     yield put(
       APP_ACTIONS.setNotification({
-        message: I18n.t('load_add_success'),
-        position: 'center',
+        message: I18n.t('trip_confirmation_sent_to_driver'),
       }),
     );
+
     yield resolve(response.load);
+
   } catch (error) {
     yield put(APP_ACTIONS.setNotification({message: error, type: 'error'}));
     yield put({type: ACTION_TYPES.SAVE_LOAD_FAILURE, error});
