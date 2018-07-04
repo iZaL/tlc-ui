@@ -43,6 +43,10 @@ export const ACTION_TYPES = {
   FETCH_DRIVERS_SUCCESS: '@customer/FETCH_DRIVERS_SUCCESS',
   FETCH_DRIVERS_FAILURE: '@customer/FETCH_DRIVERS_FAILURE',
 
+  FETCH_DRIVER_REQUEST: '@customer/FETCH_DRIVER_REQUEST',
+  FETCH_DRIVER_SUCCESS: '@customer/FETCH_DRIVER_SUCCESS',
+  FETCH_DRIVER_FAILURE: '@customer/FETCH_DRIVER_FAILURE',
+
   FETCH_LOADS_BY_STATUS_REQUEST: '@customer/FETCH_LOADS_BY_STATUS_REQUEST',
   FETCH_LOADS_BY_STATUS_SUCCESS: '@customer/FETCH_LOADS_BY_STATUS_SUCCESS',
   FETCH_LOADS_BY_STATUS_FAILURE: '@customer/FETCH_LOADS_BY_STATUS_FAILURE',
@@ -142,6 +146,13 @@ function fetchDrivers(params) {
   };
 }
 
+function fetchDriver(params) {
+  return {
+    type: ACTION_TYPES.FETCH_DRIVER_REQUEST,
+    params,
+  };
+}
+
 function saveProfile(params) {
   return {
     type: ACTION_TYPES.UPDATE_PROFILE_REQUEST,
@@ -233,6 +244,7 @@ export const ACTIONS = {
   fetchEmployees,
   fetchLocations,
   fetchDrivers,
+  fetchDriver,
   fetchBlockedDrivers,
   saveEmployee,
   fetchLoadAddData,

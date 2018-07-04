@@ -91,20 +91,6 @@ function* fetchBlockedDrivers() {
   }
 }
 
-function* fetchDrivers() {
-  try {
-    const response = yield call(API.fetchDrivers);
-    const normalized = normalize(response.data, [Schema.drivers]);
-    const {entities, result} = normalized;
-
-    yield put({
-      type: ACTION_TYPES.FETCH_DRIVERS_SUCCESS,
-      entities: entities,
-    });
-  } catch (error) {
-    yield put({type: ACTION_TYPES.FETCH_DRIVERS_FAILURE, error});
-  }
-}
 
 function* saveProfileMonitor() {
   yield takeLatest(ACTION_TYPES.UPDATE_PROFILE_REQUEST, saveProfile);
@@ -120,13 +106,10 @@ function* fetchBlockedDriversMonitor() {
     fetchBlockedDrivers,
   );
 }
-function* fetchDriversMonitor() {
-  yield takeLatest(ACTION_TYPES.FETCH_DRIVERS_REQUEST, fetchDrivers);
-}
+
 
 export const sagas = all([
   fork(fetchProfileMonitor),
   fork(fetchBlockedDriversMonitor),
-  fork(fetchDriversMonitor),
   fork(saveProfileMonitor),
 ]);

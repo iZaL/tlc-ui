@@ -15,16 +15,16 @@ import TabPanel from 'customer/loads/components/TabPanel';
 import DriverInfo from 'driver/components/DriverInfo';
 import TruckInfo from 'trucks/components/TruckInfo';
 import TrailerInfo from 'trucks/components/TrailerInfo';
-import Map from 'customer/trips/components/Map';
-import Modal from 'components/Modal';
 import ConfirmedButton from "components/ConfirmedButton";
 
 class TripCreateScene extends Component {
+
   static propTypes = {
     navigation: PropTypes.shape({
       state: PropTypes.shape({
         params: PropTypes.shape({
           loadID: PropTypes.number.isRequired,
+          driverID:PropTypes.number.isRequired
         }),
       }),
     }),
@@ -33,13 +33,7 @@ class TripCreateScene extends Component {
   static defaultProps = {
     navigation: {state: {params: {loadID: 0}}},
     load: {},
-  };
-
-  state = {
-    selectedDriverID: null,
-    dialogVisible: false,
-    dialogTitle: null,
-    driverDetailModalVisible: false,
+    driver:{}
   };
 
   componentDidMount() {
@@ -48,43 +42,12 @@ class TripCreateScene extends Component {
         loadID: this.props.navigation.getParam('loadID',3),
       }),
     );
-  }
-
-  onDriverListItemPress = (item: object) => {
-    this.setState({
-      selectedDriverID: item.id,
-      driverDetailModalVisible: true,
-    });
-    // this.showDialog({title: `${I18n.t('confirm')} ${item.user.name}`});
-  };
-
-  showDialog = ({title}) => {
-    this.setState(
-      {
-        dialogTitle: title,
-        dialogVisible: true,
-      },
-      () => {
-        // this.setState({
-        //   dialogVisible:true
-        // })
-      },
+    this.props.dispatch(
+      CUSTOMER_ACTIONS.fetchDriver({
+        driver_id: this.props.navigation.getParam('driverID',1),
+      }),
     );
-  };
-
-  hideDialog = () => {
-    this.setState({
-      dialogVisible: false,
-      dialogTitle: null,
-      selectedDriverID: null,
-    });
-  };
-
-  hideDriverDetailDialog = () => {
-    this.setState({
-      driverDetailModalVisible: false,
-    });
-  };
+  }
 
   onDriverConfirm = () => {
     console.log('@todo: save');
@@ -114,101 +77,61 @@ class TripCreateScene extends Component {
     // on Success
   };
 
-
-  // onDriverSelect = (driver) => {
-  //   this.props.dispatch(CUSTOMER_ACTIONS.selectDriver({
-  //     driver_id:driver.id,
-  //     load_id:this.props.load.id
-  //   }));
-  // };
-
   render() {
-    let {load} = this.props;
+    let {load,driver} = this.props;
 
-    let {driverDetailModalVisible, selectedDriverID} = this.state;
-
-    let driver = {};
-
-    if (selectedDriverID) {
-      driver = load.bookable_drivers.find(id => selectedDriverID);
-    }
-
-    console.log('driver', driver);
-    if (load.id) {
+    if (load.id && driver.id) {
       return (
         <ScrollView style={{flex: 1}}>
+          <Tabs>
+            <TabList>
+              <TabHeader title={I18n.t('driver')} />
+              <TabHeader title={I18n.t('truck')} />
+              <TabHeader title={I18n.t('trailer')} />
+              {/*<TabHeader title={I18n.t('track')} />*/}
+            </TabList>
 
-          <DriversList
-            onItemPress={this.onDriverListItemPress}
-            items={load.bookable_drivers || []}
+            <TabPanels>
+              <TabPanel hideNextButton={true}>
+                <DriverInfo driver={driver} />
+              </TabPanel>
+
+              <TabPanel hideNextButton={true}>
+                {driver && driver.truck ? (
+                  <TruckInfo truck={driver.truck} />
+                ) : (
+                  <View />
+                )}
+              </TabPanel>
+
+              <TabPanel hideNextButton={true}>
+                {driver && driver.truck && driver.truck.trailer ? (
+                  <TrailerInfo trailer={driver.truck.trailer} />
+                ) : (
+                  <View />
+                )}
+              </TabPanel>
+
+              {/*<TabPanel hideNextButton={true} >*/}
+              {/*<Map*/}
+              {/*origin={origin}*/}
+              {/*destination={{*/}
+              {/*latitude: address.latitude,*/}
+              {/*longitude: address.longitude,*/}
+              {/*}}*/}
+              {/*style={{*/}
+              {/*height:500*/}
+              {/*}}*/}
+              {/*/>*/}
+              {/*</TabPanel>*/}
+            </TabPanels>
+          </Tabs>
+
+          <ConfirmedButton
+            onPress={this.onDriverSelect}
+            title={I18n.t('confirm')}
+            description={I18n.t('driver_select_confirmation')}
           />
-
-          <Dialog
-            leftPress={this.hideDialog}
-            rightPress={this.onDriverConfirm}
-            leftText={I18n.t('cancel')}
-            visible={this.state.dialogVisible}
-            title={this.state.dialogTitle}
-          />
-
-          <Modal
-            visible={driverDetailModalVisible}
-            onCancel={this.hideDriverDetailDialog}
-          >
-            <ScrollView style={{flex: 1}}>
-              <Tabs>
-                <TabList>
-                  <TabHeader title={I18n.t('driver')} />
-                  <TabHeader title={I18n.t('truck')} />
-                  <TabHeader title={I18n.t('trailer')} />
-                  {/*<TabHeader title={I18n.t('track')} />*/}
-                </TabList>
-
-                <TabPanels>
-                  <TabPanel hideNextButton={true}>
-                    <DriverInfo driver={driver} />
-                  </TabPanel>
-
-                  <TabPanel hideNextButton={true}>
-                    {driver && driver.truck ? (
-                      <TruckInfo truck={driver.truck} />
-                    ) : (
-                      <View />
-                    )}
-                  </TabPanel>
-
-                  <TabPanel hideNextButton={true}>
-                    {driver && driver.truck && driver.truck.trailer ? (
-                      <TrailerInfo trailer={driver.truck.trailer} />
-                    ) : (
-                      <View />
-                    )}
-                  </TabPanel>
-
-                  {/*<TabPanel hideNextButton={true} >*/}
-                  {/*<Map*/}
-                  {/*origin={origin}*/}
-                  {/*destination={{*/}
-                  {/*latitude: address.latitude,*/}
-                  {/*longitude: address.longitude,*/}
-                  {/*}}*/}
-                  {/*style={{*/}
-                  {/*height:500*/}
-                  {/*}}*/}
-                  {/*/>*/}
-                  {/*</TabPanel>*/}
-                </TabPanels>
-              </Tabs>
-            </ScrollView>
-
-            <ConfirmedButton
-              onPress={this.onDriverSelect}
-              title={I18n.t('confirm')}
-              description={I18n.t('driver_select_confirmation')}
-            />
-
-          </Modal>
-
 
         </ScrollView>
       );
@@ -220,9 +143,11 @@ class TripCreateScene extends Component {
 
 const makeMapStateToProps = () => {
   const getLoadByID = CUSTOMER_SELECTORS.getLoadByID();
+  const getDriverByID = CUSTOMER_SELECTORS.getDriverByID();
   const mapStateToProps = (state, props) => {
     return {
       load: getLoadByID(state, props.navigation.getParam('loadID',3)),
+      driver: getDriverByID(state, props.navigation.getParam('driverID',1)),
     };
   };
   return mapStateToProps;

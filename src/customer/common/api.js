@@ -20,6 +20,11 @@ function fetchDrivers() {
   return fetchAPI({path});
 }
 
+function fetchDriver(params) {
+  const path = `customer/drivers/${params.driver_id}/details`;
+  return fetchAPI({path});
+}
+
 function fetchLocations() {
   const path = `customer/locations`;
   return fetchAPI({path});
@@ -105,6 +110,7 @@ export const API = {
   fetchProfile,
   fetchBlockedDrivers,
   fetchDrivers,
+  fetchDriver,
   fetchEmployees,
   fetchLocations,
   fetchLoadAdd,

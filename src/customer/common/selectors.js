@@ -85,6 +85,12 @@ const getLoadByID = () => {
   );
 };
 
+const getDriverByID = () => {
+  return createSelector([entities, getIdProp], (schema, id) =>
+    denormalize(id, Schema.drivers, schema),
+  );
+};
+
 const getLoads = createSelector(
   [entities, getProfile, loadsSchema],
   (schema, customer, loads) => {
@@ -159,6 +165,7 @@ export const SELECTORS = {
   getAddData,
   getDriversForLoad,
   getLoadByID,
+  getDriverByID,
   getTripByID,
   getCurrentLoad,
 };

@@ -24,6 +24,7 @@ import TripDetailScene from 'customer/trips/TripDetailScene';
 import TripCreateScene from 'customer/trips/TripCreateScene';
 import LanguageSelect from 'app/LanguageSelect';
 import LocationEditScene from 'customer/locations/LocationEditScene';
+import BookableDriversListScene from "../loads/BookableDriversListScene";
 
 const getDrawerIcon = navigation => {
   return {
@@ -162,6 +163,9 @@ const LoadStack = createStackNavigator(
     DriversList: {
       screen: DriversListScene,
     },
+    BookableDrivers: {
+      screen: BookableDriversListScene,
+    },
   },
   {
     navigationOptions: {
@@ -215,5 +219,5 @@ export const Routes = createDrawerNavigator(DrawerRoutes, {
   gesturesEnabled: false,
   contentComponent: props => <Drawer {...props} />,
   drawerWidth: 275,
-  initialRouteName: 'LoadStack',
+  // initialRouteName: 'LoadStack',
 });
