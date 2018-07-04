@@ -51,7 +51,7 @@ function fetchLoadDetails(params) {
 }
 
 function fetchTripDetails(params) {
-  const path = `customer/trips/${params.tripID}/details`;
+  const path = `customer/trips/${params.trip_id}/details`;
   return fetchAPI({path});
 }
 

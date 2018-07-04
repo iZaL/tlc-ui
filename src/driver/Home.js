@@ -67,6 +67,7 @@ class Home extends Component {
             <Heading title={I18n.t('trip_requests')} style={{padding: 5}} />
           }
         />
+
       </ScrollView>
     );
   }
@@ -78,6 +79,7 @@ const makeMapStateToProps = () => {
     return {
       current_load: DRIVER_SELECTORS.getCurrentLoad(state),
       loads_pending: getLoadsByStatus(state, 'pending'),
+      // load_requests:DRIVER_SELECTORS.getLoadRequests(state)
     };
   };
   return mapStateToProps;

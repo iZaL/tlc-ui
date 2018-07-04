@@ -32,17 +32,17 @@ class TripDetailScene extends Component {
   };
 
   componentDidMount() {
-    // let {tripID} = this.props.navigation.state.params;
+    let tripID = this.props.navigation.getParam('tripID');
 
     this.props.dispatch(
       CUSTOMER_ACTIONS.subscribeToTripTrack({
-        trip_id: 1,
+        trip_id: tripID,
       }),
     );
 
     this.props.dispatch(
       CUSTOMER_ACTIONS.fetchTripDetails({
-        tripID: 1,
+        trip_id: tripID,
       }),
     );
   }
@@ -79,6 +79,9 @@ class TripDetailScene extends Component {
     //     }}
     //   />
     // );
+
+    console.log('trip',trip);
+
     if (trip.id) {
       return (
         <ScrollView style={{flex: 1}}>
@@ -141,8 +144,8 @@ const makeMapStateToProps = () => {
   const mapStateToProps = (state, props) => {
     const tripID = props.navigation.getParam('tripID');
     return {
-      trip: getTripByID(state, 1),
-      tracking: getLocationUpdatesForJob(state, 1),
+      trip: getTripByID(state, tripID),
+      tracking: getLocationUpdatesForJob(state, tripID),
     };
   };
   return mapStateToProps;

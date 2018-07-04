@@ -54,7 +54,7 @@ class LoadDetailScene extends Component {
   componentDidMount() {
     this.props.dispatch(
       CUSTOMER_ACTIONS.fetchLoadDetails({
-        loadID: this.props.navigation.getParam('loadID', 9),
+        loadID: this.props.navigation.getParam('loadID', 1),
       }),
     );
   }
@@ -127,6 +127,7 @@ class LoadDetailScene extends Component {
   };
 
   onTripListItemPress = (trip: object) => {
+    console.log('trip',trip);
     this.props.navigation.navigate('TripDetail', {
       tripID: trip.id,
     });
@@ -154,11 +155,12 @@ class LoadDetailScene extends Component {
     if(!load.id) {
       return null;
     }
+    console.log('load',load);
 
     return (
       <ScrollView style={{flex: 1, backgroundColor: 'white'}}>
-        <Tabs>
-          <TabList>
+        <Tabs activeIndex={1}>
+          <TabList >
             <TabHeader title={I18n.t('load_info')} />
             <TabHeader title={I18n.t('fleets')} />
             <TabHeader title={I18n.t('route_detail')} />
@@ -184,6 +186,7 @@ class LoadDetailScene extends Component {
             </TabPanel>
 
             <TabPanel hideNextButton={true}>
+
               <TripList
                 items={load.trips || []}
                 onItemPress={this.onTripListItemPress}
@@ -195,6 +198,7 @@ class LoadDetailScene extends Component {
                 count={pending_fleets}
                 onItemPress={this.onPendingFleetsListItemPress}
               />
+
             </TabPanel>
 
             <TabPanel hideNextButton={true}>
@@ -291,7 +295,7 @@ const makeMapStateToProps = () => {
   const getLoadByID = CUSTOMER_SELECTORS.getLoadByID();
   const mapStateToProps = (state, props) => {
     return {
-      load: getLoadByID(state, props.navigation.getParam('loadID', 9)),
+      load: getLoadByID(state, props.navigation.getParam('loadID', 1)),
     };
   };
   return mapStateToProps;

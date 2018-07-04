@@ -194,6 +194,7 @@ class LoadDetailScene extends Component {
       images,
     } = this.state;
     let {origin, destination, receiver, customer, trip} = load;
+    console.log('load',load);
 
     return (
       <ScrollView style={{flex: 1, backgroundColor: 'white'}}>

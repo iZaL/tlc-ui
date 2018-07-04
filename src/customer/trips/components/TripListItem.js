@@ -27,7 +27,6 @@ export default class extends PureComponent {
       <View style={styles.container}>
         <TouchableRipple onPress={() => onItemPress(item)}>
           <UserInfo
-            style={{padding: 10}}
             image={driver.user.image}
             name={driver.user.name}
             onAvatarPress={this.onPress}
@@ -39,7 +38,7 @@ export default class extends PureComponent {
           underlayColor="transparent">
           <View style={styles.rightContainer}>
             <Label title={I18n.t('status')} />
-            <Text style={styles.status}>{item.status_formatted}</Text>
+            <Text style={[styles.status]}>{item.status_formatted}</Text>
           </View>
         </TouchableRipple>
       </View>
@@ -52,6 +51,8 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
+    // flexWrap:'wrap',
+    padding:10
   },
   avatar: {
     height: 40,
@@ -59,7 +60,9 @@ const styles = StyleSheet.create({
   },
   status: {},
   rightContainer: {
-    alignItems: 'center',
-    paddingHorizontal: 10,
+    // alignItems:'flex-end',
+    // justifyContent:'center',
+    // flexDirection:'row',
+    // paddingHorizontal: 10,
   },
 });

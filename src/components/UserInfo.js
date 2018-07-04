@@ -44,7 +44,6 @@ export default class UserInfo extends Component {
 
           <View style={styles.contentContainer}>
             <Label title={nameLabel} />
-
             <Title>{name}</Title>
           </View>
         </View>
