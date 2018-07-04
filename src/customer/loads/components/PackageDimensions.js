@@ -46,6 +46,7 @@ export default class PackageDimensions extends Component {
           visible={visible}
           transparent={true}
           onBackdropPress={onCancel}
+          onCancel={onCancel}
           hideButton={true}>
           <View style={styles.addressContainer}>
             <View style={{flexDirection: 'row'}}>

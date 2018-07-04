@@ -316,5 +316,7 @@
   "state" : "State",
   "upload_images" : "Upload Images",
   "view_info" : "View Info",
-  "packaging_info" : "Packaging Info"
+  "packaging_info" : "Packaging Info",
+
+  "load_add_success" : "Load posted"
 }

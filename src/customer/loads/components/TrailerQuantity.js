@@ -28,7 +28,10 @@ export default class TrailerQuantity extends Component {
           animationType="slide"
           visible={visible}
           transparent={true}
-          onBackdropPress={onCancel}>
+          onBackdropPress={onCancel}
+          onCancel={onCancel}
+          hideButton={true}
+        >
           <View style={styles.addressContainer}>
             <Picker
               selectedValue={selected}

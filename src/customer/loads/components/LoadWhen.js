@@ -71,6 +71,8 @@ export default class LoadWhat extends Component {
       unload_time_from,
       unload_time_to,
       onValueChange,
+      load_date,
+      unload_date,
     } = this.props;
     let {showTimePicker, activeTime} = this.state;
 
@@ -78,7 +80,7 @@ export default class LoadWhat extends Component {
       <View style={{padding: 10}}>
         <Title>{I18n.t('load_date')}</Title>
 
-        <DatePicker onDateChange={date => onValueChange('load_date', date)} />
+        <DatePicker activeDate={load_date} onDateChange={date => onValueChange('load_date', date)} />
 
         <View style={{flexDirection: 'row'}}>
           <Button
@@ -108,7 +110,7 @@ export default class LoadWhat extends Component {
         <Divider style={{marginVertical: 20}} />
         <Title>{I18n.t('unload_date')}</Title>
 
-        <DatePicker onDateChange={date => onValueChange('unload_date', date)} />
+        <DatePicker activeDate={unload_date} onDateChange={date => onValueChange('unload_date', date)} />
 
         <View style={{flexDirection: 'row'}}>
           <Button

@@ -9,7 +9,7 @@ export default class DatePicker extends Component {
   static propTypes = {
     onDateChange: PropTypes.func.isRequired,
     dates: PropTypes.array,
-    activeDate: PropTypes.number,
+    activeDate: PropTypes.object,
   };
 
   constructor(props) {

@@ -13,7 +13,7 @@ export default class extends Component {
     visible: PropTypes.bool.isRequired,
     onCancel: PropTypes.func.isRequired,
     children: PropTypes.any.isRequired,
-    onSave: PropTypes.func.isRequired,
+    onSave: PropTypes.func,
     hideButton: PropTypes.bool,
     title: PropTypes.func,
   };
