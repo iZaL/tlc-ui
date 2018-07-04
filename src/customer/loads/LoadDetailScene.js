@@ -159,7 +159,10 @@ class LoadDetailScene extends Component {
 
     let {origin, destination, receiver, customer, pending_fleets} = load;
 
-    console.log('load', load);
+    if(!load.id) {
+      return null;
+    }
+
     return (
       <ScrollView style={{flex: 1, backgroundColor: 'white'}}>
         <Tabs>
