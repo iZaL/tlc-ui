@@ -81,6 +81,10 @@ export const ACTION_TYPES = {
   SAVE_ADDRESS_REQUEST: '@customer/SAVE_ADDRESS_REQUEST',
   SAVE_ADDRESS_SUCCESS: '@customer/SAVE_ADDRESS_SUCCESS',
   SAVE_ADDRESS_FAILURE: '@customer/SAVE_ADDRESS_FAILURE',
+
+  SELECT_DRIVER_REQUEST: '@customer/loads/SELECT_DRIVER_REQUEST',
+  SELECT_DRIVER_SUCCESS: '@customer/loads/SELECT_DRIVER_SUCCESS',
+  SELECT_DRIVER_FAILURE: '@customer/loads/SELECT_DRIVER_FAILURE',
 };
 
 function fetchEmployees(params) {
@@ -216,6 +220,13 @@ function saveAddress(payload: object) {
   };
 }
 
+function selectDriver(params: object) {
+  return {
+    type: ACTION_TYPES.SELECT_DRIVER_REQUEST,
+    params,
+  };
+}
+
 export const ACTIONS = {
   saveProfile,
   fetchProfile,
@@ -235,4 +246,5 @@ export const ACTIONS = {
   subscribeToTripTrack,
   setAddData,
   saveAddress,
+  selectDriver,
 };

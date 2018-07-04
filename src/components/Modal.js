@@ -50,7 +50,7 @@ export default class extends Component {
         )}
         {children}
 
-        {!hideButton && (
+        {!hideButton || !onSave && (
           <Button onPress={onSave} raised primary dark>
             {buttonText}
           </Button>

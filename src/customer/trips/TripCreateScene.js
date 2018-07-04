@@ -16,7 +16,8 @@ import DriverInfo from 'driver/components/DriverInfo';
 import TruckInfo from 'trucks/components/TruckInfo';
 import TrailerInfo from 'trucks/components/TrailerInfo';
 import Map from 'customer/trips/components/Map';
-import Modal from '../../components/Modal';
+import Modal from 'components/Modal';
+import ConfirmedButton from "components/ConfirmedButton";
 
 class TripCreateScene extends Component {
   static propTypes = {
@@ -44,7 +45,7 @@ class TripCreateScene extends Component {
   componentDidMount() {
     this.props.dispatch(
       CUSTOMER_ACTIONS.fetchLoadBookableDrivers({
-        loadID: this.props.navigation.getParam('loadID'),
+        loadID: this.props.navigation.getParam('loadID',3),
       }),
     );
   }
@@ -90,6 +91,37 @@ class TripCreateScene extends Component {
     this.hideDialog();
   };
 
+  onDriverSelect = () => {
+    let params = {
+      driver_id:this.state.selectedDriverID,
+      load_id:this.props.load.id
+    };
+
+    return new Promise((resolve, reject) => {
+      this.props.dispatch(CUSTOMER_ACTIONS.selectDriver({params, resolve, reject}));
+    })
+      .then(load => {
+
+        console.log('load',load);
+
+        this.setState({
+        });
+
+      })
+      .catch(e => {
+        console.log('e', e);
+      });
+    // on Success
+  };
+
+
+  // onDriverSelect = (driver) => {
+  //   this.props.dispatch(CUSTOMER_ACTIONS.selectDriver({
+  //     driver_id:driver.id,
+  //     load_id:this.props.load.id
+  //   }));
+  // };
+
   render() {
     let {load} = this.props;
 
@@ -122,8 +154,7 @@ class TripCreateScene extends Component {
           <Modal
             visible={driverDetailModalVisible}
             onCancel={this.hideDriverDetailDialog}
-            buttonText={I18n.t('select')}
-            onSave={this.hideDriverDetailDialog}>
+          >
             <ScrollView style={{flex: 1}}>
               <Tabs>
                 <TabList>
@@ -169,7 +200,16 @@ class TripCreateScene extends Component {
                 </TabPanels>
               </Tabs>
             </ScrollView>
+
+            <ConfirmedButton
+              onPress={this.onDriverSelect}
+              title={I18n.t('confirm')}
+              description={I18n.t('driver_select_confirmation')}
+            />
+
           </Modal>
+
+
         </ScrollView>
       );
     }
@@ -182,7 +222,7 @@ const makeMapStateToProps = () => {
   const getLoadByID = CUSTOMER_SELECTORS.getLoadByID();
   const mapStateToProps = (state, props) => {
     return {
-      load: getLoadByID(state, props.navigation.getParam('loadID')),
+      load: getLoadByID(state, props.navigation.getParam('loadID',3)),
     };
   };
   return mapStateToProps;

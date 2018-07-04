@@ -41,6 +41,41 @@ function* saveLoad(action) {
   }
 }
 
+function* selectDriver(action) {
+  const {
+    payload: {params, resolve},
+  } = action;
+  try {
+    let requestParams = {
+      body: {
+        ...params,
+      },
+    };
+    const response = yield call(API.saveLoad, requestParams);
+    const formattedResponse = {
+      ...response.customer,
+      loads: {
+        [response.load_status]: [response.load],
+      },
+    };
+    const normalized = normalize(formattedResponse, Schema.customers);
+    yield put({
+      type: ACTION_TYPES.SAVE_LOAD_SUCCESS,
+      entities: normalized.entities,
+    });
+    yield put(
+      APP_ACTIONS.setNotification({
+        message: I18n.t('load_add_success'),
+        position: 'center',
+      }),
+    );
+    yield resolve(response.load);
+  } catch (error) {
+    yield put(APP_ACTIONS.setNotification({message: error, type: 'error'}));
+    yield put({type: ACTION_TYPES.SAVE_LOAD_FAILURE, error});
+  }
+}
+
 function* fetchLoadAdd() {
   try {
     const response = yield call(API.fetchLoadAdd);
@@ -158,10 +193,15 @@ function* fetchCurrentLoadMonitor() {
   yield takeLatest(ACTION_TYPES.FETCH_CURRENT_LOAD_REQUEST, fetchCurrentLoad);
 }
 
+function* selectDriverMonitor() {
+  yield takeLatest(ACTION_TYPES.SELECT_DRIVER_REQUEST, selectDriver);
+}
+
 export const sagas = all([
   fork(fetchLoadAddDataMonitor),
   fork(fetchLoadsByStatusMonitor),
   fork(saveLoadMonitor),
   fork(fetchLoadDetailsMonitor),
   fork(fetchCurrentLoadMonitor),
+  fork(selectDriverMonitor),
 ]);

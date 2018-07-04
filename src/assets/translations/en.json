@@ -318,5 +318,6 @@
   "view_info" : "View Info",
   "packaging_info" : "Packaging Info",
 
-  "load_add_success" : "Load posted"
+  "load_add_success" : "Load posted",
+  "driver_select_confirmation" : "Are you sure you want to select this Driver ?"
 }

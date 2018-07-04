@@ -28,9 +28,9 @@ export default class Dialog extends Component {
     dismissable: false,
   };
 
-  shouldComponentUpdate(nextProps) {
-    return nextProps.visible !== this.props.visible;
-  }
+  // shouldComponentUpdate(nextProps) {
+  //   return nextProps.visible !== this.props.visible;
+  // }
 
   render() {
     let {
@@ -43,12 +43,15 @@ export default class Dialog extends Component {
       rightText,
       dismissable,
       onDismiss,
+      style
     } = this.props;
     return (
       <PaperDialog
         visible={visible}
         dismissable={dismissable}
-        onDismiss={onDismiss}>
+        onDismiss={onDismiss}
+        style={style}
+      >
         <DialogTitle>{title}</DialogTitle>
         <DialogContent>
           <View>
