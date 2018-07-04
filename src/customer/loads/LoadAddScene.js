@@ -147,7 +147,6 @@ class LoadAddScene extends Component {
     let params = {
       ...this.props.loadData.attributes,
     };
-    console.log('params', params);
     return new Promise((resolve, reject) => {
       this.props.dispatch(CUSTOMER_ACTIONS.saveLoad({params, resolve, reject}));
     })

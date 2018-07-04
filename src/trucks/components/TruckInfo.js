@@ -7,10 +7,14 @@ import I18n from 'utils/locale';
 import Divider from 'components/Divider';
 import ListRow from 'components/ListRow';
 import UserInfo from 'components/UserInfo';
-
+import PropTypes from 'prop-types';
 export default class TruckInfo extends Component {
   static propTypes = {
     // onPress: PropTypes.func.isRequired,
+    truck:PropTypes.shape({
+      model:PropTypes.object.isRequired,
+      registration_country:PropTypes.object.isRequired,
+    }).isRequired,
   };
 
   shouldComponentUpdate() {
@@ -39,14 +43,14 @@ export default class TruckInfo extends Component {
           style={{padding: 10}}
           image={image}
           nameLabel={I18n.t('registration_country')}
-          name={registration_country.name}
+          name={registration_country ? registration_country.name : '-'}
           onAvatarPress={this.onPress}
         />
 
         <Divider />
 
         <View style={styles.infoContainer}>
-          <ListRow left={I18n.t('model')} right={model.name} />
+          <ListRow left={I18n.t('model')} right={model ? model.name : '-'} />
           <Divider />
           <ListRow left={I18n.t('year')} right={year} />
           <Divider />

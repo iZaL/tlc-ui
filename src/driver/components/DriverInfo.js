@@ -7,10 +7,16 @@ import I18n from 'utils/locale';
 import Divider from 'components/Divider';
 import ListRow from 'components/ListRow';
 import UserInfo from 'components/UserInfo';
+import PropTypes from 'prop-types';
 
 export default class DriverInfo extends Component {
+
   static propTypes = {
-    // onPress: PropTypes.func.isRequired,
+    driver:PropTypes.shape({
+      nationalities:PropTypes.arrayOf(PropTypes.shape({
+        country:PropTypes.object.isRequired
+      }).isRequired),
+    }).isRequired
   };
 
   shouldComponentUpdate() {
@@ -23,11 +29,13 @@ export default class DriverInfo extends Component {
 
   render() {
     let {driver} = this.props;
+
+    if(!driver) {
+      return null;
+    }
+
     let {user} = driver;
-    console.log(
-      'wa',
-      driver.nationalities.map(country => country.name).join(','),
-    );
+
     return (
       <View style={styles.container}>
         <UserInfo
@@ -40,15 +48,19 @@ export default class DriverInfo extends Component {
         <Divider />
 
         <View style={styles.infoContainer}>
+
           <ListRow
             left={I18n.t('nationality')}
-            right={driver.nationalities
-              .map(nationality => nationality.country.name)
-              .join(',')}
+            right={driver.nationalities ?
+              driver.nationalities
+                .map(nationality => nationality.country ? nationality.country.name : '-')
+                .join(',') : '-'}
           />
+
           <Divider />
           <ListRow left={I18n.t('mobile')} right={user.mobile} />
           <Divider />
+
           {driver.mobile && (
             <View>
               <ListRow left={`${I18n.t('mobile')}`} right={driver.mobile} />

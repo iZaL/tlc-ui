@@ -42,11 +42,9 @@ class TripCreateScene extends Component {
   };
 
   componentDidMount() {
-    // let {loadID} = this.props.navigation.state.params;
     this.props.dispatch(
       CUSTOMER_ACTIONS.fetchLoadBookableDrivers({
-        // loadID: loadID,
-        loadID: 1,
+        loadID: this.props.navigation.getParam('loadID'),
       }),
     );
   }
@@ -94,6 +92,7 @@ class TripCreateScene extends Component {
 
   render() {
     let {load} = this.props;
+
     let {driverDetailModalVisible, selectedDriverID} = this.state;
 
     let driver = {};
@@ -106,10 +105,12 @@ class TripCreateScene extends Component {
     if (load.id) {
       return (
         <ScrollView style={{flex: 1}}>
+
           <DriversList
             onItemPress={this.onDriverListItemPress}
             items={load.bookable_drivers || []}
           />
+
           <Dialog
             leftPress={this.hideDialog}
             rightPress={this.onDriverConfirm}
@@ -134,7 +135,7 @@ class TripCreateScene extends Component {
 
                 <TabPanels>
                   <TabPanel hideNextButton={true}>
-                    {driver ? <DriverInfo driver={driver} /> : <View />}
+                    <DriverInfo driver={driver} />
                   </TabPanel>
 
                   <TabPanel hideNextButton={true}>
@@ -181,8 +182,7 @@ const makeMapStateToProps = () => {
   const getLoadByID = CUSTOMER_SELECTORS.getLoadByID();
   const mapStateToProps = (state, props) => {
     return {
-      load: getLoadByID(state, 1),
-      // load: getLoadByID(state, props.navigation.state.params.loadID),
+      load: getLoadByID(state, props.navigation.getParam('loadID')),
     };
   };
   return mapStateToProps;

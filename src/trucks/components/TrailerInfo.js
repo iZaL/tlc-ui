@@ -7,10 +7,14 @@ import I18n from 'utils/locale';
 import Divider from 'components/Divider';
 import ListRow from 'components/ListRow';
 import UserInfo from 'components/UserInfo';
+import PropTypes from 'prop-types';
 
 export default class TrailerInfo extends Component {
   static propTypes = {
     // onPress: PropTypes.func.isRequired,
+    trailer:PropTypes.shape({
+      type:PropTypes.object.isRequired,
+    }).isRequired,
   };
 
   shouldComponentUpdate() {
@@ -24,8 +28,6 @@ export default class TrailerInfo extends Component {
   render() {
     let {trailer} = this.props;
 
-    console.log('trailer', trailer);
-
     let {type, length, width, height, year, image, max_weight} = trailer;
 
     return (
@@ -34,7 +36,7 @@ export default class TrailerInfo extends Component {
           style={{padding: 10}}
           image={image}
           nameLabel={I18n.t('type')}
-          name={type.name}
+          name={type ? type.name : '-'}
           onAvatarPress={this.onPress}
         />
 
