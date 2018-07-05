@@ -3,6 +3,39 @@ import moment from 'moment';
 
 const initialState = {
   loadDrivers: {},
+  // add: {
+  //   index: 1,
+  //   attributes: {
+  //     load_date: moment(),
+  //     unload_date: moment(),
+  //     load_time_from: moment(),
+  //     load_time_to: moment(),
+  //     unload_time_from: moment(),
+  //     unload_time_to: moment(),
+  //     trailer_type_id: null,
+  //     trailer_quantity: 1,
+  //     packaging_id: null,
+  //     packaging_dimension: {
+  //       length: null,
+  //       width: null,
+  //       height: null,
+  //       weight: null,
+  //       quantity: null,
+  //     },
+  //     origin_location_id: null,
+  //     destination_location_id: null,
+  //     weight: null,
+  //     request_documents: true,
+  //     use_own_truck: false,
+  //     receiver_name: null,
+  //     receiver_email: null,
+  //     receiver_mobile: null,
+  //     receiver_phone: null,
+  //     security_passes: [],
+  //     packaging_images: [],
+  //   },
+  // },
+
   add: {
     index: 1,
     attributes: {
