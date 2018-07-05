@@ -39,6 +39,39 @@ function* saveProfile(action) {
   }
 }
 
+function* saveDocument(action) {
+
+  try {
+    let params = {
+      body: {
+        ...action.params,
+      },
+    };
+
+    const response = yield call(API.saveDocument, params);
+    const normalized = normalize(response.data, Schema.users);
+
+    yield put({
+      type: ACTION_TYPES.SAVE_DOCUMENT_SUCCESS,
+      entities: normalized.entities,
+    });
+
+    yield put(
+      APP_ACTIONS.setNotification({
+        message: I18n.t('profile_saved'),
+      }),
+    );
+  } catch (error) {
+    yield put(
+      APP_ACTIONS.setNotification({
+        message: error,
+        type: 'error',
+      }),
+    );
+    yield put({type: ACTION_TYPES.SAVE_DOCUMENT_FAILURE, error});
+  }
+}
+
 function* fetchProfile() {
   try {
     const response = yield call(API.fetchProfile);
@@ -82,6 +115,9 @@ function* saveTruckMonitor() {
   yield takeLatest(ACTION_TYPES.SAVE_TRUCK_REQUEST, saveTruck);
 }
 
+function* saveDocumentMonitor() {
+  yield takeLatest(ACTION_TYPES.SAVE_DOCUMENT_REQUEST, saveDocument);
+}
 function* saveProfileMonitor() {
   yield takeLatest(ACTION_TYPES.SAVE_PROFILE_REQUEST, saveProfile);
 }
@@ -93,5 +129,6 @@ function* fetchProfileMonitor() {
 export const sagas = all([
   fork(fetchProfileMonitor),
   fork(saveProfileMonitor),
+  fork(saveDocumentMonitor),
   fork(saveTruckMonitor),
 ]);

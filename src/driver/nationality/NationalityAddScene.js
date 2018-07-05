@@ -4,6 +4,7 @@ import {SELECTORS as COUNTRY_SELECTORS} from 'app/selectors/country';
 import DocumentAdd from 'components/DocumentAdd';
 import {moment} from 'moment';
 import PropTypes from 'prop-types';
+import {ACTIONS as DRIVER_ACTIONS} from "driver/common/actions";
 
 class NationalityAddScene extends Component {
 
@@ -17,18 +18,19 @@ class NationalityAddScene extends Component {
     }).isRequired,
   };
 
-  static defaultProps = {
-    number: null,
-    expiry_date: new Date(),
-    countryID: null,
-    image: null,
-  };
+  // static defaultProps = {
+  //   id:null,
+  //   number: null,
+  //   expiry_date: new Date(),
+  //   countryID: null,
+  //   image: null,
+  // };
 
   static navigationOptions = ({navigation}) => {
     return {
       title:
         (navigation.state.params &&
-          `${navigation.state.params.title} ${navigation.state.params.type}`) ||
+          `${navigation.state.params.title} ${navigation.state.params.action}`) ||
         '',
     };
   };
@@ -36,16 +38,20 @@ class NationalityAddScene extends Component {
   constructor(props) {
     super(props);
     let {
+      id,
       number,
       expiry_date,
-      countryID,
+      country_id,
       image,
+      type
     } = this.props.navigation.state.params;
     this.state = {
+      id:id,
       number: number,
       expiry_date: expiry_date,
-      countryID: countryID,
+      country_id: country_id,
       image: image,
+      type:type
     };
   }
 
@@ -56,8 +62,9 @@ class NationalityAddScene extends Component {
   };
 
   onSave = () => {
-    let documentType = this.props.navigation.getParam('route');
-    console.log('documentType',documentType);
+    this.props.dispatch(DRIVER_ACTIONS.saveDocument({
+      ...this.state,
+    }));
   };
 
   render() {

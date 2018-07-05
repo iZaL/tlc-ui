@@ -46,7 +46,7 @@ export default class DocumentAdd extends PureComponent {
   };
 
   _handleCountryPicker = country => {
-    this.props.onValueChange('countryID', country.id);
+    this.props.onValueChange('country_id', country.id);
   };
 
   render() {
@@ -57,13 +57,13 @@ export default class DocumentAdd extends PureComponent {
       buttonText,
       image,
       countries,
-      countryID,
+      country_id,
       onSavePress,
       countryModalTitle,
     } = this.props;
 
-    let country = countryID
-      ? countries.find(country => country.id === countryID)
+    let country = country_id
+      ? countries.find(country => country.id === country_id)
       : {};
 
     return (
@@ -129,7 +129,7 @@ export default class DocumentAdd extends PureComponent {
           onCancel={this._hideCountryModal}
           onSave={this._hideCountryModal}
           header={countryModalTitle}
-          activeIDs={[countryID]}
+          activeIDs={[country_id]}
         />
       </View>
     );

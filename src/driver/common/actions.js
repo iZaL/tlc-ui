@@ -7,6 +7,10 @@ export const ACTION_TYPES = {
   SAVE_PROFILE_SUCCESS: '@driver/SAVE_PROFILE_SUCCESS',
   SAVE_PROFILE_FAILURE: '@driver/SAVE_PROFILE_FAILURE',
 
+  SAVE_DOCUMENT_REQUEST: '@driver/SAVE_DOCUMENT_REQUEST',
+  SAVE_DOCUMENT_SUCCESS: '@driver/SAVE_DOCUMENT_SUCCESS',
+  SAVE_DOCUMENT_FAILURE: '@driver/SAVE_DOCUMENT_FAILURE',
+
   FETCH_PROFILE_REQUEST: '@driver/FETCH_PROFILE_REQUEST',
   FETCH_PROFILE_SUCCESS: '@driver/FETCH_PROFILE_SUCCESS',
   FETCH_PROFILE_FAILURE: '@driver/FETCH_PROFILE_FAILURE',
@@ -145,6 +149,13 @@ function saveProfile(params) {
   };
 }
 
+function saveDocument(params) {
+  return {
+    type: ACTION_TYPES.SAVE_DOCUMENT_REQUEST,
+    params,
+  };
+}
+
 function saveTruck(params) {
   return {
     type: ACTION_TYPES.SAVE_TRUCK_REQUEST,
@@ -175,6 +186,7 @@ function fetchLoadsByStatus(params) {
 
 export const ACTIONS = {
   saveProfile,
+  saveDocument,
   fetchProfile,
   fetchRoutes,
   saveTruck,

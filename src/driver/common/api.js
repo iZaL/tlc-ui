@@ -82,6 +82,16 @@ function saveProfile(params) {
   return fetchAPI(requestParams);
 }
 
+function saveDocument(params) {
+  const path = `driver/document/update`;
+  let requestParams = {
+    path,
+    params,
+    method: 'POST',
+  };
+  return fetchAPI(requestParams);
+}
+
 function saveRoute(params) {
   const path = `driver/routes`;
   let requestParams = {
@@ -104,6 +114,7 @@ export const API = {
   fetchLoadsByStatus,
   fetchCurrentLoad,
   saveProfile,
+  saveDocument,
   saveRoute,
   saveTruck,
   setTripStatus,

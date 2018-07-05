@@ -29,30 +29,50 @@ class NationalityListScene extends Component {
   // };
 
   onAddPress = () => {
+    let documentType = this.props.navigation.getParam('route');
+
+    let type = '';
+
+    switch (documentType) {
+      case 'nationalities':
+        type = 'nationality';
+        break;
+      case 'visas':
+        type = 'visa';
+        break;
+      case 'residencies':
+        type = 'residence';
+        break;
+      case 'licenses':
+        type = 'license';
+        break;
+    }
+
     let sceneConfig = {
       route: this.props.navigation.getParam('route'),
       title:this.props.navigation.getParam('title'),
-      type: I18n.t('add'),
+      action: I18n.t('add'),
+      type:type
     };
     this.props.navigation.navigate('NationalityAdd', sceneConfig);
   };
 
-  onEditPress = (nationality: object) => {
-    let {number, expiry_date, image} = nationality;
+  onEditPress = (document: object) => {
+    let {number, expiry_date, image} = document;
 
     let payload = {
+      id:document.id,
       number: number,
       expiry_date: new Date(expiry_date),
-      countryID: nationality.country.id,
+      country_id: document.country.id,
       image: image,
+      type:document.type
     };
 
-    let {route, title} = this.props.navigation.state.params;
-
     let sceneConfig = {
-      route,
-      title,
-      type: I18n.t('edit'),
+      route:this.props.navigation.getParam('route'),
+      title:this.props.navigation.getParam('title'),
+      action: I18n.t('edit'),
       ...payload,
     };
 
