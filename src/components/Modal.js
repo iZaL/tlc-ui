@@ -36,8 +36,6 @@ export default class extends Component {
       hideButton,
     } = this.props;
 
-    console.log('onSave', onSave);
-
     return (
       <Modal
         isVisible={visible}
