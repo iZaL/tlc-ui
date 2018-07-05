@@ -6,7 +6,7 @@ import {SELECTORS as CUSTOMER_SELECTORS} from 'customer/common/selectors';
 import {ACTIONS as CUSTOMER_ACTIONS} from 'customer/common/actions';
 import I18n from 'utils/locale';
 
-type STATUS = 'working|confirmed|completed';
+type STATUS = 'pending|confirmed|completed|dispatched';
 
 class LoadListScene extends Component {
   static navigationOptions = ({navigation}) => {
@@ -52,7 +52,6 @@ class LoadListScene extends Component {
 const makeMapStateToProps = () => {
   const getLoadsByStatus = CUSTOMER_SELECTORS.getLoadsByStatus();
   const mapStateToProps = (state, props) => {
-    console.log('status', props.navigation.getParam('status'));
     return {
       loads: getLoadsByStatus(state, props.navigation.getParam('status')) || [],
     };

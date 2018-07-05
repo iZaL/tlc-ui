@@ -39,7 +39,6 @@ class LocationListScene extends Component {
   }
 
   onLocationListItemPress = (item: object) => {
-    console.log('item', item);
     this.props.navigation.navigate('LocationEdit', {
       address: item,
     });

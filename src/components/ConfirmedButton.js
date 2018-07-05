@@ -9,7 +9,6 @@ import Button from 'components/Button';
 import I18n from 'utils/locale';
 
 export default class ConfirmedButton extends Component {
-
   static propTypes = {
     onPress: PropTypes.func,
   };
@@ -20,13 +19,14 @@ export default class ConfirmedButton extends Component {
 
   shouldComponentUpdate(nextProps, nextState) {
     return (
-      nextState.visible !== this.state.visible || nextProps.title !== this.props.title
+      nextState.visible !== this.state.visible ||
+      nextProps.title !== this.props.title
     );
   }
 
   static defaultProps = {
-    leftText:I18n.t('cancel'),
-    rightText:I18n.t('yes'),
+    leftText: I18n.t('cancel'),
+    rightText: I18n.t('yes'),
   };
 
   showModal = () => {
@@ -48,7 +48,7 @@ export default class ConfirmedButton extends Component {
 
   render() {
     let {visible} = this.state;
-    let {rightText,...rest} = this.props;
+    let {rightText, ...rest} = this.props;
     return (
       <View>
         <Button
@@ -62,7 +62,7 @@ export default class ConfirmedButton extends Component {
           leftPress={this.hideImageModal}
           rightPress={this.onConfirm}
           rightText={rightText}
-          style={{zIndex:1000}}
+          style={{zIndex: 1000}}
         />
       </View>
     );

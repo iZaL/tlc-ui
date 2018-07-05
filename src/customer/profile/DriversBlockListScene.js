@@ -11,7 +11,6 @@ import colors from 'assets/theme/colors';
 import ListModal from 'components/ListModal';
 
 class DriversBlockListScene extends Component {
-
   static propTypes = {
     blocked_drivers: PropTypes.arrayOf(PropTypes.object).isRequired,
     drivers: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -31,14 +30,14 @@ class DriversBlockListScene extends Component {
   }
 
   onDriversListItemPress = (driver: object) => {
-    this.props.navigation.navigate('DriverDetail',{
-      driverID:driver.id
+    this.props.navigation.navigate('DriverDetail', {
+      driverID: driver.id,
     });
   };
 
   onBlockedDriversListItemPress = (driver: object) => {
     this.setState({
-      driver:driver.id
+      driver: driver.id,
     });
   };
 
@@ -55,12 +54,14 @@ class DriversBlockListScene extends Component {
   };
 
   blockDriver = () => {
-    this.props.dispatch(CUSTOMER_ACTIONS.blockDriver({
-      driver_id:this.state.driver
-    }));
+    this.props.dispatch(
+      CUSTOMER_ACTIONS.blockDriver({
+        driver_id: this.state.driver,
+      }),
+    );
 
     this.setState({
-      driver:null
+      driver: null,
     });
     this.hideDriversModal();
   };
@@ -72,7 +73,6 @@ class DriversBlockListScene extends Component {
 
     return (
       <View style={{flex: 1}}>
-
         <DriversList
           items={blocked_drivers}
           onItemPress={this.onDriversListItemPress}
@@ -93,7 +93,9 @@ class DriversBlockListScene extends Component {
         <ListModal
           header={I18n.t('drivers_select')}
           onItemPress={this.onBlockedDriversListItemPress}
-          activeIDs={blocked_drivers.map(driver => driver.id).concat(this.state.driver)}
+          activeIDs={blocked_drivers
+            .map(driver => driver.id)
+            .concat(this.state.driver)}
           title={item => item.user.name}
           items={drivers.filter(driver => {
             return !blockedDriverIds.includes(driver.id);

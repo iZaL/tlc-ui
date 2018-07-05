@@ -3,7 +3,7 @@ import {API} from 'customer/common/api';
 import {ACTION_TYPES} from 'customer/common/actions';
 import {Schema} from 'utils/schema';
 import {normalize} from 'normalizr';
-import {ACTIONS as APP_ACTIONS} from "app/common/actions";
+import {ACTIONS as APP_ACTIONS} from 'app/common/actions';
 import I18n from 'utils/locale';
 
 function* fetchLoadDrivers(action) {
@@ -59,7 +59,7 @@ function* fetchDrivers() {
 
 function* fetchDriver(action) {
   try {
-    const response = yield call(API.fetchDriver,action.params);
+    const response = yield call(API.fetchDriver, action.params);
     const normalized = normalize(response.data, Schema.drivers);
     const {entities, result} = normalized;
 
@@ -97,7 +97,6 @@ function* selectDriver(action) {
     );
 
     yield resolve(response.load);
-
   } catch (error) {
     yield put(APP_ACTIONS.setNotification({message: error, type: 'error'}));
     yield put({type: ACTION_TYPES.SAVE_LOAD_FAILURE, error});
@@ -105,7 +104,6 @@ function* selectDriver(action) {
 }
 
 function* blockDriver(action) {
-
   try {
     let params = {
       body: {
@@ -127,13 +125,11 @@ function* blockDriver(action) {
     );
 
     yield resolve(response.load);
-
   } catch (error) {
     yield put(APP_ACTIONS.setNotification({message: error, type: 'error'}));
     yield put({type: ACTION_TYPES.BLOCK_DRIVER_FAILURE, error});
   }
 }
-
 
 function* fetchLoadDriversMonitor() {
   yield takeLatest(ACTION_TYPES.FETCH_LOAD_DRIVERS_REQUEST, fetchLoadDrivers);

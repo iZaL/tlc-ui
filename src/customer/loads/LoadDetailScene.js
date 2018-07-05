@@ -127,7 +127,6 @@ class LoadDetailScene extends Component {
   };
 
   onTripListItemPress = (trip: object) => {
-    console.log('trip',trip);
     this.props.navigation.navigate('TripDetail', {
       tripID: trip.id,
     });
@@ -152,15 +151,15 @@ class LoadDetailScene extends Component {
 
     let {origin, destination, receiver, customer, pending_fleets} = load;
 
-    if(!load.id) {
+    if (!load.id) {
       return null;
     }
-    console.log('load',load);
+    console.log('load', load);
 
     return (
       <ScrollView style={{flex: 1, backgroundColor: 'white'}}>
         <Tabs activeIndex={0}>
-          <TabList >
+          <TabList>
             <TabHeader title={I18n.t('load_info')} />
             <TabHeader title={I18n.t('fleets')} />
             <TabHeader title={I18n.t('route_detail')} />
@@ -186,7 +185,6 @@ class LoadDetailScene extends Component {
             </TabPanel>
 
             <TabPanel hideNextButton={true}>
-
               <TripList
                 items={load.trips || []}
                 onItemPress={this.onTripListItemPress}
@@ -198,7 +196,6 @@ class LoadDetailScene extends Component {
                 count={pending_fleets}
                 onItemPress={this.onPendingFleetsListItemPress}
               />
-
             </TabPanel>
 
             <TabPanel hideNextButton={true}>
@@ -285,7 +282,6 @@ class LoadDetailScene extends Component {
             </TabPanel>
           </TabPanels>
         </Tabs>
-
       </ScrollView>
     );
   }

@@ -127,7 +127,7 @@ class LoadDetailScene extends Component {
         ...TRACKING_CONFIG,
         url: `http://${API_URL}/trips/${
           this.props.load.trip.id
-          }/location/update`,
+        }/location/update`,
       });
       BackgroundGeolocation.start();
     });
@@ -194,7 +194,7 @@ class LoadDetailScene extends Component {
       images,
     } = this.state;
     let {origin, destination, receiver, customer, trip} = load;
-    console.log('load',load);
+    console.log('load', load);
 
     return (
       <ScrollView style={{flex: 1, backgroundColor: 'white'}}>
@@ -323,12 +323,7 @@ class LoadDetailScene extends Component {
                 items={(trip && trip.documents) || []}
                 onItemPress={this.onDocumentTypeListItemPress}
               />
-              <FAB
-                small
-                primary
-                icon="add"
-                onPress={this.onDocumentAddPress}
-              />
+              <FAB small primary icon="add" onPress={this.onDocumentAddPress} />
             </TabPanel>
 
             <TabPanel hideNextButton={true}>
@@ -347,7 +342,6 @@ class LoadDetailScene extends Component {
           images={images}
           onClose={this.hideImageModal}
         />
-
       </ScrollView>
     );
   }

@@ -58,11 +58,11 @@ class Home extends Component {
         />
 
         {/*<LoadsList*/}
-          {/*items={loads_pending}*/}
-          {/*onItemPress={this.onLoadRequestsListItemPress}*/}
-          {/*header={*/}
-            {/*<Heading title={I18n.t('loads_pending')} style={{padding: 5}} />*/}
-          {/*}*/}
+        {/*items={loads_pending}*/}
+        {/*onItemPress={this.onLoadRequestsListItemPress}*/}
+        {/*header={*/}
+        {/*<Heading title={I18n.t('loads_pending')} style={{padding: 5}} />*/}
+        {/*}*/}
         {/*/>*/}
       </ScrollView>
     );

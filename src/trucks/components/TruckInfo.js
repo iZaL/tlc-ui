@@ -11,9 +11,9 @@ import PropTypes from 'prop-types';
 export default class TruckInfo extends Component {
   static propTypes = {
     // onPress: PropTypes.func.isRequired,
-    truck:PropTypes.shape({
-      model:PropTypes.object.isRequired,
-      registration_country:PropTypes.object.isRequired,
+    truck: PropTypes.shape({
+      model: PropTypes.object.isRequired,
+      registration_country: PropTypes.object.isRequired,
     }).isRequired,
   };
 

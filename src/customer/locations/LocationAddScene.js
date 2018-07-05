@@ -11,7 +11,7 @@ import Modal from 'react-native-modal';
 import CreateAddressFields from 'customer/locations/components/CreateAddressFields';
 import GooglePlaces from 'customer/locations/components/GooglePlaces';
 
-type Type = 'pick|drop';
+type Type = 'origin|destination';
 
 class LocationAddScene extends Component {
   static propTypes = {
@@ -37,7 +37,7 @@ class LocationAddScene extends Component {
   };
 
   static defaultProps = {
-    type: 'pick',
+    type: 'origin',
   };
 
   componentDidMount() {

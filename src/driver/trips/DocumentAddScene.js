@@ -120,7 +120,6 @@ class DocumentAddScene extends Component {
           <FileUpload onUpload={this.onFileUpload}>
             <ListItem title={I18n.t('upload_file')} />
           </FileUpload>
-
         </View>
 
         <Button
@@ -138,7 +137,6 @@ class DocumentAddScene extends Component {
           onSave={this.hideTypeModal}
           items={document_types}
         />
-
       </ScrollView>
     );
   }

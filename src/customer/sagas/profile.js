@@ -91,7 +91,6 @@ function* fetchBlockedDrivers() {
   }
 }
 
-
 function* saveProfileMonitor() {
   yield takeLatest(ACTION_TYPES.UPDATE_PROFILE_REQUEST, saveProfile);
 }
@@ -106,7 +105,6 @@ function* fetchBlockedDriversMonitor() {
     fetchBlockedDrivers,
   );
 }
-
 
 export const sagas = all([
   fork(fetchProfileMonitor),

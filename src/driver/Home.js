@@ -53,21 +53,20 @@ class Home extends Component {
   };
 
   render() {
-    let {loads_dispatched, loads_pending,loads_upcoming} = this.props;
+    let {loads_dispatched, loads_pending, loads_upcoming} = this.props;
     console.log('loads_upcoming', loads_upcoming);
     console.log('loads_dispatched', loads_dispatched);
     console.log('loads_pending', loads_pending);
 
     return (
       <ScrollView style={{flex: 1}}>
-
-          <LoadsList
-            items={loads_dispatched}
-            onItemPress={this.onLoadsListItemPress}
-            header={
-              <Heading title={I18n.t('trip_current')} style={{padding: 5}} />
-            }
-          />
+        <LoadsList
+          items={loads_dispatched}
+          onItemPress={this.onLoadsListItemPress}
+          header={
+            <Heading title={I18n.t('trip_current')} style={{padding: 5}} />
+          }
+        />
 
         <LoadsList
           items={loads_pending}
@@ -84,7 +83,6 @@ class Home extends Component {
             <Heading title={I18n.t('trip_upcoming')} style={{padding: 5}} />
           }
         />
-
       </ScrollView>
     );
   }
@@ -97,7 +95,7 @@ const makeMapStateToProps = () => {
       loads_dispatched: getLoadsByStatus(state, 'dispatched'),
       // current_load: DRIVER_SELECTORS.getCurrentLoad(state),
       loads_pending: getLoadsByStatus(state, 'pending'),
-      loads_upcoming:getLoadsByStatus(state,'confirmed')
+      loads_upcoming: getLoadsByStatus(state, 'confirmed'),
       // load_requests:DRIVER_SELECTORS.getLoadRequests(state)
     };
   };

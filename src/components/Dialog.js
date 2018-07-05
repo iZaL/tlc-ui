@@ -43,15 +43,14 @@ export default class Dialog extends Component {
       rightText,
       dismissable,
       onDismiss,
-      style
+      style,
     } = this.props;
     return (
       <PaperDialog
         visible={visible}
         dismissable={dismissable}
         onDismiss={onDismiss}
-        style={style}
-      >
+        style={style}>
         <DialogTitle>{title}</DialogTitle>
         <DialogContent>
           <View>

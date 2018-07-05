@@ -23,8 +23,8 @@ import DriversBlockListScene from 'customer/profile/DriversBlockListScene';
 import TripDetailScene from 'customer/trips/TripDetailScene';
 import LanguageSelect from 'app/LanguageSelect';
 import LocationEditScene from 'customer/locations/LocationEditScene';
-import BookableDriversListScene from "customer/loads/BookableDriversListScene";
-import DriverSelect from "customer/trips/DriverSelect";
+import BookableDriversListScene from 'customer/loads/BookableDriversListScene';
+import DriverSelect from 'customer/trips/DriverSelect';
 
 const getDrawerIcon = navigation => {
   return {

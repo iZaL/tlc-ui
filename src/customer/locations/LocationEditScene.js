@@ -17,7 +17,6 @@ class LocationEditScene extends Component {
 
   static getDerivedStateFromProps(props) {
     let address = props.navigation.getParam('address');
-    console.log('this.props.navigation.getParam', address);
     return {
       address_id: address.id,
       city: address.city,
@@ -48,7 +47,6 @@ class LocationEditScene extends Component {
 
   render() {
     let {...address} = this.state;
-    console.log('address', address);
     return (
       <View style={{flex: 1}}>
         <CreateAddressFields

@@ -3,10 +3,8 @@
  */
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {ScrollView, Text, View} from 'react-native';
 import {connect} from 'react-redux';
 import {SELECTORS as CUSTOMER_SELECTORS} from 'customer/common/selectors';
-import I18n from 'utils/locale';
 import Map from 'customer/trips/components/Map';
 import {ACTIONS as CUSTOMER_ACTIONS} from 'customer/common/actions';
 

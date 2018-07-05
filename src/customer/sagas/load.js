@@ -158,7 +158,6 @@ function* fetchCurrentLoadMonitor() {
   yield takeLatest(ACTION_TYPES.FETCH_CURRENT_LOAD_REQUEST, fetchCurrentLoad);
 }
 
-
 export const sagas = all([
   fork(fetchLoadAddDataMonitor),
   fork(fetchLoadsByStatusMonitor),

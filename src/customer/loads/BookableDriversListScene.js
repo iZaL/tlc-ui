@@ -17,8 +17,8 @@ import TruckInfo from 'trucks/components/TruckInfo';
 import TrailerInfo from 'trucks/components/TrailerInfo';
 import Map from 'customer/trips/components/Map';
 import Modal from 'components/Modal';
-import ConfirmedButton from "components/ConfirmedButton";
-import {Subheading, Title} from "react-native-paper";
+import ConfirmedButton from 'components/ConfirmedButton';
+import {Subheading, Title} from 'react-native-paper';
 
 class BookableDriversListScene extends Component {
   static propTypes = {
@@ -46,7 +46,7 @@ class BookableDriversListScene extends Component {
   componentDidMount() {
     this.props.dispatch(
       CUSTOMER_ACTIONS.fetchLoadBookableDrivers({
-        loadID: this.props.navigation.getParam('loadID',3),
+        loadID: this.props.navigation.getParam('loadID', 3),
       }),
     );
   }
@@ -54,7 +54,7 @@ class BookableDriversListScene extends Component {
   onDriverListItemPress = (item: object) => {
     this.props.navigation.navigate('DriverSelect', {
       loadID: this.props.load.id,
-      driverID:item.id
+      driverID: item.id,
     });
   };
 
@@ -62,10 +62,11 @@ class BookableDriversListScene extends Component {
     let {load} = this.props;
 
     if (load.id) {
-
-      if(!load.bookable_drivers) {
+      if (!load.bookable_drivers) {
         return (
-          <Subheading style={{padding:10,textAlign:'center'}}>{I18n.t('no_matching_drivers')}</Subheading>
+          <Subheading style={{padding: 10, textAlign: 'center'}}>
+            {I18n.t('no_matching_drivers')}
+          </Subheading>
         );
       }
 
@@ -75,10 +76,7 @@ class BookableDriversListScene extends Component {
           items={load.bookable_drivers || []}
         />
       );
-
     }
-
-
 
     return null;
   }
@@ -88,7 +86,7 @@ const makeMapStateToProps = () => {
   const getLoadByID = CUSTOMER_SELECTORS.getLoadByID();
   const mapStateToProps = (state, props) => {
     return {
-      load: getLoadByID(state, props.navigation.getParam('loadID',3)),
+      load: getLoadByID(state, props.navigation.getParam('loadID', 3)),
     };
   };
   return mapStateToProps;

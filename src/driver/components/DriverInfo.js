@@ -10,13 +10,14 @@ import UserInfo from 'components/UserInfo';
 import PropTypes from 'prop-types';
 
 export default class DriverInfo extends Component {
-
   static propTypes = {
-    driver:PropTypes.shape({
-      nationalities:PropTypes.arrayOf(PropTypes.shape({
-        country:PropTypes.object.isRequired
-      }).isRequired),
-    }).isRequired
+    driver: PropTypes.shape({
+      nationalities: PropTypes.arrayOf(
+        PropTypes.shape({
+          country: PropTypes.object.isRequired,
+        }).isRequired,
+      ),
+    }).isRequired,
   };
 
   shouldComponentUpdate() {
@@ -30,7 +31,7 @@ export default class DriverInfo extends Component {
   render() {
     let {driver} = this.props;
 
-    if(!driver) {
+    if (!driver) {
       return null;
     }
 
@@ -48,13 +49,18 @@ export default class DriverInfo extends Component {
         <Divider />
 
         <View style={styles.infoContainer}>
-
           <ListRow
             left={I18n.t('nationality')}
-            right={driver.nationalities ?
+            right={
               driver.nationalities
-                .map(nationality => nationality.country ? nationality.country.name : '-')
-                .join(',') : '-'}
+                ? driver.nationalities
+                    .map(
+                      nationality =>
+                        nationality.country ? nationality.country.name : '-',
+                    )
+                    .join(',')
+                : '-'
+            }
           />
 
           <Divider />

@@ -8,7 +8,7 @@ import Button from 'components/Button';
 import I18n from 'utils/locale';
 import Dialog from 'components/Dialog';
 import {Colors} from 'react-native-paper';
-import ConfirmedButton from "../../../components/ConfirmedButton";
+import ConfirmedButton from '../../../components/ConfirmedButton';
 
 export default class LoadStatusButton extends Component {
   static propTypes = {
@@ -45,12 +45,7 @@ export default class LoadStatusButton extends Component {
   };
 
   render() {
-    let {
-      can_accept,
-      can_cancel,
-      can_start,
-      can_stop,
-    } = this.props.trip;
+    let {can_accept, can_cancel, can_start, can_stop} = this.props.trip;
 
     if (can_accept) {
       return (

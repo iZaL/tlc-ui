@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import {Button as PaperButton} from 'react-native-paper';
 
 export default class Button extends Component {
-
   shouldComponentUpdate(nextProps) {
     return (
       nextProps.disabled !== this.props.disabled ||
@@ -40,8 +39,7 @@ export default class Button extends Component {
         raised={raised}
         primary={primary}
         style={[styles.button, style, disabled && {opacity: 0.4}]}
-        {...rest}
-      >
+        {...rest}>
         <Text style={[styles.buttonText, titleStyle]}>{title}</Text>
       </PaperButton>
     );

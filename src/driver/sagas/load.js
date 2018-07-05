@@ -1,4 +1,4 @@
-import {all, call, fork, put, takeEvery,takeLatest} from 'redux-saga/effects';
+import {all, call, fork, put, takeEvery, takeLatest} from 'redux-saga/effects';
 import {API} from 'driver/common/api';
 import {ACTION_TYPES} from 'driver/common/actions';
 import {Schema} from 'utils/schema';

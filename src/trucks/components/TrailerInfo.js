@@ -12,8 +12,8 @@ import PropTypes from 'prop-types';
 export default class TrailerInfo extends Component {
   static propTypes = {
     // onPress: PropTypes.func.isRequired,
-    trailer:PropTypes.shape({
-      type:PropTypes.object.isRequired,
+    trailer: PropTypes.shape({
+      type: PropTypes.object.isRequired,
     }).isRequired,
   };
 
