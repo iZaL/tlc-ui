@@ -11,8 +11,10 @@ import colors from 'assets/theme/colors';
 import ListModal from 'components/ListModal';
 
 class DriversBlockListScene extends Component {
+
   static propTypes = {
-    employees: PropTypes.arrayOf(PropTypes.object).isRequired,
+    blocked_drivers: PropTypes.arrayOf(PropTypes.object).isRequired,
+    drivers: PropTypes.arrayOf(PropTypes.object).isRequired,
   };
 
   state = {
@@ -20,7 +22,7 @@ class DriversBlockListScene extends Component {
   };
 
   static defaultProps = {
-    employees: [],
+    driver: null,
   };
 
   componentDidMount() {
@@ -28,9 +30,17 @@ class DriversBlockListScene extends Component {
     this.props.dispatch(CUSTOMER_ACTIONS.fetchBlockedDrivers());
   }
 
-  onDriversListItemPress = (driver: object) => {};
+  onDriversListItemPress = (driver: object) => {
+    this.props.navigation.navigate('DriverDetail',{
+      driverID:driver.id
+    });
+  };
 
-  onDriversBlockListItemPress = () => {};
+  onBlockedDriversListItemPress = (driver: object) => {
+    this.setState({
+      driver:driver.id
+    });
+  };
 
   showDriversModal = () => {
     this.setState({
@@ -44,8 +54,15 @@ class DriversBlockListScene extends Component {
     });
   };
 
-  onBlockedDriversSavePress = () => {
-    console.log('save');
+  blockDriver = () => {
+    this.props.dispatch(CUSTOMER_ACTIONS.blockDriver({
+      driver_id:this.state.driver
+    }));
+
+    this.setState({
+      driver:null
+    });
+    this.hideDriversModal();
   };
 
   render() {
@@ -55,6 +72,7 @@ class DriversBlockListScene extends Component {
 
     return (
       <View style={{flex: 1}}>
+
         <DriversList
           items={blocked_drivers}
           onItemPress={this.onDriversListItemPress}
@@ -74,15 +92,15 @@ class DriversBlockListScene extends Component {
 
         <ListModal
           header={I18n.t('drivers_select')}
-          onItemPress={this.onDriversBlockListItemPress}
-          activeIDs={blocked_drivers.map(driver => driver.id)}
+          onItemPress={this.onBlockedDriversListItemPress}
+          activeIDs={blocked_drivers.map(driver => driver.id).concat(this.state.driver)}
           title={item => item.user.name}
           items={drivers.filter(driver => {
             return !blockedDriverIds.includes(driver.id);
           })}
           visible={this.state.isDriversModalVisible}
           onCancel={this.hideDriversModal}
-          onSave={this.onBlockedDriversSavePress}
+          onSave={this.blockDriver}
         />
       </View>
     );

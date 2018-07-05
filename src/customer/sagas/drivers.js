@@ -104,6 +104,36 @@ function* selectDriver(action) {
   }
 }
 
+function* blockDriver(action) {
+
+  try {
+    let params = {
+      body: {
+        ...action.params,
+      },
+    };
+
+    const response = yield call(API.blockDriver, params);
+    const normalized = normalize(response.data, Schema.customers);
+    yield put({
+      type: ACTION_TYPES.BLOCK_DRIVER_SUCCESS,
+      entities: normalized.entities,
+    });
+
+    yield put(
+      APP_ACTIONS.setNotification({
+        message: I18n.t('driver_blocked'),
+      }),
+    );
+
+    yield resolve(response.load);
+
+  } catch (error) {
+    yield put(APP_ACTIONS.setNotification({message: error, type: 'error'}));
+    yield put({type: ACTION_TYPES.BLOCK_DRIVER_FAILURE, error});
+  }
+}
+
 
 function* fetchLoadDriversMonitor() {
   yield takeLatest(ACTION_TYPES.FETCH_LOAD_DRIVERS_REQUEST, fetchLoadDrivers);
@@ -127,11 +157,16 @@ function* fetchDriverMonitor() {
 function* selectDriverMonitor() {
   yield takeLatest(ACTION_TYPES.SELECT_DRIVER_REQUEST, selectDriver);
 }
+
+function* blockDriverMonitor() {
+  yield takeLatest(ACTION_TYPES.BLOCK_DRIVER_REQUEST, blockDriver);
+}
+
 export const sagas = all([
   fork(fetchLoadDriversMonitor),
   fork(fetchLoadBookableDriversMonitor),
   fork(fetchDriversMonitor),
   fork(fetchDriverMonitor),
   fork(selectDriverMonitor),
-
+  fork(blockDriverMonitor),
 ]);

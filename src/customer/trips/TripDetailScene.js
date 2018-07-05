@@ -64,23 +64,10 @@ class TripDetailScene extends Component {
       };
     }
 
-    console.log('tracking', tracking);
-
     let address = {
       latitude: 37.37166518,
       longitude: -122.217832462,
     };
-    // return (
-    //   <Map
-    //     origin={origin}
-    //     destination={{
-    //       latitude: address.latitude,
-    //       longitude: address.longitude,
-    //     }}
-    //   />
-    // );
-
-    console.log('trip',trip);
 
     if (trip.id) {
       return (

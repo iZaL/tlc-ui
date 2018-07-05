@@ -36,6 +36,8 @@ export default class extends Component {
       hideButton,
     } = this.props;
 
+    console.log('onSave',onSave);
+
     return (
       <Modal
         isVisible={visible}
@@ -50,7 +52,7 @@ export default class extends Component {
         )}
         {children}
 
-        {!hideButton || !onSave && (
+        {!hideButton && (
           <Button onPress={onSave} raised primary dark>
             {buttonText}
           </Button>

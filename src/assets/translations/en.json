@@ -327,4 +327,5 @@
   "stop_trip" : "Stop Trip",
 
   "no_matching_drivers" : "No Matching Drivers Found",
+  "driver_blocked" : "Driver has put to blocked list"
 }
