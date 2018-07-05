@@ -20,7 +20,7 @@ export default class ConfirmedButton extends Component {
 
   shouldComponentUpdate(nextProps, nextState) {
     return (
-      nextState.visible !== this.state.visible
+      nextState.visible !== this.state.visible || nextProps.title !== this.props.title
     );
   }
 

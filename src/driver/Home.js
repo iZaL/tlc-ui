@@ -21,10 +21,20 @@ class Home extends Component {
   state = {};
 
   componentDidMount() {
-    this.props.dispatch(DRIVER_ACTIONS.fetchCurrentLoad());
+    // this.props.dispatch(DRIVER_ACTIONS.fetchCurrentLoad());
+    this.props.dispatch(
+      DRIVER_ACTIONS.fetchLoadsByStatus({
+        status: 'dispatched',
+      }),
+    );
     this.props.dispatch(
       DRIVER_ACTIONS.fetchLoadsByStatus({
         status: 'pending',
+      }),
+    );
+    this.props.dispatch(
+      DRIVER_ACTIONS.fetchLoadsByStatus({
+        status: 'confirmed',
       }),
     );
     this.props.dispatch(APP_ACTIONS.fetchCountries());
@@ -43,28 +53,35 @@ class Home extends Component {
   };
 
   render() {
-    let {current_load, loads_pending} = this.props;
+    let {loads_dispatched, loads_pending,loads_upcoming} = this.props;
+    console.log('loads_upcoming', loads_upcoming);
+    console.log('loads_dispatched', loads_dispatched);
     console.log('loads_pending', loads_pending);
-    let {loadRequestDialogVisible} = this.state;
 
     return (
       <ScrollView style={{flex: 1}}>
-        {current_load &&
-          current_load.id && (
-            <LoadsList
-              items={[current_load]}
-              onItemPress={this.onLoadsListItemPress}
-              header={
-                <Heading title={I18n.t('trip_current')} style={{padding: 5}} />
-              }
-            />
-          )}
+
+          <LoadsList
+            items={loads_dispatched}
+            onItemPress={this.onLoadsListItemPress}
+            header={
+              <Heading title={I18n.t('trip_current')} style={{padding: 5}} />
+            }
+          />
 
         <LoadsList
           items={loads_pending}
           onItemPress={this.onLoadRequestsListItemPress}
           header={
             <Heading title={I18n.t('trip_requests')} style={{padding: 5}} />
+          }
+        />
+
+        <LoadsList
+          items={loads_upcoming}
+          onItemPress={this.onLoadRequestsListItemPress}
+          header={
+            <Heading title={I18n.t('trip_upcoming')} style={{padding: 5}} />
           }
         />
 
@@ -77,8 +94,10 @@ const makeMapStateToProps = () => {
   const getLoadsByStatus = DRIVER_SELECTORS.getLoadsByStatus();
   const mapStateToProps = (state, props) => {
     return {
-      current_load: DRIVER_SELECTORS.getCurrentLoad(state),
+      loads_dispatched: getLoadsByStatus(state, 'dispatched'),
+      // current_load: DRIVER_SELECTORS.getCurrentLoad(state),
       loads_pending: getLoadsByStatus(state, 'pending'),
+      loads_upcoming:getLoadsByStatus(state,'confirmed')
       // load_requests:DRIVER_SELECTORS.getLoadRequests(state)
     };
   };

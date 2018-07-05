@@ -159,7 +159,7 @@ class LoadDetailScene extends Component {
 
     return (
       <ScrollView style={{flex: 1, backgroundColor: 'white'}}>
-        <Tabs activeIndex={1}>
+        <Tabs activeIndex={0}>
           <TabList >
             <TabHeader title={I18n.t('load_info')} />
             <TabHeader title={I18n.t('fleets')} />

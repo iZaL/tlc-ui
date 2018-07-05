@@ -54,14 +54,11 @@ export default class LoadStatusButton extends Component {
 
     if (can_accept) {
       return (
-        <View>
-          <ConfirmedButton
-            title={I18n.t('accept').toUpperCase()}
-            onPress={this.onAccept}
-            description={I18n.t('accept_trip?')}
-            style={{marginVertical: 10}}
-          />
-        </View>
+        <ConfirmedButton
+          title={I18n.t('accept').toUpperCase()}
+          onPress={this.onAccept}
+          description={I18n.t('accept_trip?')}
+        />
       );
     }
 

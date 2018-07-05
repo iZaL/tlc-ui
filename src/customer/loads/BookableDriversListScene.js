@@ -18,6 +18,7 @@ import TrailerInfo from 'trucks/components/TrailerInfo';
 import Map from 'customer/trips/components/Map';
 import Modal from 'components/Modal';
 import ConfirmedButton from "components/ConfirmedButton";
+import {Subheading, Title} from "react-native-paper";
 
 class BookableDriversListScene extends Component {
   static propTypes = {
@@ -61,13 +62,23 @@ class BookableDriversListScene extends Component {
     let {load} = this.props;
 
     if (load.id) {
+
+      if(!load.bookable_drivers) {
+        return (
+          <Subheading style={{padding:10,textAlign:'center'}}>{I18n.t('no_matching_drivers')}</Subheading>
+        );
+      }
+
       return (
         <DriversList
           onItemPress={this.onDriverListItemPress}
           items={load.bookable_drivers || []}
         />
       );
+
     }
+
+
 
     return null;
   }

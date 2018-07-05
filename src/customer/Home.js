@@ -57,13 +57,13 @@ class Home extends Component {
           }
         />
 
-        <LoadsList
-          items={loads_pending}
-          onItemPress={this.onLoadRequestsListItemPress}
-          header={
-            <Heading title={I18n.t('loads_pending')} style={{padding: 5}} />
-          }
-        />
+        {/*<LoadsList*/}
+          {/*items={loads_pending}*/}
+          {/*onItemPress={this.onLoadRequestsListItemPress}*/}
+          {/*header={*/}
+            {/*<Heading title={I18n.t('loads_pending')} style={{padding: 5}} />*/}
+          {/*}*/}
+        {/*/>*/}
       </ScrollView>
     );
   }
@@ -73,7 +73,7 @@ const makeMapStateToProps = () => {
   const getLoadsByStatus = CUSTOMER_SELECTORS.getLoadsByStatus();
   const mapStateToProps = state => {
     return {
-      loads_pending: getLoadsByStatus(state, 'pending'),
+      // loads_pending: getLoadsByStatus(state, 'pending'),
       loads_confirmed: getLoadsByStatus(state, 'confirmed'),
     };
   };
