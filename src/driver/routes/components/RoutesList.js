@@ -67,10 +67,11 @@ export default class RoutesList extends Component {
 
         <Switch
           style={{transform: [{scaleX: 0.8}, {scaleY: 0.8}]}}
-          value={item.has_added}
+          value={item.active}
           onValueChange={() => onIconPress(item)}
           color={colors.primary}
         />
+
       </View>
     );
   };

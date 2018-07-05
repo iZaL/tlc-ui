@@ -89,14 +89,6 @@ class RoutesDetailScene extends Component {
           activeCountryID={activeCountry ? activeCountry.id : 0}
           onItemPress={this.onTransitTabItemPress}
         />
-
-        {/*<VisaLicenseForm*/}
-        {/*items={countries}*/}
-        {/*onButtonPress={this.saveProfile}*/}
-        {/*country={activeCountry}*/}
-        {/*license={license}*/}
-        {/*visa={visa}*/}
-        {/*/>*/}
       </ScrollView>
     );
   }

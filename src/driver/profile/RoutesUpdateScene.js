@@ -28,7 +28,7 @@ class RoutesUpdateScene extends Component {
   toggleItem = (item: object) => {
     this.props.dispatch(
       DRIVER_ACTIONS.saveRoute({
-        routeID: item.id,
+        route_id: item.id,
       }),
     );
   };

@@ -13,6 +13,7 @@ import Button from 'components/Button';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Divider from 'components/Divider';
 import CheckedListItem from 'components/CheckedListItem';
+import ConfirmedButton from "../../components/ConfirmedButton";
 
 class RoutesAddScene extends Component {
   state = {
@@ -352,7 +353,7 @@ class RoutesAddScene extends Component {
             </View>
           )}
 
-        <Button
+        <ConfirmedButton
           onPress={this.onSave}
           disabled={!destination_country_id}
           title={I18n.t('save')}
