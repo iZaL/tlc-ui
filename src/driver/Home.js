@@ -54,9 +54,6 @@ class Home extends Component {
 
   render() {
     let {loads_dispatched, loads_pending, loads_upcoming} = this.props;
-    console.log('loads_upcoming', loads_upcoming);
-    console.log('loads_dispatched', loads_dispatched);
-    console.log('loads_pending', loads_pending);
 
     return (
       <ScrollView style={{flex: 1}}>
@@ -93,10 +90,8 @@ const makeMapStateToProps = () => {
   const mapStateToProps = (state, props) => {
     return {
       loads_dispatched: getLoadsByStatus(state, 'dispatched'),
-      // current_load: DRIVER_SELECTORS.getCurrentLoad(state),
       loads_pending: getLoadsByStatus(state, 'pending'),
       loads_upcoming: getLoadsByStatus(state, 'confirmed'),
-      // load_requests:DRIVER_SELECTORS.getLoadRequests(state)
     };
   };
   return mapStateToProps;

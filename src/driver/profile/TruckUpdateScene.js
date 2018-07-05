@@ -3,10 +3,8 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
 import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
-import {ScrollView} from 'react-native';
 import Divider from 'components/Divider';
 import ListItem from 'components/ListItem';
-import {ACTIONS as TRUCK_ACTIONS} from 'trucks/common/actions';
 import {ListSection} from 'react-native-paper';
 import I18n from 'utils/locale';
 

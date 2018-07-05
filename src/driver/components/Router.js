@@ -17,7 +17,6 @@ import RoutesDetailScene from 'driver/routes/RoutesDetailScene';
 import LoadDetailScene from 'driver/loads/LoadDetailScene';
 import LoadListScene from 'driver/loads/LoadListScene';
 import LoadHomeScene from 'driver/loads/LoadHomeScene';
-import TripTrackScene from 'driver/trips/TripTrackScene';
 import NationalityListScene from 'driver/nationality/NationalityListScene';
 import NationalityAddScene from 'driver/nationality/NationalityAddScene';
 import ProfileInfoUpdateScene from 'driver/profile/ProfileInfoUpdateScene';
@@ -209,9 +208,6 @@ const LoadStack = createStackNavigator(
     },
     LoadDetail: {
       screen: LoadDetailScene,
-    },
-    TripTrack: {
-      screen: TripTrackScene,
     },
   },
   {

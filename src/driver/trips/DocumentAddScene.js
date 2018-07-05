@@ -38,8 +38,7 @@ class DocumentAddScene extends Component {
   componentDidMount() {
     this.props.dispatch(
       DRIVER_ACTIONS.fetchLoadDetails({
-        // loadID: this.props.navigation.getParam('loadID');,
-        loadID: 1,
+        loadID: this.props.navigation.getParam('loadID',1),
       }),
     );
     this.props.dispatch(DRIVER_ACTIONS.fetchDocumentTypes());
@@ -146,9 +145,8 @@ const makeMapStateToProps = () => {
   const getLoadByID = DRIVER_SELECTORS.getLoadByID();
   const mapStateToProps = (state, props) => {
     return {
-      load: getLoadByID(state, 1),
       document_types: DRIVER_SELECTORS.getDocumentTypes(state),
-      // load: getLoadByID(state, props.navigation.getParam('loadID')),
+      load: getLoadByID(state, props.navigation.getParam('loadID',1)),
     };
   };
   return mapStateToProps;

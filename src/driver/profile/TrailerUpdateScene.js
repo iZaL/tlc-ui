@@ -7,7 +7,6 @@ import {SELECTORS as TRUCK_SELECTORS} from 'trucks/common/selectors';
 import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
 import {ACTIONS as TRUCK_ACTIONS} from 'trucks/common/actions';
 import Divider from 'components/Divider';
-import ListItem from 'components/ListItem';
 import Touchable from 'react-native-platform-touchable';
 import Label from 'components/Label';
 import {Title} from 'react-native-paper';
