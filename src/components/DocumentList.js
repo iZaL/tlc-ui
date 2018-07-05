@@ -7,8 +7,9 @@ import {FlatList, StyleSheet} from 'react-native';
 import Divider from 'components/Divider';
 
 export default class DocumentList extends Component {
-  shouldComponentUpdate() {
-    return false;
+
+  shouldComponentUpdate(nextProps) {
+    return nextProps.items !== this.props.items;
   }
 
   renderItem = ({item}) => {

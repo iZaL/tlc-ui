@@ -30,6 +30,7 @@ export default class DocumentCard extends Component {
 
   shouldComponentUpdate(nextProps, nextState) {
     return (
+      nextProps.item !== this.props.item ||
       nextProps.image !== this.props.image ||
       nextState.imageModalVisible !== this.state.imageModalVisible
     );

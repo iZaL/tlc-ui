@@ -5,6 +5,7 @@ import DocumentAdd from 'components/DocumentAdd';
 import {moment} from 'moment';
 import PropTypes from 'prop-types';
 import {ACTIONS as DRIVER_ACTIONS} from "driver/common/actions";
+import {ACTIONS as APP_ACTIONS} from "../../app/common/actions";
 
 class NationalityAddScene extends Component {
 
@@ -51,7 +52,8 @@ class NationalityAddScene extends Component {
       expiry_date: expiry_date,
       country_id: country_id,
       image: image,
-      type:type
+      type:type,
+      uploaded_image:null
     };
   }
 
@@ -59,6 +61,29 @@ class NationalityAddScene extends Component {
     this.setState({
       [field]: value,
     });
+  };
+
+  uploadImage = image => {
+    let images = [image];
+    return new Promise((resolve, reject) => {
+      this.props.dispatch(
+        APP_ACTIONS.uploadImages({
+          images,
+          resolve,
+          reject,
+        }),
+      );
+    })
+      .then(images => {
+        if(images.length) {
+          this.setState({
+            image:images[0]
+          });
+        }
+      })
+      .catch(e => {
+        console.log('e', e);
+      });
   };
 
   onSave = () => {
@@ -75,6 +100,7 @@ class NationalityAddScene extends Component {
         onSavePress={this.onSave}
         countries={countries}
         countryModalTitle={countryModalTitle}
+        uploadImage={this.uploadImage}
         {...this.state}
       />
     );

@@ -49,7 +49,7 @@ function* saveDocument(action) {
     };
 
     const response = yield call(API.saveDocument, params);
-    const normalized = normalize(response.data, Schema.users);
+    const normalized = normalize(response.data, Schema.drivers);
 
     yield put({
       type: ACTION_TYPES.SAVE_DOCUMENT_SUCCESS,

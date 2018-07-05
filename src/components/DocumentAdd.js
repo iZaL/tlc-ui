@@ -13,10 +13,12 @@ import ListModal from 'components/ListModal';
 import TextInput from 'components/TextInput';
 
 export default class DocumentAdd extends PureComponent {
+
   static propTypes = {
     onSavePress: PropTypes.func.isRequired,
     onDeletePress: PropTypes.func,
     onValueChange: PropTypes.func.isRequired,
+    uploadImage: PropTypes.func.isRequired,
     number: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     expiry_date: PropTypes.any,
     image: PropTypes.string,
@@ -60,6 +62,7 @@ export default class DocumentAdd extends PureComponent {
       country_id,
       onSavePress,
       countryModalTitle,
+      uploadImage
     } = this.props;
 
     let country = country_id
@@ -87,7 +90,7 @@ export default class DocumentAdd extends PureComponent {
           </CardContent>
 
           <DocumentUpload
-            onPress={image => onValueChange('image', image)}
+            onPress={uploadImage}
             image={image}
             style={{marginHorizontal: 16}}
           />
