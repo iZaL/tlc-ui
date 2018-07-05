@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {ScrollView} from 'react-native';
+import {ScrollView, View} from 'react-native';
 import {SELECTORS as USER_SELECTORS} from 'guest/common/selectors';
 import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
 import I18n from 'utils/locale';
 import TextInput from 'components/TextInput';
-import {Button} from 'react-native-paper';
 import DocumentUpload from 'components/DocumentUpload';
+import Button from "components/Button";
 
 class ProfileInfoUpdateScene extends Component {
   static propTypes = {};
@@ -32,6 +32,7 @@ class ProfileInfoUpdateScene extends Component {
   };
 
   static getDerivedStateFromProps(nextProps, prevState) {
+
     if (nextProps.user === prevState.user) {
       return null;
     }
@@ -73,7 +74,11 @@ class ProfileInfoUpdateScene extends Component {
     });
   };
 
-  save = () => {};
+  save = () => {
+    this.props.dispatch(DRIVER_ACTIONS.saveProfile({
+      ...this.state.user
+    }));
+  };
 
   render() {
     let {
@@ -89,73 +94,74 @@ class ProfileInfoUpdateScene extends Component {
     return (
       <ScrollView
         style={{flex: 1, backgroundColor: 'white'}}
-        contentContainerStyle={{padding: 10}}>
-        <DocumentUpload
-          onPress={image => this.onValueChange('image', image)}
-          image={image}
-          style={{
-            flex: 1,
-            marginHorizontal: 15,
-            width: 110,
-            height: 110,
-            borderRadius: 55,
-            alignSelf: 'center',
-          }}
-          imageStyle={{borderRadius: 50}}
-        />
+      >
+        <View style={{padding:10}}>
+          <DocumentUpload
+            onPress={image => this.onValueChange('image', image)}
+            image={image}
+            style={{
+              flex: 1,
+              marginHorizontal: 15,
+              width: 110,
+              height: 110,
+              borderRadius: 55,
+              alignSelf: 'center',
+            }}
+            imageStyle={{borderRadius: 50}}
+          />
 
-        <TextInput
-          onValueChange={this.onValueChange}
-          field="name"
-          value={name}
-          maxLength={40}
-          label={I18n.t('name')}
-        />
+          <TextInput
+            onValueChange={this.onValueChange}
+            field="name"
+            value={name}
+            maxLength={40}
+            label={I18n.t('name')}
+          />
 
-        <TextInput
-          onValueChange={this.onValueChange}
-          field="email"
-          value={email}
-          maxLength={40}
-          label={I18n.t('email')}
-          keyboardType="email-address"
-        />
+          <TextInput
+            onValueChange={this.onValueChange}
+            field="email"
+            value={email}
+            maxLength={40}
+            label={I18n.t('email')}
+            keyboardType="email-address"
+          />
 
-        <TextInput
-          onValueChange={this.onValueChange}
-          field="mobile"
-          value={mobile}
-          maxLength={40}
-          label={I18n.t('mobile_primary')}
-          keyboardType="phone-pad"
-        />
+          <TextInput
+            onValueChange={this.onValueChange}
+            field="mobile"
+            value={mobile}
+            maxLength={40}
+            label={I18n.t('mobile_primary')}
+            keyboardType="phone-pad"
+          />
 
-        <TextInput
-          onValueChange={this.onDriverFieldChange}
-          field="mobile"
-          value={profile ? profile.mobile : ''}
-          maxLength={40}
-          label={I18n.t('contact_mobile1')}
-          keyboardType="phone-pad"
-        />
+          <TextInput
+            onValueChange={this.onDriverFieldChange}
+            field="mobile"
+            value={profile ? profile.mobile : ''}
+            maxLength={40}
+            label={I18n.t('contact_mobile1')}
+            keyboardType="phone-pad"
+          />
 
-        <TextInput
-          onValueChange={this.onDriverFieldChange}
-          field="phone"
-          value={profile ? profile.phone : ''}
-          maxLength={40}
-          label={I18n.t('contact_mobile2')}
-          keyboardType="phone-pad"
-        />
+          <TextInput
+            onValueChange={this.onDriverFieldChange}
+            field="phone"
+            value={profile ? profile.phone : ''}
+            maxLength={40}
+            label={I18n.t('contact_mobile2')}
+            keyboardType="phone-pad"
+          />
+
+        </View>
 
         <Button
           onPress={this.save}
-          raised
-          primary
-          dark
-          style={{padding: 10, marginTop: 20}}>
-          {I18n.t('save')}
-        </Button>
+          style={{marginTop: 20}}
+          title={I18n.t('save')}
+        />
+
       </ScrollView>
     );
   }

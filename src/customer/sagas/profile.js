@@ -27,7 +27,7 @@ function* saveProfile(action) {
     };
 
     yield put({
-      type: ACTION_TYPES.UPDATE_PROFILE_SUCCESS,
+      type: ACTION_TYPES.SAVE_PROFILE_SUCCESS,
       entities: profile,
     });
 
@@ -39,7 +39,7 @@ function* saveProfile(action) {
     );
   } catch (error) {
     yield put(APP_ACTIONS.setNotification({message: error, type: 'error'}));
-    yield put({type: ACTION_TYPES.UPDATE_PROFILE_FAILURE, error});
+    yield put({type: ACTION_TYPES.SAVE_PROFILE_FAILURE, error});
   }
 }
 
@@ -92,7 +92,7 @@ function* fetchBlockedDrivers() {
 }
 
 function* saveProfileMonitor() {
-  yield takeLatest(ACTION_TYPES.UPDATE_PROFILE_REQUEST, saveProfile);
+  yield takeLatest(ACTION_TYPES.SAVE_PROFILE_REQUEST, saveProfile);
 }
 
 function* fetchProfileMonitor() {

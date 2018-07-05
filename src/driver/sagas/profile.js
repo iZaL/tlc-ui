@@ -7,35 +7,27 @@ import {ACTIONS as APP_ACTIONS} from 'app/common/actions';
 import I18n from 'utils/locale';
 
 function* saveProfile(action) {
-  const {
-    params: {resolve, reject, ...rest},
-  } = action;
 
   try {
     let params = {
       body: {
-        ...rest,
+        ...action.params,
       },
     };
 
     const response = yield call(API.saveProfile, params);
-    const normalized = normalize(response.data, Schema.drivers);
+    const normalized = normalize(response.data, Schema.users);
 
     yield put({
-      type: ACTION_TYPES.UPDATE_PROFILE_SUCCESS,
+      type: ACTION_TYPES.SAVE_PROFILE_SUCCESS,
       entities: normalized.entities,
     });
 
     yield put(
       APP_ACTIONS.setNotification({
         message: I18n.t('profile_saved'),
-        type: 'success',
-        position: 'center',
-        backdropDismiss: false,
       }),
     );
-
-    yield resolve();
   } catch (error) {
     yield put(
       APP_ACTIONS.setNotification({
@@ -43,8 +35,7 @@ function* saveProfile(action) {
         type: 'error',
       }),
     );
-    yield put({type: ACTION_TYPES.UPDATE_PROFILE_FAILURE, error});
-    yield reject(error);
+    yield put({type: ACTION_TYPES.SAVE_PROFILE_FAILURE, error});
   }
 }
 
@@ -92,7 +83,7 @@ function* saveTruckMonitor() {
 }
 
 function* saveProfileMonitor() {
-  yield takeLatest(ACTION_TYPES.UPDATE_PROFILE_REQUEST, saveProfile);
+  yield takeLatest(ACTION_TYPES.SAVE_PROFILE_REQUEST, saveProfile);
 }
 
 function* fetchProfileMonitor() {

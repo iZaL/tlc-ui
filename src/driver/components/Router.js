@@ -190,7 +190,7 @@ const ProfileStack = createStackNavigator(
     cardStyle: {
       backgroundColor: colors.fadedWhite,
     },
-    // initialRouteName: 'RoutesAdd',
+    initialRouteName: 'ProfileInfoUpdate',
   },
 );
 
@@ -241,5 +241,5 @@ export const Routes = createDrawerNavigator(DrawerRoutes, {
   gesturesEnabled: false,
   contentComponent: props => <Drawer {...props} />,
   drawerWidth: 275,
-  // initialRouteName: 'LoadStack',
+  initialRouteName: 'ProfileStack',
 });
