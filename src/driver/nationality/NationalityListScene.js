@@ -22,21 +22,18 @@ class NationalityListScene extends Component {
   //   this.props.dispatch(DRIVER_ACTIONS.fetchLoadsByStatus({status: status}));
   // }
 
-  static navigationOptions = ({navigation}) => {
-    return {
-      title: (navigation.state.params && navigation.state.params.title) || '',
-    };
-  };
+  // static navigationOptions = ({navigation}) => {
+  //   return {
+  //     title: (navigation.state.params && navigation.state.params.title) || '',
+  //   };
+  // };
 
   onAddPress = () => {
-    let {route, title} = this.props.navigation.state.params;
-
     let sceneConfig = {
-      route,
-      title,
+      route: this.props.navigation.getParam('route'),
+      title:this.props.navigation.getParam('title'),
       type: I18n.t('add'),
     };
-
     this.props.navigation.navigate('NationalityAdd', sceneConfig);
   };
 
@@ -91,10 +88,9 @@ class NationalityListScene extends Component {
 
 const makeMapStateToProps = () => {
   let getDocuments = DRIVER_SELECTORS.getDocumentsByType();
-  const mapStateToProps = (state, ownProps) => {
-    let {route} = ownProps.navigation.state.params;
+  const mapStateToProps = (state, props) => {
     return {
-      collection: getDocuments(state, route),
+      collection: getDocuments(state, props.navigation.getParam('route')),
     };
   };
   return mapStateToProps;

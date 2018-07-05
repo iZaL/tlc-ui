@@ -6,12 +6,18 @@ import {moment} from 'moment';
 import PropTypes from 'prop-types';
 
 class NationalityAddScene extends Component {
+
   static propTypes = {
-    residencies: PropTypes.array,
+    navigation: PropTypes.shape({
+      state: PropTypes.shape({
+        params: PropTypes.shape({
+          route: PropTypes.string.isRequired,
+        }),
+      }),
+    }).isRequired,
   };
 
   static defaultProps = {
-    residencies: [],
     number: null,
     expiry_date: new Date(),
     countryID: null,
@@ -50,7 +56,8 @@ class NationalityAddScene extends Component {
   };
 
   onSave = () => {
-    console.log('save');
+    let documentType = this.props.navigation.getParam('route');
+    console.log('documentType',documentType);
   };
 
   render() {
