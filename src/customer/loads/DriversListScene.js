@@ -23,8 +23,6 @@ class DriversListScene extends Component {
 
   componentDidMount() {
     let {loadID} = this.props.navigation.state.params;
-    console.log('loadID', loadID);
-
     this.props.dispatch(
       CUSTOMER_ACTIONS.fetchLoadDrivers({
         loadID: loadID,
