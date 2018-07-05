@@ -13,7 +13,7 @@ export default class DocumentList extends Component {
   }
 
   renderItem = ({item}) => {
-    const {onEditPress, onDeletePress} = this.props;
+    const {onEditPress, onDeletePress,} = this.props;
     return (
       <DocumentCard
         item={item}

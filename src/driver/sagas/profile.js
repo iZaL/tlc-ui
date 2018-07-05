@@ -71,6 +71,38 @@ function* saveTrailer(action) {
     yield put({type: ACTION_TYPES.SAVE_TRAILER_FAILURE, error});
   }
 }
+function* saveSecurityPass(action) {
+
+  try {
+    let params = {
+      body: {
+        ...action.params,
+      },
+    };
+
+    const response = yield call(API.saveSecurityPass, params);
+    const normalized = normalize(response.data, Schema.drivers);
+
+    yield put({
+      type: ACTION_TYPES.SAVE_SECURITY_PASS_SUCCESS,
+      entities: normalized.entities,
+    });
+
+    yield put(
+      APP_ACTIONS.setNotification({
+        message: I18n.t('saved'),
+      }),
+    );
+  } catch (error) {
+    yield put(
+      APP_ACTIONS.setNotification({
+        message: error,
+        type: 'error',
+      }),
+    );
+    yield put({type: ACTION_TYPES.SAVE_SECURITY_PASS_FAILURE, error});
+  }
+}
 
 function* saveDocument(action) {
 
@@ -161,6 +193,9 @@ function* saveTrailerMonitor() {
 function* fetchProfileMonitor() {
   yield takeLatest(ACTION_TYPES.FETCH_PROFILE_REQUEST, fetchProfile);
 }
+function* saveSecurityPassMonitor() {
+  yield takeLatest(ACTION_TYPES.SAVE_SECURITY_PASS_REQUEST, saveSecurityPass);
+}
 
 export const sagas = all([
   fork(fetchProfileMonitor),
@@ -168,4 +203,5 @@ export const sagas = all([
   fork(saveDocumentMonitor),
   fork(saveTruckMonitor),
   fork(saveTrailerMonitor),
+  fork(saveSecurityPassMonitor),
 ]);

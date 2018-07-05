@@ -83,6 +83,16 @@ function saveTrailer(params) {
   return fetchAPI(requestParams);
 }
 
+function saveSecurityPass(params) {
+  const path = `driver/passes`;
+  let requestParams = {
+    path,
+    params,
+    method: 'POST',
+  };
+  return fetchAPI(requestParams);
+}
+
 function saveProfile(params) {
   const path = `driver/profile/update`;
   let requestParams = {
@@ -129,5 +139,6 @@ export const API = {
   saveRoute,
   saveTruck,
   saveTrailer,
+  saveSecurityPass,
   setTripStatus,
 };

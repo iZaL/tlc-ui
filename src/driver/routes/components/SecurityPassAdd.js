@@ -60,7 +60,7 @@ export default class SecurityPassAdd extends PureComponent {
   };
 
   _handleCountryPicker = country => {
-    this.props.onValueChange('countryID', country.id);
+    this.props.onValueChange('country_id', country.id);
   };
 
   _handleSecurityPassPicker = pass => {
@@ -74,15 +74,16 @@ export default class SecurityPassAdd extends PureComponent {
       buttonText,
       image,
       countries,
-      countryID,
+      country_id,
       onSavePress,
       security_pass_id,
       security_passes,
       securityPass,
+      onImageUpload
     } = this.props;
 
-    let country = countryID
-      ? countries.find(country => country.id === countryID)
+    let country = country_id
+      ? countries.find(country => country.id === country_id)
       : {};
 
     return (
@@ -108,7 +109,7 @@ export default class SecurityPassAdd extends PureComponent {
           </CardContent>
 
           <DocumentUpload
-            onPress={image => onValueChange('image', image)}
+            onPress={onImageUpload}
             image={image}
             style={{marginHorizontal: 16, marginTop: 10}}
           />
@@ -148,8 +149,9 @@ export default class SecurityPassAdd extends PureComponent {
           visible={this.state.isCountryModalVisible}
           onItemPress={this._handleCountryPicker}
           onCancel={this._hideCountryModal}
+          onSave={this._hideCountryModal}
           header={I18n.t('select_country')}
-          activeIDs={[countryID]}
+          activeIDs={[country_id]}
         />
 
         <ListModal

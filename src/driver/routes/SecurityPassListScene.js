@@ -39,7 +39,7 @@ class SecurityPassListScene extends Component {
     let payload = {
       number: number,
       expiry_date: new Date(expiry_date),
-      countryID: pass.country.id,
+      country_id: pass.country.id,
       image: image,
       security_pass_id: pass.security_pass,
     };
@@ -53,6 +53,7 @@ class SecurityPassListScene extends Component {
     this.props.navigation.navigate('SecurityPassAdd', sceneConfig);
   };
 
+
   render() {
     let {driver_security_passes} = this.props;
 
@@ -62,6 +63,7 @@ class SecurityPassListScene extends Component {
           items={driver_security_passes}
           onEditPress={this.onEditPress}
           onDeletePress={this.onDeletePress}
+          onImageUpload={this.uploadImage}
         />
         <FAB
           icon="add"

@@ -11,6 +11,10 @@ export const ACTION_TYPES = {
   SAVE_DOCUMENT_SUCCESS: '@driver/SAVE_DOCUMENT_SUCCESS',
   SAVE_DOCUMENT_FAILURE: '@driver/SAVE_DOCUMENT_FAILURE',
 
+  SAVE_SECURITY_PASS_REQUEST: '@driver/SAVE_SECURITY_PASS_REQUEST',
+  SAVE_SECURITY_PASS_SUCCESS: '@driver/SAVE_SECURITY_PASS_SUCCESS',
+  SAVE_SECURITY_PASS_FAILURE: '@driver/SAVE_SECURITY_PASS_FAILURE',
+
   FETCH_PROFILE_REQUEST: '@driver/FETCH_PROFILE_REQUEST',
   FETCH_PROFILE_SUCCESS: '@driver/FETCH_PROFILE_SUCCESS',
   FETCH_PROFILE_FAILURE: '@driver/FETCH_PROFILE_FAILURE',
@@ -195,6 +199,13 @@ function fetchLoadsByStatus(params) {
   };
 }
 
+function saveSecurityPass(params) {
+  return {
+    type: ACTION_TYPES.SAVE_SECURITY_PASS_REQUEST,
+    params,
+  };
+}
+
 export const ACTIONS = {
   saveProfile,
   saveDocument,
@@ -217,4 +228,6 @@ export const ACTIONS = {
   // stopTrip,
   // starTrip,
   setTripStatus,
+  saveSecurityPass,
+
 };

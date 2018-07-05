@@ -8,6 +8,7 @@ import SecurityPassAdd from 'driver/routes/components/SecurityPassAdd';
 import {ACTIONS as APP_ACTIONS} from 'app/common/actions';
 import {SELECTORS as APP_SELECTORS} from 'app/selectors/app';
 import I18n from 'utils/locale';
+import {ACTIONS as DRIVER_ACTIONS} from "driver/common/actions";
 
 class SecurityPassAddScene extends Component {
   static propTypes = {
@@ -18,7 +19,7 @@ class SecurityPassAddScene extends Component {
     gate_passes: [],
     security_pass_id: null,
     expiry_date: new Date(),
-    countryID: null,
+    country_id: null,
     image: null,
   };
 
@@ -40,14 +41,14 @@ class SecurityPassAddScene extends Component {
     let {
       number,
       expiry_date,
-      countryID,
+      country_id,
       image,
       security_pass_id,
     } = this.props.navigation.state.params;
     this.state = {
       number: number,
       expiry_date: expiry_date,
-      countryID: countryID,
+      country_id: country_id,
       image: image,
       security_pass_id: security_pass_id,
     };
@@ -58,29 +59,54 @@ class SecurityPassAddScene extends Component {
       [field]: value,
     });
 
-    if (field === 'countryID') {
+    if (field === 'country_id') {
       this.setState({
         security_pass_id: null,
       });
     }
   };
 
+  uploadImage = image => {
+    let images = [image];
+    return new Promise((resolve, reject) => {
+      this.props.dispatch(
+        APP_ACTIONS.uploadImages({
+          images,
+          resolve,
+          reject,
+        }),
+      );
+    })
+      .then(images => {
+        if(images.length) {
+          this.setState({
+            image:images[0]
+          });
+        }
+      })
+      .catch(e => {
+        console.log('e', e);
+      });
+  };
+
   onSave = () => {
-    console.log('save');
+    this.props.dispatch(DRIVER_ACTIONS.saveSecurityPass({
+      ...this.state,
+    }));
   };
 
   render() {
     let {countries, security_passes} = this.props;
-    let {countryID, security_pass_id} = this.state;
+    let {country_id, security_pass_id} = this.state;
 
     let securityPass = {};
     if (security_pass_id) {
       securityPass = security_passes.find(pass => pass.id === security_pass_id);
     }
 
-    if (countryID) {
+    if (country_id) {
       security_passes = security_passes.filter(pass => {
-        return pass.country.id === countryID;
+        return pass.country.id === country_id;
       });
     }
 
@@ -92,6 +118,7 @@ class SecurityPassAddScene extends Component {
         security_passes={security_passes}
         countryModalTitle={I18n.t('select')}
         securityPass={securityPass}
+        onImageUpload={this.uploadImage}
         {...this.state}
       />
     );
