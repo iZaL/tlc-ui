@@ -176,6 +176,10 @@ class RoutesAddScene extends Component {
     this.hideDestinationLocationsModal();
   };
 
+  onOriginLocationsSavePress = () => {
+    this.hideOriginLocationsModal();
+  };
+
   showDestinationCountriesModal = () => {
     this.setState({
       isDestinationCountriesModalVisible: true,
@@ -207,10 +211,12 @@ class RoutesAddScene extends Component {
       });
     } else {
       let originCountry = this.getCountry(this.props.origin_country.id);
-      let countryLocations = originCountry.locations || [];
-      this.setState({
-        origin_location_ids: countryLocations.map(location => location.id),
-      });
+      if(originCountry) {
+        let countryLocations = originCountry.locations || [];
+        this.setState({
+          origin_location_ids: countryLocations.map(location => location.id),
+        });
+      }
     }
 
     this.setState({
@@ -246,7 +252,11 @@ class RoutesAddScene extends Component {
     );
   };
 
-  onSave = () => {};
+  onSave = () => {
+    this.props.dispatch(APP_ACTIONS.setNotification({
+      message: I18n.t('saved'),
+    }));
+  };
 
   render() {
     let {
@@ -365,7 +375,7 @@ class RoutesAddScene extends Component {
           items={origin_country.locations || []}
           visible={isOriginLocationsModalVisible}
           onCancel={this.hideOriginLocationsModal}
-          onSave={this.onDestinationLocationsSavePress}
+          onSave={this.onOriginLocationsSavePress}
           header={
             <View style={{paddingHorizontal: 15, paddingTop: 15}}>
               <Headline style={{textAlign: 'center'}}>
