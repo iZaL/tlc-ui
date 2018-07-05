@@ -33,6 +33,12 @@ export const ACTION_TYPES = {
   UPLOAD_IMAGES_REQUEST: '@app/UPLOAD_IMAGES_REQUEST',
   UPLOAD_IMAGES_SUCCESS: '@app/UPLOAD_IMAGES_SUCCESS',
   UPLOAD_IMAGES_FAILURE: '@app/UPLOAD_IMAGES_FAILURE',
+
+  SAVE_UPLOADS_REQUEST: '@app/SAVE_UPLOADS_REQUEST',
+  SAVE_UPLOADS_SUCCESS: '@app/SAVE_UPLOADS_SUCCESS',
+  SAVE_UPLOADS_FAILURE: '@app/SAVE_UPLOADS_FAILURE',
+
+
 };
 
 function boot() {
@@ -99,6 +105,12 @@ function uploadImages(params) {
     params,
   };
 }
+function saveUploads(params) {
+  return {
+    type: ACTION_TYPES.SAVE_UPLOADS_REQUEST,
+    params,
+  };
+}
 
 export const ACTIONS = {
   boot,
@@ -111,4 +123,5 @@ export const ACTIONS = {
   fetchCountries,
   fetchSecurityPasses,
   uploadImages,
+  saveUploads,
 };

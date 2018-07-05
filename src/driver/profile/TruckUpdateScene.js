@@ -5,8 +5,14 @@ import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
 import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
 import Divider from 'components/Divider';
 import ListItem from 'components/ListItem';
-import {ListSection} from 'react-native-paper';
+import {ListSection, Title} from 'react-native-paper';
 import I18n from 'utils/locale';
+import AlbumUpload from "../../components/AlbumUpload";
+import {View} from "react-native";
+import IconFactory from "../../components/IconFactory";
+import colors from "../../assets/theme/colors";
+import {ACTIONS as APP_ACTIONS} from "../../app/common/actions";
+import Gallery from "../../components/Gallery";
 
 class TruckUpdateScene extends Component {
   static propTypes = {
@@ -19,6 +25,10 @@ class TruckUpdateScene extends Component {
     truck: {
       model: {},
     },
+  };
+
+  state = {
+    images:[]
   };
 
   componentDidMount() {
@@ -45,7 +55,34 @@ class TruckUpdateScene extends Component {
     this.props.navigation.navigate('TrailerUpdate');
   };
 
+  uploadImages = images => {
+    return new Promise((resolve, reject) => {
+      this.props.dispatch(
+        APP_ACTIONS.uploadImages({
+          images,
+          resolve,
+          reject,
+        }),
+      );
+    })
+      .then(images => {
+        this.props.dispatch(
+          APP_ACTIONS.saveUploads({
+            links:images,
+            entity_type:'Truck',
+            entity_id:this.props.truck.id
+          })
+        );
+      })
+      .catch(e => {
+        console.log('e', e);
+      });
+  };
+
   render() {
+
+    let {truck} = this.props;
+
     return (
       <ListSection>
         <ListItem
@@ -72,11 +109,37 @@ class TruckUpdateScene extends Component {
 
         <Divider />
 
-        <ListItem
-          onPress={this.loadTrailerUpdateScene}
-          name="trailer_details"
-          title={I18n.t('trailer_details')}
-        />
+        {/*<ListItem*/}
+          {/*onPress={this.loadTrailerUpdateScene}*/}
+          {/*name="trailer_details"*/}
+          {/*title={I18n.t('trailer_details')}*/}
+        {/*/>*/}
+
+        <Gallery images={truck.images} imageName={image => image.url}/>
+
+        <Divider style={{marginBottom:20}} />
+
+        <AlbumUpload
+          images={this.state.images}
+          onUpload={this.uploadImages}>
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+            <Title style={{textAlign: 'center'}}>
+              {I18n.t('upload_images')}
+            </Title>
+            <IconFactory
+              type="MaterialIcons"
+              name="add-a-photo"
+              size={40}
+              color={colors.darkGrey}
+            />
+          </View>
+        </AlbumUpload>
+
       </ListSection>
     );
   }

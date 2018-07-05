@@ -39,13 +39,17 @@ export const ACTION_TYPES = {
   SAVE_ROUTE_SUCCESS: '@driver/SAVE_ROUTE_SUCCESS',
   SAVE_ROUTE_FAILURE: '@driver/SAVE_ROUTE_FAILURE',
 
-  SAVE_TRUCK_REQUEST: '@truck/SAVE_TRUCK_REQUEST',
-  SAVE_TRUCK_SUCCESS: '@truck/SAVE_TRUCK_SUCCESS',
-  SAVE_TRUCK_FAILURE: '@truck/SAVE_TRUCK_FAILURE',
+  SAVE_TRUCK_REQUEST: '@driver/SAVE_TRUCK_REQUEST',
+  SAVE_TRUCK_SUCCESS: '@driver/SAVE_TRUCK_SUCCESS',
+  SAVE_TRUCK_FAILURE: '@driver/SAVE_TRUCK_FAILURE',
 
-  SYNC_ROUTE_REQUEST: '@truck/SYNC_ROUTE_REQUEST',
-  SYNC_ROUTE_SUCCESS: '@truck/SYNC_ROUTE_SUCCESS',
-  SYNC_ROUTE_FAILURE: '@truck/SYNC_ROUTE_FAILURE',
+  SAVE_TRAILER_REQUEST: '@driver/SAVE_TRAILER_REQUEST',
+  SAVE_TRAILER_SUCCESS: '@driver/SAVE_TRAILER_SUCCESS',
+  SAVE_TRAILER_FAILURE: '@driver/SAVE_TRAILER_FAILURE',
+
+  SYNC_ROUTE_REQUEST: '@driver/SYNC_ROUTE_REQUEST',
+  SYNC_ROUTE_SUCCESS: '@driver/SYNC_ROUTE_SUCCESS',
+  SYNC_ROUTE_FAILURE: '@driver/SYNC_ROUTE_FAILURE',
 
   FETCH_LOADS_BY_STATUS_REQUEST: '@driver/FETCH_LOADS_BY_STATUS_REQUEST',
   FETCH_LOADS_BY_STATUS_SUCCESS: '@driver/FETCH_LOADS_BY_STATUS_SUCCESS',
@@ -163,6 +167,13 @@ function saveTruck(params) {
   };
 }
 
+function saveTrailer(params) {
+  return {
+    type: ACTION_TYPES.SAVE_TRAILER_REQUEST,
+    params,
+  };
+}
+
 function saveRoute(params) {
   return {
     type: ACTION_TYPES.SAVE_ROUTE_REQUEST,
@@ -190,6 +201,7 @@ export const ACTIONS = {
   fetchProfile,
   fetchRoutes,
   saveTruck,
+  saveTrailer,
   saveRoute,
   fetchRouteTransits,
   fetchUpcomingTrips,

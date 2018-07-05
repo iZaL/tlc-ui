@@ -10,6 +10,8 @@ import Label from 'components/Label';
 import Modal from 'components/Modal';
 import Divider from 'components/Divider';
 import Button from 'components/Button';
+import {ACTIONS as APP_ACTIONS} from "../../app/common/actions";
+import {ACTIONS as DRIVER_ACTIONS} from "../common/actions";
 
 class TruckInfoUpdateScene extends Component {
   constructor(props) {
@@ -46,9 +48,7 @@ class TruckInfoUpdateScene extends Component {
     });
   };
 
-  onSave = () => {
-    console.log('save');
-  };
+
 
   hideYearModal = () => {
     this.setState({
@@ -60,6 +60,44 @@ class TruckInfoUpdateScene extends Component {
     this.setState({
       isYearModalVisible: true,
     });
+  };
+
+  uploadImage = image => {
+    let images = [image];
+    return new Promise((resolve, reject) => {
+      this.props.dispatch(
+        APP_ACTIONS.uploadImages({
+          images,
+          resolve,
+          reject,
+        }),
+      );
+    })
+      .then(images => {
+        if(images.length) {
+          this.setState({
+            image:images[0]
+          });
+        }
+      })
+      .catch(e => {
+        console.log('e', e);
+      });
+  };
+
+  saveYear = () => {
+    this.hideYearModal();
+    this.onSave();
+  };
+
+  onSave = () => {
+    let {plate_number,image,year,max_weight} = this.state;
+    this.props.dispatch(DRIVER_ACTIONS.saveTruck({
+      plate_number:plate_number,
+      image:image,
+      year:year,
+      max_weight:max_weight
+    }));
   };
 
   render() {
@@ -85,12 +123,12 @@ class TruckInfoUpdateScene extends Component {
             label={I18n.t('max_weight')}
             value={max_weight}
             onValueChange={this.onValueChange}
-            field="plate_number"
+            field="max_weight"
           />
 
           <Title>{I18n.t('truck_image')}</Title>
           <DocumentUpload
-            onPress={image => this.onValueChange('image', image)}
+            onPress={this.uploadImage}
             image={image}
           />
 
@@ -104,7 +142,9 @@ class TruckInfoUpdateScene extends Component {
         <Modal
           visible={isYearModalVisible}
           onCancel={this.hideYearModal}
-          header={I18n.t('truck_year')}>
+          onSave={this.saveYear}
+          header={I18n.t('truck_year')}
+        >
           <Dropdown
             items={['1905', '1906', '2001', '2002', '2003', '2004']}
             selectedValue={year}

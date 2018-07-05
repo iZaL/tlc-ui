@@ -203,6 +203,7 @@
   "trailer_type" : "Trailer Type",
   "trailer_make"  : "Trailer Make",
   "trailer_details" : "Trailer Details",
+  "trailer_year" : "Trailer Make Year",
 
   "continue" : "Continue",
   "language" : "Language",
@@ -329,5 +330,6 @@
   "no_matching_drivers" : "No Matching Drivers Found",
   "driver_blocked" : "Driver has put to blocked list",
 
-  "profile_saved" : "Profile Updated"
+  "profile_saved" : "Profile Updated",
+  "trailer_image" : "Trailer Image"
 }

@@ -57,7 +57,9 @@ class TruckModelScene extends Component {
   };
 
   onSave = () => {
-    console.log('save');
+    this.props.dispatch(DRIVER_ACTIONS.saveTruck({
+      ...this.state,
+    }));
   };
 
   showModelModal = () => {

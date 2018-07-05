@@ -190,7 +190,7 @@ const ProfileStack = createStackNavigator(
     cardStyle: {
       backgroundColor: colors.fadedWhite,
     },
-    initialRouteName: 'ProfileUpdate',
+    // initialRouteName: 'ProfileUpdate',
   },
 );
 

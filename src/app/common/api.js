@@ -16,13 +16,19 @@ function fetchSecurityPasses() {
 }
 
 function uploadImages(params) {
-  const path = `upload/images`;
+  const path = `uploads/images`;
+  return fetchAPI({path, method: 'POST', params});
+}
+
+function saveUploads(params) {
+  const path = `uploads/sync`;
   return fetchAPI({path, method: 'POST', params});
 }
 
 export const API = {
   storePushToken,
   uploadImages,
+  saveUploads,
   fetchCountries,
   fetchSecurityPasses,
 };

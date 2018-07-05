@@ -39,6 +39,39 @@ function* saveProfile(action) {
   }
 }
 
+function* saveTrailer(action) {
+
+  try {
+    let params = {
+      body: {
+        ...action.params,
+      },
+    };
+
+    const response = yield call(API.saveTrailer, params);
+    const normalized = normalize(response.data, Schema.drivers);
+
+    yield put({
+      type: ACTION_TYPES.SAVE_TRAILER_SUCCESS,
+      entities: normalized.entities,
+    });
+
+    yield put(
+      APP_ACTIONS.setNotification({
+        message: I18n.t('saved'),
+      }),
+    );
+  } catch (error) {
+    yield put(
+      APP_ACTIONS.setNotification({
+        message: error,
+        type: 'error',
+      }),
+    );
+    yield put({type: ACTION_TYPES.SAVE_TRAILER_FAILURE, error});
+  }
+}
+
 function* saveDocument(action) {
 
   try {
@@ -102,7 +135,7 @@ function* saveTruck(action) {
 
     yield put(
       APP_ACTIONS.setNotification({
-        message: I18n.t('truck_saved'),
+        message: I18n.t('saved'),
         type: 'success',
       }),
     );
@@ -121,6 +154,9 @@ function* saveDocumentMonitor() {
 function* saveProfileMonitor() {
   yield takeLatest(ACTION_TYPES.SAVE_PROFILE_REQUEST, saveProfile);
 }
+function* saveTrailerMonitor() {
+  yield takeLatest(ACTION_TYPES.SAVE_TRAILER_REQUEST, saveTrailer);
+}
 
 function* fetchProfileMonitor() {
   yield takeLatest(ACTION_TYPES.FETCH_PROFILE_REQUEST, fetchProfile);
@@ -131,4 +167,5 @@ export const sagas = all([
   fork(saveProfileMonitor),
   fork(saveDocumentMonitor),
   fork(saveTruckMonitor),
+  fork(saveTrailerMonitor),
 ]);

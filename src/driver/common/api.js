@@ -62,7 +62,18 @@ function setTripStatus(params) {
 }
 
 function saveTruck(params) {
-  const path = `driver/trucks`;
+  const path = `driver/truck`;
+
+  let requestParams = {
+    path,
+    params,
+    method: 'POST',
+  };
+  return fetchAPI(requestParams);
+}
+
+function saveTrailer(params) {
+  const path = `driver/trailer`;
 
   let requestParams = {
     path,
@@ -117,5 +128,6 @@ export const API = {
   saveDocument,
   saveRoute,
   saveTruck,
+  saveTrailer,
   setTripStatus,
 };

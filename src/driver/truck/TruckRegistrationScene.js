@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 import {SELECTORS as COUNTRY_SELECTORS} from 'app/selectors/country';
 import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
 import I18n from 'utils/locale';
+import {ACTIONS as DRIVER_ACTIONS} from "driver/common/actions";
+import {ACTIONS as APP_ACTIONS} from "../../app/common/actions";
 
 class TruckRegistrationScene extends Component {
   static propTypes = {
@@ -18,7 +20,7 @@ class TruckRegistrationScene extends Component {
   state = {
     number: null,
     expiry_date: new Date(),
-    countryID: null,
+    country_id: null,
     image: null,
   };
 
@@ -42,7 +44,7 @@ class TruckRegistrationScene extends Component {
     return {
       number: registration_number,
       expiry_date: new Date(registration_expiry_date),
-      countryID: registration_country && registration_country.id,
+      country_id: registration_country && registration_country.id,
       image: registration_image,
     };
   }
@@ -53,8 +55,37 @@ class TruckRegistrationScene extends Component {
     });
   };
 
+  uploadImage = image => {
+    let images = [image];
+    return new Promise((resolve, reject) => {
+      this.props.dispatch(
+        APP_ACTIONS.uploadImages({
+          images,
+          resolve,
+          reject,
+        }),
+      );
+    })
+      .then(images => {
+        if(images.length) {
+          this.setState({
+            image:images[0]
+          });
+        }
+      })
+      .catch(e => {
+        console.log('e', e);
+      });
+  };
+
   onSave = () => {
-    console.log('save');
+    let {country_id,image,expiry_date,number} = this.state;
+    this.props.dispatch(DRIVER_ACTIONS.saveTruck({
+      registration_country_id:country_id,
+      registration_expiry_date:expiry_date,
+      registration_image:image,
+      registration_number:number
+    }));
   };
 
   render() {
@@ -65,6 +96,7 @@ class TruckRegistrationScene extends Component {
         onSavePress={this.onSave}
         countries={countries}
         countryModalTitle={I18n.t('truck_registration_country')}
+        uploadImage={this.uploadImage}
         {...this.state}
       />
     );

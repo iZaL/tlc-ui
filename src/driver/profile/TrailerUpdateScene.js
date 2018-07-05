@@ -17,6 +17,7 @@ import Modal from 'components/Modal';
 import Dropdown from 'components/Dropdown';
 import DocumentUpload from 'components/DocumentUpload';
 import TextInput from 'components/TextInput';
+import {ACTIONS as APP_ACTIONS} from "../../app/common/actions";
 
 class TrailerUpdateScene extends Component {
   static propTypes = {
@@ -114,9 +115,6 @@ class TrailerUpdateScene extends Component {
     });
   };
 
-  onSave = () => {
-    console.log('save');
-  };
 
   onValueChange = (field, value) => {
     this.setState({
@@ -136,8 +134,49 @@ class TrailerUpdateScene extends Component {
     });
   };
 
+  saveTrailerType = () => {
+    this.hideTypeModal();
+    this.onSave();
+  };
+
+  saveTrailerMake = () => {
+    this.hideMakeModal();
+    this.onSave();
+  };
+
+  uploadImage = image => {
+    let images = [image];
+    return new Promise((resolve, reject) => {
+      this.props.dispatch(
+        APP_ACTIONS.uploadImages({
+          images,
+          resolve,
+          reject,
+        }),
+      );
+    })
+      .then(images => {
+        if(images.length) {
+          this.setState({
+            image:images[0]
+          });
+        }
+      })
+      .catch(e => {
+        console.log('e', e);
+      });
+  };
+
+  onSave = () => {
+    this.props.dispatch(DRIVER_ACTIONS.saveTrailer({
+      ...this.state,
+      truck_id:this.props.truck.id,
+    }));
+  };
+
   render() {
     const {trailer, trailer_types, trailer_makes} = this.props;
+    console.log('trailer',trailer);
     const {
       type_id,
       make_id,
@@ -163,6 +202,7 @@ class TrailerUpdateScene extends Component {
         contentContainerStyle={{
           paddingBottom: 30,
         }}>
+
         <View style={{padding: 10}}>
           <Touchable onPress={this.showMakeModal}>
             <View>
@@ -227,9 +267,9 @@ class TrailerUpdateScene extends Component {
 
           <Divider style={{marginVertical: 10}} />
 
-          <Title>{I18n.t('truck_image')}</Title>
+          <Title>{I18n.t('trailer_image')}</Title>
           <DocumentUpload
-            onPress={image => this.onValueChange('image', image)}
+            onPress={this.uploadImage}
             image={image}
           />
         </View>
@@ -242,7 +282,7 @@ class TrailerUpdateScene extends Component {
           visible={showTypeModal}
           onItemPress={this.setType}
           onCancel={this.hideTypeModal}
-          onSave={this.hideTypeModal}
+          onSave={this.saveTrailerType}
           items={trailer_types}
         />
 
@@ -252,14 +292,16 @@ class TrailerUpdateScene extends Component {
           visible={showMakeModal}
           onItemPress={this.setMake}
           onCancel={this.hideMakeModal}
-          onSave={this.hideMakeModal}
+          onSave={this.saveTrailerMake}
           items={trailer_makes}
         />
 
         <Modal
           visible={isYearModalVisible}
           onCancel={this.hideYearModal}
-          header={I18n.t('truck_year')}>
+          header={I18n.t('trailer_year')}
+          onSave={this.hideYearModal}
+        >
           <Dropdown
             items={['1905', '1906', '2001', '2002', '2003', '2004']}
             selectedValue={year}
@@ -274,6 +316,7 @@ class TrailerUpdateScene extends Component {
 
 function mapStateToProps(state) {
   return {
+    truck: DRIVER_SELECTORS.getTruck(state),
     trailer: DRIVER_SELECTORS.getTrailer(state),
     trailer_makes: TRUCK_SELECTORS.getTrailerMakes(state),
     trailer_types: TRUCK_SELECTORS.getTrailerTypes(state),

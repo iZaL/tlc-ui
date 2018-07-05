@@ -32,8 +32,27 @@ function* uploadImages(action) {
   }
 }
 
+function* saveUploads(action) {
+  try {
+    const params = {
+      body: {
+        ...action.params
+      }
+    };
+    const response = yield call(API.saveUploads, params);
+    yield put({
+      type: ACTION_TYPES.SAVE_UPLOADS_SUCCESS,
+    });
+  } catch (error) {
+    yield put({type: ACTION_TYPES.SAVE_UPLOADS_FAILURE, error});
+  }
+}
+
 function* uploadImageMonitor() {
   yield takeLatest(ACTION_TYPES.UPLOAD_IMAGES_REQUEST, uploadImages);
 }
+function* saveUploadsMonitor() {
+  yield takeLatest(ACTION_TYPES.SAVE_UPLOADS_REQUEST, saveUploads);
+}
 
-export const sagas = all([fork(uploadImageMonitor)]);
+export const sagas = all([fork(uploadImageMonitor),fork(saveUploadsMonitor)]);
