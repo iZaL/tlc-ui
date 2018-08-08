@@ -45,6 +45,11 @@ function fetchCurrentLoad() {
   return fetchAPI({path});
 }
 
+function fetchBankAccounts() {
+  const path = `driver/bank-accounts`;
+  return fetchAPI({path});
+}
+
 function fetchSecurityPasses() {
   const path = `driver/security_passes`;
   return fetchAPI({path});
@@ -123,6 +128,16 @@ function saveRoute(params) {
   return fetchAPI(requestParams);
 }
 
+function saveBankAccounts(params) {
+  const path = `driver/bank-accounts`;
+  let requestParams = {
+    path,
+    params,
+    method: 'POST',
+  };
+  return fetchAPI(requestParams);
+}
+
 export const API = {
   fetchProfile,
   fetchRoutes,
@@ -134,11 +149,13 @@ export const API = {
   fetchLoadDetails,
   fetchLoadsByStatus,
   fetchCurrentLoad,
+  fetchBankAccounts,
   saveProfile,
   saveDocument,
   saveRoute,
   saveTruck,
   saveTrailer,
   saveSecurityPass,
+  saveBankAccounts,
   setTripStatus,
 };

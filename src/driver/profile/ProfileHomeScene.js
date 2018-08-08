@@ -35,6 +35,9 @@ class ProfileHome extends Component {
       case 'documents_upload':
         scene = 'DocumentsUpload';
         break;
+        case 'bank_details_list':
+        scene = 'BankAccountsList';
+        break;
       case 'security_passes':
         sceneConfig = {
           title: I18n.t('security_passes'),
@@ -90,6 +93,15 @@ class ProfileHome extends Component {
           title={I18n.t('security_passes')}
           iconProps={{type: 'MaterialCommunityIcons', name: 'passport'}}
         />
+
+        <Divider />
+        <ListItem
+          onPress={this.onListItemPress}
+          name="bank_details_list"
+          title={I18n.t('bank_details')}
+          iconProps={{type: 'MaterialCommunityIcons', name: 'bank'}}
+        />
+
 
         <Divider />
         <ListItem

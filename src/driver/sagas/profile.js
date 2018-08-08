@@ -71,6 +71,7 @@ function* saveTrailer(action) {
     yield put({type: ACTION_TYPES.SAVE_TRAILER_FAILURE, error});
   }
 }
+
 function* saveSecurityPass(action) {
 
   try {
@@ -101,6 +102,39 @@ function* saveSecurityPass(action) {
       }),
     );
     yield put({type: ACTION_TYPES.SAVE_SECURITY_PASS_FAILURE, error});
+  }
+}
+
+function* saveBankAccounts(action) {
+
+  try {
+    let params = {
+      body: {
+        ...action.params,
+      },
+    };
+
+    const response = yield call(API.saveBankAccounts, params);
+    const normalized = normalize(response.data, Schema.users);
+
+    yield put({
+      type: ACTION_TYPES.SAVE_BANK_ACCOUNTS_SUCCESS,
+      entities: normalized.entities,
+    });
+
+    yield put(
+      APP_ACTIONS.setNotification({
+        message: I18n.t('saved'),
+      }),
+    );
+  } catch (error) {
+    yield put(
+      APP_ACTIONS.setNotification({
+        message: error,
+        type: 'error',
+      }),
+    );
+    yield put({type: ACTION_TYPES.SAVE_BANK_ACCOUNTS_FAILURE, error});
   }
 }
 
@@ -150,6 +184,19 @@ function* fetchProfile() {
   }
 }
 
+function* fetchBankAccounts() {
+  try {
+    const response = yield call(API.fetchBankAccounts);
+    const normalized = normalize(response.data, Schema.users);
+    yield put({
+      type: ACTION_TYPES.FETCH_BANK_ACCOUNTS_SUCCESS,
+      entities: normalized.entities,
+    });
+  } catch (error) {
+    yield put({type: ACTION_TYPES.FETCH_BANK_ACCOUNTS_FAILURE, error});
+  }
+}
+
 function* saveTruck(action) {
   try {
     let params = {
@@ -193,14 +240,24 @@ function* saveTrailerMonitor() {
 function* fetchProfileMonitor() {
   yield takeLatest(ACTION_TYPES.FETCH_PROFILE_REQUEST, fetchProfile);
 }
+
+function* fetchBankAccountsMonitor() {
+  yield takeLatest(ACTION_TYPES.FETCH_BANK_ACCOUNTS_REQUEST, fetchBankAccounts);
+}
+
 function* saveSecurityPassMonitor() {
   yield takeLatest(ACTION_TYPES.SAVE_SECURITY_PASS_REQUEST, saveSecurityPass);
+}
+function* saveBankAccountsMonitor() {
+  yield takeLatest(ACTION_TYPES.SAVE_BANK_ACCOUNTS_REQUEST, saveBankAccounts);
 }
 
 export const sagas = all([
   fork(fetchProfileMonitor),
+  fork(fetchBankAccountsMonitor),
   fork(saveProfileMonitor),
   fork(saveDocumentMonitor),
+  fork(saveBankAccountsMonitor),
   fork(saveTruckMonitor),
   fork(saveTrailerMonitor),
   fork(saveSecurityPassMonitor),

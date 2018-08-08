@@ -17,7 +17,7 @@ import Modal from 'components/Modal';
 import Dropdown from 'components/Dropdown';
 import DocumentUpload from 'components/DocumentUpload';
 import TextInput from 'components/TextInput';
-import {ACTIONS as APP_ACTIONS} from "../../app/common/actions";
+import {ACTIONS as APP_ACTIONS} from "app/common/actions";
 
 class TrailerUpdateScene extends Component {
   static propTypes = {

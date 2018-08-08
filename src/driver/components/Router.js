@@ -20,6 +20,8 @@ import LoadHomeScene from 'driver/loads/LoadHomeScene';
 import NationalityListScene from 'driver/nationality/NationalityListScene';
 import NationalityAddScene from 'driver/nationality/NationalityAddScene';
 import ProfileInfoUpdateScene from 'driver/profile/ProfileInfoUpdateScene';
+import BankAccountsUpdateScene from 'driver/profile/BankAccountsUpdateScene';
+import BankAccountsListScene from 'driver/profile/BankAccountsListScene';
 import TruckRegistrationScene from 'driver/truck/TruckRegistrationScene';
 import TruckModelScene from 'driver/truck/TruckModelScene';
 import TruckInfoUpdateScene from 'driver/truck/TruckInfoUpdateScene';
@@ -181,6 +183,18 @@ const ProfileStack = createStackNavigator(
         title: I18n.t('security_passes_add'),
       }),
     },
+    BankAccountsUpdate: {
+      screen: BankAccountsUpdateScene,
+      navigationOptions: () => ({
+        title: I18n.t('bank_details_update'),
+      }),
+    },
+    BankAccountsList: {
+      screen: BankAccountsListScene,
+      navigationOptions: () => ({
+        title: I18n.t('bank_details'),
+      }),
+    },
   },
   {
     navigationOptions: {
@@ -241,5 +255,5 @@ export const Routes = createDrawerNavigator(DrawerRoutes, {
   gesturesEnabled: false,
   contentComponent: props => <Drawer {...props} />,
   drawerWidth: 275,
-  // initialRouteName: 'ProfileStack',
+  initialRouteName: 'ProfileStack',
 });

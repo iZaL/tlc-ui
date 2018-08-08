@@ -15,6 +15,10 @@ export const ACTION_TYPES = {
   SAVE_SECURITY_PASS_SUCCESS: '@driver/SAVE_SECURITY_PASS_SUCCESS',
   SAVE_SECURITY_PASS_FAILURE: '@driver/SAVE_SECURITY_PASS_FAILURE',
 
+  SAVE_BANK_ACCOUNTS_REQUEST: '@driver/SAVE_BANK_ACCOUNTS_REQUEST',
+  SAVE_BANK_ACCOUNTS_SUCCESS: '@driver/SAVE_BANK_ACCOUNTS_SUCCESS',
+  SAVE_BANK_ACCOUNTS_FAILURE: '@driver/SAVE_BANK_ACCOUNTS_FAILURE',
+
   FETCH_PROFILE_REQUEST: '@driver/FETCH_PROFILE_REQUEST',
   FETCH_PROFILE_SUCCESS: '@driver/FETCH_PROFILE_SUCCESS',
   FETCH_PROFILE_FAILURE: '@driver/FETCH_PROFILE_FAILURE',
@@ -26,6 +30,10 @@ export const ACTION_TYPES = {
   FETCH_UPCOMING_TRIPS_REQUEST: '@driver/FETCH_UPCOMING_TRIPS_REQUEST',
   FETCH_UPCOMING_TRIPS_SUCCESS: '@driver/FETCH_UPCOMING_TRIPS_SUCCESS',
   FETCH_UPCOMING_TRIPS_FAILURE: '@driver/FETCH_UPCOMING_TRIPS_FAILURE',
+
+  FETCH_BANK_ACCOUNTS_REQUEST: '@driver/FETCH_BANK_ACCOUNTS_REQUEST',
+  FETCH_BANK_ACCOUNTS_SUCCESS: '@driver/FETCH_BANK_ACCOUNTS_SUCCESS',
+  FETCH_BANK_ACCOUNTS_FAILURE: '@driver/FETCH_BANK_ACCOUNTS_FAILURE',
 
   FETCH_CURRENT_LOAD_REQUEST: '@driver/FETCH_CURRENT_LOAD_REQUEST',
   FETCH_CURRENT_LOAD_SUCCESS: '@driver/FETCH_CURRENT_LOAD_SUCCESS',
@@ -143,6 +151,13 @@ function fetchTripDetails(params) {
   };
 }
 
+function fetchBankAccounts(params) {
+  return {
+    type: ACTION_TYPES.FETCH_BANK_ACCOUNTS_REQUEST,
+    params,
+  };
+}
+
 function fetchRouteTransits(params) {
   return {
     type: ACTION_TYPES.FETCH_ROUTE_TRANSITS_REQUEST,
@@ -160,6 +175,13 @@ function saveProfile(params) {
 function saveDocument(params) {
   return {
     type: ACTION_TYPES.SAVE_DOCUMENT_REQUEST,
+    params,
+  };
+}
+
+function saveBankAccounts(params) {
+  return {
+    type: ACTION_TYPES.SAVE_BANK_ACCOUNTS_REQUEST,
     params,
   };
 }
@@ -209,6 +231,7 @@ function saveSecurityPass(params) {
 export const ACTIONS = {
   saveProfile,
   saveDocument,
+  saveBankAccounts,
   fetchProfile,
   fetchRoutes,
   saveTruck,
@@ -222,6 +245,7 @@ export const ACTIONS = {
   fetchTripDetails,
   fetchSecurityPasses,
   fetchDocumentTypes,
+  fetchBankAccounts,
   // acceptTrip,
   // cancelTrip,
   // confirmTrip,

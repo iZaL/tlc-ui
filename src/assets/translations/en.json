@@ -80,9 +80,9 @@
   "truck_images" : "Truck Images",
   "truck_details" : "Truck Details",
   "truck_make" : "Truck Make",
-  "truck_model" : "Truck Model",
+  "truck_model" : "Truck Type",
   "truck_image" : "Truck Image",
-  "truck_year" : "Truck Make Year",
+  "truck_year" : "Year Built",
 
   "make" : "Make",
   "model" : "Model",
@@ -331,5 +331,15 @@
   "driver_blocked" : "Driver has put to blocked list",
 
   "profile_saved" : "Profile Updated",
-  "trailer_image" : "Trailer Image"
+  "trailer_image" : "Trailer Image",
+
+  "bank_details" : "Bank Details",
+  "bank_details_update" : "Update Bank Details",
+  "bank_name": "Bank Name",
+  "bank_address": "Bank Address",
+  "account_number": "Account Number",
+  "iban": "IBAN",
+  "beneficiary_name": "Beneficiary Name",
+  "beneficiary_address": "Beneficiary Address",
+
 }
