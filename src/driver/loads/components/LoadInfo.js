@@ -84,33 +84,51 @@ export default class LoadInfo extends Component {
         </View>
 
         {showDetail && (
-          <View style={[styles.itemRowContainer, {marginTop: 10}]}>
-            <LoadInfoItem
-              title={I18n.t('weight')}
-              description={load.weight_formatted}
-            />
 
-            <LoadInfoItem
-              title={I18n.t('commodity')}
-              description={load.commodity ? load.commodity.name : '-'}
-            />
 
-            <LoadInfoItem
-              title={I18n.t('packaging')}
-              description={packaging ? packaging.name : '-'}
-              caption={
-                packaging ? (
-                  <TouchableRipple
-                    onPress={() =>
-                      this.setState({packagingDetailVisible: true})
-                    }>
-                    <Caption>{I18n.t('view_info')}</Caption>
-                  </TouchableRipple>
-                ) : (
-                  ''
-                )
-              }
-            />
+          <View>
+            <View style={[styles.itemRowContainer, {marginTop: 10}]}>
+              <LoadInfoItem
+                title={I18n.t('weight')}
+                description={load.weight_formatted}
+              />
+
+              <LoadInfoItem
+                title={I18n.t('commodity')}
+                description={load.commodity ? load.commodity.name : '-'}
+              />
+
+              <LoadInfoItem
+                title={I18n.t('packaging')}
+                description={packaging ? packaging.name : '-'}
+                caption={
+                  packaging ? (
+                    <TouchableRipple
+                      onPress={() =>
+                        this.setState({packagingDetailVisible: true})
+                      }>
+                      <Caption>{I18n.t('view_info')}</Caption>
+                    </TouchableRipple>
+                  ) : (
+                    ''
+                  )
+                }
+              />
+            </View>
+            <View style={[styles.itemRowContainer,{marginTop: 10}]}>
+
+              <LoadInfoItem
+                title={I18n.t('distance')}
+                description={load.trip_distance}
+              />
+
+              <LoadInfoItem
+                title={I18n.t('duration')}
+                description={load.trip_duration}
+              />
+
+
+            </View>
 
             <Modal
               visible={this.state.packagingDetailVisible}
@@ -148,6 +166,9 @@ export default class LoadInfo extends Component {
             </Modal>
           </View>
         )}
+
+
+
       </View>
     );
   }

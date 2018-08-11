@@ -89,7 +89,7 @@ export default class GooglePlaces extends Component {
     return (
       <View style={styles.searchInputContainer}>
         <GooglePlacesAutocomplete
-          label={I18n.t('area_select')}
+          label={I18n.t('search')}
           minLength={1}
           autoFocus={false}
           fetchDetails={true}

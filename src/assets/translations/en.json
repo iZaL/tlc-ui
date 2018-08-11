@@ -140,7 +140,7 @@
   "location_destination_add" : "Add New Drop Location",
   "location_delete" : "Delete Location ?",
   "address" : "Address",
-  "area_select" : "Search",
+  "location_select" : "Select Location",
   "packaging_select" : "Select Packaging",
   "destination_country" : "Destination Country",
 
@@ -341,5 +341,7 @@
   "iban": "IBAN",
   "beneficiary_name": "Beneficiary Name",
   "beneficiary_address": "Beneficiary Address",
+
+  "duration" : "Duration"
 
 }
