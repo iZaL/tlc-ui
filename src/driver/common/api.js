@@ -66,6 +66,17 @@ function setTripStatus(params) {
   return fetchAPI(requestParams);
 }
 
+function saveTripDocuments(params) {
+  const path = `driver/trips/${params.body.trip_id}/documents/save`;
+
+  let requestParams = {
+    path,
+    params,
+    method: 'POST',
+  };
+  return fetchAPI(requestParams);
+}
+
 function saveTruck(params) {
   const path = `driver/truck`;
 
@@ -158,4 +169,5 @@ export const API = {
   saveSecurityPass,
   saveBankAccounts,
   setTripStatus,
+  saveTripDocuments,
 };

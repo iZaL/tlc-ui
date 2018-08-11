@@ -63,6 +63,10 @@ export const ACTION_TYPES = {
   SYNC_ROUTE_SUCCESS: '@driver/SYNC_ROUTE_SUCCESS',
   SYNC_ROUTE_FAILURE: '@driver/SYNC_ROUTE_FAILURE',
 
+  SAVE_TRIP_DOCUMENTS_REQUEST: '@driver/SAVE_TRIP_DOCUMENTS_REQUEST',
+  SAVE_TRIP_DOCUMENTS_SUCCESS: '@driver/SAVE_TRIP_DOCUMENTS_SUCCESS',
+  SAVE_TRIP_DOCUMENTS_FAILURE: '@driver/SAVE_TRIP_DOCUMENTS_FAILURE',
+
   FETCH_LOADS_BY_STATUS_REQUEST: '@driver/FETCH_LOADS_BY_STATUS_REQUEST',
   FETCH_LOADS_BY_STATUS_SUCCESS: '@driver/FETCH_LOADS_BY_STATUS_SUCCESS',
   FETCH_LOADS_BY_STATUS_FAILURE: '@driver/FETCH_LOADS_BY_STATUS_FAILURE',
@@ -179,6 +183,13 @@ function saveDocument(params) {
   };
 }
 
+function saveTripDocuments(params) {
+  return {
+    type: ACTION_TYPES.SAVE_TRIP_DOCUMENTS_REQUEST,
+    params,
+  };
+}
+
 function saveBankAccounts(params) {
   return {
     type: ACTION_TYPES.SAVE_BANK_ACCOUNTS_REQUEST,
@@ -231,6 +242,7 @@ function saveSecurityPass(params) {
 export const ACTIONS = {
   saveProfile,
   saveDocument,
+  saveTripDocuments,
   saveBankAccounts,
   fetchProfile,
   fetchRoutes,

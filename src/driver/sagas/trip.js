@@ -67,8 +67,6 @@ function* setTripStatus(action) {
     const response = yield call(API.setTripStatus, params);
     const normalized = normalize(response.data, Schema.loads);
 
-    console.log('normalized', normalized);
-
     yield put({
       type: ACTION_TYPES.SET_TRIP_STATUS_SUCCESS,
       entities: normalized.entities,
@@ -88,6 +86,46 @@ function* setTripStatus(action) {
       }),
     );
     yield put({type: ACTION_TYPES.SET_TRIP_STATUS_FAILURE, error});
+    yield reject(error);
+  }
+}
+
+function* saveTripDocuments(action) {
+  const {
+    params: {resolve, reject, payload},
+  } = action;
+
+  try {
+    let params = {
+      body: {
+        ...payload,
+      },
+    };
+
+    const response = yield call(API.saveTripDocuments, params);
+    const normalized = normalize(response.data, Schema.loads);
+
+    console.log('normalized', normalized);
+
+    yield put({
+      type: ACTION_TYPES.SAVE_TRIP_DOCUMENTS_SUCCESS,
+      entities: normalized.entities,
+    });
+
+    yield put(
+      APP_ACTIONS.setNotification({
+        message: I18n.t('success'),
+      }),
+    );
+    yield resolve(response.data);
+  } catch (error) {
+    yield put(
+      APP_ACTIONS.setNotification({
+        message: error,
+        type: 'error',
+      }),
+    );
+    yield put({type: ACTION_TYPES.SAVE_TRIP_DOCUMENTS_FAILURE, error});
     yield reject(error);
   }
 }
@@ -114,9 +152,15 @@ function* setTripStatusMonitor() {
   yield takeLatest(ACTION_TYPES.SET_TRIP_STATUS_REQUEST, setTripStatus);
 }
 
+function* saveTripDocumentsMonitor() {
+  yield takeLatest(ACTION_TYPES.SAVE_TRIP_DOCUMENTS_REQUEST, saveTripDocuments);
+}
+
+
 export const sagas = all([
   fork(fetchUpcomingTripsMonitor),
   fork(fetchTripDetailsMonitor),
   fork(fetchDocumentTypesMonitor),
   fork(setTripStatusMonitor),
+  fork(saveTripDocumentsMonitor),
 ]);

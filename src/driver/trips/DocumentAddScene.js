@@ -15,6 +15,7 @@ import ListItem from 'components/ListItem';
 import CameraUpload from 'components/CameraUpload';
 import AlbumUpload from 'components/AlbumUpload';
 import FileUpload from 'components/FileUpload';
+import {ACTIONS as APP_ACTIONS} from "../../app/common/actions";
 
 class DocumentAddScene extends Component {
   static propTypes = {
@@ -30,9 +31,8 @@ class DocumentAddScene extends Component {
   state: State = {
     document_type_id: null,
     typeModalVisible: false,
-    camera_uploads: [],
-    album_uploads: [],
-    file_uploads: [],
+    uploads: [],
+    amount:null,
   };
 
   componentDidMount() {
@@ -48,10 +48,6 @@ class DocumentAddScene extends Component {
     this.setState({
       document_type_id: type.id,
     });
-  };
-
-  onSave = () => {
-    console.log('save');
   };
 
   showTypeModal = () => {
@@ -71,23 +67,70 @@ class DocumentAddScene extends Component {
   };
 
   onAlbumUpload = images => {
-    console.log('images', images);
+    return new Promise((resolve, reject) => {
+      this.props.dispatch(
+        APP_ACTIONS.uploadImages({
+          images,
+          resolve,
+          reject,
+        }),
+      );
+    })
+      .then(images => {
+        this.setState({
+          uploads:images
+        });
+      })
+      .catch(e => {
+        console.log('e', e);
+      });
+
   };
 
   onFileUpload = file => {
     console.log('file', file);
   };
 
+
+  onSave = () => {
+
+    let {document_type_id,uploads,amount} = this.state;
+
+    let payload = {
+      uploads:this.state.uploads,
+      trip_id:this.props.load.trip.id,
+      document_type_id:document_type_id,
+      amount:amount,
+    };
+
+    console.log('payload',payload);
+
+    return new Promise((resolve, reject) => {
+      this.props.dispatch(
+        DRIVER_ACTIONS.saveTripDocuments({
+          payload,
+          resolve,
+          reject,
+        }),
+      );
+    })
+      .then(images => {
+        this.props.navigation.pop();
+      })
+      .catch(e => {
+      });
+  };
+
   render() {
     let {document_types} = this.props;
-    let {document_type_id, typeModalVisible} = this.state;
+    let {document_type_id, typeModalVisible,uploads} = this.state;
 
     let documentType = {};
 
     if (document_type_id) {
-      documentType = document_types.find(
+      documentType = document_types && document_types.find(
         document => document.id === document_type_id,
-      );
+      ) || {};
     }
 
     return (
@@ -112,7 +155,8 @@ class DocumentAddScene extends Component {
 
           <AlbumUpload
             onUpload={this.onAlbumUpload}
-            images={this.state.album_uploads}>
+            images={[]}
+          >
             <ListItem title={I18n.t('choose_from_album')} />
           </AlbumUpload>
 
@@ -125,6 +169,7 @@ class DocumentAddScene extends Component {
           title={I18n.t('save')}
           onPress={this.onSave}
           style={{marginVertical: 10}}
+          disabled={!uploads.length}
         />
 
         <ListModal
