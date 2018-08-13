@@ -45,6 +45,7 @@ export default class LoadInfo extends Component {
 
     return (
       <View style={[styles.container, style]}>
+
         <View style={[styles.itemRowContainer]}>
           <LoadInfoItem
             title={I18n.t('load_identifier')}
@@ -85,8 +86,8 @@ export default class LoadInfo extends Component {
 
         {showDetail && (
 
-
           <View>
+
             <View style={[styles.itemRowContainer, {marginTop: 10}]}>
               <LoadInfoItem
                 title={I18n.t('weight')}
@@ -115,6 +116,7 @@ export default class LoadInfo extends Component {
                 }
               />
             </View>
+
             <View style={[styles.itemRowContainer,{marginTop: 10}]}>
 
               <LoadInfoItem
@@ -126,7 +128,6 @@ export default class LoadInfo extends Component {
                 title={I18n.t('duration')}
                 description={load.trip_duration}
               />
-
 
             </View>
 
@@ -164,10 +165,9 @@ export default class LoadInfo extends Component {
 
               <Gallery images={packaging_images} imageName={item => item.url} />
             </Modal>
+
           </View>
         )}
-
-
 
       </View>
     );

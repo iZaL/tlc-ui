@@ -143,6 +143,12 @@ class LoadAddScene extends Component {
       });
   };
 
+  onLocationCreatePress = (type) => {
+    this.props.navigation.navigate('LocationAdd', {
+      type: type,
+    });
+  };
+
   onSaveButtonPress = () => {
     let params = {
       ...this.props.loadData.attributes,
@@ -250,6 +256,7 @@ class LoadAddScene extends Component {
                 )}
                 locations={locations}
                 onValueChange={this.onValueChange}
+                onLocationCreatePress={this.onLocationCreatePress}
               />
             </TabPanel>
 

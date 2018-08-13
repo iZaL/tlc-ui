@@ -166,6 +166,12 @@ const LoadStack = createStackNavigator(
     BookableDrivers: {
       screen: BookableDriversListScene,
     },
+    // LocationAdd: {
+    //   screen: LocationAddScene,
+    //   navigationOptions: () => ({
+    //     title: I18n.t('location_add'),
+    //   }),
+    // },
   },
   {
     navigationOptions: {

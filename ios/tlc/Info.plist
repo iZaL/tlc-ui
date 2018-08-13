@@ -26,11 +26,9 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>hungryr</string>
+			<string></string>
 			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>hungryr</string>
-			</array>
+			<array/>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>

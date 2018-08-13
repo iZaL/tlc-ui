@@ -7,6 +7,7 @@ import I18n from 'utils/locale';
 import ListItem from 'components/ListItem';
 import ListModal from 'components/ListModal';
 import {Title} from 'react-native-paper';
+import FAB from 'components/FAB';
 
 export default class LoadWhat extends Component {
   shouldComponentUpdate(nextProps, nextState) {
@@ -20,6 +21,7 @@ export default class LoadWhat extends Component {
   static propTypes = {
     origin: PropTypes.object,
     destination: PropTypes.object,
+    onLocationCreatePress: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -61,6 +63,14 @@ export default class LoadWhat extends Component {
     this.setState({
       locationListModalVisible: false,
     });
+  };
+
+  onLocationCreatePress = () => {
+    // this.props.navigation.navigate('LocationAdd', {
+    //   type: type,
+    // });
+    this.props.onLocationCreatePress(this.state.locationType);
+
   };
 
   onSave = () => {};
@@ -138,8 +148,21 @@ export default class LoadWhat extends Component {
           items={locations.filter(location => location.type === locationType)}
           visible={locationListModalVisible}
           onCancel={this.closeModal}
-          onSave={this.onSave}
-        />
+          onSave={this.closeModal}
+        >
+
+          <View style={{alignItems: 'flex-end', paddingBottom: 20}}>
+            <FAB
+              icon="add"
+              dark
+              onPress={this.onLocationCreatePress}
+              medium
+              style={{
+                backgroundColor: colors.primary,
+              }}
+            />
+          </View>
+        </ListModal>
       </View>
     );
   }
