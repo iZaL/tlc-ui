@@ -35,7 +35,6 @@ const initialState = {
       packaging_images: [],
     },
   },
-
   // add: {
   //   index: 1,
   //   attributes: {

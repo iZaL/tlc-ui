@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {ScrollView, View} from 'react-native';
+import {ScrollView, View, Button} from 'react-native';
 import {ACTIONS as CUSTOMER_ACTIONS} from 'customer/common/actions';
 import {SELECTORS as CUSTOMER_SELECTORS} from 'customer/common/selectors';
 import Divider from 'components/Divider';
@@ -29,6 +29,7 @@ import TripList from 'customer/trips/components/TripList';
 import PendingFleetsList from 'customer/trips/components/PendingFleetsList';
 
 class LoadDetailScene extends Component {
+
   static propTypes = {
     navigation: PropTypes.shape({
       state: PropTypes.shape({
@@ -45,6 +46,19 @@ class LoadDetailScene extends Component {
     load: {},
   };
 
+  static navigationOptions = ({navigation}) => {
+    return {
+      headerRight: (
+        <Button
+          onPress={navigation.getParam('onHeaderRightButtonPress')}
+          title={I18n.t('edit')}
+          color="black"
+          raised={false}
+        />
+      ),
+    }
+  };
+
   state = {
     employeeDetail: {},
     employeeDetailVisible: false,
@@ -57,7 +71,16 @@ class LoadDetailScene extends Component {
         loadID: this.props.navigation.getParam('loadID', 1),
       }),
     );
+
+    this.props.navigation.setParams({ onHeaderRightButtonPress: this.onHeaderRightButtonPress });
   }
+
+  onHeaderRightButtonPress = () => {
+    this.props.navigation.navigate('LoadEdit',{
+      loadID:this.props.navigation.getParam('loadID'),
+      load:this.props.load
+    })
+  };
 
   setTripStatus = status => {
     this.setState({

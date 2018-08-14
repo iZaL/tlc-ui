@@ -33,10 +33,10 @@ export default class LoadInfo extends Component {
 
   render() {
     let {load, style, showDetail} = this.props;
-    let {packaging, packaging_dimensions, packaging_images} = load;
+    let {packaging, packaging_dimension, packaging_images} = load;
 
-    if (!packaging_dimensions) {
-      packaging_dimensions = {};
+    if (!packaging_dimension) {
+      packaging_dimension = {};
     }
 
     if (!packaging_images) {
@@ -141,24 +141,24 @@ export default class LoadInfo extends Component {
                 <View style={[styles.itemRowContainer, {marginTop: 10}]}>
                   <LoadInfoItem
                     title={I18n.t('length')}
-                    description={packaging_dimensions.length_formatted}
+                    description={packaging_dimension.length_formatted}
                   />
                   <LoadInfoItem
                     title={I18n.t('width')}
-                    description={packaging_dimensions.width_formatted}
+                    description={packaging_dimension.width_formatted}
                   />
                   <LoadInfoItem
                     title={I18n.t('height')}
-                    description={packaging_dimensions.height_formatted}
+                    description={packaging_dimension.height_formatted}
                   />
                   <LoadInfoItem
                     title={I18n.t('weight')}
-                    description={packaging_dimensions.weight}
+                    description={packaging_dimension.weight}
                     caption={I18n.t('tons').toLowerCase()}
                   />
                   <LoadInfoItem
                     title={I18n.t('quantity')}
-                    description={packaging_dimensions.quantity}
+                    description={packaging_dimension.quantity}
                   />
                 </View>
               </View>

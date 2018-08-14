@@ -130,6 +130,12 @@ const LoadStack = createStackNavigator(
         title: I18n.t('load_add'),
       }),
     },
+    LoadEdit: {
+      screen: LoadAddScene,
+      navigationOptions: () => ({
+        title: I18n.t('load_edit'),
+      }),
+    },
     LoadDetailOptionsList: {
       screen: LoadDetailOptionsListScene,
       navigationOptions: () => ({
