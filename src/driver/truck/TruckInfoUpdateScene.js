@@ -10,8 +10,8 @@ import Label from 'components/Label';
 import Modal from 'components/Modal';
 import Divider from 'components/Divider';
 import Button from 'components/Button';
-import {ACTIONS as APP_ACTIONS} from "../../app/common/actions";
-import {ACTIONS as DRIVER_ACTIONS} from "../common/actions";
+import {ACTIONS as APP_ACTIONS} from '../../app/common/actions';
+import {ACTIONS as DRIVER_ACTIONS} from '../common/actions';
 
 class TruckInfoUpdateScene extends Component {
   constructor(props) {
@@ -48,8 +48,6 @@ class TruckInfoUpdateScene extends Component {
     });
   };
 
-
-
   hideYearModal = () => {
     this.setState({
       isYearModalVisible: false,
@@ -74,9 +72,9 @@ class TruckInfoUpdateScene extends Component {
       );
     })
       .then(images => {
-        if(images.length) {
+        if (images.length) {
           this.setState({
-            image:images[0]
+            image: images[0],
           });
         }
       })
@@ -91,13 +89,15 @@ class TruckInfoUpdateScene extends Component {
   };
 
   onSave = () => {
-    let {plate_number,image,year,max_weight} = this.state;
-    this.props.dispatch(DRIVER_ACTIONS.saveTruck({
-      plate_number:plate_number,
-      image:image,
-      year:year,
-      max_weight:max_weight
-    }));
+    let {plate_number, image, year, max_weight} = this.state;
+    this.props.dispatch(
+      DRIVER_ACTIONS.saveTruck({
+        plate_number: plate_number,
+        image: image,
+        year: year,
+        max_weight: max_weight,
+      }),
+    );
   };
 
   render() {
@@ -127,10 +127,7 @@ class TruckInfoUpdateScene extends Component {
           />
 
           <Title>{I18n.t('truck_image')}</Title>
-          <DocumentUpload
-            onPress={this.uploadImage}
-            image={image}
-          />
+          <DocumentUpload onPress={this.uploadImage} image={image} />
 
           <Divider style={{marginVertical: 20}} />
           <Label title={I18n.t('truck_year')} />
@@ -143,8 +140,7 @@ class TruckInfoUpdateScene extends Component {
           visible={isYearModalVisible}
           onCancel={this.hideYearModal}
           onSave={this.saveYear}
-          header={I18n.t('truck_year')}
-        >
+          header={I18n.t('truck_year')}>
           <Dropdown
             items={['1905', '1906', '2001', '2002', '2003', '2004']}
             selectedValue={year}

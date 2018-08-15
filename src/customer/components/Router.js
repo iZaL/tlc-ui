@@ -25,7 +25,7 @@ import LanguageSelect from 'app/LanguageSelect';
 import LocationEditScene from 'customer/locations/LocationEditScene';
 import BookableDriversListScene from 'customer/loads/BookableDriversListScene';
 import DriverSelect from 'customer/trips/DriverSelect';
-import LoadEditScene from "../loads/LoadEditScene";
+import LoadEditScene from '../loads/LoadEditScene';
 
 const getDrawerIcon = navigation => {
   return {

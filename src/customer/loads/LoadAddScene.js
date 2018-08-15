@@ -143,7 +143,7 @@ class LoadAddScene extends Component {
       });
   };
 
-  onLocationCreatePress = (type) => {
+  onLocationCreatePress = type => {
     this.props.navigation.navigate('LocationAdd', {
       type: type,
     });

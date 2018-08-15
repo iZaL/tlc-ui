@@ -7,13 +7,12 @@ import {FlatList, StyleSheet} from 'react-native';
 import Divider from 'components/Divider';
 
 export default class DocumentList extends Component {
-
   shouldComponentUpdate(nextProps) {
     return nextProps.items !== this.props.items;
   }
 
   renderItem = ({item}) => {
-    const {onEditPress, onDeletePress,} = this.props;
+    const {onEditPress, onDeletePress} = this.props;
     return (
       <DocumentCard
         item={item}

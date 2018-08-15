@@ -39,7 +39,7 @@ class LoadAddScene extends Component {
     isSaving: false,
     current_saved_id: null,
 
-    initialized:false
+    initialized: false,
   };
 
   componentDidMount() {
@@ -48,8 +48,8 @@ class LoadAddScene extends Component {
     this.props.dispatch(TRUCK_ACTIONS.fetchTrailerTypes());
     this.props.dispatch(CUSTOMER_ACTIONS.setEditData(load.edit_data));
     this.setState({
-      initialized:true
-    })
+      initialized: true,
+    });
   }
 
   showSuccessModalDialog = () => {
@@ -105,7 +105,9 @@ class LoadAddScene extends Component {
     let passes = security_passes.includes(id)
       ? security_passes.filter(value => value !== id)
       : security_passes.concat(id);
-    this.props.dispatch(CUSTOMER_ACTIONS.setEditAttribute('security_passes', passes));
+    this.props.dispatch(
+      CUSTOMER_ACTIONS.setEditAttribute('security_passes', passes),
+    );
   };
 
   onPackagingDimensionsFieldChange = (field, name) => {
@@ -115,7 +117,10 @@ class LoadAddScene extends Component {
       [field]: name,
     };
     this.props.dispatch(
-      CUSTOMER_ACTIONS.setEditAttribute('packaging_dimension', packagingDimension),
+      CUSTOMER_ACTIONS.setEditAttribute(
+        'packaging_dimension',
+        packagingDimension,
+      ),
     );
   };
 
@@ -150,7 +155,7 @@ class LoadAddScene extends Component {
       });
   };
 
-  onLocationCreatePress = (type) => {
+  onLocationCreatePress = type => {
     this.props.navigation.navigate('LocationAdd', {
       type: type,
     });
@@ -209,7 +214,7 @@ class LoadAddScene extends Component {
 
     let {trailers, packaging, securityPasses, locations} = this.props;
 
-    if(!this.state.initialized) {
+    if (!this.state.initialized) {
       return null;
     }
 

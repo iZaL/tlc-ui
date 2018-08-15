@@ -19,12 +19,14 @@ export default class BankAccountList extends PureComponent {
   };
 
   renderRow = ({item}) => {
-    let {onItemPress,description} = this.props;
-    return <ListItem
-      onPress={() => onItemPress(item)}
-      title={`${item.name} ${item.account_number}`}
-      description={`${item.iban} ${item.address} `}
-    />;
+    let {onItemPress, description} = this.props;
+    return (
+      <ListItem
+        onPress={() => onItemPress(item)}
+        title={`${item.name} ${item.account_number}`}
+        description={`${item.iban} ${item.address} `}
+      />
+    );
   };
 
   render() {

@@ -53,7 +53,6 @@ class SecurityPassListScene extends Component {
     this.props.navigation.navigate('SecurityPassAdd', sceneConfig);
   };
 
-
   render() {
     let {driver_security_passes} = this.props;
 

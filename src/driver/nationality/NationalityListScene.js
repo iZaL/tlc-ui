@@ -50,9 +50,9 @@ class NationalityListScene extends Component {
 
     let sceneConfig = {
       route: this.props.navigation.getParam('route'),
-      title:this.props.navigation.getParam('title'),
+      title: this.props.navigation.getParam('title'),
       action: I18n.t('add'),
-      type:type
+      type: type,
     };
     this.props.navigation.navigate('NationalityAdd', sceneConfig);
   };
@@ -61,17 +61,17 @@ class NationalityListScene extends Component {
     let {number, expiry_date, image} = document;
 
     let payload = {
-      id:document.id,
+      id: document.id,
       number: number,
       expiry_date: new Date(expiry_date),
       country_id: document.country.id,
       image: image,
-      type:document.type
+      type: document.type,
     };
 
     let sceneConfig = {
-      route:this.props.navigation.getParam('route'),
-      title:this.props.navigation.getParam('title'),
+      route: this.props.navigation.getParam('route'),
+      title: this.props.navigation.getParam('title'),
       action: I18n.t('edit'),
       ...payload,
     };

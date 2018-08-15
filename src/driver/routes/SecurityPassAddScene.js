@@ -8,7 +8,7 @@ import SecurityPassAdd from 'driver/routes/components/SecurityPassAdd';
 import {ACTIONS as APP_ACTIONS} from 'app/common/actions';
 import {SELECTORS as APP_SELECTORS} from 'app/selectors/app';
 import I18n from 'utils/locale';
-import {ACTIONS as DRIVER_ACTIONS} from "driver/common/actions";
+import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
 
 class SecurityPassAddScene extends Component {
   static propTypes = {
@@ -78,9 +78,9 @@ class SecurityPassAddScene extends Component {
       );
     })
       .then(images => {
-        if(images.length) {
+        if (images.length) {
           this.setState({
-            image:images[0]
+            image: images[0],
           });
         }
       })
@@ -90,9 +90,11 @@ class SecurityPassAddScene extends Component {
   };
 
   onSave = () => {
-    this.props.dispatch(DRIVER_ACTIONS.saveSecurityPass({
-      ...this.state,
-    }));
+    this.props.dispatch(
+      DRIVER_ACTIONS.saveSecurityPass({
+        ...this.state,
+      }),
+    );
   };
 
   render() {

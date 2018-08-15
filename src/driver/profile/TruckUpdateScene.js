@@ -7,12 +7,12 @@ import Divider from 'components/Divider';
 import ListItem from 'components/ListItem';
 import {ListSection, Title} from 'react-native-paper';
 import I18n from 'utils/locale';
-import AlbumUpload from "../../components/AlbumUpload";
-import {View} from "react-native";
-import IconFactory from "../../components/IconFactory";
-import colors from "../../assets/theme/colors";
-import {ACTIONS as APP_ACTIONS} from "../../app/common/actions";
-import Gallery from "../../components/Gallery";
+import AlbumUpload from '../../components/AlbumUpload';
+import {View} from 'react-native';
+import IconFactory from '../../components/IconFactory';
+import colors from '../../assets/theme/colors';
+import {ACTIONS as APP_ACTIONS} from '../../app/common/actions';
+import Gallery from '../../components/Gallery';
 
 class TruckUpdateScene extends Component {
   static propTypes = {
@@ -28,7 +28,7 @@ class TruckUpdateScene extends Component {
   };
 
   state = {
-    images:[]
+    images: [],
   };
 
   componentDidMount() {
@@ -68,10 +68,10 @@ class TruckUpdateScene extends Component {
       .then(images => {
         this.props.dispatch(
           APP_ACTIONS.saveUploads({
-            links:images,
-            entity_type:'Truck',
-            entity_id:this.props.truck.id
-          })
+            links: images,
+            entity_type: 'Truck',
+            entity_id: this.props.truck.id,
+          }),
         );
       })
       .catch(e => {
@@ -80,7 +80,6 @@ class TruckUpdateScene extends Component {
   };
 
   render() {
-
     let {truck} = this.props;
 
     return (
@@ -110,18 +109,16 @@ class TruckUpdateScene extends Component {
         <Divider />
 
         {/*<ListItem*/}
-          {/*onPress={this.loadTrailerUpdateScene}*/}
-          {/*name="trailer_details"*/}
-          {/*title={I18n.t('trailer_details')}*/}
+        {/*onPress={this.loadTrailerUpdateScene}*/}
+        {/*name="trailer_details"*/}
+        {/*title={I18n.t('trailer_details')}*/}
         {/*/>*/}
 
-        <Gallery images={truck.images} imageName={image => image.url}/>
+        <Gallery images={truck.images} imageName={image => image.url} />
 
-        <Divider style={{marginBottom:20}} />
+        <Divider style={{marginBottom: 20}} />
 
-        <AlbumUpload
-          images={this.state.images}
-          onUpload={this.uploadImages}>
+        <AlbumUpload images={this.state.images} onUpload={this.uploadImages}>
           <View
             style={{
               flexDirection: 'row',
@@ -139,7 +136,6 @@ class TruckUpdateScene extends Component {
             />
           </View>
         </AlbumUpload>
-
       </ListSection>
     );
   }

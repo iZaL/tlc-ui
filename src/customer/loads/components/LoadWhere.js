@@ -10,7 +10,6 @@ import {Title} from 'react-native-paper';
 import FAB from 'components/FAB';
 
 export default class LoadWhat extends Component {
-
   shouldComponentUpdate(nextProps, nextState) {
     return (
       nextProps.origin !== this.props.origin ||
@@ -145,9 +144,7 @@ export default class LoadWhat extends Component {
           items={locations.filter(location => location.type === locationType)}
           visible={locationListModalVisible}
           onCancel={this.closeModal}
-          onSave={this.closeModal}
-        >
-
+          onSave={this.closeModal}>
           <View style={{alignItems: 'flex-end', paddingBottom: 20}}>
             <FAB
               icon="add"

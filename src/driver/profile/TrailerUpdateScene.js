@@ -17,7 +17,7 @@ import Modal from 'components/Modal';
 import Dropdown from 'components/Dropdown';
 import DocumentUpload from 'components/DocumentUpload';
 import TextInput from 'components/TextInput';
-import {ACTIONS as APP_ACTIONS} from "app/common/actions";
+import {ACTIONS as APP_ACTIONS} from 'app/common/actions';
 
 class TrailerUpdateScene extends Component {
   static propTypes = {
@@ -115,7 +115,6 @@ class TrailerUpdateScene extends Component {
     });
   };
 
-
   onValueChange = (field, value) => {
     this.setState({
       [field]: value,
@@ -156,9 +155,9 @@ class TrailerUpdateScene extends Component {
       );
     })
       .then(images => {
-        if(images.length) {
+        if (images.length) {
           this.setState({
-            image:images[0]
+            image: images[0],
           });
         }
       })
@@ -168,15 +167,17 @@ class TrailerUpdateScene extends Component {
   };
 
   onSave = () => {
-    this.props.dispatch(DRIVER_ACTIONS.saveTrailer({
-      ...this.state,
-      truck_id:this.props.truck.id,
-    }));
+    this.props.dispatch(
+      DRIVER_ACTIONS.saveTrailer({
+        ...this.state,
+        truck_id: this.props.truck.id,
+      }),
+    );
   };
 
   render() {
     const {trailer, trailer_types, trailer_makes} = this.props;
-    console.log('trailer',trailer);
+    console.log('trailer', trailer);
     const {
       type_id,
       make_id,
@@ -202,7 +203,6 @@ class TrailerUpdateScene extends Component {
         contentContainerStyle={{
           paddingBottom: 30,
         }}>
-
         <View style={{padding: 10}}>
           <Touchable onPress={this.showMakeModal}>
             <View>
@@ -268,10 +268,7 @@ class TrailerUpdateScene extends Component {
           <Divider style={{marginVertical: 10}} />
 
           <Title>{I18n.t('trailer_image')}</Title>
-          <DocumentUpload
-            onPress={this.uploadImage}
-            image={image}
-          />
+          <DocumentUpload onPress={this.uploadImage} image={image} />
         </View>
 
         <Button onPress={this.onSave} title={I18n.t('save')} />
@@ -300,8 +297,7 @@ class TrailerUpdateScene extends Component {
           visible={isYearModalVisible}
           onCancel={this.hideYearModal}
           header={I18n.t('trailer_year')}
-          onSave={this.hideYearModal}
-        >
+          onSave={this.hideYearModal}>
           <Dropdown
             items={['1905', '1906', '2001', '2002', '2003', '2004']}
             selectedValue={year}

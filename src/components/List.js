@@ -19,12 +19,14 @@ export default class List extends PureComponent {
   };
 
   renderRow = ({item}) => {
-    let {onItemPress,description} = this.props;
-    return <ListItem
-      onPress={() => onItemPress(item)}
-      title={item.name}
-      description={description}
-    />;
+    let {onItemPress, description} = this.props;
+    return (
+      <ListItem
+        onPress={() => onItemPress(item)}
+        title={item.name}
+        description={description}
+      />
+    );
   };
 
   render() {

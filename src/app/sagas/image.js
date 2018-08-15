@@ -36,8 +36,8 @@ function* saveUploads(action) {
   try {
     const params = {
       body: {
-        ...action.params
-      }
+        ...action.params,
+      },
     };
     const response = yield call(API.saveUploads, params);
     yield put({
@@ -55,4 +55,4 @@ function* saveUploadsMonitor() {
   yield takeLatest(ACTION_TYPES.SAVE_UPLOADS_REQUEST, saveUploads);
 }
 
-export const sagas = all([fork(uploadImageMonitor),fork(saveUploadsMonitor)]);
+export const sagas = all([fork(uploadImageMonitor), fork(saveUploadsMonitor)]);

@@ -7,7 +7,6 @@ import {ACTIONS as APP_ACTIONS} from 'app/common/actions';
 import I18n from 'utils/locale';
 
 function* saveProfile(action) {
-
   try {
     let params = {
       body: {
@@ -40,7 +39,6 @@ function* saveProfile(action) {
 }
 
 function* saveTrailer(action) {
-
   try {
     let params = {
       body: {
@@ -73,7 +71,6 @@ function* saveTrailer(action) {
 }
 
 function* saveSecurityPass(action) {
-
   try {
     let params = {
       body: {
@@ -106,7 +103,6 @@ function* saveSecurityPass(action) {
 }
 
 function* saveBankAccounts(action) {
-
   try {
     let params = {
       body: {
@@ -139,7 +135,6 @@ function* saveBankAccounts(action) {
 }
 
 function* saveDocument(action) {
-
   try {
     let params = {
       body: {

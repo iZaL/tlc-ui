@@ -98,8 +98,7 @@ export const ACTION_TYPES = {
   SELECT_DRIVER_SUCCESS: '@customer/loads/SELECT_DRIVER_SUCCESS',
   SELECT_DRIVER_FAILURE: '@customer/loads/SELECT_DRIVER_FAILURE',
 
-  SET_EDIT_DATA:'@customer/load/SET_EDIT_DATA',
-
+  SET_EDIT_DATA: '@customer/load/SET_EDIT_DATA',
 };
 
 function fetchEmployees(params) {
@@ -293,5 +292,5 @@ export const ACTIONS = {
   saveAddress,
   selectDriver,
   blockDriver,
-  setEditData
+  setEditData,
 };

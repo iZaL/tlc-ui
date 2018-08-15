@@ -19,14 +19,13 @@ import DocumentUpload from 'components/DocumentUpload';
 import TextInput from 'components/TextInput';
 
 class BankAccountsUpdateScene extends Component {
-
   state = {
     name: null,
     address: null,
     account_number: null,
     iban: null,
-    beneficiary_name:null,
-    beneficiary_address:null,
+    beneficiary_name: null,
+    beneficiary_address: null,
   };
 
   // static getDerivedStateFromProps(nextProps, prevState) {
@@ -48,8 +47,7 @@ class BankAccountsUpdateScene extends Component {
   //   };
   // }
 
-  componentDidMount() {
-  }
+  componentDidMount() {}
 
   onValueChange = (field, value) => {
     this.setState({
@@ -58,9 +56,11 @@ class BankAccountsUpdateScene extends Component {
   };
 
   save = () => {
-    this.props.dispatch(DRIVER_ACTIONS.saveBankAccounts({
-      ...this.state,
-    }));
+    this.props.dispatch(
+      DRIVER_ACTIONS.saveBankAccounts({
+        ...this.state,
+      }),
+    );
   };
 
   render() {
@@ -82,7 +82,6 @@ class BankAccountsUpdateScene extends Component {
         contentContainerStyle={{
           padding: 10,
         }}>
-
         <TextInput
           label={I18n.t('bank_name')}
           value={name}
@@ -127,13 +126,11 @@ class BankAccountsUpdateScene extends Component {
           style={{flex: 1, marginRight: 5}}
         />
 
-
         <Button
           onPress={this.save}
           style={{marginTop: 20}}
           title={I18n.t('save')}
         />
-
       </ScrollView>
     );
   }

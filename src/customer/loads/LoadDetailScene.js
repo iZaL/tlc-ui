@@ -29,7 +29,6 @@ import TripList from 'customer/trips/components/TripList';
 import PendingFleetsList from 'customer/trips/components/PendingFleetsList';
 
 class LoadDetailScene extends Component {
-
   static propTypes = {
     navigation: PropTypes.shape({
       state: PropTypes.shape({
@@ -55,7 +54,7 @@ class LoadDetailScene extends Component {
           color="black"
         />
       ),
-    }
+    };
   };
 
   state = {
@@ -71,14 +70,16 @@ class LoadDetailScene extends Component {
       }),
     );
 
-    this.props.navigation.setParams({ onHeaderRightButtonPress: this.onHeaderRightButtonPress });
+    this.props.navigation.setParams({
+      onHeaderRightButtonPress: this.onHeaderRightButtonPress,
+    });
   }
 
   onHeaderRightButtonPress = () => {
-    this.props.navigation.navigate('LoadEdit',{
-      loadID:this.props.navigation.getParam('loadID'),
-      load:this.props.load
-    })
+    this.props.navigation.navigate('LoadEdit', {
+      loadID: this.props.navigation.getParam('loadID'),
+      load: this.props.load,
+    });
   };
 
   setTripStatus = status => {

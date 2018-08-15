@@ -15,7 +15,7 @@ import ListItem from 'components/ListItem';
 import CameraUpload from 'components/CameraUpload';
 import AlbumUpload from 'components/AlbumUpload';
 import FileUpload from 'components/FileUpload';
-import {ACTIONS as APP_ACTIONS} from "../../app/common/actions";
+import {ACTIONS as APP_ACTIONS} from '../../app/common/actions';
 
 class DocumentAddScene extends Component {
   static propTypes = {
@@ -32,13 +32,13 @@ class DocumentAddScene extends Component {
     document_type_id: null,
     typeModalVisible: false,
     uploads: [],
-    amount:null,
+    amount: null,
   };
 
   componentDidMount() {
     this.props.dispatch(
       DRIVER_ACTIONS.fetchLoadDetails({
-        loadID: this.props.navigation.getParam('loadID',1),
+        loadID: this.props.navigation.getParam('loadID', 1),
       }),
     );
     this.props.dispatch(DRIVER_ACTIONS.fetchDocumentTypes());
@@ -78,32 +78,29 @@ class DocumentAddScene extends Component {
     })
       .then(images => {
         this.setState({
-          uploads:images
+          uploads: images,
         });
       })
       .catch(e => {
         console.log('e', e);
       });
-
   };
 
   onFileUpload = file => {
     console.log('file', file);
   };
 
-
   onSave = () => {
-
-    let {document_type_id,uploads,amount} = this.state;
+    let {document_type_id, uploads, amount} = this.state;
 
     let payload = {
-      uploads:this.state.uploads,
-      trip_id:this.props.load.trip.id,
-      document_type_id:document_type_id,
-      amount:amount,
+      uploads: this.state.uploads,
+      trip_id: this.props.load.trip.id,
+      document_type_id: document_type_id,
+      amount: amount,
     };
 
-    console.log('payload',payload);
+    console.log('payload', payload);
 
     return new Promise((resolve, reject) => {
       this.props.dispatch(
@@ -117,20 +114,20 @@ class DocumentAddScene extends Component {
       .then(images => {
         this.props.navigation.pop();
       })
-      .catch(e => {
-      });
+      .catch(e => {});
   };
 
   render() {
     let {document_types} = this.props;
-    let {document_type_id, typeModalVisible,uploads} = this.state;
+    let {document_type_id, typeModalVisible, uploads} = this.state;
 
     let documentType = {};
 
     if (document_type_id) {
-      documentType = document_types && document_types.find(
-        document => document.id === document_type_id,
-      ) || {};
+      documentType =
+        (document_types &&
+          document_types.find(document => document.id === document_type_id)) ||
+        {};
     }
 
     return (
@@ -153,10 +150,7 @@ class DocumentAddScene extends Component {
             <ListItem title={I18n.t('take_picture')} />
           </CameraUpload>
 
-          <AlbumUpload
-            onUpload={this.onAlbumUpload}
-            images={[]}
-          >
+          <AlbumUpload onUpload={this.onAlbumUpload} images={[]}>
             <ListItem title={I18n.t('choose_from_album')} />
           </AlbumUpload>
 
@@ -191,7 +185,7 @@ const makeMapStateToProps = () => {
   const mapStateToProps = (state, props) => {
     return {
       document_types: DRIVER_SELECTORS.getDocumentTypes(state),
-      load: getLoadByID(state, props.navigation.getParam('loadID',1)),
+      load: getLoadByID(state, props.navigation.getParam('loadID', 1)),
     };
   };
   return mapStateToProps;

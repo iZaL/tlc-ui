@@ -3,19 +3,16 @@ import {View} from 'react-native';
 import {connect} from 'react-redux';
 import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
 import FAB from 'components/FAB';
-import colors from "assets/theme/colors";
-import {SELECTORS as DRIVER_SELECTORS} from "guest/common/selectors";
-import BankAccountList from "components/BankAccountList";
+import colors from 'assets/theme/colors';
+import {SELECTORS as DRIVER_SELECTORS} from 'guest/common/selectors';
+import BankAccountList from 'components/BankAccountList';
 
 class BankAccountsListScene extends Component {
-
   componentDidMount() {
-    this.props.dispatch(DRIVER_ACTIONS.fetchBankAccounts())
+    this.props.dispatch(DRIVER_ACTIONS.fetchBankAccounts());
   }
 
-  onBankAccountListPress = (item) => {
-
-  };
+  onBankAccountListPress = item => {};
 
   onAddPress = () => {
     this.props.navigation.navigate('BankAccountsUpdate');
@@ -28,9 +25,7 @@ class BankAccountsListScene extends Component {
       <View
         style={{
           flex: 1,
-        }}
-      >
-
+        }}>
         <BankAccountList
           items={user.bank_accounts || []}
           onItemPress={this.onBankAccountListPress}
@@ -47,7 +42,6 @@ class BankAccountsListScene extends Component {
             backgroundColor: colors.primary,
           }}
         />
-
       </View>
     );
   }
@@ -55,7 +49,7 @@ class BankAccountsListScene extends Component {
 
 function mapStateToProps(state) {
   return {
-    user:DRIVER_SELECTORS.getAuthUser(state)
+    user: DRIVER_SELECTORS.getAuthUser(state),
   };
 }
 

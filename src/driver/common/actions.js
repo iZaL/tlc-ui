@@ -265,5 +265,4 @@ export const ACTIONS = {
   // starTrip,
   setTripStatus,
   saveSecurityPass,
-
 };

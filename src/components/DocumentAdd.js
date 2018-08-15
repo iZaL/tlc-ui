@@ -13,7 +13,6 @@ import ListModal from 'components/ListModal';
 import TextInput from 'components/TextInput';
 
 export default class DocumentAdd extends PureComponent {
-
   static propTypes = {
     onSavePress: PropTypes.func.isRequired,
     onDeletePress: PropTypes.func,
@@ -62,7 +61,7 @@ export default class DocumentAdd extends PureComponent {
       country_id,
       onSavePress,
       countryModalTitle,
-      uploadImage
+      uploadImage,
     } = this.props;
 
     let country = country_id

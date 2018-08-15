@@ -13,7 +13,7 @@ import Button from 'components/Button';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Divider from 'components/Divider';
 import CheckedListItem from 'components/CheckedListItem';
-import ConfirmedButton from "../../components/ConfirmedButton";
+import ConfirmedButton from '../../components/ConfirmedButton';
 
 class RoutesAddScene extends Component {
   state = {
@@ -211,7 +211,7 @@ class RoutesAddScene extends Component {
       });
     } else {
       let originCountry = this.getCountry(this.props.origin_country.id);
-      if(originCountry) {
+      if (originCountry) {
         let countryLocations = originCountry.locations || [];
         this.setState({
           origin_location_ids: countryLocations.map(location => location.id),
@@ -253,9 +253,11 @@ class RoutesAddScene extends Component {
   };
 
   onSave = () => {
-    this.props.dispatch(APP_ACTIONS.setNotification({
-      message: I18n.t('saved'),
-    }));
+    this.props.dispatch(
+      APP_ACTIONS.setNotification({
+        message: I18n.t('saved'),
+      }),
+    );
   };
 
   render() {

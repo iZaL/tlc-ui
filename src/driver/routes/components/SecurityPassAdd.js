@@ -79,7 +79,7 @@ export default class SecurityPassAdd extends PureComponent {
       security_pass_id,
       security_passes,
       securityPass,
-      onImageUpload
+      onImageUpload,
     } = this.props;
 
     let country = country_id

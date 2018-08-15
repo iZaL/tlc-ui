@@ -156,7 +156,6 @@ function* saveTripDocumentsMonitor() {
   yield takeLatest(ACTION_TYPES.SAVE_TRIP_DOCUMENTS_REQUEST, saveTripDocuments);
 }
 
-
 export const sagas = all([
   fork(fetchUpcomingTripsMonitor),
   fork(fetchTripDetailsMonitor),

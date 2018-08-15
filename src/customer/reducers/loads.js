@@ -110,7 +110,7 @@ export function reducer(state = initialState, action = {}) {
         ...state,
         edit: {
           ...state.edit,
-          attributes:{
+          attributes: {
             ...state.edit.attributes,
             ...action.payload,
             load_date: moment(action.payload.load_date),
@@ -119,7 +119,7 @@ export function reducer(state = initialState, action = {}) {
             load_time_to: moment(action.payload.load_time_to),
             unload_time_from: moment(action.payload.unload_time_from),
             unload_time_to: moment(action.payload.unload_time_to),
-          }
+          },
         },
       };
       break;

@@ -6,7 +6,7 @@ import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
 import I18n from 'utils/locale';
 import TextInput from 'components/TextInput';
 import DocumentUpload from 'components/DocumentUpload';
-import Button from "components/Button";
+import Button from 'components/Button';
 
 class ProfileInfoUpdateScene extends Component {
   static propTypes = {};
@@ -32,7 +32,6 @@ class ProfileInfoUpdateScene extends Component {
   };
 
   static getDerivedStateFromProps(nextProps, prevState) {
-
     if (nextProps.user === prevState.user) {
       return null;
     }
@@ -75,9 +74,11 @@ class ProfileInfoUpdateScene extends Component {
   };
 
   save = () => {
-    this.props.dispatch(DRIVER_ACTIONS.saveProfile({
-      ...this.state.user
-    }));
+    this.props.dispatch(
+      DRIVER_ACTIONS.saveProfile({
+        ...this.state.user,
+      }),
+    );
   };
 
   render() {
@@ -92,10 +93,8 @@ class ProfileInfoUpdateScene extends Component {
     } = this.state.user;
 
     return (
-      <ScrollView
-        style={{flex: 1, backgroundColor: 'white'}}
-      >
-        <View style={{padding:10}}>
+      <ScrollView style={{flex: 1, backgroundColor: 'white'}}>
+        <View style={{padding: 10}}>
           <DocumentUpload
             onPress={image => this.onValueChange('image', image)}
             image={image}
@@ -153,7 +152,6 @@ class ProfileInfoUpdateScene extends Component {
             label={I18n.t('contact_mobile2')}
             keyboardType="phone-pad"
           />
-
         </View>
 
         <Button
@@ -161,7 +159,6 @@ class ProfileInfoUpdateScene extends Component {
           style={{marginTop: 20}}
           title={I18n.t('save')}
         />
-
       </ScrollView>
     );
   }

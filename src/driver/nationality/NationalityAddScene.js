@@ -4,11 +4,10 @@ import {SELECTORS as COUNTRY_SELECTORS} from 'app/selectors/country';
 import DocumentAdd from 'components/DocumentAdd';
 import {moment} from 'moment';
 import PropTypes from 'prop-types';
-import {ACTIONS as DRIVER_ACTIONS} from "driver/common/actions";
-import {ACTIONS as APP_ACTIONS} from "../../app/common/actions";
+import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
+import {ACTIONS as APP_ACTIONS} from '../../app/common/actions';
 
 class NationalityAddScene extends Component {
-
   static propTypes = {
     navigation: PropTypes.shape({
       state: PropTypes.shape({
@@ -31,7 +30,9 @@ class NationalityAddScene extends Component {
     return {
       title:
         (navigation.state.params &&
-          `${navigation.state.params.title} ${navigation.state.params.action}`) ||
+          `${navigation.state.params.title} ${
+            navigation.state.params.action
+          }`) ||
         '',
     };
   };
@@ -44,16 +45,16 @@ class NationalityAddScene extends Component {
       expiry_date,
       country_id,
       image,
-      type
+      type,
     } = this.props.navigation.state.params;
     this.state = {
-      id:id,
+      id: id,
       number: number,
       expiry_date: expiry_date,
       country_id: country_id,
       image: image,
-      type:type,
-      uploaded_image:null
+      type: type,
+      uploaded_image: null,
     };
   }
 
@@ -75,9 +76,9 @@ class NationalityAddScene extends Component {
       );
     })
       .then(images => {
-        if(images.length) {
+        if (images.length) {
           this.setState({
-            image:images[0]
+            image: images[0],
           });
         }
       })
@@ -87,9 +88,11 @@ class NationalityAddScene extends Component {
   };
 
   onSave = () => {
-    this.props.dispatch(DRIVER_ACTIONS.saveDocument({
-      ...this.state,
-    }));
+    this.props.dispatch(
+      DRIVER_ACTIONS.saveDocument({
+        ...this.state,
+      }),
+    );
   };
 
   render() {

@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 import {SELECTORS as COUNTRY_SELECTORS} from 'app/selectors/country';
 import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
 import I18n from 'utils/locale';
-import {ACTIONS as DRIVER_ACTIONS} from "driver/common/actions";
-import {ACTIONS as APP_ACTIONS} from "../../app/common/actions";
+import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
+import {ACTIONS as APP_ACTIONS} from '../../app/common/actions';
 
 class TruckRegistrationScene extends Component {
   static propTypes = {
@@ -67,9 +67,9 @@ class TruckRegistrationScene extends Component {
       );
     })
       .then(images => {
-        if(images.length) {
+        if (images.length) {
           this.setState({
-            image:images[0]
+            image: images[0],
           });
         }
       })
@@ -79,13 +79,15 @@ class TruckRegistrationScene extends Component {
   };
 
   onSave = () => {
-    let {country_id,image,expiry_date,number} = this.state;
-    this.props.dispatch(DRIVER_ACTIONS.saveTruck({
-      registration_country_id:country_id,
-      registration_expiry_date:expiry_date,
-      registration_image:image,
-      registration_number:number
-    }));
+    let {country_id, image, expiry_date, number} = this.state;
+    this.props.dispatch(
+      DRIVER_ACTIONS.saveTruck({
+        registration_country_id: country_id,
+        registration_expiry_date: expiry_date,
+        registration_image: image,
+        registration_number: number,
+      }),
+    );
   };
 
   render() {
