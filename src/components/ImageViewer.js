@@ -5,7 +5,6 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import ImageViewer from 'react-native-image-zoom-viewer';
 import Modal from 'react-native-modal';
-import colors from '../assets/theme/colors';
 
 export default class extends Component {
   static propTypes = {

@@ -3,12 +3,10 @@
  */
 import React, {Component, PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import {StyleSheet, View} from 'react-native';
-import Button from 'components/Button';
+import {StyleSheet} from 'react-native';
 import I18n from 'utils/locale';
-import Dialog from 'components/Dialog';
 import {Colors} from 'react-native-paper';
-import ConfirmedButton from '../../../components/ConfirmedButton';
+import ConfirmedButton from 'components/ConfirmedButton';
 
 export default class LoadStatusButton extends Component {
   static propTypes = {

@@ -5,10 +5,10 @@ import Modal from 'components/Modal';
 import TextInput from 'components/TextInput';
 import I18n from 'utils/locale';
 import {Button, Title} from 'react-native-paper';
-import AlbumUpload from '../../../components/AlbumUpload';
-import IconFactory from '../../../components/IconFactory';
-import colors from '../../../assets/theme/colors';
-import Divider from '../../../components/Divider';
+import AlbumUpload from 'components/AlbumUpload';
+import IconFactory from 'components/IconFactory';
+import colors from 'assets/theme/colors';
+import Divider from 'components/Divider';
 
 export default class PackageDimensions extends Component {
   static propTypes = {

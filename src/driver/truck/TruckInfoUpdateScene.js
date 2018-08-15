@@ -10,8 +10,8 @@ import Label from 'components/Label';
 import Modal from 'components/Modal';
 import Divider from 'components/Divider';
 import Button from 'components/Button';
-import {ACTIONS as APP_ACTIONS} from '../../app/common/actions';
-import {ACTIONS as DRIVER_ACTIONS} from '../common/actions';
+import {ACTIONS as APP_ACTIONS} from 'app/common/actions';
+import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
 
 class TruckInfoUpdateScene extends Component {
   constructor(props) {

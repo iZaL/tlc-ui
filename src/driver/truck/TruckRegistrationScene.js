@@ -6,7 +6,7 @@ import {SELECTORS as COUNTRY_SELECTORS} from 'app/selectors/country';
 import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
 import I18n from 'utils/locale';
 import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
-import {ACTIONS as APP_ACTIONS} from '../../app/common/actions';
+import {ACTIONS as APP_ACTIONS} from 'app/common/actions';
 
 class TruckRegistrationScene extends Component {
   static propTypes = {

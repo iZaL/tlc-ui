@@ -7,12 +7,12 @@ import Divider from 'components/Divider';
 import ListItem from 'components/ListItem';
 import {ListSection, Title} from 'react-native-paper';
 import I18n from 'utils/locale';
-import AlbumUpload from '../../components/AlbumUpload';
+import AlbumUpload from 'components/AlbumUpload';
 import {View} from 'react-native';
-import IconFactory from '../../components/IconFactory';
-import colors from '../../assets/theme/colors';
-import {ACTIONS as APP_ACTIONS} from '../../app/common/actions';
-import Gallery from '../../components/Gallery';
+import IconFactory from 'components/IconFactory';
+import colors from 'assets/theme/colors';
+import {ACTIONS as APP_ACTIONS} from 'app/common/actions';
+import Gallery from 'components/Gallery';
 
 class TruckUpdateScene extends Component {
   static propTypes = {

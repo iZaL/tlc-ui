@@ -5,7 +5,7 @@ import DocumentAdd from 'components/DocumentAdd';
 import {moment} from 'moment';
 import PropTypes from 'prop-types';
 import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
-import {ACTIONS as APP_ACTIONS} from '../../app/common/actions';
+import {ACTIONS as APP_ACTIONS} from 'app/common/actions';
 
 class NationalityAddScene extends Component {
   static propTypes = {

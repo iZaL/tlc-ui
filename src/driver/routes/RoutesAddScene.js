@@ -9,11 +9,10 @@ import colors from 'assets/theme/colors';
 import ListModal from 'components/ListModal';
 import {ACTIONS as APP_ACTIONS} from 'app/common/actions';
 import {Caption, Headline, Title} from 'react-native-paper';
-import Button from 'components/Button';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Divider from 'components/Divider';
 import CheckedListItem from 'components/CheckedListItem';
-import ConfirmedButton from '../../components/ConfirmedButton';
+import ConfirmedButton from 'components/ConfirmedButton';
 
 class RoutesAddScene extends Component {
   state = {

@@ -3,17 +3,12 @@
  */
 import React, {Component, PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import {FlatList, StyleSheet, Text, View} from 'react-native';
+import {FlatList, StyleSheet, View} from 'react-native';
 import Divider from 'components/Divider';
 import colors from 'assets/theme/colors';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import Entypo from 'react-native-vector-icons/Entypo';
-import CallButton from 'components/CallButton';
 import Touchable from 'react-native-platform-touchable';
 import LoadPickDropLocation from 'driver/loads/components/LoadPickDropLocation';
 import LoadInfo from 'driver/loads/components/LoadInfo';
-import I18n from 'utils/locale';
-import Heading from '../../../components/Heading';
 
 export default class LoadsList extends PureComponent {
   static propTypes = {

@@ -15,7 +15,7 @@ import ListItem from 'components/ListItem';
 import CameraUpload from 'components/CameraUpload';
 import AlbumUpload from 'components/AlbumUpload';
 import FileUpload from 'components/FileUpload';
-import {ACTIONS as APP_ACTIONS} from '../../app/common/actions';
+import {ACTIONS as APP_ACTIONS} from 'app/common/actions';
 
 class DocumentAddScene extends Component {
   static propTypes = {

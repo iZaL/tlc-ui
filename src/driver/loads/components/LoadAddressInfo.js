@@ -5,7 +5,7 @@ import ListItem from 'components/ListItem';
 import {Title} from 'react-native-paper';
 import I18n from 'utils/locale';
 import Divider from 'components/Divider';
-import GoogleMapDirection from '../../../components/GoogleMapDirection';
+import GoogleMapDirection from 'components/GoogleMapDirection';
 
 export default class LoadAddressInfo extends Component {
   static propTypes = {
