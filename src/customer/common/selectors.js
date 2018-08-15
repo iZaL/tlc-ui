@@ -11,6 +11,7 @@ const getIdProp = ({}, itemID) => itemID;
 const getTrackings = state => state.customer.trackings;
 const driversSchema = state => state.entities.drivers;
 const addData = state => state.customer.loads.add;
+const editData = state => state.customer.loads.edit;
 const getLoadDrivers = state => state.customer.loads.loadDrivers;
 const customersSchema = state => state.entities.customers;
 
@@ -123,6 +124,7 @@ const getLocationUpdatesForTrip = () => {
 };
 
 const getAddData = createSelector(addData, data => data);
+const getEditData = createSelector(editData, data => data);
 
 const getDriversForLoad = () => {
   return createSelector(
@@ -163,6 +165,7 @@ export const SELECTORS = {
   getBlockedDrivers,
   getDrivers,
   getAddData,
+  getEditData,
   getDriversForLoad,
   getLoadByID,
   getDriverByID,

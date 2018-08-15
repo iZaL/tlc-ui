@@ -10,6 +10,7 @@ import {Title} from 'react-native-paper';
 import FAB from 'components/FAB';
 
 export default class LoadWhat extends Component {
+
   shouldComponentUpdate(nextProps, nextState) {
     return (
       nextProps.origin !== this.props.origin ||
@@ -66,11 +67,7 @@ export default class LoadWhat extends Component {
   };
 
   onLocationCreatePress = () => {
-    // this.props.navigation.navigate('LocationAdd', {
-    //   type: type,
-    // });
     this.props.onLocationCreatePress(this.state.locationType);
-
   };
 
   onSave = () => {};

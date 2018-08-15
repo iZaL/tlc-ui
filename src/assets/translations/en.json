@@ -146,6 +146,7 @@
 
   "loads" : "Loads",
   "load_add" : "Post a Load",
+  "load_edit" : "Edit Load",
   "load_date" : "Load Date",
   "unload_date" : "Unload Date",
   "load_time" : "Load Time",

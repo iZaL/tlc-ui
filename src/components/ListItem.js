@@ -15,8 +15,8 @@ export default class ListItem extends Component {
     iconProps: PropTypes.object,
   };
 
-  shouldComponentUpdate() {
-    return false;
+  shouldComponentUpdate(nextProps) {
+    return nextProps.title !== this.props.title;
   }
 
   static defaultProps = {

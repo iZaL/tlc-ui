@@ -35,39 +35,38 @@ const initialState = {
       packaging_images: [],
     },
   },
-  // add: {
-  //   index: 1,
-  //   attributes: {
-  //     load_date: moment(),
-  //     unload_date: moment(),
-  //     load_time_from: moment(),
-  //     load_time_to: moment(),
-  //     unload_time_from: moment(),
-  //     unload_time_to: moment(),
-  //     trailer_type_id: 1,
-  //     trailer_quantity: '2',
-  //     packaging_id: 1,
-  //     packaging_dimension: {
-  //       length: '10',
-  //       width: '20',
-  //       height: '30',
-  //       weight: '40',
-  //       quantity: '2',
-  //     },
-  //     origin_location_id: 35,
-  //     destination_location_id: 36,
-  //     weight: '400',
-  //     request_documents: true,
-  //     use_own_truck: false,
-  //     receiver_name: 'ABCD',
-  //     receiver_email: 'abcd@test.com',
-  //     receiver_mobile: '00966989382332',
-  //     receiver_phone: '00966989382332',
-  //     security_passes: [1, 4],
-  //     packaging_images: [],
-  //   },
-  // },
-  edit: {},
+  edit: {
+    index: 1,
+    attributes: {
+      load_date: moment(),
+      unload_date: moment(),
+      load_time_from: moment(),
+      load_time_to: moment(),
+      unload_time_from: moment(),
+      unload_time_to: moment(),
+      trailer_type_id: null,
+      trailer_quantity: 1,
+      packaging_id: null,
+      packaging_dimension: {
+        length: null,
+        width: null,
+        height: null,
+        weight: null,
+        quantity: null,
+      },
+      origin_location_id: null,
+      destination_location_id: null,
+      weight: null,
+      request_documents: true,
+      use_own_truck: false,
+      receiver_name: null,
+      receiver_email: null,
+      receiver_mobile: null,
+      receiver_phone: null,
+      security_passes: [],
+      packaging_images: [],
+    },
+  },
 };
 
 export function reducer(state = initialState, action = {}) {
@@ -80,10 +79,19 @@ export function reducer(state = initialState, action = {}) {
           attributes: {
             ...state.add.attributes,
             [action.field]: action.value,
-            // typeof (action.value) === 'string' ? action.value : {
-            //   ...state.add.attributes[action.field],
-            //   ...action.value
-            // },
+          },
+        },
+      };
+      break;
+
+    case ACTION_TYPES.SET_EDIT_ATTRIBUTE_REQUEST:
+      return {
+        ...state,
+        edit: {
+          ...state.edit,
+          attributes: {
+            ...state.edit.attributes,
+            [action.field]: action.value,
           },
         },
       };
@@ -94,6 +102,24 @@ export function reducer(state = initialState, action = {}) {
         loadDrivers: {
           ...state.loadDrivers,
           [action.loadID]: action.result,
+        },
+      };
+      break;
+    case ACTION_TYPES.SET_EDIT_DATA:
+      return {
+        ...state,
+        edit: {
+          ...state.edit,
+          attributes:{
+            ...state.edit.attributes,
+            ...action.payload,
+            load_date: moment(action.payload.load_date),
+            unload_date: moment(action.payload.unload_date),
+            load_time_from: moment(action.payload.load_time_from),
+            load_time_to: moment(action.payload.load_time_to),
+            unload_time_from: moment(action.payload.unload_time_from),
+            unload_time_to: moment(action.payload.unload_time_to),
+          }
         },
       };
       break;

@@ -53,7 +53,6 @@ class LoadDetailScene extends Component {
           onPress={navigation.getParam('onHeaderRightButtonPress')}
           title={I18n.t('edit')}
           color="black"
-          raised={false}
         />
       ),
     }
@@ -177,7 +176,7 @@ class LoadDetailScene extends Component {
     if (!load.id) {
       return null;
     }
-    console.log('load', load);
+    // console.log('load', load);
 
     return (
       <ScrollView style={{flex: 1, backgroundColor: 'white'}}>

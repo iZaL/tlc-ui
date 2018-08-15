@@ -38,16 +38,18 @@ class LoadAddScene extends Component {
     isTrailerQuantityDialogVisible: false,
     isSaving: false,
     current_saved_id: null,
+
+    initialized:false
   };
 
   componentDidMount() {
+    const load = this.props.navigation.getParam('load');
     this.props.dispatch(CUSTOMER_ACTIONS.fetchLoadAddData());
     this.props.dispatch(TRUCK_ACTIONS.fetchTrailerTypes());
-
-    if(this.props.navigation.getParam('loadID')) {
-      // this.props.dispatch(CUSTOMER_ACTIONS.setLoadEditData())
-    }
-
+    this.props.dispatch(CUSTOMER_ACTIONS.setEditData(load.edit_data));
+    this.setState({
+      initialized:true
+    })
   }
 
   showSuccessModalDialog = () => {
@@ -87,7 +89,7 @@ class LoadAddScene extends Component {
   };
 
   onValueChange = (field, value) => {
-    this.props.dispatch(CUSTOMER_ACTIONS.setAddData(field, value));
+    this.props.dispatch(CUSTOMER_ACTIONS.setEditAttribute(field, value));
 
     if (field == 'packaging_id') {
       this.showPackageDimensionDialog();
@@ -103,7 +105,7 @@ class LoadAddScene extends Component {
     let passes = security_passes.includes(id)
       ? security_passes.filter(value => value !== id)
       : security_passes.concat(id);
-    this.props.dispatch(CUSTOMER_ACTIONS.setAddData('security_passes', passes));
+    this.props.dispatch(CUSTOMER_ACTIONS.setEditAttribute('security_passes', passes));
   };
 
   onPackagingDimensionsFieldChange = (field, name) => {
@@ -113,7 +115,7 @@ class LoadAddScene extends Component {
       [field]: name,
     };
     this.props.dispatch(
-      CUSTOMER_ACTIONS.setAddData('packaging_dimension', packagingDimension),
+      CUSTOMER_ACTIONS.setEditAttribute('packaging_dimension', packagingDimension),
     );
   };
 
@@ -140,7 +142,7 @@ class LoadAddScene extends Component {
         let {packaging_images} = this.props.loadData.attributes;
         let uploadImages = packaging_images.concat(images);
         this.props.dispatch(
-          CUSTOMER_ACTIONS.setAddData('packaging_images', uploadImages),
+          CUSTOMER_ACTIONS.setEditAttribute('packaging_images', uploadImages),
         );
       })
       .catch(e => {
@@ -206,6 +208,10 @@ class LoadAddScene extends Component {
     } = this.props.loadData.attributes;
 
     let {trailers, packaging, securityPasses, locations} = this.props;
+
+    if(!this.state.initialized) {
+      return null;
+    }
 
     return (
       <ScrollView style={{flex: 1}}>
@@ -319,7 +325,7 @@ class LoadAddScene extends Component {
 
 function mapStateToProps(state) {
   return {
-    loadData: CUSTOMER_SELECTORS.getAddData(state),
+    loadData: CUSTOMER_SELECTORS.getEditData(state),
     trailers: TRUCK_SELECTORS.getTrailerTypes(state),
     packaging: TRUCK_SELECTORS.getPackaging(state),
     securityPasses: TRUCK_SELECTORS.getSecurityPasses(state),

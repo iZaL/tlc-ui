@@ -59,6 +59,10 @@ export const ACTION_TYPES = {
   SET_LOAD_ADD_DATA_SUCCESS: '@customer/SET_LOAD_ADD_DATA_SUCCESS',
   SET_LOAD_ADD_DATA_FAILURE: '@customer/SET_LOAD_ADD_DATA_FAILURE',
 
+  SET_EDIT_ATTRIBUTE_REQUEST: '@customer/SET_EDIT_ATTRIBUTE_REQUEST',
+  SET_EDIT_ATTRIBUTE_SUCCESS: '@customer/SET_EDIT_ATTRIBUTE_SUCCESS',
+  SET_EDIT_ATTRIBUTE_FAILURE: '@customer/SET_EDIT_ATTRIBUTE_FAILURE',
+
   LOCATION_RECEIVED: '@customer/LOCATION_RECEIVED',
 
   SUBSCRIBE_TO_TRIP_TRACK_CHANNEL: '@customer/SUBSCRIBE_TO_TRIP_TRACK_CHANNEL',
@@ -93,6 +97,9 @@ export const ACTION_TYPES = {
   SELECT_DRIVER_REQUEST: '@customer/loads/SELECT_DRIVER_REQUEST',
   SELECT_DRIVER_SUCCESS: '@customer/loads/SELECT_DRIVER_SUCCESS',
   SELECT_DRIVER_FAILURE: '@customer/loads/SELECT_DRIVER_FAILURE',
+
+  SET_EDIT_DATA:'@customer/load/SET_EDIT_DATA',
+
 };
 
 function fetchEmployees(params) {
@@ -199,6 +206,13 @@ function setAddData(field, value) {
     value: value,
   };
 }
+function setEditAttribute(field, value) {
+  return {
+    type: ACTION_TYPES.SET_EDIT_ATTRIBUTE_REQUEST,
+    field: field,
+    value: value,
+  };
+}
 
 function fetchLoadDetails(params) {
   return {
@@ -249,6 +263,13 @@ function selectDriver(payload: object) {
   };
 }
 
+function setEditData(payload: object) {
+  return {
+    type: ACTION_TYPES.SET_EDIT_DATA,
+    payload,
+  };
+}
+
 export const ACTIONS = {
   saveProfile,
   fetchProfile,
@@ -268,7 +289,9 @@ export const ACTIONS = {
   saveLoad,
   subscribeToTripTrack,
   setAddData,
+  setEditAttribute,
   saveAddress,
   selectDriver,
   blockDriver,
+  setEditData
 };
