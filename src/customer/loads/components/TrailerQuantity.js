@@ -30,7 +30,9 @@ export default class TrailerQuantity extends Component {
           transparent={true}
           onBackdropPress={onCancel}
           onCancel={onCancel}
-          hideButton={true}>
+          hideButton={true}
+          header="No of Trailers"
+        >
           <View style={styles.addressContainer}>
             <Picker
               selectedValue={selected}

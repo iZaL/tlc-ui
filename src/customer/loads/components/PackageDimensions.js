@@ -47,7 +47,9 @@ export default class PackageDimensions extends Component {
           transparent={true}
           onBackdropPress={onCancel}
           onCancel={onCancel}
-          hideButton={true}>
+          hideButton={true}
+          header="Package Dimensions"
+        >
           <View style={styles.addressContainer}>
             <View style={{flexDirection: 'row'}}>
               <TextInput
