@@ -27,8 +27,8 @@ PODS:
   - GoogleMaps/Maps (2.5.0):
     - GoogleMaps/Base
   - QBImagePickerController (3.4.0)
-  - React (0.55.3):
-    - React/Core (= 0.55.3)
+  - React (0.57.2):
+    - React/Core (= 0.57.2)
   - react-native-document-picker (2.1.0):
     - React
   - react-native-google-maps (0.21.0):
@@ -37,31 +37,31 @@ PODS:
     - React
   - react-native-maps (0.21.0):
     - React
-  - React/Core (0.55.3):
-    - yoga (= 0.55.3.React)
-  - React/fishhook (0.55.3)
-  - React/RCTActionSheet (0.55.3):
+  - React/Core (0.57.2):
+    - yoga (= 0.57.2.React)
+  - React/fishhook (0.57.2)
+  - React/RCTActionSheet (0.57.2):
     - React/Core
-  - React/RCTAnimation (0.55.3):
+  - React/RCTAnimation (0.57.2):
     - React/Core
-  - React/RCTBlob (0.55.3):
+  - React/RCTBlob (0.57.2):
     - React/Core
-  - React/RCTGeolocation (0.55.3):
+  - React/RCTGeolocation (0.57.2):
     - React/Core
-  - React/RCTImage (0.55.3):
+  - React/RCTImage (0.57.2):
     - React/Core
     - React/RCTNetwork
-  - React/RCTLinkingIOS (0.55.3):
+  - React/RCTLinkingIOS (0.57.2):
     - React/Core
-  - React/RCTNetwork (0.55.3):
+  - React/RCTNetwork (0.57.2):
     - React/Core
-  - React/RCTSettings (0.55.3):
+  - React/RCTSettings (0.57.2):
     - React/Core
-  - React/RCTText (0.55.3):
+  - React/RCTText (0.57.2):
     - React/Core
-  - React/RCTVibration (0.55.3):
+  - React/RCTVibration (0.57.2):
     - React/Core
-  - React/RCTWebSocket (0.55.3):
+  - React/RCTWebSocket (0.57.2):
     - React/Core
     - React/fishhook
     - React/RCTBlob
@@ -74,8 +74,8 @@ PODS:
     - QBImagePickerController
     - React/Core
     - RSKImageCropper
-  - RSKImageCropper (2.1.0)
-  - yoga (0.55.3.React)
+  - RSKImageCropper (2.2.1)
+  - yoga (0.57.2.React)
 
 DEPENDENCIES:
   - Google-Maps-iOS-Utils
@@ -122,15 +122,15 @@ SPEC CHECKSUMS:
   Google-Maps-iOS-Utils: c32891ff472eaaa1fca032beedafa1a013af7875
   GoogleMaps: c087b8e5dfe87ca6ebf59adb9b4894a4146bec4f
   QBImagePickerController: d54cf93db6decf26baf6ed3472f336ef35cae022
-  React: aa2040dbb6f317b95314968021bd2888816e03d5
+  React: 1fe0eb13d90b625d94c3b117c274dcfd2e760e11
   react-native-document-picker: e7934f6a3c898a1b62fa68b1f09371beef6ac51a
   react-native-google-maps: 2cfe3b01f8422c7dae51d8764139fd70f888cfce
   react-native-maps: 066c2afcc89e18726377bcc685315f989ca22449
   RNBackgroundFetch: 8c4f77f83c398c659bce82af2f0a885079417b9e
   RNBackgroundGeolocation: c9bbf69b9aa277f0b46754cc5f853bd26051a18f
   RNImageCropPicker: 32ca4b9fef4e1b7b85ba69494242122948117e06
-  RSKImageCropper: 0d0c6d8525a2381f03fde32a47c6703817a2feed
-  yoga: a23273df0088bf7f2bb7e5d7b00044ea57a2a54a
+  RSKImageCropper: 98296ad26b41753f796b6898d015509598f13d97
+  yoga: b1ce48b6cf950b98deae82838f5173ea7cf89e85
 
 PODFILE CHECKSUM: 9bff490cdffd0f33b1aa26362400ff26efbb53e3
 
