@@ -7,8 +7,8 @@ import DateTimePicker from 'react-native-modal-datetime-picker';
 import I18n from 'utils/locale';
 import {
   Card,
-  CardActions,
-  CardContent,
+  Card.Actions,
+  Card.Content,
   Title,
 } from 'react-native-paper';
 import {View} from 'react-native';
@@ -89,7 +89,7 @@ export default class SecurityPassAdd extends PureComponent {
     return (
       <View style={{flex: 1}}>
         <Card>
-          <CardContent>
+          <Card.Content>
             <Button
               onPress={this._showCountryModalPicker}
               buttonStyle={{
@@ -106,7 +106,7 @@ export default class SecurityPassAdd extends PureComponent {
                 </Title>
               </View>
             </Touchable>
-          </CardContent>
+          </Card.Content>
 
           <DocumentUpload
             onPress={onImageUpload}
@@ -115,7 +115,7 @@ export default class SecurityPassAdd extends PureComponent {
           />
 
           <View style={{flexDirection: 'row'}}>
-            <CardActions>
+            <Card.Actions>
               <Button onPress={this._showDateTimePicker}>
                 {I18n.t('expiry_date')}
                 :{' '}
@@ -123,8 +123,8 @@ export default class SecurityPassAdd extends PureComponent {
                   ? moment(expiry_date).format('DD-MMM-YYYY')
                   : I18n.t('select_expiry_date')}
               </Button>
-            </CardActions>
-            <CardActions
+            </Card.Actions>
+            <Card.Actions
               style={{
                 flex: 1,
                 justifyContent: 'flex-end',
@@ -133,7 +133,7 @@ export default class SecurityPassAdd extends PureComponent {
               <Button primary onPress={onSavePress}>
                 {buttonText}
               </Button>
-            </CardActions>
+            </Card.Actions>
           </View>
         </Card>
 

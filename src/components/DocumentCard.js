@@ -8,9 +8,6 @@ import I18n from 'utils/locale';
 import ImageViewer from 'components/ImageViewer';
 import {
   Card,
-  CardActions,
-  CardContent,
-  CardCover,
   Paragraph,
   Title,
 } from 'react-native-paper';
@@ -68,26 +65,26 @@ export default class DocumentCard extends Component {
 
     return (
       <Card>
-        <CardContent>
+        <Card.Content>
           <Title>{country.name}</Title>
           <Paragraph>{number}</Paragraph>
-        </CardContent>
+        </Card.Content>
 
         {image ? (
           <Touchable
             onPress={() => this.onCardCoverPress(image)}
             style={{flex: 1}}>
-            <CardCover source={{uri: image}} />
+            <Card.Cover source={{uri: image}} />
           </Touchable>
         ) : (
           <View />
         )}
 
         <View style={{flexDirection: 'row'}}>
-          <CardActions>
+          <Card.Actions>
             <Button>{expiry_date}</Button>
-          </CardActions>
-          <CardActions
+          </Card.Actions>
+          <Card.Actions
             style={{
               flex: 1,
               justifyContent: 'flex-end',
@@ -96,7 +93,7 @@ export default class DocumentCard extends Component {
             <Button primary onPress={() => onEditPress(item)}>
               {I18n.t('edit')}
             </Button>
-          </CardActions>
+          </Card.Actions>
         </View>
         <ImageViewer
           visible={imageModalVisible}

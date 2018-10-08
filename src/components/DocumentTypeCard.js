@@ -6,9 +6,9 @@ import PropTypes from 'prop-types';
 
 import {
   Card,
-  CardActions,
-  CardContent,
-  CardCover,
+  Card.Actions,
+  Card.Content,
+  Card.Cover,
   Title,
 } from 'react-native-paper';
 import {View} from 'react-native';
@@ -38,17 +38,17 @@ export default class DocumentTypeCard extends Component {
 
     return (
       <Card onPress={() => onPress(item)}>
-        <CardContent>
+        <Card.Content>
           <Title>{type.name}</Title>
-        </CardContent>
+        </Card.Content>
 
-        {url ? <CardCover source={{uri: url}} /> : <View />}
+        {url ? <Card.Cover source={{uri: url}} /> : <View />}
 
         <View style={{flexDirection: 'row'}}>
-          <CardActions>
+          <Card.Actions>
             <Button>{expiry_date}</Button>
-          </CardActions>
-          <CardActions
+          </Card.Actions>
+          <Card.Actions
             style={{
               flex: 1,
               justifyContent: 'flex-end',

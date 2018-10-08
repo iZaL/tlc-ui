@@ -5,7 +5,7 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import I18n from 'utils/locale';
-import {Card, CardActions, CardContent} from 'react-native-paper';
+import {Card} from 'react-native-paper';
 import {View} from 'react-native';
 import moment from 'moment';
 import DocumentUpload from 'components/DocumentUpload';
@@ -72,7 +72,7 @@ export default class DocumentAdd extends PureComponent {
     return (
       <View style={{flex: 1}}>
         <Card>
-          <CardContent>
+          <Card.Content>
             <Button
               onPress={this._showCountryModalPicker}
               buttonStyle={{
@@ -87,7 +87,7 @@ export default class DocumentAdd extends PureComponent {
               onValueChange={onValueChange}
               field="number"
             />
-          </CardContent>
+          </Card.Content>
 
           <DocumentUpload
             onPress={uploadImage}
@@ -96,7 +96,7 @@ export default class DocumentAdd extends PureComponent {
           />
 
           <View style={{flexDirection: 'row'}}>
-            <CardActions>
+            <Card.Actions>
               <Button onPress={this._showDateTimePicker}>
                 {I18n.t('expiry_date')}
                 :{' '}
@@ -104,8 +104,8 @@ export default class DocumentAdd extends PureComponent {
                   ? moment(expiry_date).format('DD-MMM-YYYY')
                   : I18n.t('select_expiry_date')}
               </Button>
-            </CardActions>
-            <CardActions
+            </Card.Actions>
+            <Card.Actions
               style={{
                 flex: 1,
                 justifyContent: 'flex-end',
@@ -114,7 +114,7 @@ export default class DocumentAdd extends PureComponent {
               <Button primary onPress={onSavePress}>
                 {buttonText}
               </Button>
-            </CardActions>
+            </Card.Actions>
           </View>
         </Card>
 

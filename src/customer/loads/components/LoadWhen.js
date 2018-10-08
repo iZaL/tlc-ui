@@ -92,7 +92,7 @@ export default class LoadWhat extends Component {
             onPress={() => this.showTimePicker('load_time_from')}
             style={{flex: 1}}>
             <View>
-              <Title>{I18n.t('time_from')}</Title>
+              {/*<Title>{I18n.t('time_from')}</Title>*/}
               <Text style={{fontSize: 20}}>
                 {load_time_from.format('h:mm a')}
               </Text>
@@ -102,7 +102,7 @@ export default class LoadWhat extends Component {
             raised
             onPress={() => this.showTimePicker('load_time_to')}
             style={{flex: 1}}>
-            <View>
+            <View style={{flex:1}}>
               <Title>{I18n.t('time_from')}</Title>
               <Text style={{fontSize: 20}}>
                 {load_time_to.format('h:mm a')}

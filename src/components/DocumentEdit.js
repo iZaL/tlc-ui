@@ -8,9 +8,6 @@ import Modal from 'components/Modal';
 import I18n from 'utils/locale';
 import {
   Card,
-  CardActions,
-  CardContent,
-  CardCover,
   TextInput,
   Title,
 } from 'react-native-paper';
@@ -69,7 +66,7 @@ export default class DocumentEdit extends Component {
     return (
       <View style={{flex: 1}}>
         <Card>
-          <CardContent>
+          <Card.Content>
             <Title onPress={this._showCountryModalPicker}>
               {(country && country.name) || I18n.t('select_country')}
             </Title>
@@ -79,17 +76,17 @@ export default class DocumentEdit extends Component {
               onValueChange={onValueChange}
               field="registration_number"
             />
-          </CardContent>
+          </Card.Content>
 
-          {image ? <CardCover source={{uri: image}} /> : <View />}
+          {image ? <Card.Cover source={{uri: image}} /> : <View />}
 
           <View style={{flexDirection: 'row'}}>
-            <CardActions>
+            <Card.Actions>
               <Button onPress={this._showDateTimePicker}>
                 {I18n.t('expiry_date')} : {expiry_date}
               </Button>
-            </CardActions>
-            <CardActions
+            </Card.Actions>
+            <Card.Actions
               style={{
                 flex: 1,
                 justifyContent: 'flex-end',
@@ -98,7 +95,7 @@ export default class DocumentEdit extends Component {
               <Button primary onPress={() => alert('wa')}>
                 {buttonText}
               </Button>
-            </CardActions>
+            </Card.Actions>
           </View>
         </Card>
 
