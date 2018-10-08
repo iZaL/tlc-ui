@@ -6,9 +6,6 @@ import PropTypes from 'prop-types';
 
 import {
   Card,
-  Card.Actions,
-  Card.Content,
-  Card.Cover,
   Title,
 } from 'react-native-paper';
 import {View} from 'react-native';

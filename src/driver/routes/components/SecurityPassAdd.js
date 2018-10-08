@@ -7,8 +7,6 @@ import DateTimePicker from 'react-native-modal-datetime-picker';
 import I18n from 'utils/locale';
 import {
   Card,
-  Card.Actions,
-  Card.Content,
   Title,
 } from 'react-native-paper';
 import {View} from 'react-native';
