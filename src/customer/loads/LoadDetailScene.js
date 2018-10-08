@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {ScrollView, View, Button} from 'react-native';
+import {ScrollView, View} from 'react-native';
 import {ACTIONS as CUSTOMER_ACTIONS} from 'customer/common/actions';
 import {SELECTORS as CUSTOMER_SELECTORS} from 'customer/common/selectors';
 import Divider from 'components/Divider';
@@ -16,17 +16,15 @@ import UserInfo from 'components/UserInfo';
 import ListRow from 'components/ListRow';
 import EmployeeList from 'customer/employees/components/EmployeeList';
 import Dialog from 'components/Dialog';
-import DocumentTypesList from 'components/DocumentTypesList';
-import ImageViewer from 'components/ImageViewer';
 import LoadPickDropLocation from 'driver/loads/components/LoadPickDropLocation';
 import LoadInfo from 'driver/loads/components/LoadInfo';
-import LoadStatusButton from 'driver/loads/components/LoadStatusButton';
 import LoadLocationMapView from 'driver/loads/components/LoadLocationMapView';
 import LoadAddressInfo from 'driver/loads/components/LoadAddressInfo';
 import colors from 'assets/theme/colors';
-import {FAB, Headline} from 'react-native-paper';
+import {Headline} from 'react-native-paper';
 import TripList from 'customer/trips/components/TripList';
 import PendingFleetsList from 'customer/trips/components/PendingFleetsList';
+import Button from 'components/Button';
 
 class LoadDetailScene extends Component {
   static propTypes = {

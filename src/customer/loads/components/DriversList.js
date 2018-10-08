@@ -5,7 +5,7 @@ import React, {Component, PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {FlatList, StyleSheet} from 'react-native';
 import Divider from 'components/Divider';
-import {ListSection} from 'react-native-paper';
+import {List as PaperList} from 'react-native-paper';
 import DriverListItem from 'customer/loads/components/DriverListItem';
 
 export default class extends PureComponent {

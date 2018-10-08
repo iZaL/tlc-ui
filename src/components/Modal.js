@@ -5,8 +5,9 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {StyleSheet} from 'react-native';
 import Modal from 'react-native-modal';
-import {Button, Headline} from 'react-native-paper';
+import { Headline} from 'react-native-paper';
 import I18n from 'utils/locale';
+import Button from 'components/Button';
 
 export default class extends Component {
   static propTypes = {

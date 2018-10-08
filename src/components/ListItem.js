@@ -3,7 +3,7 @@
  */
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {ListItem as PaperListItem} from 'react-native-paper';
+import {List} from 'react-native-paper';
 import I18n from 'utils/locale';
 import IconFactory from 'components/IconFactory';
 
@@ -35,7 +35,7 @@ export default class ListItem extends Component {
       ...rest
     } = this.props;
     return (
-      <PaperListItem
+      <List.Item
         onPress={name ? () => onPress(name) : onPress}
         icon={iconProps ? <IconFactory {...iconProps} /> : icon}
         title={title}

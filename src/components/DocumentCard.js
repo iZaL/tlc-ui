@@ -7,7 +7,6 @@ import PropTypes from 'prop-types';
 import I18n from 'utils/locale';
 import ImageViewer from 'components/ImageViewer';
 import {
-  Button,
   Card,
   CardActions,
   CardContent,
@@ -16,6 +15,7 @@ import {
   Title,
 } from 'react-native-paper';
 import {View} from 'react-native';
+import Button from 'components/Button';
 
 export default class DocumentCard extends Component {
   static propTypes = {

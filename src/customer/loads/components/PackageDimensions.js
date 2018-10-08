@@ -4,11 +4,12 @@ import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import Modal from 'components/Modal';
 import TextInput from 'components/TextInput';
 import I18n from 'utils/locale';
-import {Button, Title} from 'react-native-paper';
+import {Title} from 'react-native-paper';
 import AlbumUpload from 'components/AlbumUpload';
 import IconFactory from 'components/IconFactory';
 import colors from 'assets/theme/colors';
 import Divider from 'components/Divider';
+import Button  from 'components/Button';
 
 export default class PackageDimensions extends Component {
   static propTypes = {

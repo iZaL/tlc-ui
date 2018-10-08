@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import I18n from 'utils/locale';
 import {
-  Button,
   Card,
   CardActions,
   CardContent,
@@ -18,6 +17,7 @@ import DocumentUpload from 'components/DocumentUpload';
 import ListModal from 'components/ListModal';
 import Touchable from 'react-native-platform-touchable';
 import Label from 'components/Label';
+import Button from 'components/Button';
 
 export default class SecurityPassAdd extends PureComponent {
   static propTypes = {

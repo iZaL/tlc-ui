@@ -8,7 +8,7 @@ import I18n from 'utils/locale';
 import ListItem from 'components/ListItem';
 import ListModal from 'components/ListModal';
 import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
-import {ListSection} from 'react-native-paper';
+import {List as PaperList} from 'react-native-paper';
 
 class ProfileUpdateScene extends Component {
   static propTypes = {
@@ -67,7 +67,7 @@ class ProfileUpdateScene extends Component {
     let {languageModalVisible, activeLanguages} = this.state;
 
     return (
-      <ListSection>
+      <PaperList.Section>
         <ListItem
           onPress={this.onProfileInfoPress}
           name="personal_information"
@@ -130,7 +130,7 @@ class ProfileUpdateScene extends Component {
           header={I18n.t('select_languages')}
           activeIDs={activeLanguages}
         />
-      </ListSection>
+      </PaperList.Section>
     );
   }
 }

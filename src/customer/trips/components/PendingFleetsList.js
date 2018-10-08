@@ -5,7 +5,7 @@ import React, {Component, PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {FlatList, StyleSheet, View} from 'react-native';
 import Divider from 'components/Divider';
-import {ListSection, Title, TouchableRipple} from 'react-native-paper';
+import {List, Title, TouchableRipple} from 'react-native-paper';
 import IconFactory from 'components/IconFactory';
 import I18n from 'utils/locale';
 import colors from 'assets/theme/colors';
@@ -37,7 +37,7 @@ export default class extends PureComponent {
   render() {
     let {count} = this.props;
     return (
-      <ListSection>
+      <List.Section>
         <FlatList
           data={Array.from(Array(count).keys())}
           style={styles.listContainer}
@@ -46,7 +46,7 @@ export default class extends PureComponent {
           ItemSeparatorComponent={() => <Divider />}
           keyExtractor={(item, index) => `${index}`}
         />
-      </ListSection>
+      </List.Section>
     );
   }
 }

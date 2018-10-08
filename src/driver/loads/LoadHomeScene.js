@@ -5,7 +5,7 @@ import ListItem from 'components/ListItem';
 import IconFactory from 'components/IconFactory';
 import Divider from 'components/Divider';
 import I18n from 'utils/locale';
-import {ListSection} from 'react-native-paper';
+import {List as PaperList} from 'react-native-paper';
 
 class LoadHomeScene extends Component {
   static propTypes = {};
@@ -41,7 +41,7 @@ class LoadHomeScene extends Component {
 
   render() {
     return (
-      <ListSection>
+      <PaperList.Section>
         <ListItem
           onPress={this.onListItemPress}
           iconProps={{type: 'MaterialCommunityIcons', name: 'truck-delivery'}}
@@ -66,7 +66,7 @@ class LoadHomeScene extends Component {
           name="trip_history"
           title={I18n.t('trip_history')}
         />
-      </ListSection>
+      </PaperList.Section>
     );
   }
 }

@@ -8,7 +8,8 @@ import DatePicker from 'components/DatePicker';
 import Divider from 'components/Divider';
 import colors from 'assets/theme/colors';
 import DateTimePicker from 'react-native-modal-datetime-picker';
-import {Button, Title} from 'react-native-paper';
+import {Title} from 'react-native-paper';
+import Button from 'components/Button';
 import moment from 'moment';
 
 export default class LoadWhat extends Component {

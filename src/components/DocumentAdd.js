@@ -5,12 +5,13 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import I18n from 'utils/locale';
-import {Button, Card, CardActions, CardContent} from 'react-native-paper';
+import {Card, CardActions, CardContent} from 'react-native-paper';
 import {View} from 'react-native';
 import moment from 'moment';
 import DocumentUpload from 'components/DocumentUpload';
 import ListModal from 'components/ListModal';
 import TextInput from 'components/TextInput';
+import Button from 'components/Button';
 
 export default class DocumentAdd extends PureComponent {
   static propTypes = {

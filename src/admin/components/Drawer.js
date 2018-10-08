@@ -4,7 +4,7 @@
 import React, {Component} from 'react';
 import I18n from 'utils/locale';
 import DrawerItem from 'components/DrawerItem';
-import {DrawerSection} from 'react-native-paper';
+import {Drawer as PaperDrawer} from 'react-native-paper';
 
 export default class Drawer extends Component {
   onItemPress = (routeName: string) => {
@@ -23,7 +23,7 @@ export default class Drawer extends Component {
     let {activeRoute} = this.state;
 
     return (
-      <DrawerSection style={{paddingTop: 30}}>
+      <PaperDrawer.Section style={{paddingTop: 30}}>
         <DrawerItem
           label={I18n.t('home')}
           routeName="HomeStack"
@@ -56,7 +56,7 @@ export default class Drawer extends Component {
           }}
           active={activeRoute === 'Logout'}
         />
-      </DrawerSection>
+      </PaperDrawer.Section>
     );
   }
 }

@@ -5,7 +5,6 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 import {
-  Button,
   Card,
   CardActions,
   CardContent,
@@ -13,6 +12,7 @@ import {
   Title,
 } from 'react-native-paper';
 import {View} from 'react-native';
+import Button from 'components/Button';
 
 export default class DocumentTypeCard extends Component {
   static propTypes = {

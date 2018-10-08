@@ -2,15 +2,12 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {
   Dialog as PaperDialog,
-  Button,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
   Paragraph,
   Colors,
 } from 'react-native-paper';
 import I18n from 'utils/locale';
 import {View} from 'react-native';
+import Button from 'components/Button';
 
 export default class Dialog extends Component {
   static propTypes = {
@@ -51,14 +48,14 @@ export default class Dialog extends Component {
         dismissable={dismissable}
         onDismiss={onDismiss}
         style={style}>
-        <DialogTitle>{title}</DialogTitle>
-        <DialogContent>
+        <Dialog.Title>{title}</Dialog.Title>
+        <Dialog.Content>
           <View>
             <Paragraph>{description}</Paragraph>
             {this.props.children}
           </View>
-        </DialogContent>
-        <DialogActions>
+        </Dialog.Content>
+        <Dialog.Actions>
           {leftText && (
             <Button color={Colors.teal500} onPress={leftPress}>
               {leftText}
@@ -67,7 +64,7 @@ export default class Dialog extends Component {
           <Button primary onPress={rightPress}>
             {rightText}
           </Button>
-        </DialogActions>
+        </Dialog.Actions>
       </PaperDialog>
     );
   }

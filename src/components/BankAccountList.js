@@ -5,7 +5,7 @@ import React, {Component, PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {FlatList, StyleSheet} from 'react-native';
 import Divider from 'components/Divider';
-import {ListSection} from 'react-native-paper';
+import {List as PaperList} from 'react-native-paper';
 import ListItem from 'components/ListItem';
 
 export default class BankAccountList extends PureComponent {
@@ -32,7 +32,7 @@ export default class BankAccountList extends PureComponent {
   render() {
     let {items} = this.props;
     return (
-      <ListSection>
+      <PaperList.Section>
         <FlatList
           data={items}
           style={styles.listContainer}
@@ -41,7 +41,7 @@ export default class BankAccountList extends PureComponent {
           ItemSeparatorComponent={() => <Divider />}
           keyExtractor={(item, index) => `${index}`}
         />
-      </ListSection>
+      </PaperList.Section>
     );
   }
 }

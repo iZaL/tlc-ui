@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {ScrollView, StyleSheet, Text, View, Picker} from 'react-native';
 import Modal from 'components/Modal';
 import I18n from 'utils/locale';
-import {Button} from 'react-native-paper';
+import Button  from 'components/Button';
 
 export default class TrailerQuantity extends Component {
   static propTypes = {

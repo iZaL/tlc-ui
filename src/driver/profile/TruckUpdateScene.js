@@ -5,7 +5,7 @@ import {ACTIONS as DRIVER_ACTIONS} from 'driver/common/actions';
 import {SELECTORS as DRIVER_SELECTORS} from 'driver/common/selectors';
 import Divider from 'components/Divider';
 import ListItem from 'components/ListItem';
-import {ListSection, Title} from 'react-native-paper';
+import {List, Title} from 'react-native-paper';
 import I18n from 'utils/locale';
 import AlbumUpload from 'components/AlbumUpload';
 import {View} from 'react-native';
@@ -83,7 +83,7 @@ class TruckUpdateScene extends Component {
     let {truck} = this.props;
 
     return (
-      <ListSection>
+      <List.Section>
         <ListItem
           onPress={this.loadTruckModelScene}
           title={I18n.t('truck_model')}
@@ -136,7 +136,7 @@ class TruckUpdateScene extends Component {
             />
           </View>
         </AlbumUpload>
-      </ListSection>
+      </List.Section>
     );
   }
 }

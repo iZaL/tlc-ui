@@ -4,7 +4,7 @@ import ListItem from 'components/ListItem';
 import {ACTIONS as CUSTOMER_ACTIONS} from 'customer/common/actions';
 import Divider from 'components/Divider';
 import I18n from 'utils/locale';
-import {ListSection} from 'react-native-paper';
+import {List as PaperList} from 'react-native-paper';
 
 class ProfileHome extends Component {
   static propTypes = {};
@@ -55,7 +55,7 @@ class ProfileHome extends Component {
 
   render() {
     return (
-      <ListSection>
+      <PaperList.Section>
         <ListItem
           onPress={this.onListItemPress}
           iconProps={{type: 'Ionicons', name: 'md-person'}}
@@ -98,7 +98,7 @@ class ProfileHome extends Component {
           name="blocked_drivers"
           title={I18n.t('blocked_drivers')}
         />
-      </ListSection>
+      </PaperList.Section>
     );
   }
 }
